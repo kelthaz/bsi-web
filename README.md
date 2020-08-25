@@ -3,6 +3,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+### npm config set @bit:registry https://node.bit.dev
+
+### npm run dev
+
+### npm run start
+
+### npm run debug
 
 ### `npm start`
 
