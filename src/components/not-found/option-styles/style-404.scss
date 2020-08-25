@@ -1,0 +1,91 @@
+@import '../../styles/theme/colors';
+@import "../../../styles/mixins/media";
+
+
+@mixin style-404 {
+  .image-error-container {
+    text-align: center;
+    width: 100%;
+    .image-error {
+      @include media('mobile') {
+        width: 60%;
+      }
+    }
+  }
+
+  .message-container {
+    margin: 24px auto;
+    text-align: center;
+     .message-error {
+      color: $negro;
+      font-family: 'Rubik-Light';
+      font-size: 18px;
+      &.highlighted {
+        font-size: 22px;
+        font-family: 'Rubik-Bold';
+        color: $turquesa;
+      }
+    }
+  }
+
+  .animation-container {
+    display: flex;
+    .icon-left {
+      animation-name: plug;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      left: 0;
+      position: absolute;
+      width: 51%;
+      opacity: 1;
+
+      @keyframes plug {
+          0% {
+            opacity: 1;
+            width: 51%;
+          }
+          25% {
+            opacity: 1;
+            width: 49%;
+          }
+          100% {
+            opacity: 1;
+            width: 49%;
+          }
+      }
+
+      @include media('mobile') {
+        animation-duration: 2s;
+      }
+    }
+
+    .icon-right {
+      animation-name: plug;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      position: absolute;
+      right: 0;
+      width: 51%;
+      opacity: 1;
+
+      @keyframes plug {
+            0% {
+              opacity: 1;
+              width: 51%;
+            }
+            25% {
+              opacity: 1;
+              width: 49%;
+            }
+            100% {
+              opacity: 1;
+              width: 51%;
+            }
+      }
+
+      @include media('mobile') {
+        animation-duration: 2s;
+      }
+    }
+  }
+}

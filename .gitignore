@@ -1,0 +1,38 @@
+# compiled output
+dist
+build
+package-lock.json
+yarn.lock
+./components
+# Reports
+junit.xml
+coverage
+reports
+
+# dependencies
+node_modules/
+
+# IDEs and editors
+.idea/
+*.iml
+*.sublime-workspace
+.vscode
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.next/
+

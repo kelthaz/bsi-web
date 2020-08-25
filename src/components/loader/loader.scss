@@ -1,0 +1,20 @@
+.hide_scroll {
+    overflow: hidden;
+}
+
+.loader_fade_out {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 500ms, opacity 500ms;
+}
+  
+.loader_container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    //background-image: radial-gradient(circle farthest-corner at center, #01b581 0%, #01b581 100%);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    text-align: center;
+}

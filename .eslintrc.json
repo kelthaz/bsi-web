@@ -1,0 +1,110 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:react/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "generators": true,
+            "experimentalObjectRestSpread": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "filenames",
+        "no-only-tests"
+    ],
+    "rules": {
+        "id-length": [
+            "error",
+            {
+                "properties": "never"
+            }
+        ],
+        "filenames/match-regex": [
+            1,
+            "^[a-z-.]+$",
+            true
+        ],
+        "camelcase": 2,
+        "new-cap": 2,
+        "no-underscore-dangle": 2,
+        "prefer-arrow-callback": 2,
+        "arrow-spacing": 1,
+        "no-array-constructor": 2,
+        "prefer-destructuring": 2,
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "prefer-template": 2,
+        "template-curly-spacing": 2,
+        "no-dupe-class-members": 2,
+        "nonblock-statement-body-position": [
+            "error",
+            "beside"
+        ],
+        "no-else-return": "error",
+        "brace-style": "error",
+        "spaced-comment": [
+            "error",
+            "always"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "prefer-const": "error",
+        "no-var": "error",
+        "no-useless-constructor": "error",
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "no-nested-ternary": "error",
+        "comma-style": [
+            "error",
+            "last"
+        ],
+        "no-loop-func": "error",
+        "no-iterator": "error",
+        "dot-location": [
+            "error",
+            "property"
+        ],
+        "arrow-body-style": [
+            2,
+            "always"
+        ],
+        "arrow-parens": [
+            2,
+            "always"
+        ],
+        "complexity": [
+            "warn",
+            10
+        ],
+        "constructor-super": 2,
+        "one-var": [
+            "error",
+            "never"
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
+}

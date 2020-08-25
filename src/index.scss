@@ -1,0 +1,23 @@
+/* Theme */
+@import 'styles/mixins/media';
+@import 'styles/theme/breakpoints';
+@import 'styles/theme/colors';
+@import 'styles/theme/fonts';
+
+body {
+	color: $blanco;
+    margin: 0;
+    overflow-y: overlay;
+}
+
+html {
+	box-sizing: border-box;
+	color: $blanco;
+	font-family: 'Rubik';
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+* {
+	box-sizing: border-box;
+}

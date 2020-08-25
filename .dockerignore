@@ -1,0 +1,8 @@
+# Reports
+junit.xml
+coverage
+reports
+
+node_modules
+Dockerfile
+.next
