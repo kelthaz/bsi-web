@@ -1,6 +1,6 @@
 module.exports = {
-    verbose: true,
-    moduleNameMapper: {
-        "^.+\\.(css|less|scss)$": "identity-obj-proxy"
-    }
+  verbose: true,
+  moduleNameMapper: {
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy',
+  },
 };

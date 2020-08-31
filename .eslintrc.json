@@ -1,32 +1,41 @@
 {
     "env": {
         "browser": true,
-        "node": true,
-        "es6": true
+        "es2020": true,
+        "node": true
     },
     "extends": [
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "airbnb"
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
-            "jsx": true,
-            "generators": true,
-            "experimentalObjectRestSpread": true
+            "jsx": true
         },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
         "react",
-        "filenames",
-        "no-only-tests"
+        "filenames"
     ],
     "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "react/forbid-prop-types": "off",
+        "react/jsx-props-no-spreading": "off",
+        "linebreak-style": "off",
+        // suppress errors for missing 'import React' in files
+        "react/react-in-jsx-scope": "off",
+        // allow jsx syntax in js files (for next.js project)
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ], //should add ".ts" if typescript project
         "id-length": [
             "error",
             {
@@ -101,10 +110,5 @@
             "error",
             "never"
         ]
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
     }
 }
