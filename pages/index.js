@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>BanCoppel | Pymes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

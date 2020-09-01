@@ -1,11 +1,27 @@
 // Typography
-@mixin font-face($name) {
-  font-family: $name;
-  src: url('../fonts/#{$name}.eot');
-  src: url('../fonts/#{$name}.eot') format('embedded-opentype'), url('../fonts/#{$name}.woff') format('woff'),
-    url('../fonts/#{$name}.ttf') format('truetype');
+
+// Futura
+@font-face {
+  font-family: 'Futura-Bold';
+  src: url('../../fonts/Futura-Bold.ttf') format('truetype');
 }
 @font-face {
-  @include fontFace($font-general);
+  font-family: 'Futura-Heavy';
+  src: url('/styles/fonts/Futura-Heavy.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Futura-Book';
+  src: url('/styles/fonts/Futura-Book.ttf') format('truetype');
+}
+
+// Lato
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('../../fonts/Lato-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('/styles/fonts/Lato-Regular.ttf') format('truetype');
+}
+
 // End Typography
