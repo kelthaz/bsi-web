@@ -1,3 +1,148 @@
 // Buttons
+button {
+  &:focus {
+    outline: none;
+  }
+}
 
+%disabled {
+  background-color: $gray-light;
+  color: $white;
+}
+
+%transition-before {
+  &::before {
+    left: 0;
+    opacity: 1;
+    right: 0;
+    transition: 0.5s all ease;
+  }
+}
+
+@mixin button-config($width, $height: 50px, $radius: 10px) {
+  border-radius: $radius;
+  cursor: pointer;
+  font-family: $futura-heavy;
+  font-size: 14px;
+  height: $height;
+  line-height: 130%;
+  width: $width;
+}
+
+@mixin button-background($color: $white) {
+  @if $color == $white {
+    background-color: transparent;
+    border: 2px solid $blue-storm;
+    box-sizing: border-box;
+    color: $blue-storm;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s all ease;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus {
+      color: $white;
+    }
+
+    &::before {
+      background-color: $blue-storm;
+      bottom: 0;
+      content: '';
+      left: 50%;
+      opacity: 0;
+      position: absolute;
+      right: 50%;
+      top: 0;
+      transition: 0.5s all ease;
+      z-index: -2;
+    }
+
+    &:hover {
+      @extend %transition-before;
+    }
+
+    &:focus {
+      @extend %transition-before;
+    }
+  } @else if $color == $blue-storm {
+    background-color: $color;
+    border: 0;
+    color: $white;
+    transition: 0.3s;
+
+    &:hover:enabled {
+      background-color: $blue-night;
+      transform: scale(1.2);
+    }
+
+    &:focus {
+      background-color: $blue-night;
+    }
+
+    &:disabled {
+      @extend %disabled;
+    }
+  } @else {
+    background-color: $color;
+    border: 0;
+    color: $blue-storm;
+    transition: 0.3s;
+
+    &:hover:enabled {
+      background-color: $blue-morning;
+      transform: scale(1.2);
+    }
+
+    &:focus {
+      background-color: $blue-morning;
+    }
+
+    &:disabled {
+      @extend %disabled;
+    }
+  }
+}
+
+.btn-big {
+  @include button-config(180px);
+  @include button-background($yellow-summer);
+}
+
+.btn-medium {
+  @include button-config(150px);
+  @include button-background($blue-storm);
+}
+
+.btn-small {
+  @include button-config(120px);
+  @include button-background($blue-storm);
+}
+
+.btn-mini {
+  @include button-config(80px, 32px, 8px);
+  @include button-background($blue-storm);
+}
+
+.btn-big-secondary {
+  @include button-config(180px);
+  @include button-background();
+}
+
+.btn-medium-secondary {
+  @include button-config(150px);
+  @include button-background();
+}
+
+.btn-small-secondary {
+  @include button-config(120px);
+  @include button-background();
+}
+
+.btn-mini-secondary {
+  @include button-config(80px, 32px, 8px);
+  @include button-background();
+}
 // End Buttons
