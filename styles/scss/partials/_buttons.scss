@@ -116,6 +116,11 @@ button {
   @include button-background($blue-storm);
 }
 
+.btn-medium-yellow {
+  @include button-config(150px);
+  @include button-background($yellow-summer);
+}
+
 .btn-small {
   @include button-config(120px);
   @include button-background($blue-storm);

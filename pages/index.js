@@ -5,7 +5,7 @@ import { Footer } from '../components/footer/Footer';
 
 const Home = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>BanCoppel | Pymes</title>
         <link rel="icon" href="/favicon.ico" />
