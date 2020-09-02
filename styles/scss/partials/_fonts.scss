@@ -1,0 +1,61 @@
+@import '../modules/var';
+@import '../modules/mixins';
+
+h1 {
+  font-family: $futura-heavy;
+  font-size: 48px;
+  @include media('mobile') {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-family: $futura-heavy;
+  font-size: 36px;
+  @include media('mobile') {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-family: $futura-heavy;
+  font-size: 24px;
+  @include media('mobile') {
+    font-size: 18px;
+  }
+}
+h4 {
+  font-family: $futura-heavy;
+  font-size: 18px;
+}
+.input {
+  font-family: $futura-book;
+  font-size: 32px;
+  @include media('mobile') {
+    font-size: 18px;
+  }
+}
+.sub {
+  font-family: $futura-heavy;
+  font-size: 16px;
+}
+.body1 {
+  font-family: $futura-book;
+  font-size: 18px;
+}
+.body2 {
+  font-family: $futura-book;
+  font-size: 16px;
+}
+.body3 {
+  font-family: $futura-book;
+  font-size: 14px;
+}
+.button {
+  font-family: $futura-heavy;
+  font-size: 14px;
+}
+.overline {
+  font-family: $futura-book;
+  font-size: 12px;
+}
