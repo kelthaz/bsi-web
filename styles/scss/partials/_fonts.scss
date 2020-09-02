@@ -1,6 +1,8 @@
 @import '../modules/var';
 @import '../modules/mixins';
 
+
+// Default sizes
 h1 {
   font-family: $futura-heavy;
   font-size: 48px;
@@ -58,4 +60,19 @@ h4 {
 .overline {
   font-family: $futura-book;
   font-size: 12px;
+}
+
+// Colors
+
+p {
+  color: $gray-dark;
+}
+.text-primary {
+  color: $blue-storm;
+}
+.text-secondary {
+  color: $blue-sky;
+}
+.text-dark {
+  color: $gray-dark;
 }
