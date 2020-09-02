@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
+import { Title } from '../components/title/Title';
 
 const Home = () => {
   return (
@@ -12,6 +13,8 @@ const Home = () => {
       </Head>
 
       <Header />
+      <Title linea1="Todo sobre" linea2="crédito pyme"/>
+      <Title linea1="Para tu información"/>
       <main className={styles.main}>
         <h1 className={styles.title}>
           {'Welcome to '}
