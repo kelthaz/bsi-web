@@ -19,8 +19,8 @@ const Ayuda = () => {
 
       <Banner/>
 
-      <section className={'flex-row mt-5 mb-5'}>
-        <div className={'col-6'}>
+      <section className={'flex-row mt-5 mb-5 justify-content-center'}>
+        <div className={['col-6', styles.contact_box].join(' ')}>
           <div className={'flex-row'}>
             <div className={'col-8'}>
               <div className={'sub text-primary mb-3'}>Llámanos directo</div>
@@ -32,13 +32,7 @@ const Ayuda = () => {
             </div>
           </div>
         </div>
-        <div className={'col-1 only-desktop'}>
-          <img src="/vertical-division.svg"/>
-        </div>
-        <div className={'col-1 only-mobile'}>
-          <img src="/horizontal-division.svg"/>
-        </div>
-        <div className={'col-5'}>
+        <div className={['col-5', styles.contact_box].join(' ')}>
           <div className={'flex-row'}>
             <div className={'col-8'}>
               <div className={'sub text-primary mb-3'}>Chat</div>
@@ -58,7 +52,7 @@ const Ayuda = () => {
         </div>
 
         <div className={'flex-row mt-5 justify-content-center'}>
-          <div className={'col-3 pr-4'}>
+          <div className={['col-3 pr-4', styles.about_pyme_selector].join(' ')}>
             <div className={['flex-row', styles.about_pyme_box, styles.active].join(' ')}>
               <div className={'col-1 align-content-center'}>
                 <img src="/document.svg" alt="Document"/>

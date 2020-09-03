@@ -1,4 +1,5 @@
 @import '../modules/var';
+@import '../modules/mixins';
 
 .text_box {
   margin-left: 20px;
@@ -6,7 +7,6 @@
 }
 
 .text {
-  // max-width: 500px;
   width: 500px;
   max-height: 80px;
   height: 100%;
@@ -21,6 +21,10 @@
     padding: 0;
     display: block;
   }
+
+  @include media('mobile') {
+    width: 250px;
+  }
 }
 
 .box {
@@ -34,4 +38,8 @@
 
 .line {
   width: 100%;
+
+  @include media('mobile') {
+    width: 100%;
+  }
 }
