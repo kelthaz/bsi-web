@@ -1,12 +1,30 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuSelect, setMenuSelect] = useState('persona');
+  const pages = ['Inicio', 'Crédito', 'Requisitos', 'Simulador', 'Beneficios', 'Ayuda'];
+  const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
 
-  const handleMenu = () => {
-    return setMenuOpen(!menuOpen);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuSelect, setMenuSelect] = useState({ category: '', option: '' });
+  const [pageSelect, setPageSelect] = useState('');
+
+  const { category, option } = menuSelect;
+
+  const handleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleCategory = ({ target }) => {
+    setMenuSelect({ ...menuSelect, category: target.innerHTML });
+  };
+
+  const handleOption = ({ target }) => {
+    setMenuSelect({ ...menuSelect, option: target.innerHTML });
+  };
+
+  const handlePage = ({ target }) => {
+    setPageSelect(target.innerHTML);
   };
 
   return (
@@ -29,12 +47,11 @@ export const Header = () => {
           </div>
           <div className={styles['header-bottom']}>
             <ul>
-              <li>Inicio</li>
-              <li>Crédito Pyme</li>
-              <li>Requisitos</li>
-              <li>Simulador</li>
-              <li>Beneficios</li>
-              <li>Ayuda</li>
+              {pages.map((page) => (
+                <li key={page} className={pageSelect === page ? styles['option-selected'] : ''}>
+                  <a onClick={handlePage}>{page}</a>
+                </li>
+              ))}
             </ul>
           </div>
         </>
@@ -42,12 +59,13 @@ export const Header = () => {
 
       {menuOpen && (
         <>
-          <div className={styles['menu-header']}>
+          <div className={`${styles['menu-header']} header-active`}>
             <div>
               <img src="/cross.svg" className="logo" alt="" onClick={handleMenu} />
               <img src="/bancoppel-pymes-blanco.svg" className="logo" alt="" />
             </div>
             <div>
+              <img src="/search.svg" className="logo" alt="" />
               <button type="button" className="btn-medium-secondary">
                 Iniciar sesión
               </button>
@@ -58,28 +76,28 @@ export const Header = () => {
           </div>
           <div className={styles.menu}>
             <ul>
-              <li>
-                <h4>Personas</h4>
+              <li className={category === 'Personas' ? styles['category-selected'] : ''}>
+                <h4 onClick={handleCategory}>Personas</h4>
               </li>
-              <li>
-                <h4>Personas</h4>
+              <li className={category === 'Empresas' ? styles['category-selected'] : ''}>
+                <h4 onClick={handleCategory}>Empresas</h4>
               </li>
             </ul>
           </div>
           <div className={styles['items-menu']}>
             <ul>
-              <li>
-                <a href="/">Servicio 1</a>
-              </li>
-              <li>
-                <a href="/">Servicio 2</a>
-              </li>
-              <li>
-                <a href="/">Servicio 3</a>
-              </li>
-              <li>
-                <a href="/">Servicio 4</a>
-              </li>
+              {menuOptions.map((opt) => (
+                <li key={opt} className={option === opt ? styles['option-selected'] : ''}>
+                  <a onClick={handleOption}>{opt}</a>
+                </li>
+              ))}
+            </ul>
+            <ul>
+              {pages.map((page) => (
+                <li key={page} className={pageSelect === page ? styles['option-selected-yellow'] : ''}>
+                  <a onClick={handlePage}>{page}</a>
+                </li>
+              ))}
             </ul>
           </div>
         </>
