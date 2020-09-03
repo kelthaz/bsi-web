@@ -23,6 +23,8 @@
         "import/no-extraneous-dependencies": "off",
         "react/forbid-prop-types": "off",
         "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
         "linebreak-style": "off",
         // suppress errors for missing 'import React' in files
         "react/react-in-jsx-scope": "off",
@@ -95,7 +97,7 @@
         ],
         "arrow-body-style": [
             2,
-            "always"
+            "as-needed"
         ],
         "arrow-parens": [
             2,
