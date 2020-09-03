@@ -38,6 +38,24 @@ button {
     overflow: hidden;
     position: relative;
     transition: 0.5s all ease;
+    z-index: 1;
+
+    .header-active & {
+      border-color: $white;
+      color: $white;
+
+      &::before {
+        background-color: $white;
+      }
+
+      &:hover {
+        color: $blue-storm;
+      }
+
+      &:focus {
+        color: $blue-storm;
+      }
+    }
 
     &:hover {
       color: $white;
@@ -114,6 +132,11 @@ button {
 .btn-medium {
   @include button-config(150px);
   @include button-background($blue-storm);
+}
+
+.btn-medium-yellow {
+  @include button-config(150px);
+  @include button-background($yellow-summer);
 }
 
 .btn-small {
