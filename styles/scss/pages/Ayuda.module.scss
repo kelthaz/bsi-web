@@ -62,31 +62,3 @@
 .active {
   border: 1.5px solid $blue-sky !important;
 }
-
-.about_pyme_content_box {
-  background: $blue-light;
-  border-radius: 16px;
-
-  &:last-child{
-    content: 'test';
-    border-bottom: none;
-  }
-
-  &:first-child{
-    background-color: $blue-sky;
-  }
-
-  @include media('mobile') {
-    display: none;
-  }
-}
-
-.about_pyme_content_item {
-  padding: 1.5rem 0px 1rem 0px;
-  margin: 0px 1.5rem 0px 1.5rem;
-
-  border-bottom: 1.5px solid $blue-shadow;
-  &:last-child{
-    border-bottom: none;
-  }
-}

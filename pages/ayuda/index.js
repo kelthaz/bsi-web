@@ -1,11 +1,21 @@
 import Head from 'next/head';
 import styles from '../../styles/scss/pages/Ayuda.module.scss';
 import { Header } from '../../components/header/Header';
+import { Accordeon } from '../../components/accordeon/Accordeon';
 import { Banner } from '../../components/banner/Banner';
 import { Footer } from '../../components/footer/Footer';
 import { Title } from '../../components/title/Title';
 
 const Ayuda = () => {
+
+  let about_pyme_items = [
+    {title: '¿Cómo comienzo?', content: ''},
+    {title: '¿Cuanto es lo máximo que puedo solicitar?', content: ''},
+    {title: '¿En cuanto tiempo recibo mi dinero?', content: ''},
+    {title: '¿Necesito una cuenta empresarial?', content: ''},
+    {title: '¿En cuanto tiempo recibiría mi dinero?', content: ''},
+  ]
+
   return (
     <div className={['container', styles.container].join(' ')}>
       <Head>
@@ -81,27 +91,8 @@ const Ayuda = () => {
               </div>
             </div>
           </div>
-          <div className={['col-5 align-content-between', styles.about_pyme_content_box].join(' ')}>
-            <div className={['flex-row', 'justify-content-between', styles.about_pyme_content_item].join(' ')}>
-              <div className={'sub text-primary'}>¿Cómo comienzo?</div>
-              <div><img src="/plus.svg" alt="Ver más"/></div>
-            </div>
-            <div className={['flex-row', 'justify-content-between', styles.about_pyme_content_item].join(' ')}>
-              <div className={'sub text-primary'}>¿Cuanto es lo máximo que puedo solicitar?</div>
-              <div><img src="/plus.svg" alt="Ver más"/></div>
-            </div>
-            <div className={['flex-row', 'justify-content-between', styles.about_pyme_content_item].join(' ')}>
-              <div className={'sub text-primary'}>¿En cuanto tiempo recibo mi dinero?</div>
-              <div><img src="/plus.svg" alt="Ver más"/></div>
-            </div>
-            <div className={['flex-row', 'justify-content-between', styles.about_pyme_content_item].join(' ')}>
-              <div className={'sub text-primary'}>¿Necesito una cuenta empresarial?</div>
-              <div><img src="/plus.svg" alt="Ver más"/></div>
-            </div>
-            <div className={['flex-row', 'justify-content-between', styles.about_pyme_content_item].join(' ')}>
-              <div className={'sub text-primary'}>¿En cuanto tiempo recibiría mi dinero?</div>
-              <div><img src="/plus.svg" alt="Ver más"/></div>
-            </div>
+          <div className={'col-5 only-desktop'}>
+            <Accordeon items={about_pyme_items}/>
           </div>
         </div>
       </section>
