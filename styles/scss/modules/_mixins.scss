@@ -45,9 +45,35 @@
 // }
 //End Responsive
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+);
+
+$container-max-widths: (
+  sm: 420px,
+  md: 720px,
+  lg: 960px,
+);
+
 $breakpoints: (
-  'desktop': (min-width: 768px),
-  'mobile': (max-width: 767px),
+  'desktop': (
+    min-width: 768px,
+  ),
+  'mobile': (
+    max-width: 767px,
+  ),
+  'sm': (
+    max-width: 479px,
+  ),
+  'md': (
+    max-width: 767px,
+  ),
+  'lg': (
+    max-width: 1023px,
+  ),
 ) !default;
 
 @mixin media($breakpoint) {
@@ -58,4 +84,34 @@ $breakpoints: (
   } @else {
     @warn 'valor no recibido o no coicide con `#{$breakpoint}`. ';
   }
+}
+
+@mixin sub {
+  font-family: $futura-heavy;
+  font-size: 16px;
+}
+
+@mixin body-1 {
+  font-family: $futura-book;
+  font-size: 18px;
+}
+
+@mixin body-2 {
+  font-family: $futura-book;
+  font-size: 16px;
+}
+
+@mixin body-3 {
+  font-family: $futura-book;
+  font-size: 14px;
+}
+
+@mixin button-link {
+  font-family: $futura-heavy;
+  font-size: 14px;
+}
+
+@mixin overline {
+  font-family: $futura-book;
+  font-size: 12px;
 }
