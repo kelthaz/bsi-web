@@ -1,0 +1,55 @@
+@import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
+
+.accordion {
+  @include button-link;
+
+  background-color: transparent;
+  border: 0;
+  color: $white;
+  cursor: pointer;
+  outline: none;
+  padding: 0 0 18px;
+  text-align: left;
+  transition: 0.4s;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::after {
+    background-image: url('/chevron.svg');
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    background-size: 21px 21px;
+    content: '';
+    float: right;
+    height: 21px;
+    transition: transform 0.3s linear;
+    width: 21px;
+  }
+}
+
+.panel {
+  background-color: transparent;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.active {
+  background-color: transparent;
+
+  &::after {
+    transform: rotate(180deg);
+
+    transition: transform 0.3s linear;
+  }
+}
+
+.panel-active {
+  max-height: 100vh;
+  transition: max-height 0.3s ease-in;
+}

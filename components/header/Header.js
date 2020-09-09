@@ -33,7 +33,9 @@ export const Header = () => {
         <>
           <div className={styles['header-top']}>
             <div>
-              <img src="/menu.svg" className="logo" alt="" onClick={handleMenu} />
+              <button type="button" onClick={handleMenu}>
+                {}
+              </button>
               <img src="/bancoppel-pymes.svg" className="logo" alt="" />
             </div>
             <div>
