@@ -22,7 +22,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={`${styles['footer-container']} container`}>
-        <img src="/bancoppel-pymes-blanco.svg" className="logo" alt="" />
+        <img src="/bancoppel-blanco.svg" className="logo" alt="" />
 
         <div className={styles['second-content']}>
           <div>

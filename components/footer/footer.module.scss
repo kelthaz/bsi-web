@@ -177,3 +177,15 @@
     flex-wrap: wrap;
   }
 }
+
+@include media('sm') {
+  .second-content-accordeon {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .third-content {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

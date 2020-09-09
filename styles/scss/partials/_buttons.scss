@@ -29,7 +29,7 @@ button {
   width: $width;
 }
 
-@mixin button-background($color: $white) {
+@mixin button-background($color: $white, $inverted: false) {
   @if $color == $white {
     background-color: transparent;
     border: 2px solid $blue-storm;
@@ -39,31 +39,6 @@ button {
     position: relative;
     transition: 0.5s all ease;
     z-index: 1;
-
-    .header-active & {
-      border-color: $white;
-      color: $white;
-
-      &::before {
-        background-color: $white;
-      }
-
-      &:hover {
-        color: $blue-storm;
-      }
-
-      &:focus {
-        color: $blue-storm;
-      }
-    }
-
-    &:hover {
-      color: $white;
-    }
-
-    &:focus {
-      color: $white;
-    }
 
     &::before {
       background-color: $blue-storm;
@@ -76,6 +51,31 @@ button {
       top: 0;
       transition: 0.5s all ease;
       z-index: -2;
+    }
+
+    @if $inverted {
+      border-color: $white;
+      color: $white;
+
+      &:hover {
+        color: $blue-storm;
+      }
+
+      &:focus {
+        color: $blue-storm;
+      }
+
+      &::before {
+        background-color: $white;
+      }
+    } @else {
+      &:hover {
+        color: $white;
+      }
+
+      &:focus {
+        color: $white;
+      }
     }
 
     &:hover {
@@ -157,6 +157,11 @@ button {
 .btn-medium-secondary {
   @include button-config(150px);
   @include button-background();
+}
+
+.btn-medium-secondary-inverted {
+  @include button-config(150px);
+  @include button-background($white, true);
 }
 
 .btn-small-secondary {
