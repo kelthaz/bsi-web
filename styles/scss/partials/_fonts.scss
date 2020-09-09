@@ -1,31 +1,31 @@
 // Default sizes
 h1 {
-  font-family: $futura-heavy;
-  font-size: 48px;
+  font-family: $futura-heavy !important;
+  font-size: 48px !important;
   @include media('mobile') {
-    font-size: 32px;
+    font-size: 32px !important;
   }
 }
 
 h2 {
-  font-family: $futura-heavy;
-  font-size: 36px;
+  font-family: $futura-heavy !important;
+  font-size: 36px !important;
   @include media('mobile') {
-    font-size: 24px;
+    font-size: 24px !important;
   }
 }
 
 h3 {
-  font-family: $futura-heavy;
-  font-size: 24px;
+  font-family: $futura-heavy !important;
+  font-size: 24px !important;
   @include media('mobile') {
-    font-size: 18px;
+    font-size: 18px !important;
   }
 }
 
 h4 {
-  font-family: $futura-heavy;
-  font-size: 18px;
+  font-family: $futura-heavy !important;
+  font-size: 18px !important;
 }
 
 h5 {
@@ -34,51 +34,61 @@ h5 {
 }
 
 .input {
-  font-family: $futura-book;
-  font-size: 32px;
+  font-family: $futura-book !important;
+  font-size: 32px !important;
   @include media('mobile') {
-    font-size: 18px;
+    font-size: 18px !important;
   }
 }
 
 .sub {
-  @include sub;
+  font-family: $futura-heavy !important;
+  font-size: 16px !important;
 }
 
 .body1 {
-  @include body-1;
+  font-family: $futura-book !important;
+  font-size: 18px !important;
 }
 
 .body2 {
-  @include body-2;
+  // @include body-2;
+  font-family: $futura-book !important;
+  font-size: 16px !important;
 }
 
 .body3 {
-  @include body-3;
+  // @include body-3;
+  font-family: $futura-book !important;
+  font-size: 14px !important;
 }
 
 .button {
-  @include button-link;
+  // @include button-link;
+  font-family: $futura-heavy !important;
+  font-size: 14px !important;
 }
 
 .overline {
-  @include overline;
+  // @include overline;
+  font-family: $futura-book !important;
+  font-size: 12px !important;
 }
 
 // Colors
 
 p {
-  color: $gray-dark;
+  color: $gray-dark !important;
 }
 
 .text-primary {
-  color: $blue-storm;
+  color: $blue-storm !important;
 }
 
 .text-secondary {
-  color: $blue-sky;
+  color: $blue-sky !important;
 }
 
 .text-dark {
-  color: $gray-dark;
+  color: $gray-dark !important;
 }
