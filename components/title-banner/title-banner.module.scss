@@ -1,0 +1,76 @@
+@import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
+
+.text_box {
+  margin-left: 20px;
+  margin-right: 20px;
+
+  display: flex;
+  // flex-direction: column;
+}
+
+.text {
+  width: 470px;
+  max-height: 80px;
+  height: 100%;
+  // text-align: center;
+  text-transform: uppercase;
+  // display: flex;
+  // flex-wrap: nowrap;
+  // flex-direction: column;
+
+  h1 {
+    padding: 0px;
+  }
+
+  @include media('mobile') {
+    max-width: 290px;
+    justify-content: center;
+  }
+}
+
+.box {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.line {
+  width: 100%;
+  max-width: 28px;
+  padding: 25px 0px 0px 0px;
+}
+
+.sub_text {
+  border: 1.5px solid $blue-sky;
+  box-sizing: border-box;
+  border-radius: 2px;
+  max-width: 472px;
+  width: 100%;
+  margin-top: 60px;
+  padding: 15px;
+
+  p {
+    color: $blue-storm;
+    margin: 0px;
+
+    @include media('mobile') {
+      max-width: 290px;
+      text-align: center;
+    }
+  }
+
+  @include media('mobile') {
+    border: none;
+    margin-top: 10px;
+    padding: 0px;
+    width: 290px;
+  }
+}
+
+.title_container {
+  display: flex;
+  flex-wrap: wrap;
+}
