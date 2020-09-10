@@ -1,4 +1,5 @@
 @import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
 
 @mixin hover-li($color: $blue-morning) {
   h4 {
@@ -10,9 +11,92 @@
   }
 }
 
+%button-circle-config {
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 50px;
+  margin-right: 5px;
+  width: 50px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    transition: 0.3s ease-out;
+  }
+}
+
+.menu-active {
+  background-color: $blue-storm;
+
+  div:nth-child(1) {
+    button {
+      background-color: $blue-storm;
+      background-image: url('/cross.svg');
+
+      &:hover {
+        background-color: $blue-night;
+      }
+    }
+  }
+
+  div:nth-child(2) {
+    img {
+      display: block;
+    }
+
+    button:last-child {
+      background-color: $blue-storm;
+      background-image: url('/login-blanco.svg');
+
+      &:hover {
+        background-color: $blue-night;
+      }
+    }
+  }
+}
+
+.menu-inactive {
+  background: $white;
+
+  div:nth-child(1) {
+    button {
+      background-color: $white;
+      background-image: url('/menu.svg');
+
+      &:hover {
+        background-color: $black-10;
+      }
+    }
+  }
+
+  div:nth-child(2) {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    img {
+      display: none;
+    }
+
+    button:last-child {
+      background-color: $white;
+      background-image: url('/login.svg');
+
+      &:hover {
+        background-color: $black-10;
+      }
+    }
+  }
+}
+
 .header-top {
   align-items: center;
-  background: $white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -29,15 +113,7 @@
     justify-content: space-around;
 
     button {
-      background-color: $white;
-      background-image: url('/menu.svg');
-      background-position: 100% center;
-      background-repeat: no-repeat;
-      border: 0;
-      cursor: pointer;
-      height: 34px;
-      margin-right: 20px;
-      width: 34px;
+      @extend %button-circle-config;
     }
   }
 
@@ -47,8 +123,18 @@
     flex-direction: row;
     justify-content: space-around;
 
-    button:first-child {
+    img {
+      cursor: pointer;
       margin-right: 20px;
+    }
+
+    button:nth-child(2) {
+      margin-right: 20px;
+    }
+
+    button:last-child {
+      @extend %button-circle-config;
+      display: none;
     }
   }
 }
@@ -68,6 +154,7 @@
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+    margin: 0;
 
     li {
       color: $gray;
@@ -79,50 +166,6 @@
       &:hover {
         color: $blue-sky;
       }
-    }
-  }
-}
-
-.menu-header {
-  align-items: center;
-  background-color: $blue-storm;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 16px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 16px;
-  width: 100%;
-
-  div:nth-child(1) {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    img {
-      cursor: pointer;
-    }
-
-    img:first-child {
-      margin-right: 20px;
-    }
-  }
-
-  div:nth-child(2) {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    img {
-      cursor: pointer;
-      margin-right: 20px;
-    }
-
-    button:nth-child(2) {
-      margin-right: 20px;
     }
   }
 }
@@ -161,18 +204,23 @@
   }
 }
 
+// .menu-active {
+//   max-height: 100vh;
+//   transition: max-height 0.3s ease-in;
+// }
+
 .items-menu {
   align-items: flex-start;
   background: $blue-storm;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  // max-height: 0;
+  // overflow: hidden;
   position: absolute;
-  // z-index: 1000;
   width: 100%;
 
   ul:first-child {
-    // box-sizing: content-box;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -196,7 +244,6 @@
   }
 
   ul:last-child {
-    box-sizing: content-box;
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -232,13 +279,23 @@
   color: $yellow-summer !important;
 }
 
-@media screen and (max-width: 680px) {
+@include media('md') {
   .header-top,
   .menu-header {
     padding-bottom: 15px;
 
     div:nth-child(2) {
-      display: none;
+      img {
+        display: none;
+      }
+
+      button {
+        display: none;
+      }
+
+      button:last-child {
+        display: block;
+      }
     }
   }
 
@@ -253,6 +310,20 @@
 
     ul:last-child {
       display: flex;
+    }
+  }
+}
+
+@include media('sm') {
+  .header-top,
+  .menu-header {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    div:nth-child(1) {
+      img {
+        width: 80%;
+      }
     }
   }
 }

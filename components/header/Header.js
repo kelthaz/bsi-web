@@ -8,8 +8,8 @@ export const Header = () => {
   const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuSelect, setMenuSelect] = useState({ category: '', option: '' });
-  const [pageSelect, setPageSelect] = useState('');
+  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: '' });
+  const [pageSelect, setPageSelect] = useState('Inicio');
 
   const { category, option } = menuSelect;
 
@@ -28,54 +28,38 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <header>
+      <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
+        <div>
+          <button type="button" onClick={handleMenu}>
+            {}
+          </button>
+          <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
+        </div>
+        <div>
+          <img src="/search.svg" alt="" />
+          <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
+            Iniciar sesión
+          </button>
+          <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
+            Solicitar crédito
+          </button>
+          <button type="button">{}</button>
+        </div>
+      </div>
       {!menuOpen && (
-        <>
-          <div className={styles['header-top']}>
-            <div>
-              <button type="button" onClick={handleMenu}>
-                {}
-              </button>
-              <img src="/bancoppel-pymes.svg" className="logo" alt="" />
-            </div>
-            <div>
-              <button type="button" className="btn-medium-secondary">
-                Iniciar sesión
-              </button>
-              <button type="button" className="btn-medium">
-                Solicitar crédito
-              </button>
-            </div>
-          </div>
-          <div className={styles['header-bottom']}>
-            <ul>
-              {pages.map((page) => (
-                <li key={page} className={pageSelect === page ? styles['option-selected'] : ''}>
-                  <a onClick={handlePage}>{page}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
+        <nav className={styles['header-bottom']}>
+          <ul>
+            {pages.map((page) => (
+              <li key={page} className={pageSelect === page ? styles['option-selected'] : ''}>
+                <a onClick={handlePage}>{page}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
-
       {menuOpen && (
         <>
-          <div className={`${styles['menu-header']} header-active`}>
-            <div>
-              <img src="/cross.svg" className="logo" alt="" onClick={handleMenu} />
-              <img src="/bancoppel-pymes-blanco.svg" className="logo" alt="" />
-            </div>
-            <div>
-              <img src="/search.svg" className="logo" alt="" />
-              <button type="button" className="btn-medium-secondary">
-                Iniciar sesión
-              </button>
-              <button type="button" className="btn-medium-yellow">
-                Solicitar crédito
-              </button>
-            </div>
-          </div>
           <div className={styles.menu}>
             <ul>
               <li className={category === 'Personas' ? styles['category-selected'] : ''}>
@@ -86,7 +70,7 @@ export const Header = () => {
               </li>
             </ul>
           </div>
-          <div className={styles['items-menu']}>
+          <div className={`${styles['items-menu']} ${menuOpen ? styles['menu-active'] : ''}`}>
             <ul>
               {menuOptions.map((opt) => (
                 <li key={opt} className={option === opt ? styles['option-selected'] : ''}>
@@ -104,7 +88,7 @@ export const Header = () => {
           </div>
         </>
       )}
-    </>
+    </header>
   );
 };
 
