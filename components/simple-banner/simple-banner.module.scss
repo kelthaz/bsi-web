@@ -5,7 +5,7 @@
   // max-height: 500px;
   height: 500px;
   background-color: $blue-storm;
-  // position: absolute;
+  position: relative;
 }
 
 .content {
@@ -24,6 +24,6 @@
 
 .background_bottom_left {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 0px;
 }

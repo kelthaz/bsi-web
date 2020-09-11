@@ -2,9 +2,10 @@ import Head from 'next/head';
 import styles from '../../styles/scss/pages/Ayuda.module.scss';
 import { Header } from '../../components/header/Header';
 import { Accordeon } from '../../components/accordeon/Accordeon';
-import { Banner } from '../../components/banner/Banner';
+import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
 import { Footer } from '../../components/footer/Footer';
 import { Title } from '../../components/title/Title';
+import TextField from '../../components/text-field/TextField';
 
 const Ayuda = () => {
 
@@ -27,7 +28,38 @@ const Ayuda = () => {
         <Header />
       </div>
 
-      <Banner/>
+      <SimpleBanner>
+        <div className={`row justify-content-center mt-5`}>
+          <h1 className={`${styles.mt_md} ${styles.title}`}>CENTRO DE AYUDA</h1>
+        </div>
+        <div className={'row justify-content-center'}>
+          <div className={`body1 ${styles.bt1}`}>Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.</div>
+        </div>
+        <div className={'row justify-content-center mt-5'}>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Nombre'/>
+          </div>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Correo electrónico'/>
+          </div>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Número de teléfono'/>
+          </div>
+        </div>
+        <div className={`row justify-content-center`}>
+          <div className={`col-auto ${styles.textarea_questions}`}>
+            <textarea className={`body2`} placeholder="Cuéntanos tus dudas..."></textarea>
+          </div>
+        </div>
+      </SimpleBanner>
+
+      <div className={`row justify-content-center mt-5`}>
+        <div className={`col-1`}>
+          <button type="button" className="btn-small">
+            Enviar
+          </button>
+        </div>
+      </div>
 
       <section className={'flex-row mt-5 mb-5 justify-content-center'}>
         <div className={['col-6', styles.contact_box].join(' ')}>
