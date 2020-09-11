@@ -77,3 +77,37 @@
 .active {
   border: 1.5px solid $blue-sky;
 }
+
+.title {
+  color: $blue-light;
+}
+
+.bt1 {
+  color: $blue-light;
+  max-width: 469px;
+  width: 100%;
+  text-align: center;
+}
+
+.textarea_questions {
+  max-width: 634px;
+  width: 95%;
+  height: 148px;
+  padding: 20px;
+  background: $white;
+  border: 1px solid $gray-light;
+  box-sizing: border-box;
+  border-radius: 16px;
+  top: 40px;
+
+  textarea {
+    resize: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

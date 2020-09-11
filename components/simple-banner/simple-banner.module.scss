@@ -1,0 +1,27 @@
+@import '../../styles/scss/modules/var';
+
+.container {
+  background-color: $blue-storm;
+  position: relative;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.content {
+  top: -250px;
+}
+
+.background {
+  z-index: 0;
+}
+
+.background_top_right {
+  position: absolute;
+  right: 0px;
+}
+
+.background_bottom_left {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+}
