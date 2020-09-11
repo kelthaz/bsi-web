@@ -84,4 +84,8 @@
 
 .border {
   border-bottom: 1.5px solid #dae0e9;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
