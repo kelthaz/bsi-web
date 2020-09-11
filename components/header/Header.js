@@ -8,7 +8,7 @@ export const Header = () => {
   const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: '' });
+  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
   const [pageSelect, setPageSelect] = useState('Inicio');
 
   const { category, option } = menuSelect;
