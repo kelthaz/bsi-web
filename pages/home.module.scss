@@ -35,8 +35,6 @@
   right: 0px;
 
   @include media('mobile') {
-    // position: initial;
-
     right: 25%;
 
     img {
