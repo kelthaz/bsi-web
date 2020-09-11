@@ -1,0 +1,79 @@
+@import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
+
+.border-contact {
+  > div:first-child {
+    border-right: 1.5px solid $blue-morning;
+  }
+}
+
+@include media('md') {
+  .border-contact {
+    > div:first-child {
+      border-bottom: 1.5px solid $blue-shadow;
+      border-right: 0;
+    }
+
+    > div {
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  }
+
+  .title {
+    padding-bottom: 24px;
+    padding-top: 60px;
+  }
+}
+
+.card {
+  align-items: center;
+  border: 1.5px solid transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  > div {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 16px;
+
+    div:first-child {
+      color: $blue-sky;
+    }
+  }
+
+  img {
+    padding-left: 16px;
+  }
+}
+
+.title {
+  padding-bottom: 40px;
+  padding-top: 100px;
+}
+
+.about-pyme-box {
+  background: $white;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  margin: 20px 0;
+  padding: 10px;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.container-accordion {
+  background-color: $blue-light;
+  border-radius: 16px;
+  padding: 0 20px;
+}
+
+.active {
+  border: 1.5px solid $blue-sky;
+}

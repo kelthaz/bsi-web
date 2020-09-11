@@ -1,0 +1,66 @@
+@import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
+
+.text {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+%line {
+  background-color: $blue-sky;
+  height: 2px;
+}
+
+.line-left {
+  @extend %line;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0;
+
+  &::after {
+    background-color: $white;
+    border: $blue-sky solid 2px;
+    border-radius: 50%;
+    content: '';
+    height: 10px;
+    width: 10px;
+  }
+}
+
+.line-rigth {
+  @extend %line;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0;
+
+  &::before {
+    background-color: $white;
+    border: $blue-sky solid 2px;
+    border-radius: 50%;
+    content: '';
+    height: 10px;
+    width: 10px;
+  }
+}
+
+.box {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px 0;
+}
