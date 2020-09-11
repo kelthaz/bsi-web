@@ -10,8 +10,15 @@
 @include media('md') {
   .border-contact {
     > div:first-child {
-      border-bottom: 1.5px solid $blue-shadow;
       border-right: 0;
+    }
+
+    > div:first-child:after {
+      content: "";
+      display: block;
+      width: 95%;
+      padding-top: 20px;
+      border-bottom: 1.5px solid $blue-shadow;
     }
 
     > div {
