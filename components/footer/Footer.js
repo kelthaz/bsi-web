@@ -58,7 +58,7 @@ export const Footer = () => {
         </div>
 
         <div className={styles['second-content-accordeon']}>
-          <Accordion title="Acerca de bancopel" expanded={false}>
+          <Accordion title="Acerca de bancopel" expanded={false} type="white">
             <div className={styles['accordeon-ul']}>
               <ul>
                 {datos.map((data) => (
@@ -69,7 +69,7 @@ export const Footer = () => {
               </ul>
             </div>
           </Accordion>
-          <Accordion title="Contacto" expanded={false}>
+          <Accordion title="Contacto" expanded={false} type="white">
             <div className={styles['accordeon-contact']}>
               <span>Lada sin costo: 800 1 2267735</span>
               <span>EU. y Canadá: 866 2543790</span>
