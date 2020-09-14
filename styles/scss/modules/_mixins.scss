@@ -46,13 +46,15 @@
 //End Responsive
 
 $grid-breakpoints: (
-  xs: 0,
+  xxs: 0,
+  xs: 320px,
   sm: 480px,
   md: 768px,
   lg: 1024px,
 );
 
 $container-max-widths: (
+  xs: 300px,
   sm: 420px,
   md: 720px,
   lg: 960px,
