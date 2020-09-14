@@ -12,4 +12,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+// @include media('md') {
+//   * {
+//     button {
+//       &:hover {
+//         background-color: transparent !important;
+//       }
+//     }
+//   }
+// }
 // End global style
