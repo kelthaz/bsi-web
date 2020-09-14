@@ -3,7 +3,8 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { Header } from '../../components/header/Header';
-import { Banner } from '../../components/banner/Banner';
+import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
+import TextField from '../../components/text-field/TextField';
 import { Footer } from '../../components/footer/Footer';
 import { Title } from '../../components/title/Title';
 import Accordion from '../../components/accordion/Accordion';
@@ -23,12 +24,12 @@ const Ayuda = () => {
         'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
     },
     {
-      title: '¿Cuanto es lo máximo que puedo solicitar?',
+      title: '¿Cuánto es lo máximo que puedo solicitar?',
       content:
         'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
     },
     {
-      title: '¿En cuanto tiempo recibo mi dinero?',
+      title: '¿En cuánto tiempo recibo mi dinero?',
       content:
         'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
     },
@@ -38,7 +39,7 @@ const Ayuda = () => {
         'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
     },
     {
-      title: '¿En cuanto tiempo recibiría mi dinero?',
+      title: '¿En cuánto tiempo recibiría mi dinero?',
       content:
         'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
     },
@@ -63,7 +64,40 @@ const Ayuda = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Banner />
+
+      <SimpleBanner>
+        <div className={`row justify-content-center mx-0`}>
+          <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
+        </div>
+        <div className={'row justify-content-center mx-0'}>
+          <div className={`body1 ${styles.bt1}`}>Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.</div>
+        </div>
+        <div className={'row justify-content-center mt-5 mx-0'}>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Nombre'/>
+          </div>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Correo electrónico'/>
+          </div>
+          <div className={`col-sm-12 col-md-auto`}>
+            <TextField label='Número de teléfono'/>
+          </div>
+        </div>
+        <div className={`row justify-content-center mx-0`}>
+          <div className={`col-auto ${styles.textarea_questions}`}>
+            <textarea className={`body2`} placeholder="Cuéntanos tus dudas..."></textarea>
+          </div>
+        </div>
+      </SimpleBanner>
+
+      <div className={`row justify-content-center mt-5 pt-3 mx-0`}>
+        <div className={`col-auto`}>
+          <button type="button" className="btn-small">
+            Enviar
+          </button>
+        </div>
+      </div>
+
       <section>
         <div className="container">
           <div className={`row py-5 ${styles['border-contact']}`}>
