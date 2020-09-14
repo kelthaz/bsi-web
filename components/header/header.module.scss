@@ -298,6 +298,12 @@
         display: block;
       }
     }
+
+    button {
+      &:hover {
+        background-color: transparent !important;
+      }
+    }
   }
 
   .header-bottom {

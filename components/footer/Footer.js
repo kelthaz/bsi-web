@@ -7,12 +7,12 @@ export const Footer = () => {
     { about: 'Preguntas frecuentes', link: 'https://www.bancoppel.com/acerca_bancoppel/faq.html' },
     { about: 'Información corporativa', link: 'https://www.bancoppel.com/acerca_bancoppel/info_corp.html' },
     { about: 'Plan de apoyo para cuidar tu crédito', link: 'https://www.bancoppel.com/plandeapoyo/index.html' },
-    { about: 'Unidad especializada Bancoppel Condusef', link: 'https://www.bancoppel.com/corresponsales/index.html' },
+    { about: 'Unidad especializada Bancoppel Condusef', link: 'https://www.bancoppel.com/modal_bcopp/condusef.htm' },
     { about: 'Productos protegidos por el IPAB', link: 'https://www.bancoppel.com/acerca_bancoppel/ipab.html' },
     { about: 'Aviso de privacidad', link: 'https://www.bancoppel.com/acerca_bancoppel/aviso.html' },
     { about: 'Robo de identidad', link: 'https://www.bancoppel.com/pdf/aviso_robo_de_identidad.pdf' },
     { about: 'Tarifas y comisiones', link: 'https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5' },
-    { about: 'Corresponsales', link: 'https://www.bancoppel.com/modal_bcopp/condusef.htm' },
+    { about: 'Corresponsales', link: 'https://www.bancoppel.com/corresponsales/index.html' },
     { about: 'Despachos de cobranza', link: 'https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a41f' },
     { about: 'Tips de seguridad', link: 'https://www.bancoppel.com/acerca_bancoppel/tips.html' },
   ];
@@ -26,12 +26,14 @@ export const Footer = () => {
 
         <div className={styles['second-content']}>
           <div>
-            <h5>Acerca de bancopel</h5>
+            <h5>Acerca de BanCoppel</h5>
             <div>
               <ul>
                 {datos.slice(0, 6).map((data) => (
                   <li key={data.about}>
-                    <a href={data.link}>{data.about}</a>
+                    <a target="_blank" rel="noreferrer" href={data.link}>
+                      {data.about}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -39,7 +41,9 @@ export const Footer = () => {
               <ul>
                 {datos.slice(6, 12).map(({ about, link }) => (
                   <li key={about}>
-                    <a href={link}>{about}</a>
+                    <a target="_blank" rel="noreferrer" href={link}>
+                      {about}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -50,20 +54,28 @@ export const Footer = () => {
             <span>Lada sin costo: 800 1 2267735</span>
             <span>EU. y Canadá: 866 2543790</span>
             <div>
-              <img src="/facebook.svg" alt="" />
-              <img src="/linkedin.svg" alt="" />
-              <img src="/youtube.svg" alt="" />
+              <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
+                <img alt="" src="/facebook.svg" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
+                <img alt="" src="/linkedin.svg" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
+                <img alt="" src="/youtube.svg" />
+              </a>
             </div>
           </div>
         </div>
 
         <div className={styles['second-content-accordeon']}>
-          <Accordion title="Acerca de bancopel" expanded={false} type="white">
+          <Accordion title="Acerca de BanCoppel" expanded={false} type="white">
             <div className={styles['accordeon-ul']}>
               <ul>
                 {datos.map((data) => (
                   <li key={data.about}>
-                    <a href={data.link}>{data.about}</a>
+                    <a target="_blank" rel="noreferrer" href={data.link}>
+                      {data.about}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -74,9 +86,15 @@ export const Footer = () => {
               <span>Lada sin costo: 800 1 2267735</span>
               <span>EU. y Canadá: 866 2543790</span>
               <div>
-                <img src="/facebook.svg" alt="" />
-                <img src="/linkedin.svg" alt="" />
-                <img src="/youtube.svg" alt="" />
+                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
+                  <img alt="" src="/facebook.svg" />
+                </a>
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
+                  <img alt="" src="/linkedin.svg" />
+                </a>
+                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
+                  <img alt="" src="/youtube.svg" />
+                </a>
               </div>
             </div>
           </Accordion>
@@ -94,13 +112,19 @@ export const Footer = () => {
         <span>{copyright}</span>
 
         <div className={styles['four-content']}>
-          <a href="https://www.bancoppel.com/acerca_bancoppel/terminos.html">Términos y Condiciones de Uso </a>
-          {' | '}
-          <a href="https://www.bancoppel.com/acerca_bancoppel/aviso.html"> Aviso de Privacidad </a>
-          {' | '}
-          <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5">
-            Consulta los costos y las comisiones de nuestros productos.
-          </a>
+          <span>
+            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/terminos.html">
+              Términos y Condiciones de Uso
+            </a>
+            <span> | </span>
+            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/aviso.html">
+              Aviso de Privacidad
+            </a>
+            <span> | </span>
+            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5">
+              Consulta los costos y las comisiones de nuestros productos.
+            </a>
+          </span>
         </div>
       </div>
     </footer>

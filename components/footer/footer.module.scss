@@ -76,11 +76,8 @@
 
   > span {
     @include overline;
-    align-items: center;
     align-self: center;
     color: $white;
-    display: flex;
-    flex-direction: row;
     padding-bottom: 16px;
     text-align: center;
   }
@@ -140,17 +137,13 @@
 }
 
 .four-content {
-  align-items: center;
   align-self: center;
   color: $white;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
 
   a {
     @include overline;
     color: $blue-morning;
-    padding-left: 10px;
-    padding-right: 10px;
 
     &:hover {
       text-decoration: underline;
@@ -185,7 +178,21 @@
   }
 
   .third-content {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    img {
+      margin: 10px;
+    }
+  }
+
+  .footer-container {
+    > span {
+      padding: 0 10px 10px;
+    }
+  }
+
+  .four-content {
+    padding: 0 10px;
   }
 }

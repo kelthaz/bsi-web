@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  const pages = ['Inicio', 'Crédito', 'Requisitos', 'Simulador', 'Beneficios', 'Ayuda'];
+  const pages = ['Inicio', 'Crédito Pyme', 'Requisitos', 'Simulador', 'Beneficios', 'Ayuda'];
   const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
 
   const [menuOpen, setMenuOpen] = useState(false);
