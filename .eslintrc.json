@@ -20,6 +20,7 @@
         "filenames"
     ],
     "rules": {
+        "max-len": 0,
         "import/no-extraneous-dependencies": "off",
         "react/forbid-prop-types": "off",
         "react/jsx-props-no-spreading": "off",
