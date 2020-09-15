@@ -23,3 +23,19 @@ a {
 //   }
 // }
 // End global style
+
+.section-white {
+  @include section-config();
+}
+
+.section-blue-storm {
+  @include section-config($blue-storm);
+}
+
+.section-blue-night {
+  @include section-config($blue-night);
+}
+
+.section-blue-light {
+  @include section-config($blue-light);
+}

@@ -117,3 +117,8 @@ $breakpoints: (
   font-family: $futura-book;
   font-size: 12px;
 }
+
+@mixin section-config($color: $white) {
+  background-color: $color;
+  width: 100%;
+}
