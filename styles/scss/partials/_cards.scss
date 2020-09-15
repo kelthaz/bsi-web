@@ -1,0 +1,16 @@
+.card-simple-white {
+  background-color: $white;
+  border-radius: 16px;
+  color: $gray-dark;
+  padding: 24px;
+
+  p {
+    @include body-2;
+  }
+}
+
+.card-simple-transparent {
+  background-color: transparent;
+  border-radius: 16px;
+  padding: 24px;
+}

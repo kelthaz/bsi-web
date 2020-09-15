@@ -1,2 +1,17 @@
 @import '../../styles/scss/modules/mixins';
 @import '../../styles/scss/modules/var';
+
+.row-config {
+  padding: 60px 120px;
+}
+
+.container-svg {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+}
