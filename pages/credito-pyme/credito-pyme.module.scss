@@ -1,0 +1,110 @@
+@import '../../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/var';
+
+.container-svg {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+}
+
+.container-final-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+
+    span:first-child {
+      color: $blue-storm;
+    }
+
+    span:last-child {
+      color: $blue-sky;
+    }
+  }
+}
+
+.container-title {
+  h2 {
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  p {
+    @include body-2;
+    color: $white;
+    padding: 0 12%;
+    text-align: center;
+  }
+}
+
+.title-line-left {
+  border-bottom: 2px solid $blue-sky;
+  border-bottom-left-radius: 10px;
+  border-left: 2px solid $blue-sky;
+  padding: 0 20px;
+  width: 100%;
+
+  @include media('md') {
+    border: 0;
+    padding: 0;
+
+    h2 {
+      font-size: 28px !important;
+      text-align: center !important;
+    }
+
+    p {
+      font-size: 14px !important;
+      text-align: center;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+
+    span:first-child {
+      color: $blue-storm;
+    }
+
+    span:last-child {
+      color: $blue-sky;
+    }
+  }
+
+  p {
+    @include body-2;
+    color: $gray-dark;
+  }
+
+  &::before {
+    background-color: $white;
+    border: $blue-sky solid 2px;
+    border-radius: 50%;
+    content: '';
+    float: left;
+    height: 10px;
+    left: -26px;
+    position: relative;
+    width: 10px;
+  }
+}

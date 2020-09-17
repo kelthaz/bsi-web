@@ -1,0 +1,41 @@
+@import '../../styles/scss/modules/var';
+@import '../../styles/scss/modules/mixins';
+
+.text {
+  width: 80%;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+}
+
+.box {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 1rem 0;
+}
+
+.line {
+  border-bottom: 4px solid $yellow-summer;
+  color: $blue-storm;
+  margin-right: 1rem;
+  width: 20%;
+}
+
+.title-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 85px;
+}
+
+.primary-inverted {
+  color: $white;
+}
+
+.secondary-inverted {
+  color: $blue-morning;
+}
