@@ -67,7 +67,7 @@ const CreditoPyme = () => {
       <article>
         <section className="section-blue-storm">
           <div className="container">
-            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2">
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TitleSection inverted orden="01" linea1="Datos" linea2="personales" />
                 <div className="card-simple-white">
@@ -89,7 +89,7 @@ const CreditoPyme = () => {
         </section>
         <section className="section-white">
           <div className="container">
-            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2">
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
                 <div className={styles['container-svg']}>
                   <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/edificio-circulo.svg" alt="" />
@@ -117,7 +117,7 @@ const CreditoPyme = () => {
         </section>
         <section className="section-blue-night">
           <div className="container">
-            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2">
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TitleSection inverted orden="03" linea1="conoce" linea2="tu oferta" />
                 <div className="card-simple-white">
@@ -135,7 +135,7 @@ const CreditoPyme = () => {
         </section>
         <section className="section-white">
           <div className="container">
-            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2">
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
                 <div className={styles['container-svg']}>
                   <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/documentos-circulo.svg" alt="" />
@@ -200,8 +200,8 @@ const CreditoPyme = () => {
         </section>
         <section className="section-white">
           <div className="container">
-            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2">
-              <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 pr-lg-0 pr-md-0">
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+              <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12">
                 <div className={styles['title-line-left']}>
                   <h2>
                     <span>CARACTERÍSTICAS</span>
@@ -215,7 +215,7 @@ const CreditoPyme = () => {
                   <p>Conoce más sobre los requisitos, plazos y garantías de un crédito pyme.</p>
                 </div>
               </div>
-              <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12 pl-lg-0 pl-md-0">
+              <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div className="card-accordion">
                   {accordionItems.map(({ title, content }) => (
                     <Accordion key={title} type="blue" title={title} expanded={false}>
