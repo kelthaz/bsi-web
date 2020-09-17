@@ -1,4 +1,4 @@
-@import '../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/mixins';
 
 .text_title {
   margin-top: 100px;
@@ -14,10 +14,9 @@
   top: -123px;
 
   @include media('mobile') {
-
     img {
       display: block;
-      max-height:300px;
+      max-height: 300px;
       width: auto;
       height: auto;
     }
@@ -34,7 +33,7 @@
 
     img {
       display: block;
-      max-height:190px;
+      max-height: 190px;
       width: auto;
       height: auto;
     }

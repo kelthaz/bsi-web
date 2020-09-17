@@ -59,11 +59,6 @@ const CreditoPyme = () => {
 
   return (
     <>
-      <Head>
-        <title>Ayuda - BanCoppel | Pymes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
       <article>
         <section className="section-blue-storm">
           <div className="container">
@@ -244,8 +239,6 @@ const CreditoPyme = () => {
           </div>
         </section>
       </article>
-
-      <Footer />
     </>
   );
 };

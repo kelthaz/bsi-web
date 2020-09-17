@@ -28,6 +28,23 @@
         "jsx-a11y/click-events-have-key-events": "off",
         "linebreak-style": "off",
         "object-curly-newline": 0,
+        "jsx-a11y/anchor-is-valid": [
+          "error",
+          {
+            "components": [
+              "Link"
+            ],
+            "specialLink": [
+              "to",
+              "hrefLeft",
+              "hrefRight"
+            ],
+            "aspects": [
+              "invalidHref",
+              "preferButton"
+            ]
+          }
+        ],
         // suppress errors for missing 'import React' in files
         "react/react-in-jsx-scope": "off",
         // allow jsx syntax in js files (for next.js project)
