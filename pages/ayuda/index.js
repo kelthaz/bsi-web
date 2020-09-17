@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import Head from 'next/head';
 import { useState } from 'react';
-import { Header } from '../../components/header/Header';
 import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
 import { TextField } from '../../components/text-field/TextField';
-import { Footer } from '../../components/footer/Footer';
 import { Title } from '../../components/title/Title';
 import Accordion from '../../components/accordion/Accordion';
 import styles from './ayuda.module.scss';
@@ -59,12 +56,6 @@ const Ayuda = () => {
 
   return (
     <>
-      <Head>
-        <title>Ayuda - BanCoppel | Pymes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-
       <SimpleBanner>
         <div className="row justify-content-center mx-0">
           <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
@@ -183,7 +174,6 @@ const Ayuda = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

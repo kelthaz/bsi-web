@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import { Header } from '../../components/header/Header';
-import { Footer } from '../../components/footer/Footer';
 import { Banner } from '../../components/banner/Banner';
 import { TitleBanner } from '../../components/title-banner/TitleBanner';
 import { TitleSection } from '../../components/title-section/TitleSection';
@@ -33,17 +30,9 @@ const Beneficios = () => {
 
   return (
     <>
-      <Head>
-        <title>Beneficios - BanCoppel | Pymes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
       <Banner backgroundImage="/BENEFICIOS_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
 
       <article>
-
         {/* Apoyo constante */}
         <Section className={styles.section}>
           <div className="col-lg-6 col-md-6 d-none d-md-flex">
@@ -175,10 +164,7 @@ const Beneficios = () => {
             </div>
           </div>
         </Section>
-
       </article>
-
-      <Footer />
     </>
   );
 };

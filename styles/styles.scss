@@ -4,14 +4,16 @@
 @import 'scss/modules/utility';
 
 // Partials
-@import 'scss/partials/reset';
+// @import 'scss/partials/reset';
 @import 'scss/partials/grids';
 @import 'scss/partials/global';
 @import 'scss/partials/buttons';
 @import 'scss/partials/typography';
 @import 'scss/partials/fonts';
-
+@import 'scss/partials/cards';
 $primary: $blue-storm;
 $secondary: $blue-sky;
 $dark: $gray-dark;
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/utilities';

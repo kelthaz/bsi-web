@@ -67,6 +67,9 @@ $breakpoints: (
   'mobile': (
     max-width: 767px,
   ),
+  'xs': (
+    max-width: 319px,
+  ),
   'sm': (
     max-width: 479px,
   ),
@@ -116,4 +119,9 @@ $breakpoints: (
 @mixin overline {
   font-family: $futura-book;
   font-size: 12px;
+}
+
+@mixin section-config($color: $white) {
+  background-color: $color;
+  width: 100%;
 }

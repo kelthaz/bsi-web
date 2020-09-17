@@ -1,10 +1,16 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
+import Link from 'next/link';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  const pages = ['Inicio', 'Crédito Pyme', 'Requisitos', 'Simulador', 'Beneficios', 'Ayuda'];
+  const pages = [
+    { label: 'Inicio', link: 'inicio' },
+    { label: 'Crédito Pyme', link: 'credito-pyme' },
+    { label: 'Requisitos', link: 'requisitos' },
+    { label: 'Simulador', link: 'simulador' },
+    { label: 'Beneficios', link: 'beneficios' },
+    { label: 'Ayuda', link: 'ayuda' },
+  ];
   const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,9 +56,11 @@ export const Header = () => {
       {!menuOpen && (
         <nav className={styles['header-bottom']}>
           <ul>
-            {pages.map((page) => (
-              <li key={page} className={pageSelect === page ? styles['option-selected'] : ''}>
-                <a onClick={handlePage}>{page}</a>
+            {pages.map(({ label, link }) => (
+              <li key={label} className={pageSelect === label ? styles['option-selected'] : ''}>
+                <Link href={link} onClick={handlePage}>
+                  <a>{label}</a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -79,9 +87,11 @@ export const Header = () => {
               ))}
             </ul>
             <ul>
-              {pages.map((page) => (
-                <li key={page} className={pageSelect === page ? styles['option-selected-yellow'] : ''}>
-                  <a onClick={handlePage}>{page}</a>
+              {pages.map(({ label, link }) => (
+                <li key={label} className={pageSelect === label ? styles['option-selected-yellow'] : ''}>
+                  <Link href={link} onClick={handlePage}>
+                    <a>{label}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
