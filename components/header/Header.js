@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from './header.module.scss';
 
 export const Header = () => {
+  const router = useRouter();
+
   const pages = [
     { label: 'Inicio', link: 'inicio' },
     { label: 'Crédito Pyme', link: 'credito-pyme' },
@@ -15,7 +18,7 @@ export const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
-  const [pageSelect, setPageSelect] = useState('Inicio');
+  const [pageSelect, setPageSelect] = useState(router.pathname.slice(1));
 
   const { category, option } = menuSelect;
 
@@ -29,8 +32,8 @@ export const Header = () => {
     setMenuSelect({ ...menuSelect, option: target.innerHTML });
   };
 
-  const handlePage = ({ target }) => {
-    setPageSelect(target.innerHTML);
+  const handlePage = (target) => {
+    setPageSelect(target);
   };
 
   return (
@@ -57,8 +60,12 @@ export const Header = () => {
         <nav className={styles['header-bottom']}>
           <ul>
             {pages.map(({ label, link }) => (
-              <li key={label} className={pageSelect === label ? styles['option-selected'] : ''}>
-                <Link href={link} onClick={handlePage}>
+              <li
+                key={label}
+                className={pageSelect === link ? styles['option-selected'] : ''}
+                onClick={() => handlePage(link)}
+              >
+                <Link href={link}>
                   <a>{label}</a>
                 </Link>
               </li>
@@ -88,7 +95,11 @@ export const Header = () => {
             </ul>
             <ul>
               {pages.map(({ label, link }) => (
-                <li key={label} className={pageSelect === label ? styles['option-selected-yellow'] : ''}>
+                <li
+                  key={label}
+                  className={pageSelect === link ? styles['option-selected'] : ''}
+                  onClick={() => handlePage(link)}
+                >
                   <Link href={link} onClick={handlePage}>
                     <a>{label}</a>
                   </Link>
