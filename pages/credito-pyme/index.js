@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import Accordion from '../../components/accordion/Accordion';
+import Banner from '../../components/banner/Banner';
 import { Footer } from '../../components/footer/Footer';
 import { Header } from '../../components/header/Header';
+import TitleBanner from '../../components/title-banner/TitleBanner';
 import { TitleSection } from '../../components/title-section2/TitleSection';
 import styles from './credito-pyme.module.scss';
 
@@ -57,8 +59,36 @@ const CreditoPyme = () => {
     },
   ];
 
+  const bannerTextBlock = (
+    <>
+      <div className={`row justify-content-center ${styles['text-title']}`}>
+        <TitleBanner
+          linea1="Diseñado para"
+          linea2="ser más simple"
+          description="Sabemos que hay muchas cosas en qué ocuparte, este proceso entiende tu ritmo de trabajo."
+        />
+      </div>
+    </>
+  );
+
+  const bannerImageBlock = (
+    <div>
+      <div className={styles['banner-image-texture']}>
+        <img src="/requisitos/banner-texture.svg" alt="Textura del banner" />
+      </div>
+      <div className={styles['banner-image-man']}>
+        <img src="/credito-pyme/banner-image.png" alt="Imagen del banner" />
+      </div>
+    </div>
+  );
+
   return (
     <>
+      <Banner
+        backgroundImage="/credito-pyme/banner.png"
+        textBlock={bannerTextBlock}
+        imageBlock={bannerImageBlock}
+      />
       <article>
         <section className="section-blue-storm">
           <div className="container">

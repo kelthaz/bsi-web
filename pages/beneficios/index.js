@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import { Header } from '../../components/header/Header';
-import { Footer } from '../../components/footer/Footer';
 import { Banner } from '../../components/banner/Banner';
 import { TitleBanner } from '../../components/title-banner/TitleBanner';
 import { TitleSection } from '../../components/title-section/TitleSection';
@@ -67,6 +64,8 @@ const Beneficios = () => {
               <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
                 Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
                 específicamente en ti como empresario PyME.
+
+                <button type="button" className={`btn-link pt-3 ${styles.button}`}>Conoce más sobre las tasas</button>
               </div>
             </div>
             <div className={`d-none d-md-flex ${styles['section-texture']}`}>
@@ -145,7 +144,8 @@ const Beneficios = () => {
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.
                 <br />
-                <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
+                <br />
+                Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
                 imprevistos.
               </div>
             </div>
@@ -160,9 +160,7 @@ const Beneficios = () => {
               <h2 className="text-secondary">gran salto</h2>
             </div>
             <div className="d-flex justify-content-center pt-4">
-              <button className="btn-link" type="button">
-                Solicitar mi crédito
-              </button>
+              <button className={`btn-link ${styles.button}`} type="button">Solicitar mi crédito</button>
             </div>
           </div>
         </Section>
