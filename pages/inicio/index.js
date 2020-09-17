@@ -36,16 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <Head>
-        <title>BanCoppel | Pymes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
       <Banner backgroundImage="/BC_PYMES_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
-
-      <Footer />
     </>
   );
 };

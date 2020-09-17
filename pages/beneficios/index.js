@@ -33,17 +33,9 @@ const Beneficios = () => {
 
   return (
     <>
-      <Head>
-        <title>Beneficios - BanCoppel | Pymes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
       <Banner backgroundImage="/BENEFICIOS_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
 
       <article>
-
         {/* Apoyo constante */}
         <Section className={styles.section}>
           <div className="col-lg-6 col-md-6 d-none d-md-flex">
@@ -153,8 +145,7 @@ const Beneficios = () => {
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.
                 <br />
-                <br />
-                Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
+                <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
                 imprevistos.
               </div>
             </div>
@@ -169,14 +160,13 @@ const Beneficios = () => {
               <h2 className="text-secondary">gran salto</h2>
             </div>
             <div className="d-flex justify-content-center pt-4">
-              <button className="btn-link" type="button">Solicitar mi crédito</button>
+              <button className="btn-link" type="button">
+                Solicitar mi crédito
+              </button>
             </div>
           </div>
         </Section>
-
       </article>
-
-      <Footer />
     </>
   );
 };
