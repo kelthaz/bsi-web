@@ -7,12 +7,13 @@ export const data = {
     },
     paragraph: [
       {
-        'El primer bloque de Datos Personales es para conocerte, por lo que te solicitaremos información básica como tu nombre y tus datos de contacto.'
+        p:
+          'El primer bloque de Datos Personales es para conocerte, por lo que te solicitaremos información básica como tu nombre y tus datos de contacto.',
       },
       {
-        'Para este bloque de la solicitud será indispensable contar con tu RFC con el que facturas.'
-      }
-    ]
+        p: 'Para este bloque de la solicitud será indispensable contar con tu RFC con el que facturas.',
+      },
+    ],
   },
   seccion2: {},
 };
