@@ -1,0 +1,41 @@
+@import '../../styles/scss/modules/mixins';
+
+.text_title {
+  margin-top: 100px;
+
+  @include media('mobile') {
+    margin-top: 30px;
+  }
+}
+
+.banner_image_texture {
+  position: absolute;
+  right: 0px;
+  top: -123px;
+
+  @include media('mobile') {
+    img {
+      display: block;
+      max-height: 300px;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.banner_image_man {
+  position: absolute;
+  top: 13px;
+  right: 0px;
+
+  @include media('mobile') {
+    right: 25%;
+
+    img {
+      display: block;
+      max-height: 190px;
+      width: auto;
+      height: auto;
+    }
+  }
+}
