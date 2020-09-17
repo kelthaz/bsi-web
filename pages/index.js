@@ -6,7 +6,7 @@ import { TitleBanner } from '../components/title-banner/TitleBanner';
 import styles from './home.module.scss';
 
 const Home = () => {
-  let banner_text_block = (
+  const bannerTextBlock = (
     <>
       <div className={`row justify-content-center ${styles.text_title}`}>
         <TitleBanner
@@ -15,7 +15,7 @@ const Home = () => {
           description="Descubre un crédito diseñado para ti y las herramientas te ayudarán a elevar tu empresa."
         />
       </div>
-      <div className={'row justify-content-center mt-4'}>
+      <div className="row justify-content-center mt-4">
         <button type="button" className="btn-big">
           Solicita ya tu crédito
         </button>
@@ -23,13 +23,13 @@ const Home = () => {
     </>
   );
 
-  let banner_image_block = (
+  const bannerImageBlock = (
     <div>
       <div className={styles.banner_image_texture}>
-        <img src="/BC_PYMES_1 2.svg" />
+        <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
       <div className={styles.banner_image_man}>
-        <img src="/BC_PYMES_1 1.png" />
+        <img src="/BC_PYMES_1 1.png" alt="Mujer" />
       </div>
     </div>
   );
@@ -43,9 +43,7 @@ const Home = () => {
 
       <Header />
 
-      <div className={`row justify-content-center ${styles.banner}`}>
-        <Banner backgroundImage={'/BC_PYMES_1.png'} textBlock={banner_text_block} imageBlock={banner_image_block} />
-      </div>
+      <Banner backgroundImage="/BC_PYMES_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
 
       <Footer />
     </>

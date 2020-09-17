@@ -1,0 +1,156 @@
+@import '../../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/var';
+
+.text-title {
+  margin-top: 100px;
+
+  @include media('mobile') {
+    margin-top: 30px;
+  }
+}
+
+.banner-image-texture {
+  position: absolute;
+  right: 20px;
+  top: 130px;
+
+  @include media('mobile') {
+    top: 0;
+
+    img {
+      display: block;
+      height: auto;
+      max-height: 300px;
+      width: auto;
+    }
+  }
+}
+
+.banner-image-man {
+  position: absolute;
+  right: 110px;
+  top: 20px;
+
+  @include media('mobile') {
+    right: 25%;
+    top: 0;
+
+    img {
+      display: block;
+      height: auto;
+      max-height: 190px;
+      width: auto;
+    }
+  }
+}
+
+.text-box {
+  background: $blue-light;
+  border-radius: 16px;
+  max-width: 390px;
+  padding: 24px;
+  width: 100%;
+  z-index: 2;
+
+  @include media('mobile') {
+    background: none;
+    margin-bottom: 30px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.bg-white {
+  background: $white;
+}
+
+.section {
+  height: 500px;
+
+  @include media('mobile') {
+    height: auto;
+  }
+}
+
+.section-content {
+  @include media('mobile') {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 27px;
+  }
+}
+
+.section-storm {
+  background-color: $blue-storm;
+}
+
+.section-night {
+  background-color: $blue-night;
+}
+
+.section-last {
+  background-color: $blue-light;
+  height: 260px;
+
+  @include media('mobile') {
+    height: auto;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+}
+
+.section-texture {
+  left: -100px;
+  position: absolute;
+  top: 90px;
+  z-index: 0;
+}
+
+.section-texture-r {
+  left: 100px;
+  opacity: 0.4;
+  position: absolute;
+  top: 120px;
+  z-index: 0;
+}
+
+.ellipse {
+  background-color: $blue-light;
+  border-radius: 50%;
+  height: 250px;
+  opacity: 0.5;
+  position: absolute;
+  top: 100px;
+  width: 250px;
+  z-index: 0;
+}
+
+.online-bank-left-phone {
+  left: -25px;
+  position: absolute;
+  top: 70px;
+  z-index: 2;
+}
+
+.online-bank-right-phone {
+  left: 86px;
+  position: absolute;
+  top: 114px;
+  z-index: 1;
+}
+
+.text {
+  height: 100%;
+  max-height: 85px;
+  text-transform: uppercase;
+
+  @include media('mobile') {
+    justify-content: center;
+    max-width: 290px;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -2,9 +2,9 @@
 
 .container {
   background-color: $blue-storm;
+  margin-left: 0;
+  margin-right: 0;
   position: relative;
-  margin-left: 0px;
-  margin-right: 0px;
 }
 
 .content {
@@ -15,13 +15,13 @@
   z-index: 0;
 }
 
-.background_top_right {
+.background-top-right {
   position: absolute;
-  right: 0px;
+  right: 0;
 }
 
-.background_bottom_left {
+.background-bottom-left {
+  left: 0;
   position: absolute;
   top: 50%;
-  left: 0px;
 }

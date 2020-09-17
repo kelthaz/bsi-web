@@ -1,18 +1,18 @@
 import styles from './simple-banner.module.scss';
 
 export const SimpleBanner = (props) => {
-
-  return <div className={`row justify-content-center ${styles.container}`}>
-    <div className={`d-none d-lg-block ${styles.background_top_right}`}>
-      <img src="/banner-texture-topright.svg"/>
+  const { style, children } = props;
+  return (
+    <div style={style} className={`row justify-content-center ${styles.container}`}>
+      <div className={`d-none d-lg-block ${styles['background-top-right']}`}>
+        <img src="/banner-texture-topright.svg" alt="Banner texture top right" />
+      </div>
+      <div className={`d-none d-lg-block ${styles['background-bottom-left']}`}>
+        <img src="/banner-texture-botleft.svg" alt="Banner texture bot left" />
+      </div>
+      <div className={styles.content}>{children}</div>
     </div>
-    <div className={`d-none d-lg-block ${styles.background_bottom_left}`}>
-      <img src="/banner-texture-botleft.svg"/>
-    </div>
-    <div className={styles.content}>
-      {props.children}
-    </div>
-  </div>;
+  );
 };
 
 export default SimpleBanner;

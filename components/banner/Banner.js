@@ -10,13 +10,15 @@ export const Banner = (props) => {
   }
 
 
-  return <div className={styles.container}>
-    <div className={styles.content}>
-      <div className={`${styles.text_block}`}>
-        {props.textBlock}
-      </div>
-      <div style={containerStyles} className={`${styles.image_block}`}>
-        {props.imageBlock}
+  return <div className={`row justify-content-center mx-0`}>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={`${styles.text_block}`}>
+          {props.textBlock}
+        </div>
+        <div style={containerStyles} className={`${styles.image_block}`}>
+          {props.imageBlock}
+        </div>
       </div>
     </div>
   </div>;
