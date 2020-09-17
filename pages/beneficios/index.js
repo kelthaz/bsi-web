@@ -75,6 +75,8 @@ const Beneficios = () => {
               <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
                 Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
                 específicamente en ti como empresario PyME.
+
+                <button type="button" className="btn-link pt-3">Conoce más sobre las tasas</button>
               </div>
             </div>
             <div className={`d-none d-md-flex ${styles['section-texture']}`}>
