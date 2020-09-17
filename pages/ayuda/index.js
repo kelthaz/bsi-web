@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { Header } from '../../components/header/Header';
 import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
-import TextField from '../../components/text-field/TextField';
+import { TextField } from '../../components/text-field/TextField';
 import { Footer } from '../../components/footer/Footer';
 import { Title } from '../../components/title/Title';
 import Accordion from '../../components/accordion/Accordion';
@@ -66,32 +66,34 @@ const Ayuda = () => {
       <Header />
 
       <SimpleBanner>
-        <div className={`row justify-content-center mx-0`}>
+        <div className="row justify-content-center mx-0">
           <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
         </div>
-        <div className={'row justify-content-center mx-0'}>
-          <div className={`body1 ${styles.bt1}`}>Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.</div>
-        </div>
-        <div className={'row justify-content-center mt-5 mx-0'}>
-          <div className={`col-sm-12 col-md-auto`}>
-            <TextField label='Nombre'/>
-          </div>
-          <div className={`col-sm-12 col-md-auto`}>
-            <TextField label='Correo electrónico'/>
-          </div>
-          <div className={`col-sm-12 col-md-auto`}>
-            <TextField label='Número de teléfono'/>
+        <div className="row justify-content-center mx-0">
+          <div className={`body1 ${styles.bt1}`}>
+            Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
           </div>
         </div>
-        <div className={`row justify-content-center mx-0`}>
+        <div className="row justify-content-center mt-5 mx-0">
+          <div className="col-sm-12 col-md-4">
+            <TextField capitalize label="Nombre" />
+          </div>
+          <div className="col-sm-12 col-md-4">
+            <TextField label="Correo electrónico" />
+          </div>
+          <div className="col-sm-12 col-md-4">
+            <TextField label="Número de teléfono" />
+          </div>
+        </div>
+        <div className="row justify-content-center mx-0">
           <div className={`col-auto ${styles.textarea_questions}`}>
-            <textarea className={`body2`} placeholder="Cuéntanos tus dudas..."></textarea>
+            <textarea className="body2" placeholder="Cuéntanos tus dudas..." />
           </div>
         </div>
       </SimpleBanner>
 
-      <div className={`row justify-content-center mt-5 pt-3 mx-0`}>
-        <div className={`col-auto`}>
+      <div className="row justify-content-center mt-5 pt-3 mx-0">
+        <div className="col-auto">
           <button type="button" className="btn-small">
             Enviar
           </button>
