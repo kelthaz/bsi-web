@@ -58,10 +58,6 @@
     padding-left: 16px;
     padding-right: 16px;
   }
-
-  button {
-    color: $blue-sky;
-  }
 }
 
 .bg-white {
@@ -157,4 +153,8 @@
     margin: 0;
     padding: 0;
   }
+}
+
+.button {
+  color: $blue-sky;
 }
