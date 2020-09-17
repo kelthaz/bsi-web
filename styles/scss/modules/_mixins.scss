@@ -67,6 +67,9 @@ $breakpoints: (
   'mobile': (
     max-width: 767px,
   ),
+  'xs': (
+    max-width: 319px,
+  ),
   'sm': (
     max-width: 479px,
   ),

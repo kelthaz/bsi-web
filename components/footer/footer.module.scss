@@ -168,6 +168,13 @@
 
   .third-content {
     flex-wrap: wrap;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    img {
+      margin: 15px;
+    }
   }
 }
 

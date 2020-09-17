@@ -9,8 +9,77 @@
   }
 }
 
+.card-simple-blue-light {
+  background-color: $blue-light;
+  border-radius: 16px;
+  color: $gray-dark;
+  padding: 24px;
+
+  p {
+    @include body-2;
+  }
+}
+
+.card-simple-white-img {
+  align-items: center;
+  background-color: $white;
+  border-radius: 16px;
+  box-shadow: 0 10px 15px rgba(0, 42, 97, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 24px;
+
+  @include media('md') {
+    flex-direction: row;
+    padding: 18px;
+
+    div {
+      align-items: flex-start;
+    }
+
+    h4 {
+      margin: 0;
+      text-align: left;
+    }
+
+    p {
+      margin: 0;
+      text-align: left;
+    }
+  }
+
+  // img {
+  //   padding-bottom: 16px;
+  //   width: 40%;
+  // }
+  div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h4 {
+    color: $blue-storm;
+    text-align: center;
+  }
+
+  p {
+    @include body-2;
+    text-align: center;
+  }
+}
+
 .card-simple-transparent {
   background-color: transparent;
   border-radius: 16px;
   padding: 24px;
+}
+
+.card-accordion {
+  background-color: $blue-light;
+  border-radius: 16px;
+  padding: 0 20px;
 }

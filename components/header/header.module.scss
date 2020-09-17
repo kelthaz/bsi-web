@@ -25,9 +25,9 @@
     outline: none;
   }
 
-  &:hover {
-    transition: 0.3s ease-out;
-  }
+  // &:hover {
+  //   transition: 0.3s ease-out;
+  // }
 }
 
 .menu-active {
@@ -38,9 +38,9 @@
       background-color: $blue-storm;
       background-image: url('/cross.svg');
 
-      &:hover {
-        background-color: $blue-night;
-      }
+      // &:hover {
+      //   background-color: $blue-night;
+      // }
     }
   }
 
@@ -53,9 +53,9 @@
       background-color: $blue-storm;
       background-image: url('/login-blanco.svg');
 
-      &:hover {
-        background-color: $blue-night;
-      }
+      // &:hover {
+      //   background-color: $blue-night;
+      // }
     }
   }
 }
@@ -68,9 +68,9 @@
       background-color: $white;
       background-image: url('/menu.svg');
 
-      &:hover {
-        background-color: $black-10;
-      }
+      // &:hover {
+      //   background-color: $black-10;
+      // }
     }
   }
 
@@ -88,9 +88,9 @@
       background-color: $white;
       background-image: url('/login.svg');
 
-      &:hover {
-        background-color: $black-10;
-      }
+      // &:hover {
+      //   background-color: $black-10;
+      // }
     }
   }
 }
@@ -296,12 +296,6 @@
 
       button:last-child {
         display: block;
-      }
-    }
-
-    button {
-      &:hover {
-        background-color: transparent !important;
       }
     }
   }

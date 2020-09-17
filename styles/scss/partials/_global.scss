@@ -13,17 +13,6 @@ a {
   box-sizing: border-box;
 }
 
-// @include media('md') {
-//   * {
-//     button {
-//       &:hover {
-//         background-color: transparent !important;
-//       }
-//     }
-//   }
-// }
-// End global style
-
 .section-white {
   @include section-config();
 }
@@ -38,4 +27,12 @@ a {
 
 .section-blue-light {
   @include section-config($blue-light);
+}
+
+.section-blue-storm-grad {
+  background: linear-gradient(0deg, $white 25%, $blue-storm 0%);
+  width: 100%;
+  @include media('md') {
+    background: linear-gradient(0deg, $white 50%, $blue-storm 0%);
+  }
 }
