@@ -1,4 +1,4 @@
-export const data = {
+const data = {
   seccion1: {
     title: {
       orden: '01',
@@ -18,4 +18,4 @@ export const data = {
   seccion2: {},
 };
 
-export default data;
+export { data as default };
