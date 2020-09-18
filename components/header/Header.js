@@ -60,13 +60,9 @@ export const Header = () => {
         <nav className={styles['header-bottom']}>
           <ul>
             {pages.map(({ label, link }) => (
-              <li
-                key={label}
-                className={pageSelect === link ? styles['option-selected'] : ''}
-                onClick={() => handlePage(link)}
-              >
+              <li key={label} className={pageSelect === link ? styles['option-selected'] : ''}>
                 <Link href={link}>
-                  <a>{label}</a>
+                  <a onClick={() => handlePage(link)}>{label}</a>
                 </Link>
               </li>
             ))}
@@ -95,13 +91,9 @@ export const Header = () => {
             </ul>
             <ul>
               {pages.map(({ label, link }) => (
-                <li
-                  key={label}
-                  className={pageSelect === link ? styles['option-selected'] : ''}
-                  onClick={() => handlePage(link)}
-                >
+                <li key={label} className={pageSelect === link ? styles['option-selected'] : ''}>
                   <Link href={link} onClick={handlePage}>
-                    <a>{label}</a>
+                    <a onClick={() => handlePage(link)}>{label}</a>
                   </Link>
                 </li>
               ))}
