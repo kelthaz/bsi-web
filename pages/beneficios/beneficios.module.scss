@@ -74,18 +74,12 @@
 
 .section-content {
   @include media('mobile') {
-    margin-left: 16px;
-    margin-right: 16px;
     margin-top: 27px;
   }
 }
 
 .section-storm {
   background-color: $blue-storm;
-}
-
-.section-night {
-  background-color: $blue-night;
 }
 
 .section-last {
@@ -157,4 +151,19 @@
 
 .button {
   color: $blue-sky;
+}
+
+.section-absolute {
+  // position: relative;
+
+  &::before {
+    background-color: transparent;
+    background-image: url('/beneficios/crecer-negocio-texture.svg');
+    content: '';
+    // position: absolute;
+    z-index: 2;
+    background-size: 50px 50px;
+    float: left;
+    background-position: 100% center;
+  }
 }

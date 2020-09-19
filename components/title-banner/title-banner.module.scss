@@ -63,3 +63,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.h-55 {
+  height: 55px;
+
+  @include media('mobile') {
+    height: 40px;
+  }
+}

@@ -1,10 +1,7 @@
-import Head from 'next/head';
 import Accordion from '../../components/accordion/Accordion';
-import Banner from '../../components/banner/Banner';
-import { Footer } from '../../components/footer/Footer';
-import { Header } from '../../components/header/Header';
-import TitleBanner from '../../components/title-banner/TitleBanner';
-import { TitleSection } from '../../components/title-section2/TitleSection';
+import { Banner } from '../../components/banner/Banner';
+import { TitleBanner } from '../../components/title-banner/TitleBanner';
+import { TitleSection } from '../../components/title-section/TitleSection';
 import styles from './credito-pyme.module.scss';
 
 const CreditoPyme = () => {
