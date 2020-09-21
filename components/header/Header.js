@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  const router = useRouter();
-
+  const { pathname } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },
     { label: 'Crédito Pyme', link: 'credito-pyme' },
@@ -18,7 +17,11 @@ export const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
-  const [pageSelect, setPageSelect] = useState(router.pathname.slice(1));
+  const [pageSelect, setPageSelect] = useState();
+
+  useEffect(() => {
+    setPageSelect(pathname.slice(1));
+  }, [pathname]);
 
   const { category, option } = menuSelect;
 
@@ -62,7 +65,7 @@ export const Header = () => {
             {pages.map(({ label, link }) => (
               <li key={label} className={pageSelect === link ? styles['option-selected'] : ''}>
                 <Link href={link}>
-                  <a onClick={() => handlePage(link)}>{label}</a>
+                  <a>{label}</a>
                 </Link>
               </li>
             ))}
