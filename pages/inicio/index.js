@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import { Header } from '../../components/header/Header';
-import { Footer } from '../../components/footer/Footer';
 import { Banner } from '../../components/banner/Banner';
 import { TitleBanner } from '../../components/title-banner/TitleBanner';
 import styles from './inicio.module.scss';

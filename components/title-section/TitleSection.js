@@ -5,16 +5,12 @@ export const TitleSection = (props) => {
   const { inverted, orden, linea1, linea2 } = props;
   return (
     <div className={styles.box}>
-      <div className={styles['title-container']}>
-        <div className={`col ${styles.line} ${inverted ? styles['secondary-inverted'] : ''}`}>
-          <h2>{orden}</h2>
-        </div>
-        <div className="col">
-          <div className={`${styles.text}`}>
-            <h2 className={inverted ? styles['primary-inverted'] : 'text-primary'}>{linea1}</h2>
-            <h2 className={inverted ? styles['secondary-inverted'] : 'text-secondary'}>{linea2}</h2>
-          </div>
-        </div>
+
+      <h2 className={`${styles.line} ${inverted ? styles['secondary-inverted'] : ''}`}>{orden}</h2>
+
+      <div className={`${styles.text}`}>
+        <h2 className={`${styles['lh-100']} ${inverted ? styles['primary-inverted'] : 'text-primary'}`}>{linea1}</h2>
+        <h2 className={`${styles['lh-100']} ${inverted ? styles['secondary-inverted'] : 'text-secondary'}`}>{linea2}</h2>
       </div>
     </div>
   );

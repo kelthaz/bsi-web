@@ -12,7 +12,7 @@ export const TitleBanner = (props) => {
         </div>
         <div className="col-md">
           <div className={`row ${styles.text}`}>
-            <h1 className="text-primary">{linea1}</h1>
+            <h1 className={`text-primary ${styles['h-55']}`}>{linea1}</h1>
             <h1 className="text-secondary">{linea2}</h1>
           </div>
           <div className={`row ${styles['sub-text']}`}>
