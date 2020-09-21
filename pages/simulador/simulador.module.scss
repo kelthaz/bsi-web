@@ -13,3 +13,35 @@
 .color-blue-morning {
   color: $blue-morning;
 }
+.chunk-box {
+  background: $white;
+  width: 100%;
+  height: 30px;
+  display: block;
+  top: -53px;
+  left: 0;
+  position: absolute;
+  border-radius: 25px 25px 0 0;
+}
+
+.simulator-info {
+  position: relative;
+  border-radius: 0 0 25px 25px;
+  max-width: 1200px;
+  box-shadow: 1px 15px 22px #efeeee;
+}
+
+.title-top {
+  font-size: 25px !important;
+  color: $blue-storm;
+  margin-top: 25px;
+  text-align: center;
+}
+.title-input {
+  font-size: 18px !important;
+  color: $blue-storm;
+}
+
+.input-text {
+  color: $gray;
+}
