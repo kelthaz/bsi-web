@@ -44,7 +44,7 @@ const TempBanner = () => {
         imageBlock={requistosBannerImageBlock}
       />
       Simulador
-      <SimpleBanner style={{ overflow: 'hidden' }}>
+      <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
           <div className="col-auto my-auto">
             <h1 style={{ paddingTop: '100px', color: '#FFF' }}>¡TU DISEÑAS</h1>

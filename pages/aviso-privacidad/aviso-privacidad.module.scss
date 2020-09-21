@@ -28,18 +28,18 @@
   }
 }
 
-.box {
-  background-color: #e5e5e5;
-}
+// .box {
+//   background-color: #e5e5e5;
+// }
 
 .terms-box {
   background: $white;
   border-radius: 16px;
-  min-height: 700px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   padding: 40px 82px;
   position: relative;
   top: -100px;
-  width: 95%;
+  width: 100%;
 
   @include media('mobile') {
     padding: 40px 10px;
@@ -51,6 +51,7 @@
 }
 
 .terms-title {
+  width: 100%;
   border-bottom: 2px solid $blue-shadow;
   color: $blue-storm;
   margin-bottom: 32px;

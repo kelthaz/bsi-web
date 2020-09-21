@@ -1,6 +1,18 @@
-@import '../../styles/scss/modules/var';
 @import '../../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/var';
 
+.banner-title {
+  padding-bottom: 40px;
+  padding-top: 100px;
+}
+
+.color-white {
+  color: $white;
+}
+
+.color-blue-morning {
+  color: $blue-morning;
+}
 .chunk-box {
   background: $white;
   width: 100%;

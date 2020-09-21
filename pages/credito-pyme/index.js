@@ -1,23 +1,11 @@
-import Head from 'next/head';
+/* eslint-disable react/no-danger */
 import Accordion from '../../components/accordion/Accordion';
-import Banner from '../../components/banner/Banner';
-import { Footer } from '../../components/footer/Footer';
-import { Header } from '../../components/header/Header';
-import TitleBanner from '../../components/title-banner/TitleBanner';
-import { TitleSection } from '../../components/title-section2/TitleSection';
+import { Banner } from '../../components/banner/Banner';
+import { TitleBanner } from '../../components/title-banner/TitleBanner';
+import { TitleSection } from '../../components/title-section/TitleSection';
 import styles from './credito-pyme.module.scss';
 
 const CreditoPyme = () => {
-  const data = {
-    steps: [
-      {
-        num: '01',
-        title: 'datos',
-      },
-      {},
-    ],
-  };
-
   const accordionItems = [
     {
       title: 'Requisitos',
@@ -33,7 +21,7 @@ const CreditoPyme = () => {
     },
     {
       title: 'Tasas',
-      content: 'Conoce más detalles sobre nuestras tasas aquí.',
+      content: 'Conoce más detalles sobre nuestras tasas <a href="#">aquí</a>.',
     },
     {
       title: 'CAT',
@@ -121,8 +109,8 @@ const CreditoPyme = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <TitleSection inverted={false} orden="02" linea1="Datos de" linea2="tu empresa" />
-                <div className="card-simple-white">
+                <TitleSection orden="02" linea1="Datos de" linea2="tu empresa" />
+                <div className="card-simple-blue-light">
                   <p>
                     El segundo bloque de Datos de tu Empresa es para conocer mejor tu negocio, aquí platicaremos un poco
                     de dónde está ubicado, cuántos empleados tienes, etc.
@@ -167,7 +155,7 @@ const CreditoPyme = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <TitleSection inverted={false} orden="04" linea1="carga tus" linea2="documentos" />
+                <TitleSection orden="04" linea1="carga tus" linea2="documentos" />
                 <div className="card-simple-blue-light">
                   <p>
                     Finalmente, te solicitaremos algunos documentos dependiendo el tipo de persona que seas para
@@ -245,7 +233,7 @@ const CreditoPyme = () => {
                   {accordionItems.map(({ title, content }) => (
                     <Accordion key={title} type="blue" title={title} expanded={false}>
                       <div>
-                        <p>{content}</p>
+                        <p dangerouslySetInnerHTML={{ __html: content }} />
                       </div>
                     </Accordion>
                   ))}
