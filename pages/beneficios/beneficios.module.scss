@@ -9,6 +9,21 @@
   }
 }
 
+.container-img {
+  &::after {
+    position: relative;
+    background-image: url('/beneficios/crecer-negocio-texture.svg');
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    background-size: 300px 260px;
+    content: '';
+    height: 300px;
+    width: 260px;
+    float: left;
+    top: -200px;
+  }
+}
+
 .banner-image-texture {
   position: absolute;
   right: 20px;
@@ -45,6 +60,7 @@
 }
 
 .text-box {
+  position: relative;
   background: $blue-light;
   border-radius: 16px;
   max-width: 390px;

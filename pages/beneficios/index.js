@@ -64,8 +64,9 @@ const Beneficios = () => {
               <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
                 Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
                 específicamente en ti como empresario PyME.
-
-                <button type="button" className={`btn-link pt-3 ${styles.button}`}>Conoce más sobre las tasas</button>
+                <button type="button" className={`btn-link pt-3 ${styles.button}`}>
+                  Conoce más sobre las tasas
+                </button>
               </div>
             </div>
             <div className={`d-none d-md-flex ${styles['section-texture']}`}>
@@ -107,28 +108,31 @@ const Beneficios = () => {
         </Section>
 
         {/* Crecer tu negocio */}
-        <Section className={`overflow-hidden ${styles.section} section-blue-night`}>
-          <div className={`col-lg-6 col-md-6 position-relative ${styles['section-content']} ${styles['section-absolute']}`}>
-            <div className="mb-md-4">
-              <TitleSection inverted orden="04" linea1="Crecer" linea2="tu negocio" />
-            </div>
-            <div>
-              <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
-                Invierte tu crédito en maquinaria, equipamiento o algún otro tipo de activo fijo que haga trabajar y
-                crecer tu dinero por ti.
-                <br />
-                <br />
-                <span className="sub text-primary">¡Hazlo crecer tanto económicamente como físicamente!</span>
+        <section className={`overflow-hidden ${styles.section} section-blue-night`}>
+          <div className={`container ${styles['container-img']}`}>
+            <div className="row p-lg-5 p-md-4 p-sm-2 p-xm-1">
+              <div
+                className={`col-lg-6 col-md-6 position-relative ${styles['section-content']} ${styles['section-absolute']}`}
+              >
+                <div className="mb-md-4">
+                  <TitleSection inverted orden="04" linea1="Crecer" linea2="tu negocio" />
+                </div>
+                <div>
+                  <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
+                    Invierte tu crédito en maquinaria, equipamiento o algún otro tipo de activo fijo que haga trabajar y
+                    crecer tu dinero por ti.
+                    <br />
+                    <br />
+                    <span className="sub text-primary">¡Hazlo crecer tanto económicamente como físicamente!</span>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6 d-none d-md-flex">
+                <img src="/beneficios/crecer-negocio.svg" alt="Apoyo constante" />
               </div>
             </div>
-            <div className={`d-none d-md-flex ${styles['section-texture-r']}`}>
-              <img src="/beneficios/crecer-negocio-texture.svg" alt="Textura tasas atractivas" />
-            </div>
           </div>
-          <div className="col-lg-6 col-md-6 d-none d-md-flex">
-            <img src="/beneficios/crecer-negocio.svg" alt="Apoyo constante" />
-          </div>
-        </Section>
+        </section>
 
         {/* Flujo de operación */}
         <Section className={styles.section}>
@@ -144,8 +148,7 @@ const Beneficios = () => {
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.
                 <br />
-                <br />
-                Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
+                <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
                 imprevistos.
               </div>
             </div>
@@ -160,7 +163,9 @@ const Beneficios = () => {
               <h2 className="text-secondary">gran salto</h2>
             </div>
             <div className="d-flex justify-content-center pt-4">
-              <button className={`btn-link ${styles.button}`} type="button">Solicitar mi crédito</button>
+              <button className={`btn-link ${styles.button}`} type="button">
+                Solicitar mi crédito
+              </button>
             </div>
           </div>
         </Section>
