@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Accordion from '../../components/accordion/Accordion';
 import { Banner } from '../../components/banner/Banner';
 import { TitleBanner } from '../../components/title-banner/TitleBanner';
@@ -5,16 +6,6 @@ import { TitleSection } from '../../components/title-section/TitleSection';
 import styles from './credito-pyme.module.scss';
 
 const CreditoPyme = () => {
-  const data = {
-    steps: [
-      {
-        num: '01',
-        title: 'datos',
-      },
-      {},
-    ],
-  };
-
   const accordionItems = [
     {
       title: 'Requisitos',
@@ -30,7 +21,7 @@ const CreditoPyme = () => {
     },
     {
       title: 'Tasas',
-      content: 'Conoce más detalles sobre nuestras tasas aquí.',
+      content: 'Conoce más detalles sobre nuestras tasas <a href="#">aquí</a>.',
     },
     {
       title: 'CAT',
@@ -242,7 +233,7 @@ const CreditoPyme = () => {
                   {accordionItems.map(({ title, content }) => (
                     <Accordion key={title} type="blue" title={title} expanded={false}>
                       <div>
-                        <p>{content}</p>
+                        <p dangerouslySetInnerHTML={{ __html: content }} />
                       </div>
                     </Accordion>
                   ))}
