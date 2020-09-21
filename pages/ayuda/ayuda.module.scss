@@ -13,7 +13,7 @@
       border-right: 0;
     }
 
-    > div:first-child ::after {
+    > div:first-child::after {
       border-bottom: 1.5px solid $blue-shadow;
       content: '';
       display: block;
