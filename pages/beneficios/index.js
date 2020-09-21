@@ -35,7 +35,7 @@ const Beneficios = () => {
       <article>
         {/* Apoyo constante */}
         <Section className={styles.section}>
-          <div className="col-lg-6 col-md-6 d-none d-md-flex">
+          <div className="col-lg-6 col-md-6 d-none d-md-flex justify-content-center">
             <img src="/beneficios/apoyo-constante.svg" alt="Apoyo constante" />
           </div>
           <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
@@ -73,7 +73,7 @@ const Beneficios = () => {
               <img src="/beneficios/tasas-atractivas-texture.svg" alt="Textura tasas atractivas" />
             </div>
           </div>
-          <div className="col-lg-6 col-md-6 d-none d-md-flex">
+          <div className="col-lg-6 col-md-6 d-none d-md-flex justify-content-center">
             <img src="/beneficios/tasas-atractivas.svg" alt="Apoyo constante" />
           </div>
         </Section>
@@ -82,10 +82,10 @@ const Beneficios = () => {
         <Section className={styles.section}>
           <div className="col-lg-6 col-md-6 d-none d-md-block position-relative">
             <div className={styles['online-bank-left-phone']}>
-              <img src="/beneficios/app.png" alt="Apoyo constante" />
+              <img src="/beneficios/app.png" alt="Left phone" />
             </div>
             <div className={styles['online-bank-right-phone']}>
-              <img src="/beneficios/bacaexpress_1.png" alt="Apoyo constante" />
+              <img src="/beneficios/bacaexpress_1.png" alt="Right phone" />
             </div>
             <div className={styles.ellipse} />
           </div>
@@ -127,8 +127,8 @@ const Beneficios = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 d-none d-md-flex">
-                <img src="/beneficios/crecer-negocio.svg" alt="Apoyo constante" />
+              <div className="col-lg-6 col-md-6 d-none d-md-flex justify-content-center">
+                <img src="/beneficios/crecer-negocio.svg" alt="Crecer tu negocio" />
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@ const Beneficios = () => {
 
         {/* Flujo de operación */}
         <Section className={styles.section}>
-          <div className="col-lg-6 col-md-6 d-none d-md-flex">
+          <div className="col-lg-6 col-md-6 d-none d-md-flex justify-content-center">
             <img src="/beneficios/flujo-operacion.svg" alt="Apoyo constante" />
           </div>
           <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
@@ -148,7 +148,8 @@ const Beneficios = () => {
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.
                 <br />
-                <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
+                <br />
+                Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
                 imprevistos.
               </div>
             </div>

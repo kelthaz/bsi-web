@@ -11,16 +11,20 @@
 
 .container-img {
   &::after {
-    position: relative;
     background-image: url('/beneficios/crecer-negocio-texture.svg');
     background-position: 100% center;
     background-repeat: no-repeat;
     background-size: 300px 260px;
     content: '';
-    height: 300px;
-    width: 260px;
     float: left;
+    height: 300px;
+    position: relative;
     top: -200px;
+    width: 260px;
+
+    @include media('mobile') {
+      content: none;
+    }
   }
 }
 
@@ -60,11 +64,11 @@
 }
 
 .text-box {
-  position: relative;
   background: $blue-light;
   border-radius: 16px;
   max-width: 390px;
   padding: 24px;
+  position: relative;
   width: 100%;
   z-index: 2;
 
@@ -128,6 +132,7 @@
   background-color: $blue-light;
   border-radius: 50%;
   height: 250px;
+  left: 120px;
   opacity: 0.5;
   position: absolute;
   top: 100px;
@@ -136,14 +141,14 @@
 }
 
 .online-bank-left-phone {
-  left: -25px;
+  left: 75px;
   position: absolute;
   top: 70px;
   z-index: 2;
 }
 
 .online-bank-right-phone {
-  left: 86px;
+  left: 186px;
   position: absolute;
   top: 114px;
   z-index: 1;
@@ -167,19 +172,4 @@
 
 .button {
   color: $blue-sky;
-}
-
-.section-absolute {
-  // position: relative;
-
-  &::before {
-    background-color: transparent;
-    background-image: url('/beneficios/crecer-negocio-texture.svg');
-    content: '';
-    // position: absolute;
-    z-index: 2;
-    background-size: 50px 50px;
-    float: left;
-    background-position: 100% center;
-  }
 }
