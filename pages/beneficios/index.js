@@ -39,10 +39,10 @@ const Beneficios = () => {
             <img src="/beneficios/apoyo-constante.svg" alt="Apoyo constante" />
           </div>
           <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
-            <div className="row mb-md-4">
+            <div className="mb-md-4">
               <TitleSection orden="01" linea1="Apoyo" linea2="constante" />
             </div>
-            <div className="row">
+            <div>
               <div className={`body2 ${styles['text-box']}`}>
                 Nuestros clientes son lo más importante para nosotros, por lo que siempre estarás asesorado y acompañado
                 por nuestro equipo para cualquiera de tus dudas o necesidades.
@@ -57,10 +57,10 @@ const Beneficios = () => {
         {/* Tasas atractivas */}
         <Section className={`overflow-hidden ${styles.section} ${styles['section-storm']}`}>
           <div className={`col-lg-6 col-md-6 position-relative ${styles['section-content']}`}>
-            <div className="row mb-md-4">
+            <div className="mb-md-4">
               <TitleSection inverted orden="02" linea1="Tasas" linea2="atractivas" />
             </div>
-            <div className="row">
+            <div>
               <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
                 Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
                 específicamente en ti como empresario PyME.
@@ -89,10 +89,10 @@ const Beneficios = () => {
             <div className={styles.ellipse} />
           </div>
           <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
-            <div className="row mb-md-4">
+            <div className="mb-md-4">
               <TitleSection orden="03" linea1="Cuenta y" linea2="banca en línea" />
             </div>
-            <div className="row">
+            <div>
               <div className={`body2 ${styles['text-box']}`}>
                 Administra los recursos de tu empresa, además podrás realizar operaciones con tus productos de manera
                 rápida, autónoma y segura.
@@ -107,12 +107,12 @@ const Beneficios = () => {
         </Section>
 
         {/* Crecer tu negocio */}
-        <Section className={`overflow-hidden ${styles.section} ${styles['section-night']}`}>
-          <div className={`col-lg-6 col-md-6 position-relative ${styles['section-content']}`}>
-            <div className="row mb-md-4">
+        <Section className={`overflow-hidden ${styles.section} section-blue-night`}>
+          <div className={`col-lg-6 col-md-6 position-relative ${styles['section-content']} ${styles['section-absolute']}`}>
+            <div className="mb-md-4">
               <TitleSection inverted orden="04" linea1="Crecer" linea2="tu negocio" />
             </div>
-            <div className="row">
+            <div>
               <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
                 Invierte tu crédito en maquinaria, equipamiento o algún otro tipo de activo fijo que haga trabajar y
                 crecer tu dinero por ti.
@@ -136,10 +136,10 @@ const Beneficios = () => {
             <img src="/beneficios/flujo-operacion.svg" alt="Apoyo constante" />
           </div>
           <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
-            <div className="row mb-md-4">
+            <div className="mb-md-4">
               <TitleSection orden="05" linea1="Flujo de" linea2="operación" />
             </div>
-            <div className="row">
+            <div>
               <div className={`body2 ${styles['text-box']}`}>
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.

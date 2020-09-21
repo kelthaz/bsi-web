@@ -1,9 +1,9 @@
 import styles from './simple-banner.module.scss';
 
 export const SimpleBanner = (props) => {
-  const { style, children } = props;
+  const { className, children } = props;
   return (
-    <div style={style} className={`row justify-content-center ${styles.container}`}>
+    <div className={`row justify-content-center ${styles.container} ${className}`}>
       <div className={`d-none d-lg-block ${styles['background-top-right']}`}>
         <img src="/banner-texture-topright.svg" alt="Banner texture top right" />
       </div>

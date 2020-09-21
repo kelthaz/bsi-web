@@ -31,6 +31,10 @@ button {
   &:hover {
     box-shadow: 0 4px 6px $black-20;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin button-background($color: $white, $inverted: false) {

@@ -78,7 +78,7 @@ const Ayuda = () => {
         </div>
         <div className="row justify-content-center mx-0">
           <div className={`col-auto ${styles.textarea_questions}`}>
-            <textarea className="body2" placeholder="Cuéntanos tus dudas..." />
+            <textarea className="body2" placeholder="Cuéntanos tus dudas..." maxLength="300" />
           </div>
         </div>
       </SimpleBanner>
