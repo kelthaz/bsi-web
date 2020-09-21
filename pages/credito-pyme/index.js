@@ -109,8 +109,8 @@ const CreditoPyme = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <TitleSection inverted={false} orden="02" linea1="Datos de" linea2="tu empresa" />
-                <div className="card-simple-white">
+                <TitleSection orden="02" linea1="Datos de" linea2="tu empresa" />
+                <div className="card-simple-blue-light">
                   <p>
                     El segundo bloque de Datos de tu Empresa es para conocer mejor tu negocio, aquí platicaremos un poco
                     de dónde está ubicado, cuántos empleados tienes, etc.
@@ -155,7 +155,7 @@ const CreditoPyme = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <TitleSection inverted={false} orden="04" linea1="carga tus" linea2="documentos" />
+                <TitleSection orden="04" linea1="carga tus" linea2="documentos" />
                 <div className="card-simple-blue-light">
                   <p>
                     Finalmente, te solicitaremos algunos documentos dependiendo el tipo de persona que seas para
