@@ -3,7 +3,7 @@ import fs from 'fs';
 
 export default (req, res) => {
   if (req.method === 'POST') {
-    fs.writeFile('./data/aviso-privacidad/data.json', JSON.stringify(req.body, null, 2), (error) => {
+    fs.writeFile('./data/aviso-privacidad/aviso-privacidad-data.json', JSON.stringify(req.body, null, 2), (error) => {
       if (error) console.log(error);
       else console.log('El archivo fue creado');
     });
