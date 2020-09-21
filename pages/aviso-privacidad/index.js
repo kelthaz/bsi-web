@@ -3,7 +3,7 @@ import path from 'path';
 import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
 import styles from './aviso-privacidad.module.scss';
 
-const Ayuda = (props) => {
+const AvisoPrivacidad = (props) => {
   const min = [
     'a',
     'b',
@@ -56,7 +56,7 @@ const Ayuda = (props) => {
   return (
     <>
       <SimpleBanner>
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mx-0">
           <div className={`col-auto my-auto text-center ${styles['banner-title']}`}>
             <h1 className={styles['banner-title-1']}>Aviso</h1>
             <h1 className={styles['banner-title-2']}>de privacidad</h1>
@@ -86,7 +86,7 @@ const Ayuda = (props) => {
 };
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'data/aviso-privacidad/data.json');
+  const postsDirectory = path.join(process.cwd(), 'data/aviso-privacidad/aviso-privacidad-data.json');
   const posts = JSON.parse(fs.readFileSync(postsDirectory, 'utf8'));
   return {
     props: {
@@ -95,4 +95,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Ayuda;
+export default AvisoPrivacidad;

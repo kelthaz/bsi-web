@@ -7,7 +7,7 @@ export const Simulador = () => (
     <SimpleBanner className="overflow-hidden">
       <div className="row justify-content-center">
         <div className={`col-auto my-auto ${styles['banner-title']}`}>
-          <h1 className={`m-0 ${styles['color-white']} ${styles['h-55']}`}>¡TÚ DISEÑAS</h1>
+          <h1 className={styles['color-white']}>¡TÚ DISEÑAS</h1>
           <h1 className={styles['color-blue-morning']}>TU CRÉDITO!</h1>
         </div>
       </div>
