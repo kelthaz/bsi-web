@@ -7,7 +7,7 @@ import { TitleBanner } from '../../components/title-banner/TitleBanner';
 export const Requisitos = () => {
   const accordionItems = [
     {
-      title: 'Estas son algunas preguntas y respuestas que podrían ayudarte.',
+      title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
       content:
         'Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Curabitur aliquet quam id dui posuere blandit.',
     },
