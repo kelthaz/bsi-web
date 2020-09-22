@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import styles from './title-section.module.scss';
 
-export const TitleSection = (props) => {
+const TitleSection = (props) => {
   const { inverted, orden, linea1, linea2 } = props;
   return (
     <div className={styles.box}>
-
       <h2 className={`${styles.line} ${inverted ? styles['secondary-inverted'] : ''}`}>{orden}</h2>
 
       <div className={`${styles.text}`}>
         <h2 className={`${styles['lh-100']} ${inverted ? styles['primary-inverted'] : 'text-primary'}`}>{linea1}</h2>
-        <h2 className={`${styles['lh-100']} ${inverted ? styles['secondary-inverted'] : 'text-secondary'}`}>{linea2}</h2>
+        <h2 className={`${styles['lh-100']} ${inverted ? styles['secondary-inverted'] : 'text-secondary'}`}>
+          {linea2}
+        </h2>
       </div>
     </div>
   );

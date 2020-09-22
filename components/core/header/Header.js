@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './header.module.scss';
 
-export const Header = () => {
+const Header = () => {
   const { pathname } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },

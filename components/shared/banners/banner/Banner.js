@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './banner.module.scss';
 
-export const Banner = (props) => {
+const Banner = (props) => {
   const { backgroundImage, textBlock, imageBlock } = props;
   const containerStyles = {
     backgroundImage: `url(${backgroundImage})`,
@@ -14,9 +14,7 @@ export const Banner = (props) => {
     <div className="row justify-content-center mx-0">
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles['text-block']}>
-            {textBlock}
-          </div>
+          <div className={styles['text-block']}>{textBlock}</div>
           <div style={containerStyles} className={styles['image-block']}>
             {imageBlock}
           </div>

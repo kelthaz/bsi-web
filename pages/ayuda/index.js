@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react';
-import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
-import { TextField } from '../../components/text-field/TextField';
-import { Title } from '../../components/title/Title';
-import Accordion from '../../components/accordion/Accordion';
+import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
+import TextField from '../../components/shared/text-field/TextField';
+import Title from '../../components/shared/titles/title/Title';
+import Accordion from '../../components/shared/accordion/Accordion';
 import styles from './ayuda.module.scss';
 
 const Ayuda = () => {

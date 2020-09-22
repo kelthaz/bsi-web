@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './title.module.scss';
 
-export const Title = (props) => {
+const Title = (props) => {
   const { linea1, linea2 } = props;
   return (
     <div className="container-fluid">

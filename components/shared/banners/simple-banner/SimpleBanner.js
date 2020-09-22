@@ -1,6 +1,6 @@
 import styles from './simple-banner.module.scss';
 
-export const SimpleBanner = (props) => {
+const SimpleBanner = (props) => {
   const { className, children } = props;
   return (
     <div className={`row justify-content-center ${styles.container} ${className}`}>

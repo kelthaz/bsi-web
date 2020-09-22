@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
+import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import styles from './aviso-privacidad.module.scss';
 
 const AvisoPrivacidad = (props) => {
@@ -41,7 +41,7 @@ const AvisoPrivacidad = (props) => {
 
       return (
         <>
-          <p>
+          <p key={item}>
             <strong>{numeracion ? `${vin}. ` : ''}</strong>
             {item}
           </p>
