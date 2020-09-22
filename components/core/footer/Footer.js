@@ -1,7 +1,7 @@
 import styles from './footer.module.scss';
-import Accordion from '../accordion/Accordion';
+import Accordion from '../../shared/accordion/Accordion';
 
-export const Footer = () => {
+const Footer = () => {
   const datos = [
     { about: '¿Quiénes somos?', link: 'https://www.bancoppel.com/acerca_bancoppel/quienes_somos.html' },
     { about: 'Preguntas frecuentes', link: 'https://www.bancoppel.com/acerca_bancoppel/faq.html' },

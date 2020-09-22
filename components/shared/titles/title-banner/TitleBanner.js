@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './title-banner.module.scss';
 
-export const TitleBanner = (props) => {
+const TitleBanner = (props) => {
   const { linea1, linea2, description } = props;
 
   return (

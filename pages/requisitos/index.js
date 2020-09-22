@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './requisitos.module.scss';
-import Accordion from '../../components/accordion/Accordion';
-import { Banner } from '../../components/banner/Banner';
-import { TitleBanner } from '../../components/title-banner/TitleBanner';
+import Accordion from '../../components/shared/accordion/Accordion';
+import Banner from '../../components/shared/banners/banner/Banner';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 
 export const Requisitos = () => {
   const accordionItems = [

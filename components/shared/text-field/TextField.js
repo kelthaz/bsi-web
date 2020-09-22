@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './text-field.module.scss';
 
-export const TextField = (props) => {
+const TextField = (props) => {
   const { capitalize, label } = props;
   return (
     <div className={styles.group}>

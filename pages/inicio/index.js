@@ -1,5 +1,5 @@
-import { Banner } from '../../components/banner/Banner';
-import { TitleBanner } from '../../components/title-banner/TitleBanner';
+import Banner from '../../components/shared/banners/banner/Banner';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import styles from './inicio.module.scss';
 
 const Home = () => {
