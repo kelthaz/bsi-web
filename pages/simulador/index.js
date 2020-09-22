@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
+import Select from '../../components/shared/select/Select';
 import styles from './simulador.module.scss';
 
 export const Simulador = () => {
+  const items = ['24 meses', '25 meses'];
   const [menuOpen, setMenuOpen] = useState(false);
+  const [item, setItem] = useState('Seleccione...');
   return (
     <div>
       <SimpleBanner className="overflow-hidden">
@@ -40,7 +43,10 @@ export const Simulador = () => {
         <div className="row justify-content-center mx-0 mb-5 mt-4">
           <div className="col-sm-5">
             <h1 className={styles['title-input']}>¿En cuántos meses quieres pagarlo?</h1>
-            <div className={styles['input-text']}>Quiero pagarlo en</div>
+            <div className="flex-row-config">
+              <div className={`${styles['input-text']}`}>Quiero pagarlo en</div>
+              <Select item={item} setItem={setItem} items={items} />
+            </div>
           </div>
           <div className="col-sm-5">
             <h2 className={styles['title-input']}>¿Cómo quieres que sean tus plazos?</h2>
