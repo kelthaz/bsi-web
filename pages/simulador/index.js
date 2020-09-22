@@ -43,7 +43,7 @@ export const Simulador = () => {
         <div className="row justify-content-center mx-0 mb-5 mt-4">
           <div className="col-sm-5">
             <h1 className={styles['title-input']}>¿En cuántos meses quieres pagarlo?</h1>
-            <div className="flex-row-config">
+            <div className="flex-row-start-config">
               <div className={`${styles['input-text']}`}>Quiero pagarlo en</div>
               <Select item={item} setItem={setItem} items={items} />
             </div>

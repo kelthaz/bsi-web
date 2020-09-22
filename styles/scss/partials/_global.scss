@@ -36,17 +36,3 @@ a {
     background: linear-gradient(0deg, $white 45%, $blue-storm 0%);
   }
 }
-
-.flex-column-config {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.flex-row-config {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
