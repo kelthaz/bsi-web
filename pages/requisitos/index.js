@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/accordion/Accordion';
 import { Banner } from '../../components/banner/Banner';
+import { Section } from '../../components/section/Section';
+import { Title } from '../../components/title/Title';
 import { TitleBanner } from '../../components/title-banner/TitleBanner';
 
 export const Requisitos = () => {
@@ -82,6 +84,37 @@ export const Requisitos = () => {
         textBlock={requistosBannerTextBlock}
         imageBlock={requistosBannerImageBlock}
       />
+      <Section className="section-blue-storm">
+        <div className={`mx-auto mb-4 ${styles.title}`}>
+          <h2 className="text-white text-center">
+            Documentación
+            <br />
+            <span>por tipo de persona</span>
+          </h2>
+        </div>
+        <div className={`mx-auto ${styles['section-1']}`}>
+          <p className="body2 text-white text-center">
+            Estos documentos aplican tanto para ti, como para la persona que vayas a designar como tu Obligado
+            Solidario, dependiendo el tipo de persona.
+          </p>
+          <p className="body2 text-white text-center">
+            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
+            residir tu Obligado Solidario.
+          </p>
+          <button type="button" className="btn-link text-white mx-auto">Conoce las zonas aquí</button>
+        </div>
+      </Section>
+      <div className="row mx-0 justify-content-center">
+        <div className="col-12 card-simple-white">
+        </div>
+        <div className={`col-auto body2 ${styles['security-note']}`}>
+          Tus datos estarán protegidos y nunca almacenaremos tu FIEL o tu CIEC.
+        </div>
+      </div>
+      <div className="section-blue-light">
+        <Title linea1="Para tu información" />
+        <div className="body2 text-center">Consulta nuestros videos para conocer más sobre los requisitos.</div>
+      </div>
       <article>
         <section className="section-white">
           <div className="container">
@@ -111,6 +144,28 @@ export const Requisitos = () => {
           </div>
         </section>
       </article>
+      <div className="row mx-0">
+        <div className="col-md-12 col-lg-6 p-5 section-blue-light">
+          <div className={`mx-auto mb-3 ${styles.title}`}>
+            <h2 className="text-secondary text-center">
+              ¿No resolvimos
+              <br />
+              <span>tu duda?</span>
+            </h2>
+          </div>
+          <button type="button" className="btn-link text-secondary mx-auto">Quiero que me contacten</button>
+        </div>
+        <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
+          <div className={`mx-auto mb-3 ${styles.title}`}>
+            <h2 className="text-white text-center">
+              Da el siguiente
+              <br />
+              <span>gran salto</span>
+            </h2>
+          </div>
+          <button type="button" className="btn-link text-white mx-auto">Solicitar mi crédito</button>
+        </div>
+      </div>
     </>
   );
 };

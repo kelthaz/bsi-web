@@ -107,3 +107,33 @@
     width: 10px;
   }
 }
+
+.section-1 {
+  max-width: 470px;
+  width: 100%;
+
+  @include media('mobile') {
+    padding: 0 20px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+
+  h2 {
+    line-height: 140%;
+  }
+
+  span {
+    color: $blue-sky;
+  }
+}
+
+.security-note {
+  background: $blue-storm;
+  border-radius: 16px;
+  color: $white;
+  max-width: 490px;
+  padding: 24px;
+  width: 90%;
+}

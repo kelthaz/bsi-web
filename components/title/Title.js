@@ -19,7 +19,11 @@ export const Title = (props) => {
 
 Title.propTypes = {
   linea1: PropTypes.string.isRequired,
-  linea2: PropTypes.string.isRequired,
+  linea2: PropTypes.string,
+};
+
+Title.defaultProps = {
+  linea2: '',
 };
 
 export default Title;
