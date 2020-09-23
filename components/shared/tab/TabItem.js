@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 
 const TabItem = (props) => {
-  const { children, tab, key } = props;
+  const { children, tab, keyTab } = props;
 
   return (
-    <div tab={tab} key={key}>
+    <div tab={tab} key={keyTab}>
       {children}
     </div>
   );
 };
 
 TabItem.propTypes = {
-  tab: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
-  key: PropTypes.string.isRequired,
+  tab: PropTypes.string.isRequired,
+  keyTab: PropTypes.string.isRequired,
 };
 export default TabItem;
