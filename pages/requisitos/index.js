@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
-import { Banner } from '../../components/shared/banners/banner/Banner';
+import Banner from '../../components/shared/banners/banner/Banner';
 import { Section } from '../../components/shared/section/Section';
-import { Title } from '../../components/shared/titles/title/Title';
-import { TitleBanner } from '../../components/shared/titles/title-banner/TitleBanner';
+import Title from '../../components/shared/titles/title/Title';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 
 export const Requisitos = () => {
   const accordionItems = [
@@ -98,15 +98,16 @@ export const Requisitos = () => {
             Solidario, dependiendo el tipo de persona.
           </p>
           <p className="body2 text-white text-center">
-            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
-            residir tu Obligado Solidario.
+            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
+            tu Obligado Solidario.
           </p>
-          <button type="button" className="btn-link text-white mx-auto">Conoce las zonas aquí</button>
+          <button type="button" className="btn-link text-white mx-auto">
+            Conoce las zonas aquí
+          </button>
         </div>
       </Section>
       <div className="row mx-0 justify-content-center">
-        <div className="col-12 card-simple-white">
-        </div>
+        <div className="col-12 card-simple-white"></div>
         <div className={`col-auto body2 ${styles['security-note']}`}>
           Tus datos estarán protegidos y nunca almacenaremos tu FIEL o tu CIEC.
         </div>
@@ -153,7 +154,9 @@ export const Requisitos = () => {
               <span>tu duda?</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-secondary mx-auto">Quiero que me contacten</button>
+          <button type="button" className="btn-link text-secondary mx-auto">
+            Quiero que me contacten
+          </button>
         </div>
         <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
           <div className={`mx-auto mb-3 ${styles.title}`}>
@@ -163,7 +166,9 @@ export const Requisitos = () => {
               <span>gran salto</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-white mx-auto">Solicitar mi crédito</button>
+          <button type="button" className="btn-link text-white mx-auto">
+            Solicitar mi crédito
+          </button>
         </div>
       </div>
     </>
