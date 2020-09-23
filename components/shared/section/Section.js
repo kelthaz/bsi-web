@@ -1,4 +1,4 @@
-import styles from './section.module.scss';
+// import styles from './section.module.scss';
 
 export const Section = (props) => {
   const { className, children } = props;
