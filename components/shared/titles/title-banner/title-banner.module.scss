@@ -1,0 +1,73 @@
+@import '../../../../styles/scss/modules/var';
+@import '../../../../styles/scss/modules/mixins';
+
+.text {
+  height: 100%;
+  max-height: 80px;
+  text-transform: uppercase;
+  width: 470px;
+
+  @include media('mobile') {
+    justify-content: center;
+    max-width: 290px;
+  }
+
+  h1 {
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+.box {
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.line {
+  max-width: 28px;
+  padding: 25px 0 0;
+  width: 100%;
+}
+
+.sub-text {
+  border: 1.5px solid $blue-sky;
+  border-radius: 2px;
+  box-sizing: border-box;
+  margin-top: 60px;
+  max-width: 472px;
+  padding: 15px;
+  width: 100%;
+
+  @include media('mobile') {
+    border: none;
+    margin-top: 10px;
+    padding: 0;
+    width: 290px;
+  }
+
+  p {
+    color: $blue-storm;
+    margin: 0;
+
+    @include media('mobile') {
+      max-width: 290px;
+      text-align: center;
+    }
+  }
+}
+
+.title-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.h-55 {
+  height: 55px;
+
+  @include media('mobile') {
+    height: 40px;
+  }
+}

@@ -1,8 +1,8 @@
 /* eslint-disable react/no-danger */
-import Accordion from '../../components/accordion/Accordion';
-import { Banner } from '../../components/banner/Banner';
-import { TitleBanner } from '../../components/title-banner/TitleBanner';
-import { TitleSection } from '../../components/title-section/TitleSection';
+import Accordion from '../../components/shared/accordion/Accordion';
+import Banner from '../../components/shared/banners/banner/Banner';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+import TitleSection from '../../components/shared/titles/title-section/TitleSection';
 import styles from './credito-pyme.module.scss';
 
 const CreditoPyme = () => {
@@ -72,11 +72,7 @@ const CreditoPyme = () => {
 
   return (
     <>
-      <Banner
-        backgroundImage="/credito-pyme/banner.png"
-        textBlock={bannerTextBlock}
-        imageBlock={bannerImageBlock}
-      />
+      <Banner backgroundImage="/credito-pyme/banner.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
       <article>
         <section className="section-blue-storm">
           <div className="container">

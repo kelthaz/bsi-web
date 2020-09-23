@@ -1,0 +1,91 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+%accordion-config {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  color: $blue-storm;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  outline: none;
+  padding: 18px 0;
+  text-align: left;
+  transition: 0.4s;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.accordion-white {
+  @extend %accordion-config;
+  @include button-link;
+
+  color: $white;
+
+  &::after {
+    background-image: url('/chevron.svg');
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    background-size: 21px 21px;
+    content: '';
+    height: 21px;
+    transition: transform 0.3s linear;
+    width: 21px;
+  }
+}
+
+.active-white {
+  &::after {
+    transform: rotate(180deg);
+    transition: transform 0.3s linear;
+  }
+}
+
+.accordion-blue {
+  @extend %accordion-config;
+  @include sub;
+
+  color: $blue-storm;
+
+  &::after {
+    color: $blue-storm;
+    content: '\002b';
+    text-align: center;
+    transform: rotate(90deg);
+    transition: transform 0.3s linear;
+  }
+}
+
+.active-blue {
+  &::after {
+    content: '\2212';
+    transform: rotate(180deg);
+    transition: transform 0.3s linear;
+  }
+}
+
+.panel {
+  background-color: transparent;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.panel-active {
+  max-height: 100vh;
+  transition: max-height 0.3s ease-in;
+}
+
+.border {
+  border-bottom: 1.5px solid #dae0e9;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}

@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react';
-import { SimpleBanner } from '../../components/simple-banner/SimpleBanner';
-import { TextField } from '../../components/text-field/TextField';
-import { Title } from '../../components/title/Title';
-import Accordion from '../../components/accordion/Accordion';
+import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
+import TextField from '../../components/shared/text-field/TextField';
+import Title from '../../components/shared/titles/title/Title';
+import Accordion from '../../components/shared/accordion/Accordion';
 import styles from './ayuda.module.scss';
 
 const Ayuda = () => {
@@ -61,9 +59,9 @@ const Ayuda = () => {
           <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
         </div>
         <div className="row justify-content-center mx-0">
-          <div className={`body1 ${styles.bt1}`}>
+          <h4 className={styles.bt1}>
             Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
-          </div>
+          </h4>
         </div>
         <div className="row justify-content-center mt-5 mx-0">
           <div className="col-sm-12 col-md-4">
@@ -77,7 +75,7 @@ const Ayuda = () => {
           </div>
         </div>
         <div className="row justify-content-center mx-0">
-          <div className={`col-auto ${styles.textarea_questions}`}>
+          <div className={`col-auto ${styles['textarea-questions']}`}>
             <textarea className="body2" placeholder="Cuéntanos tus dudas..." maxLength="300" />
           </div>
         </div>
@@ -113,7 +111,7 @@ const Ayuda = () => {
                 <div className="col-8">
                   <div className="sub text-primary mb-3">Chat</div>
                   <div className="body2 mb-3">Si prefieres, manda tus dudas por nuestro chat.</div>
-                  <button className="btn-link" type="button">
+                  <button className="btn-link text-primary" type="button">
                     Ver todos los requisitos
                   </button>
                 </div>

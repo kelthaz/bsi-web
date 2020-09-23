@@ -1,0 +1,27 @@
+@mixin flex-direction-config($direction: column) {
+  @if ($direction == column) {
+    display: flex;
+    flex-direction: column;
+  } @else {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.flex-column-start-config {
+  @include flex-direction-config();
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.flex-column-center-config {
+  @include flex-direction-config();
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-row-start-config {
+  @include flex-direction-config(row);
+  align-items: flex-start;
+  justify-content: flex-start;
+}

@@ -1,7 +1,7 @@
-import { Banner } from '../../components/banner/Banner';
-import { TitleBanner } from '../../components/title-banner/TitleBanner';
-import { TitleSection } from '../../components/title-section/TitleSection';
-import { Section } from '../../components/section/Section';
+import Banner from '../../components/shared/banners/banner/Banner';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+import TitleSection from '../../components/shared/titles/title-section/TitleSection';
+import { Section } from '../../components/shared/section/Section';
 import styles from './beneficios.module.scss';
 
 const Beneficios = () => {
@@ -148,8 +148,7 @@ const Beneficios = () => {
                 Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
                 remodelación de ensueño.
                 <br />
-                <br />
-                Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
+                <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
                 imprevistos.
               </div>
             </div>
