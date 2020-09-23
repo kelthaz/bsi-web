@@ -5,6 +5,8 @@ import Banner from '../../components/shared/banners/banner/Banner';
 import { Section } from '../../components/shared/section/Section';
 import Title from '../../components/shared/titles/title/Title';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+import Tab from '../../components/shared/tab/Tab';
+import TabItem from '../../components/shared/tab/TabItem';
 
 export const Requisitos = () => {
   const accordionItems = [
@@ -106,6 +108,19 @@ export const Requisitos = () => {
           </button>
         </div>
       </Section>
+      <div className="container">
+        <div className="row">
+          <Tab>
+            <TabItem tab="Requisitos solicitante" keyTab="1">
+              <h2>requisitos solicitante</h2>
+            </TabItem>
+            <TabItem tab="Requisitos obligado solidario" keyTab="2">
+              <h2>requisito obligado</h2>
+            </TabItem>
+          </Tab>
+        </div>
+      </div>
+
       <div className="row mx-0 justify-content-center">
         <div className="col-12 card-simple-white"></div>
         <div className={`col-auto body2 ${styles['security-note']}`}>
