@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import Select from '../../components/shared/select/Select';
+import Slider from '../../components/shared/slider/Slider';
 import styles from './simulador.module.scss';
 
 export const Simulador = () => {
   const items = ['24 meses', '25 meses'];
   const [menuOpen, setMenuOpen] = useState(false);
+  const [valueSlider, setValueSlider] = useState(6200000);
   const [item, setItem] = useState('Seleccione...');
   return (
     <div>
@@ -40,6 +42,11 @@ export const Simulador = () => {
       <div className={`container ${styles['simulator-info']}`}>
         <span className={styles['chunk-box']}></span>
         <h1 className={styles['title-top']}>¿Cuánto dinero necesitas?</h1>
+        <p>
+          Necesito
+          <strong>{valueSlider}</strong>
+        </p>
+        <Slider value={valueSlider} setValue={setValueSlider} min={300000} max={12000000} step={100000} />
         <div className="row justify-content-center mx-0 mb-5 mt-4">
           <div className="col-sm-5">
             <h1 className={styles['title-input']}>¿En cuántos meses quieres pagarlo?</h1>
