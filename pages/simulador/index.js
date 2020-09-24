@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import Select from '../../components/shared/select/Select';
+import Slider from '../../components/shared/slider/Slider';
 import styles from './simulador.module.scss';
 
 export const Simulador = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [valueSlider, setValueSlider] = useState(6200000);
 
   const items = ['12 meses', '24 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrables'];
@@ -50,6 +52,11 @@ export const Simulador = () => {
       <div className={`container col-md-8 ${styles['simulator-info']}`}>
         <span className={styles['chunk-box']}></span>
         <h1 className={styles['title-top']}>¿Cuánto dinero necesitas?</h1>
+        <p>
+          Necesito
+          <strong>{valueSlider}</strong>
+        </p>
+        <Slider value={valueSlider} setValue={setValueSlider} min={300000} max={12000000} step={100000} />
         <div className="row justify-content-center mx-0 mb-5 mt-4">
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4">
             <h1 className={styles['title-input']}>¿En cuántos meses quieres pagarlo?</h1>
@@ -97,7 +104,7 @@ export const Simulador = () => {
           <div className="col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 ">
             <button
               type="button"
-              onClick={() => setResulState(resultState => !resultState)}
+              onClick={() => setResulState((resultState) => !resultState)}
               className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}
             >
               ¡Comencemos!
@@ -175,7 +182,7 @@ export const Simulador = () => {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setResulState(resultState => !resultState)}
+                    onClick={() => setResulState((resultState) => !resultState)}
                     className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}
                   >
                     Solicitar mi crédito
