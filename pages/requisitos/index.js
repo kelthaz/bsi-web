@@ -137,7 +137,7 @@ export const Requisitos = () => {
         </div>
       </Section>
       <div className="row mx-0 justify-content-center">
-        <div className={`col-9 p-5 card-simple-white ${styles.table}`}>
+        <div className={`d-none d-md-block col-9 p-5 card-simple-white ${styles.table}`}>
           <Tab>
             <TabItem tab="Requisitos solicitante" keyTab="1">
               <div className="px-4 pt-4">
@@ -166,14 +166,12 @@ export const Requisitos = () => {
                   </tbody>
                 </table>
               </div>
-              <div className={`d-flex mb-5 mt-5 mx-auto col-auto body2 ${styles.note}`}>
+              <div className={`d-flex mb-5 mt-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
                 <img className="pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
                 <div>
-                  Recuerda, si eres&nbsp;
-                  <span className="sub">Persona Física</span>
-                  &nbsp;te recomendamos antes de iniciar tu proceso,
-                  vayas a una Sucursal Bancoppel y apertura tu Cuenta Cheque para que te podamos desembolsar
-                  cuando te aprobemos tu crédito.
+                  Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos antes de
+                  iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para que te podamos
+                  desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
                 </div>
               </div>
             </TabItem>
@@ -207,9 +205,34 @@ export const Requisitos = () => {
             </TabItem>
           </Tab>
         </div>
-        <div className={`d-flex mb-5 col-auto body2 ${styles.note}`}>
+        {/* Mobile */}
+        <div className={`d-block d-md-none col-11 card-simple-white ${styles['mobile-requirements']}`}>
+          <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+            <ul className={styles['requirement-list']}>
+              {documentosSolicitante.map(({ documento, fisica }) => (
+                <li className="d-flex" key={documento}>
+                  <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
+                  <div className="col-10 px-0 body3">{documento}</div>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+          <Accordion title="Persona moral" expanded={false} type="blue">
+            <ul className={styles['requirement-list']}>
+              {documentosSolicitante.map(({ documento, moral }) => (
+                <li className="d-flex" key={documento}>
+                  <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
+                  <div className="col-10 px-0 body3">{documento}</div>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+        </div>
+        <div className={`d-flex mb-5 col-auto body2 ${styles.note} ${styles['w-490']}`}>
           <img className="pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
-          Tus datos estarán protegidos y nunca almacenaremos tu FIEL o tu CIEC.
+          <div>
+            Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+          </div>
         </div>
       </div>
       <div className="section-blue-light">
