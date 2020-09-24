@@ -1,38 +1,53 @@
-.slidecontainer {
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.slide-container {
   width: 100%;
 }
 
 .slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  background: linear-gradient(to right, #81c1ea 16%, #338cbf 33%, #225aa7 50%, #dae0e9 50%);
+  appearance: none;
   background-clip: content-box;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-}
-
-.slider:hover {
+  border-radius: 5px;
+  height: 10px;
   opacity: 1;
+  outline: none;
+  transition: opacity 0.2s;
+  width: 100%;
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
-  width: 23px;
-  height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  background: $blue-light;
+  background-image: url('/slider.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  border: 4px solid $blue-storm;
+  border-radius: 50%;
   cursor: pointer;
+  height: 32px;
+  width: 32px;
+
+  &:hover {
+    box-shadow: 0 0 0 6px rgba($blue-morning, 20%);
+  }
 }
 
 .slider::-moz-range-thumb {
-  width: 23px;
-  height: 24px;
-  border: 0;
-  background: url('contrasticon.png');
+  appearance: none;
+  background: $blue-light;
+  background-image: url('/slider.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  border: 4px solid $blue-storm;
+  border-radius: 50%;
   cursor: pointer;
+  height: 32px;
+  width: 32px;
+
+  &:hover {
+    box-shadow: 0 0 0 6px rgba($blue-morning, 20%);
+  }
 }
