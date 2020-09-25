@@ -271,7 +271,7 @@ export const Requisitos = () => {
       <div className="row mx-0">
         <div className="col-md-12 col-lg-6 p-5 section-blue-light">
           <div className={`mx-auto mb-3 ${styles.title}`}>
-            <h2 className="text-secondary text-center">
+            <h2 className="text-primary text-center">
               ¿No resolvimos
               <br />
               <span>tu duda?</span>
