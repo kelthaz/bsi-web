@@ -3,10 +3,12 @@ import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
 import { Section } from '../../components/shared/section/Section';
-import Title from '../../components/shared/titles/title/Title';
-import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
+import Title from '../../components/shared/titles/title/Title';
+import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+
+const Check = () => (<img src="/check.svg" alt="Check" />);
 
 export const Requisitos = () => {
   const accordionItems = [
@@ -79,6 +81,34 @@ export const Requisitos = () => {
     </div>
   );
 
+  const documentosSolicitante = [
+    { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
+    { documento: 'RFC con el que facturas', fisica: true, moral: true },
+    { documento: 'CURP', fisica: true, moral: true },
+    { documento: 'FIEL (e.firma) y CIEC', fisica: true, moral: true },
+    { documento: 'Un obligado solidario', fisica: true, moral: true },
+    { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
+    { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
+    { documento: 'Poderes notariales', fisica: false, moral: true },
+    { documento: 'Escrituras con reformas', fisica: false, moral: true },
+    { documento: 'Comprobante de domicilio', fisica: true, moral: true },
+    { documento: 'INE', fisica: true, moral: true },
+  ];
+
+  const documentosObligado = [
+    { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
+    { documento: 'RFC con el que facturas', fisica: true, moral: true },
+    { documento: 'CURP', fisica: true, moral: true },
+    { documento: 'FIEL (e.firma) y CIEC', fisica: false, moral: true },
+    { documento: 'Un obligado solidario', fisica: false, moral: false },
+    { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
+    { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
+    { documento: 'Poderes notariales', fisica: false, moral: true },
+    { documento: 'Escrituras con reformas', fisica: false, moral: true },
+    { documento: 'Comprobante de domicilio', fisica: true, moral: true },
+    { documento: 'INE', fisica: true, moral: true },
+  ];
+
   return (
     <>
       <Banner
@@ -94,37 +124,115 @@ export const Requisitos = () => {
             <span>por tipo de persona</span>
           </h2>
         </div>
-        <div className={`mx-auto ${styles['section-1']}`}>
+        <div className={`mx-auto mb-5 pb-5 ${styles['section-1']}`}>
           <p className="body2 text-white text-center">
             Estos documentos aplican tanto para ti, como para la persona que vayas a designar como tu Obligado
             Solidario, dependiendo el tipo de persona.
           </p>
           <p className="body2 text-white text-center">
-            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
-            tu Obligado Solidario.
+            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
+            residir tu Obligado Solidario.
           </p>
-          <button type="button" className="btn-link text-white mx-auto">
-            Conoce las zonas aquí
-          </button>
+          <button type="button" className="btn-link text-white mx-auto">Conoce las zonas aquí</button>
         </div>
       </Section>
-      <div className="container">
-        <div className="row">
+      <div className="row mx-0 justify-content-center">
+        <div className={`d-none d-md-block col-9 p-5 card-simple-white ${styles.table}`}>
           <Tab>
             <TabItem tab="Requisitos solicitante" keyTab="1">
-              <h2>requisitos solicitante</h2>
+              <div className="px-4 pt-4">
+                <table>
+                  <thead>
+                    <tr>
+                      <th width="50%"><h4 className="text-primary">Documentos para cargar</h4></th>
+                      <th className="text-center" width="20%">
+                        <img src="/requisitos/PFAE.svg" alt="PFAE" />
+                        <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                      </th>
+                      <th className="text-center" width="20%">
+                        <img src="/requisitos/PM.svg" alt="PM" />
+                        <h4 className="text-primary">Personal moral</h4>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {documentosSolicitante.map(({ documento, fisica, moral }) => (
+                      <tr key={documento}>
+                        <td className="body2">{documento}</td>
+                        <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
+                        <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className={`d-flex mb-5 mt-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
+                <img className="pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
+                <div>
+                  Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos antes de
+                  iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para que te podamos
+                  desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
+                </div>
+              </div>
             </TabItem>
             <TabItem tab="Requisitos obligado solidario" keyTab="2">
-              <h2>requisito obligado</h2>
+              <div className="px-4 pt-4">
+                <table>
+                  <thead>
+                    <tr>
+                      <th width="50%"><h4 className="text-primary">Documentos para cargar</h4></th>
+                      <th className="text-center" width="20%">
+                        <img src="/requisitos/PFAE.svg" alt="PFAE" />
+                        <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                      </th>
+                      <th className="text-center" width="20%">
+                        <img src="/requisitos/PM.svg" alt="PM" />
+                        <h4 className="text-primary">Personal moral</h4>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {documentosObligado.map(({ documento, fisica, moral }) => (
+                      <tr key={documento}>
+                        <td className="body2">{documento}</td>
+                        <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
+                        <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </TabItem>
           </Tab>
         </div>
-      </div>
-
-      <div className="row mx-0 justify-content-center">
-        <div className="col-12 card-simple-white"></div>
-        <div className={`col-auto body2 ${styles['security-note']}`}>
-          Tus datos estarán protegidos y nunca almacenaremos tu FIEL o tu CIEC.
+        {/* Mobile */}
+        <div className={`d-block d-md-none col-11 card-simple-white ${styles['mobile-requirements']}`}>
+          <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+            <ul className={styles['requirement-list']}>
+              {documentosSolicitante.map(({ documento, fisica }) => (
+                <li className="d-flex" key={documento}>
+                  <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
+                  <div className="col-10 px-0 body3">{documento}</div>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+          <Accordion title="Persona moral" expanded={false} type="blue">
+            <ul className={styles['requirement-list']}>
+              {documentosSolicitante.map(({ documento, moral }) => (
+                <li className="d-flex" key={documento}>
+                  <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
+                  <div className="col-10 px-0 body3">{documento}</div>
+                </li>
+              ))}
+            </ul>
+          </Accordion>
+        </div>
+        <div className={`d-flex mb-5 col-auto body2 ${styles.note} ${styles['w-490']}`}>
+          <img className="pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
+          <div>
+            Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+          </div>
         </div>
       </div>
       <div className="section-blue-light">
@@ -169,9 +277,7 @@ export const Requisitos = () => {
               <span>tu duda?</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-secondary mx-auto">
-            Quiero que me contacten
-          </button>
+          <button type="button" className="btn-link text-secondary mx-auto">Quiero que me contacten</button>
         </div>
         <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
           <div className={`mx-auto mb-3 ${styles.title}`}>
@@ -181,9 +287,7 @@ export const Requisitos = () => {
               <span>gran salto</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-white mx-auto">
-            Solicitar mi crédito
-          </button>
+          <button type="button" className="btn-link text-white mx-auto">Solicitar mi crédito</button>
         </div>
       </div>
     </>
