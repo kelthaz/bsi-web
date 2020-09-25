@@ -1,6 +1,7 @@
 import Banner from '../../components/shared/banners/banner/Banner';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import styles from './inicio.module.scss';
+import { Svgtest } from '../../components/svgs/Svgtest';
 
 const Home = () => {
   const bannerTextBlock = (

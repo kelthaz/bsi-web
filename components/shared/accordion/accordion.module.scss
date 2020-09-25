@@ -55,6 +55,10 @@
   &::after {
     color: $blue-storm;
     content: '\002b';
+    font-size: 28px;
+    left: 10px;
+    line-height: 0;
+    position: relative;
     text-align: center;
     transform: rotate(90deg);
     transition: transform 0.3s linear;

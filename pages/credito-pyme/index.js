@@ -75,7 +75,7 @@ const CreditoPyme = () => {
       <Banner backgroundImage="/credito-pyme/banner.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
       <article>
         <section className="section-blue-storm">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TitleSection inverted orden="01" linea1="Datos" linea2="personales" />
@@ -97,7 +97,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-white">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
                 <div className={styles['container-svg']}>
@@ -125,7 +125,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-blue-night">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TitleSection inverted orden="03" linea1="conoce" linea2="tu oferta" />
@@ -143,7 +143,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-white">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
                 <div className={styles['container-svg']}>
@@ -168,7 +168,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-blue-storm-grad">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className={`row p-lg-5 p-md-4 p-sm-2 p-xs-2 ${styles['container-title']}`}>
               <h2>¿Y DESPUÉS?</h2>
               <p>
@@ -208,7 +208,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-white">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
               <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12">
                 <div className={styles['title-line-left']}>
@@ -239,7 +239,7 @@ const CreditoPyme = () => {
           </div>
         </section>
         <section className="section-blue-light">
-          <div className="container">
+          <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
             <div className={`row p-lg-5 p-md-4 p-sm-2 p-xs-2 ${styles['container-final-section']}`}>
               <h2>
                 <span>DA EL SIGUIENTE</span>

@@ -64,14 +64,16 @@ const AvisoPrivacidad = (props) => {
         </div>
         <div className="row justify-content-center mx-0">
           <div className={`col-auto text-center body1 ${styles['aviso-privacidad-fechas']}`}>
-            <div>
-              {'Fecha de publicación: '}
+            <h4>
+              <span>Fecha de publicación: </span>
+              <br className="only-xs" />
               <span>{fechaPublicacion}</span>
-            </div>
-            <div>
-              {'Fecha de entrada en vigor: '}
+            </h4>
+            <h4>
+              <span>Fecha de publicación: </span>
+              <br className="only-xs" />
               <span>{fechaEntradaVigor}</span>
-            </div>
+            </h4>
           </div>
         </div>
       </SimpleBanner>
@@ -85,7 +87,7 @@ const AvisoPrivacidad = (props) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const postsDirectory = path.join(process.cwd(), 'data/aviso-privacidad/aviso-privacidad-data.json');
   const posts = JSON.parse(fs.readFileSync(postsDirectory, 'utf8'));
   return {
@@ -93,6 +95,6 @@ export async function getStaticProps() {
       ...posts,
     },
   };
-}
+};
 
 export default AvisoPrivacidad;

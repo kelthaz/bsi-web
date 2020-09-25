@@ -79,6 +79,9 @@ $breakpoints: (
   'lg': (
     max-width: 1023px,
   ),
+  'lg+': (
+    min-width: 1024px,
+  ),
 ) !default;
 
 @mixin media($breakpoint) {
