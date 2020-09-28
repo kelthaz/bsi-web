@@ -167,14 +167,15 @@
   }
 }
 
-// TODO:acomodar
 %config-hipervinculos {
   a {
     color: $gray;
     text-decoration: none;
 
-    &:hover {
-      color: $blue-sky;
+    @include media('lg+') {
+      &:hover {
+        color: $blue-sky;
+      }
     }
   }
 }
@@ -274,10 +275,6 @@
         font-family: $futura-heavy;
         font-size: 14px;
         text-decoration: none;
-
-        &:hover {
-          color: $yellow-summer;
-        }
       }
     }
   }
@@ -291,6 +288,12 @@
 .option-selected {
   a {
     color: $blue-morning !important;
+  }
+}
+
+.page-selected {
+  a {
+    color: $blue-sky !important;
   }
 }
 

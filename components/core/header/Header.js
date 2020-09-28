@@ -37,6 +37,7 @@ const Header = () => {
 
   const handlePage = (target) => {
     setPageSelect(target);
+    setMenuOpen(false);
   };
 
   return (
@@ -63,7 +64,7 @@ const Header = () => {
         <nav className={styles['header-bottom']}>
           <ul>
             {pages.map(({ label, link }) => (
-              <li key={label} className={pageSelect === link ? styles['option-selected'] : ''}>
+              <li key={label} className={pageSelect === link ? styles['page-selected'] : ''}>
                 <Link href={link}>
                   <a>{label}</a>
                 </Link>
@@ -94,9 +95,14 @@ const Header = () => {
             </ul>
             <ul>
               {pages.map(({ label, link }) => (
-                <li key={label} className={pageSelect === link ? styles['option-selected'] : ''}>
+                <li key={label}>
                   <Link href={link} onClick={handlePage}>
-                    <a onClick={() => handlePage(link)}>{label}</a>
+                    <a
+                      className={pageSelect === link ? styles['option-selected-yellow'] : ''}
+                      onClick={() => handlePage(link)}
+                    >
+                      {label}
+                    </a>
                   </Link>
                 </li>
               ))}

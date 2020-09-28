@@ -9,6 +9,7 @@ const App = ({ Component, pageProps }) => (
   <>
     <Head>
       <title>BanCoppel | Pymes</title>
+      <meta name="format-detection" content="telephone=no" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
 

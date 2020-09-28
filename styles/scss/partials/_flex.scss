@@ -25,3 +25,18 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+
+.only-xs {
+  @include media('lg') {
+    display: none;
+  }
+  @include media('md') {
+    display: none;
+  }
+  @include media('sm') {
+    display: block;
+  }
+  @include media('xs') {
+    display: block;
+  }
+}

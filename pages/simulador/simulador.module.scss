@@ -14,6 +14,10 @@
   color: $blue-morning;
 }
 
+.value-side {
+  font-size: 25px !important;
+}
+
 .chunk-box {
   background: $white;
   border-radius: 25px 25px 0 0;
@@ -44,6 +48,11 @@
   text-align: center;
 }
 
+.title-value-simulator {
+  color: $gray;
+  font-size: 25px !important;
+}
+
 .title-info {
   color: $blue-storm;
   margin-bottom: 25px;
@@ -53,6 +62,11 @@
 .title-input {
   color: $blue-storm;
   font-size: 18px !important;
+}
+
+.last-title {
+  color: $blue-storm;
+  font-size: 28px !important;
 }
 
 .input-text {
@@ -66,8 +80,14 @@
 }
 
 .container-flex {
-  align-items: center;
+  align-items: left;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+@media screen and (max-width: 400px) {
+  .resume-text {
+    border: 0;
+  }
 }

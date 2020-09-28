@@ -19,12 +19,14 @@
 .aviso-privacidad-fechas {
   margin-bottom: 150px;
 
-  div {
-    color: $blue-morning;
-  }
+  h4 {
+    span:first-child {
+      color: $blue-morning;
+    }
 
-  span {
-    color: $white;
+    span:last-child {
+      color: $white;
+    }
   }
 }
 
