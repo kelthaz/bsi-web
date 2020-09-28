@@ -15,24 +15,39 @@
   }
 }
 
-.select-selected {
-  @include body-2;
-  background-color: transparent;
+.select-white {
+  border: 0;
+  border-bottom: 1.5px solid $blue-morning;
+  color: $white;
+  &::after {
+    background-image: url('/chevron.svg');
+  }
+}
+
+.select-gray {
   border: 0;
   border-bottom: 1.5px solid $blue-sky;
   color: $gray-dark;
+  &::after {
+    background-image: url('/chevron-blue.svg');
+  }
+}
+
+.select-selected {
+  @include body-2;
+  background-color: transparent;
+
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 12px;
   text-align: left;
   user-select: none;
   width: 100%;
 
   &:focus {
-    outline: none;
+    outline: 0;
   }
 
   &::after {
-    background-image: url('/chevron-blue.svg');
     background-position: 100% center;
     background-repeat: no-repeat;
     background-size: 21px 21px;
@@ -61,6 +76,7 @@
   z-index: 99;
 
   ul {
+    background-color: $white;
     margin: 0;
     padding: 0;
   }
@@ -80,13 +96,21 @@
   &:hover {
     background-color: $blue-light;
   }
+
+  &:focus {
+    background-color: $blue-light;
+    outline: none;
+  }
 }
 
 /*hide the items when the select box is closed:*/
 .select-hide {
+  border: 0;
   max-height: 0;
   overflow: hidden;
+
   transition: max-height 0.5s ease-out;
+  transition: border 0.5s;
 }
 
 .item-selected {

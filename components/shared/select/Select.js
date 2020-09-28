@@ -4,7 +4,8 @@ import styles from './select.module.scss';
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { items, setItem, item } = props;
+  const { items, setItem, item, titleColor = 'color-gray-dark' } = props;
+
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -17,7 +18,9 @@ const Select = (props) => {
     <div className={styles['custom-select']}>
       <button
         type="button"
-        className={`${styles['select-selected']} ${toggle ? styles['select-arrow-active'] : ''}`}
+        className={` ${styles['select-selected']} ${toggle ? styles['select-arrow-active'] : ''} ${
+          titleColor === 'color-gray-dark' ? styles['select-gray'] : styles['select-white']
+        }`}
         onClick={handleToggle}
       >
         {item}
@@ -43,6 +46,7 @@ Select.propTypes = {
   items: PropTypes.array.isRequired,
   setItem: PropTypes.func.isRequired,
   item: PropTypes.any.isRequired,
+  titleColor: PropTypes.string,
 };
 
 export default Select;

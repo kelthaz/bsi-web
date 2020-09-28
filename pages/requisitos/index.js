@@ -8,7 +8,7 @@ import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 
-const Check = () => (<img src="/check.svg" alt="Check" />);
+const Check = () => <img src="/check.svg" alt="Check" />;
 
 export const Requisitos = () => {
   const accordionItems = [
@@ -85,7 +85,7 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'FIEL (e.firma) y CIEC', fisica: true, moral: true },
+    { documento: 'E-firma y CIEC', fisica: true, moral: true },
     { documento: 'Un obligado solidario', fisica: true, moral: true },
     { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
@@ -99,7 +99,7 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'FIEL (e.firma) y CIEC', fisica: false, moral: true },
+    { documento: 'E-firma y CIEC', fisica: false, moral: true },
     { documento: 'Un obligado solidario', fisica: false, moral: false },
     { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
@@ -130,10 +130,12 @@ export const Requisitos = () => {
             Solidario, dependiendo el tipo de persona.
           </p>
           <p className="body2 text-white text-center">
-            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
-            residir tu Obligado Solidario.
+            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
+            tu Obligado Solidario.
           </p>
-          <button type="button" className="btn-link text-white mx-auto">Conoce las zonas aquí</button>
+          <button type="button" className="btn-link text-white mx-auto">
+            Conoce las zonas aquí
+          </button>
         </div>
       </Section>
       <div className="row mx-0 justify-content-center">
@@ -144,7 +146,9 @@ export const Requisitos = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th width="50%"><h4 className="text-primary">Documentos para cargar</h4></th>
+                      <th width="50%">
+                        <h4 className="text-primary">Documentos para cargar</h4>
+                      </th>
                       <th className="text-center" width="20%">
                         <img src="/requisitos/PFAE.svg" alt="PFAE" />
                         <h4 className="text-primary">Persona física con actividad empresarial</h4>
@@ -169,9 +173,9 @@ export const Requisitos = () => {
               <div className={`d-flex mb-5 mt-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
                 <img className="pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
                 <div>
-                  Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos antes de
-                  iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para que te podamos
-                  desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
+                  Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos
+                  antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para
+                  que te podamos desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
                 </div>
               </div>
             </TabItem>
@@ -180,7 +184,9 @@ export const Requisitos = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th width="50%"><h4 className="text-primary">Documentos para cargar</h4></th>
+                      <th width="50%">
+                        <h4 className="text-primary">Documentos para cargar</h4>
+                      </th>
                       <th className="text-center" width="20%">
                         <img src="/requisitos/PFAE.svg" alt="PFAE" />
                         <h4 className="text-primary">Persona física con actividad empresarial</h4>
@@ -277,7 +283,9 @@ export const Requisitos = () => {
               <span>tu duda?</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-secondary mx-auto">Quiero que me contacten</button>
+          <button type="button" className="btn-link text-secondary mx-auto">
+            Quiero que me contacten
+          </button>
         </div>
         <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
           <div className={`mx-auto mb-3 ${styles.title}`}>
@@ -287,7 +295,9 @@ export const Requisitos = () => {
               <span>gran salto</span>
             </h2>
           </div>
-          <button type="button" className="btn-link text-white mx-auto">Solicitar mi crédito</button>
+          <button type="button" className="btn-link text-white mx-auto">
+            Solicitar mi crédito
+          </button>
         </div>
       </div>
     </>
