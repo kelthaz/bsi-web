@@ -1,4 +1,4 @@
-/* eslint-disable react/no-danger */
+import Link from 'next/link';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
@@ -21,7 +21,12 @@ const CreditoPyme = () => {
     },
     {
       title: 'Tasas',
-      content: 'Conoce más detalles sobre nuestras tasas <a href="#">aquí</a>.',
+      content: (
+        <div>
+          Conoce más detalles sobre nuestras tasas
+          <a href="/"> aquí</a>
+        </div>
+      ),
     },
     {
       title: 'CAT',
@@ -112,7 +117,7 @@ const CreditoPyme = () => {
                     de dónde está ubicado, cuántos empleados tienes, etc.
                   </p>
                   <p>
-                    Aquí te solicitaremos tu FIEL y tu CIEC (dependiendo qué tipo de persona seas) y designarás a tu
+                    Aquí te solicitaremos tu e-firma y tu CIEC (dependiendo qué tipo de persona seas) y designarás a tu
                     Obligado Solidario.
                   </p>
                   <p>Conoce todos los requisitos por tipo de persona.</p>
@@ -229,7 +234,7 @@ const CreditoPyme = () => {
                   {accordionItems.map(({ title, content }) => (
                     <Accordion key={title} type="blue" title={title} expanded={false}>
                       <div>
-                        <p dangerouslySetInnerHTML={{ __html: content }} />
+                        <p>{content}</p>
                       </div>
                     </Accordion>
                   ))}
@@ -246,9 +251,11 @@ const CreditoPyme = () => {
                 <br />
                 <span>GRAN SALTO</span>
               </h2>
-              <button type="button" className="btn-link-blue-sky">
-                Solicitar mi crédito
-              </button>
+              <Link href="simulador">
+                <button type="button" className="btn-link-blue-sky">
+                  Solicitar mi crédito
+                </button>
+              </Link>
             </div>
           </div>
         </section>

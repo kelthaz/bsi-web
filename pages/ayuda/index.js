@@ -4,8 +4,11 @@ import TextField from '../../components/shared/text-field/TextField';
 import Title from '../../components/shared/titles/title/Title';
 import Accordion from '../../components/shared/accordion/Accordion';
 import styles from './ayuda.module.scss';
+import Select from '../../components/shared/select/Select';
 
 const Ayuda = () => {
+  const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
+  const [item, setItem] = useState('Estado');
   const [option, setOption] = useState(1);
 
   const handleOption = (opt) => {
@@ -65,14 +68,17 @@ const Ayuda = () => {
             </h4>
           </div>
           <div className="row justify-content-center mt-5 mx-0">
-            <div className="col-sm-12 col-md-4">
+            <div className="col-sm-12 col-md-6">
               <TextField capitalize label="Nombre" />
             </div>
-            <div className="col-sm-12 col-md-4">
+            <div className="col-sm-12 col-md-6">
               <TextField label="Correo electrónico" />
             </div>
-            <div className="col-sm-12 col-md-4">
+            <div className="col-sm-12 col-md-6">
               <TextField label="Número de teléfono" />
+            </div>
+            <div className="col-sm-12 col-md-6">
+              <Select item={item} setItem={setItem} items={items} titleColor="" />
             </div>
           </div>
           <div className="row justify-content-center mx-0">

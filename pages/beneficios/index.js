@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Banner from '../../components/shared/banners/banner/Banner';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
@@ -163,9 +164,11 @@ const Beneficios = () => {
               <h2 className="text-secondary">gran salto</h2>
             </div>
             <div className="d-flex justify-content-center pt-4">
-              <button className={`btn-link ${styles.button}`} type="button">
-                Solicitar mi crédito
-              </button>
+              <Link href="simulador">
+                <button className={`btn-link ${styles.button}`} type="button">
+                  Solicitar mi crédito
+                </button>
+              </Link>
             </div>
           </div>
         </Section>
