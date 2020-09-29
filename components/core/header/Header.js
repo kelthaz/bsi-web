@@ -91,7 +91,7 @@ const Header = () => {
             <ul>
               {menuOptions.map(({ label, link }) => (
                 <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
-                  <a target="_blank" rel="noreferrer" href={link} onClick={setMenuOpen(false)}>
+                  <a target="_blank" rel="noreferrer" href={link} onClick={() => setMenuOpen(false)}>
                     {label}
                   </a>
                 </li>
@@ -100,8 +100,14 @@ const Header = () => {
             <ul>
               {pages.map(({ label, link }) => (
                 <li key={label}>
-                  <Link href={link} onClick={() => handlePage(link)}>
-                    <a className={pageSelect === link ? styles['option-selected-yellow'] : ''}>{label}</a>
+                  <Link href={link}>
+                    <button
+                      type="button"
+                      className={pageSelect === link ? styles['option-selected-yellow'] : ''}
+                      onClick={() => handlePage(link)}
+                    >
+                      {label}
+                    </button>
                   </Link>
                 </li>
               ))}
