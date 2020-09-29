@@ -7,6 +7,7 @@ import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 import Modal from '../../components/shared/modal/Modal';
 
 const Check = () => <img src="/check.svg" alt="Check" />;
@@ -87,7 +88,7 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'E-firma y CIEC', fisica: true, moral: true },
+    { documento: 'e-firma y CIEC', fisica: true, moral: true },
     { documento: 'Un obligado solidario', fisica: true, moral: true },
     { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
@@ -101,7 +102,7 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'E-firma y CIEC', fisica: false, moral: true },
+    { documento: 'e.firma y CIEC', fisica: false, moral: true },
     { documento: 'Un obligado solidario', fisica: false, moral: false },
     { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
@@ -146,7 +147,7 @@ export const Requisitos = () => {
           </button>
         </div>
       </Section>
-      <div className="row mx-0 justify-content-center">
+      <div className="row mx-0 justify-content-center d-flex flex-row">
         <div className={`d-none d-md-block col-9 p-5 card-simple-white ${styles.table}`}>
           <Tab>
             <TabItem tab="Requisitos solicitante" keyTab="1">
@@ -242,16 +243,18 @@ export const Requisitos = () => {
             </ul>
           </Accordion>
         </div>
-        <div className={`d-flex mb-5 col-auto body2 ${styles.note} ${styles['w-490']}`}>
-          <img className="pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
-          <div>
-            Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+        <div className="mb-5 col-12 body2">
+          <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
+            <img className="pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
+            <div>
+              Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+            </div>
           </div>
         </div>
       </div>
-      <div className="section-blue-light">
+      <div className="section-blue-light pb-5">
         <Title linea1="Para tu información" />
-        <div className="body2 text-center">Consulta nuestros videos para conocer más sobre los requisitos.</div>
+        <VideoSelector />
       </div>
       <article>
         <section className="section-white">
@@ -285,7 +288,7 @@ export const Requisitos = () => {
       <div className="row mx-0">
         <div className="col-md-12 col-lg-6 p-5 section-blue-light">
           <div className={`mx-auto mb-3 ${styles.title}`}>
-            <h2 className="text-secondary text-center">
+            <h2 className="text-primary text-center">
               ¿No resolvimos
               <br />
               <span>tu duda?</span>
