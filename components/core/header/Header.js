@@ -13,7 +13,13 @@ const Header = () => {
     { label: 'Beneficios', link: 'beneficios' },
     { label: 'Ayuda', link: 'ayuda' },
   ];
-  const menuOptions = ['Cuenta Eje', 'EmpresaNet', 'Nómina BanCoppel', 'BanCoppel Pyme'];
+
+  const menuOptions = [
+    { label: 'Cuenta Eje', link: 'https://www.bancoppel.com/cuenta_eje/empresarial.html' },
+    { label: 'EmpresaNet', link: 'https://www.bancoppel.com/empresas/index.html' },
+    { label: 'Nómina BanCoppel', link: 'https://www.bancoppel.com/nomina_empresas/nomina.html' },
+    { label: 'BanCoppel Pyme', link: '#' },
+  ];
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
@@ -23,16 +29,12 @@ const Header = () => {
     setPageSelect(pathname.slice(1));
   }, [pathname]);
 
-  const { category, option } = menuSelect;
+  const { category } = menuSelect;
 
   const handleMenu = () => setMenuOpen(!menuOpen);
 
   const handleCategory = ({ target }) => {
     setMenuSelect({ ...menuSelect, category: target.innerHTML });
-  };
-
-  const handleOption = ({ target }) => {
-    setMenuSelect({ ...menuSelect, option: target.innerHTML });
   };
 
   const handlePage = (target) => {
@@ -87,22 +89,25 @@ const Header = () => {
           </div>
           <div className={`${styles['items-menu']} ${menuOpen ? styles['menu-active'] : ''}`}>
             <ul>
-              {menuOptions.map((opt) => (
-                <li key={opt} className={option === opt ? styles['option-selected'] : ''}>
-                  <a onClick={handleOption}>{opt}</a>
+              {menuOptions.map(({ label, link }) => (
+                <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                  <a target="_blank" rel="noreferrer" href={link} onClick={() => setMenuOpen(false)}>
+                    {label}
+                  </a>
                 </li>
               ))}
             </ul>
             <ul>
               {pages.map(({ label, link }) => (
                 <li key={label}>
-                  <Link href={link} onClick={handlePage}>
-                    <a
+                  <Link href={link}>
+                    <button
+                      type="button"
                       className={pageSelect === link ? styles['option-selected-yellow'] : ''}
                       onClick={() => handlePage(link)}
                     >
                       {label}
-                    </a>
+                    </button>
                   </Link>
                 </li>
               ))}
