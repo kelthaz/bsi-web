@@ -25,7 +25,7 @@
   height: 30px;
   left: 0;
   position: absolute;
-  top: -53px;
+  top: -37px;
   width: 100%;
 }
 
@@ -43,7 +43,7 @@
 
 .title-top {
   color: $blue-storm;
-  font-size: 25px !important;
+  font-size: 24px !important;
   margin-top: 25px;
   text-align: center;
 }
@@ -61,12 +61,12 @@
 
 .title-input {
   color: $blue-storm;
-  font-size: 18px !important;
+  font-size: 17px !important;
 }
 
 .last-title {
   color: $blue-storm;
-  font-size: 28px !important;
+  font-size: 20px !important;
 }
 
 .input-text {
@@ -86,8 +86,14 @@
   justify-content: space-around;
 }
 
+.sub-title {
+  font-size: 17px;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 400px) {
   .resume-text {
     border: 0;
+    border-bottom: 3px solid $blue-sky;
   }
 }
