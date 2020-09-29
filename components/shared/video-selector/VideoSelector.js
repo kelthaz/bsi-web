@@ -25,26 +25,28 @@ const VideoSelector = () => {
             Un obligado solidario es requisito para tu proceso y ayuda a que tu crédito sea entregado con
             mayor facilidad, pero no siempre es sencillo designar uno.
           </p>
-          <div className={`${styles.circle} ${toggle ? styles['circle-blue'] : ''}`} role="button" tabIndex={0} onClick={handleToggle}>
-            <span>{toggle ? 'x' : '+'}</span>
+          <div
+            className={`${styles.circle} ${toggle ? styles['circle-blue'] : ''}`}
+            aria-label="Toggle video selector"
+            role="button"
+            tabIndex={0}
+            onClick={handleToggle}
+          />
+        </div>
+        <div className={`col-12 mt-4 d-flex ${styles['scrollable-carrousel']} ${toggle ? styles['scrollable-carrousel-active']: ''}`}>
+          <div className={styles['thumbnail-img']} data-description="¿Cómo escanear tus documentos con una app?">
+            <img src="/requisitos/play-button.svg" alt="Play video" />
+          </div>
+          <div className={styles['thumbnail-img']} data-description="¿Cómo escanear tus documentos con una app?">
+            <img src="/requisitos/play-button.svg" alt="Play video" />
+          </div>
+          <div className={styles['thumbnail-img']} data-description="¿Cómo escanear tus documentos con una app?">
+            <img src="/requisitos/play-button.svg" alt="Play video" />
+          </div>
+          <div className={styles['thumbnail-img']} data-description="¿Cómo escanear tus documentos con una app?">
+            <img src="/requisitos/play-button.svg" alt="Play video" />
           </div>
         </div>
-        { toggle && (
-          <div className="col-12 mt-4 d-flex">
-            <div className={styles['thumbnail-img']}>
-              <img src="/requisitos/thumbnail-carrousel.png" alt="Thumbnail" />
-            </div>
-            <div className={styles['thumbnail-img']}>
-              <img src="/requisitos/thumbnail-carrousel.png" alt="Thumbnail" />
-            </div>
-            <div className={styles['thumbnail-img']}>
-              <img src="/requisitos/thumbnail-carrousel.png" alt="Thumbnail" />
-            </div>
-            <div className={styles['thumbnail-img']}>
-              <img src="/requisitos/thumbnail-carrousel.png" alt="Thumbnail" />
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -54,20 +54,37 @@
   font-size: 25px;
   height: 40px;
   justify-content: center;
+  outline: none;
   user-select: none;
   width: 40px;
-  outline: none;
 
   @include media('lg') {
     float: none;
     margin-left: auto;
     margin-right: auto;
   }
+
+  &::after {
+    content: '\002b';
+    font-size: 28px;
+    left: 2px;
+    line-height: 0;
+    position: relative;
+    text-align: center;
+    transform: rotate(90deg);
+    transition: transform 0.3s linear;
+  }
 }
 
 .circle-blue {
   border: 2px solid $blue-storm;
   color: $blue-storm;
+
+  &::after {
+    top: -1px;
+    transform: rotate(45deg);
+    transition: transform 0.3s linear;
+  }
 }
 
 .text-blue-morning {
@@ -80,12 +97,47 @@
 
 .card-shadow {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: height 2s;
 }
 
 .thumbnail-img {
-  // background-color: rgba(34, 90, 167, 0.5);
+  background-image: linear-gradient(rgba($blue-storm, 50%), rgba($blue-storm, 50%)),
+    url('/requisitos/thumbnail-carrousel.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  height: 89px;
+  margin: 0 10px;
+  width: 161px;
+
+  &:hover {
+    // opacity: 50%;
+
+    &::after {
+      color: $blue-light;
+      content: attr(data-description);
+      font-family: $lato-bold;
+    }
+  }
 
   img {
-    border-radius: 4px;
+    left: 45%;
+    opacity: 80%;
+    position: relative;
+    top: 35%;
+    width: 22px;
+    z-index: 1;
   }
+}
+
+.scrollable-carrousel {
+  max-height: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.scrollable-carrousel-active {
+  max-height: 100vh;
+  transition: max-height 0.3s ease-in;
 }
