@@ -19,6 +19,7 @@
   border: 0;
   border-bottom: 1.5px solid $blue-morning;
   color: $white;
+
   &::after {
     background-image: url('/chevron.svg');
   }
@@ -28,6 +29,7 @@
   border: 0;
   border-bottom: 1.5px solid $blue-sky;
   color: $gray-dark;
+
   &::after {
     background-image: url('/chevron-blue.svg');
   }

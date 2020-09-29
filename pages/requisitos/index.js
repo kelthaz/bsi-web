@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
@@ -7,10 +7,12 @@ import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
 import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
+import Modal from '../../components/shared/modal/Modal';
 
 const Check = () => <img src="/check.svg" alt="Check" />;
 
 export const Requisitos = () => {
+  const [openModal, setOpenModal] = useState(false);
   const accordionItems = [
     {
       title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
@@ -111,6 +113,12 @@ export const Requisitos = () => {
 
   return (
     <>
+      <Modal openModal={openModal} setOpenModal={setOpenModal}>
+        <div style={{ width: '100px' }}>
+          <h4>fidelidad</h4>
+          <h4>modal</h4>
+        </div>
+      </Modal>
       <Banner
         backgroundImage="/requisitos/banner.png"
         textBlock={requistosBannerTextBlock}
@@ -133,7 +141,7 @@ export const Requisitos = () => {
             Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
             tu Obligado Solidario.
           </p>
-          <button type="button" className="btn-link text-white mx-auto">
+          <button type="button" className="btn-link text-white mx-auto" onClick={() => setOpenModal(true)}>
             Conoce las zonas aquí
           </button>
         </div>
