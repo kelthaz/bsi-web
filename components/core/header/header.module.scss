@@ -279,12 +279,21 @@
       text-align: left;
     }
 
-    a {
+    button {
+      background-color: transparent;
+      border: 0;
       color: $blue-light;
       cursor: pointer;
       font-family: $futura-heavy;
       font-size: 14px;
+      margin: 0;
+      padding: 0;
+      text-align: left;
       text-decoration: none;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
