@@ -316,7 +316,7 @@ export const Requisitos = () => {
         </div>
         {/* Mobile */}
         <div className={`d-block d-md-none col-11 card-simple-white ${styles['mobile-requirements']}`}>
-          <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+          <Accordion title="Persona física con actividad empresarial" expanded={false} color="blue" icon="arrow">
             <ul className={styles['requirement-list']}>
               {documentosSolicitante.map(({ documento, fisica }) => (
                 <li className="d-flex" key={documento}>
@@ -326,7 +326,7 @@ export const Requisitos = () => {
               ))}
             </ul>
           </Accordion>
-          <Accordion title="Persona moral" expanded={false} type="blue">
+          <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
             <ul className={styles['requirement-list']}>
               {documentosSolicitante.map(({ documento, moral }) => (
                 <li className="d-flex" key={documento}>
@@ -367,7 +367,7 @@ export const Requisitos = () => {
               <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div className="card-accordion">
                   {accordionItems.map(({ title, content }) => (
-                    <Accordion key={title} type="blue" title={title} expanded={false}>
+                    <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
                       <div>
                         <p>{content}</p>
                       </div>

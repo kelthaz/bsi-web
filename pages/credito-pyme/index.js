@@ -21,12 +21,7 @@ const CreditoPyme = () => {
     },
     {
       title: 'Tasas',
-      content: (
-        <div>
-          Conoce más detalles sobre nuestras tasas
-          <a href="/"> aquí</a>
-        </div>
-      ),
+      content: 'Conoce más detalles sobre nuestras tasas <a href="#">aquí</a>.',
     },
     {
       title: 'CAT',
@@ -232,9 +227,9 @@ const CreditoPyme = () => {
               <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div className="card-accordion">
                   {accordionItems.map(({ title, content }) => (
-                    <Accordion key={title} type="blue" title={title} expanded={false}>
+                    <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
                       <div>
-                        <p>{content}</p>
+                        <p dangerouslySetInnerHTML={{ __html: content }} />
                       </div>
                     </Accordion>
                   ))}

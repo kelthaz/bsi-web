@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './accordion.module.scss';
 
 const Accordion = (props) => {
-  const { children, expanded, title, type } = props;
+  const { children, expanded, title, color, icon } = props;
 
-  const styleAccordion = type === 'blue' ? styles['accordion-blue'] : styles['accordion-white'];
-  const styleActiveAccordion = type === 'blue' ? styles['active-blue'] : styles['active-white'];
+  const styleAccordion = styles[`accordion-${color}`];
+  const styleIcon = styles[`${icon}-icon-${color}`];
+  const styleActiveAccordion = styles[`active-${icon}`];
   const [expand, setExpand] = useState(expanded);
 
   const handleAccordeon = () => {
@@ -14,10 +15,10 @@ const Accordion = (props) => {
   };
 
   return (
-    <div className={type === 'blue' ? styles.border : ''}>
+    <div className={color === 'blue' ? styles.border : ''}>
       <button
         type="button"
-        className={`${styleAccordion} ${expand ? styleActiveAccordion : ''}`}
+        className={`${styleAccordion} ${styleIcon} ${expand ? styleActiveAccordion : ''}`}
         onClick={handleAccordeon}
       >
         {title}
@@ -31,7 +32,8 @@ Accordion.propTypes = {
   title: PropTypes.any.isRequired,
   expanded: PropTypes.bool.isRequired,
   children: PropTypes.any.isRequired,
-  type: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 export default Accordion;
