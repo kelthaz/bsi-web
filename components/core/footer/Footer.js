@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
 
         <div className={styles['second-content-accordeon']}>
-          <Accordion title="Acerca de BanCoppel" expanded={false} type="white">
+          <Accordion title="Acerca de BanCoppel" expanded={false} color="white" icon="arrow">
             <div className={styles['accordeon-ul']}>
               <ul>
                 {datos.map((data) => (
@@ -81,7 +81,7 @@ const Footer = () => {
               </ul>
             </div>
           </Accordion>
-          <Accordion title="Contacto" expanded={false} type="white">
+          <Accordion title="Contacto" expanded={false} color="white" icon="arrow">
             <div className={styles['accordeon-contact']}>
               <span>Lada sin costo: 800 1 2267735</span>
               <span>EU. y Canadá: 866 2543790</span>

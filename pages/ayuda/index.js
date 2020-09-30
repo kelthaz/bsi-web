@@ -46,7 +46,7 @@ const Ayuda = () => {
   const acc = (
     <div className={styles['container-accordion']}>
       {aboutPymeItems.map(({ title, content }) => (
-        <Accordion key={title} type="blue" title={title} expanded={false}>
+        <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
           <div>
             <p>{content}</p>
           </div>
