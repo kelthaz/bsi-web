@@ -13,6 +13,16 @@ const Check = () => <img src="/check.svg" alt="Check" />;
 
 export const Requisitos = () => {
   const [openModal, setOpenModal] = useState(false);
+
+  const zonas = [
+    { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
+    { estado: 'Chihuahua', municipios: ['Ciudad Juárez', 'Chihuahua'] },
+    {
+      estado: 'Ciudad de México',
+      municipios: ['Tlalpan', 'Venustiano carranza', 'Azcapotzalco', 'Iztacalco', 'Iztapalapa'],
+    },
+  ];
+
   const accordionItems = [
     {
       title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
@@ -114,10 +124,31 @@ export const Requisitos = () => {
   return (
     <>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <div style={{ width: '100px' }}>
-          <h4>fidelidad</h4>
-          <h4>modal</h4>
-        </div>
+        <h4 className="color-blue-storm">Zonas Crédito Pyme disponibles</h4>
+        <table className="table-horizontal-dividers-two-column">
+          <thead>
+            <tr>
+              <th>Estado</th>
+              <th>Municipio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {zonas.map(({ estado, municipios }) => (
+              <React.Fragment key={estado}>
+                <tr>
+                  <td rowSpan={municipios.length}>{estado}</td>
+                  <td>{municipios[0]}</td>
+                </tr>
+                {municipios.length > 1 &&
+                  municipios.slice(1).map((municipio) => (
+                    <tr key={municipio}>
+                      <td>{municipio}</td>
+                    </tr>
+                  ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
       </Modal>
       <Banner
         backgroundImage="/requisitos/banner.png"

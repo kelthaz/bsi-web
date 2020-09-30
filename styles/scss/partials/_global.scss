@@ -36,3 +36,19 @@ a {
     background: linear-gradient(0deg, $white 45%, $blue-storm 0%);
   }
 }
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  cursor: pointer;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($blue-shadow, 80%);
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $blue-shadow;
+    opacity: 1;
+  }
+}
