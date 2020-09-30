@@ -215,7 +215,7 @@ export const Requisitos = () => {
                       <div>
                         Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos
                         antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para
-                        que te podamos desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
+                        que te podamos desembolsar tu crédito cuando sea aprobado. <u className="sub">Conoce más</u>
                       </div>
                     </div>
                   </TabItem>
@@ -279,7 +279,7 @@ export const Requisitos = () => {
                 <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
-                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u className="sub">¿Por qué te pedimos esto?</u>
                   </div>
                 </div>
               </div>
