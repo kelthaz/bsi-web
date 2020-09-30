@@ -1,0 +1,60 @@
+@mixin config-table-horizontal-dividers($width, $height, $num-column) {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: $width;
+
+  th {
+    @include sub;
+    border-bottom: 1.5px solid $blue-sky;
+    padding: 8px;
+    width: #{100 / $num-column}vw;
+  }
+
+  td {
+    border-bottom: 1px solid $blue-shadow;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    width: #{100 / $num-column}vw;
+  }
+
+  thead {
+    tr {
+      display: block;
+    }
+  }
+
+  tbody {
+    display: block;
+    height: $height;
+    overflow: auto;
+    width: 100%;
+  }
+}
+
+.table-horizontal-dividers-two-column {
+  @include config-table-horizontal-dividers(420px, 260px, 2);
+
+  @include media('sm') {
+    @include config-table-horizontal-dividers(250px, 460px, 2);
+  }
+
+  thead {
+    th {
+      @include sub;
+      color: $gray;
+    }
+  }
+
+  tbody {
+    td:first-child {
+      @include sub;
+      color: $gray;
+    }
+
+    td:last-child {
+      @include body-2;
+      color: $gray;
+    }
+  }
+}
