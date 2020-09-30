@@ -10,6 +10,11 @@
   color: $white;
 }
 
+.title-mb {
+  padding-bottom: 40px;
+  padding-top: 100px;
+}
+
 .color-blue-morning {
   color: $blue-morning;
 }
@@ -25,8 +30,25 @@
   height: 30px;
   left: 0;
   position: absolute;
-  top: -53px;
+  top: -39px;
   width: 100%;
+  z-index: 9;
+}
+
+.mobile-box-simulator {
+  background: $blue-storm;
+  height: 100%;
+  left: -17px;
+  max-height: 220px;
+  position: absolute;
+  right: -17px;
+  top: -70px;
+}
+
+.simulator-content {
+  background: $white;
+  position: relative;
+  top: -10px;
 }
 
 .simulator-info {
@@ -43,7 +65,7 @@
 
 .title-top {
   color: $blue-storm;
-  font-size: 25px !important;
+  font-size: 24px !important;
   margin-top: 25px;
   text-align: center;
 }
@@ -61,12 +83,12 @@
 
 .title-input {
   color: $blue-storm;
-  font-size: 18px !important;
+  font-size: 17px !important;
 }
 
 .last-title {
   color: $blue-storm;
-  font-size: 28px !important;
+  font-size: 20px !important;
 }
 
 .input-text {
@@ -86,8 +108,23 @@
   justify-content: space-around;
 }
 
-@media screen and (max-width: 400px) {
+.sub-title {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 420px) {
+  .chunk-box {
+    top: -39px;
+  }
+
   .resume-text {
     border: 0;
+    border-bottom: 3px solid $blue-sky;
+  }
+
+  .title-mb {
+    padding-bottom: 20px;
+    padding-top: 50px;
   }
 }
