@@ -42,6 +42,16 @@
     left: 45%;
     top: 35%;
   }
+
+  @include media('md') {
+    left: 40%;
+    top: 25%;
+  }
+
+  @include media('sm') {
+    left: 40%;
+    top: 15%;
+  }
 }
 
 .circle {
