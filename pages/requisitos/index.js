@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
-import { Section } from '../../components/shared/section/Section';
 import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
