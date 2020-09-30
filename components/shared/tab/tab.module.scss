@@ -11,11 +11,16 @@
   background-color: transparent;
   border: 0;
   border-bottom: 1.5px solid $blue-sky;
-  color: $gray-light;
+  color: $gray;
   cursor: pointer;
   outline: none;
   padding: 14px 16px;
   transition: 0.3s;
+
+  @include media('mobile') {
+    font-size: 14px;
+    padding: 14px 0;
+  }
 
   &:hover {
     color: $blue-morning;
@@ -29,7 +34,7 @@
 
 .tab-active {
   border-bottom: 1.5px solid $yellow-summer;
-  color: $blue-morning;
+  color: $blue-storm;
 }
 
 .tab-content {

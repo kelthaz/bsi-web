@@ -102,7 +102,7 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'e.firma y CIEC', fisica: false, moral: true },
+    { documento: 'e-firma y CIEC', fisica: false, moral: true },
     { documento: 'Un obligado solidario', fisica: false, moral: false },
     { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
@@ -125,138 +125,173 @@ export const Requisitos = () => {
         textBlock={requistosBannerTextBlock}
         imageBlock={requistosBannerImageBlock}
       />
-      <Section className="section-blue-storm">
-        <div className={`mx-auto mb-4 ${styles.title}`}>
-          <h2 className="text-white text-center">
-            Documentación
-            <br />
-            <span>por tipo de persona</span>
-          </h2>
-        </div>
-        <div className={`mx-auto mb-5 pb-5 ${styles['section-1']}`}>
-          <p className="body2 text-white text-center">
-            Estos documentos aplican tanto para ti, como para la persona que vayas a designar como tu Obligado
-            Solidario, dependiendo el tipo de persona.
-          </p>
-          <p className="body2 text-white text-center">
-            Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
-            tu Obligado Solidario.
-          </p>
-          <button type="button" className="btn-link text-white mx-auto" onClick={() => setOpenModal(true)}>
-            Conoce las zonas aquí
-          </button>
-        </div>
-      </Section>
-      <div className="row mx-0 justify-content-center d-flex flex-row">
-        <div className={`d-none d-md-block col-9 p-5 card-simple-white ${styles.table}`}>
-          <Tab>
-            <TabItem tab="Requisitos solicitante" keyTab="1">
-              <div className="px-4 pt-4">
-                <table>
-                  <thead>
-                    <tr>
-                      <th width="50%">
-                        <h4 className="text-primary">Documentos para cargar</h4>
-                      </th>
-                      <th className="text-center" width="20%">
-                        <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                        <h4 className="text-primary">Persona física con actividad empresarial</h4>
-                      </th>
-                      <th className="text-center" width="20%">
-                        <img src="/requisitos/PM.svg" alt="PM" />
-                        <h4 className="text-primary">Personal moral</h4>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {documentosSolicitante.map(({ documento, fisica, moral }) => (
-                      <tr key={documento}>
-                        <td className="body2">{documento}</td>
-                        <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
-                        <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className={`d-flex mb-5 mt-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
-                <img className="pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
-                <div>
-                  Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos
-                  antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para
-                  que te podamos desembolsar tu crédito cuando sea aprobado. <u>Conoce más</u>
-                </div>
-              </div>
-            </TabItem>
-            <TabItem tab="Requisitos obligado solidario" keyTab="2">
-              <div className="px-4 pt-4">
-                <table>
-                  <thead>
-                    <tr>
-                      <th width="50%">
-                        <h4 className="text-primary">Documentos para cargar</h4>
-                      </th>
-                      <th className="text-center" width="20%">
-                        <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                        <h4 className="text-primary">Persona física con actividad empresarial</h4>
-                      </th>
-                      <th className="text-center" width="20%">
-                        <img src="/requisitos/PM.svg" alt="PM" />
-                        <h4 className="text-primary">Personal moral</h4>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {documentosObligado.map(({ documento, fisica, moral }) => (
-                      <tr key={documento}>
-                        <td className="body2">{documento}</td>
-                        <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
-                        <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </TabItem>
-          </Tab>
-        </div>
-        {/* Mobile */}
-        <div className={`d-block d-md-none col-11 card-simple-white ${styles['mobile-requirements']}`}>
-          <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
-            <ul className={styles['requirement-list']}>
-              {documentosSolicitante.map(({ documento, fisica }) => (
-                <li className="d-flex" key={documento}>
-                  <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
-                  <div className="col-10 px-0 body3">{documento}</div>
-                </li>
-              ))}
-            </ul>
-          </Accordion>
-          <Accordion title="Persona moral" expanded={false} type="blue">
-            <ul className={styles['requirement-list']}>
-              {documentosSolicitante.map(({ documento, moral }) => (
-                <li className="d-flex" key={documento}>
-                  <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
-                  <div className="col-10 px-0 body3">{documento}</div>
-                </li>
-              ))}
-            </ul>
-          </Accordion>
-        </div>
-        <div className="mb-5 col-12 body2">
-          <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
-            <img className="pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
-            <div>
-              Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u>¿Por qué te pedimos esto?</u>
+      <article>
+        {/* Encabezado documentación por tipo de persona */}
+        <section className="section-blue-storm">
+          <div className="container">
+            <div className={`pt-5 mx-auto mb-4 ${styles.title}`}>
+              <h2 className="text-white text-center">
+                Documentación
+                <br />
+                <span>por tipo de persona</span>
+              </h2>
+            </div>
+            <div className={`mx-auto ${styles['section-1']}`}>
+              <p className="body2 text-white text-center">
+                Estos documentos aplican tanto para ti, como para la persona que vayas a designar como tu Obligado
+                Solidario, dependiendo el tipo de persona.
+              </p>
+              <p className="body2 text-white text-center">
+                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
+                tu Obligado Solidario.
+              </p>
+              <button type="button" className="btn-link text-white mx-auto" onClick={() => setOpenModal(true)}>
+                Conoce las zonas aquí
+              </button>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="section-blue-light pb-5">
-        <Title linea1="Para tu información" />
-        <VideoSelector />
-      </div>
-      <article>
+        </section>
+        {/* Tabla de requisitos */}
+        <section className="section-white">
+          <div className="container">
+            <div className="row justify-content-center d-flex flex-row">
+              <div className={`col-11 p-5 card-simple-white ${styles.table}`}>
+                <Tab>
+                  <TabItem tab="Solicitante" keyTab="1">
+                    {/* Desktop */}
+                    <div className="d-none d-md-block px-4 pt-4">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th width="50%">
+                              <h4 className="text-primary">Documentos para cargar</h4>
+                            </th>
+                            <th className="text-center align-top" width="20%">
+                              <img src="/requisitos/PFAE.svg" alt="PFAE" />
+                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                            </th>
+                            <th className="text-center align-top" width="20%">
+                              <img src="/requisitos/PM.svg" alt="PM" />
+                              <h4 className="text-primary">Personal moral</h4>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {documentosSolicitante.map(({ documento, fisica, moral }) => (
+                            <tr key={documento}>
+                              <td className="body2">{documento}</td>
+                              <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
+                              <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {/* Mobile */}
+                    <div className="d-block d-md-none mx-3">
+                      <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+                        <ul className={styles['requirement-list']}>
+                          {documentosSolicitante.map(({ documento, fisica }) => (
+                            <li className="d-flex" key={documento}>
+                              <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
+                              <div className="col-10 px-0 body3">{documento}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </Accordion>
+                      <Accordion title="Persona moral" expanded={false} type="blue">
+                        <ul className={styles['requirement-list']}>
+                          {documentosSolicitante.map(({ documento, moral }) => (
+                            <li className="d-flex" key={documento}>
+                              <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
+                              <div className="col-10 px-0 body3">{documento}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </Accordion>
+                    </div>
+                    <div className={`d-flex my-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
+                      <img className="d-none d-md-block pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
+                      <div>
+                        Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos
+                        antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para
+                        que te podamos desembolsar tu crédito cuando sea aprobado. <u className="sub">Conoce más</u>
+                      </div>
+                    </div>
+                  </TabItem>
+                  <TabItem tab="Obligado solidario" keyTab="2">
+                    {/* Desktop */}
+                    <div className="d-none d-md-block px-4 pt-4">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th width="50%">
+                              <h4 className="text-primary">Documentos para cargar</h4>
+                            </th>
+                            <th className="text-center" width="20%">
+                              <img src="/requisitos/PFAE.svg" alt="PFAE" />
+                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                            </th>
+                            <th className="text-center" width="20%">
+                              <img src="/requisitos/PM.svg" alt="PM" />
+                              <h4 className="text-primary">Personal moral</h4>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {documentosObligado.map(({ documento, fisica, moral }) => (
+                            <tr key={documento}>
+                              <td className="body2">{documento}</td>
+                              <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
+                              <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {/* Mobile */}
+                    <div className="d-block d-md-none mx-3">
+                      <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+                        <ul className={styles['requirement-list']}>
+                          {documentosObligado.map(({ documento, fisica }) => (
+                            <li className="d-flex" key={documento}>
+                              <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
+                              <div className="col-10 px-0 body3">{documento}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </Accordion>
+                      <Accordion title="Persona moral" expanded={false} type="blue">
+                        <ul className={styles['requirement-list']}>
+                          {documentosObligado.map(({ documento, moral }) => (
+                            <li className="d-flex" key={documento}>
+                              <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
+                              <div className="col-10 px-0 body3">{documento}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </Accordion>
+                    </div>
+                  </TabItem>
+                </Tab>
+              </div>
+              <div className="mb-5 col-12 body2">
+                <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
+                  <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
+                  <div>
+                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u className="sub">¿Por qué te pedimos esto?</u>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Videos - para tu información */}
+        <section className="section-blue-light py-5">
+          <Title linea1="Para tu información" />
+          <VideoSelector />
+        </section>
+        {/* Acordeón - aún quedan dudas */}
         <section className="section-white">
           <div className="container">
             <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
@@ -284,33 +319,38 @@ export const Requisitos = () => {
             </div>
           </div>
         </section>
+        {/* No resolvimos tu duda - Da el siguiente gran salto */}
+        <section>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-12 col-lg-6 p-5 section-blue-light">
+                <div className={`mx-auto mb-3 ${styles.title}`}>
+                  <h2 className="text-primary text-center">
+                    ¿No resolvimos
+                    <br />
+                    <span>tu duda?</span>
+                  </h2>
+                </div>
+                <button type="button" className="btn-link text-secondary mx-auto">
+                  Quiero que me contacten
+                </button>
+              </div>
+              <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
+                <div className={`mx-auto mb-3 ${styles.title}`}>
+                  <h2 className="text-white text-center">
+                    Da el siguiente
+                    <br />
+                    <span>gran salto</span>
+                  </h2>
+                </div>
+                <button type="button" className="btn-link text-white mx-auto">
+                  Solicitar mi crédito
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
       </article>
-      <div className="row mx-0">
-        <div className="col-md-12 col-lg-6 p-5 section-blue-light">
-          <div className={`mx-auto mb-3 ${styles.title}`}>
-            <h2 className="text-primary text-center">
-              ¿No resolvimos
-              <br />
-              <span>tu duda?</span>
-            </h2>
-          </div>
-          <button type="button" className="btn-link text-secondary mx-auto">
-            Quiero que me contacten
-          </button>
-        </div>
-        <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
-          <div className={`mx-auto mb-3 ${styles.title}`}>
-            <h2 className="text-white text-center">
-              Da el siguiente
-              <br />
-              <span>gran salto</span>
-            </h2>
-          </div>
-          <button type="button" className="btn-link text-white mx-auto">
-            Solicitar mi crédito
-          </button>
-        </div>
-      </div>
     </>
   );
 };
