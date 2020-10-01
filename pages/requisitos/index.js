@@ -331,11 +331,11 @@ export const Requisitos = () => {
                             <th width="50%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center" width="20%">
+                            <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
                               <h4 className="text-primary">Persona física con actividad empresarial</h4>
                             </th>
-                            <th className="text-center" width="20%">
+                            <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
                               <h4 className="text-primary">Personal moral</h4>
                             </th>
