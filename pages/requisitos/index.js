@@ -264,11 +264,11 @@ export const Requisitos = () => {
                             </th>
                             <th className="text-center align-top" width="25%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física con Actividad Empresarial</h4>
+                              <h4 className="text-primary">Persona Física con Actividad Empresarial</h4>
                             </th>
                             <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
-                              <h4 className="text-primary">Personal moral</h4>
+                              <h4 className="text-primary">Personal Moral</h4>
                             </th>
                           </tr>
                         </thead>
@@ -286,7 +286,7 @@ export const Requisitos = () => {
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
                       <Accordion
-                        title="Persona física con actividad empresarial"
+                        title="Persona Física con Actividad Empresarial"
                         expanded={false}
                         color="blue"
                         icon="arrow"
@@ -300,7 +300,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
+                      <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosSolicitante.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
@@ -325,7 +325,7 @@ export const Requisitos = () => {
                       </div>
                     </div>
                   </TabItem>
-                  <TabItem tab="Requisitos Obligado solidario" keyTab="2">
+                  <TabItem tab="Requisitos Obligado Solidario" keyTab="2">
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
@@ -336,11 +336,11 @@ export const Requisitos = () => {
                             </th>
                             <th className="text-center align-top" width="40%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física</h4>
+                              <h4 className="text-primary">Persona Física</h4>
                             </th>
                             <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
-                              <h4 className="text-primary">Personal moral</h4>
+                              <h4 className="text-primary">Personal Moral</h4>
                             </th>
                           </tr>
                         </thead>
@@ -358,7 +358,7 @@ export const Requisitos = () => {
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
                       <Accordion
-                        title="Persona física"
+                        title="Persona Física"
                         expanded={false}
                         color="blue"
                         icon="arrow"
@@ -372,7 +372,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
+                      <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosObligado.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
