@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
@@ -13,6 +15,7 @@ const Check = () => <img src="/check.svg" alt="Check" />;
 
 export const Requisitos = () => {
   const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
 
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
@@ -250,7 +253,7 @@ export const Requisitos = () => {
             <div className="row justify-content-center d-flex flex-row">
               <div className={`col-11 p-5 card-simple-white ${styles.table}`}>
                 <Tab>
-                  <TabItem tab="Solicitante" keyTab="1">
+                  <TabItem tab="Requisitos Solicitante" keyTab="1">
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
@@ -322,13 +325,13 @@ export const Requisitos = () => {
                       </div>
                     </div>
                   </TabItem>
-                  <TabItem tab="Obligado solidario" keyTab="2">
+                  <TabItem tab="Requisitos Obligado solidario" keyTab="2">
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
                         <thead className="pb-2">
                           <tr>
-                            <th className="align-bottom" width="40%">
+                            <th className="align-bottom" width="45%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
                             <th className="text-center align-top" width="40%">
@@ -355,7 +358,7 @@ export const Requisitos = () => {
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
                       <Accordion
-                        title="Persona física con actividad empresarial"
+                        title="Persona física"
                         expanded={false}
                         color="blue"
                         icon="arrow"
@@ -452,7 +455,7 @@ export const Requisitos = () => {
                     <span>gran salto</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link text-white mx-auto">
+                <button type="button" className="btn-link text-white mx-auto" onClick={() => router.push('/simulador')}>
                   Solicitar mi crédito
                 </button>
               </div>
