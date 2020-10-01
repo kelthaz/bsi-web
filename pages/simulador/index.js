@@ -760,12 +760,12 @@ export const Simulador = () => {
             </div>
           </div>
           <div className="row justify-content-center mb-5 mt-4 ">
-            <div className="order-xs-2 order-md-1 text-right col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 mr-md-0 pr-4">
+            <div className="order-xs-2 order-md-1 text-xs-right col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 mr-md-0 pr-4">
               <button type="button" className={` ${menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}`}>
                 Retoma tu proceso
               </button>
             </div>
-            <div className="order-xs-1 order-md-2 col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 ">
+            <div className="order-xs-1 text-xs-center order-md-2 col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 ">
               <button
                 type="button"
                 onClick={() => setResulState(resultState => !resultState)}
@@ -843,8 +843,8 @@ export const Simulador = () => {
               >
                 <div className="col-md-4 d-none d-md-block" />
                 <div className="col-md-6 col-xs-9 pr-md-0 px-xs-1">
-                  <p className="col-md-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4">
-                    ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
+                  <p className="col-md-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4 ">
+                    ¿Ya habías comenzado tu solicitud? <br></br> ¡Retómala aquí!
                   </p>
                   <button
                     className="col-xs-9 col-md-7 btn-link-blue-sky mx-md-4 pl-xs-0 px-md-1  mr-md-4 mb-xs-5"
