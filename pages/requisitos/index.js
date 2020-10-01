@@ -256,12 +256,12 @@ export const Requisitos = () => {
                       <table>
                         <thead>
                           <tr>
-                            <th width="50%">
+                            <th width="40%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center align-top" width="20%">
+                            <th className="text-center align-top" width="25%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                              <h4 className="text-primary">Persona física con Actividad Empresarial</h4>
                             </th>
                             <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
@@ -326,14 +326,14 @@ export const Requisitos = () => {
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
-                        <thead>
+                        <thead className="pb-2">
                           <tr>
-                            <th width="50%">
+                            <th className="align-bottom" width="40%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center align-top" width="20%">
+                            <th className="text-center align-top" width="40%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                              <h4 className="text-primary">Persona física</h4>
                             </th>
                             <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
