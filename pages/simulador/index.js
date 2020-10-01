@@ -570,6 +570,7 @@ export const Simulador = () => {
       ]
     }
   ];
+
   useEffect(() => {
     setMinValue(datos.[0].parametrosCatalogo.[0].valor)
     let filterValue = datos.[0].parametrosCatalogo.filter(param => {
@@ -578,17 +579,25 @@ export const Simulador = () => {
     let setNewDescriptionValue = filterValue[0].descripcion;
     setDescriptionValue(setNewDescriptionValue)
   });
-
+  
   const [resultState, setResulState] = useState(false);
+  const [disabled, setDisabled] = useState(false)
+
+  useEffect(() => {
+    if (item === 'Seleccione...' ||  itemsPaymentTime === 'Seleccione...'  || companyTime === 'Seleccione...') {
+      setDisabled(true);      
+    } 
+    else {
+      setDisabled(false);
+    }
+  })
+  
   return (
     <div>
       <div className="row justify-content-center">
-        {/* <div className={`col-xs-12  `}> */}
           <Modal openModal={openModal} setOpenModal={setOpenModal}>
             <div className={`container px-xs-0 px-md-0`}>
               <div className="row justify-content-center mx-0 ">
-             
-              {/* <div className="row"> */}
               <div className={`px-3 col-md-12 col-xs-12`}>
               <h4 className={`${styles['title-input']}`}>Tu tabla de amortización</h4>
 
@@ -662,9 +671,7 @@ export const Simulador = () => {
                   </div>
                 </div>
               </div>
-            {/* </div> */}
           </Modal>
-          {/* </div> */}
       </div>
       <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
@@ -762,6 +769,7 @@ export const Simulador = () => {
               <button
                 type="button"
                 onClick={() => setResulState(resultState => !resultState)}
+                disabled={disabled}
                 className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}
               >
                 Simula tu crédito
