@@ -441,7 +441,7 @@ export const Requisitos = () => {
                   </h2>
                 </div>
                 <button type="button" className="btn-link text-secondary mx-auto">
-                  Quiero que me contacten
+                  Contáctate con nosotros
                 </button>
               </div>
               <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
