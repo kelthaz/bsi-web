@@ -331,7 +331,7 @@ export const Requisitos = () => {
                       <table>
                         <thead className="pb-2">
                           <tr>
-                            <th width="45%">
+                            <th width="40%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
                             <th className="text-center align-top" width="40%">
