@@ -810,7 +810,7 @@ export const Simulador = () => {
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
                 <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-4 col-lg-3 mt-xs-4 mt-md-0 ">
-                  <h1 className={styles['title-input']}>29.1%</h1>
+                  <h1 className={styles['title-input']}>29.10%</h1>
                   <div className={styles['input-text']}>CAT</div>
                 </div>
                 <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
@@ -824,7 +824,7 @@ export const Simulador = () => {
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>$ 31,250</h1>
+                  <h1 className={styles['title-input']}>$ 31,25</h1>
                   <div className={styles['input-text']}>Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}</div>
                 </div>
 
@@ -889,7 +889,7 @@ export const Simulador = () => {
               </div>
             </div>
             <div className={`row justify-content-center mb-md-4 `}>
-              <div className="d-flex justify-content-center col-xs-12 col-sm-12 col-md-3 mb-md-5 mb-xs-5">
+              <div className="d-flex justify-content-center col-xs-12 col-sm-12 col-md-4 mb-md-5 mb-xs-5">
                 <h1 className={`${styles['last-title']}`}>
                   ¡Ya queremos saber qué grandes <br></br> &nbsp;planes tienes para tu negocio!
                 </h1>
