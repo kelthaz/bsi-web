@@ -235,8 +235,8 @@ export const Requisitos = () => {
                 Solidario, dependiendo el tipo de persona.
               </p>
               <p className="body2 text-white text-center">
-                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá residir
-                tu Obligado Solidario.
+                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
+                residir tu Obligado Solidario.
               </p>
               <button type="button" className="btn-link text-white mx-auto" onClick={() => setOpenModal(true)}>
                 Conoce las zonas aquí
@@ -282,7 +282,12 @@ export const Requisitos = () => {
                     </div>
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
-                      <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+                      <Accordion
+                        title="Persona física con actividad empresarial"
+                        expanded={false}
+                        color="blue"
+                        icon="arrow"
+                      >
                         <ul className={styles['requirement-list']}>
                           {documentosSolicitante.map(({ documento, fisica }) => (
                             <li className="d-flex" key={documento}>
@@ -292,7 +297,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} type="blue">
+                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosSolicitante.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
@@ -304,11 +309,16 @@ export const Requisitos = () => {
                       </Accordion>
                     </div>
                     <div className={`d-flex my-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
-                      <img className="d-none d-md-block pr-3" src="/requisitos/natural-person-note.svg" alt="Nota de persona física" />
+                      <img
+                        className="d-none d-md-block pr-3"
+                        src="/requisitos/natural-person-note.svg"
+                        alt="Nota de persona física"
+                      />
                       <div>
-                        Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te recomendamos
-                        antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta de Cheques para
-                        que te podamos desembolsar tu crédito cuando sea aprobado. <u className="sub">Conoce más</u>
+                        Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
+                        recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
+                        de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
+                        <u className="sub">Conoce más</u>
                       </div>
                     </div>
                   </TabItem>
@@ -344,7 +354,12 @@ export const Requisitos = () => {
                     </div>
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
-                      <Accordion title="Persona física con actividad empresarial" expanded={false} type="blue">
+                      <Accordion
+                        title="Persona física con actividad empresarial"
+                        expanded={false}
+                        color="blue"
+                        icon="arrow"
+                      >
                         <ul className={styles['requirement-list']}>
                           {documentosObligado.map(({ documento, fisica }) => (
                             <li className="d-flex" key={documento}>
@@ -354,7 +369,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} type="blue">
+                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosObligado.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
@@ -372,7 +387,8 @@ export const Requisitos = () => {
                 <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
-                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC. <u className="sub">¿Por qué te pedimos esto?</u>
+                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC.{' '}
+                    <u className="sub">¿Por qué te pedimos esto?</u>
                   </div>
                 </div>
               </div>
@@ -401,7 +417,7 @@ export const Requisitos = () => {
               <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div className="card-accordion">
                   {accordionItems.map(({ title, content }) => (
-                    <Accordion key={title} type="blue" title={title} expanded={false}>
+                    <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
                       <div>
                         <p>{content}</p>
                       </div>
