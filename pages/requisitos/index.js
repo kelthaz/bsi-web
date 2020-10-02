@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Banner from '../../components/shared/banners/banner/Banner';
-import { Section } from '../../components/shared/section/Section';
 import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
@@ -15,6 +16,7 @@ const Check = () => <img src="/check.svg" alt="Check" />;
 
 export const Requisitos = () => {
   const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
 
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
@@ -139,28 +141,28 @@ export const Requisitos = () => {
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'e-firma y CIEC', fisica: true, moral: true },
-    { documento: 'Un obligado solidario', fisica: true, moral: true },
-    { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
+    { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: true, moral: true },
+    { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: true, moral: true },
+    { documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>, fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
-    { documento: 'Poderes notariales', fisica: false, moral: true },
-    { documento: 'Escrituras con reformas', fisica: false, moral: true },
+    { documento: <><span>Poderes notariales</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
+    { documento: <><span>Escrituras con reformas</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
     { documento: 'Comprobante de domicilio', fisica: true, moral: true },
-    { documento: 'INE', fisica: true, moral: true },
+    { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
   ];
 
   const documentosObligado = [
     { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
     { documento: 'RFC con el que facturas', fisica: true, moral: true },
     { documento: 'CURP', fisica: true, moral: true },
-    { documento: 'e-firma y CIEC', fisica: false, moral: true },
-    { documento: 'Un obligado solidario', fisica: false, moral: false },
-    { documento: 'Acta de matrimonio e INE de tu pareja', fisica: true, moral: false },
+    { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: false, moral: true },
+    { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: false, moral: false },
+    { documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>, fisica: true, moral: false },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
-    { documento: 'Poderes notariales', fisica: false, moral: true },
-    { documento: 'Escrituras con reformas', fisica: false, moral: true },
+    { documento: <><span>Poderes notariales</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
+    { documento: <><span>Escrituras con reformas</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
     { documento: 'Comprobante de domicilio', fisica: true, moral: true },
-    { documento: 'INE', fisica: true, moral: true },
+    { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
   ];
 
   return (
@@ -225,22 +227,22 @@ export const Requisitos = () => {
             <div className="row justify-content-center d-flex flex-row">
               <div className={`col-11 p-5 card-simple-white ${styles.table}`}>
                 <Tab>
-                  <TabItem tab="Solicitante" keyTab="1">
+                  <TabItem tab="Requisitos Solicitante" keyTab="1">
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
                         <thead>
                           <tr>
-                            <th width="50%">
+                            <th width="40%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center align-top" width="20%">
+                            <th className="text-center align-top" width="25%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                              <h4 className="text-primary">Persona Física con Actividad Empresarial</h4>
                             </th>
                             <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
-                              <h4 className="text-primary">Personal moral</h4>
+                              <h4 className="text-primary">Personal Moral</h4>
                             </th>
                           </tr>
                         </thead>
@@ -258,7 +260,7 @@ export const Requisitos = () => {
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
                       <Accordion
-                        title="Persona física con actividad empresarial"
+                        title="Persona Física con Actividad Empresarial"
                         expanded={false}
                         color="blue"
                         icon="arrow"
@@ -272,7 +274,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
+                      <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosSolicitante.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
@@ -297,22 +299,22 @@ export const Requisitos = () => {
                       </div>
                     </div>
                   </TabItem>
-                  <TabItem tab="Obligado solidario" keyTab="2">
+                  <TabItem tab="Requisitos Obligado Solidario" keyTab="2">
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
-                        <thead>
+                        <thead className="pb-2">
                           <tr>
-                            <th width="50%">
+                            <th width="40%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center" width="20%">
+                            <th className="text-center align-top" width="40%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
-                              <h4 className="text-primary">Persona física con actividad empresarial</h4>
+                              <h4 className="text-primary">Persona Física</h4>
                             </th>
-                            <th className="text-center" width="20%">
+                            <th className="text-center align-top" width="20%">
                               <img src="/requisitos/PM.svg" alt="PM" />
-                              <h4 className="text-primary">Personal moral</h4>
+                              <h4 className="text-primary">Personal Moral</h4>
                             </th>
                           </tr>
                         </thead>
@@ -330,7 +332,7 @@ export const Requisitos = () => {
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
                       <Accordion
-                        title="Persona física con actividad empresarial"
+                        title="Persona Física"
                         expanded={false}
                         color="blue"
                         icon="arrow"
@@ -344,7 +346,7 @@ export const Requisitos = () => {
                           ))}
                         </ul>
                       </Accordion>
-                      <Accordion title="Persona moral" expanded={false} color="blue" icon="arrow">
+                      <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosObligado.map(({ documento, moral }) => (
                             <li className="d-flex" key={documento}>
@@ -416,7 +418,7 @@ export const Requisitos = () => {
                   </h2>
                 </div>
                 <button type="button" className="btn-link text-secondary mx-auto">
-                  Quiero que me contacten
+                  Contáctate con nosotros
                 </button>
               </div>
               <div className="col-md-12 col-lg-6 p-5 section-blue-storm">
@@ -427,7 +429,7 @@ export const Requisitos = () => {
                     <span>gran salto</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link text-white mx-auto">
+                <button type="button" className="btn-link text-white mx-auto" onClick={() => router.push('/simulador')}>
                   Solicitar mi crédito
                 </button>
               </div>

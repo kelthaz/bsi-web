@@ -570,6 +570,7 @@ export const Simulador = () => {
       ]
     }
   ];
+
   useEffect(() => {
     setMinValue(datos.[0].parametrosCatalogo.[0].valor)
     let filterValue = datos.[0].parametrosCatalogo.filter(param => {
@@ -578,16 +579,100 @@ export const Simulador = () => {
     let setNewDescriptionValue = filterValue[0].descripcion;
     setDescriptionValue(setNewDescriptionValue)
   });
-
+  
   const [resultState, setResulState] = useState(false);
+  const [disabled, setDisabled] = useState(false)
+
+  useEffect(() => {
+    if (item === 'Seleccione...' ||  itemsPaymentTime === 'Seleccione...'  || companyTime === 'Seleccione...') {
+      setDisabled(true);      
+    } 
+    else {
+      setDisabled(false);
+    }
+  })
+  
   return (
     <div>
-      <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <div>
-          <h4>fidelidad</h4>
-          <h4>modal</h4>
-        </div>
-      </Modal>
+      <div className="row justify-content-center">
+          <Modal openModal={openModal} setOpenModal={setOpenModal}>
+            <div className={`container px-xs-0 px-md-0`}>
+              <div className="row justify-content-center mx-0 ">
+              <div className={`px-3 col-md-12 col-xs-12`}>
+              <h4 className={`${styles['title-input']}`}>Tu tabla de amortización</h4>
+
+                <div className={` ${styles['text-container']}`}>Nuestros clientes son lo más importante para nosotros, por lo que siempre estarás asesorado y acompañado por nuestro equipo para cualquiera de tus dudas o necesidades. Ya sea por teléfono, correo electrónico o chat siempre estaremos pendientes de ti.</div>
+              </div>
+                <div className={`px-0 col-md-12 col-xs-12 mt-4 ${styles['modal-container']}`}>
+                  <table >
+                    <thead className={`${styles['thead']}`}>
+                      <tr>
+                        <th className={` ${styles['th']}`}>Num. Amort.</th>
+                        <th className={` ${styles['th']}`}>Fecha</th>
+                        <th className={` ${styles['th']}`}>Capital</th>
+                        <th className={` ${styles['th']}`}>Intereses</th>
+                        <th className={` ${styles['th']}`}>Saldo</th>
+                        <th className={` ${styles['th']}`}>Pago Mensual</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td className={`body2 ${styles['td']}`}>Disposición</td>
+                          <td className={`body2 ${styles['td']}`}>22/Feb/2020</td>
+                          <td className={`body2 ${styles['td']}`}>-</td>
+                          <td className={`body2 ${styles['td']}`}>-</td>
+                          <td className={`body2 ${styles['td']}`}>11,791,126.63</td>
+                          <td className={`body2 ${styles['td']}`}>493,272.54</td>
+                      </tr>
+                      <tr>
+                        <td className={`${styles['td']}`}>1</td>
+                        <td className={`${styles['td']}`}>22/Mar/2020</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>11,791,126.63</td>
+                        <td className={`${styles['td']}`}>493,272.54</td>
+                      </tr>
+                      <tr>
+                        <td className={`${styles['td']}`}>2</td>
+                        <td className={`${styles['td']}`}>22/Abr/2020</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>11,791,126.63</td>
+                        <td className={`${styles['td']}`}>493,272.54</td>
+                      </tr>
+                      <tr>
+                        <td className={`${styles['td']}`}>3</td>
+                        <td className={`${styles['td']}`}>22/May/2020</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>11,791,126.63</td>
+                        <td className={`${styles['td']}`}>493,272.54</td>
+                      </tr>
+                      <tr>
+                        <td className={`${styles['td']}`}>4</td>
+                        <td className={`${styles['td']}`}>22/Jun/2020</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>208,873.37</td>
+                        <td className={`${styles['td']}`}>11,791,126.63</td>
+                        <td className={`${styles['td']}`}>493,272.54</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+              </div>
+              <div className="col-md-1 px-md-0"/>
+                  <div className="col-md-12 mt-3  text-center">
+                    <button
+                      type="button"
+                      className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}
+                    >
+                      Descargar tabla
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </Modal>
+      </div>
       <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
           <div className={`col-auto my-auto ${styles['banner-title', 'title-mb']}`}>
@@ -636,58 +721,46 @@ export const Simulador = () => {
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 px-xs-4 p-md-0 py-xs-0">
               <Slider value={valueSlider} setValue={setValueSlider}  min={minValue} max={12000000} step={100000} />
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4">
-              <h1 className={`d-none d-md-block ${styles['title-input']}`}>¿En cuántos meses quieres pagarlo?</h1>
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0">
+              <h1 className={`text-xs-center text-md-left  ${styles['title-input']}`}>¿En cuántos meses quieres pagarlo?</h1>
 
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-5 	d-none d-md-block  ${styles['input-text']}`}>Quiero pagarlo en</div>
-                <div className="col-xs-12 col-md-7 ">
-                  <h1 className={`d-block p-xs-0 col-xs-12 d-sm-none text-center ${styles['title-input']}`}>
-                    ¿En qué periodo quieres pagarlo?
-                  </h1>
+                <div className={`col-xs-4 col-md-4 p-md-0	d-none d-md-block ${styles['input-text']}`}>Quiero pagarlo en</div>
+                <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={item} setItem={setItem} items={items} />
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4">
-              <h2 className={`d-none d-md-block ${styles['title-input']}`}>¿Cómo quieres que sean tus plazos?</h2>
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 ">
+              <h2 className={`text-xs-center text-md-left ${styles['title-input']}`}>¿Cómo quieres que sean tus plazos?</h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-5 d-none d-md-block ${styles['input-text']}`}>Quiero plazos</div>
-                <div className="col-xs-12 col-md-7">
-                  <h2 className={`d-block d-sm-none text-center ${styles['title-input']}`}>
-                    ¿Qué tipo de plazos quieres?
-                  </h2>
+                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block  ${styles['input-text']}`}>Quiero plazos</div>
+                <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={itemsPaymentTime} setItem={setItemPayment} items={itemsPaymentTimes} />
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4">
-              <h2 className={`d-none d-md-block  ${styles['title-input']}`}>¿Cuál es la antigüedad de tu empresa ?</h2>
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0 ">
+              <h2 className={`text-xs-center text-md-left  ${styles['title-input']}`}>¿Cuál es la antigüedad de tu empresa ?</h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-5 d-none d-md-block ${styles['input-text']}`}>Mi empresa tiene</div>
-                <div className="col-xs-12 col-md-7">
-                  <h2 className={`d-block d-sm-none text-center ${styles['title-input']}`}>
-                    ¿Cuántos años tiene tu empresa?
-                  </h2>
+                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>Mi empresa tiene</div>
+                <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={companyTime} setItem={setItemCompany} items={companiesTime} />
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4">
-              <h2 className={` d-none d-md-block ${styles['title-input']}`}>¿Cuánto vendes anualmente?</h2>
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 ">
+              <h2 className={`text-xs-center  text-md-left ${styles['title-input']}`}>¿Cuánto vendes anualmente?</h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-sm-6 col-md-5 d-none d-md-block ${styles['input-text']}`}>Al año vendo</div>
-                <div className="col-xs-12 col-sm-6 col-md-7 ">
-                  <h2 className={`d-block d-sm-none text-center text-xs-center ${styles['title-input']}`}>
-                    ¿Cuánto vendes anualmente?
-                  </h2>
+                <div className={`col-xs-4 col-sm-6 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>Al año vendo</div>
+                <div className="col-xs-12 col-sm-6 col-md-7 p-md-0">
                   <Select item={saleYear} setItem={setItemSale} items={salesYear} />
                 </div>
               </div>
             </div>
           </div>
-          <div className="row justify-content-center mb-5 mt-4">
-            <div className="order-xs-2 order-md-1  col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 ">
+          <div className="row justify-content-center mb-5 mt-4 ">
+            <div className="order-xs-2 order-md-1 text-right col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 mr-md-0 pr-4">
               <button type="button" className={` ${menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}`}>
                 Retoma tu proceso
               </button>
@@ -696,6 +769,7 @@ export const Simulador = () => {
               <button
                 type="button"
                 onClick={() => setResulState(resultState => !resultState)}
+                disabled={disabled}
                 className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}
               >
                 Simula tu crédito
@@ -716,42 +790,44 @@ export const Simulador = () => {
                 <p className={`${styles['sub-title']}`}>A continuación te presentamos el resultado de tu simulación:</p>{' '}
               </div>
             </div>
-            <div className={`container px-0   ${styles['result-info']}`}>
+            <div className={`container ${styles['result-info']}`}>
               <div className="row mx-0 mb-4 mt-4">
-                <div className="text-left col-xs-6 col-sm-6 col-md-9  col-lg-3">
-                  <h1 className={styles['title-input']}>${valueSlider}</h1>
+                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-9  col-lg-3">
+                  <h1 className={styles['title-input']}>{descriptionValue}</h1>
                   <div className={styles['input-text']}>Solicitado</div>
                 </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-6 col-lg-3 ">
                   <h1 className={styles['title-input']}>25% anual</h1>
                   <div className={styles['input-text']}>Tasa ordinaria</div>
                 </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-3 mt-md-0">
+                {/* <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-3 mt-md-0">
                   <h1 className={styles['title-input']}>50%</h1>
                   <div className={styles['input-text']}>Tasa moratoria</div>
-                </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-4 col-lg-3 mt-xs-3 mt-md-0">
-                  <h1 className={styles['title-input']}>2%</h1>
-                  <div className={styles['input-text']}>Comisión por apertura</div>
-                </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                </div> */}
+                
+                <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-0">
                   <h1 className={styles['title-input']}>{item}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-4 col-lg-3 mt-xs-4 mt-md-0 ">
+                  <h1 className={styles['title-input']}>29.1%</h1>
+                  <div className={styles['input-text']}>CAT</div>
+                </div>
+                <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                  <h1 className={styles['title-input']}>2%</h1>
+                  <div className={styles['input-text']}>Comisión por apertura</div>
+                </div>
+                <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>
                     {itemsPaymentTime === 'Bimestrales' ? 'Bimestral' : itemsPaymentTime}
                   </h1>
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>$ 31,250</h1>
-                  <div className={styles['input-text']}>Pagos bimestrales</div>
+                  <div className={styles['input-text']}>Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}</div>
                 </div>
-                <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>29.1%</h1>
-                  <div className={styles['input-text']}>CAT</div>
-                </div>
+
               </div>
             </div>
             <div className="row justify-content-center mx-0  mt-4">
@@ -768,13 +844,13 @@ export const Simulador = () => {
                 <div className="col-md-4 d-none d-md-block" />
                 <div className="col-md-6 col-xs-9 pr-md-0 px-xs-1">
                   <p className="col-md-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4">
-                    ¿Ya habías comenzado tu solicitud? ¡Retómalo aquí!
+                    ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
                   </p>
                   <button
                     className="col-xs-9 col-md-7 btn-link-blue-sky mx-md-4 pl-xs-0 px-md-1  mr-md-4 mb-xs-5"
                     type="button"
                   >
-                    Retomar proceso
+                    Retoma tu proceso
                   </button>
                 </div>
                 <div className="col-md-2 mt-md-1 px-0">
@@ -791,7 +867,6 @@ export const Simulador = () => {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setResulState(resultState => !resultState)}
                     className={`d-none d-md-block ml-md-4 col-md-6 mt-3 ${
                       menuOpen ? 'btn-medium-yellow' : 'btn-medium'
                     }`}

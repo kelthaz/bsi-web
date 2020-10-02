@@ -1,6 +1,60 @@
 @import '../../styles/scss/modules/mixins';
 @import '../../styles/scss/modules/var';
 
+.table {
+  background-color: #fff;
+}
+
+.th {
+  // background-color: #fff;
+  color: #636363;
+  font-family: Futura;
+  font-size: 14px;
+  // font-weight: 200;
+  padding-bottom: 4px;
+  padding-right: 25px;
+  text-align: right;
+}
+
+.td {
+  // padding: 30px;
+  color: #676565;
+  font-weight: 100;
+  padding-left: 25px;
+  padding-right: 30px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+.thead {
+  border-bottom: 1.5px solid rgba(34, 90, 167, 0.2);
+  color: #eef;
+  text-align: left;
+}
+
+.modal-container {
+  box-shadow: inset 0px -16px 15px -15px #f7f7f7;
+  height: 175px;
+  overflow: auto;
+  width: 110px;
+}
+
+.modal-container::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background: rgba(34, 90, 167, 0.2);
+  border-radius: 10px;
+}
+
+.text-container {
+  color: #282828;
+  font-family: Futura;
+  font-size: 16px;
+}
+
 .banner-title {
   padding-bottom: 40px;
   padding-top: 100px;
@@ -58,6 +112,7 @@
 }
 
 .result-info {
+  border: 2px;
   border-color: $blue-storm;
   border-radius: 25px;
   border-style: solid;
@@ -93,12 +148,12 @@
 
 .input-text {
   color: $gray;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .resume-text {
-  border-right: solid;
-  color: $blue-sky;
+  border-right: 2px solid;
+  color: #81c1ea;
 }
 
 .container-flex {
@@ -110,7 +165,7 @@
 
 .sub-title {
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 @media screen and (max-width: 420px) {
@@ -120,11 +175,17 @@
 
   .resume-text {
     border: 0;
-    border-bottom: 3px solid $blue-sky;
+    border-bottom: 2px solid #81c1ea;
   }
 
   .title-mb {
     padding-bottom: 20px;
     padding-top: 50px;
+  }
+
+  .text-container {
+    color: #282828;
+    font-family: Futura;
+    font-size: 14px;
   }
 }

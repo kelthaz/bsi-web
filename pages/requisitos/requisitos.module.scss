@@ -273,3 +273,21 @@
 .text-blue-light {
   color: $blue-light;
 }
+
+.info::after {
+  background-image: url('/info.png');
+  background-size: cover;
+  content: '';
+  display: inline-block;
+  height: 17px;
+  margin-left: 10px;
+  width: 17px;
+}
+
+.text-info {
+  color: $blue-storm;
+  display: block;
+  font-family: $futura-book;
+  font-size: 14px;
+  line-height: 130%;
+}

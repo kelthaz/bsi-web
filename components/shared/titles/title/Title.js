@@ -6,12 +6,12 @@ const Title = (props) => {
   return (
     <div className="container-fluid">
       <div className={`${styles.box} row`}>
-        <div className={`${styles['line-left']} col-lg-4 col-md-3 col-sm-3 col-2`} />
-        <div className={`${styles.text} col-lg-4 col-md-6 col-sm-6 col-8`}>
+        <div className={`${styles['line-left']} col-xl-4 col-lg-3 col-md-3 col-sm-3 col-2`} />
+        <div className={`${styles.text} col-xl-4 col-lg-6 col-md-6 col-sm-6 col-8`}>
           <h2 className="text-primary">{linea1}</h2>
           <h2 className="text-secondary">{linea2}</h2>
         </div>
-        <div className={`${styles['line-rigth']} col-lg-4 col-md-3 col-sm-3 col-2`} />
+        <div className={`${styles['line-rigth']} col-xl-4 col-lg-3 col-md-3 col-sm-3 col-2`} />
       </div>
     </div>
   );
