@@ -1,0 +1,88 @@
+@import '../../../styles/scss/modules/mixins';
+
+.banner-image-texture {
+  position: absolute;
+  top: -190px;
+
+  @include media('md') {
+    right: 40px;
+    top: -80px;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  @include media('sm') {
+    right: 0;
+  }
+}
+
+.banner-image-texture-2 {
+  left: -80px;
+  position: absolute;
+  top: 75px;
+
+  @include media('md') {
+    left: 70px;
+    top: -35px;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  @include media('sm') {
+    left: 15px;
+  }
+}
+
+.banner-image-man {
+  position: relative;
+  top: -40px;
+
+  @include media('lg') {
+    top: -25px;
+  }
+
+  @include media('md') {
+    right: -140px;
+    top: -20px;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  @include media('sm') {
+    right: -80px;
+  }
+}
+
+.banner-image-woman {
+  position: relative;
+  top: -26px;
+
+  @include media('lg') {
+    top: -38px;
+  }
+
+  @include media('md') {
+    right: -140px;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  @include media('sm') {
+    right: -80px;
+  }
+}
+
+.button-margin {
+  margin: 25px 16px;
+  @include media('md') {
+    align-self: center;
+  }
+}
