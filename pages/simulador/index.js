@@ -811,7 +811,7 @@ export const Simulador = () => {
               <div className="d-flex justify-content-center ">
                 <div className={` col-xs-6 col-sm-6 col-md-6 col-lg-12 ${styles['value-side']}`}>
                   <div className="row justify-content-center ">
-                    <div className={`d-none d-sm-block col-lg-2 ${styles['title-value-simulator']} `}>Necesito </div>
+                    <div className={`d-none d-sm-block mr-md-4  ${styles['title-value-simulator']} `}>Necesito </div>
                     <p> {descriptionValue}</p>
                   </div>
                 </div>
@@ -873,7 +873,7 @@ export const Simulador = () => {
             </div>
           </div>
           <div className="row justify-content-center mb-5 mt-4 ">
-            <div className="order-xs-2 order-md-1 text-right col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 mr-md-0 pr-4">
+            <div className="order-xs-2 text-xs-center  order-md-1 mr-md-5 mr-lg-0 col-xs-12 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-0 ">
               <button
                 type="button"
                 className={` ${menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}`}
@@ -881,7 +881,7 @@ export const Simulador = () => {
                 Retoma tu proceso
               </button>
             </div>
-            <div className="order-xs-1 order-md-2 col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 ">
+            <div className="order-xs-1 text-xs-center order-md-2 col-xs-12 col-sm-5 col-md-4 col-lg-3 mb-3 ">
               <button
                 type="button"
                 onClick={() => setResulState((resultState) => !resultState)}
@@ -908,11 +908,11 @@ export const Simulador = () => {
             </div>
             <div className={`container ${styles['result-info']}`}>
               <div className="row mx-0 mb-4 mt-4">
-                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-9  col-lg-3">
+                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
                   <h1 className={styles['title-input']}>{descriptionValue}</h1>
                   <div className={styles['input-text']}>Solicitado</div>
                 </div>
-                <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
                   <h1 className={styles['title-input']}>25% anual</h1>
                   <div className={styles['input-text']}>Tasa ordinaria</div>
                 </div>
@@ -921,12 +921,12 @@ export const Simulador = () => {
                   <div className={styles['input-text']}>Tasa moratoria</div>
                 </div> */}
 
-                <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-0">
+                <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
                   <h1 className={styles['title-input']}>{item}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
-                <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-4 col-lg-3 mt-xs-4 mt-md-0 ">
-                  <h1 className={styles['title-input']}>29.1%</h1>
+                <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
+                  <h1 className={styles['title-input']}>29.10%</h1>
                   <div className={styles['input-text']}>CAT</div>
                 </div>
                 <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
@@ -940,7 +940,7 @@ export const Simulador = () => {
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>$ 31,250</h1>
+                  <h1 className={styles['title-input']}>$ 31,25</h1>
                   <div className={styles['input-text']}>
                     Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}
                   </div>
@@ -958,13 +958,13 @@ export const Simulador = () => {
               <div
                 className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4 px-0 ${styles['resume-text']} ${styles['container-flex']}`}
               >
-                <div className="col-md-4 d-none d-md-block" />
+                <div className="col-md-1 col-lg-4 d-none d-md-block" />
                 <div className="col-md-6 col-xs-9 pr-md-0 px-xs-1">
-                  <p className="col-md-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4">
-                    ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
+                  <p className="col-md-12 col-lg-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4 ">
+                    ¿Ya habías comenzado tu solicitud? <br></br> ¡Retómala aquí!
                   </p>
                   <button
-                    className="col-xs-9 col-md-7 btn-link-blue-sky mx-md-4 pl-xs-0 px-md-1  mr-md-4 mb-xs-5"
+                    className="col-xs-9 col-md-12 col-lg-7 btn-link-blue-sky mx-md-4 pl-xs-0 px-md-1  mr-md-4 mb-xs-5"
                     type="button"
                   >
                     Retoma tu proceso
@@ -976,7 +976,7 @@ export const Simulador = () => {
               </div>
               <div className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0 ${styles['container-flex']}`}>
                 <div className="col-md-6 col-xs-9 px-xs-0">
-                  <p className="d-none d-md-block mx-md-3  mb-md-0 col-md-12 ml-4">
+                  <p className="d-none d-md-block mx-md-3 pr-md-0  mb-md-0 col-md-12 col-lg-12  ml-4">
                     ¿Te gusta este esquema de crédito? <br></br> ¡Inicia tu solicitud ahora!
                   </p>
                   <p className="d-block d-sm-none px-0 ml-md-0 mb-md-0 mt-xs-4 col-md-12 ml-2">
@@ -984,7 +984,7 @@ export const Simulador = () => {
                   </p>
                   <button
                     type="button"
-                    className={`d-none d-md-block ml-md-4 col-md-6 mt-3 ${
+                    className={`d-none d-md-block ml-md-4 col-md-12 col-lg-6 mt-3 ${
                       menuOpen ? 'btn-medium-yellow' : 'btn-medium'
                     }`}
                   >
@@ -1006,7 +1006,7 @@ export const Simulador = () => {
               </div>
             </div>
             <div className={`row justify-content-center mb-md-4 `}>
-              <div className="d-flex justify-content-center col-xs-12 col-sm-12 col-md-3 mb-md-5 mb-xs-5">
+              <div className="d-flex justify-content-center col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-md-5 mb-xs-5">
                 <h1 className={`${styles['last-title']}`}>
                   ¡Ya queremos saber qué grandes <br></br> &nbsp;planes tienes para tu negocio!
                 </h1>
