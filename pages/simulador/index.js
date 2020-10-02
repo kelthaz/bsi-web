@@ -792,7 +792,7 @@ export const Simulador = () => {
             </div>
             <div className={`container ${styles['result-info']}`}>
               <div className="row mx-0 mb-4 mt-4">
-                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-7 col-lg-3">
+                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
                   <h1 className={styles['title-input']}>{descriptionValue}</h1>
                   <div className={styles['input-text']}>Solicitado</div>
                 </div>
