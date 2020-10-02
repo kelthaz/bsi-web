@@ -1,48 +1,48 @@
 @import '../../styles/scss/modules/mixins';
 @import '../../styles/scss/modules/var';
 
-.text-title {
-  margin-top: 100px;
+// .text-title {
+//   margin-top: 100px;
 
-  @include media('mobile') {
-    margin-top: 30px;
-  }
-}
+//   @include media('mobile') {
+//     margin-top: 30px;
+//   }
+// }
 
-.banner-image-texture {
-  position: absolute;
-  right: 20px;
-  top: 130px;
+// .banner-image-texture {
+//   position: absolute;
+//   right: 20px;
+//   top: 130px;
 
-  @include media('mobile') {
-    top: 0;
+//   @include media('mobile') {
+//     top: 0;
 
-    img {
-      display: block;
-      height: auto;
-      max-height: 300px;
-      width: auto;
-    }
-  }
-}
+//     img {
+//       display: block;
+//       height: auto;
+//       max-height: 300px;
+//       width: auto;
+//     }
+//   }
+// }
 
-.banner-image-man {
-  position: absolute;
-  right: 110px;
-  top: 30px;
+// .banner-image-man {
+//   position: absolute;
+//   right: 110px;
+//   top: 30px;
 
-  @include media('mobile') {
-    right: 25%;
-    top: 0;
+//   @include media('mobile') {
+//     right: 25%;
+//     top: 0;
 
-    img {
-      display: block;
-      height: auto;
-      max-height: 190px;
-      width: auto;
-    }
-  }
-}
+//     img {
+//       display: block;
+//       height: auto;
+//       max-height: 190px;
+//       width: auto;
+//     }
+//   }
+// }
 
 .container-svg {
   align-items: center;

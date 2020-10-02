@@ -6,18 +6,14 @@ const TitleBanner = (props) => {
 
   return (
     <div className={styles.box}>
-      <div className={styles['title-container']}>
-        <div className={`col-md d-none d-md-block ${styles.line}`}>
-          <img src="./title-banner-line.svg" alt="banner title line" />
+      <div className={`d-none d-md-block ${styles.line}`} />
+      <div>
+        <div className={` ${styles.text}`}>
+          <h1 className="text-primary">{linea1}</h1>
+          <h1 className="text-secondary">{linea2}</h1>
         </div>
-        <div className="col-md">
-          <div className={`row ${styles.text}`}>
-            <h1 className={`text-primary ${styles['h-55']}`}>{linea1}</h1>
-            <h1 className="text-secondary">{linea2}</h1>
-          </div>
-          <div className={`row ${styles['sub-text']}`}>
-            <p className="sub">{description}</p>
-          </div>
+        <div className={` ${styles['sub-text']}`}>
+          <p className="sub">{description}</p>
         </div>
       </div>
     </div>

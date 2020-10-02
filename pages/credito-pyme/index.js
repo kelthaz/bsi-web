@@ -1,7 +1,6 @@
 import Link from 'next/link';
+import BannerCreditoPyme from '../../components/core/banners/BannerCreditoPyme';
 import Accordion from '../../components/shared/accordion/Accordion';
-import Banner from '../../components/shared/banners/banner/Banner';
-import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
 import styles from './credito-pyme.module.scss';
 
@@ -47,32 +46,9 @@ const CreditoPyme = () => {
     },
   ];
 
-  const bannerTextBlock = (
-    <>
-      <div className={`row justify-content-center ${styles['text-title']}`}>
-        <TitleBanner
-          linea1="Diseñado para"
-          linea2="ser más simple"
-          description="Sabemos que hay muchas cosas en qué ocuparte, este proceso entiende tu ritmo de trabajo."
-        />
-      </div>
-    </>
-  );
-
-  const bannerImageBlock = (
-    <div>
-      <div className={styles['banner-image-texture']}>
-        <img src="/requisitos/banner-texture.svg" alt="Textura del banner" />
-      </div>
-      <div className={styles['banner-image-man']}>
-        <img src="/credito-pyme/banner-image.png" alt="Imagen del banner" />
-      </div>
-    </div>
-  );
-
   return (
     <>
-      <Banner backgroundImage="/credito-pyme/banner.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+      <BannerCreditoPyme />
       <article>
         <section className="section-blue-storm">
           <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">

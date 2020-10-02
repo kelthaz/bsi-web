@@ -29,6 +29,14 @@ a {
   @include section-config($blue-light);
 }
 
+.section-image {
+  @include section-config();
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
 .section-blue-storm-grad {
   background: linear-gradient(0deg, $white 25%, $blue-storm 0%);
   width: 100%;

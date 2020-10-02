@@ -1,46 +1,58 @@
 @import '../../../../styles/scss/modules/mixins';
 
-.container {
-  max-width: 1440px;
-  overflow: hidden;
-  width: 100%;
-}
+// .container {
+//   overflow: hidden;
+//   width: 100%;
+// }
 
-.content {
-  display: flex;
-  flex-direction: row;
+// .content {
+//   display: flex;
+//   flex-direction: row;
+//   position: relative;
+//   z-index: 2;
+
+//   @include media('mobile') {
+//     flex-direction: column;
+//   }
+// }
+
+// .text-block {
+//   // max-width: 1440px;
+//   height: 500px;
+//   width: 70%;
+//   z-index: 4;
+
+//   @include media('mobile') {
+//     height: 100%;
+//     margin-bottom: 30px;
+//     max-height: 500px;
+//     width: 100%;
+//   }
+// }
+
+// .image-block {
+//   // max-width: 1440px;
+//   height: 500px;
+//   position: absolute;
+//   width: 100%;
+//   z-index: 3;
+
+//   @include media('mobile') {
+//     height: 180px;
+//     overflow: hidden;
+//     position: relative;
+//   }
+// }
+
+.banner-img-content {
+  height: 380px;
   position: relative;
-  z-index: 2;
 
-  @include media('mobile') {
-    flex-direction: column;
+  @include media('md') {
+    height: 110px;
   }
-}
-
-.text-block {
-  // max-width: 1440px;
-  height: 500px;
-  width: 70%;
-  z-index: 4;
-
-  @include media('mobile') {
-    height: 100%;
-    margin-bottom: 30px;
-    max-height: 500px;
-    width: 100%;
-  }
-}
-
-.image-block {
-  // max-width: 1440px;
-  height: 500px;
-  position: absolute;
-  width: 100%;
-  z-index: 3;
-
-  @include media('mobile') {
-    height: 180px;
-    overflow: hidden;
-    position: relative;
-  }
+  // align-items: flex-end;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
 }
