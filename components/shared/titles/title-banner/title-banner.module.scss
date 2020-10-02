@@ -2,6 +2,7 @@
 @import '../../../../styles/scss/modules/mixins';
 
 .text {
+  margin-bottom: 16px;
   text-transform: uppercase;
 
   @include media('mobile') {
@@ -11,6 +12,7 @@
   }
 
   h1 {
+    line-height: 120%;
     margin-bottom: 0;
     padding: 0;
   }
