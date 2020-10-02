@@ -34,6 +34,7 @@
 
 .table-horizontal-dividers-two-column {
   @include config-table-horizontal-dividers(420px, 260px, 2);
+  @include scroll-config(4px);
 
   @include media('sm') {
     @include config-table-horizontal-dividers(250px, 460px, 2);
