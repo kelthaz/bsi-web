@@ -8,9 +8,10 @@ import Modal from '../../components/shared/modal/Modal';
 export const Simulador = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalZona, setOpenModalZona] = useState(false);
   const [valueSlider, setValueSlider] = useState(2000000);
-  const [minValue, setMinValue] = useState(0)
-  const [descriptionValue, setDescriptionValue] = useState('')
+  const [minValue, setMinValue] = useState(0);
+  const [descriptionValue, setDescriptionValue] = useState('');
   const items = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
   const companiesTime = ['Más de 2 años', 'Menos de 2 años'];
@@ -22,6 +23,78 @@ export const Simulador = () => {
   const [companyTime, setItemCompany] = useState('Seleccione...');
   const [saleYear, setItemSale] = useState('Más de $2 MDP');
 
+  const zonas = [
+    { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
+    { estado: 'Chihuahua', municipios: ['Ciudad Juárez', 'Chihuahua'] },
+    {
+      estado: 'Ciudad de México',
+      municipios: [
+        'Tlalpan',
+        'Venustiano Carranza',
+        'Azcapotzalco',
+        'Iztapalapa',
+        'Iztacalco',
+        'Miguel Hidalgo',
+        'La Magdalena Contreras',
+        'Coyoacán',
+        'Milpa Alta',
+        'Tláhuac',
+        'Benito Juárez',
+        'Cuajimalpa de Morelos',
+        'Gustavo A. Madero',
+        'Cuauhtémoc',
+        'Álvaro Obregón',
+        'Xochimilco',
+      ],
+    },
+    { estado: 'Coahuila de Zaragoza', municipios: ['Torreón'] },
+    {
+      estado: 'Estado de México',
+      municipios: [
+        'Toluca',
+        'Metepec',
+        'Naucalpan de Juárez',
+        'Tlalnepantla de Baz',
+        'Atizapán de Zaragoza',
+        'Tultitlán',
+        'Coacalco de Berriozábal',
+        'Huixquilucan',
+        'Cuautitlán',
+        'Tultepec',
+        'Cuautitlán Izcalli',
+        'Nicolás Romero',
+        'Tepoztlán',
+        'Ixtapaluca',
+        'Valle de Chalco',
+        'Chalco',
+        'Nezahualcoyotl',
+        'Chimalhuacán',
+        'La Paz',
+        'Texcoco',
+        'Ecatepec de Morelos',
+        'Tecámac',
+      ],
+    },
+    { estado: 'Guanajuato', municipios: ['León', 'Guanajuato'] },
+    { estado: 'Jalisco', municipios: ['Guadalajara', 'Zapopan', 'Tlaquepaque', 'Tonalá', 'Tlajomulco de Zúñiga'] },
+    { estado: 'Nuevo León', municipios: ['Monterrey', 'Guadalupe', 'Apodaca'] },
+    {
+      estado: 'Puebla',
+      municipios: [
+        'Puebla',
+        'San Andrés Cholula',
+        'La Paz',
+        'Santiago',
+        'Centro',
+        'Las ánimas',
+        'San Pedro Cholula',
+        'Cuautlancingo',
+      ],
+    },
+    { estado: 'Sonora', municipios: ['Hermosillo'] },
+    { estado: 'Tamaulipas', municipios: ['Tampico', 'Altamira', 'Ciudad Madero'] },
+  ];
+
   const datos = [
     {
       id: 1,
@@ -29,477 +102,477 @@ export const Simulador = () => {
       parametrosCatalogo: [
         {
           descripcion: '$300,000.00',
-          valor: 300000
+          valor: 300000,
         },
         {
           descripcion: '$400,000.00',
-          valor: 400000
+          valor: 400000,
         },
         {
           descripcion: '$500,000.00',
-          valor: 500000
+          valor: 500000,
         },
         {
           descripcion: '$600,000.00',
-          valor: 600000
+          valor: 600000,
         },
         {
           descripcion: '$700,000.00',
-          valor: 700000
+          valor: 700000,
         },
         {
           descripcion: '$800,000.00',
-          valor: 800000
+          valor: 800000,
         },
         {
           descripcion: '$900,000.00',
-          valor: 900000
+          valor: 900000,
         },
         {
           descripcion: '$1,000,000.00',
-          valor: 1000000
+          valor: 1000000,
         },
         {
           descripcion: '$1,100,000.00',
-          valor: 1100000
+          valor: 1100000,
         },
         {
           descripcion: '$1,200,000.00',
-          valor: 1200000
+          valor: 1200000,
         },
         {
           descripcion: '$1,300,000.00',
-          valor: 1300000
+          valor: 1300000,
         },
         {
           descripcion: '$1,400,000.00',
-          valor: 1400000
+          valor: 1400000,
         },
         {
           descripcion: '$1,500,000.00',
-          valor: 1500000
+          valor: 1500000,
         },
         {
           descripcion: '$1,600,000.00',
-          valor: 1600000
+          valor: 1600000,
         },
         {
           descripcion: '$1,700,000.00',
-          valor: 1700000
+          valor: 1700000,
         },
         {
           descripcion: '$1,800,000.00',
-          valor: 1800000
+          valor: 1800000,
         },
         {
           descripcion: '$1,900,000.00',
-          valor: 1900000
+          valor: 1900000,
         },
         {
           descripcion: '$2,000,000.00',
-          valor: 2000000
+          valor: 2000000,
         },
         {
           descripcion: '$2,100,000.00',
-          valor: 2100000
+          valor: 2100000,
         },
         {
           descripcion: '$2,200,000.00',
-          valor: 2200000
+          valor: 2200000,
         },
         {
           descripcion: '$2,300,000.00',
-          valor: 2300000
+          valor: 2300000,
         },
         {
           descripcion: '$2,400,000.00',
-          valor: 2400000
+          valor: 2400000,
         },
         {
           descripcion: '$2,500,000.00',
-          valor: 2500000
+          valor: 2500000,
         },
         {
           descripcion: '$2,600,000.00',
-          valor: 2600000
+          valor: 2600000,
         },
         {
           descripcion: '$2,700,000.00',
-          valor: 2700000
+          valor: 2700000,
         },
         {
           descripcion: '$2,800,000.00',
-          valor: 2800000
+          valor: 2800000,
         },
         {
           descripcion: '$2,900,000.00',
-          valor: 2900000
+          valor: 2900000,
         },
         {
           descripcion: '$3,000,000.00',
-          valor: 3000000
+          valor: 3000000,
         },
         {
           descripcion: '$3,100,000.00',
-          valor: 3100000
+          valor: 3100000,
         },
         {
           descripcion: '$3,200,000.00',
-          valor: 3200000
+          valor: 3200000,
         },
         {
           descripcion: '$3,300,000.00',
-          valor: 3300000
+          valor: 3300000,
         },
         {
           descripcion: '$3,400,000.00',
-          valor: 3400000
+          valor: 3400000,
         },
         {
           descripcion: '$3,500,000.00',
-          valor: 3500000
+          valor: 3500000,
         },
         {
           descripcion: '$3,600,000.00',
-          valor: 3600000
+          valor: 3600000,
         },
         {
           descripcion: '$3,700,000.00',
-          valor: 3700000
+          valor: 3700000,
         },
         {
           descripcion: '$3,800,000.00',
-          valor: 3800000
+          valor: 3800000,
         },
         {
           descripcion: '$3,900,000.00',
-          valor: 3900000
+          valor: 3900000,
         },
         {
           descripcion: '$4,000,000.00',
-          valor: 4000000
+          valor: 4000000,
         },
         {
           descripcion: '$4,100,000.00',
-          valor: 4100000
+          valor: 4100000,
         },
         {
           descripcion: '$4,200,000.00',
-          valor: 4200000
+          valor: 4200000,
         },
         {
           descripcion: '$4,300,000.00',
-          valor: 4300000
+          valor: 4300000,
         },
         {
           descripcion: '$4,400,000.00',
-          valor: 4400000
+          valor: 4400000,
         },
         {
           descripcion: '$4,500,000.00',
-          valor: 4500000
+          valor: 4500000,
         },
         {
           descripcion: '$4,600,000.00',
-          valor: 4600000
+          valor: 4600000,
         },
         {
           descripcion: '$4,700,000.00',
-          valor: 4700000
+          valor: 4700000,
         },
         {
           descripcion: '$4,800,000.00',
-          valor: 4800000
+          valor: 4800000,
         },
         {
           descripcion: '$4,900,000.00',
-          valor: 4900000
+          valor: 4900000,
         },
         {
           descripcion: '$5,000,000.00',
-          valor: 5000000
+          valor: 5000000,
         },
         {
           descripcion: '$5,100,000.00',
-          valor: 5100000
+          valor: 5100000,
         },
         {
           descripcion: '$5,200,000.00',
-          valor: 5200000
+          valor: 5200000,
         },
         {
           descripcion: '$5,300,000.00',
-          valor: 5300000
+          valor: 5300000,
         },
         {
           descripcion: '$5,400,000.00',
-          valor: 5400000
+          valor: 5400000,
         },
         {
           descripcion: '$5,500,000.00',
-          valor: 5500000
+          valor: 5500000,
         },
         {
           descripcion: '$5,600,000.00',
-          valor: 5600000
+          valor: 5600000,
         },
         {
           descripcion: '$5,700,000.00',
-          valor: 5700000
+          valor: 5700000,
         },
         {
           descripcion: '$5,800,000.00',
-          valor: 5800000
+          valor: 5800000,
         },
         {
           descripcion: '$5,900,000.00',
-          valor: 5900000
+          valor: 5900000,
         },
         {
           descripcion: '$6,000,000.00',
-          valor: 6000000
+          valor: 6000000,
         },
         {
           descripcion: '$6,100,000.00',
-          valor: 6100000
+          valor: 6100000,
         },
         {
           descripcion: '$6,200,000.00',
-          valor: 6200000
+          valor: 6200000,
         },
         {
           descripcion: '$6,300,000.00',
-          valor: 6300000
+          valor: 6300000,
         },
         {
           descripcion: '$6,400,000.00',
-          valor: 6400000
+          valor: 6400000,
         },
         {
           descripcion: '$6,500,000.00',
-          valor: 6500000
+          valor: 6500000,
         },
         {
           descripcion: '$6,600,000.00',
-          valor: 6600000
+          valor: 6600000,
         },
         {
           descripcion: '$6,700,000.00',
-          valor: 6700000
+          valor: 6700000,
         },
         {
           descripcion: '$6,800,000.00',
-          valor: 6800000
+          valor: 6800000,
         },
         {
           descripcion: '$6,900,000.00',
-          valor: 6900000
+          valor: 6900000,
         },
         {
           descripcion: '$7,000,000.00',
-          valor: 7000000
+          valor: 7000000,
         },
         {
           descripcion: '$7,100,000.00',
-          valor: 7100000
+          valor: 7100000,
         },
         {
           descripcion: '$7,200,000.00',
-          valor: 7200000
+          valor: 7200000,
         },
         {
           descripcion: '$7,300,000.00',
-          valor: 7300000
+          valor: 7300000,
         },
         {
           descripcion: '$7,400,000.00',
-          valor: 7400000
+          valor: 7400000,
         },
         {
           descripcion: '$7,500,000.00',
-          valor: 7500000
+          valor: 7500000,
         },
         {
           descripcion: '$7,600,000.00',
-          valor: 7600000
+          valor: 7600000,
         },
         {
           descripcion: '$7,700,000.00',
-          valor: 7700000
+          valor: 7700000,
         },
         {
           descripcion: '$7,800,000.00',
-          valor: 7800000
+          valor: 7800000,
         },
         {
           descripcion: '$7,900,000.00',
-          valor: 7900000
+          valor: 7900000,
         },
         {
           descripcion: '$8,000,000.00',
-          valor: 8000000
+          valor: 8000000,
         },
         {
           descripcion: '$8,100,000.00',
-          valor: 8100000
+          valor: 8100000,
         },
         {
           descripcion: '$8,200,000.00',
-          valor: 8200000
+          valor: 8200000,
         },
         {
           descripcion: '$8,300,000.00',
-          valor: 8300000
+          valor: 8300000,
         },
         {
           descripcion: '$8,400,000.00',
-          valor: 8400000
+          valor: 8400000,
         },
         {
           descripcion: '$8,500,000.00',
-          valor: 8500000
+          valor: 8500000,
         },
         {
           descripcion: '$8,600,000.00',
-          valor: 8600000
+          valor: 8600000,
         },
         {
           descripcion: '$8,700,000.00',
-          valor: 8700000
+          valor: 8700000,
         },
         {
           descripcion: '$8,800,000.00',
-          valor: 8800000
+          valor: 8800000,
         },
         {
           descripcion: '$8,900,000.00',
-          valor: 8900000
+          valor: 8900000,
         },
         {
           descripcion: '$9,000,000.00',
-          valor: 9000000
+          valor: 9000000,
         },
         {
           descripcion: '$9,100,000.00',
-          valor: 9100000
+          valor: 9100000,
         },
         {
           descripcion: '$9,200,000.00',
-          valor: 9200000
+          valor: 9200000,
         },
         {
           descripcion: '$9,300,000.00',
-          valor: 9300000
+          valor: 9300000,
         },
         {
           descripcion: '$9,400,000.00',
-          valor: 9400000
+          valor: 9400000,
         },
         {
           descripcion: '$9,500,000.00',
-          valor: 9500000
+          valor: 9500000,
         },
         {
           descripcion: '$9,600,000.00',
-          valor: 9600000
+          valor: 9600000,
         },
         {
           descripcion: '$9,700,000.00',
-          valor: 9700000
+          valor: 9700000,
         },
         {
           descripcion: '$9,800,000.00',
-          valor: 9800000
+          valor: 9800000,
         },
         {
           descripcion: '$9,900,000.00',
-          valor: 9900000
+          valor: 9900000,
         },
         {
           descripcion: '$10,000,000.00',
-          valor: 10000000
+          valor: 10000000,
         },
         {
           descripcion: '$10,100,000.00',
-          valor: 10100000
+          valor: 10100000,
         },
         {
           descripcion: '$10,200,000.00',
-          valor: 10200000
+          valor: 10200000,
         },
         {
           descripcion: '$10,300,000.00',
-          valor: 10300000
+          valor: 10300000,
         },
         {
           descripcion: '$10,400,000.00',
-          valor: 10400000
+          valor: 10400000,
         },
         {
           descripcion: '$10,500,000.00',
-          valor: 10500000
+          valor: 10500000,
         },
         {
           descripcion: '$10,600,000.00',
-          valor: 10600000
+          valor: 10600000,
         },
         {
           descripcion: '$10,700,000.00',
-          valor: 10700000
+          valor: 10700000,
         },
         {
           descripcion: '$10,800,000.00',
-          valor: 10800000
+          valor: 10800000,
         },
         {
           descripcion: '$10,900,000.00',
-          valor: 10900000
+          valor: 10900000,
         },
         {
           descripcion: '$11,000,000.00',
-          valor: 11000000
+          valor: 11000000,
         },
         {
           descripcion: '$11,100,000.00',
-          valor: 11100000
+          valor: 11100000,
         },
         {
           descripcion: '$11,200,000.00',
-          valor: 11200000
+          valor: 11200000,
         },
         {
           descripcion: '$11,300,000.00',
-          valor: 11300000
+          valor: 11300000,
         },
         {
           descripcion: '$11,400,000.00',
-          valor: 11400000
+          valor: 11400000,
         },
         {
           descripcion: '$11,500,000.00',
-          valor: 11500000
+          valor: 11500000,
         },
         {
           descripcion: '$11,600,000.00',
-          valor: 11600000
+          valor: 11600000,
         },
         {
           descripcion: '$11,700,000.00',
-          valor: 11700000
+          valor: 11700000,
         },
         {
           descripcion: '$11,800,000.00',
-          valor: 11800000
+          valor: 11800000,
         },
         {
           descripcion: '$11,900,000.00',
-          valor: 11900000
+          valor: 11900000,
         },
         {
           descripcion: '$12,000,000.00',
-          valor: 12000000
-        }
-      ]
+          valor: 12000000,
+        },
+      ],
     },
     {
       id: 2,
@@ -507,25 +580,25 @@ export const Simulador = () => {
       parametrosCatalogo: [
         {
           descripcion: '12 meses',
-          valor: 12
+          valor: 12,
         },
         {
           descripcion: '18 meses',
-          valor: 18
+          valor: 18,
         },
         {
           descripcion: '24 meses',
-          valor: 24
+          valor: 24,
         },
         {
           descripcion: '30 meses',
-          valor: 30
+          valor: 30,
         },
         {
           descripcion: '36 meses',
-          valor: 36
-        }
-      ]
+          valor: 36,
+        },
+      ],
     },
     {
       id: 3,
@@ -533,13 +606,13 @@ export const Simulador = () => {
       parametrosCatalogo: [
         {
           descripcion: 'Plazos Mensuales',
-          valor: 1
+          valor: 1,
         },
         {
           descripcion: 'Plazos Bimestrales',
-          valor: 2
-        }
-      ]
+          valor: 2,
+        },
+      ],
     },
     {
       id: 4,
@@ -547,13 +620,13 @@ export const Simulador = () => {
       parametrosCatalogo: [
         {
           descripcion: 'Menos de 2 años',
-          valor: 1
+          valor: 1,
         },
         {
           descripcion: 'Más de 2 años',
-          valor: 2
-        }
-      ]
+          valor: 2,
+        },
+      ],
     },
     {
       id: 5,
@@ -561,128 +634,154 @@ export const Simulador = () => {
       parametrosCatalogo: [
         {
           descripcion: 'Menos de $2 MDP',
-          valor: 1
+          valor: 1,
         },
         {
           descripcion: 'Más de $2 MDP',
-          valor: 2
-        }
-      ]
-    }
+          valor: 2,
+        },
+      ],
+    },
   ];
 
   useEffect(() => {
-    setMinValue(datos.[0].parametrosCatalogo.[0].valor)
-    let filterValue = datos.[0].parametrosCatalogo.filter(param => {
-      return param.valor === valueSlider
+    setMinValue(datos[0].parametrosCatalogo[0].valor);
+    let filterValue = datos[0].parametrosCatalogo.filter((param) => {
+      return param.valor === valueSlider;
     });
     let setNewDescriptionValue = filterValue[0].descripcion;
-    setDescriptionValue(setNewDescriptionValue)
+    setDescriptionValue(setNewDescriptionValue);
   });
-  
+
   const [resultState, setResulState] = useState(false);
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    if (item === 'Seleccione...' ||  itemsPaymentTime === 'Seleccione...'  || companyTime === 'Seleccione...') {
-      setDisabled(true);      
-    } 
-    else {
+    if (item === 'Seleccione...' || itemsPaymentTime === 'Seleccione...' || companyTime === 'Seleccione...') {
+      setDisabled(true);
+    } else {
       setDisabled(false);
     }
-  })
-  
+  });
+
   return (
     <div>
       <div className="row justify-content-center">
-          <Modal openModal={openModal} setOpenModal={setOpenModal}>
-            <div className={`container px-xs-0 px-md-0`}>
-              <div className="row justify-content-center mx-0 ">
+        <Modal openModal={openModalZona} setOpenModal={setOpenModalZona}>
+          <h4 className="color-blue-storm">Zonas Crédito Pyme disponibles</h4>
+          <table className="table-horizontal-dividers-two-column">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Municipio</th>
+              </tr>
+            </thead>
+            <tbody>
+              {zonas.map(({ estado, municipios }) => (
+                <React.Fragment key={estado}>
+                  <tr>
+                    <td rowSpan={municipios.length}>{estado}</td>
+                    <td>{municipios[0]}</td>
+                  </tr>
+                  {municipios.length > 1 &&
+                    municipios.slice(1).map((municipio) => (
+                      <tr key={municipio}>
+                        <td>{municipio}</td>
+                      </tr>
+                    ))}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </Modal>
+        <Modal openModal={openModal} setOpenModal={setOpenModal}>
+          <div className={`container px-xs-0 px-md-0`}>
+            <div className="row justify-content-center mx-0 ">
               <div className={`px-3 col-md-12 col-xs-12`}>
-              <h4 className={`${styles['title-input']}`}>Tu tabla de amortización</h4>
+                <h4 className={`${styles['title-input']}`}>Tu tabla de amortización</h4>
 
-                <div className={` ${styles['text-container']}`}>Nuestros clientes son lo más importante para nosotros, por lo que siempre estarás asesorado y acompañado por nuestro equipo para cualquiera de tus dudas o necesidades. Ya sea por teléfono, correo electrónico o chat siempre estaremos pendientes de ti.</div>
-              </div>
-                <div className={`px-0 col-md-12 col-xs-12 mt-4 ${styles['modal-container']}`}>
-                  <table >
-                    <thead className={`${styles['thead']}`}>
-                      <tr>
-                        <th className={` ${styles['th']}`}>Num. Amort.</th>
-                        <th className={` ${styles['th']}`}>Fecha</th>
-                        <th className={` ${styles['th']}`}>Capital</th>
-                        <th className={` ${styles['th']}`}>Intereses</th>
-                        <th className={` ${styles['th']}`}>Saldo</th>
-                        <th className={` ${styles['th']}`}>Pago Mensual</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td className={`body2 ${styles['td']}`}>Disposición</td>
-                          <td className={`body2 ${styles['td']}`}>22/Feb/2020</td>
-                          <td className={`body2 ${styles['td']}`}>-</td>
-                          <td className={`body2 ${styles['td']}`}>-</td>
-                          <td className={`body2 ${styles['td']}`}>11,791,126.63</td>
-                          <td className={`body2 ${styles['td']}`}>493,272.54</td>
-                      </tr>
-                      <tr>
-                        <td className={`${styles['td']}`}>1</td>
-                        <td className={`${styles['td']}`}>22/Mar/2020</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>11,791,126.63</td>
-                        <td className={`${styles['td']}`}>493,272.54</td>
-                      </tr>
-                      <tr>
-                        <td className={`${styles['td']}`}>2</td>
-                        <td className={`${styles['td']}`}>22/Abr/2020</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>11,791,126.63</td>
-                        <td className={`${styles['td']}`}>493,272.54</td>
-                      </tr>
-                      <tr>
-                        <td className={`${styles['td']}`}>3</td>
-                        <td className={`${styles['td']}`}>22/May/2020</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>11,791,126.63</td>
-                        <td className={`${styles['td']}`}>493,272.54</td>
-                      </tr>
-                      <tr>
-                        <td className={`${styles['td']}`}>4</td>
-                        <td className={`${styles['td']}`}>22/Jun/2020</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>208,873.37</td>
-                        <td className={`${styles['td']}`}>11,791,126.63</td>
-                        <td className={`${styles['td']}`}>493,272.54</td>
-                      </tr>
-                      
-                    </tbody>
-                  </table>
-              </div>
-              <div className="col-md-1 px-md-0"/>
-                  <div className="col-md-12 mt-3  text-center">
-                    <button
-                      type="button"
-                      className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}
-                    >
-                      Descargar tabla
-                    </button>
-                  </div>
+                <div className={` ${styles['text-container']}`}>
+                  Nuestros clientes son lo más importante para nosotros, por lo que siempre estarás asesorado y
+                  acompañado por nuestro equipo para cualquiera de tus dudas o necesidades. Ya sea por teléfono, correo
+                  electrónico o chat siempre estaremos pendientes de ti.
                 </div>
               </div>
-          </Modal>
+              <div className={`px-0 col-md-12 col-xs-12 mt-4 ${styles['modal-container']}`}>
+                <table>
+                  <thead className={`${styles['thead']}`}>
+                    <tr>
+                      <th className={` ${styles['th']}`}>Num. Amort.</th>
+                      <th className={` ${styles['th']}`}>Fecha</th>
+                      <th className={` ${styles['th']}`}>Capital</th>
+                      <th className={` ${styles['th']}`}>Intereses</th>
+                      <th className={` ${styles['th']}`}>Saldo</th>
+                      <th className={` ${styles['th']}`}>Pago Mensual</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className={`body2 ${styles['td']}`}>Disposición</td>
+                      <td className={`body2 ${styles['td']}`}>22/Feb/2020</td>
+                      <td className={`body2 ${styles['td']}`}>-</td>
+                      <td className={`body2 ${styles['td']}`}>-</td>
+                      <td className={`body2 ${styles['td']}`}>11,791,126.63</td>
+                      <td className={`body2 ${styles['td']}`}>493,272.54</td>
+                    </tr>
+                    <tr>
+                      <td className={`${styles['td']}`}>1</td>
+                      <td className={`${styles['td']}`}>22/Mar/2020</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>11,791,126.63</td>
+                      <td className={`${styles['td']}`}>493,272.54</td>
+                    </tr>
+                    <tr>
+                      <td className={`${styles['td']}`}>2</td>
+                      <td className={`${styles['td']}`}>22/Abr/2020</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>11,791,126.63</td>
+                      <td className={`${styles['td']}`}>493,272.54</td>
+                    </tr>
+                    <tr>
+                      <td className={`${styles['td']}`}>3</td>
+                      <td className={`${styles['td']}`}>22/May/2020</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>11,791,126.63</td>
+                      <td className={`${styles['td']}`}>493,272.54</td>
+                    </tr>
+                    <tr>
+                      <td className={`${styles['td']}`}>4</td>
+                      <td className={`${styles['td']}`}>22/Jun/2020</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>208,873.37</td>
+                      <td className={`${styles['td']}`}>11,791,126.63</td>
+                      <td className={`${styles['td']}`}>493,272.54</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-md-1 px-md-0" />
+              <div className="col-md-12 mt-3  text-center">
+                <button type="button" className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}>
+                  Descargar tabla
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
       <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
-          <div className={`col-auto my-auto ${styles['banner-title', 'title-mb']}`}>
+          <div className={`col-auto my-auto ${styles[('banner-title', 'title-mb')]}`}>
             <h1 className={styles['color-white']}>¡TÚ DISEÑAS</h1>
             <h1 className={styles['color-blue-morning']}>TU CRÉDITO!</h1>
           </div>
         </div>
         <div className="row justify-content-center mx-0">
           <div className="col-md-8 col-xs-10">
-            <div className={`body1 text-center ${styles['color-white']}`}>
+            <div className={`sub text-center ${styles['color-white']}`}>
               Elige el monto, plazo y pagos que más se adapte a ti y tu empresa
             </div>
           </div>
@@ -696,7 +795,7 @@ export const Simulador = () => {
           </div>
         </div>
         <div className="row  justify-content-center mx-0 mb-5 mt-4">
-          <button type="button" className={` btn-link ${styles['color-white']}`}>
+          <button type="button" className={` btn-link ${styles['color-white']}`} onClick={() => setOpenModalZona(true)}>
             Conoce las zonas aquí
           </button>
         </div>
@@ -719,31 +818,43 @@ export const Simulador = () => {
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 px-xs-4 p-md-0 py-xs-0">
-              <Slider value={valueSlider} setValue={setValueSlider}  min={minValue} max={12000000} step={100000} />
+              <Slider value={valueSlider} setValue={setValueSlider} min={minValue} max={12000000} step={100000} />
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0">
-              <h1 className={`text-xs-center text-md-left  ${styles['title-input']}`}>¿En cuántos meses quieres pagarlo?</h1>
+              <h1 className={`text-xs-center text-md-left  ${styles['title-input']}`}>
+                ¿En cuántos meses quieres pagarlo?
+              </h1>
 
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-md-0	d-none d-md-block ${styles['input-text']}`}>Quiero pagarlo en</div>
+                <div className={`col-xs-4 col-md-4 p-md-0	d-none d-md-block ${styles['input-text']}`}>
+                  Quiero pagarlo en
+                </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={item} setItem={setItem} items={items} />
                 </div>
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 ">
-              <h2 className={`text-xs-center text-md-left ${styles['title-input']}`}>¿Cómo quieres que sean tus plazos?</h2>
+              <h2 className={`text-xs-center text-md-left ${styles['title-input']}`}>
+                ¿Cómo quieres que sean tus plazos?
+              </h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block  ${styles['input-text']}`}>Quiero plazos</div>
+                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block  ${styles['input-text']}`}>
+                  Quiero plazos
+                </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={itemsPaymentTime} setItem={setItemPayment} items={itemsPaymentTimes} />
                 </div>
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0 ">
-              <h2 className={`text-xs-center text-md-left  ${styles['title-input']}`}>¿Cuál es la antigüedad de tu empresa ?</h2>
+              <h2 className={`text-xs-center text-md-left  ${styles['title-input']}`}>
+                ¿Cuál es la antigüedad de tu empresa ?
+              </h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>Mi empresa tiene</div>
+                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
+                  Mi empresa tiene
+                </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
                   <Select item={companyTime} setItem={setItemCompany} items={companiesTime} />
                 </div>
@@ -752,7 +863,9 @@ export const Simulador = () => {
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 ">
               <h2 className={`text-xs-center  text-md-left ${styles['title-input']}`}>¿Cuánto vendes anualmente?</h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-sm-6 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>Al año vendo</div>
+                <div className={`col-xs-4 col-sm-6 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
+                  Al año vendo
+                </div>
                 <div className="col-xs-12 col-sm-6 col-md-7 p-md-0">
                   <Select item={saleYear} setItem={setItemSale} items={salesYear} />
                 </div>
@@ -761,14 +874,17 @@ export const Simulador = () => {
           </div>
           <div className="row justify-content-center mb-5 mt-4 ">
             <div className="order-xs-2 order-md-1 text-right col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-5 mr-xs-1 mr-md-0 pr-4">
-              <button type="button" className={` ${menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}`}>
+              <button
+                type="button"
+                className={` ${menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}`}
+              >
                 Retoma tu proceso
               </button>
             </div>
             <div className="order-xs-1 order-md-2 col-xs-6 col-sm-5 col-md-4 col-lg-3 mb-3 ">
               <button
                 type="button"
-                onClick={() => setResulState(resultState => !resultState)}
+                onClick={() => setResulState((resultState) => !resultState)}
                 disabled={disabled}
                 className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}
               >
@@ -804,7 +920,7 @@ export const Simulador = () => {
                   <h1 className={styles['title-input']}>50%</h1>
                   <div className={styles['input-text']}>Tasa moratoria</div>
                 </div> */}
-                
+
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-0">
                   <h1 className={styles['title-input']}>{item}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
@@ -825,9 +941,10 @@ export const Simulador = () => {
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>$ 31,250</h1>
-                  <div className={styles['input-text']}>Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}</div>
+                  <div className={styles['input-text']}>
+                    Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}
+                  </div>
                 </div>
-
               </div>
             </div>
             <div className="row justify-content-center mx-0  mt-4">
@@ -875,7 +992,7 @@ export const Simulador = () => {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setResulState(resultState => !resultState)}
+                    onClick={() => setResulState((resultState) => !resultState)}
                     className={`d-block d-sm-none col-xs-8 col-md-8 mt-3 ml-xs-5 mt-xs-4 ${
                       menuOpen ? 'btn-medium-yellow' : 'btn-medium'
                     }`}

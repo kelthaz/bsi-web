@@ -128,3 +128,21 @@ $breakpoints: (
   background-color: $color;
   width: 100%;
 }
+
+@mixin scroll-config($width) {
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    cursor: pointer;
+    width: $width;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba($blue-shadow, 80%);
+    border-radius: $width;
+
+    &:hover {
+      background-color: $blue-shadow;
+      opacity: 1;
+    }
+  }
+}

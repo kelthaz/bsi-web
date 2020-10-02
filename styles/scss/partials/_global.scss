@@ -45,18 +45,4 @@ a {
   }
 }
 
-::-webkit-scrollbar {
-  background-color: transparent;
-  cursor: pointer;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba($blue-shadow, 80%);
-  border-radius: 10px;
-
-  &:hover {
-    background-color: $blue-shadow;
-    opacity: 1;
-  }
-}
+@include scroll-config(15px);

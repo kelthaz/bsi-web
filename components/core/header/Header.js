@@ -16,7 +16,7 @@ const Header = () => {
 
   const menuOptions = [
     { label: 'Cuenta Eje', link: 'https://www.bancoppel.com/cuenta_eje/empresarial.html' },
-    { label: 'EmpresaNet', link: 'https://www.bancoppel.com/empresas/index.html' },
+    { label: 'EmpresaNet', link: 'https://www.bancoppel.com/empresanet_bcopp/empresanet.html' },
     { label: 'Nómina BanCoppel', link: 'https://www.bancoppel.com/nomina_empresas/nomina.html' },
     { label: 'BanCoppel Pyme', link: '#' },
   ];
