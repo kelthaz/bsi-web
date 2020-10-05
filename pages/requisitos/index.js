@@ -375,7 +375,14 @@ export const Requisitos = () => {
         {/* Videos - para tu información */}
         <section className="section-blue-light py-5">
           <Title linea1="Para tu información" />
-          <VideoSelector />
+          <div className="container">
+            <div className="row">
+              <div className="body2 pb-5 pt-3 mx-auto text-center">Consulta nuestros videos para conocer más sobre los requisitos.</div>
+            </div>
+            <div className="row">
+              <VideoSelector />
+            </div>
+          </div>
         </section>
         {/* Acordeón - aún quedan dudas */}
         <section className="section-white">
@@ -429,7 +436,7 @@ export const Requisitos = () => {
                     <span>gran salto</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link text-white mx-auto" onClick={() => router.push('/simulador')}>
+                <button type="button" className="btn-link text-white mx-auto" onClick={() => router.push('/simulador#inicio')}>
                   Solicitar mi crédito
                 </button>
               </div>

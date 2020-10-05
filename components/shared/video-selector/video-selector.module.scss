@@ -1,9 +1,23 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
-.w-800 {
-  max-width: 800px;
+.video-carrousel {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  margin-top: 30px;
   width: 100%;
+
+  @include media('lg') {
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  @include media('mobile') {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
 }
 
 .video-preview {
@@ -26,8 +40,6 @@
   top: -50px;
 
   @include media('lg') {
-    // min-height: 159.73px;
-    // min-width: 370px;
     position: initial;
     width: 100%;
   }
@@ -121,8 +133,6 @@
   width: 161px;
 
   &:hover {
-    // opacity: 50%;
-
     &::after {
       color: $blue-light;
       content: attr(data-description);
