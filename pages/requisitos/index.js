@@ -295,7 +295,7 @@ export const Requisitos = () => {
                         Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
                         recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
                         de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
-                        <u className="sub">Conoce más</u>
+                        <a className="sub" href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html" target="_blank" rel="noreferrer">Conoce más</a>
                       </div>
                     </div>
                   </TabItem>
