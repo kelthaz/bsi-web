@@ -579,21 +579,21 @@ export const Simulador = () => {
     let setNewDescriptionValue = filterValue[0].descripcion;
     setDescriptionValue(setNewDescriptionValue)
   });
-  
+
   const [resultState, setResulState] = useState(false);
   const [disabled, setDisabled] = useState(false)
 
   useEffect(() => {
     if (item === 'Seleccione...' ||  itemsPaymentTime === 'Seleccione...'  || companyTime === 'Seleccione...') {
-      setDisabled(true);      
-    } 
+      setDisabled(true);
+    }
     else {
       setDisabled(false);
     }
   })
-  
+
   return (
-    <div>
+    <div id="inicio">
       <div className="row justify-content-center">
           <Modal openModal={openModal} setOpenModal={setOpenModal}>
             <div className={`container px-xs-0 px-md-0`}>
@@ -656,7 +656,7 @@ export const Simulador = () => {
                         <td className={`${styles['td']}`}>11,791,126.63</td>
                         <td className={`${styles['td']}`}>493,272.54</td>
                       </tr>
-                      
+
                     </tbody>
                   </table>
               </div>
@@ -806,7 +806,7 @@ export const Simulador = () => {
                   <h1 className={styles['title-input']}>50%</h1>
                   <div className={styles['input-text']}>Tasa moratoria</div>
                 </div> */}
-                
+
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
                   <h1 className={styles['title-input']}>{item}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
