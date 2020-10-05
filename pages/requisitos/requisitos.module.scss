@@ -130,12 +130,26 @@
   }
 }
 
-.note {
-  background: $blue-storm;
+@mixin note {
   border-radius: 16px;
-  color: $white;
   padding: 24px;
   width: 90% !important;
+}
+
+.note-light {
+  @include note;
+  background: $blue-light;
+  color: $gray;
+
+  u {
+    color: $blue-sky;
+  }
+}
+
+.note-storm {
+  @include note;
+  background: $blue-storm;
+  color: $white;
 }
 
 .table {
