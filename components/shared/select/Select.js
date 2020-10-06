@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './select.module.scss';
 
@@ -11,8 +11,18 @@ const Select = (props) => {
   };
   const handleItem = (itemMap) => {
     setItem(itemMap);
-    handleToggle();
+    // handleToggle();
   };
+
+  useEffect(() => {
+    if (toggle) {
+      window.addEventListener('click', handleToggle);
+    }
+
+    return () => {
+      window.removeEventListener('click', handleToggle);
+    };
+  }, [toggle]);
 
   return (
     <div className={styles['custom-select']}>
@@ -21,7 +31,7 @@ const Select = (props) => {
         className={` ${styles['select-selected']} ${toggle ? styles['select-arrow-active'] : ''} ${
           titleColor === 'color-gray-dark' ? styles['select-gray'] : styles['select-white']
         }`}
-        onClick={handleToggle}
+        onClick={() => !toggle && handleToggle()}
       >
         {item}
       </button>
