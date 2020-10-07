@@ -25,6 +25,8 @@
   }
 
   tbody {
+    @include scroll-config-firefox;
+
     display: block;
     height: $height;
     overflow: auto;

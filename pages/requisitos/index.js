@@ -283,7 +283,7 @@ export const Requisitos = () => {
                         </ul>
                       </Accordion>
                     </div>
-                    <div className={`d-flex my-5 mx-auto col-auto body2 ${styles.note} ${styles['w-800']}`}>
+                    <div className={`d-flex my-5 mx-auto col-auto body2 ${styles['note-light']} ${styles['w-800']}`}>
                       <img
                         className="d-none d-md-block pr-3"
                         src="/requisitos/natural-person-note.svg"
@@ -293,7 +293,7 @@ export const Requisitos = () => {
                         Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
                         recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
                         de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
-                        <u className="sub">Conoce más</u>
+                        <a className="sub" href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html" target="_blank" rel="noreferrer">Conoce más</a>
                       </div>
                     </div>
                   </TabItem>
@@ -303,7 +303,7 @@ export const Requisitos = () => {
                       <table>
                         <thead className="pb-2">
                           <tr>
-                            <th width="40%">
+                            <th width="45%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
                             <th className="text-center align-top" width="40%">
@@ -359,7 +359,7 @@ export const Requisitos = () => {
                 </Tab>
               </div>
               <div className="mb-5 col-12 body2">
-                <div className={`d-flex mx-auto ${styles.note} ${styles['w-490']}`}>
+                <div className={`d-flex mx-auto ${styles['note-storm']} ${styles['w-490']}`}>
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
                     Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC.{' '}
