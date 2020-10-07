@@ -3,11 +3,9 @@ import { useRouter } from 'next/router';
 
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
-import Banner from '../../components/shared/banners/banner/Banner';
 import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
 import Title from '../../components/shared/titles/title/Title';
-import TitleBanner from '../../components/shared/titles/title-banner/TitleBanner';
 import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 import Modal from '../../components/shared/modal/Modal';
 import BannerRequisitos from '../../components/core/banners/BannerRequisitos';
