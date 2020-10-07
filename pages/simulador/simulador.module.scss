@@ -143,7 +143,9 @@
 
 .last-title {
   color: $blue-storm;
-  font-size: 20px !important;
+  font-size: 18px !important;
+  text-align: center;
+  white-space: pre-wrap;
 }
 
 .input-text {
@@ -168,7 +170,20 @@
   font-weight: 300;
 }
 
-@media screen and (max-width: 420px) {
+.img-solicitud {
+  width: 80px;
+}
+
+button.solicitud-button:hover:enabled {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 769px) {
+  .last-title {
+    font-size: 16px !important;
+  }
+}
+@media screen and (max-width: 767px) {
   .chunk-box {
     top: -39px;
   }
@@ -187,5 +202,21 @@
     color: #282828;
     font-family: Futura;
     font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1113px) {
+  .slogan-solicitud {
+    padding: 0 110px;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .start-request-button {
+    display: inline !important;
+  }
+
+  .last-title {
+    font-size: 16px !important;
   }
 }

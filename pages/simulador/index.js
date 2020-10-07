@@ -252,9 +252,11 @@ export const Simulador = () => {
           <div className="row mx-md-0 mb-5 mt-2">
             <div className="justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
               <div className="d-flex justify-content-center ">
-                <div className={` col-xs-6 col-sm-6 col-md-6 col-lg-12 ${styles['value-side']}`}>
+                <div className={` col-xs-6 col-sm-12 col-md-12 col-lg-12 ${styles['value-side']}`}>
                   <div className="row justify-content-center ">
-                    <div className={`d-none d-sm-block mr-md-4  ${styles['title-value-simulator']} `}>Necesito </div>
+                    <div className={`d-none d-sm-block mr-sm-2 mr-md-4  ${styles['title-value-simulator']} `}>
+                      Necesito
+                    </div>
                     <p>{mexicanWeightFormatter(valueSlider)}</p>
                   </div>
                 </div>
@@ -263,7 +265,7 @@ export const Simulador = () => {
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 px-xs-4 p-md-0 py-xs-0">
               <Slider value={valueSlider} setValue={setValueSlider} min={minValue} max={12000000} step={100000} />
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-lg-0  ">
               <h1 className={`text-xs-center text-md-left  ${styles['title-input']}`}>
                 ¿En cuántos meses quieres pagarlo?
               </h1>
@@ -290,12 +292,12 @@ export const Simulador = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-0 ">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-lg-0  ">
               <h2 className={`text-xs-center text-md-left  ${styles['title-input']}`}>
                 ¿Cuál es la antigüedad de tu empresa ?
               </h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
+                <div className={`col-xs-4 col-md-4 p-lg-0 d-none d-md-block ${styles['input-text']}`}>
                   Mi empresa tiene
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
@@ -309,7 +311,7 @@ export const Simulador = () => {
                 <div className={`col-xs-4 col-sm-6 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
                   Al año vendo
                 </div>
-                <div className="col-xs-12 col-sm-6 col-md-7 p-md-0">
+                <div className="col-xs-12  col-md-7 p-md-0">
                   <Select item={saleYear} setItem={setItemSale} items={salesYear} />
                 </div>
               </div>
@@ -352,7 +354,7 @@ export const Simulador = () => {
             <div className={`container ${styles['result-info']}`}>
               <div className="row mx-0 mb-4 mt-4">
                 <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                  <h1 className={styles['title-input']}>{descriptionValue}</h1>
+                  <h1 className={styles['title-input']}>{mexicanWeightFormatter(valueSlider)}</h1>
                   <div className={styles['input-text']}>Solicitado</div>
                 </div>
                 <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
@@ -396,64 +398,58 @@ export const Simulador = () => {
               </button>
             </div>
           </div>
-          <div className="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div className="row  mx-0 mb-5 mt-2 ">
+          <div className="container col-xs-11 col-sm-11 col-md-9 col-lg-8">
+            <div className="row mx-0 mb-5 mt-2">
               <div
-                className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-4 px-0 ${styles['resume-text']} ${styles['container-flex']}`}
+                className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 pr-md-4 pr-lg-0 mt-4 px-0 ${styles['resume-text']}`}
               >
-                <div className="col-md-1 col-lg-4 d-none d-md-block" />
-                <div className="col-md-6 col-xs-9 pr-md-0 px-xs-1">
-                  <p className="col-md-12 col-lg-10 col-xs-12  px-md-0 px-xs-0 mx-md-4 ml-md-4 ">
-                    ¿Ya habías comenzado tu solicitud? <br></br> ¡Retómala aquí!
-                  </p>
-                  <button
-                    className="col-xs-9 col-md-12 col-lg-7 btn-link-blue-sky mx-md-4 pl-xs-0 px-md-1  mr-md-4 mb-xs-5"
-                    type="button"
-                  >
-                    Retoma tu proceso
-                  </button>
-                </div>
-                <div className="col-md-2 mt-md-1 px-0">
-                  <img alt="" src="/Sesion.png" />
+                <div className="px-md-0 px-xs-3 px-lg-5">
+                  <div className="row mb-sm-4">
+                    <p className="col-md-8 col-lg-9 col-sm-9 col-xs-8 px-0">
+                      ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
+                    </p>
+                    <div className="col-md-4 col-lg-3 col-sm-3 col-xs-4 text-right">
+                      <img alt="" src="/Sesion.png" />
+                    </div>
+                    <div className="col-md-12 mt-md-1 mb-xs-4 px-0">
+                      <button className="btn-link-blue-sky" type="button">
+                        Retoma tu proceso
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0 ${styles['container-flex']}`}>
-                <div className="col-md-6 col-xs-9 px-xs-0">
-                  <p className="d-none d-md-block mx-md-3 pr-md-0  mb-md-0 col-md-12 col-lg-12  ml-4">
-                    ¿Te gusta este esquema de crédito? <br></br> ¡Inicia tu solicitud ahora!
-                  </p>
-                  <p className="d-block d-sm-none px-0 ml-md-0 mb-md-0 mt-xs-4 col-md-12 ml-2">
-                    ¿Te gusta este esquema ? <br></br> ¡Inicia tu solicitud ahora!
-                  </p>
-                  <button
-                    type="button"
-                    className={`d-none d-md-block ml-md-4 col-md-12 col-lg-6 mt-3 ${
-                      menuOpen ? 'btn-medium-yellow' : 'btn-medium'
-                    }`}
-                  >
-                    Comienza tu solicitud
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setResulState((resultState) => !resultState)}
-                    className={`d-block d-sm-none col-xs-8 col-md-8 mt-3 ml-xs-5 mt-xs-4 ${
-                      menuOpen ? 'btn-medium-yellow' : 'btn-medium'
-                    }`}
-                  >
-                    Solicitar mi crédito
-                  </button>
-                </div>
-                <div className="col-md-6 col-sm-3 mt-md-0 mt-xs-4 px-0">
-                  <img alt="" src="/Solicitud.svg" />
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0">
+                <div className="px-md-4">
+                  <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
+                    <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
+                      ¿Te gusta este esquema <span className="d-none d-md-inline">de crédito</span>?{' '}
+                      <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
+                    </p>
+                    <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">
+                      <img className={styles['img-solicitud']} alt="" src="/Solicitud.svg" />
+                    </div>
+                  </div>
+                  <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
+                    <div className="row">
+                      <button
+                        type="button"
+                        className={`col-md-12 ${styles['solicitud-button']} ${
+                          menuOpen ? 'btn-medium-yellow' : 'btn-medium'
+                        }`}
+                      >
+                        <span className="d-none d-md-block">Comienza tu solicitud</span>
+                        <span className="d-sm-block d-md-none">Solicitar mi crédito</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="row justify-content-center mb-md-4 ">
-              <div className="d-flex justify-content-center col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-md-5 mb-xs-5">
+            <div className={`row justify-content-center mb-md-4 ${styles['slogan-solicitud']}`}>
+              <div className="d-flex justify-content-center col-xs-12 col-sm-8 col-md-6 col-lg-6 mb-md-5 mb-xs-5">
                 <h1 className={`${styles['last-title']}`}>
-                  ¡Ya queremos saber qué grandes
-                  <br></br>
-                  &nbsp;planes tienes para tu negocio!
+                  ¡Ya queremos saber qué grandes planes tienes para tu negocio!
                 </h1>
               </div>
             </div>
