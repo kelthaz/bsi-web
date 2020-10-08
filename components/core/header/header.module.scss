@@ -28,6 +28,7 @@
 
 .menu-active {
   background-color: $blue-storm;
+  border-bottom: 0 !important;
 
   div:nth-child(1) {
     button {
@@ -73,6 +74,7 @@
 
 .header-top {
   align-items: center;
+  border-bottom: 1.5px solid #dae0e9;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -118,7 +120,6 @@
 .header-bottom {
   align-items: center;
   background: $white;
-  border-top: 1.5px solid #dae0e9;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;

@@ -45,4 +45,15 @@ a {
   }
 }
 
+.contedor-solicitud {
+  margin: auto;
+  margin-top: 170px;
+  width: 636px;
+  @include media('md') {
+    margin-bottom: 24px;
+    margin-top: 32px;
+    width: 270px;
+  }
+}
+
 @include scroll-config(15px);

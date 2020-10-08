@@ -1,0 +1,27 @@
+@import '../../../../styles/scss/modules/mixins';
+@import '../../../../styles/scss/modules/var';
+
+.disabled-card {
+  p {
+    color: $gray-light;
+  }
+
+  svg {
+    filter: grayscale(100%);
+  }
+}
+
+.list-style {
+  margin-bottom: 24px;
+  width: 100%;
+
+  ul {
+    color: $blue-storm;
+    margin-bottom: 0;
+    padding-left: 24px;
+
+    li {
+      @include body-2;
+    }
+  }
+}
