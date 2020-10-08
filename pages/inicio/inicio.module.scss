@@ -1,0 +1,96 @@
+@import '../../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/var';
+
+.color-blue-morning {
+  color: $blue-morning;
+}
+
+.color-white-text {
+  color: $white;
+}
+
+.color-white {
+  color: $white;
+  line-height: 26px;
+}
+
+.design-pipe {
+  border: 0;
+  border-right: 2px solid #81c1ea;
+}
+
+.title-top {
+  color: $blue-storm;
+  font-size: 24px !important;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.title-value-simulator {
+  color: $gray;
+  font-size: 25px !important;
+}
+
+.value-side {
+  font-size: 25px !important;
+}
+
+.title-input {
+  color: $blue-storm;
+  font-size: 17px !important;
+}
+
+.input-text {
+  color: $gray;
+  font-size: 14px !important;
+}
+
+.simulator-content {
+  // background: $white;
+  // border-radius: 0 0 25px 25px;
+  // // bottom: -50px;
+  // box-shadow: 1px 15px 22px #efeeee;
+  // position: relative;
+  // // top: 90px;
+  // width: 100%;
+  background: $white;
+  position: relative;
+}
+
+.simulator-info {
+  bottom: 30px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 1px 15px 22px #efeeee;
+  position: relative;
+}
+
+.chunk-box {
+  background: $white;
+  border-radius: 25px 25px 0 0;
+
+  bottom: 480px;
+  display: block;
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
+@media screen and (max-width: 769px) {
+  .design-pipe {
+    border-bottom: 2px solid #81c1ea;
+    border-right: 0px;
+  }
+
+  .chunk-box {
+    bottom: 254px;
+    top: -29px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .chunk-box {
+    bottom: 532px;
+  }
+}
