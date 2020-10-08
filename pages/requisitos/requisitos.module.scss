@@ -151,6 +151,11 @@
   @include note;
   background: $blue-storm;
   color: $white;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
 }
 
 .table {
