@@ -74,7 +74,6 @@ const Header = () => {
               Solicitar crédito
             </button>
           )}
-          {pathname.includes('solicitud') && <button type="button">cerrar</button>}
           {!pathname.includes('solicitud') && <button type="button">{}</button>}
         </div>
       </div>

@@ -97,8 +97,11 @@
   @include media('md') {
     flex-direction: row;
 
+    svg {
+      margin-right: 18px;
+    }
+
     p {
-      align-self: flex-start;
       margin: 0;
       text-align: left;
     }

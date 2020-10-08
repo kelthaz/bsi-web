@@ -28,6 +28,7 @@
 
 .menu-active {
   background-color: $blue-storm;
+  border-bottom: 0 !important;
 
   div:nth-child(1) {
     button {
