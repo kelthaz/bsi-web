@@ -363,7 +363,7 @@ export const Requisitos = () => {
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
                     Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC.{' '}
-                    <u className="sub">¿Por qué te pedimos esto?</u>
+                    <a className="sub" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg" target="_blank" rel="noreferrer">¿Por qué te pedimos esto?</a>
                   </div>
                 </div>
               </div>
