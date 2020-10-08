@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -46,23 +47,30 @@ const Header = () => {
     <header>
       <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
         <div>
-          <button type="button" onClick={handleMenu}>
-            {}
-          </button>
+          {!pathname.includes('solicitud') && (
+            <button type="button" onClick={handleMenu}>
+              {}
+            </button>
+          )}
           <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
         </div>
         <div>
-          <img src="/search.svg" alt="" />
-          <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
-            Iniciar sesión
-          </button>
-          <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
-            Solicitar crédito
-          </button>
-          <button type="button">{}</button>
+          {!pathname.includes('solicitud') && <img src="/search.svg" alt="" />}
+          {!pathname.includes('solicitud') && (
+            <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
+              Iniciar sesión
+            </button>
+          )}
+          {!pathname.includes('solicitud') && (
+            <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
+              Solicitar crédito
+            </button>
+          )}
+          {pathname.includes('solicitud') && <button type="button">cerrar</button>}
+          {!pathname.includes('solicitud') && <button type="button">{}</button>}
         </div>
       </div>
-      {!menuOpen && (
+      {!menuOpen && !pathname.includes('solicitud') && (
         <nav className={styles['header-bottom']}>
           <ul>
             {pages.map(({ label, link }) => (

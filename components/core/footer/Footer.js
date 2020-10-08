@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import styles from './footer.module.scss';
 import Accordion from '../../shared/accordion/Accordion';
 
 const Footer = () => {
+  const { pathname } = useRouter();
   const datos = [
     { about: '¿Quiénes somos?', link: 'https://www.bancoppel.com/acerca_bancoppel/quienes_somos.html' },
     { about: 'Preguntas frecuentes', link: 'https://www.bancoppel.com/acerca_bancoppel/faq.html' },
@@ -20,69 +22,38 @@ const Footer = () => {
   const copyright = 'Copyright © 2020 BanCoppel S.A. Institución de Banca Múltiple - Todos los derechos reservados';
 
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles['footer-container']} container`}>
-        <img src="/bancoppel-blanco.svg" className="logo" alt="" />
+    !pathname.includes('solicitud') && (
+      <footer className={styles.footer}>
+        <div className={`${styles['footer-container']} container`}>
+          <img src="/bancoppel-blanco.svg" className="logo" alt="" />
 
-        <div className={styles['second-content']}>
-          <div>
-            <h5>Acerca de BanCoppel</h5>
+          <div className={styles['second-content']}>
             <div>
-              <ul>
-                {datos.slice(0, 6).map((data) => (
-                  <li key={data.about}>
-                    <a target="_blank" rel="noreferrer" href={data.link}>
-                      {data.about}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <h5>Acerca de BanCoppel</h5>
+              <div>
+                <ul>
+                  {datos.slice(0, 6).map((data) => (
+                    <li key={data.about}>
+                      <a target="_blank" rel="noreferrer" href={data.link}>
+                        {data.about}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
 
-              <ul>
-                {datos.slice(6, 12).map(({ about, link }) => (
-                  <li key={about}>
-                    <a target="_blank" rel="noreferrer" href={link}>
-                      {about}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                <ul>
+                  {datos.slice(6, 12).map(({ about, link }) => (
+                    <li key={about}>
+                      <a target="_blank" rel="noreferrer" href={link}>
+                        {about}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-          <div>
-            <h5>Contacto</h5>
-            <span>Lada sin costo: 800 1 2267735</span>
-            <span>EU. y Canadá: 866 2543790</span>
             <div>
-              <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
-                <img alt="" src="/facebook.svg" />
-              </a>
-              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
-                <img alt="" src="/linkedin.svg" />
-              </a>
-              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
-                <img alt="" src="/youtube.svg" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles['second-content-accordeon']}>
-          <Accordion title="Acerca de BanCoppel" expanded={false} color="white" icon="arrow">
-            <div className={styles['accordeon-ul']}>
-              <ul>
-                {datos.map((data) => (
-                  <li key={data.about}>
-                    <a target="_blank" rel="noreferrer" href={data.link}>
-                      {data.about}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Accordion>
-          <Accordion title="Contacto" expanded={false} color="white" icon="arrow">
-            <div className={styles['accordeon-contact']}>
+              <h5>Contacto</h5>
               <span>Lada sin costo: 800 1 2267735</span>
               <span>EU. y Canadá: 866 2543790</span>
               <div>
@@ -97,37 +68,70 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-          </Accordion>
-        </div>
+          </div>
 
-        <div className={styles['third-content']}>
-          <img src="/ipab.svg" alt="" />
-          <img src="/bancoppel-vida.svg" alt="" />
-          <img src="/afore.svg" alt="" />
-          <img src="/fintech.svg" alt="" />
-          <img src="/buro.svg" alt="" />
-          <img src="/check-confianza.svg" alt="" />
-        </div>
+          <div className={styles['second-content-accordeon']}>
+            <Accordion title="Acerca de BanCoppel" expanded={false} color="white" icon="arrow">
+              <div className={styles['accordeon-ul']}>
+                <ul>
+                  {datos.map((data) => (
+                    <li key={data.about}>
+                      <a target="_blank" rel="noreferrer" href={data.link}>
+                        {data.about}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Accordion>
+            <Accordion title="Contacto" expanded={false} color="white" icon="arrow">
+              <div className={styles['accordeon-contact']}>
+                <span>Lada sin costo: 800 1 2267735</span>
+                <span>EU. y Canadá: 866 2543790</span>
+                <div>
+                  <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
+                    <img alt="" src="/facebook.svg" />
+                  </a>
+                  <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
+                    <img alt="" src="/linkedin.svg" />
+                  </a>
+                  <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
+                    <img alt="" src="/youtube.svg" />
+                  </a>
+                </div>
+              </div>
+            </Accordion>
+          </div>
 
-        <span>{copyright}</span>
+          <div className={styles['third-content']}>
+            <img src="/ipab.svg" alt="" />
+            <img src="/bancoppel-vida.svg" alt="" />
+            <img src="/afore.svg" alt="" />
+            <img src="/fintech.svg" alt="" />
+            <img src="/buro.svg" alt="" />
+            <img src="/check-confianza.svg" alt="" />
+          </div>
 
-        <div className={styles['four-content']}>
-          <span>
-            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/terminos.html">
-              Términos y Condiciones de Uso
-            </a>
-            <span> | </span>
-            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/aviso.html">
-              Aviso de Privacidad
-            </a>
-            <span> | </span>
-            <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5">
-              Consulta los costos y las comisiones de nuestros productos.
-            </a>
-          </span>
+          <span>{copyright}</span>
+
+          <div className={styles['four-content']}>
+            <span>
+              <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/terminos.html">
+                Términos y Condiciones de Uso
+              </a>
+              <span> | </span>
+              <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/acerca_bancoppel/aviso.html">
+                Aviso de Privacidad
+              </a>
+              <span> | </span>
+              <a target="_blank" rel="noreferrer" href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5">
+                Consulta los costos y las comisiones de nuestros productos.
+              </a>
+            </span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    )
   );
 };
 
