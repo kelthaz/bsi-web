@@ -20,6 +20,42 @@
   }
 }
 
+.card-simple-blue-night {
+  background-color: $blue-night;
+  border-radius: 16px;
+  color: $white;
+  display: flex;
+
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 10px;
+
+  @include media('sm') {
+    flex-direction: row;
+    padding: 18px;
+
+    img {
+      margin-right: 18px;
+      width: 48px;
+    }
+
+    div {
+      h4 {
+        align-self: flex-start;
+        margin: 0;
+        text-align: left;
+      }
+
+      p {
+        align-self: flex-start;
+        margin: 0;
+        text-align: left;
+      }
+    }
+  }
+}
+
 .card-simple-blue-storm {
   background-color: $blue-storm;
   border-radius: 16px;
