@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './header.module.scss';
+import SearchBox from '../search-box/SearchBox';
 
 const Header = () => {
   const { pathname } = useRouter();
@@ -25,6 +26,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
   const [pageSelect, setPageSelect] = useState();
+  const [toggleSearchBox, setToggleSearchBox] = useState();
 
   useEffect(() => {
     setPageSelect(pathname.slice(1));
@@ -43,6 +45,10 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const handletToggleSearchBox = () => {
+    setToggleSearchBox(!toggleSearchBox);
+  };
+
   return (
     <header>
       <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
@@ -55,7 +61,9 @@ const Header = () => {
           <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
         </div>
         <div>
-          {!pathname.includes('solicitud') && <img src="/search.svg" alt="" />}
+          {!pathname.includes('solicitud') && (
+            <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
+          )}
           {!pathname.includes('solicitud') && (
             <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
               Iniciar sesión
@@ -70,6 +78,7 @@ const Header = () => {
           {!pathname.includes('solicitud') && <button type="button">{}</button>}
         </div>
       </div>
+      {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}
       {!menuOpen && !pathname.includes('solicitud') && (
         <nav className={styles['header-bottom']}>
           <ul>
@@ -95,7 +104,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className={`${styles['items-menu']} ${menuOpen ? styles['menu-active'] : ''}`}>
+          <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
             <ul>
               {menuOptions.map(({ label, link }) => (
                 <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
