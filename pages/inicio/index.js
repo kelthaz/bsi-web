@@ -163,7 +163,7 @@ export const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-xs-10 col-sm-10 col-md-10 col-lg-12 px-xs-4 p-md-0">
+                <div className="col-xs-12 col-sm-12 col-md-10 col-lg-12 px-xs-4 p-md-0">
                   <Slider value={valueSlider} setValue={setValueSlider} min={minValue} max={12000000} step={100000} />
                 </div>
                 <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-6 mt-4 pr-lg-0  ">
