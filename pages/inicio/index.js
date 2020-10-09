@@ -2,13 +2,14 @@ import { useState, useEffect, Fragment } from 'react';
 import BannerInicio from '../../components/core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import Select from '../../components/shared/select/Select';
+import Title from '../../components/shared/titles/title/Title';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Slider from '../../components/shared/slider/Slider';
 
 export const Home = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen] = useState(false);
   const [valueSlider, setValueSlider] = useState(2000000);
-  const [minValue, setMinValue] = useState(0);
+  const [minValue] = useState(0);
 
   const items = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
@@ -17,7 +18,6 @@ export const Home = () => {
 
   const [item, setItem] = useState('Seleccione...');
   const [itemsPaymentTime, setItemPayment] = useState('Seleccione...');
-  const [itemsPaymentTimeResult, setItemPaymentResult] = useState('');
   const [companyTime, setItemCompany] = useState('Seleccione...');
   const [saleYear, setItemSale] = useState('Más de $2 MDP');
 
@@ -146,7 +146,7 @@ export const Home = () => {
           </div>
         </section>
         <section className="section-white">
-          <div className={`container col-xs-11 col-md-8 px-xs-0 px-md-5 ${styles['simulator-info']}`}>
+          <div className={`container col-xs-11 col-md-10 px-xs-0 px-md-5 ${styles['simulator-info']}`}>
             <span className={styles['chunk-box']} />
             <div className={styles['simulator-content']}>
               <h1 className={` ${styles['title-top']}`}>¿Cuánto dinero necesitas?</h1>
@@ -197,7 +197,7 @@ export const Home = () => {
                     ¿Cuál es la antigüedad de tu empresa?
                   </h2>
                   <div className="d-flex align-items-start ">
-                    <div className={`col-xs-4 col-md-4 p-lg-0 d-none d-md-block ${styles['input-text']}`}>
+                    <div className={`col-xs-4 col-md-4 p-lg-0 px-xs-0 d-none d-md-block ${styles['input-text']}`}>
                       Mi empresa tiene
                     </div>
                     <div className="col-xs-12 col-md-7 p-md-0">
@@ -240,6 +240,70 @@ export const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="container col-md-10 mt-5 mb-5">
+            <div className="row mb-5">
+              <div className={`text-xs-center text-md-left col-md-6 mt-5 ${styles['title-benefits']}`}>
+                <h2 className="text-primary mt-md-5">BENEFICIOS PARA TI</h2>
+                <h2 className="text-secondary">Y TU EMPRESA</h2>
+                <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
+                <div className="ml-xs-5 ml-md-0">
+                  <button className=" btn-link-blue-sky" type="button">
+                    Leer más sobre los beneficios
+                  </button>
+                </div>
+              </div>
+              <div className={`col-md-6 mb-5 ${styles['circle-container']}`}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.example.com"
+                  className={`col-md-6 ${styles.circle1} ${styles.circle}`}
+                >
+                  <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.example.com"
+                  className={`col-md-6 ${styles.circle2} ${styles.circle}`}
+                >
+                  <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.example.com"
+                  className={`col-md-6  ${styles.circle3} ${styles.circle}`}
+                >
+                  <span className={`${styles['text-radius']}`}>Apoyo constante</span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.example.com"
+                  className={`col-md-6 ${styles.circle4} ${styles.circle}`}
+                >
+                  <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="http://www.example.com"
+                  className={` col-md-6 ${styles.circle5} ${styles.circle}`}
+                >
+                  <span className={`${styles['text-radius']}`}>Flujo de operación</span>
+                </a>
+                <div className="row mt-md-5 justify-content-center">
+                  <img className={`col-md-6 ${styles['image-home']}`} src="/home-company-image.png" alt="Hombre" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Title className="mt3" linea1="EMPRESARIOS COMO TÚ" />
+
+          <div className="container">
+            <div className="row justify-content-center mt-3">Ya confiaron en nosotros</div>
           </div>
         </section>
       </article>

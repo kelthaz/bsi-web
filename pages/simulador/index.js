@@ -7,12 +7,11 @@ import Modal from '../../components/shared/modal/Modal';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 
 export const Simulador = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
   const [valueSlider, setValueSlider] = useState(2000000);
-  const [minValue, setMinValue] = useState(0);
-  const [descriptionValue, setDescriptionValue] = useState('');
+  const [minValue] = useState(0);
   const items = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
   const companiesTime = ['Más de 2 años', 'Menos de 2 años'];
@@ -20,7 +19,7 @@ export const Simulador = () => {
 
   const [item, setItem] = useState('Seleccione...');
   const [itemsPaymentTime, setItemPayment] = useState('Seleccione...');
-  const [itemsPaymentTimeResult, setItemPaymentResult] = useState('');
+  const [itemsPaymentTimeResult] = useState('');
   const [companyTime, setItemCompany] = useState('Seleccione...');
   const [saleYear, setItemSale] = useState('Más de $2 MDP');
 
@@ -243,7 +242,7 @@ export const Simulador = () => {
           </button>
         </div>
       </SimpleBanner>
-      <div className={`container col-xs-11 col-md-8 px-xs-0 px-md-5 ${styles['simulator-info']}`}>
+      <div className={`container col-xs-11 col-md-10   px-xs-0 px-md-5 ${styles['simulator-info']}`}>
         <span className={styles['chunk-box']}></span>
         <span className={`d-block d-sm-none  ${styles['mobile-box-simulator']}`}></span>
         <div className={styles['simulator-content']}>
@@ -271,7 +270,7 @@ export const Simulador = () => {
               </h1>
 
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-md-0	d-none d-md-block ${styles['input-text']}`}>
+                <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
                   Quiero pagarlo en
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
@@ -297,7 +296,7 @@ export const Simulador = () => {
                 ¿Cuál es la antigüedad de tu empresa ?
               </h2>
               <div className="d-flex align-items-start ">
-                <div className={`col-xs-4 col-md-4 p-lg-0 d-none d-md-block ${styles['input-text']}`}>
+                <div className={`col-xs-4 col-md-4 p-lg-0 px-xs-0 d-none d-md-block ${styles['input-text']}`}>
                   Mi empresa tiene
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
@@ -361,10 +360,6 @@ export const Simulador = () => {
                   <h1 className={styles['title-input']}>25% anual</h1>
                   <div className={styles['input-text']}>Tasa ordinaria</div>
                 </div>
-                {/* <div className="text-left col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-3 mt-md-0">
-                  <h1 className={styles['title-input']}>50%</h1>
-                  <div className={styles['input-text']}>Tasa moratoria</div>
-                </div> */}
 
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
                   <h1 className={styles['title-input']}>{item}</h1>
