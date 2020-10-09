@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DatosEmpresa = () => {
-  return <div>DatosEmpresa</div>;
+  const [state, setstate] = useState();
+  return (
+    <div className="container">
+      <div className="contedor-solicitud">{}</div>
+    </div>
+  );
 };
 
 export default DatosEmpresa;
