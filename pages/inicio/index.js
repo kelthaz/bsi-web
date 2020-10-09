@@ -248,17 +248,17 @@ export const Home = () => {
                 <h2 className="text-secondary">Y TU EMPRESA</h2>
                 <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
                 <div className="ml-xs-5 ml-md-0">
-                  <button className=" btn-link-blue-sky" type="button">
+                  <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
                     Leer más sobre los beneficios
                   </button>
                 </div>
               </div>
-              <div className={`col-md-6 mb-5 ${styles['circle-container']}`}>
+              <div className={`d-none d-md-block d-xl-none col-md-6 mb-5 ${styles['circle-container']}`}>
                 <a
                   target="_blank"
                   rel="noreferrer"
                   href="http://www.example.com"
-                  className={`col-md-6 ${styles.circle1} ${styles.circle}`}
+                  className={`${styles.circle1} ${styles.circle}`}
                 >
                   <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
                 </a>
@@ -296,6 +296,58 @@ export const Home = () => {
                 </a>
                 <div className="row mt-md-5 justify-content-center">
                   <img className={`col-md-6 ${styles['image-home']}`} src="/home-company-image.png" alt="Hombre" />
+                </div>
+              </div>
+              <div className={`d-block d-md-none col-md-6 mb-5 text-center ${styles['circle-container']}`}>
+                <div className="row">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="http://www.example.com"
+                    className={`col-12 mt-4 ${styles['text-links']}`}
+                  >
+                    Cuenta y banca en línea
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="http://www.example.com"
+                    className={`col-12 mt-2 ${styles['text-links']}`}
+                  >
+                    Apoyo constante
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="http://www.example.com"
+                    className={`col-12 mt-2 ${styles['text-links']}`}
+                  >
+                    Flujo de operacion
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="http://www.example.com"
+                    className={`col-12 mt-2 ${styles['text-links']}`}
+                  >
+                    Crecer tu negocio
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="http://www.example.com"
+                    className={`col-12 mt-2 ${styles['text-links']}`}
+                  >
+                    Tasas atrctivas
+                  </a>
+                </div>
+
+                <div className="row mt-md-5 justify-content-center">
+                  <img
+                    className={`d-block d-sm-block d-md-none col-md-6 ${styles['image-home']}`}
+                    src="/chica-mobile.png"
+                    alt="Hombre"
+                  />
                 </div>
               </div>
             </div>
