@@ -3,21 +3,22 @@
 
 .table {
   background-color: #fff;
+  position: relative;
 }
 
 .th {
-  // background-color: #fff;
+  background-color: $white;
   color: #636363;
   font-family: Futura;
   font-size: 14px;
-  // font-weight: 200;
   padding-bottom: 4px;
   padding-right: 25px;
+  position: sticky;
   text-align: right;
+  top: 0;
 }
 
 .td {
-  // padding: 30px;
   color: #676565;
   font-weight: 100;
   padding-left: 25px;
@@ -151,6 +152,7 @@
 .input-text {
   color: $gray;
   font-size: 14px !important;
+  top: 15px;
 }
 
 .resume-text {
