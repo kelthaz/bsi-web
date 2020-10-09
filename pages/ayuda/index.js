@@ -68,16 +68,16 @@ const Ayuda = () => {
             </h4>
           </div>
           <div className="row justify-content-center mt-5 mx-0">
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mb-5">
               <TextField capitalize label="Nombre" />
             </div>
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mb-5">
               <TextField label="Correo electrónico" />
             </div>
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mb-5">
               <TextField label="Número de teléfono" />
             </div>
-            <div className="col-sm-12 col-md-6">
+            <div className="col-sm-12 col-md-6 mb-5">
               <Select item={item} setItem={setItem} items={items} titleColor="" />
             </div>
           </div>
