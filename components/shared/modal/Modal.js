@@ -1,25 +1,11 @@
-import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SvgComponent from '../../svgs/SvgCross';
+import useOnClickOutTarget from '../../../hooks/useOnClickOutTarget';
 import styles from './modal.module.scss';
 
 const Modal = (props) => {
   const { children, openModal, setOpenModal } = props;
-  const setFromEvent = ({ target: targetEvent }) => {
-    if (document.getElementById('modal')) {
-      setOpenModal(document.getElementById('modal').contains(targetEvent));
-    }
-  };
-
-  useEffect(() => {
-    if (openModal) {
-      window.addEventListener('click', setFromEvent);
-    }
-
-    return () => {
-      window.removeEventListener('click', setFromEvent);
-    };
-  }, [openModal]);
+  useOnClickOutTarget('modal', openModal, setOpenModal);
 
   return (
     openModal && (
