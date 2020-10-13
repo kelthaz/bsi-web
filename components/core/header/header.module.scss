@@ -103,7 +103,7 @@
 
     img {
       cursor: pointer;
-      margin-right: 20px;
+      margin-left: 10px;
     }
 
     button:nth-child(2) {
@@ -295,10 +295,6 @@
     padding-bottom: 15px;
 
     div:nth-child(2) {
-      img {
-        display: none;
-      }
-
       button {
         display: none;
       }
