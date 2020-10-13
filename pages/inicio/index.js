@@ -5,6 +5,7 @@ import Select from '../../components/shared/select/Select';
 import Title from '../../components/shared/titles/title/Title';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Slider from '../../components/shared/slider/Slider';
+import VideoSelector from '../../components/shared/video-selector-white/VideoSelector';
 
 export const Home = () => {
   const [menuOpen] = useState(false);
@@ -303,7 +304,7 @@ export const Home = () => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="http://www.example.com"
+                    href="http://www.example.com2"
                     className={`col-12 mt-4 ${styles['text-links']}`}
                   >
                     Cuenta y banca en línea
@@ -335,7 +336,7 @@ export const Home = () => {
                   <a
                     target="_blank"
                     rel="noreferrer"
-                    href="http://www.example.com"
+                    href="http://www.example.com2"
                     className={`col-12 mt-2 ${styles['text-links']}`}
                   >
                     Tasas atrctivas
@@ -355,7 +356,12 @@ export const Home = () => {
           <Title className="mt3" linea1="EMPRESARIOS COMO TÚ" />
 
           <div className="container">
-            <div className="row justify-content-center mt-3">Ya confiaron en nosotros</div>
+            <div className="row justify-content-center mt-3 mb-5">
+              <div>Ya confiaron en nosotros </div>
+              <div className="text-xs-center text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
+                <VideoSelector />
+              </div>
+            </div>
           </div>
         </section>
       </article>
