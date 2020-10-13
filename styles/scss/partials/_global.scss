@@ -56,4 +56,11 @@ a {
   }
 }
 
+.fixed-left-bottom {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+}
+
 @include scroll-config(15px);

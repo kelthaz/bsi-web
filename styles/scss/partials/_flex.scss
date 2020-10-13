@@ -26,6 +26,18 @@
   justify-content: flex-start;
 }
 
+.flex-row-center-config {
+  @include flex-direction-config(row);
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row-end-config {
+  @include flex-direction-config(row);
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
 .flex-align-self-center {
   align-self: center;
 }

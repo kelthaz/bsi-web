@@ -1,0 +1,64 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.container-step {
+  position: fixed;
+  top: 40%;
+  right: 0;
+
+  @include media('md') {
+    position: static;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      margin-bottom: 16px;
+      order: -1;
+    }
+  }
+}
+
+.container-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 32px;
+
+  @include media('md') {
+    margin-right: 0;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.step {
+  background-color: $blue-sky;
+  border: 0;
+  border-radius: 50%;
+  height: 10px;
+  margin-bottom: 22px;
+  padding: 0;
+  width: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $blue-shadow;
+  }
+
+  @include media('md') {
+    margin-bottom: 0;
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+}
+
+.step-active {
+  background: radial-gradient($yellow-summer 52%, $white 40%);
+  border: 1px solid $yellow-summer;
+  height: 24px;
+  width: 24px;
+}

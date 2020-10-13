@@ -221,6 +221,17 @@ button {
   }
 }
 
+.btn-float-button {
+  @include button-config(60px, 60px, 50%);
+  background-color: $yellow-summer;
+  border: 0;
+  bottom: 5%;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  right: 5%;
+}
+
 .btn-big {
   @include button-config(180px);
   @include button-background($yellow-summer);
@@ -270,4 +281,5 @@ button {
   @include button-config(80px, 32px, 8px);
   @include button-background();
 }
+
 // End Buttons

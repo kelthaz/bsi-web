@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import SvgDocumentos from '../../../svgs/SvgDocumentos';
 import SvgOferta from '../../../svgs/SvgOferta';
 import SvgPersona from '../../../svgs/SvgPersona';
@@ -55,9 +56,11 @@ const Bienvenido = () => (
           Si quieres ver o cambiar las características de tu crédito,&nbsp;
           <a className="color-blue-sky">haz clic aquí.</a>
         </p>
-        <button type="button" className="btn-medium flex-align-self-center">
-          ¡Comencemos!
-        </button>
+        <Link href="/solicitud/datos-personales">
+          <button type="button" className="btn-medium flex-align-self-center">
+            ¡Comencemos!
+          </button>
+        </Link>
       </div>
     </div>
   </div>

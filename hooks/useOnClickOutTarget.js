@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 
-const useOnClickOutTarget = (target, toggle, setToggle) => {
-  console.log(target);
-  const setFromEvent = ({ target: targetEvent }) => setToggle(target.contains(targetEvent));
+const useOnClickOutTarget = (id, toggle, setToggle) => {
+  const setFromEvent = ({ target: targetEvent }) => {
+    if (document.getElementById(id)) {
+      setToggle(document.getElementById(id).contains(targetEvent));
+    }
+  };
 
   useEffect(() => {
     if (toggle) {
@@ -10,10 +13,7 @@ const useOnClickOutTarget = (target, toggle, setToggle) => {
     }
 
     return () => {
-      console.log('cliick por fuera');
-      if (target) {
-        window.removeEventListener('click', setFromEvent);
-      }
+      window.removeEventListener('click', setFromEvent);
     };
   }, [toggle]);
 };
