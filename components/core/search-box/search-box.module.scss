@@ -3,6 +3,7 @@
 
 .search-box {
   background-color: $blue-storm;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   position: absolute;
   top: 0;
   width: 100%;
@@ -17,4 +18,48 @@
   left: 15px;
   position: absolute;
   top: 15px;
+}
+
+.select-items {
+  background-color: $white;
+  border: 1px solid $blue-shadow;
+  border-radius: 0 0 16px 16px;
+  border-top: 0;
+  left: 0;
+  list-style-type: none;
+  max-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transition: max-height 0.5s ease-in;
+  visibility: visible;
+  z-index: 99;
+
+  ul {
+    background-color: $white;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.item {
+  @include body-2;
+  background-color: transparent;
+  border: 0;
+  color: $gray-dark;
+  cursor: pointer;
+  padding: 8px 12px;
+  text-align: left;
+  user-select: none;
+  width: 100%;
+
+  &:hover {
+    background-color: $blue-light;
+  }
+
+  &:focus {
+    background-color: $blue-light;
+    outline: none;
+  }
 }
