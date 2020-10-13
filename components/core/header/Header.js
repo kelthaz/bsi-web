@@ -47,6 +47,7 @@ const Header = () => {
 
   const handletToggleSearchBox = () => {
     setToggleSearchBox(!toggleSearchBox);
+    setMenuOpen(false);
   };
 
   return (
