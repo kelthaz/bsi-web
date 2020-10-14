@@ -17,9 +17,14 @@
   padding: 14px 16px;
   transition: 0.3s;
 
-  @include media('mobile') {
+  @include media('sm') {
     font-size: 14px;
-    padding: 14px 7px;
+    padding: 14px 7px !important;
+  }
+
+  @include media('md') {
+    font-size: 14px;
+    padding: 14px 30px;
   }
 
   &:hover {

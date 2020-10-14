@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+
 import Banner from '../../shared/banners/banner/Banner';
 import TitleBanner from '../../shared/titles/title-banner/TitleBanner';
 import styles from './banner.module.scss';
@@ -11,9 +13,11 @@ const BannerInicio = () => {
         linea2="gran salto"
         description="Descubre un crédito diseñado para ti y las herramientas te ayudarán a elevar tu empresa."
       />
-      <button type="button" className={`btn-big ${styles['button-margin']}`}>
-        Solicita ya tu crédito
-      </button>
+      <Link href="/simulador">
+        <button type="button" className={`btn-big ${styles['button-margin']}`}>
+          Solicita ya tu crédito
+        </button>
+      </Link>
     </div>
   );
 

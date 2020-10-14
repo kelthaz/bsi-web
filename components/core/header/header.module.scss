@@ -103,7 +103,12 @@
 
     img {
       cursor: pointer;
+      margin-left: 10px;
       margin-right: 20px;
+
+      @include media('md') {
+        margin-right: 0;
+      }
     }
 
     button:nth-child(2) {
@@ -295,10 +300,6 @@
     padding-bottom: 15px;
 
     div:nth-child(2) {
-      img {
-        display: none;
-      }
-
       button {
         display: none;
       }
