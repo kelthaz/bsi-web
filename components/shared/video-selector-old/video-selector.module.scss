@@ -107,6 +107,23 @@
   }
 }
 
+.next {
+  background-color: #f4f6f9;
+  color: $blue;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.a {
+  border: 2px solid $blue;
+  border-radius: 78%;
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
 .circle {
   align-items: center;
   border: 2px solid $white;
