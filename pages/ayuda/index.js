@@ -24,9 +24,9 @@ const Ayuda = () => {
       email: '',
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
-      phone: Yup.number().max(20, 'Must be 20 characters or less').required('Required'),
-      email: Yup.string().max(5, 'Must be 5 characters or less').email('Invalid email address').required('Required'),
+      name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+      phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
+      email: Yup.string().email('Invalid email address').required('Campo requerido'),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));

@@ -9,7 +9,6 @@
 @mixin input-config($color, $size) {
   background-color: transparent;
   border: 0;
-  border-bottom: 1.5px solid $blue-morning;
   color: $color;
   display: block;
   font-family: $futura-book;
@@ -37,18 +36,22 @@
 
 .input-big {
   @include input-config($gray, 32px);
+  border-bottom: 1.5px solid $gray;
 }
 
-.input-big-reverse {
+.input-big-inverted {
   @include input-config($gray, 32px);
+  border-bottom: 1.5px solid $blue-morning;
 }
 
 .input-small {
   @include input-config($white, 16px);
+  border-bottom: 1.5px solid $gray;
 }
 
-.input-small-reverse {
+.input-small-inverted {
   @include input-config($white, 16px);
+  border-bottom: 1.5px solid $blue-morning;
 }
 
 @mixin config-label($color) {
@@ -69,21 +72,17 @@
   @include config-label($blue-shadow);
 }
 
+.label-error {
+  @include config-label($red);
+}
+
 .label-active {
-  font-size: 14px !important;
+  font-size: 12px !important;
   top: -20px;
 }
 
 .capitalize {
   text-transform: capitalize;
-}
-
-.indicador-normal {
-  border-bottom: 1.5px solid $gray;
-}
-
-.indicador-normal-inverted {
-  border-bottom: 1.5px solid $blue-morning;
 }
 
 .indicador-activo {
@@ -95,16 +94,25 @@
 }
 
 .indicador-error {
-  border-bottom: 1.5px solid $blue-morning;
+  border-bottom: 1.5px solid $red;
 }
 
-.help-text {
+@mixin help-text-config($color) {
   @include body-3;
-  color: $gray;
+  color: $color;
   display: block;
 }
 
+.help-text {
+  @include help-text-config($gray);
+}
+
+.help-text-inverted {
+  @include help-text-config($blue-shadow);
+}
+
 .help-text-error {
+  @include help-text-config($red);
 }
 
 .size-big {
