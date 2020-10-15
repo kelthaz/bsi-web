@@ -378,7 +378,7 @@ export const Requisitos = () => {
               <div className="body2 pb-5 pt-3 mx-auto text-center">Consulta nuestros videos para conocer más sobre los requisitos.</div>
             </div>
             <div className="row">
-              <VideoSelector />
+              <VideoSelector color="blue-storm" />
             </div>
           </div>
         </section>

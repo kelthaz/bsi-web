@@ -5,7 +5,7 @@ import Select from '../../components/shared/select/Select';
 import Title from '../../components/shared/titles/title/Title';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Slider from '../../components/shared/slider/Slider';
-import VideoSelector from '../../components/shared/video-selector-white/VideoSelector';
+import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 
 export const Home = () => {
   const [menuOpen] = useState(false);
@@ -359,7 +359,7 @@ export const Home = () => {
             <div className="row justify-content-center mt-3 mb-5">
               <div>Ya confiaron en nosotros </div>
               <div className="text-xs-center text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
-                <VideoSelector />
+                <VideoSelector color="blue-light"/>
               </div>
             </div>
           </div>
