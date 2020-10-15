@@ -151,3 +151,18 @@ $breakpoints: (
   scrollbar-color: $blue-shadow transparent;
   scrollbar-width: thin;
 }
+
+@mixin only-lg-inline {
+  @include media('lg') {
+    display: inline;
+  }
+  @include media('md') {
+    display: none;
+  }
+  @include media('sm') {
+    display: none;
+  }
+  @include media('xs') {
+    display: none;
+  }
+}

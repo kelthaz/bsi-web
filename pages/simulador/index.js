@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
+import Link from 'next/link';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import Select from '../../components/shared/select/Select';
 import Slider from '../../components/shared/slider/Slider';
@@ -427,15 +428,17 @@ export const Simulador = () => {
                   </div>
                   <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
                     <div className="row">
-                      <button
-                        type="button"
-                        className={`col-md-12 ${styles['solicitud-button']} ${
-                          menuOpen ? 'btn-medium-yellow' : 'btn-medium'
-                        }`}
-                      >
-                        <span className="d-none d-md-block">Comienza tu solicitud</span>
-                        <span className="d-sm-block d-md-none">Solicitar mi crédito</span>
-                      </button>
+                      <Link href="/solicitud/bienvenida">
+                        <button
+                          type="button"
+                          className={`col-md-12 ${styles['solicitud-button']} ${
+                            menuOpen ? 'btn-medium-yellow' : 'btn-medium'
+                          }`}
+                        >
+                          <span className="d-none d-md-block">Comienza tu solicitud</span>
+                          <span className="d-sm-block d-md-none">Solicitar mi crédito</span>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

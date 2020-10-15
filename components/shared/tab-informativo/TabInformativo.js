@@ -19,19 +19,21 @@ const TabInformativo = (props) => {
           <div className="col-2 flex-row-start-config pr-0">
             <button className={styles['buttons-arrow']} type="button">
               <SvgChevron className="rotate-180" />
-              <span>Volver</span>
+              <span className="only-lg-inline">Volver</span>
             </button>
           </div>
           <div className="col-8 flex-row-center-config p-0">
             <div className={styles['tab-content']}>
               {tabs.map(({ path, label }) => (
-                <span className={`${tab === path ? styles['tab-active'] : ''} ${styles['tab-info']}`}>{label}</span>
+                <span key={path} className={`${tab === path ? styles['tab-active'] : ''} ${styles['tab-info']}`}>
+                  {label}
+                </span>
               ))}
             </div>
           </div>
           <div className="col-2 flex-row-end-config pl-0">
             <button className={styles['buttons-arrow']} type="button">
-              <span>Siguiente</span>
+              <span className="only-lg-inline">Siguiente</span>
               <SvgChevron />
             </button>
           </div>
