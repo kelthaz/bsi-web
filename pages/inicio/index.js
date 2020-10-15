@@ -289,46 +289,31 @@ export const Home = () => {
               </div>
               <div className={`d-block d-md-none col-md-6 mb-5 text-center ${styles['circle-container']}`}>
                 <div className="row">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com2"
-                    className={`col-12 mt-4 ${styles['text-links']}`}
-                  >
-                    Cuenta y banca en línea
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Apoyo constante
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Flujo de operacion
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Crecer tu negocio
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com2"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Tasas atrctivas
-                  </a>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-4 ${styles['text-links']}`}>
+                      Cuenta y banca en línea
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Apoyo constante
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Flujo de operación
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Crecer tu negocio
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Tasas atractivas
+                    </a>
+                  </Link>
                 </div>
 
                 <div className="row mt-md-5 justify-content-center">
