@@ -57,7 +57,7 @@
   @include media('mobile') {
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 90%;
   }
 }
 
@@ -107,26 +107,6 @@
   }
 }
 
-.circle-button {
-}
-
-.next {
-  background-color: #f4f6f9;
-  color: $blue;
-}
-
-.round {
-  border-radius: 50%;
-}
-
-.a {
-  border: 2px solid $blue;
-  border-radius: 78%;
-  display: inline-block;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
 .circle {
   align-items: center;
   border: 2px solid $white;
@@ -172,10 +152,6 @@
 
 .text-blue-morning {
   color: $blue-morning;
-}
-
-.text-gray {
-  color: $gray-light;
 }
 
 .text-blue-light {
