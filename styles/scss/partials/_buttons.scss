@@ -204,6 +204,7 @@ button {
   justify-content: space-between;
   padding: 0;
   text-align: left;
+  text-decoration: underline $white;
 
   &::after {
     background-image: url('/arrow-right.svg');

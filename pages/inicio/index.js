@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
+import Link from 'next/link';
 import BannerInicio from '../../components/core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import Select from '../../components/shared/select/Select';
@@ -121,9 +122,11 @@ export const Home = () => {
                     <img alt="" src="/Archivos.svg" />
                   </div>
                   <div className="col-md-6 ml-lg-3 ml-md-0 ml-xs-3 mb-xs-3 px-0">
-                    <button className="btn-link-white" type="button">
-                      Ver todos los requisitos
-                    </button>
+                    <Link href="requisitos">
+                      <button className="btn-link-white" type="button">
+                        Ver todos los requisitos
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -255,46 +258,31 @@ export const Home = () => {
                 </div>
               </div>
               <div className={`d-none d-md-block d-xl-none col-md-6 mb-5 ${styles['circle-container']}`}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`${styles.circle1} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6 ${styles.circle2} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6  ${styles.circle3} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Apoyo constante</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6 ${styles.circle4} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={` col-md-6 ${styles.circle5} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Flujo de operación</span>
-                </a>
+                <Link href="beneficios">
+                  <a target="_blank" className={`${styles.circle1} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6 ${styles.circle2} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6  ${styles.circle3} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Apoyo constante</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6 ${styles.circle4} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={` col-md-6 ${styles.circle5} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Flujo de operación</span>
+                  </a>
+                </Link>
                 <div className="row mt-md-5 justify-content-center">
                   <img className={`col-md-6 ${styles['image-home']}`} src="/home-company-image.png" alt="Hombre" />
                 </div>
