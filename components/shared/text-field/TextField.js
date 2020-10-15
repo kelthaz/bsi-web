@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import SvgCheckOk from '../../svgs/SvgCheckOk';
 import SvgCross from '../../svgs/SvgCross';
 import SvgHidenPassword from '../../svgs/SvgHidenPassword';
@@ -48,6 +48,10 @@ const TextField = (props) => {
   const status = <SvgCheckOk className={iconCheckStyle} />;
   const [typeInput, setTypeInput] = useState(type);
   const [active, setActive] = useState(false);
+
+  useLayoutEffect(() => {
+    console.log(window.screen.width);
+  }, [window.screen.width]);
 
   const handleViewPassword = () => {
     if (type === 'password') {
