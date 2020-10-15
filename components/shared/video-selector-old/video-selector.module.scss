@@ -1,6 +1,47 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
+.video {
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  height: 250px;
+  left: -55px;
+  position: absolute;
+  top: -50px;
+  width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .video {
+    height: 230px;
+    left: 0;
+    position: absolute;
+    left: -40px;
+    top: -50px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .video {
+    height: 270px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 420px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .video {
+    height: 270px;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 320px;
+  }
+}
+
 .video-carrousel {
   display: flex;
   flex-wrap: wrap;
