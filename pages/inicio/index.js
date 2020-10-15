@@ -42,11 +42,11 @@ export const Home = () => {
           <div className="container">
             <div className="row justify-content-center">
               <h2 className={`mt-5 col-lg-12 text-center ${styles['color-white']}`}>DISEÑADO PARA</h2>
-              <h2 className={`col-lg-12 text-center ${styles['color-blue-morning']}`}>SER MÁS SIMPLE</h2>
+              <h2 className={`body1 col-lg-12 text-center ${styles['color-blue-morning']}`}>SER MÁS SIMPLE</h2>
             </div>
             <div className="row justify-content-center ">
-              <div className="col-lg-7 col-md-6 col-xs-12">
-                <div className={`body2 text-center ${styles['color-white']}`}>
+              <div className="col-lg-7 col-md-6 col-xs-12 mb-lg-3">
+                <div className={` text-center ${styles['color-white-p']}`}>
                   El proceso de solicitud entiende tu ritmo de trabajo y lo diseñamos para que en cuatro pasos lo
                   completes:
                 </div>
@@ -91,7 +91,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="row justify-content-center ">
-              <div className="col-lg-6 col-md-6 mt-lg-5 mt-xs-3 mx-xs-2 px-xs-0 mx-lg-0 px-lg-4">
+              <div className="col-lg-5 col-md-6 mt-lg-5 mt-xs-3 mx-xs-2 px-xs-0 mx-lg-0 px-lg-3">
                 <div className={`row mb-sm-4 ${styles['design-pipe']}`}>
                   <p className={` col-md-8 col-lg-9 col-sm-9 col-xs-9 px-xs-0 px-lg-4 ${styles['color-white-text']}`}>
                     En el primer bloque de tu solicitud sólo necesitarás tener a la mano el RFC con el que facturas.
@@ -99,17 +99,17 @@ export const Home = () => {
                   <div className="col-md-4 col-lg-3 col-sm-3 col-xs-3 px-lg-0">
                     <img alt="" src="/RFCIcon.svg" />
                   </div>
-                  <div className="col-md-12 mb-xs-3 px-xs-0 px-lg-5">
+                  <div className="col-md-12  mb-xs-4 mb-lg-0 px-xs-0 px-lg-4">
                     <button className="btn-link-white" type="button">
                       Leer más sobre el crédito
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-0 mt-lg-5 px-xs-0 px-lg-4 ">
-                <div className="row mt-sm-1 mt-md-0 mt-xs-4">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-5 mt-md-0 mt-lg-5 px-xs-0 px-lg-5 ">
+                <div className="row mt-sm-1 mt-md-0 mt-xs-4 mb-lg-4">
                   <p
-                    className={`d-none d-md-block col-md-9 col-sm-9 col-xs-8 col-lg-8 px-md-0 ${styles['color-white-text']}`}
+                    className={`body2 d-none d-md-block col-md-9 col-sm-9 col-xs-8 col-lg-9 px-md-0 ${styles['color-white-text']}`}
                   >
                     Ten en cuenta que conforme vayas avanzando, solicitaremos un poco más de información y documentos.
                   </p>
@@ -121,7 +121,7 @@ export const Home = () => {
                   <div className="col-md-3 col-sm-3 col-xs-3 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">
                     <img alt="" src="/Archivos.svg" />
                   </div>
-                  <div className="col-md-6 ml-lg-3 ml-md-0 ml-xs-3 mb-xs-3 px-0">
+                  <div className="col-md-8 ml-lg-0 ml-md-0 ml-xs-3 mb-xs-3 px-xs-0 px-lg-1">
                     <Link href="requisitos">
                       <button className="btn-link-white" type="button">
                         Ver todos los requisitos
@@ -136,11 +136,12 @@ export const Home = () => {
                     <h2 className={`${styles['color-white']}`}>SIMULA TU CRÉDITO PYME</h2>
                   </div>
                   <div className="col-lg-6 col-md-6 col-xs-12 mt-3 text-center px-xs-0">
-                    <p className={` ${styles['color-white-text']}`}>
+                    <p className={`body2 ${styles['color-white-text']}`}>
                       Con la información que nos proporciones podremos diseñar una oferta que se ajuste a las
                       necesidades de tu negocio.
                     </p>
-                    <p className={` ${styles['color-white-text']}`}>
+                    <br />
+                    <p className={`body2 ${styles['color-white-text']}`}>
                       Requisitos mínimos: Tener más de 2 años operando y facturar más de 2 MDP.
                     </p>
                   </div>
@@ -332,7 +333,7 @@ export const Home = () => {
             <div className="row justify-content-center mt-3 mb-5">
               <div>Ya confiaron en nosotros </div>
               <div className="text-xs-center text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
-                <VideoSelector color="blue-light"/>
+                <VideoSelector color="blue-light" />
               </div>
             </div>
           </div>
