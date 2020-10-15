@@ -57,7 +57,7 @@
   @include media('mobile') {
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 90%;
   }
 }
 
@@ -169,10 +169,6 @@
 
 .text-blue-morning {
   color: $blue-morning;
-}
-
-.text-gray {
-  color: $gray-light;
 }
 
 .text-blue-light {
