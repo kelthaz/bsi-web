@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import SvgComponent from '../../svgs/SvgCross';
+import SvgCross from '../../svgs/SvgCross';
 import useOnClickOutTarget from '../../../hooks/useOnClickOutTarget';
 import styles from './modal.module.scss';
 
@@ -12,7 +12,7 @@ const Modal = (props) => {
       <div className={styles.modal}>
         <div id="modal" className={styles['modal-content']}>
           <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
-            <SvgComponent />
+            <SvgCross />
           </button>
           {children}
         </div>
