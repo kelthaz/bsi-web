@@ -11,11 +11,13 @@ const SearchBox = ({ unmount }) => {
   const router = useRouter();
 
   const originalData = [
+    { redirect: '/credito-pyme', text: 'Crédito PyME' },
     { redirect: '/requisitos', text: 'Requisitos para un crédito de Crédito Simple PyME' },
     { redirect: '/requisitos', text: 'Requisitos para una cuenta BanCoppel' },
     { redirect: '/simulador', text: 'Simulador' },
     { redirect: '/beneficios', text: 'Beneficios' },
     { redirect: '/ayuda', text: 'Ayuda' },
+    { redirect: '/aviso-privacidad', text: 'Aviso de privacidad' },
   ];
 
   const dismiss = () => {
@@ -26,7 +28,11 @@ const SearchBox = ({ unmount }) => {
     const val = evt.target.value;
     setValue(val);
     if (val.length >= 3) {
-      setData(originalData.filter((item) => item.text.toLowerCase().includes(val)));
+      setData(originalData.filter((item) => {
+        const reg = item.text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const entry = val.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        return reg.includes(entry);
+      }));
     } else {
       setData([]);
     }
@@ -52,7 +58,7 @@ const SearchBox = ({ unmount }) => {
           />
           <li className={styles['select-items']}>
             { data.map((item) => (
-              <ul>
+              <ul key={item.text}>
                 <button className={styles.item} type="button" onClick={() => redirect(item.redirect)}>{item.text}</button>
               </ul>
             ))}

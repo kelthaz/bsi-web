@@ -199,11 +199,12 @@ button {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  font-family: $futura-heavy;
+  font-family: Futura;
   font-size: 14px;
   justify-content: space-between;
   padding: 0;
   text-align: left;
+  text-decoration: underline $white;
 
   &::after {
     background-image: url('/arrow-right.svg');

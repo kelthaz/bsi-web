@@ -1,10 +1,12 @@
 import { useState, useEffect, Fragment } from 'react';
+import Link from 'next/link';
 import BannerInicio from '../../components/core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import Select from '../../components/shared/select/Select';
 import Title from '../../components/shared/titles/title/Title';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Slider from '../../components/shared/slider/Slider';
+import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 
 export const Home = () => {
   const [menuOpen] = useState(false);
@@ -120,9 +122,11 @@ export const Home = () => {
                     <img alt="" src="/Archivos.svg" />
                   </div>
                   <div className="col-md-6 ml-lg-3 ml-md-0 ml-xs-3 mb-xs-3 px-0">
-                    <button className="btn-link-white" type="button">
-                      Ver todos los requisitos
-                    </button>
+                    <Link href="requisitos">
+                      <button className="btn-link-white" type="button">
+                        Ver todos los requisitos
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -254,92 +258,62 @@ export const Home = () => {
                 </div>
               </div>
               <div className={`d-none d-md-block d-xl-none col-md-6 mb-5 ${styles['circle-container']}`}>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`${styles.circle1} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6 ${styles.circle2} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6  ${styles.circle3} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Apoyo constante</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={`col-md-6 ${styles.circle4} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
-                </a>
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href="http://www.example.com"
-                  className={` col-md-6 ${styles.circle5} ${styles.circle}`}
-                >
-                  <span className={`${styles['text-radius']}`}>Flujo de operación</span>
-                </a>
+                <Link href="beneficios">
+                  <a target="_blank" className={`${styles.circle1} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6 ${styles.circle2} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6  ${styles.circle3} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Apoyo constante</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={`col-md-6 ${styles.circle4} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
+                  </a>
+                </Link>
+                <Link href="beneficios">
+                  <a target="_blank" className={` col-md-6 ${styles.circle5} ${styles.circle}`}>
+                    <span className={`${styles['text-radius']}`}>Flujo de operación</span>
+                  </a>
+                </Link>
                 <div className="row mt-md-5 justify-content-center">
                   <img className={`col-md-6 ${styles['image-home']}`} src="/home-company-image.png" alt="Hombre" />
                 </div>
               </div>
               <div className={`d-block d-md-none col-md-6 mb-5 text-center ${styles['circle-container']}`}>
                 <div className="row">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-4 ${styles['text-links']}`}
-                  >
-                    Cuenta y banca en línea
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Apoyo constante
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Flujo de operacion
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Crecer tu negocio
-                  </a>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="http://www.example.com"
-                    className={`col-12 mt-2 ${styles['text-links']}`}
-                  >
-                    Tasas atrctivas
-                  </a>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-4 ${styles['text-links']}`}>
+                      Cuenta y banca en línea
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Apoyo constante
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Flujo de operación
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Crecer tu negocio
+                    </a>
+                  </Link>
+                  <Link href="beneficios">
+                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
+                      Tasas atractivas
+                    </a>
+                  </Link>
                 </div>
 
                 <div className="row mt-md-5 justify-content-center">
@@ -355,7 +329,12 @@ export const Home = () => {
           <Title className="mt3" linea1="EMPRESARIOS COMO TÚ" />
 
           <div className="container">
-            <div className="row justify-content-center mt-3">Ya confiaron en nosotros</div>
+            <div className="row justify-content-center mt-3 mb-5">
+              <div>Ya confiaron en nosotros </div>
+              <div className="text-xs-center text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
+                <VideoSelector color="blue-light"/>
+              </div>
+            </div>
           </div>
         </section>
       </article>
