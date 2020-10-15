@@ -1,112 +1,189 @@
 @import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
 
-/* form starting stylings ------------------------------- */
 .group {
   position: relative;
-}
-.input {
-  font-size: 18px;
-  font-family: $futura-book;
-  color: $white;
-  padding: 10px 10px 10px 5px;
-  display: block;
   width: 100%;
-  border: none;
-  border-bottom: 1.5px solid $blue-morning;
+}
+
+@mixin input-config($color, $size) {
   background-color: transparent;
+  border: 0;
+  color: $color;
+  display: block;
+  font-family: $futura-book;
+  font-size: $size;
+
+  @if $size == 32px {
+    padding: 0 0 0 12px;
+  } @else {
+    padding: 8px 0 8px 12px;
+  }
+
+  width: 100%;
 
   &:focus {
     outline: none;
   }
+
+  // &:focus ~ .label,
+  // &:valid ~ .label {
+  //   color: $blue-morning;
+  //   font-size: 14px !important;
+  //   top: -20px;
+  // }
 }
 
-/* LABEL ======================================= */
-.label {
-  color: $white;
-  position: absolute;
+.input-big {
+  @include input-config($gray, 32px);
+  border-bottom: 1.5px solid $gray;
+}
+
+.input-big-inverted {
+  @include input-config($gray, 32px);
+  border-bottom: 1.5px solid $blue-morning;
+}
+
+.input-small {
+  @include input-config($white, 16px);
+  border-bottom: 1.5px solid $gray;
+}
+
+.input-small-inverted {
+  @include input-config($white, 16px);
+  border-bottom: 1.5px solid $blue-morning;
+}
+
+@mixin config-label($color) {
+  @include body-2;
+  color: $color;
+  left: 12px;
   pointer-events: none;
-  left: 5px;
+  position: absolute;
   top: 10px;
   transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
 }
 
-/* active state */
-.input:focus ~ .label,
-.input:valid ~ .label {
+.label {
+  @include config-label($gray);
+}
+
+.label-inverted {
+  @include config-label($blue-shadow);
+}
+
+.label-error {
+  @include config-label($red);
+}
+
+.label-active {
+  font-size: 12px !important;
   top: -20px;
-  font-size: 14px !important;
-  color: $blue-morning;
-}
-
-/* BOTTOM BARS ================================= */
-.bar {
-  position: relative;
-  display: block;
-  width: 300px;
-}
-
-.bar:before {
-  left: 50%;
-}
-.bar:after {
-  right: 50%;
-}
-
-/* active state */
-input:focus ~ .bar:before,
-input:focus ~ .bar:after {
-  width: 50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position: absolute;
-  height: 60%;
-  width: 100px;
-  top: 25%;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation: inputHighlighter 0.3s ease;
-  -moz-animation: inputHighlighter 0.3s ease;
-  animation: inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@-moz-keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
-}
-@keyframes inputHighlighter {
-  from {
-    background: #5264ae;
-  }
-  to {
-    width: 0;
-    background: transparent;
-  }
 }
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.indicador-activo {
+  border-bottom: 1.5px solid $blue-sky;
+}
+
+.indicador-activo-inverted {
+  border-bottom: 1.5px solid $yellow-summer;
+}
+
+.indicador-error {
+  border-bottom: 1.5px solid $red;
+}
+
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: block;
+}
+
+.help-text {
+  @include help-text-config($gray);
+}
+
+.help-text-inverted {
+  @include help-text-config($blue-shadow);
+}
+
+.help-text-error {
+  @include help-text-config($red);
+}
+
+.size-big {
+  font-size: 32px;
+}
+
+.size-small {
+  font-size: 16px;
+}
+
+@mixin icon-config($color) {
+  height: 20px;
+  width: 20px;
+
+  path {
+    stroke: $color;
+  }
+}
+
+.icon-error {
+  @include icon-config($red);
+}
+
+.icon-check {
+  @include icon-config($blue-storm);
+}
+
+.icon-check-inverted {
+  @include icon-config($blue-morning);
+}
+
+.status-icon {
+  position: absolute;
+  right: 10px;
+  top: 15%;
+}
+
+@mixin button-password-config($color) {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  position: absolute;
+  right: 35px;
+  top: 15%;
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+
+    path {
+      stroke: $color;
+    }
+
+    circle {
+      fill: $color;
+    }
+
+    path:last-child {
+      fill: $color;
+    }
+  }
+}
+
+.button-password-inverted {
+  @include button-password-config($blue-morning);
+}
+
+.button-password {
+  @include button-password-config($gray);
 }

@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
 import Title from '../../components/shared/titles/title/Title';
 import Accordion from '../../components/shared/accordion/Accordion';
-import styles from './ayuda.module.scss';
 import Select from '../../components/shared/select/Select';
+import styles from './ayuda.module.scss';
 
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
@@ -14,6 +16,22 @@ const Ayuda = () => {
   const handleOption = (opt) => {
     setOption(opt);
   };
+
+  const formulario = useFormik({
+    initialValues: {
+      name: '',
+      phone: '',
+      email: '',
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+      phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
+      email: Yup.string().email('Invalid email address').required('Campo requerido'),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const aboutPymeItems = [
     {
@@ -57,7 +75,7 @@ const Ayuda = () => {
 
   return (
     <>
-      <form>
+      <form noValidate="novalidate">
         <SimpleBanner>
           <div className="row justify-content-center mx-0">
             <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
@@ -69,13 +87,35 @@ const Ayuda = () => {
           </div>
           <div className="row justify-content-center mt-5 mx-0">
             <div className="col-sm-12 col-md-6 mb-5">
-              <TextField capitalize label="Nombre" />
+              <TextField
+                name="name"
+                formulario={formulario}
+                size="small"
+                capitalize
+                label="Nombre"
+                type="text"
+                inverted
+              />
             </div>
             <div className="col-sm-12 col-md-6 mb-5">
-              <TextField label="Correo electrónico" />
+              <TextField
+                name="email"
+                formulario={formulario}
+                size="small"
+                label="Correo electrónico"
+                type="email"
+                inverted
+              />
             </div>
             <div className="col-sm-12 col-md-6 mb-5">
-              <TextField label="Número de teléfono" />
+              <TextField
+                name="phone"
+                formulario={formulario}
+                size="small"
+                label="Número de teléfono"
+                type="number"
+                inverted
+              />
             </div>
             <div className="col-sm-12 col-md-6 mb-5">
               <Select item={item} setItem={setItem} items={items} titleColor="" />

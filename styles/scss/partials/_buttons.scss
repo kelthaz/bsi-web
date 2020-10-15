@@ -233,6 +233,16 @@ button {
   right: 5%;
 }
 
+.cicle-button-blue {
+  @include button-config(60px, 60px, 50%);
+  background-color: $blue-storm;
+  background-image: url('/chevron.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  border: 0;
+}
+
 .btn-big {
   @include button-config(180px);
   @include button-background($yellow-summer);

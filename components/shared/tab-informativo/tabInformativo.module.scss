@@ -31,6 +31,7 @@
   }
 
   &::before {
+    @include only-lg-inline;
     border-bottom: 2px solid $blue-light;
     bottom: -10px;
     content: '';
@@ -43,6 +44,7 @@
 }
 
 .tab-info {
+  @include only-lg-inline;
   @include sub;
   color: $gray-light;
   margin: 0 8px;
@@ -54,9 +56,11 @@
 
 .tab-active {
   color: $blue-storm;
+  display: inline;
   position: relative;
 
   &::before {
+    @include only-lg-inline;
     border-bottom: 2px solid $blue-storm;
     bottom: -13px;
     content: '';
