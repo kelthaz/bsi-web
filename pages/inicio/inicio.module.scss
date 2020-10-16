@@ -3,11 +3,10 @@
 
 .color-blue-morning {
   color: $blue-morning;
-  font-weight: normal;
   font-family: Futura;
   font-size: 36px;
-  line-height: 48px;
   font-weight: normal;
+  line-height: 48px;
 }
 
 .color-white-text {
@@ -28,8 +27,8 @@
   color: $white;
   font-family: Futura;
   font-size: 35px;
-  line-height: 48px;
   font-weight: normal;
+  line-height: 48px;
 }
 
 .design-pipe {
@@ -51,6 +50,7 @@
 
 .title-benefits {
   line-height: 30px;
+  top: 78px;
 }
 
 .value-side {
@@ -75,6 +75,7 @@
 
 .image-home {
   border-radius: 200px;
+  left: 50px;
 }
 
 .image-home:not(:root:root) {
@@ -101,7 +102,7 @@
 .circle1 {
   background: $blue-night;
   left: 20%;
-  top: 82%;
+  top: 84%;
 }
 
 .circle2 {
@@ -118,14 +119,14 @@
 
 .circle4 {
   background: $blue-storm;
-  left: 29%;
-  top: 15%;
+  left: 33%;
+  top: 18%;
 }
 
 .circle5 {
   background: $blue-sky;
-  left: 63%;
-  top: 20%;
+  left: 78%;
+  top: 28%;
 }
 
 .text-radius {
@@ -158,10 +159,14 @@
   z-index: 9;
 }
 
-@media screen and (max-width: 768px) {
+.subtitle {
+  font-size: 36px;
+}
+
+@media only screen and (max-width: 769px) {
   .design-pipe {
     border-bottom: 2px solid #81c1ea;
-    border-right: 0px;
+    border-right: 0;
   }
 
   .chunk-box {
@@ -172,44 +177,81 @@
   .image-home {
     top: 60px;
   }
-}
 
-@media screen and (max-width: 1024px) {
-  .chunk-box {
-    bottom: 482px;
+  .title-benefits {
+    top: 0;
+  }
+
+  .circle {
+    height: 75px;
+    width: 75px;
   }
 
   .text-radius {
     font-size: 10px;
   }
 
-  .circle {
-    height: 70px;
-    width: 75px;
-  }
-
   .circle1 {
-    left: 20%;
-    top: 92%;
+    left: 18%;
+    top: 98%;
   }
 
   .circle2 {
-    left: 10%;
-    top: 68%;
+    left: 15%;
+    top: 70%;
   }
 
   .circle3 {
-    left: 12%;
-    top: 42%;
-  }
-
-  .circle4 {
-    left: 25%;
-    top: 19%;
+    left: 20%;
+    top: 43%;
   }
 
   .circle5 {
-    left: 63%;
-    top: 33%;
+    left: 80%;
+    top: 40%;
+  }
+
+  .subtitle {
+    font-size: 33px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .chunk-box {
+    bottom: 482px;
+  }
+
+  .text-radius {
+    font-size: 14px;
+  }
+
+  .circle {
+    height: 87px;
+    width: 91px;
+  }
+
+  .circle1 {
+    left: 18%;
+    top: 82%;
+  }
+
+  .circle2 {
+    left: 11%;
+    top: 60%;
+  }
+
+  .circle3 {
+    left: 15%;
+    top: 38%;
+  }
+
+  .circle4 {
+    left: 30%;
+    top: 20%;
+  }
+
+  .circle5 {
+    left: 78%;
+    top: 30%;
   }
 }
