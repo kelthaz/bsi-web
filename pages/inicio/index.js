@@ -255,9 +255,11 @@ export const Home = () => {
                 <h2 className={`text-secondary ${styles.subtitle}`}>Y TU EMPRESA</h2>
                 <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
                 <div className="ml-xs-5 ml-md-0">
-                  <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
-                    Leer más sobre los beneficios
-                  </button>
+                  <Link href="beneficios">
+                    <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
+                      Leer más sobre los beneficios
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className={`d-none d-md-block d-xl-none col-md-6 col-lg-6 mb-5 px-0 ${styles['circle-container']}`}>
