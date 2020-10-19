@@ -9,28 +9,14 @@ import styles from './text-field.module.scss';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];
-  if (size === 'big') {
-    if (inverted) {
-      finalStyles.push(styles['input-big-inverted']);
-      finalStyles.push(styles['icon-check-inverted']);
-      finalStyles.push(styles['label-inverted']);
-      finalStyles.push(styles['indicador-activo-inverted']);
-      finalStyles.push(styles['help-text-inverted']);
-    } else {
-      finalStyles.push(styles['input-big']);
-      finalStyles.push(styles['icon-check']);
-      finalStyles.push(styles.label);
-      finalStyles.push(styles['indicador-activo']);
-      finalStyles.push(styles['help-text']);
-    }
-  } else if (inverted) {
-    finalStyles.push(styles['input-small-inverted']);
+  if (inverted) {
+    finalStyles.push(size === 'big' ? styles['input-big-inverted'] : styles['input-small-inverted']);
     finalStyles.push(styles['icon-check-inverted']);
     finalStyles.push(styles['label-inverted']);
     finalStyles.push(styles['indicador-activo-inverted']);
     finalStyles.push(styles['help-text-inverted']);
   } else {
-    finalStyles.push(styles['input-small']);
+    finalStyles.push(size === 'big' ? styles['input-big'] : styles['input-small']);
     finalStyles.push(styles['icon-check']);
     finalStyles.push(styles.label);
     finalStyles.push(styles['indicador-activo']);
@@ -48,6 +34,10 @@ const TextField = (props) => {
   const status = <SvgCheckOk className={iconCheckStyle} />;
   const [typeInput, setTypeInput] = useState(type);
   const [active, setActive] = useState(false);
+
+  // useLayoutEffect(() => {
+  //   console.log(window.screen.width);
+  // }, [window.screen.width]);
 
   const handleViewPassword = () => {
     if (type === 'password') {

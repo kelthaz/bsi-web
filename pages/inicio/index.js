@@ -1,5 +1,7 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import BannerInicio from '../../components/core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import Select from '../../components/shared/select/Select';
@@ -13,21 +15,39 @@ export const Home = () => {
   const [valueSlider, setValueSlider] = useState(2000000);
   const [minValue] = useState(0);
 
-  const items = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
+  const itemsPaymentMonths = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
-  const companiesTime = ['Más de 2 años', 'Menos de 2 años'];
-  const salesYear = ['Más de $2 MDP', 'Menos de $2 MDP'];
+  const itemsCompanyTime = ['Más de 2 años', 'Menos de 2 años'];
+  const itemsSalesYear = ['Más de $2 MDP', 'Menos de $2 MDP'];
 
-  const [item, setItem] = useState('Seleccione...');
-  const [itemsPaymentTime, setItemPayment] = useState('Seleccione...');
-  const [companyTime, setItemCompany] = useState('Seleccione...');
-  const [saleYear, setItemSale] = useState('Más de $2 MDP');
+  const formulario = useFormik({
+    initialValues: {
+      paymentMonths: 'Seleccione...',
+      paymentTimes: 'Seleccione...',
+      companyTime: 'Seleccione...',
+      salesYear: 'Seleccione...',
+    },
+    validationSchema: Yup.object({
+      paymentMonths: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      paymentTimes: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      companyTime: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      salesYear: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const [resultState, setResulState] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    if (item === 'Seleccione...' || itemsPaymentTime === 'Seleccione...' || companyTime === 'Seleccione...') {
+    if (
+      formulario.values.paymentMonths === 'Seleccione...' ||
+      formulario.values.paymentTimes === 'Seleccione...' ||
+      formulario.values.companyTime === 'Seleccione...' ||
+      formulario.values.salesYear === 'Seleccione...'
+    ) {
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -182,7 +202,7 @@ export const Home = () => {
                       Quiero pagarlo en
                     </div>
                     <div className="col-xs-12 col-md-7 p-md-0">
-                      <Select item={item} setItem={setItem} items={items} />
+                      <Select name="paymentMonths" formulario={formulario} size="small" items={itemsPaymentMonths} />
                     </div>
                   </div>
                 </div>
@@ -195,7 +215,7 @@ export const Home = () => {
                       Quiero plazos
                     </div>
                     <div className="col-xs-12 col-md-7 p-md-0">
-                      <Select item={itemsPaymentTime} setItem={setItemPayment} items={itemsPaymentTimes} />
+                      <Select name="paymentTimes" formulario={formulario} size="small" items={itemsPaymentTimes} />
                     </div>
                   </div>
                 </div>
@@ -208,7 +228,7 @@ export const Home = () => {
                       Mi empresa tiene
                     </div>
                     <div className="col-xs-12 col-md-7 p-md-0">
-                      <Select item={companyTime} setItem={setItemCompany} items={companiesTime} />
+                      <Select name="companyTime" formulario={formulario} size="small" items={itemsCompanyTime} />
                     </div>
                   </div>
                 </div>
@@ -221,7 +241,7 @@ export const Home = () => {
                       Al año vendo
                     </div>
                     <div className="col-xs-12  col-md-7 p-md-0">
-                      <Select item={saleYear} setItem={setItemSale} items={salesYear} />
+                      <Select name="salesYear" formulario={formulario} size="small" items={itemsSalesYear} />
                     </div>
                   </div>
                 </div>
