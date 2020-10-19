@@ -97,12 +97,14 @@ export const Home = () => {
                     En el primer bloque de tu solicitud sólo necesitarás tener a la mano el RFC con el que facturas.
                   </p>
                   <div className="col-md-4 col-lg-3 col-sm-3 col-xs-3 px-lg-0">
-                    <img alt="" src="/RFCIcon.svg" />
+                    <img alt="" src="/RFC.svg" />
                   </div>
                   <div className="col-md-12  mb-xs-4 mb-lg-0 px-xs-0 px-lg-4">
-                    <button className="btn-link-white" type="button">
-                      Leer más sobre el crédito
-                    </button>
+                    <Link href="beneficios">
+                      <button className="btn-link-white" type="button">
+                        Leer más sobre el crédito
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -151,7 +153,7 @@ export const Home = () => {
           </div>
         </section>
         <section className="section-white">
-          <div className={`container col-xs-11 col-md-10 px-xs-0 px-md-5 ${styles['simulator-info']}`}>
+          <div className={`container px-xs-0 px-md-5 ${styles['simulator-info']}`}>
             <span className={styles['chunk-box']} />
             <div className={styles['simulator-content']}>
               <h1 className={` ${styles['title-top']}`}>¿Cuánto dinero necesitas?</h1>
@@ -246,21 +248,23 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <div className="container col-md-10 mt-5 mb-5">
+          <div className="container mt-5 mb-5">
             <div className="row mb-5">
               <div className={`text-xs-center text-md-left col-md-6 mt-5 ${styles['title-benefits']}`}>
-                <h2 className="text-primary mt-md-5">BENEFICIOS PARA TI</h2>
-                <h2 className="text-secondary">Y TU EMPRESA</h2>
+                <h2 className={`text-primary mt-md-5 ${styles.subtitle}`}>BENEFICIOS PARA TI</h2>
+                <h2 className={`text-secondary ${styles.subtitle}`}>Y TU EMPRESA</h2>
                 <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
                 <div className="ml-xs-5 ml-md-0">
-                  <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
-                    Leer más sobre los beneficios
-                  </button>
+                  <Link href="beneficios">
+                    <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
+                      Leer más sobre los beneficios
+                    </button>
+                  </Link>
                 </div>
               </div>
-              <div className={`d-none d-md-block d-xl-none col-md-6 mb-5 ${styles['circle-container']}`}>
+              <div className={`d-none d-md-block d-xl-none col-md-6 col-lg-6 mb-5 px-0 ${styles['circle-container']}`}>
                 <Link href="beneficios">
-                  <a target="_blank" className={`${styles.circle1} ${styles.circle}`}>
+                  <a target="_blank" className={`col-md-6 col-lg-6 ${styles.circle1} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
                   </a>
                 </Link>
@@ -280,12 +284,16 @@ export const Home = () => {
                   </a>
                 </Link>
                 <Link href="beneficios">
-                  <a target="_blank" className={` col-md-6 ${styles.circle5} ${styles.circle}`}>
+                  <a target="_blank" className={`col-md-6 col-lg-6 ${styles.circle5} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Flujo de operación</span>
                   </a>
                 </Link>
-                <div className="row mt-md-5 justify-content-center">
-                  <img className={`col-md-6 ${styles['image-home']}`} src="/home-company-image.png" alt="Hombre" />
+                <div className="row mt-md-0 mt-lg-5 justify-content-center">
+                  <img
+                    className={`col-md-8 col-lg-8 ${styles['image-home']}`}
+                    src="/home-company-image.png"
+                    alt="Hombre"
+                  />
                 </div>
               </div>
               <div className={`d-block d-md-none col-md-6 mb-5 text-center ${styles['circle-container']}`}>
