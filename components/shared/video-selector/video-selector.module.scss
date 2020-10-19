@@ -4,16 +4,16 @@
 .video {
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  height: 270px;
+  height: 250px;
   left: -55px;
   position: absolute;
   top: -50px;
-  width: 450px;
+  width: 400px;
 }
 
 @media screen and (max-width: 768px) {
   .video {
-    height: 220px;
+    height: 230px;
     left: 0;
     position: absolute;
     left: -40px;
@@ -105,9 +105,6 @@
     left: 40%;
     top: 15%;
   }
-}
-
-.circle-button {
 }
 
 .next {
