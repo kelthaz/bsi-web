@@ -1,5 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
 import Link from 'next/link';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import Select from '../../components/shared/select/Select';
 import Slider from '../../components/shared/slider/Slider';
@@ -13,16 +15,31 @@ export const Simulador = () => {
   const [openModalZona, setOpenModalZona] = useState(false);
   const [valueSlider, setValueSlider] = useState(2000000);
   const [minValue] = useState(0);
-  const items = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
-  const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
-  const companiesTime = ['Más de 2 años', 'Menos de 2 años'];
-  const salesYear = ['Más de $2 MDP', 'Menos de $2 MDP'];
 
-  const [item, setItem] = useState('Seleccione...');
-  const [itemsPaymentTime, setItemPayment] = useState('Seleccione...');
+  const itemsPaymentMonths = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
+  const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
+  const itemsCompanyTime = ['Más de 2 años', 'Menos de 2 años'];
+  const itemsSalesYear = ['Más de $2 MDP', 'Menos de $2 MDP'];
+
   const [itemsPaymentTimeResult] = useState('');
-  const [companyTime, setItemCompany] = useState('Seleccione...');
-  const [saleYear, setItemSale] = useState('Más de $2 MDP');
+
+  const formulario = useFormik({
+    initialValues: {
+      paymentMonths: 'Seleccione...',
+      paymentTimes: 'Seleccione...',
+      companyTime: 'Seleccione...',
+      salesYear: 'Seleccione...',
+    },
+    validationSchema: Yup.object({
+      paymentMonths: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      paymentTimes: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      companyTime: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+      salesYear: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
@@ -100,7 +117,12 @@ export const Simulador = () => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    if (item === 'Seleccione...' || itemsPaymentTime === 'Seleccione...' || companyTime === 'Seleccione...') {
+    if (
+      formulario.values.paymentMonths === 'Seleccione...' ||
+      formulario.values.paymentTimes === 'Seleccione...' ||
+      formulario.values.companyTime === 'Seleccione...' ||
+      formulario.values.salesYear === 'Seleccione...'
+    ) {
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -262,6 +284,7 @@ export const Simulador = () => {
                 </div>
               </div>
             </div>
+
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 px-xs-4 p-md-0 py-xs-0">
               <Slider value={valueSlider} setValue={setValueSlider} min={minValue} max={12000000} step={100000} />
             </div>
@@ -269,13 +292,12 @@ export const Simulador = () => {
               <h1 className={`text-xs-center text-md-left  ${styles['title-input']}`}>
                 ¿En cuántos meses quieres pagarlo?
               </h1>
-
               <div className="d-flex align-items-start ">
                 <div className={`col-xs-4 col-md-4 p-md-0 d-none d-md-block ${styles['input-text']}`}>
                   Quiero pagarlo en
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
-                  <Select item={item} setItem={setItem} items={items} />
+                  <Select name="paymentMonths" formulario={formulario} size="small" items={itemsPaymentMonths} />
                 </div>
               </div>
             </div>
@@ -288,7 +310,7 @@ export const Simulador = () => {
                   Quiero plazos
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
-                  <Select item={itemsPaymentTime} setItem={setItemPayment} items={itemsPaymentTimes} />
+                  <Select name="paymentTimes" formulario={formulario} size="small" items={itemsPaymentTimes} />
                 </div>
               </div>
             </div>
@@ -301,7 +323,7 @@ export const Simulador = () => {
                   Mi empresa tiene
                 </div>
                 <div className="col-xs-12 col-md-7 p-md-0">
-                  <Select item={companyTime} setItem={setItemCompany} items={companiesTime} />
+                  <Select name="companyTime" formulario={formulario} size="small" items={itemsCompanyTime} />
                 </div>
               </div>
             </div>
@@ -312,7 +334,7 @@ export const Simulador = () => {
                   Al año vendo
                 </div>
                 <div className="col-xs-12  col-md-7 p-md-0">
-                  <Select item={saleYear} setItem={setItemSale} items={salesYear} />
+                  <Select name="salesYear" formulario={formulario} size="small" items={itemsSalesYear} />
                 </div>
               </div>
             </div>
@@ -363,7 +385,7 @@ export const Simulador = () => {
                 </div>
 
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>{item}</h1>
+                  <h1 className={styles['title-input']}>{formulario.values.paymentMonths}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
                 <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
@@ -376,14 +398,14 @@ export const Simulador = () => {
                 </div>
                 <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>
-                    {itemsPaymentTime === 'Bimestrales' ? 'Bimestral' : itemsPaymentTime}
+                    {formulario.values.paymentTimes === 'Bimestrales' ? 'Bimestral' : formulario.values.paymentTimes}
                   </h1>
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>$ 31,25</h1>
                   <div className={styles['input-text']}>
-                    Pagos {itemsPaymentTime === 'Bimestrales' ? 'bimestrales' : itemsPaymentTime}
+                    {formulario.values.paymentTimes === 'Bimestrales' ? 'bimestrales' : formulario.values.paymentTimes}
                   </div>
                 </div>
               </div>
@@ -419,7 +441,8 @@ export const Simulador = () => {
                 <div className="px-md-4">
                   <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
                     <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
-                      ¿Te gusta este esquema <span className="d-none d-md-inline">de crédito</span>?{' '}
+                      ¿Te gusta este esquema
+                      <span className="d-none d-md-inline">de crédito?</span>
                       <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
                     </p>
                     <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">

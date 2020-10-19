@@ -10,7 +10,6 @@ import styles from './ayuda.module.scss';
 
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
-  const [item, setItem] = useState('Estado');
   const [option, setOption] = useState(1);
 
   const handleOption = (opt) => {
@@ -22,11 +21,13 @@ const Ayuda = () => {
       name: '',
       phone: '',
       email: '',
+      state: 'Estado',
     },
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
       email: Yup.string().email('Invalid email address').required('Campo requerido'),
+      state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -118,7 +119,7 @@ const Ayuda = () => {
               />
             </div>
             <div className="col-sm-12 col-md-6 mb-5">
-              <Select item={item} setItem={setItem} items={items} titleColor="" />
+              <Select name="state" formulario={formulario} size="small" items={items} inverted />
             </div>
           </div>
           <div className="row justify-content-center mx-0">

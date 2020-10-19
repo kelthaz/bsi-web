@@ -6,50 +6,87 @@
   width: 100%;
 }
 
-/*style the arrow inside the select element:*/
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: block;
+}
 
-.select-arrow-active {
+.help-text {
+  @include help-text-config($gray);
+}
+
+.help-text-inverted {
+  @include help-text-config($blue-shadow);
+}
+
+.help-text-error {
+  @include help-text-config($red);
+}
+
+@mixin indicador-config($color) {
+  border: 0;
+  border-bottom: 1.5px solid $color;
+}
+
+.indicador-activo {
+  @include indicador-config($blue-sky);
+
   &::after {
     transform: rotate(180deg);
     transition: transform 0.3s linear;
   }
 }
 
-.select-white {
-  border: 0;
-  border-bottom: 1.5px solid $blue-morning;
-  color: $white;
+.indicador-activo-inverted {
+  @include indicador-config($yellow-summer);
 
   &::after {
-    background-image: url('/chevron.svg');
+    transform: rotate(180deg);
+    transition: transform 0.3s linear;
   }
 }
 
-.select-gray {
-  border: 0;
-  border-bottom: 1.5px solid $blue-sky;
-  color: $gray-dark;
-
-  &::after {
-    background-image: url('/chevron-blue.svg');
-  }
+.indicador {
+  @include indicador-config($gray);
 }
 
-.select-selected {
-  @include body-2;
+.indicador-inverted {
+  @include indicador-config($blue-morning);
+}
+
+.indicador-error {
+  @include indicador-config($red);
+}
+
+@mixin config-select-config($color, $size) {
   background-color: transparent;
-
+  color: $color;
   cursor: pointer;
+  font-family: $futura-book;
+  font-size: $size;
   padding: 12px;
   text-align: left;
   user-select: none;
   width: 100%;
+
+  @if $size == 32px {
+    padding: 0 0 0 12px;
+  } @else {
+    padding: 8px 0 8px 12px;
+  }
 
   &:focus {
     outline: 0;
   }
 
   &::after {
+    @if $color == $gray {
+      background-image: url('/chevron-gray.svg');
+    } @else {
+      background-image: url('/chevron-blue-morning.svg');
+    }
+
     background-position: 100% center;
     background-repeat: no-repeat;
     background-size: 21px 21px;
@@ -61,7 +98,22 @@
   }
 }
 
-/*style items (options):*/
+.select-small {
+  @include config-select-config($gray, 16px);
+}
+
+.select-small-inverted {
+  @include config-select-config($white, 16px);
+}
+
+.select-big {
+  @include config-select-config($gray, 32px);
+}
+
+.select-big-inverted {
+  @include config-select-config($white, 32px);
+}
+
 .select-items {
   background-color: $white;
   border: 1px solid $blue-shadow;
@@ -69,20 +121,15 @@
   border-top: 0;
   left: 0;
   list-style-type: none;
+  margin: 0;
   max-height: 100vh;
   overflow: hidden;
+  padding: 0;
   position: absolute;
   right: 0;
-  top: 100%;
   transition: max-height 0.5s ease-in;
   visibility: visible;
   z-index: 99;
-
-  ul {
-    background-color: $white;
-    margin: 0;
-    padding: 0;
-  }
 }
 
 .item {
@@ -106,7 +153,6 @@
   }
 }
 
-/*hide the items when the select box is closed:*/
 .select-hide {
   border: 0;
   max-height: 0;
