@@ -25,7 +25,7 @@ export const Home = () => {
       paymentMonths: 'Seleccione...',
       paymentTimes: 'Seleccione...',
       companyTime: 'Seleccione...',
-      salesYear: 'Seleccione...',
+      salesYear: 'Más de $2 MDP',
     },
     validationSchema: Yup.object({
       paymentMonths: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
@@ -62,11 +62,11 @@ export const Home = () => {
           <div className="container">
             <div className="row justify-content-center">
               <h2 className={`mt-5 col-lg-12 text-center ${styles['color-white']}`}>DISEÑADO PARA</h2>
-              <h2 className={`body1 col-lg-12 text-center ${styles['color-blue-morning']}`}>SER MÁS SIMPLE</h2>
+              <h2 className={`col-lg-12 text-center ${styles['color-blue-morning']}`}>SER MÁS SIMPLE</h2>
             </div>
             <div className="row justify-content-center ">
               <div className="col-lg-7 col-md-6 col-xs-12 mb-lg-3">
-                <div className={` text-center ${styles['color-white-p']}`}>
+                <div className={`body2 text-center ${styles['color-white-text']}`}>
                   El proceso de solicitud entiende tu ritmo de trabajo y lo diseñamos para que en cuatro pasos lo
                   completes:
                 </div>
@@ -78,7 +78,7 @@ export const Home = () => {
                   <img alt="" src="/Persona.svg" />
                   <div>
                     <h4>Datos personales</h4>
-                    <p className={`  ${styles['color-white-text']}`}>para conocerte mejor</p>
+                    <p className={`${styles['color-white-text']}`}>para conocerte mejor</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export const Home = () => {
                   <img alt="" src="/Empresa.svg" />
                   <div>
                     <h4>Datos de tu empresa</h4>
-                    <p className={`body2  ${styles['color-white-text']}`}> platícanos sobre ella </p>
+                    <p className={`body2 ${styles['color-white-text']}`}> platícanos sobre ella </p>
                   </div>
                 </div>
               </div>
@@ -270,7 +270,9 @@ export const Home = () => {
           </div>
           <div className="container mt-5 mb-5">
             <div className="row mb-5">
-              <div className={`text-xs-center text-md-left col-md-6 mt-5 ${styles['title-benefits']}`}>
+              <div
+                className={`text-xs-center text-md-left col-md-6 col-xs-12 mt-5 px-xs-0 ${styles['title-benefits']}`}
+              >
                 <h2 className={`text-primary mt-md-5 ${styles.subtitle}`}>BENEFICIOS PARA TI</h2>
                 <h2 className={`text-secondary ${styles.subtitle}`}>Y TU EMPRESA</h2>
                 <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
@@ -284,27 +286,27 @@ export const Home = () => {
               </div>
               <div className={`d-none d-md-block d-xl-none col-md-6 col-lg-6 mb-5 px-0 ${styles['circle-container']}`}>
                 <Link href="beneficios">
-                  <a target="_blank" className={`col-md-6 col-lg-6 ${styles.circle1} ${styles.circle}`}>
+                  <a className={`col-md-6 col-lg-6 ${styles.circle1} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Tasas atractivas</span>
                   </a>
                 </Link>
                 <Link href="beneficios">
-                  <a target="_blank" className={`col-md-6 ${styles.circle2} ${styles.circle}`}>
+                  <a className={`col-md-6 ${styles.circle2} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Crecer tu negocio</span>
                   </a>
                 </Link>
                 <Link href="beneficios">
-                  <a target="_blank" className={`col-md-6  ${styles.circle3} ${styles.circle}`}>
+                  <a className={`col-md-6  ${styles.circle3} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Apoyo constante</span>
                   </a>
                 </Link>
                 <Link href="beneficios">
-                  <a target="_blank" className={`col-md-6 ${styles.circle4} ${styles.circle}`}>
+                  <a className={`col-md-6 ${styles.circle4} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Cuenta y banca en línea</span>
                   </a>
                 </Link>
                 <Link href="beneficios">
-                  <a target="_blank" className={`col-md-6 col-lg-6 ${styles.circle5} ${styles.circle}`}>
+                  <a className={`col-md-6 col-lg-6 ${styles.circle5} ${styles.circle}`}>
                     <span className={`${styles['text-radius']}`}>Flujo de operación</span>
                   </a>
                 </Link>
@@ -319,29 +321,19 @@ export const Home = () => {
               <div className={`d-block d-md-none col-md-6 mb-5 text-center ${styles['circle-container']}`}>
                 <div className="row">
                   <Link href="beneficios">
-                    <a target="_blank" className={`col-12 mt-4 ${styles['text-links']}`}>
-                      Cuenta y banca en línea
-                    </a>
+                    <a className={`col-12 mt-4 ${styles['text-links']}`}>Cuenta y banca en línea</a>
                   </Link>
                   <Link href="beneficios">
-                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
-                      Apoyo constante
-                    </a>
+                    <a className={`col-12 mt-2 ${styles['text-links']}`}>Apoyo constante</a>
                   </Link>
                   <Link href="beneficios">
-                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
-                      Flujo de operación
-                    </a>
+                    <a className={`col-12 mt-2 ${styles['text-links']}`}>Flujo de operación</a>
                   </Link>
                   <Link href="beneficios">
-                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
-                      Crecer tu negocio
-                    </a>
+                    <a className={`col-12 mt-2 ${styles['text-links']}`}>Crecer tu negocio</a>
                   </Link>
                   <Link href="beneficios">
-                    <a target="_blank" className={`col-12 mt-2 ${styles['text-links']}`}>
-                      Tasas atractivas
-                    </a>
+                    <a className={`col-12 mt-2 ${styles['text-links']}`}>Tasas atractivas</a>
                   </Link>
                 </div>
 
