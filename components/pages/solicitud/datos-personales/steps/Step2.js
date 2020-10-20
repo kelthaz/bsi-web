@@ -1,25 +1,32 @@
 import React from 'react';
+import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
+import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
 const Step2 = () => (
   <form>
-    <div className="row">
-      <h2>Para comenzar</h2>
-      <p>Cuéntanos, ¿Cómo te llamas?</p>
+    <h2 className="color-blue-storm">¡Hola, Alejandra!</h2>
+    <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
+
+    <div className="row my-3">
+      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div className="card-simple-white-svg">
+          <SvgPersonaFisicaActividadFisica />
+          <p>Persona Física con Actividad Empresarial</p>
+        </div>
+      </div>
+      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div className="card-simple-white-svg">
+          <SvgPersonaMoral />
+          <p>Persona Moral</p>
+        </div>
+      </div>
     </div>
-    <div className="row">
-      <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <p>Mi nombre es</p>
-      </div>
-      <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <input />
-      </div>
-      <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <input />
-      </div>
-    </div>
-    <div className="row">
-      <h2>Para comenzar</h2>
-      <p>Cuéntanos, ¿Cómo te llamas?</p>
+    <p className="color-gray-dark sub">
+      ¿Eres persona física? ¡Adquiere tu crédito en,&nbsp;
+      <a className="color-blue-sky">BanCoppel Personas!</a>
+    </p>
+    <div className="flex-column-center-config">
+      <button type="button" className="cicle-button-blue my-3" aria-label="Avanzar" />
     </div>
   </form>
 );

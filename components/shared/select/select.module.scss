@@ -9,7 +9,7 @@
 @mixin help-text-config($color) {
   @include body-3;
   color: $color;
-  display: block;
+  display: inline-block;
 }
 
 .help-text {

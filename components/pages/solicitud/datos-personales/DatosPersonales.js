@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Step1 from './steps/Step1';
+import Step2 from './steps/Step2';
 
 const DatosPersonales = (props) => {
   const { currentStep, setCurrentStep } = props;
@@ -11,6 +12,7 @@ const DatosPersonales = (props) => {
       break;
 
     case 2:
+      step = <Step2 />;
       break;
 
     default:
