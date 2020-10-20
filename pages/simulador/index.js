@@ -28,7 +28,7 @@ export const Simulador = () => {
       paymentMonths: 'Seleccione...',
       paymentTimes: 'Seleccione...',
       companyTime: 'Seleccione...',
-      salesYear: 'Seleccione...',
+      salesYear: 'Más de $2 MDP',
     },
     validationSchema: Yup.object({
       paymentMonths: Yup.string().notOneOf(['Seleccione...'], 'Selecciona una opción'),
