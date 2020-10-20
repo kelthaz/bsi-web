@@ -4,6 +4,7 @@ import Footer from '../components/core/footer/Footer';
 import Header from '../components/core/header/Header';
 
 import '../styles/styles.scss';
+import ChatBot from '../components/shared/chat-bot/ChatBot';
 
 const App = ({ Component, pageProps }) => (
   <>
@@ -12,7 +13,7 @@ const App = ({ Component, pageProps }) => (
       <meta name="format-detection" content="telephone=no" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-
+    <ChatBot />
     <Header />
     <Component {...pageProps} />
     <Footer />
