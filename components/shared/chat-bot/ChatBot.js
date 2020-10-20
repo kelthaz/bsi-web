@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
-import useOnClickOutTarget from '../../../hooks/useOnClickOutTarget';
+import useScript from '../../../hooks/useScript';
 import styles from './chatBot.module.scss';
 
 const ChatBot = (props) => {
-  const { show } = props;
-  const [openChat, setOpenChat] = useState(false);
+  useScript('https://sdk.inbenta.io/chatbot/1.39.0/inbenta-chatbot-sdk.js');
+  const authorization = {
+    domainKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJwcm9qZWN0IjoiYmFuY29wcGVsX2NoYXRib3RfZXMiLCJkb21haW5fa2V5X2lkIjoiQlk0TmxFdWpmNXlhNGtleGFZbGhMZzo6In0.BqWTIDaIWpG4EjinWeNgnhoH_O3lVfpFj6RpAYz1LLclkLsvvUzbjD6_6SYJkh6kPmmeQW61SbcBKyIcMGiQZw',
+    inbentaKey: 'BY3kJrWCHWH3KuQTJF9OteoQL++QHFBWUrmHImI0Sy0=',
+    environment: /*'production'*/'production',
+  };
 
-  useOnClickOutTarget('chatbot', openChat, setOpenChat);
+  const InbentaAuth = InbentaChatbotSDK.createFromDomainKey(authorization.domainKey, authorization.inbentaKey);
 
-  return (
-    show && (
-      <>
-        <button type="button" className="btn-float-button" onClick={() => setOpenChat(!openChat)}>
-          <img src="/avatar.png" alt="avatar" />
-        </button>
-        {openChat && (
-          <div id="chatbot" className={`${styles['card-chatbot']} body2 color-gray-dark`}>
-            <p>¡Hola! Soy Fernanda y estoy para ayudarte si tienes alguna duda.</p>
-            <p>¡Escríbeme cualquier cosa!</p>
-          </div>
-        )}
-      </>
-    )
-  );
+  return (<></>);
 };
 
 export default ChatBot;
