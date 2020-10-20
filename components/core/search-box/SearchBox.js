@@ -40,11 +40,11 @@ const SearchBox = ({ unmount }) => {
   useEffect(() => {
     const val = formulario.values.search;
     if (val.length > 0) {
-      setData(originalData.filter(({ text }) => text
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .includes(val)));
+      setData(originalData.filter(({ text }) => {
+        const listData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const valData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        return listData.includes(valData);
+      }));
     } else {
       setData([]);
     }
