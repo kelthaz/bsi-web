@@ -117,11 +117,23 @@
 }
 
 .a {
+  background-color: transparent;
   border: 2px solid $blue;
   border-radius: 78%;
   display: inline-block;
+  outline: none;
   padding: 8px 16px;
   text-decoration: none;
+  user-select: none;
+}
+
+.a:focus {
+  outline: none;
+}
+
+.btn-blue-morning {
+  border-color: $blue-morning;
+  color: $blue-morning;
 }
 
 .circle {
