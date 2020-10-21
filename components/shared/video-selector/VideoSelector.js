@@ -93,14 +93,14 @@ const VideoSelector = ({ color }) => {
         <div className="row justify-content-md-end justify-content-xs-center">
           <button
             type="button"
-            className={`mr-3 ${styles.a} ${styles.next} ${styles.round} `}
+            className={`mr-3 ${styles.a} ${styles.next} ${styles.round} ${color === 'blue-storm' && styles['btn-blue-morning']}`}
             onClick={() => slideHandler('prev')}
           >
             &#10094;
           </button>
           <button
             type="button"
-            className={`${styles.a} ${styles.next} ${styles.round} `}
+            className={`${styles.a} ${styles.next} ${styles.round} ${color === 'blue-storm' && styles['btn-blue-morning']}`}
             onClick={() => slideHandler('next')}
           >
             &#10095;

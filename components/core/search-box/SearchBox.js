@@ -30,7 +30,7 @@ const SearchBox = ({ unmount }) => {
       search: '',
     },
     validationSchema: Yup.object({
-      search: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+      search: Yup.string().max(255, 'El campo debe contener 255 caracteres o menos'),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -40,15 +40,11 @@ const SearchBox = ({ unmount }) => {
   useEffect(() => {
     const val = formulario.values.search;
     if (val.length > 0) {
-      setData(
-        originalData.filter(({ text }) =>
-          text
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()
-            .includes(val)
-        )
-      );
+      setData(originalData.filter(({ text }) => {
+        const listData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const valData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        return listData.includes(valData);
+      }));
     } else {
       setData([]);
     }
@@ -65,7 +61,7 @@ const SearchBox = ({ unmount }) => {
         <img src="/x.svg" alt="Cerrar búsqueda" />
       </div>
       <div className="d-flex justify-content-center my-5">
-        <div className="col-md-4 p-0">
+        <div className="col-xs-11 col-md-10 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
           <img src="/search.svg" alt="Search icon" />
           <TextField name="search" formulario={formulario} type="text" size="small" label="Buscar" inverted />

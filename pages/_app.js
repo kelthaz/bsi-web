@@ -5,6 +5,7 @@ import Footer from '../components/core/footer/Footer';
 import Header from '../components/core/header/Header';
 import { useStore } from '../redux/store';
 import '../styles/styles.scss';
+import ChatBot from '../components/shared/chat-bot/ChatBot';
 
 const App = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
