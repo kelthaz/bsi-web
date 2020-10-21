@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import TabInformativo from '../../../components/shared/tab-informativo/TabInformativo';
 import Step from '../../../components/shared/step/Step';
-import ChatBot from '../../../components/shared/chat-bot/ChatBot';
 import Bienvenida from '../../../components/pages/solicitud/bienvenida/Bienvenida';
 import DatosPersonales from '../../../components/pages/solicitud/datos-personales/DatosPersonales';
 import DatosEmpresa from '../../../components/pages/solicitud/datos-empresa/DatosEmpresa';
@@ -57,7 +56,6 @@ const Solicitud = () => {
       <TabInformativo show={showComponents} />
       <Step show={showComponents} currentStep={currentStep} setCurrentStep={setCurrentStep} />
       {TabComponent}
-      <ChatBot show={showComponents} />
       <SvgPatronesSolicitud className="only-lg fixed-left-bottom" />
     </>
   );
