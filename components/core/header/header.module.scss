@@ -26,6 +26,14 @@
   }
 }
 
+.modal-container {
+  width: 424px;
+
+  @include media('sm') {
+    width: 270px;
+  }
+}
+
 .menu-active {
   background-color: $blue-storm;
   border-bottom: 0 !important;
