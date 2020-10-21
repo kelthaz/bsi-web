@@ -56,7 +56,7 @@ const Bienvenido = () => (
           Si quieres ver o cambiar las características de tu crédito,&nbsp;
           <a className="color-blue-sky">haz clic aquí.</a>
         </p>
-        <Link href="/solicitud/datos-personales">
+        <Link href="/solicitud/[tab]" as="/solicitud/datos-personales">
           <button type="button" className="btn-medium flex-align-self-center">
             ¡Comencemos!
           </button>
@@ -66,4 +66,5 @@ const Bienvenido = () => (
   </div>
 );
 
+Bienvenido.getContentTypeIdentifier = () => 'bienvenido';
 export default Bienvenido;

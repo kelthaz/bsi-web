@@ -9,12 +9,13 @@ import DatosEmpresa from '../../../components/pages/solicitud/datos-empresa/Dato
 import SvgPatronesSolicitud from '../../../components/svgs/SvgPatronesSolicitud';
 
 const Solicitud = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [showComponents, setShowComponents] = useState(false);
   const router = useRouter();
   const { tab } = router.query;
   let TabComponent = null;
 
+  console.log(Bienvenida.getContentTypeIdentifier());
   useEffect(() => {
     switch (tab) {
       case 'bienvenida':
