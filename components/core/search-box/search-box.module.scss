@@ -22,25 +22,20 @@
 
 .select-items {
   background-color: $white;
-  border: 1px solid $blue-shadow;
+  border-radius: 0 0 16px 16px;
   border-radius: 0 0 16px 16px;
   border-top: 0;
   left: 0;
   list-style-type: none;
+  margin: 0;
   max-height: 100vh;
   overflow: hidden;
-  position: absolute;
+  padding: 0;
+  position: relative;
   right: 0;
-  top: 100%;
+  top: -24px;
   transition: max-height 0.5s ease-in;
-  visibility: visible;
   z-index: 99;
-
-  ul {
-    background-color: $white;
-    margin: 0;
-    padding: 0;
-  }
 }
 
 .item {

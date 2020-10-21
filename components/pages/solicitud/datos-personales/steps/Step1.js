@@ -1,15 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 
 const Step1 = () => {
+  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+
   const formulario = useFormik({
     initialValues: {
-      name: '',
-      secondName: '',
-      lastname: '',
-      secondLastname: '',
+      name: datosPersonales.name,
+      secondName: datosPersonales.secondName,
+      lastname: datosPersonales.lastname,
+      secondLastname: datosPersonales.secondLastname,
     },
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
@@ -18,12 +23,16 @@ const Step1 = () => {
       secondLastname: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(
+        nextStepDatosPersonales({
+          datosPersonales: { ...datosPersonales, ...values, validSteps: [1], currentStep: 2 },
+        })
+      );
     },
   });
 
   return (
-    <form>
+    <form onSubmit={formulario.handleSubmit} noValidate>
       <h2 className="color-blue-storm">Para comenzar</h2>
       <p className="color-dark-gray sub">Cuéntanos, ¿Cómo te llamas?</p>
 
@@ -46,8 +55,13 @@ const Step1 = () => {
           <TextField name="secondLastname" formulario={formulario} type="text" size="big" label="Apellido materno" />
         </div>
       </div>
-      <div className="flex-column-center-config">
-        <button type="button" className="cicle-button-blue my-3" aria-label="Avanzar" />
+      <div className="flex-column-center-config my-3">
+        <button
+          type="submit"
+          className="cicle-button-blue"
+          aria-label="Avanzar"
+          disabled={!(formulario.isValid && formulario.dirty)}
+        />
       </div>
     </form>
   );

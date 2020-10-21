@@ -14,6 +14,7 @@ const Solicitud = () => {
   const { tab } = router.query;
   let TabComponent = null;
 
+  console.log(Bienvenida.getContentTypeIdentifier());
   useEffect(() => {
     switch (tab) {
       case 'bienvenida':

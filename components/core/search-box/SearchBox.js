@@ -63,17 +63,17 @@ const SearchBox = ({ unmount }) => {
       <div className="d-flex justify-content-center my-5">
         <div className="col-xs-11 col-md-10 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
-          {/*<img src="/search.svg" alt="Search icon" />*/}
+          <img src="/search.svg" alt="Search icon" />
           <TextField name="search" formulario={formulario} type="text" size="small" label="Buscar" inverted />
-          <li className={styles['select-items']}>
+          <ul className={styles['select-items']}>
             {data.map((item) => (
-              <ul key={item.text}>
+              <li key={item.text}>
                 <button className={styles.item} type="button" onClick={() => redirect(item.redirect)}>
                   {item.text}
                 </button>
-              </ul>
+              </li>
             ))}
-          </li>
+          </ul>
         </div>
       </div>
     </div>
