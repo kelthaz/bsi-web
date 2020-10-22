@@ -5,7 +5,6 @@ import Footer from '../components/core/footer/Footer';
 import Header from '../components/core/header/Header';
 import { useStore } from '../redux/store';
 import '../styles/styles.scss';
-import ChatBot from '../components/shared/chat-bot/ChatBot';
 
 const App = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
@@ -16,8 +15,9 @@ const App = ({ Component, pageProps }) => {
         <title>BanCoppel | Pymes</title>
         <meta name="format-detection" content="telephone=no" />
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://sdk.inbenta.io/chatbot/1.39.0/inbenta-chatbot-sdk.js" />
+        <script src="/chatbot.js" />
       </Head>
-
       <Header />
       <Component {...pageProps} />
       <Footer />
