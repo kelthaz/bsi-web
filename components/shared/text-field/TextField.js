@@ -12,13 +12,13 @@ const seleccionaEstilo = (size, inverted) => {
   if (inverted) {
     finalStyles.push(size === 'big' ? styles['input-big-inverted'] : styles['input-small-inverted']);
     finalStyles.push(styles['icon-check-inverted']);
-    finalStyles.push(styles['label-inverted']);
+    finalStyles.push(size === 'big' ? styles['label-big-inverted'] : styles['label-small-inverted']);
     finalStyles.push(styles['indicador-activo-inverted']);
     finalStyles.push(styles['help-text-inverted']);
   } else {
     finalStyles.push(size === 'big' ? styles['input-big'] : styles['input-small']);
     finalStyles.push(styles['icon-check']);
-    finalStyles.push(styles.label);
+    finalStyles.push(size === 'big' ? styles['label-big'] : styles['label-small']);
     finalStyles.push(styles['indicador-activo']);
     finalStyles.push(styles['help-text']);
   }
@@ -26,18 +26,14 @@ const seleccionaEstilo = (size, inverted) => {
 };
 
 const TextField = (props) => {
-  const { name, formulario, capitalize, label, type, size, inverted, optional } = props;
+  const { name, formulario, capitalize, label, type, size, inverted, optional, validation } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { handleChange, values, handleBlur, errors, touched } = formulario;
+  const { handleChange, values, handleBlur, errors, touched, submitCount } = formulario;
 
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
   const [typeInput, setTypeInput] = useState(type);
   const [active, setActive] = useState(false);
-
-  // useLayoutEffect(() => {
-  //   console.log(window.screen.width);
-  // }, [window.screen.width]);
 
   const handleViewPassword = () => {
     if (type === 'password') {
@@ -50,13 +46,15 @@ const TextField = (props) => {
     setActive(false);
   };
 
+  const hasError = () => touched[name] && errors[name];
+
   return (
     <div className={`${styles.group}`}>
       <input
         id={name}
         name={name}
         className={`${inputStyle} ${capitalize ? styles.capitalize : ''} ${
-          touched[name] && errors[name] ? styles['indicador-error'] : active && indicadorStyle
+          hasError() ? styles['indicador-error'] : active && indicadorStyle
         }`}
         type={typeInput}
         required
@@ -67,23 +65,23 @@ const TextField = (props) => {
         placeholder={size === 'big' ? label : ''}
         onFocus={() => setActive(true)}
       />
-      {size === 'small' && (
-        <label
-          htmlFor={name}
-          className={`${touched[name] && errors[name] ? styles['label-error'] : labelStyle} ${
-            values[name] !== '' || active ? styles['label-active'] : ''
-          }`}
-        >
-          {label}
-        </label>
-      )}
-      <span className={touched[name] && errors[name] ? styles['help-text-error'] : helpTextStyle}>
-        {touched[name] && errors[name] ? errors[name] : optional && 'Opcional'}
+
+      <label
+        htmlFor={name}
+        className={`${labelStyle} ${hasError() ? styles['label-error'] : ''} ${
+          values[name] !== '' || active ? styles['label-active'] : ''
+        }`}
+      >
+        {label}
+      </label>
+
+      <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
+        {hasError() ? errors[name] : optional && 'Opcional'}
       </span>
-      {touched[name] && errors[name] ? (
+      {hasError() ? (
         <div className={styles['status-icon']}>{error}</div>
       ) : (
-        active && <div className={styles['status-icon']}>{status}</div>
+        validation && active && <div className={styles['status-icon']}>{status}</div>
       )}
       {type === 'password' && (
         <button className={styles['button-password-inverted']} type="button" onClick={handleViewPassword}>
@@ -103,12 +101,14 @@ TextField.propTypes = {
   size: PropTypes.string.isRequired,
   inverted: PropTypes.bool,
   optional: PropTypes.bool,
+  validation: PropTypes.bool,
 };
 
 TextField.defaultProps = {
   capitalize: false,
   inverted: false,
   optional: false,
+  validation: true,
 };
 
 export default TextField;

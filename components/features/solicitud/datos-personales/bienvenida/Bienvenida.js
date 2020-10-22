@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import SvgDocumentos from '../../../svgs/SvgDocumentos';
-import SvgOferta from '../../../svgs/SvgOferta';
-import SvgPersona from '../../../svgs/SvgPersona';
-import SvgPersonaMoral from '../../../svgs/SvgPersonaMoral';
+import SvgDocumentos from '../../../../svgs/SvgDocumentos';
+import SvgOferta from '../../../../svgs/SvgOferta';
+import SvgPersona from '../../../../svgs/SvgPersona';
+import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 import styles from './bienvenido.module.scss';
 
-const Bienvenido = () => (
+const Bienvenida = () => (
   <div className="container">
     <div className="contedor-solicitud">
       <div className="row">
@@ -56,7 +56,7 @@ const Bienvenido = () => (
           Si quieres ver o cambiar las características de tu crédito,&nbsp;
           <a className="color-blue-sky">haz clic aquí.</a>
         </p>
-        <Link href="/solicitud/[tab]" as="/solicitud/datos-personales">
+        <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/1">
           <button type="button" className="btn-medium flex-align-self-center">
             ¡Comencemos!
           </button>
@@ -66,5 +66,5 @@ const Bienvenido = () => (
   </div>
 );
 
-Bienvenido.getContentTypeIdentifier = () => 'bienvenido';
-export default Bienvenido;
+Bienvenida.getContentTypeIdentifier = () => 'bienvenido';
+export default Bienvenida;

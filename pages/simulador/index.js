@@ -451,7 +451,7 @@ export const Simulador = () => {
                   </div>
                   <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
                     <div className="row">
-                      <Link href="/solicitud/[tab]" as="/solicitud/bienvenida">
+                      <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
                         <button
                           type="button"
                           className={`col-md-12 ${styles['solicitud-button']} ${
