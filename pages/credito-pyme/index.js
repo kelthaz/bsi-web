@@ -92,9 +92,11 @@ const CreditoPyme = () => {
                     Obligado Solidario.
                   </p>
                   <p>Conoce todos los requisitos por tipo de persona.</p>
-                  <button type="button" className="btn-link-blue-sky">
-                    Ver todos los requisitos
-                  </button>
+                  <Link href="requisitos">
+                    <button type="button" className="btn-link-blue-sky">
+                      Ver todos los requisitos
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
