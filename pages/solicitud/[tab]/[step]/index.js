@@ -1,63 +1,34 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-// import TabInformativo from '../../../components/shared/tab-informativo/TabInformativo';
-// import Step from '../../../components/shared/step/Step';
-// import ChatBot from '../../../components/shared/chat-bot/ChatBot';
-// import Bienvenida from '../../../components/pages/solicitud/bienvenida/Bienvenida';
-// import DatosPersonales from '../../../components/pages/solicitud/datos-personales/DatosPersonales';
-// import DatosEmpresa from '../../../components/pages/solicitud/datos-empresa/DatosEmpresa';
-// import SvgPatronesSolicitud from '/../../../components/svgs/SvgPatronesSolicitud';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import TabInformativo from '../../../../components/shared/tab-informativo/TabInformativo';
+import Step from '../../../../components/shared/step/Step';
+import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicitud';
+import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
 
-const StepPage = () => {
+const Solicitud = ({ index }) => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [showComponents, setShowComponents] = useState(false);
-  const router = useRouter();
-  console.log(router.query);
-  let TabComponent = null;
+  const { component: Component, data } = solicitudRoutes[index];
 
-  // console.log(Bienvenida.getContentTypeIdentifier());
-  // useEffect(() => {
-  //   switch (tab) {
-  //     case 'bienvenida':
-  //       setShowComponents(false);
-  //       break;
-
-  //     case 'datos-personales':
-  //       setShowComponents(true);
-  //       break;
-
-  //     case 'datos-empresa':
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // }, [tab]);
-
-  // switch (tab) {
-  //   case 'bienvenida':
-  //     TabComponent = <Bienvenida />;
-  //     break;
-
-  //   case 'datos-personales':
-  //     TabComponent = <DatosPersonales currentStep={currentStep} setCurrentStep={setCurrentStep} />;
-  //     break;
-
-  //   case 'datos-empresa':
-  //     TabComponent = <DatosEmpresa />;
-  //     break;
-
-  //   default:
-  //     if (tab) {
-  //       router.push('/solicitud/bienvenida');
-  //     }
-  //     break;
-  // }
   return (
     <>
-      <h1>step</h1>
+      <TabInformativo show={!!data.step} />
+      <Step show={!!data.step} currentStep={currentStep} setCurrentStep={setCurrentStep} />
+      <Component />
+      <SvgPatronesSolicitud className="only-lg fixed-left-bottom" />
     </>
   );
 };
 
-export default StepPage;
+export async function getServerSideProps(context) {
+  const { tab, step } = context.params;
+  const index = solicitudRoutes.findIndex((route) => route.tab === tab && route.step === step);
+  return {
+    props: { index },
+  };
+}
+
+Solicitud.propTypes = {
+  index: PropTypes.number.isRequired,
+};
+
+export default Solicitud;

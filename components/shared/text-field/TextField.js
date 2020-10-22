@@ -108,7 +108,7 @@ TextField.defaultProps = {
   capitalize: false,
   inverted: false,
   optional: false,
-  validation: false,
+  validation: true,
 };
 
 export default TextField;
