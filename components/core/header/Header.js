@@ -93,9 +93,11 @@ const Header = () => {
             </button>
           )}
           {!pathname.includes('solicitud') && (
-            <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
-              Solicitar crédito
-            </button>
+            <Link href="simulador">
+              <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
+                Solicitar crédito
+              </button>
+            </Link>
           )}
           {!pathname.includes('solicitud') && <button type="button">{}</button>}
         </div>

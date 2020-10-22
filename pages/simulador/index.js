@@ -459,7 +459,7 @@ export const Simulador = () => {
                           }`}
                         >
                           <span className="d-none d-md-block">Comienza tu solicitud</span>
-                          <span className="d-sm-block d-md-none">Solicitar mi crédito</span>
+                          <span className="d-sm-block d-md-none">Comienza tu solicitud</span>
                         </button>
                       </Link>
                     </div>

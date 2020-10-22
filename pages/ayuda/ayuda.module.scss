@@ -75,6 +75,20 @@
   }
 }
 
+.btnNum {
+  text-decoration: underline #338cbf;
+}
+
+.captcha {
+  background: $white;
+  color: $gray;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  padding: 10px;
+}
+
 .container-accordion {
   background-color: $blue-light;
   border-radius: 16px;
@@ -100,10 +114,10 @@
   border: 1px solid $gray-light;
   border-radius: 16px;
   box-sizing: border-box;
-  height: 148px;
-  max-width: 634px;
+  height: 120px;
+  max-width: 960px;
   padding: 20px;
-  top: 40px;
+  top: 25px;
   width: 95%;
 
   textarea {
