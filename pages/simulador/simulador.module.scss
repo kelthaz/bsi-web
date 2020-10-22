@@ -180,6 +180,15 @@ button.solicitud-button:hover:enabled {
   transform: scale(1.05);
 }
 
+@supports (-moz-transform: translate(0, 0)) {
+  .modal-container {
+    border-color: transparent;
+    height: 175px;
+    scrollbar-color: rgba(34, 90, 167, 0.2) transparent;
+    scrollbar-width: thin;
+  }
+}
+
 @media screen and (max-width: 769px) {
   .last-title {
     font-size: 16px !important;

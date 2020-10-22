@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Link from 'next/link';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
 import Title from '../../components/shared/titles/title/Title';
@@ -78,99 +79,118 @@ const Ayuda = () => {
     <>
       <form noValidate="novalidate">
         <SimpleBanner>
-          <div className="row justify-content-center mx-0">
-            <h1 className={`${styles.title}`}>CENTRO DE AYUDA</h1>
-          </div>
-          <div className="row justify-content-center mx-0">
-            <h4 className={styles.bt1}>
-              Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
-            </h4>
-          </div>
-          <div className="row justify-content-center mt-5 mx-0">
-            <div className="col-sm-12 col-md-6 mb-5">
-              <TextField
-                name="name"
-                formulario={formulario}
-                size="small"
-                capitalize
-                label="Nombre"
-                type="text"
-                inverted
-              />
+          <div className="container">
+            <div className="row justify-content-center mx-0">
+              <h1 className={`col-xs-12 text-xs-center ${styles.title}`}>CENTRO DE AYUDA</h1>
+              <h4 className={`col-xs-12 col-md-8 text-xs-center px-xs-0 ${styles.bt1}`}>
+                Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
+              </h4>
             </div>
-            <div className="col-sm-12 col-md-6 mb-5">
-              <TextField
-                name="email"
-                formulario={formulario}
-                size="small"
-                label="Correo electrónico"
-                type="email"
-                inverted
-              />
+            <div className="row justify-content-center mt-5 mx-0 ">
+              <div className="col-sm-12 col-md-6 mb-5">
+                <TextField
+                  name="name"
+                  formulario={formulario}
+                  size="small"
+                  capitalize
+                  label="Nombre"
+                  type="text"
+                  inverted
+                />
+              </div>
+              <div className="col-sm-12 col-md-6 mb-5">
+                <TextField
+                  name="email"
+                  formulario={formulario}
+                  size="small"
+                  label="Correo electrónico"
+                  type="email"
+                  inverted
+                />
+              </div>
+              <div className="col-sm-12 col-md-6 mb-5">
+                <TextField
+                  name="phone"
+                  formulario={formulario}
+                  size="small"
+                  label="Número de teléfono"
+                  type="number"
+                  inverted
+                />
+              </div>
+              <div className="col-sm-12 col-md-6 mb-5">
+                <Select name="state" formulario={formulario} size="small" items={items} inverted />
+              </div>
             </div>
-            <div className="col-sm-12 col-md-6 mb-5">
-              <TextField
-                name="phone"
-                formulario={formulario}
-                size="small"
-                label="Número de teléfono"
-                type="number"
-                inverted
-              />
-            </div>
-            <div className="col-sm-12 col-md-6 mb-5">
-              <Select name="state" formulario={formulario} size="small" items={items} inverted />
-            </div>
-          </div>
-          <div className="row justify-content-center mx-0">
-            <div className={`col-auto ${styles['textarea-questions']}`}>
-              <textarea className="body2" placeholder="Cuéntanos tus dudas..." maxLength="300" />
+            <div className="row justify-content-center mx-0">
+              <div className={`col-auto ${styles['textarea-questions']}`}>
+                <textarea className="body2" placeholder="Cuéntanos tus dudas..." maxLength="300" />
+              </div>
             </div>
           </div>
         </SimpleBanner>
-
-        <div className="row justify-content-center mt-5 pt-3 mx-0">
+        <div className={`row justify-content-center mt-5 `}>
+          <div className={` ${styles.captcha}`}>
+            <input type="checkbox"></input>
+            <label className="mr-5">&nbsp; No soy un robot </label>
+            <img className="ml-5" src="/captcha.svg" alt="Document" />
+          </div>
+        </div>
+        <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button type="button" className="btn-small">
-              Enviar
+            <button type="button" className="btn-small col-12">
+              Envía tu comentario
             </button>
           </div>
         </div>
       </form>
 
       <section>
-        <div className="container">
-          <div className={`row py-5 ${styles['border-contact']}`}>
-            <div className="col-lg-6 col-md-6 col-sm-12">
-              <div className="d-flex flex-row align-items-center">
-                <div className="col-8">
-                  <div className="sub text-primary mb-3">Llámanos directo</div>
-                  <div className="body2 mb-3">Un ejecutivo responderá todas tus dudas.</div>
-                  <div className="sub text-secondary">
-                    <a href="tel:+5510908290">55 1090 8290</a>
+        <section className="mt-5 mb-5 section-blue-light">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className=" offset-md-1 col-lg-7 col-md-6 col-sm-12 px-xs-0">
+                <div className="d-flex flex-row align-items-center">
+                  <div className="mt-5 mb-3 col-8 px-xs-0">
+                    <div className="sub text-primary mb-3">Llámanos directo</div>
+                    <div className="body2 mb-3">
+                      Un ejecutivo responderá todas tus dudas.
+                      <div className="sub text-secondary">
+                        <a className={`text-secondary ${styles.btnNum}`} href="tel:+5510908290">
+                          55 1090 8290
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="col-4">
-                  <img src="/mobile.svg" alt="" />
+                  <div className="col-4 pl-xs-5 pl-md-4 pl-lg-0">
+                    <img className="d-none d-md-block d-xl-none " src="/mobile.svg" alt="" />
+                    <img className="d-block d-sm-block d-md-none" src="/icon-call-center.svg" alt="Document" />
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12">
+          </div>
+        </section>
+        <div className="container">
+          {/* <div className={`row py-5 ${styles['border-contact']}`}> */}
+          {/* <div className="col-lg-6 col-md-6 col-sm-12">
               <div className="d-flex flex-row align-items-center">
                 <div className="col-8">
                   <div className="sub text-primary mb-3">Chat</div>
                   <div className="body2 mb-3">Si prefieres, manda tus dudas por nuestro chat.</div>
-                  <button className="btn-link text-primary" type="button">
-                    Ver todos los requisitos
-                  </button>
+                  <Link href="requisitos">
+                    <button className="btn-link text-primary" type="button">
+                      Ver todos los requisitos
+                    </button>
+                  </Link>
                 </div>
                 <div className="col-4">
                   <img src="/chat.svg" alt="" />
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
         </div>
+        {/* </div> */}
 
         <Title linea1="Todo sobre" linea2="crédito pyme" />
 
@@ -183,7 +203,7 @@ const Ayuda = () => {
                 onClick={() => handleOption(1)}
                 role="button"
               >
-                <img src="/document.svg" alt="Document" />
+                <img src="/about-info.svg" alt="Document" />
                 <div>
                   <div className="sub ">Acerca del crédito</div>
                   <div className="body2">Todo sobre el crédito Pyme</div>
