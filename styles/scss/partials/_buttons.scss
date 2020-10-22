@@ -28,12 +28,16 @@ button {
   line-height: 130%;
   width: $width;
 
-  &:hover {
+  &:hover:enabled {
     box-shadow: 0 4px 6px $black-20;
   }
 
   &:focus {
     outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 

@@ -15,6 +15,12 @@
   font-size: $size;
   width: 100%;
 
+  @include media('md') {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
   @if $size == 32px {
     padding: 0 0 0 12px;
   } @else {
@@ -37,11 +43,21 @@
 .input-big {
   @include input-config($gray, 32px);
   border-bottom: 1.5px solid $gray;
+
+  @include media('md') {
+    font-size: 16px;
+    padding: 8px 0 8px 12px;
+  }
 }
 
 .input-big-inverted {
   @include input-config($gray, 32px);
   border-bottom: 1.5px solid $blue-morning;
+
+  @include media('md') {
+    font-size: 16px;
+    padding: 8px 0 8px 12px;
+  }
 }
 
 .input-small {
@@ -64,11 +80,29 @@
   transition: 0.2s ease all;
 }
 
-.label {
+.label-small {
   @include config-label($gray);
 }
 
-.label-inverted {
+.label-big {
+  @include config-label($gray);
+  display: none;
+
+  @include media('md') {
+    display: block;
+  }
+}
+
+.label-big-inverted {
+  @include config-label($blue-shadow);
+  display: none;
+
+  @include media('md') {
+    display: block;
+  }
+}
+
+.label-small-inverted {
   @include config-label($blue-shadow);
 }
 
