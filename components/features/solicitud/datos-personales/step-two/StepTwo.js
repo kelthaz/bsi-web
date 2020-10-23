@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
-
 const StepTwo = () => {
   const personaFisica = 'Persona Física con Actividad Empresarial';
   const personaMoral = 'Persona Moral';
   const [selectPersonType, setSelectPersonType] = useState();
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleNext = () => {
     dispatch(
       nextStepDatosPersonales({
+        currentStep: { ...currentStep, step: '3' },
         datosPersonales: {
           ...datosPersonales,
           personType: selectPersonType,
-          validSteps: [...datosPersonales.validSteps, 2],
-          currentStep: 3,
         },
       })
     );
+    router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/3');
   };
 
   return (

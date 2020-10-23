@@ -52,6 +52,11 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const handleModal = () => {
+    setOpenModal(false);
+    push('/simulador');
+  };
+
   return (
     <header>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
@@ -62,7 +67,7 @@ const Header = () => {
             solicitud. ¿Estás seguro de querer salirte?
           </p>
           <div className="flex-row-center-config">
-            <button type="button" className="btn-medium-secondary mr-2" onClick={() => push('/simulador')}>
+            <button type="button" className="btn-medium-secondary mr-2" onClick={handleModal}>
               Sí, salir
             </button>
 

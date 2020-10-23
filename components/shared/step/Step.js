@@ -1,15 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './step.module.scss';
 
 const Step = (props) => {
   const { show, currentStep, valipStep, steps } = props;
   const numStep = steps.length;
-  console.log(show, currentStep, valipStep, steps);
 
   const handleStep = (step, action) => {
-    console.log(step, currentStep);
     if (step !== currentStep) {
-      console.log('ejecuto');
       action();
     }
   };
@@ -38,6 +36,13 @@ const Step = (props) => {
       </div>
     )
   );
+};
+
+Step.propTypes = {
+  show: PropTypes.bool.isRequired,
+  currentStep: PropTypes.number.isRequired,
+  valipStep: PropTypes.number.isRequired,
+  steps: PropTypes.array.isRequired,
 };
 
 export default Step;

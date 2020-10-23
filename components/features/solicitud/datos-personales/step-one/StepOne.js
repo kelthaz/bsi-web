@@ -8,7 +8,6 @@ import TextField from '../../../../shared/text-field/TextField';
 
 const StepOne = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  console.log(currentStep);
   const dispatch = useDispatch();
   const router = useRouter();
   const formulario = useFormik({
@@ -28,7 +27,7 @@ const StepOne = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { ...currentStep, step: '2' },
-          datosPersonales: { ...datosPersonales, ...values, validSteps: [1], currentStep: 2 },
+          datosPersonales: { ...datosPersonales, ...values },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/2');
