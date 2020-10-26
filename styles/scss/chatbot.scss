@@ -1,0 +1,119 @@
+@import 'modules/mixins';
+@import 'modules/var';
+
+$border-radius: 14px;
+
+.inbenta {
+  // Launcher
+  .inbenta-bot__launcher {
+    background-color: $yellow-summer;
+    border-radius: 50%;
+    height: 60px;
+    padding: 0;
+    width: 60px;
+
+    &:hover {
+      background-color: $yellow-summer;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .inbenta-bot__launcher__image {
+    background-image: url('/chatbot.svg');
+    height: 48px;
+    width: 48px;
+  }
+
+  // Chat
+  .inbenta-bot {
+    .inbenta-bot__chat {
+      background-color: $white;
+      border-radius: $border-radius;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: initial;
+
+      .inbenta-bot__chat__header {
+        background-color: initial;
+        box-shadow: none;
+
+        .header__actions {
+          background-color: $blue-storm;
+          border-radius: 50%;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          height: 40px;
+          position: relative;
+          top: -30px;
+          width: 40px;
+
+          @include media('lg') {
+            position: initial;
+          }
+
+          .header__actions__icon {
+            padding-left: 10px;
+
+            &::before {
+              content: 'k';
+            }
+          }
+        }
+      }
+
+      .inbenta-bot__chat__body {
+        .body__wrapper {
+          background-color: $white;
+
+          .messages__message--received {
+            align-items: flex-start;
+
+            .messages__message__content {
+              box-shadow: none;
+              font-family: $futura-book;
+
+              .content__label {
+                color: $gray-light;
+                font-family: $futura-book;
+                font-size: 13px;
+              }
+
+              .content__text {
+                background: $blue-light;
+                border-radius: 0 10px 10px;
+                font-size: 16px;
+                padding: 8px;
+              }
+            }
+          }
+
+          .messages__message--sent .messages__message__content {
+            background: $blue-night;
+            border-radius: 10px 0 10px 10px;
+            box-shadow: none;
+            color: $white;
+            font-family: $futura-book;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .inbenta-bot__chat__footer {
+        .footer__form {
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          box-shadow: none;
+
+          .footer__form__input.inbenta-bot-input {
+            border-bottom-left-radius: $border-radius;
+          }
+          .footer__form__button.inbenta-bot-button {
+            border-bottom-right-radius: $border-radius;
+          }
+        }
+      }
+    }
+    .inbenta-bot__powered {
+      display: none;
+    }
+  }
+}
