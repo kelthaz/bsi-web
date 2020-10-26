@@ -1,9 +1,11 @@
 import * as types from '../types/types';
 
 const initialState = {
+  currentStep: {
+    tab: 'datos-personales',
+    step: '1',
+  },
   datosPersonales: {
-    currentStep: 1,
-    validSteps: [],
     name: '',
     secondName: '',
     lastname: '',

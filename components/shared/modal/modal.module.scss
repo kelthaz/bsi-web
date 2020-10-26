@@ -15,7 +15,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1040;
 }
 
 @keyframes animatetop {
@@ -34,6 +34,7 @@
   display: inline-block;
   margin: auto;
   padding: 24px;
+  z-index: 1050;
   // width: auto;
 }
 

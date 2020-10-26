@@ -7,7 +7,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 
 const StepOne = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
   const formulario = useFormik({
@@ -26,7 +26,8 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          datosPersonales: { ...datosPersonales, ...values, validSteps: [1], currentStep: 2 },
+          currentStep: { ...currentStep, step: '2' },
+          datosPersonales: { ...datosPersonales, ...values },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/2');
