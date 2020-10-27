@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './step.module.scss';
 
 const Step = (props) => {
-  const { show, numStep = 5, currentStep, setCurrentStep } = props;
-  const steps = Array.from(Array(numStep).keys()).map((element) => element + 1);
+  const { show, currentStep, valipStep, steps } = props;
+  const numStep = steps.length;
+
+  const handleStep = (step, action) => {
+    if (step !== currentStep) {
+      action();
+    }
+  };
 
   return (
     show && (
@@ -13,19 +20,29 @@ const Step = (props) => {
           <span className="color-gray-light">{numStep}</span>
         </p>
         <div className={styles['container-buttons']}>
-          {steps.map((step) => (
+          {steps.map(({ step, action }) => (
             <button
               type="button"
               key={step}
               className={`${styles.step} ${currentStep === step ? styles['step-active'] : ''}`}
               aria-label="Save"
-              disabled={currentStep !== step}
+              onClick={() => {
+                handleStep(step, action);
+              }}
+              disabled={step > valipStep}
             />
           ))}
         </div>
       </div>
     )
   );
+};
+
+Step.propTypes = {
+  show: PropTypes.bool.isRequired,
+  currentStep: PropTypes.number.isRequired,
+  valipStep: PropTypes.number.isRequired,
+  steps: PropTypes.array.isRequired,
 };
 
 export default Step;

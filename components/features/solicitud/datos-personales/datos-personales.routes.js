@@ -25,7 +25,7 @@ const datosPersonalesRoutes = [
   {
     tab: 'datos-personales',
     step: '2',
-    path: 'datos-personales',
+    path: '/solicitud/datos-personales/2',
     data: { step: 2 },
     component: StepTwo,
   },

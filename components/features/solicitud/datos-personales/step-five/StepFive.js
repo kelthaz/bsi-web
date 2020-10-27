@@ -37,7 +37,7 @@ const StepFive = () => {
   return (
     <div className="container">
       <div className="contedor-solicitud">
-        <form>
+        <form noValidate>
           <h2 className="color-blue-storm">¡Anotado!</h2>
           <p className="color-dark-gray sub">¿Cuál es el nombre comercial, sector y giro de tu negocio?</p>
 

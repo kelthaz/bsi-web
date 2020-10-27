@@ -17,6 +17,10 @@
   span {
     margin: 0 10px;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .tab-content {
