@@ -135,11 +135,11 @@ const CreditoPyme = () => {
                     Finalmente, te solicitaremos algunos documentos dependiendo el tipo de persona que seas para
                     completar tu solicitud.
                   </p>
-                  <p>
+                  {/* <p>
                     Por ejemplo, si eres Persona Física con Actividad Empresarial, te realizaremos una toma de
                     biométricos, y si eres Persona Moral te solicitaremos documentos corporativos como tu Acta
                     Constituiva.
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ const SearchBox = ({ unmount }) => {
   const router = useRouter();
 
   const originalData = [
-    { redirect: '/credito-pyme', text: 'Crédito PyME' },
+    { redirect: '/credito-pyme', text: 'Crédito Digital Pyme' },
     { redirect: '/requisitos', text: 'Requisitos para un crédito de Crédito Simple PyME' },
     { redirect: '/requisitos', text: 'Requisitos para una cuenta BanCoppel' },
     { redirect: '/simulador', text: 'Simulador' },
@@ -40,11 +40,19 @@ const SearchBox = ({ unmount }) => {
   useEffect(() => {
     const val = formulario.values.search;
     if (val.length > 0) {
-      setData(originalData.filter(({ text }) => {
-        const listData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-        const valData = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-        return listData.includes(valData);
-      }));
+      setData(
+        originalData.filter(({ text }) => {
+          const listData = text
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+          const valData = text
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+          return listData.includes(valData);
+        })
+      );
     } else {
       setData([]);
     }

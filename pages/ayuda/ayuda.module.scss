@@ -33,6 +33,11 @@
   }
 }
 
+.img-call-center {
+  height: 90px;
+  width: 90px;
+}
+
 .card {
   align-items: center;
   border: 1.5px solid transparent;
@@ -75,16 +80,16 @@
   }
 }
 
-.btnNum {
+.btn-num {
   text-decoration: underline #338cbf;
 }
 
 .captcha {
   background: $white;
-  color: $gray;
   border: 1px solid $gray;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  color: $gray;
   margin: 20px 0;
   padding: 10px;
 }

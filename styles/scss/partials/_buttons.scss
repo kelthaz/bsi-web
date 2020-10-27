@@ -139,6 +139,7 @@ button {
 .btn-link {
   align-items: center;
   background-color: transparent;
+  text-decoration: underline;
   border: 0;
   cursor: pointer;
   display: flex;
@@ -165,8 +166,15 @@ button {
   }
 }
 
+.btn-link-blue {
+  color: #338cbf;
+  font-family: $futura-heavy;
+  text-decoration: underline;
+}
+
 .btn-link-blue-sky {
   align-items: center;
+  text-decoration: underline;
   background-color: transparent;
   border: 0;
   color: $blue-sky;

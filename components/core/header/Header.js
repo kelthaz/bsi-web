@@ -10,7 +10,7 @@ const Header = () => {
   const { pathname, push } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },
-    { label: 'Crédito Pyme', link: 'credito-pyme' },
+    { label: 'Crédito Digital Pyme', link: 'credito-pyme' },
     { label: 'Requisitos', link: 'requisitos' },
     { label: 'Simulador', link: 'simulador' },
     { label: 'Beneficios', link: 'beneficios' },
@@ -94,7 +94,7 @@ const Header = () => {
           )}
           {!pathname.includes('solicitud') && (
             <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
-              Iniciar sesión
+              Inicia sesión
             </button>
           )}
           {!pathname.includes('solicitud') && (
