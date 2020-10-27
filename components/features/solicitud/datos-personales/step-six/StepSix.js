@@ -8,7 +8,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import CheckField from '../../../../shared/check-field/CheckField';
 
-const StepOne = () => {
+const StepSix = () => {
   const [resultState, setResulState] = useState(true);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
@@ -119,4 +119,4 @@ const StepOne = () => {
     </div>
   );
 };
-export default StepOne;
+export default StepSix;
