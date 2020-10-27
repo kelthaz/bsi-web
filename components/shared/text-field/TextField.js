@@ -28,7 +28,7 @@ const seleccionaEstilo = (size, inverted) => {
 const TextField = (props) => {
   const { name, formulario, capitalize, label, type, size, inverted, optional, validation } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { handleChange, values, handleBlur, errors, touched, submitCount } = formulario;
+  const { handleChange, values, handleBlur, errors, touched } = formulario;
 
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
@@ -57,7 +57,6 @@ const TextField = (props) => {
           hasError() ? styles['indicador-error'] : active && indicadorStyle
         }`}
         type={typeInput}
-        required
         onChange={handleChange}
         onBlur={onHandleBlur}
         value={values[name]}

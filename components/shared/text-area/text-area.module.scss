@@ -1,0 +1,110 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.text-area-container {
+  @include scroll-config(10px);
+  width: 100%;
+
+  ::-webkit-resizer {
+    background-color: transparent;
+  }
+}
+
+.border-text-area {
+  border: 1.5px solid $gray;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  width: 100%;
+
+  &:focus-within {
+    border-color: $blue-sky;
+  }
+
+  &::after {
+    background-color: $white;
+    bottom: 12px;
+    content: '';
+    height: 18px;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    width: 18px;
+    z-index: 1;
+  }
+}
+
+.resize-text-area {
+  position: relative;
+
+  &::before {
+    background-color: $gray;
+    border-radius: 2px;
+    bottom: 5px;
+    content: '';
+    height: 2px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    transform: rotate(-45deg);
+    width: 17px;
+    z-index: 2;
+  }
+
+  &::after {
+    background-color: $gray;
+    border-radius: 2px;
+    bottom: 2px;
+    content: '';
+    height: 2px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    transform: rotate(-45deg);
+    width: 11px;
+    z-index: 2;
+  }
+}
+
+.text-area {
+  @include body-2;
+  @include scroll-config-firefox;
+
+  border: 0;
+  color: $gray;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $gray-light;
+  }
+}
+
+.help-text {
+  display: inline-block;
+}
+
+.indicador-error {
+  border: 1.5px solid $red;
+
+  &:focus-within {
+    border: 1.5px solid $red;
+  }
+}
+
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: inline-block;
+}
+
+.help-text {
+  @include help-text-config($gray);
+}
+
+.help-text-error {
+  @include help-text-config($red);
+}
