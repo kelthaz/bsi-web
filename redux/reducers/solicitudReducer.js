@@ -11,6 +11,8 @@ const initialState = {
     lastname: '',
     secondLastname: '',
     personType: '',
+    razonSocial: '',
+    tipoEmpresa: 'S.A',
     businessName: '',
     sector: 'Sector',
     giro: 'Giro',

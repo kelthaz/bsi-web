@@ -27,7 +27,7 @@ const TextArea = (props) => {
       </div>
 
       <span className={hasError() ? styles['help-text-error'] : styles['help-text']}>
-        {hasError() ? errors[name] : optional && 'Opcional'}
+        {hasError() ? errors[name] : optional && 'Opcional'}&nbsp;
       </span>
     </div>
   );
