@@ -5,11 +5,13 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
+import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
 
 const StepOne = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
+
   const formulario = useFormik({
     initialValues: {
       name: datosPersonales.name,
@@ -18,10 +20,10 @@ const StepOne = () => {
       secondLastname: datosPersonales.secondLastname,
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
-      secondName: Yup.string().max(15, 'Must be 15 characters or less'),
-      lastname: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
-      secondLastname: Yup.string().max(15, 'Must be 15 characters or less'),
+      name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      secondName: Yup.string().max(60, longitudMaxima),
+      lastname: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      secondLastname: Yup.string().max(60, longitudMaxima),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -67,10 +69,10 @@ const StepOne = () => {
               />
             </div>
           </div>
-          <div className="flex-column-center-config my-3">
+          <div className="flex-column-center-config ">
             <button
               type="submit"
-              className="cicle-button-blue"
+              className="cicle-button-blue my-3"
               aria-label="Avanzar"
               disabled={!(formulario.isValid && formulario.dirty)}
             />

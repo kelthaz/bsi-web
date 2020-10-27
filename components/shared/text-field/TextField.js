@@ -75,7 +75,7 @@ const TextField = (props) => {
       </label>
 
       <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
-        {hasError() ? errors[name] : optional && 'Opcional'}
+        {hasError() ? errors[name] : optional && 'Opcional'}&nbsp;
       </span>
       {hasError() ? (
         <div className={styles['status-icon']}>{error}</div>
@@ -107,7 +107,7 @@ TextField.defaultProps = {
   capitalize: false,
   inverted: false,
   optional: false,
-  validation: true,
+  validation: false,
 };
 
 export default TextField;

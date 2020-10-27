@@ -26,13 +26,13 @@ const Bienvenida = () => (
             <p>Datos Personales</p>
           </div>
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
             <SvgPersonaMoral />
             <p>Datos de tu empresa</p>
           </div>
         </div>
-        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
           <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
             <SvgOferta />
             <p>Oferta</p>
@@ -41,7 +41,7 @@ const Bienvenida = () => (
         <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
             <SvgDocumentos />
-            <p>Datos Personales</p>
+            <p>Documentación</p>
           </div>
         </div>
       </div>
@@ -54,10 +54,12 @@ const Bienvenida = () => (
         </div>
         <p className="sub color-gray-dark">
           Si quieres ver o cambiar las características de tu crédito,&nbsp;
-          <a className="color-blue-sky">haz clic aquí.</a>
+          <span className="color-blue-sky">
+            <a className="link">haz clic aquí.</a>
+          </span>
         </p>
         <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/1">
-          <button type="button" className="btn-medium flex-align-self-center">
+          <button type="button" className="btn-medium flex-align-self-center my-3">
             ¡Comencemos!
           </button>
         </Link>

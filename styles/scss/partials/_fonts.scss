@@ -81,6 +81,15 @@ h5 {
   font-size: 12px;
 }
 
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
 // Colors
 
 p {

@@ -4,11 +4,12 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
+
 const StepTwo = () => {
   const personaFisica = 'Persona Física con Actividad Empresarial';
   const personaMoral = 'Persona Moral';
-  const [selectPersonType, setSelectPersonType] = useState();
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const [selectPersonType, setSelectPersonType] = useState(datosPersonales.personType);
   const dispatch = useDispatch();
   const router = useRouter();
 

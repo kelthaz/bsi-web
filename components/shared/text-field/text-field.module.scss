@@ -22,9 +22,9 @@
   }
 
   @if $size == 32px {
-    padding: 0 0 0 12px;
+    padding: 0 12px;
   } @else {
-    padding: 8px 0 8px 12px;
+    padding: 8px 12px;
   }
 
   &:focus {
@@ -46,7 +46,7 @@
 
   @include media('md') {
     font-size: 16px;
-    padding: 8px 0 8px 12px;
+    padding: 8px 12px;
   }
 }
 
@@ -56,7 +56,7 @@
 
   @include media('md') {
     font-size: 16px;
-    padding: 8px 0 8px 12px;
+    padding: 8px 12px;
   }
 }
 
@@ -129,6 +129,7 @@
 
 .indicador-error {
   border-bottom: 1.5px solid $red;
+  padding-right: 20px;
 }
 
 @mixin help-text-config($color) {
@@ -147,14 +148,6 @@
 
 .help-text-error {
   @include help-text-config($red);
-}
-
-.size-big {
-  font-size: 32px;
-}
-
-.size-small {
-  font-size: 16px;
 }
 
 @mixin icon-config($color) {
@@ -180,8 +173,12 @@
 
 .status-icon {
   position: absolute;
-  right: 10px;
-  top: 15%;
+  right: 0;
+  top: 14px;
+
+  @include media('md') {
+    top: 7px;
+  }
 }
 
 @mixin button-password-config($color) {
