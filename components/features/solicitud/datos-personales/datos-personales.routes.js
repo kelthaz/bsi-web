@@ -4,6 +4,7 @@ import StepTwo from './step-two/StepTwo';
 import StepThree from './step-three/StepThree';
 import StepFour from './step-four/StepFour';
 import StepFive from './step-five/StepFive';
+import StepSix from './step-six/Stepsix';
 import Agradecimiento from './agradecimiento/Agradecimiento';
 
 const datosPersonalesRoutes = [
@@ -48,6 +49,13 @@ const datosPersonalesRoutes = [
     path: '/solicitud/datos-personales/5',
     data: { step: 5 },
     component: StepFive,
+  },
+  {
+    tab: 'datos-personales',
+    step: '6',
+    path: '/solicitud/datos-personales/6',
+    data: { step: 5 },
+    component: StepSix,
   },
   {
     tab: 'datos-personales',
