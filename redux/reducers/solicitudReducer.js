@@ -17,6 +17,8 @@ const initialState = {
     businessAbout: '',
     contrasena: '',
     rfc: '',
+    phone: '',
+    email: '',
   },
   datosEmpresa: { validSteps: [] },
   oferta: { validSteps: [] },

@@ -2,13 +2,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
+import TextArea from '../../../../shared/text-area/TextArea';
 import Select from '../../../../shared/select/Select';
 
 const StepThree = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
+  const router = useRouter();
   const itemsGiro = ['comercial', 'industrial', 'financiero', 'servicios'];
   const itemsSector = ['primario', 'secundario', 'terciario', 'cuaternario'];
 
@@ -22,22 +25,24 @@ const StepThree = () => {
     validationSchema: Yup.object({
       businessName: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       sector: Yup.string().notOneOf(['Sector'], 'Selecciona una opción'),
-      giro: Yup.string().notOneOf(['Sector'], 'Selecciona una opción'),
+      giro: Yup.string().notOneOf(['Giro'], 'Selecciona una opción'),
       businessAbout: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
     }),
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          datosPersonales: { ...datosPersonales, ...values, validSteps: [1], currentStep: 2 },
+          currentStep: { ...currentStep, step: '4' },
+          datosPersonales: { ...datosPersonales, ...values },
         })
       );
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/4');
     },
   });
 
   return (
     <div className="container">
       <div className="contedor-solicitud">
-        <form>
+        <form onSubmit={formulario.handleSubmit} noValidate>
           <h2 className="color-blue-storm">¡Anotado!</h2>
           <p className="color-dark-gray sub">¿Cuál es el nombre comercial, sector y giro de tu negocio?</p>
 
@@ -74,13 +79,17 @@ const StepThree = () => {
             </div>
           </div>
 
-          <div className="row no-gutters">
-            <textarea />
+          <div className="row no-gutters py-3">
+            <TextArea
+              name="businessAbout"
+              formulario={formulario}
+              label="Platícanos un poco a qué se dedica tu negocio..."
+            />
           </div>
 
           <div className="flex-column-center-config">
             <button
-              type="button"
+              type="submit"
               className="cicle-button-blue my-3"
               aria-label="Avanzar"
               disabled={!(formulario.isValid && formulario.dirty)}
