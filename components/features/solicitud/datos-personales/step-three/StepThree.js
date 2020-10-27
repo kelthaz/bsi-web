@@ -79,7 +79,7 @@ const StepThree = () => {
             </div>
           </div>
 
-          <div className="row no-gutters">
+          <div className="row no-gutters py-3">
             <TextArea
               name="businessAbout"
               formulario={formulario}
