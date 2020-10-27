@@ -46,22 +46,6 @@ const StepFive = () => {
       setResulState(false);
     }
   }, [formulario.values.contrasena]);
-
-  // const validationHandler = (event) => {
-  //   console.log(event.target.value);
-  //   const value = event.target.value;
-  //   if (value.length) setResulState(true);
-  //   let isValid = false;
-  //   if (value.length < 8) {
-  //     console.log('debes agregar más datos');
-  //   }
-  //   if (!/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/.test(value)) {
-  //     console.log('agrega una mayus y una minuscula');
-  //   }
-  // };
-  const validationHandler = () => {
-    console.log('here');
-  };
   return (
     <div className="container px-xs-0">
       <div className="contedor-solicitud-7 ">
