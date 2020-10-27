@@ -62,7 +62,7 @@ const configuracion = {
       no: 'No',
       'generic-error-message': 'Por favor intente con otra pregunta',
       'enter-question': 'Pregunta aquí',
-      'interface-title': '¿Tienes preguntas?',
+      'interface-title': '',
       'guest-name': 'Tu',
       'help-question': '¿Cómo te puedo ayudar?',
       thanks: '¡Gracias!',
