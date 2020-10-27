@@ -15,6 +15,8 @@ const initialState = {
     sector: 'Sector',
     giro: 'Giro',
     businessAbout: '',
+    phone: '',
+    email: '',
   },
   datosEmpresa: { validSteps: [] },
   oferta: { validSteps: [] },

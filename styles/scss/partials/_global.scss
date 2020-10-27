@@ -63,7 +63,7 @@ a {
   z-index: -1;
 }
 
-@include scroll-config(15px);
+@include scroll-config(16px);
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
