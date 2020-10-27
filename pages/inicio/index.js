@@ -120,7 +120,7 @@ export const Home = () => {
                     <img alt="" src="/RFC.svg" />
                   </div>
                   <div className="col-md-12  mb-xs-4 mb-lg-0 px-xs-0 px-lg-4">
-                    <Link href="beneficios">
+                    <Link href="credito-pyme">
                       <button className="btn-link-white" type="button">
                         Leer más sobre el crédito
                       </button>

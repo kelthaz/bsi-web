@@ -15,6 +15,8 @@ const initialState = {
     sector: 'Sector',
     giro: 'Giro',
     businessAbout: '',
+    contrasena: '',
+    rfc: '',
     phone: '',
     email: '',
   },

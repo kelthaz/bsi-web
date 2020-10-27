@@ -1,0 +1,12 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.input {
+  visibility: hidden;
+}
+
+.input-visible {
+  height: 18px;
+  visibility: show;
+  width: 18px;
+}

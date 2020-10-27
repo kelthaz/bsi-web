@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ const Ayuda = () => {
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
-      email: Yup.string().email('Invalid email address').required('Campo requerido'),
+      email: Yup.string().email('Correo invalido').required('Campo requerido'),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
     }),
     onSubmit: (values) => {
@@ -74,6 +74,15 @@ const Ayuda = () => {
       ))}
     </div>
   );
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    if (formulario.values.name === '' || formulario.values.email === '' || formulario.values.phone === '') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  });
 
   return (
     <>
@@ -138,7 +147,7 @@ const Ayuda = () => {
         </div>
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button type="button" className="btn-small col-12">
+            <button disabled={disabled} type="button" className="btn-small col-12">
               Envía tu comentario
             </button>
           </div>
@@ -156,15 +165,14 @@ const Ayuda = () => {
                     <div className="body2 mb-3">
                       Un ejecutivo responderá todas tus dudas.
                       <div className="sub text-secondary">
-                        <a className={`text-secondary ${styles.btnNum}`} href="tel:+5510908290">
-                          55 1090 8290
+                        <a className={`text-secondary ${styles['btn-num']}`} href="tel:+5510908290">
+                          5526774690
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="col-4 pl-xs-5 pl-md-4 pl-lg-0">
-                    <img className="d-none d-md-block d-xl-none " src="/mobile.svg" alt="" />
-                    <img className="d-block d-sm-block d-md-none" src="/icon-call-center.svg" alt="Document" />
+                    <img className={`${styles['img-call-center']}`} src="/icon-call-center.svg" alt="Document" />
                   </div>
                 </div>
               </div>

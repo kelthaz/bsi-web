@@ -26,7 +26,7 @@ const seleccionaEstilo = (size, inverted) => {
 };
 
 const TextField = (props) => {
-  const { name, formulario, capitalize, label, type, size, inverted, optional, validation } = props;
+  const { name, formulario, maxlength, capitalize, label, type, size, inverted, optional, validation } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched } = formulario;
 
@@ -60,6 +60,7 @@ const TextField = (props) => {
         onChange={handleChange}
         onBlur={onHandleBlur}
         value={values[name]}
+        maxLength={maxlength}
         autoComplete="off"
         placeholder={size === 'big' ? label : ''}
         onFocus={() => setActive(true)}
@@ -101,6 +102,7 @@ TextField.propTypes = {
   inverted: PropTypes.bool,
   optional: PropTypes.bool,
   validation: PropTypes.bool,
+  maxlength: PropTypes.number,
 };
 
 TextField.defaultProps = {
