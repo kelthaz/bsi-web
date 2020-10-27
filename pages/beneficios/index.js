@@ -141,7 +141,7 @@ const Beneficios = () => (
           <div className="d-flex justify-content-center pt-4">
             <Link href="simulador">
               <button className={`btn-link ${styles.button}`} type="button">
-                Solicitar mi crédito
+                Solicita tu crédito
               </button>
             </Link>
           </div>

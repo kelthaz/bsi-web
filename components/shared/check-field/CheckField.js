@@ -8,11 +8,11 @@ const CheckField = (props) => {
   const { name, formulario, label } = props;
   const hiddenMaxMin = formulario.errors.contraseña !== '8 caracteres mínimo' ? false : true;
 
-  const hiddenCapital =
-    formulario.errors.contraseña === 'Debe tener mínimo 1 letra mayúscula y 1 minúscula' || null ? true : false;
+  console.log('formulario, formulario', formulario);
+  const hiddenCapital = formulario.errors.contraseña === 'error' || null ? true : false;
 
   return (
-    <div className="mb-3">
+    <div className="mb-5">
       <label htmlFor="max-min">
         <img hidden={hiddenMaxMin} src="/check.svg" alt="Check" />
         <input className={`mr-2  ${hiddenMaxMin ? styles['input-visible'] : styles.input}`} type="radio" disabled />
