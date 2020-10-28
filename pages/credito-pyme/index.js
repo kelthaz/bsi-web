@@ -93,7 +93,7 @@ const CreditoPyme = () => {
                   </p>
                   <p>Conoce todos los requisitos por tipo de persona.</p>
                   <Link href="requisitos">
-                    <button type="button" className="btn-link-blue-sky">
+                    <button type="button" className="btn-link-arrow-right">
                       Ver todos los requisitos
                     </button>
                   </Link>
@@ -225,7 +225,7 @@ const CreditoPyme = () => {
                 <span>GRAN SALTO</span>
               </h2>
               <Link href="simulador">
-                <button type="button" className="btn-link-blue-sky">
+                <button type="button" className="btn-link-arrow-right">
                   Solicitar mi crédito
                 </button>
               </Link>

@@ -34,7 +34,7 @@ const StepTwo = () => {
           <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
 
           <div className="row my-3">
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div className="col-lg-6 col-md-6 col-sm-12 pl-lg-5 pl-md-5 col-xs-12 mb-sm-2 mb-xs-2">
               <button
                 type="button"
                 className={`card-simple-white-svg card-button ${
@@ -42,11 +42,14 @@ const StepTwo = () => {
                 }`}
                 onClick={() => setSelectPersonType(personaFisica)}
               >
-                <SvgPersonaFisicaActividadFisica />
-                <p>{personaFisica}</p>
+                <div>
+                  <SvgPersonaFisicaActividadFisica />
+                </div>
+
+                <p className="px-md-5 px-lg-5">{personaFisica}</p>
               </button>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
               <button
                 type="button"
                 className={`card-simple-white-svg card-button ${
@@ -54,14 +57,24 @@ const StepTwo = () => {
                 }`}
                 onClick={() => setSelectPersonType(personaMoral)}
               >
-                <SvgPersonaMoral />
+                <div>
+                  <SvgPersonaMoral />
+                </div>
+
                 <p>{personaMoral}</p>
               </button>
             </div>
           </div>
           <p className="color-gray-dark sub">
-            ¿Eres persona física? ¡Adquiere tu crédito en,&nbsp;
-            <a className="color-blue-sky">BanCoppel Personas!</a>
+            <span>¿Eres persona física? ¡Adquiere tu crédito en </span>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
+              className="link"
+            >
+              BanCoppel Personas!
+            </a>
           </p>
           <div className="flex-column-center-config">
             <button

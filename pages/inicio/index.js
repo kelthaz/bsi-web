@@ -121,7 +121,7 @@ export const Home = () => {
                   </div>
                   <div className="col-md-12  mb-xs-4 mb-lg-0 px-xs-0 px-lg-4">
                     <Link href="credito-pyme">
-                      <button className="btn-link-white" type="button">
+                      <button className="btn-link-arrow-right-inverted" type="button">
                         Leer más sobre el crédito
                       </button>
                     </Link>
@@ -145,7 +145,7 @@ export const Home = () => {
                   </div>
                   <div className="col-md-8 ml-lg-0 ml-md-0 ml-xs-3 mb-xs-3 px-xs-0 px-lg-1">
                     <Link href="requisitos">
-                      <button className="btn-link-white" type="button">
+                      <button className="btn-link-arrow-right-inverted" type="button">
                         Ver todos los requisitos
                       </button>
                     </Link>
@@ -278,7 +278,7 @@ export const Home = () => {
                 <p>Conoce las características que nuestros clientes aprovechan para hacer crecer sus empresas.</p>
                 <div className="ml-xs-5 ml-md-0">
                   <Link href="beneficios">
-                    <button className="ml-sm-5 ml-md-0 btn-link-blue-sky" type="button">
+                    <button className="ml-sm-5 ml-md-0 btn-link-arrow-right" type="button">
                       Leer más sobre los beneficios
                     </button>
                   </Link>

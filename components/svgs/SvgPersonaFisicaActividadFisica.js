@@ -1,59 +1,57 @@
 const SvgPersonaFisicaActividadFisica = (props) => (
-  <svg width={80} height={80} viewBox="0 0 80 80" fill="none" {...props}>
-    <g opacity={0.8}>
-      <path
-        d="M40.313 12.63c1.348 2.16 2.138 4.762 2.138 7.56 0 7.472-5.604 13.526-12.519 13.526-4.896 0-9.138-3.04-11.194-7.467"
-        stroke="#225AA7"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M18.738 26.25a14.35 14.35 0 01-1.324-6.058c0-7.471 5.605-13.525 12.519-13.525 4.324 0 8.132 2.364 10.38 5.965"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M45.644 45.237c-9.4-3.857-20.093-3.857-29.497 0-5.749 2.36-11.035 6.18-11.252 12.267 0 0-2.71 11.24 27.88 5.843"
-        stroke="#225AA7"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M53.974 52.095v-5.526h11.577v5.526"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M59.43 67.48a2.46 2.46 0 01-2.452-2.453v-2.916a2.46 2.46 0 012.453-2.452 2.46 2.46 0 012.452 2.452v2.916a2.46 2.46 0 01-2.453 2.453z"
-        fill="#81C1EA"
-      />
-      <path
-        d="M45.393 61.519h29.662"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M71.244 74.47H48.286a3.824 3.824 0 01-3.816-3.811V57.107a3.828 3.828 0 013.816-3.815h22.958a3.828 3.828 0 013.816 3.815v13.547c-.005 2.1-1.72 3.816-3.816 3.816z"
-        stroke="#225AA7"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </g>
+  <svg width={48} height={48} viewBox="0 0 48 48" fill="none" {...props}>
+    <path
+      d="M24.188 7.578a8.552 8.552 0 011.283 4.536c0 4.483-3.363 8.116-7.511 8.116-2.939 0-5.484-1.825-6.717-4.48"
+      stroke="#225AA7"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.243 15.75a8.611 8.611 0 01-.795-3.635C10.448 7.632 13.811 4 17.96 4c2.594 0 4.88 1.419 6.228 3.58"
+      stroke="#81C1EA"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M27.386 27.142a23.424 23.424 0 00-17.697 0c-3.45 1.416-6.622 3.708-6.752 7.36 0 0-1.626 6.745 16.728 3.506"
+      stroke="#225AA7"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M32.384 31.257V27.94h6.946v3.316"
+      stroke="#81C1EA"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M35.658 40.488c-.81 0-1.471-.662-1.471-1.472v-1.75c0-.809.662-1.47 1.471-1.47.81 0 1.472.661 1.472 1.47v1.75c0 .81-.662 1.472-1.472 1.472z"
+      fill="#81C1EA"
+    />
+    <path
+      d="M27.236 36.911h17.797"
+      stroke="#81C1EA"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M42.746 44.682H28.971c-1.26 0-2.289-1.03-2.289-2.287v-8.13c0-1.258 1.03-2.29 2.29-2.29h13.774c1.258 0 2.29 1.03 2.29 2.29v8.127a2.298 2.298 0 01-2.29 2.29z"
+      stroke="#225AA7"
+      strokeWidth={2.5}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 

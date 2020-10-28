@@ -141,10 +141,32 @@ export const Requisitos = () => {
     { documento: 'CURP', fisica: true, moral: true },
     { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: true, moral: true },
     { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: true, moral: true },
-    { documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>, fisica: true, moral: false },
+    {
+      documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>,
+      fisica: true,
+      moral: false,
+    },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
-    { documento: <><span>Poderes notariales</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
-    { documento: <><span>Escrituras con reformas</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
+    {
+      documento: (
+        <>
+          <span>Poderes notariales</span>
+          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
+        </>
+      ),
+      fisica: false,
+      moral: true,
+    },
+    {
+      documento: (
+        <>
+          <span>Escrituras con reformas</span>
+          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
+        </>
+      ),
+      fisica: false,
+      moral: true,
+    },
     { documento: 'Comprobante de domicilio', fisica: true, moral: true },
     { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
   ];
@@ -155,10 +177,32 @@ export const Requisitos = () => {
     { documento: 'CURP', fisica: true, moral: true },
     { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: false, moral: true },
     { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: false, moral: false },
-    { documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>, fisica: true, moral: false },
+    {
+      documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>,
+      fisica: true,
+      moral: false,
+    },
     { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
-    { documento: <><span>Poderes notariales</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
-    { documento: <><span>Escrituras con reformas</span><span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span></>, fisica: false, moral: true },
+    {
+      documento: (
+        <>
+          <span>Poderes notariales</span>
+          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
+        </>
+      ),
+      fisica: false,
+      moral: true,
+    },
+    {
+      documento: (
+        <>
+          <span>Escrituras con reformas</span>
+          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
+        </>
+      ),
+      fisica: false,
+      moral: true,
+    },
     { documento: 'Comprobante de domicilio', fisica: true, moral: true },
     { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
   ];
@@ -213,7 +257,11 @@ export const Requisitos = () => {
                 Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
                 residir tu Obligado Solidario.
               </p>
-              <button type="button" className="btn-link text-white mx-auto" onClick={() => setOpenModal(true)}>
+              <button
+                type="button"
+                className="btn-link-arrow-right-inverted mx-auto"
+                onClick={() => setOpenModal(true)}
+              >
                 Conoce las zonas aquí
               </button>
             </div>
@@ -293,7 +341,14 @@ export const Requisitos = () => {
                         Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
                         recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
                         de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
-                        <a className="sub" href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html" target="_blank" rel="noreferrer">Conoce más</a>
+                        <a
+                          className="sub"
+                          href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Conoce más
+                        </a>
                       </div>
                     </div>
                   </TabItem>
@@ -329,12 +384,7 @@ export const Requisitos = () => {
                     </div>
                     {/* Mobile */}
                     <div className="d-block d-md-none mx-3">
-                      <Accordion
-                        title="Persona Física"
-                        expanded={false}
-                        color="blue"
-                        icon="arrow"
-                      >
+                      <Accordion title="Persona Física" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
                           {documentosObligado.map(({ documento, fisica }) => (
                             <li className="d-flex" key={documento}>
@@ -363,7 +413,14 @@ export const Requisitos = () => {
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
                     Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC.{' '}
-                    <a className="sub" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg" target="_blank" rel="noreferrer">¿Por qué te pedimos esto?</a>
+                    <a
+                      className="sub"
+                      href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      ¿Por qué te pedimos esto?
+                    </a>
                   </div>
                 </div>
               </div>
@@ -375,7 +432,9 @@ export const Requisitos = () => {
           <Title linea1="Para tu información" />
           <div className="container">
             <div className="row">
-              <div className="body2 pb-5 pt-3 mx-auto text-center">Consulta nuestros videos para conocer más sobre los requisitos.</div>
+              <div className="body2 pb-5 pt-3 mx-auto text-center">
+                Consulta nuestros videos para conocer más sobre los requisitos.
+              </div>
             </div>
             <div className="row">
               <VideoSelector color="blue-storm" />
@@ -422,7 +481,7 @@ export const Requisitos = () => {
                     <span>tu duda?</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link text-secondary mx-auto">
+                <button type="button" className="btn-link-arrow-right-inverted mx-auto">
                   Contáctate con nosotros
                 </button>
               </div>
@@ -434,7 +493,11 @@ export const Requisitos = () => {
                     <span>gran salto</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link text-white mx-auto" onClick={() => router.push('/simulador#inicio')}>
+                <button
+                  type="button"
+                  className="btn-link-arrow-right-inverted mx-auto"
+                  onClick={() => router.push('/simulador#inicio')}
+                >
                   Solicitar mi crédito
                 </button>
               </div>
