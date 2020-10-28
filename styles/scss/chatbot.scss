@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 @import 'modules/mixins';
 @import 'modules/var';
 
@@ -9,6 +11,7 @@ $border-radius: 14px;
     background-color: $yellow-summer;
     border-radius: 50%;
     height: 60px;
+    min-width: 0;
     padding: 0;
     width: 60px;
 
@@ -32,15 +35,18 @@ $border-radius: 14px;
       border-radius: $border-radius;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       overflow: initial;
+      padding: 0 10px;
 
       .inbenta-bot__chat__header {
         background-color: initial;
         box-shadow: none;
+        margin: 0 -10px;
 
+        // Close button
         .header__actions {
           background-color: $blue-storm;
           border-radius: 50%;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
           height: 40px;
           position: relative;
           top: -30px;
@@ -61,11 +67,17 @@ $border-radius: 14px;
       }
 
       .inbenta-bot__chat__body {
+        margin: 0 -10px;
+
         .body__wrapper {
           background-color: $white;
 
           .messages__message--received {
             align-items: flex-start;
+
+            .messages__message__avatar {
+              background-color: $blue-storm;
+            }
 
             .messages__message__content {
               box-shadow: none;
@@ -98,13 +110,18 @@ $border-radius: 14px;
       }
 
       .inbenta-bot__chat__footer {
+        border-top: 1px solid $blue-shadow;
+
         .footer__form {
           border-bottom-left-radius: $border-radius;
           border-bottom-right-radius: $border-radius;
           box-shadow: none;
+          margin: 0 -10px;
 
           .footer__form__input.inbenta-bot-input {
             border-bottom-left-radius: $border-radius;
+            font-family: $futura-book;
+            font-size: 16px;
           }
           .footer__form__button.inbenta-bot-button {
             border-bottom-right-radius: $border-radius;
