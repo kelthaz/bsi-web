@@ -16,7 +16,7 @@
   padding: 24px;
 
   p {
-    @include body-2;
+    @include body-2();
   }
 }
 
@@ -173,30 +173,39 @@
   padding: 24px 0;
   width: 100%;
 
-  @include media('md') {
-    flex-direction: row;
-
-    svg {
-      height: 48px;
-      margin-right: 18px;
-      width: 48px;
-    }
-
-    p {
-      margin: 0;
-      text-align: left;
-    }
-  }
-
   svg {
+    display: inline-block;
     height: 80px;
     width: 80px;
   }
 
   p {
     @include sub;
+
     color: $gray;
     text-align: center;
+  }
+
+  @include media('md') {
+    flex-direction: row;
+    padding: 16px;
+
+    div {
+      margin-right: 12px;
+      width: 20%;
+
+      svg {
+        height: 48px;
+
+        width: 48px;
+      }
+    }
+
+    p {
+      margin: 0;
+      text-align: left;
+      width: 80%;
+    }
   }
 }
 

@@ -53,10 +53,8 @@ const Bienvenida = () => (
           </ul>
         </div>
         <p className="sub color-gray-dark">
-          Si quieres ver o cambiar las características de tu crédito,&nbsp;
-          <span className="color-blue-sky">
-            <a className="link">haz clic aquí.</a>
-          </span>
+          <span>Si quieres ver o cambiar las características de tu crédito, </span>
+          <a className="link">haz clic aquí.</a>
         </p>
         <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/1">
           <button type="button" className="btn-medium flex-align-self-center my-3">

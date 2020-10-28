@@ -136,19 +136,36 @@ button {
   }
 }
 
-.btn-link {
-  align-items: center;
-  background-color: transparent;
-  text-decoration: underline;
-  border: 0;
+@mixin config-link($color, $color-hover) {
+  color: $color;
   cursor: pointer;
-  display: flex;
-  flex-direction: row;
   font-family: $futura-heavy;
   font-size: 14px;
+  text-align: left;
+  text-decoration: underline;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+.link {
+  @include config-link($blue-sky, $blue-night);
+}
+
+.link-inverted {
+  @include config-link($white, $blue-morning);
+}
+
+.btn-link-arrow-right {
+  @include config-link($blue-sky, $blue-night);
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   padding: 0;
-  text-align: left;
 
   &::after {
     background-image: url('/arrow-right.svg');
@@ -166,57 +183,15 @@ button {
   }
 }
 
-.btn-link-blue {
-  color: #338cbf;
-  font-family: $futura-heavy;
-  text-decoration: underline;
-}
-
-.btn-link-blue-sky {
-  align-items: center;
-  text-decoration: underline;
-  background-color: transparent;
-  border: 0;
-  color: $blue-sky;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  font-family: $futura-heavy;
-  font-size: 14px;
-  justify-content: space-between;
-  padding: 0;
-  text-align: left;
-
-  &::after {
-    background-image: url('/arrow-right.svg');
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-    content: '';
-    height: 16px;
-    padding-left: 20px;
-    width: 16px;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.btn-link-white {
+.btn-link-arrow-right-inverted {
+  @include config-link($white, $blue-morning);
   align-items: center;
   background-color: transparent;
   border: 0;
-  color: $white;
-  cursor: pointer;
   display: flex;
   flex-direction: row;
-  font-family: Futura;
-  font-size: 14px;
   justify-content: space-between;
   padding: 0;
-  text-align: left;
-  text-decoration: underline $white;
 
   &::after {
     background-image: url('/arrow-right.svg');

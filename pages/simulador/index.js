@@ -13,8 +13,8 @@ export const Simulador = () => {
   const [menuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
-  const [valueSlider, setValueSlider] = useState(2000000);
-  const [minValue] = useState(0);
+  const [valueSlider, setValueSlider] = useState(6200000);
+  const [minValue] = useState(300000);
 
   const itemsPaymentMonths = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
   const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
@@ -260,7 +260,7 @@ export const Simulador = () => {
           </div>
         </div>
         <div className="row  justify-content-center mx-0 mb-5 mt-4">
-          <button type="button" className={` btn-link ${styles['color-white']}`} onClick={() => setOpenModalZona(true)}>
+          <button type="button" className="btn-link-arrow-right-inverted" onClick={() => setOpenModalZona(true)}>
             Conoce las zonas aquí
           </button>
         </div>
@@ -411,7 +411,7 @@ export const Simulador = () => {
               </div>
             </div>
             <div className="row justify-content-center mx-0  mt-4">
-              <button className="btn-link-blue-sky " type="button" onClick={() => setOpenModal(true)}>
+              <button className="btn-link-arrow-right " type="button" onClick={() => setOpenModal(true)}>
                 Mira tu tabla de amortización
               </button>
             </div>
@@ -430,7 +430,7 @@ export const Simulador = () => {
                       <img alt="" src="/Sesion.png" />
                     </div>
                     <div className="col-md-12 mt-md-1 mb-xs-4 px-0">
-                      <button className="btn-link-blue-sky" type="button">
+                      <button className="btn-link-arrow-right" type="button">
                         Retoma tu proceso
                       </button>
                     </div>

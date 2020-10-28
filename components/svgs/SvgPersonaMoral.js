@@ -1,5 +1,5 @@
-const SvgPersonaMoral = () => (
-  <svg width={48} height={48} viewBox="0 0 48 48" fill="none">
+const SvgPersonaMoral = (props) => (
+  <svg width={48} height={48} viewBox="0 0 48 48" fill="none" {...props}>
     <path
       d="M4 26.295V42.88c0 1.683 1.185 3.05 2.646 3.05h12.327"
       stroke="#225AA7"
