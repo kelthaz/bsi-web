@@ -5,10 +5,12 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import CheckField from '../../../../shared/check-field/CheckField';
+import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
 
 const StepFive = () => {
   const [resultState, setResulState] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -26,7 +28,10 @@ const StepFive = () => {
         .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
         .required('Campo requerido'),
 
-      confirmarContraseña: Yup.string().max(20, 'máximo 20 caracteres').required('Campo requerido'),
+      confirmarContraseña: Yup.string()
+        .max(20, 'máximo 20 caracteres')
+        .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
+        .required('Campo requerido'),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -42,6 +47,16 @@ const StepFive = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/agradecimiento');
     },
   });
+
+  const checkedButton = () => {
+    if (checked === false) {
+      setChecked(true);
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+      setChecked(false);
+    }
+  };
 
   useEffect(() => {
     if (formulario.values.contrasena && formulario.values.contrasena.length > 0) {
@@ -76,7 +91,7 @@ const StepFive = () => {
             </div>
             {resultState && (
               <div className="col-lg-8 col-md-11 ">
-                <CheckField formulario={formulario} />
+                <ValidatePassword formulario={formulario} />
               </div>
             )}
             <div className="col-lg-5 col-md-6 col-xs-12 ">
@@ -94,7 +109,7 @@ const StepFive = () => {
 
             <div className="card-simple-gray">
               <div className="row">
-                <input className="col-1 " type="checkbox" />
+                <input className="col-1 " type="checkbox" onClick={checkedButton} />
                 <p className="col-11">
                   Acepto: (1) los&nbsp;
                   <a className="btn-link-blue" target="_blank" rel="noreferrer">
@@ -113,7 +128,7 @@ const StepFive = () => {
               className="btn-medium"
               type="submit"
               aria-label="Avanzar"
-              disabled={!(formulario.isValid && formulario.dirty)}
+              disabled={!(formulario.isValid && formulario.dirty) || disabled}
             >
               <span>Crea tu contraseña</span>
             </button>
