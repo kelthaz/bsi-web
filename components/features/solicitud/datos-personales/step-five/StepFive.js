@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -20,7 +19,7 @@ const StepFive = () => {
       confirmarContraseña: datosPersonales.confirmarContraseña,
     },
     validationSchema: Yup.object({
-      rfc: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+      rfc: Yup.string().min(12, '12 caracteres mínimo').required('Campo requerido'),
       contrasena: Yup.string()
         .max(20, 'máximo 20 caracteres')
         .min(8, '8 caracteres mínimo')
@@ -32,10 +31,15 @@ const StepFive = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          datosPersonales: { ...datosPersonales, ...values, validSteps: [1], currentStep: 2 },
+          datosPersonales: {
+            ...datosPersonales,
+            ...values,
+            validSteps: ['agradecimiento'],
+            currentStep: 'agradecimiento',
+          },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/2');
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/agradecimiento');
     },
   });
 
@@ -46,6 +50,7 @@ const StepFive = () => {
       setResulState(false);
     }
   }, [formulario.values.contrasena]);
+
   return (
     <div className="container px-xs-0">
       <div className="contedor-solicitud ">
@@ -105,7 +110,7 @@ const StepFive = () => {
           </div>
           <div className="flex-column-center-config my-3 ">
             <button
-              className={`btn-medium`}
+              className="btn-medium"
               type="submit"
               aria-label="Avanzar"
               disabled={!(formulario.isValid && formulario.dirty)}
