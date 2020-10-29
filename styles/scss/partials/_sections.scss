@@ -1,0 +1,36 @@
+.section-white {
+  @include section-config();
+}
+
+.section-white-relative {
+  @include section-config();
+  position: relative;
+}
+
+.section-blue-storm {
+  @include section-config($blue-storm);
+}
+
+.section-blue-night {
+  @include section-config($blue-night);
+}
+
+.section-blue-light {
+  @include section-config($blue-light);
+}
+
+.section-image {
+  @include section-config();
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.section-blue-storm-grad {
+  background: linear-gradient(0deg, $white 25%, $blue-storm 0%);
+  width: 100%;
+  @include media('md') {
+    background: linear-gradient(0deg, $white 45%, $blue-storm 0%);
+  }
+}

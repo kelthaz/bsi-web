@@ -32,6 +32,12 @@
   justify-content: center;
 }
 
+.flex-column-aicenter-jccenter-config {
+  @include flex-direction-config();
+  align-items: center;
+  justify-content: center;
+}
+
 .flex-row-end-config {
   @include flex-direction-config(row);
   align-items: flex-end;

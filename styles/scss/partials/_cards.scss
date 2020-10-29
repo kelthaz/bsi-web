@@ -9,6 +9,12 @@
   }
 }
 
+.card-simple-white-shadow {
+  background-color: $white;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
 .card-simple-gray {
   background-color: #f4f6f9;
   border-radius: 16px;
