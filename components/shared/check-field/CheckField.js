@@ -6,10 +6,10 @@ import styles from './check-field.module.scss';
 
 const CheckField = (props) => {
   const { name, formulario, label } = props;
-  const hiddenMaxMin = formulario.errors.contraseña !== '8 caracteres mínimo' ? false : true;
 
-  console.log('formulario, formulario', formulario);
-  const hiddenCapital = formulario.errors.contraseña === 'error' || null ? true : false;
+  const hiddenMaxMin = formulario.errors.contrasena !== '8 caracteres mínimo' ? false : true;
+  const hiddenCapital =
+    formulario.errors.contrasena === 'Debe tener mínimo 1 letra mayúscula y 1 minúscula' || null ? true : false;
 
   return (
     <div className="mb-5">
