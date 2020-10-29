@@ -55,7 +55,7 @@ const configuracion = {
   userType: 1,
   environment: authorization.environment,
   launcher: { title: '' },
-  avatar: { name: 'Fernanda' },
+  avatar: { name: 'Fernanda Magaña' },
   labels: {
     es: {
       yes: 'Si',
