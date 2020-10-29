@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import Select from '../../shared/select/Select';
 import Slider from '../../shared/slider/Slider';
 import styles from './simulador.module.scss';
@@ -8,7 +9,7 @@ import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
 import { seleccionOpcion } from '../../../constants/errors';
 import { updateDataSimulador } from '../../../redux/actions/simulador';
 
-const Simulador = () => {
+const Simulador = ({ handleSimular }) => {
   const dispatch = useDispatch();
   const { monto, plazo, periodicidad, aniosEmpresa, ventasAnio } = useSelector((state) => state.simulador);
   const itemsPaymentMonths = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
@@ -38,7 +39,8 @@ const Simulador = () => {
           ...values,
         })
       );
-      alert(JSON.stringify(values, null, 2));
+      handleSimular();
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
@@ -159,6 +161,14 @@ const Simulador = () => {
       </form>
     </div>
   );
+};
+
+Simulador.propTypes = {
+  handleSimular: PropTypes.func,
+};
+
+Simulador.defaultProps = {
+  handleSimular: () => {},
 };
 
 export default Simulador;
