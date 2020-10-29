@@ -44,6 +44,14 @@ h5 {
   }
 }
 
+.input2 {
+  font-family: $futura-book;
+  font-size: 24px;
+  @include media('mobile') {
+    font-size: 18px;
+  }
+}
+
 .sub {
   font-family: $futura-heavy;
   font-size: 16px;

@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './select.module.scss';
@@ -20,7 +21,7 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional } = props;
+  const { name, formulario, size, items, inverted, optional, label } = props;
   const [selectStyle, indicadorStyle, indicadorActiveStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { values, errors, touched, setFieldValue, setFieldTouched } = formulario;
 
@@ -53,7 +54,7 @@ const Select = (props) => {
         }`}
         onClick={() => !toggle && handleToggle()}
       >
-        {values[name]}
+        {values[name] === '' ? label : values[name]}
       </button>
       <ul role="menu" className={`${styles['select-items']} ${toggle ? '' : styles['select-hide']}`}>
         {items.map((itemMap) => (
@@ -83,6 +84,7 @@ Select.propTypes = {
   inverted: PropTypes.bool,
   optional: PropTypes.bool,
   items: PropTypes.array.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 Select.defaultProps = {
