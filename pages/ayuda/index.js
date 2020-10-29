@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Link from 'next/link';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
+import TextArea from '../../components/shared/text-area/TextArea';
 import Title from '../../components/shared/titles/title/Title';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Select from '../../components/shared/select/Select';
@@ -12,6 +13,7 @@ import styles from './ayuda.module.scss';
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
   const [option, setOption] = useState(1);
+  const [checked, seChecked] = useState(false);
 
   const handleOption = (opt) => {
     setOption(opt);
@@ -23,12 +25,16 @@ const Ayuda = () => {
       phone: '',
       email: '',
       state: 'Estado',
+      tellUs: '',
+      check: false,
     },
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
+      tellUs: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       email: Yup.string().email('Correo invalido').required('Campo requerido'),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
+      check: Yup.boolean().required('Campo requerido'),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -76,8 +82,24 @@ const Ayuda = () => {
   );
   const [disabled, setDisabled] = useState(false);
 
+  const checkedButton = () => {
+    if (checked === false) {
+      seChecked(true);
+    } else {
+      seChecked(false);
+    }
+
+    setDisabled(false);
+  };
+
   useEffect(() => {
-    if (formulario.values.name === '' || formulario.values.email === '' || formulario.values.phone === '') {
+    if (
+      formulario.values.name === '' ||
+      formulario.values.email === '' ||
+      formulario.values.phone === '' ||
+      formulario.values.tellUs === '' ||
+      checked === false
+    ) {
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -132,15 +154,15 @@ const Ayuda = () => {
               </div>
             </div>
             <div className="row justify-content-center mx-0">
-              <div className={`col-auto ${styles['textarea-questions']}`}>
-                <textarea className="body2" placeholder="Cuéntanos tus dudas..." maxLength="300" />
+              <div className={`col-12 ${styles['textarea-questions']}`}>
+                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="300" />
               </div>
             </div>
           </div>
         </SimpleBanner>
         <div className={`row justify-content-center mt-5 `}>
           <div className={` ${styles.captcha}`}>
-            <input type="checkbox"></input>
+            <input name="check" type="checkbox" onClick={checkedButton} />
             <label className="mr-5">&nbsp; No soy un robot </label>
             <img className="ml-5" src="/captcha.svg" alt="Document" />
           </div>

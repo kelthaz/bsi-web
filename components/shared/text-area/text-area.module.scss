@@ -3,6 +3,7 @@
 
 .text-area-container {
   @include scroll-config(10px);
+
   width: 100%;
 
   ::-webkit-resizer {
@@ -11,6 +12,7 @@
 }
 
 .border-text-area {
+  background-color: $white;
   border: 1.5px solid $gray;
   border-radius: 16px;
   padding: 16px;

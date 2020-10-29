@@ -115,24 +115,6 @@
 }
 
 .textarea-questions {
-  background: $white;
-  border: 1px solid $gray-light;
-  border-radius: 16px;
-  box-sizing: border-box;
-  height: 120px;
-  max-width: 960px;
-  padding: 20px;
-  top: 25px;
-  width: 95%;
-
-  textarea {
-    border: none;
-    height: 100%;
-    resize: none;
-    width: 100%;
-
-    &:focus {
-      outline: none;
-    }
-  }
+  height: 65px;
+  position: relative;
 }

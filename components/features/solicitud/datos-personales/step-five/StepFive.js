@@ -24,7 +24,7 @@ const StepFive = () => {
       contrasena: Yup.string()
         .max(20, 'máximo 20 caracteres')
         .min(8, '8 caracteres mínimo')
-        .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'error')
+        .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
         .required('Campo requerido'),
 
       confirmarContraseña: Yup.string().max(20, 'máximo 20 caracteres').required('Campo requerido'),
@@ -48,7 +48,7 @@ const StepFive = () => {
   }, [formulario.values.contrasena]);
   return (
     <div className="container px-xs-0">
-      <div className="contedor-solicitud-7 ">
+      <div className="contedor-solicitud ">
         <form onSubmit={formulario.handleSubmit} noValidate>
           <h2 className="color-blue-storm">¡Sólo falta crear tu cuenta!</h2>
           <p className="color-dark-gray sub">

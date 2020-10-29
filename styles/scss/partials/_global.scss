@@ -25,17 +25,6 @@ a {
   }
 }
 
-.contedor-solicitud-7 {
-  margin: auto;
-  margin-top: 15%;
-  width: 660px;
-  @include media('md') {
-    margin-bottom: 24px;
-    margin-top: 32px;
-    width: 100%;
-  }
-}
-
 .fixed-left-bottom {
   bottom: 0;
   left: 0;
@@ -50,8 +39,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
-}
-
-.inbenta-bot__launcher {
-  z-index: 1030 !important;
 }
