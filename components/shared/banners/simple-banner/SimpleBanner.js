@@ -10,7 +10,7 @@ const SimpleBanner = (props) => {
       <div className={`d-none d-lg-block ${styles['background-bottom-left']}`}>
         <img src="/banner-texture-botleft.svg" alt="Banner texture bot left" />
       </div>
-      <div className={styles.content}>{children}</div>
+      <div id="banner-content" className={styles.content}>{children}</div>
     </div>
   );
 };
