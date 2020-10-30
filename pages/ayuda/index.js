@@ -13,7 +13,7 @@ import styles from './ayuda.module.scss';
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
   const [option, setOption] = useState(1);
-  const [checked, seChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleOption = (opt) => {
     setOption(opt);
@@ -31,7 +31,7 @@ const Ayuda = () => {
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
       phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
-      tellUs: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+      tellUs: Yup.string().max(255, 'Must be 15 characters or less').required('Campo requerido'),
       email: Yup.string().email('Correo invalido').required('Campo requerido'),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
       check: Yup.boolean().required('Campo requerido'),
@@ -84,9 +84,9 @@ const Ayuda = () => {
 
   const checkedButton = () => {
     if (checked === false) {
-      seChecked(true);
+      setChecked(true);
     } else {
-      seChecked(false);
+      setChecked(false);
     }
 
     setDisabled(false);
@@ -160,7 +160,7 @@ const Ayuda = () => {
             </div>
           </div>
         </SimpleBanner>
-        <div className={`row justify-content-center mt-5 `}>
+        <div className={`row justify-content-center mt-5 mx-xs-0 mx-sm-0`}>
           <div className={` ${styles.captcha}`}>
             <input name="check" type="checkbox" onClick={checkedButton} />
             <label className="mr-5">&nbsp; No soy un robot </label>
@@ -193,7 +193,7 @@ const Ayuda = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-4 pl-xs-5 pl-md-4 pl-lg-0">
+                  <div className="col-4 pl-xs-4 pl-md-4 pl-lg-0">
                     <img className={`${styles['img-call-center']}`} src="/icon-call-center.svg" alt="Document" />
                   </div>
                 </div>

@@ -2,9 +2,9 @@
 
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import styles from './check-field.module.scss';
+import styles from './validate-password.module.scss';
 
-const CheckField = (props) => {
+const ValidatePassword = (props) => {
   const { name, formulario, label } = props;
 
   const hiddenMaxMin = formulario.errors.contrasena !== '8 caracteres mínimo' ? false : true;
@@ -37,4 +37,4 @@ const CheckField = (props) => {
   );
 };
 
-export default CheckField;
+export default ValidatePassword;
