@@ -1,3 +1,46 @@
 // Grid
 
+@mixin contenedor-flex-config($top-size) {
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: $top-size;
+}
+
+.contedor-fixed {
+  @include contenedor-flex-config(74px);
+}
+
+.contedor-fixed-tab {
+  @include contenedor-flex-config(130px);
+
+  @include media('md') {
+    top: 200px;
+  }
+}
+
+.contedor-solicitud {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 60px auto;
+  min-height: calc(100% - (60px * 2));
+  width: 660px;
+  @include media('md') {
+    margin: 16px auto;
+    min-height: calc(100% - (16px * 2));
+    width: 270px;
+  }
+}
+
+.fixed-left-bottom {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+}
 // End grid

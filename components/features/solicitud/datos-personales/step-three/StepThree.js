@@ -64,80 +64,83 @@ const StepThree = () => {
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/4');
     },
+    validateOnMount: true,
   });
 
   return (
-    <div className="container">
+    <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
-        <form onSubmit={formulario.handleSubmit} noValidate>
-          <h2 className="color-blue-storm">¡Anotado!</h2>
-          <p className="color-dark-gray sub">¿Cuál es el nombre comercial, sector y giro de tu negocio?</p>
+        <div className="container p-0">
+          <form onSubmit={formulario.handleSubmit} noValidate>
+            <h2 className="color-blue-storm">¡Anotado!</h2>
+            <p className="color-dark-gray sub">¿Cuál es el nombre comercial, sector y giro de tu negocio?</p>
 
-          {datosPersonales.personType === 'Persona Moral' && (
+            {datosPersonales.personType === 'Persona Moral' && (
+              <div className="row no-gutters">
+                <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                  <p className="input color-gray">La razón social es</p>
+                </div>
+
+                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                  <TextField name="razonSocial" formulario={formulario} type="text" size="big" label="Razón social" />
+                </div>
+                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                  <Select name="tipoEmpresa" formulario={formulario} size="big" items={itemsTipoEmpresa} />
+                </div>
+              </div>
+            )}
+
             <div className="row no-gutters">
-              <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <p className="input color-gray">La razón social es</p>
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <p className="input color-gray">El nombre comercial es</p>
               </div>
-
-              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <TextField name="razonSocial" formulario={formulario} type="text" size="big" label="Razón social" />
-              </div>
-              <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <Select name="tipoEmpresa" formulario={formulario} size="big" items={itemsTipoEmpresa} />
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                <TextField
+                  name="businessName"
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Nombre del negocio"
+                />
               </div>
             </div>
-          )}
 
-          <div className="row no-gutters">
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <p className="input color-gray">El nombre comercial es</p>
+            <div className="row no-gutters">
+              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <p className="input color-gray">el sector es de</p>
+              </div>
+              <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                <Select name="sector" formulario={formulario} size="big" items={itemsSector} />
+              </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <TextField
-                name="businessName"
+
+            <div className="row no-gutters">
+              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <p className="input color-gray">y el giro es de</p>
+              </div>
+              <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                <Select name="giro" formulario={formulario} size="big" items={itemsGiro} />
+              </div>
+            </div>
+
+            <div className="row no-gutters">
+              <TextArea
+                name="businessAbout"
                 formulario={formulario}
-                type="text"
-                size="big"
-                label="Nombre del negocio"
+                label="Platícanos un poco a qué se dedica tu negocio..."
               />
             </div>
-          </div>
 
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <p className="input color-gray">el sector es de</p>
+            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+              <button
+                type="submit"
+                className="cicle-button-blue my-3"
+                aria-label="Avanzar"
+                disabled={!formulario.isValid}
+              />
             </div>
-            <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <Select name="sector" formulario={formulario} size="big" items={itemsSector} />
-            </div>
-          </div>
-
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-              <p className="input color-gray">y el giro es de</p>
-            </div>
-            <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <Select name="giro" formulario={formulario} size="big" items={itemsGiro} />
-            </div>
-          </div>
-
-          <div className="row no-gutters py-3">
-            <TextArea
-              name="businessAbout"
-              formulario={formulario}
-              label="Platícanos un poco a qué se dedica tu negocio..."
-            />
-          </div>
-
-          <div className="flex-column-center-config">
-            <button
-              type="submit"
-              className="cicle-button-blue my-3"
-              aria-label="Avanzar"
-              disabled={!(formulario.isValid && formulario.dirty)}
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -15,12 +15,6 @@
   font-size: $size;
   width: 100%;
 
-  @include media('md') {
-    &::placeholder {
-      opacity: 0;
-    }
-  }
-
   @if $size == 32px {
     padding: 0 12px;
   } @else {
@@ -84,24 +78,6 @@
   @include config-label($gray);
 }
 
-.label-big {
-  @include config-label($gray);
-  display: none;
-
-  @include media('md') {
-    display: block;
-  }
-}
-
-.label-big-inverted {
-  @include config-label($blue-shadow);
-  display: none;
-
-  @include media('md') {
-    display: block;
-  }
-}
-
 .label-small-inverted {
   @include config-label($blue-shadow);
 }
@@ -112,7 +88,7 @@
 
 .label-active {
   font-size: 12px !important;
-  top: -13px;
+  top: -16px;
 }
 
 .capitalize {

@@ -3,14 +3,18 @@
 
 .container-step {
   position: fixed;
-  top: 40%;
   right: 0;
+  top: 40%;
+
+  @include media('lg') {
+    right: -15px;
+  }
 
   @include media('md') {
-    position: static;
     align-items: center;
     display: flex;
     flex-direction: column;
+    position: static;
 
     div {
       margin-bottom: 16px;
@@ -26,9 +30,9 @@
   margin-right: 32px;
 
   @include media('md') {
-    margin-right: 0;
     flex-direction: row;
     justify-content: center;
+    margin-right: 0;
   }
 }
 
@@ -41,18 +45,18 @@
   padding: 0;
   width: 10px;
 
+  @include media('md') {
+    margin-bottom: 0;
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
   &:focus {
     outline: none;
   }
 
   &:disabled {
     background-color: $blue-shadow;
-  }
-
-  @include media('md') {
-    margin-bottom: 0;
-    margin-left: 11px;
-    margin-right: 11px;
   }
 }
 

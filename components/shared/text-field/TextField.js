@@ -12,13 +12,13 @@ const seleccionaEstilo = (size, inverted) => {
   if (inverted) {
     finalStyles.push(size === 'big' ? styles['input-big-inverted'] : styles['input-small-inverted']);
     finalStyles.push(styles['icon-check-inverted']);
-    finalStyles.push(size === 'big' ? styles['label-big-inverted'] : styles['label-small-inverted']);
+    finalStyles.push(styles['label-small-inverted']);
     finalStyles.push(styles['indicador-activo-inverted']);
     finalStyles.push(styles['help-text-inverted']);
   } else {
     finalStyles.push(size === 'big' ? styles['input-big'] : styles['input-small']);
     finalStyles.push(styles['icon-check']);
-    finalStyles.push(size === 'big' ? styles['label-big'] : styles['label-small']);
+    finalStyles.push(styles['label-small']);
     finalStyles.push(styles['indicador-activo']);
     finalStyles.push(styles['help-text']);
   }
@@ -28,7 +28,7 @@ const seleccionaEstilo = (size, inverted) => {
 const TextField = (props) => {
   const { name, formulario, maxlength, capitalize, label, type, size, inverted, optional, validation } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { handleChange, values, handleBlur, errors, touched } = formulario;
+  const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
 
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
@@ -39,6 +39,13 @@ const TextField = (props) => {
     if (type === 'password') {
       setTypeInput(typeInput === 'text' ? 'password' : 'text');
     }
+  };
+
+  const onHandleChange = (event) => {
+    if (!touched[name]) {
+      setFieldTouched(name, true);
+    }
+    handleChange(event);
   };
 
   const onHandleBlur = (event) => {
@@ -57,7 +64,7 @@ const TextField = (props) => {
           hasError() ? styles['indicador-error'] : active && indicadorStyle
         }`}
         type={typeInput}
-        onChange={handleChange}
+        onChange={onHandleChange}
         onBlur={onHandleBlur}
         value={values[name]}
         maxLength={maxlength}
@@ -66,22 +73,24 @@ const TextField = (props) => {
         onFocus={() => setActive(true)}
       />
 
-      <label
-        htmlFor={name}
-        className={`${labelStyle} ${hasError() ? styles['label-error'] : ''} ${
-          values[name] !== '' || active ? styles['label-active'] : ''
-        }`}
-      >
-        {label}
-      </label>
+      {size === 'small' && (
+        <label
+          htmlFor={name}
+          className={`${labelStyle} ${hasError() ? styles['label-error'] : ''} ${
+            values[name] !== '' || active ? styles['label-active'] : ''
+          }`}
+        >
+          {label}
+        </label>
+      )}
 
       <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
-        {hasError() ? errors[name] : optional && 'Opcional'}&nbsp;
+        {hasError() ? active && errors[name] : active && optional && 'Opcional'}&nbsp;
       </span>
       {hasError() ? (
-        <div className={styles['status-icon']}>{error}</div>
+        <div className={styles['status-icon']}>{active && error}</div>
       ) : (
-        validation && active && <div className={styles['status-icon']}>{status}</div>
+        validation && <div className={styles['status-icon']}>{active && status}</div>
       )}
       {type === 'password' && (
         <button className={styles['button-password-inverted']} type="button" onClick={handleViewPassword}>
