@@ -1,20 +1,6 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
-.show-check {
-  visibility: visible;
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.hide-check {
-  visibility: hidden;
-}
-
 .content-check {
   position: relative;
 }

@@ -30,8 +30,15 @@ const Ayuda = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
-      phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
-      tellUs: Yup.string().max(255, 'Must be 15 characters or less').required('Campo requerido'),
+
+      phone: Yup.number()
+        .max(9999999999, 'Must be 20 characters or less')
+        // .matches(/^(?!\s)/, 'Sin espacios en blanco al principio')
+        .required('Campo requerido'),
+      tellUs: Yup.string()
+        .max(255, 'Must be 15 characters or less')
+        .matches(/^(?!\s)/, 'Sin espacios en blanco al principio')
+        .required('Campo requerido'),
       email: Yup.string().email('Correo invalido').required('Campo requerido'),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
       check: Yup.boolean().required('Campo requerido'),
@@ -88,7 +95,6 @@ const Ayuda = () => {
     } else {
       setChecked(false);
     }
-
     setDisabled(false);
   };
 
@@ -169,7 +175,11 @@ const Ayuda = () => {
         </div>
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button disabled={disabled} type="button" className="btn-small col-12">
+            <button
+              disabled={!(formulario.isValid && formulario.dirty) || disabled}
+              type="button"
+              className="btn-small col-12"
+            >
               Envía tu comentario
             </button>
           </div>

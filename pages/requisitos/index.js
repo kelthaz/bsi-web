@@ -481,7 +481,7 @@ export const Requisitos = () => {
                     <span>tu duda?</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link-arrow-right-inverted mx-auto">
+                <button type="button" className="btn-link-arrow-right mx-auto">
                   Contáctate con nosotros
                 </button>
               </div>
@@ -498,7 +498,7 @@ export const Requisitos = () => {
                   className="btn-link-arrow-right-inverted mx-auto"
                   onClick={() => router.push('/simulador#inicio')}
                 >
-                  Solicitar mi crédito
+                  Solicita tu crédito
                 </button>
               </div>
             </div>
