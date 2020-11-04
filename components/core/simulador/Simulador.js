@@ -30,7 +30,7 @@ const Simulador = ({ handleSimular }) => {
       plazo: Yup.string().required(seleccionOpcion),
       periodicidad: Yup.string().required(seleccionOpcion),
       aniosEmpresa: Yup.string().required(seleccionOpcion),
-      ventasAnio: Yup.string().required(seleccionOpcion),
+      ventasAnio: Yup.string(),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -152,7 +152,7 @@ const Simulador = ({ handleSimular }) => {
           </div>
           <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first mb-3">
             <div className={styles['config-flex-second-button']}>
-              <button type="submit" className="btn-medium" disabled={!(formulario.isValid && formulario.dirty)}>
+              <button type="submit" className="btn-medium" disabled={!formulario.isValid}>
                 Simula tu crédito
               </button>
             </div>

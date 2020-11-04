@@ -5,8 +5,11 @@ import TabInformativo from '../../../../components/shared/tab-informativo/TabInf
 import Step from '../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicitud';
 import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
+import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
 
 const Solicitud = ({ index }) => {
+  usePreventWindowUnload();
+
   const tabs = [
     { path: 'datos-personales', label: 'Datos personales' },
     { path: 'datos-empresa', label: 'Datos de tu empresa' },

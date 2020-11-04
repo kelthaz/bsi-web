@@ -5,7 +5,6 @@ export const nextStepDatosPersonales = (datosPersonales) => ({
   payload: datosPersonales,
 });
 
-export const resetSimulador = (payload) => ({
-  type: types.NEXT_STEP_DATOS_EMPRESA,
-  payload,
+export const resetDatosPersonales = () => ({
+  type: types.RESET_DATOS_PERSONALES,
 });

@@ -34,6 +34,10 @@ const solicitudReducer = (state = initialState, { type, payload }) => {
         ...state,
         ...payload,
       };
+    case types.RESET_DATOS_PERSONALES:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

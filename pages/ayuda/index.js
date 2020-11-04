@@ -9,6 +9,7 @@ import Title from '../../components/shared/titles/title/Title';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Select from '../../components/shared/select/Select';
 import styles from './ayuda.module.scss';
+import { campoRequerido, correoInvalido, longitudMaxima, numeroInvalido } from '../../constants/errors';
 
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
@@ -29,12 +30,12 @@ const Ayuda = () => {
       check: false,
     },
     validationSchema: Yup.object({
-      name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
-      phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
-      tellUs: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
-      email: Yup.string().email('Correo invalido').required('Campo requerido'),
+      name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      phone: Yup.string().trim().min(10, numeroInvalido).max(10, numeroInvalido).required(campoRequerido),
+      tellUs: Yup.string().trim().max(140, longitudMaxima).required(campoRequerido),
+      email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
-      check: Yup.boolean().required('Campo requerido'),
+      check: Yup.boolean().required(campoRequerido),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -186,11 +187,7 @@ const Ayuda = () => {
                     <div className="sub text-primary mb-3">Llámanos directo</div>
                     <div className="body2 mb-3">
                       Un ejecutivo responderá todas tus dudas.
-                      <div className="sub text-secondary">
-                        <a className={`text-secondary ${styles['btn-num']}`} href="tel:+5510908290">
-                          5526774690
-                        </a>
-                      </div>
+                      <div className="sub text-secondary text-decoration-underline">5526774690</div>
                     </div>
                   </div>
                   <div className="col-4 pl-xs-5 pl-md-4 pl-lg-0">

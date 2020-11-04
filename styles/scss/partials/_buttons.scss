@@ -32,7 +32,8 @@ button {
     box-shadow: 0 4px 6px $black-20;
   }
 
-  &:focus {
+  &:focus:enabled {
+    box-shadow: 0 4px 6px $black-20;
     outline: none;
   }
 

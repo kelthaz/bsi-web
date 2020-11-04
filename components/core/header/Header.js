@@ -2,11 +2,14 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { resetDatosPersonales } from '../../../redux/actions/solicitud';
 import styles from './header.module.scss';
 import SearchBox from '../search-box/SearchBox';
 import Modal from '../../shared/modal/Modal';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { pathname, push } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },
@@ -53,6 +56,7 @@ const Header = () => {
   };
 
   const handleModal = () => {
+    dispatch(resetDatosPersonales());
     setOpenModal(false);
     push('/simulador');
   };

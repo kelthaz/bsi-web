@@ -27,65 +27,67 @@ const StepTwo = () => {
   };
 
   return (
-    <div className="container">
+    <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
-        <form>
-          <h2 className="color-blue-storm">¡Hola, {datosPersonales.name}!</h2>
-          <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
+        <div className="container p-0">
+          <form>
+            <h2 className="color-blue-storm">¡Hola, {datosPersonales.name}!</h2>
+            <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
 
-          <div className="row my-3">
-            <div className="col-lg-6 col-md-6 col-sm-12 pl-lg-5 pl-md-5 col-xs-12 mb-sm-2 mb-xs-2">
+            <div className="row my-3">
+              <div className="col-lg-6 col-md-6 col-sm-12 pl-lg-5 pl-md-5 col-xs-12 mb-sm-2 mb-xs-2">
+                <button
+                  type="button"
+                  className={`card-simple-white-svg card-button ${
+                    selectPersonType === personaFisica && 'card-selected-blue-sky'
+                  }`}
+                  onClick={() => setSelectPersonType(personaFisica)}
+                >
+                  <div>
+                    <SvgPersonaFisicaActividadFisica />
+                  </div>
+
+                  <p className="px-md-5 px-lg-5">{personaFisica}</p>
+                </button>
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
+                <button
+                  type="button"
+                  className={`card-simple-white-svg card-button ${
+                    selectPersonType === personaMoral && 'card-selected-blue-sky'
+                  }`}
+                  onClick={() => setSelectPersonType(personaMoral)}
+                >
+                  <div>
+                    <SvgPersonaMoral />
+                  </div>
+
+                  <p>{personaMoral}</p>
+                </button>
+              </div>
+            </div>
+            <p className="color-gray-dark sub">
+              <span>¿Eres persona física? ¡Adquiere tu crédito en </span>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
+                className="link"
+              >
+                BanCoppel Personas!
+              </a>
+            </p>
+            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="button"
-                className={`card-simple-white-svg card-button ${
-                  selectPersonType === personaFisica && 'card-selected-blue-sky'
-                }`}
-                onClick={() => setSelectPersonType(personaFisica)}
-              >
-                <div>
-                  <SvgPersonaFisicaActividadFisica />
-                </div>
-
-                <p className="px-md-5 px-lg-5">{personaFisica}</p>
-              </button>
+                className="cicle-button-blue my-3"
+                aria-label="Avanzar"
+                onClick={handleNext}
+                disabled={!selectPersonType}
+              />
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
-              <button
-                type="button"
-                className={`card-simple-white-svg card-button ${
-                  selectPersonType === personaMoral && 'card-selected-blue-sky'
-                }`}
-                onClick={() => setSelectPersonType(personaMoral)}
-              >
-                <div>
-                  <SvgPersonaMoral />
-                </div>
-
-                <p>{personaMoral}</p>
-              </button>
-            </div>
-          </div>
-          <p className="color-gray-dark sub">
-            <span>¿Eres persona física? ¡Adquiere tu crédito en </span>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
-              className="link"
-            >
-              BanCoppel Personas!
-            </a>
-          </p>
-          <div className="flex-column-center-config">
-            <button
-              type="button"
-              className="cicle-button-blue my-3"
-              aria-label="Avanzar"
-              onClick={handleNext}
-              disabled={!selectPersonType}
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

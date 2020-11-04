@@ -65,9 +65,12 @@
   cursor: pointer;
   font-family: $futura-book;
   font-size: $size;
+  overflow: hidden;
   padding: 12px;
   text-align: left;
+  text-overflow: ellipsis;
   user-select: none;
+  white-space: nowrap;
   width: 100%;
 
   @if $size == 32px {

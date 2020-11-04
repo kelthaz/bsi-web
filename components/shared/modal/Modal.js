@@ -10,11 +10,13 @@ const Modal = (props) => {
   return (
     openModal && (
       <div className={styles.modal}>
-        <div id="modal" className={styles['modal-content']}>
-          <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
-            <SvgCross />
-          </button>
-          {children}
+        <div id="modal" className={styles['modal-centered']}>
+          <div className={styles['modal-content']}>
+            <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
+              <SvgCross />
+            </button>
+            {children}
+          </div>
         </div>
       </div>
     )
