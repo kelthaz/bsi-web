@@ -85,7 +85,7 @@ const TextField = (props) => {
       )}
       {type === 'password' && (
         <button className={styles['button-password-inverted']} type="button" onClick={handleViewPassword}>
-          {typeInput === 'text' ? <SvgHidenPassword /> : <SvgShowPassword />}
+          {typeInput === 'text' ? <SvgShowPassword /> : <SvgHidenPassword />}
         </button>
       )}
     </div>

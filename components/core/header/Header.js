@@ -100,7 +100,7 @@ const Header = () => {
           {!pathname.includes('solicitud') && (
             <Link href="simulador">
               <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
-                Solicitar crédito
+                Solicita tu crédito
               </button>
             </Link>
           )}

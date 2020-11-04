@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Link from 'next/link';
+// import Link from 'next/link';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
 import TextArea from '../../components/shared/text-area/TextArea';
@@ -30,8 +30,12 @@ const Ayuda = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().max(15, 'Must be 15 characters or less').required('Campo requerido'),
+
       phone: Yup.number().max(9999999999, 'Must be 20 characters or less').required('Campo requerido'),
-      tellUs: Yup.string().max(255, 'Must be 15 characters or less').required('Campo requerido'),
+      tellUs: Yup.string()
+        .max(255, 'Must be 15 characters or less')
+        .matches(/^(?!\s)/, 'Sin espacios en blanco al comienzo')
+        .required('Campo requerido'),
       email: Yup.string().email('Correo invalido').required('Campo requerido'),
       state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
       check: Yup.boolean().required('Campo requerido'),
@@ -88,7 +92,6 @@ const Ayuda = () => {
     } else {
       setChecked(false);
     }
-
     setDisabled(false);
   };
 
@@ -150,7 +153,7 @@ const Ayuda = () => {
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">
-                <Select name="state" formulario={formulario} size="small" items={items} inverted />
+                <Select name="state" label="Estado" formulario={formulario} size="small" items={items} inverted />
               </div>
             </div>
             <div className="row justify-content-center mx-0">
@@ -160,16 +163,23 @@ const Ayuda = () => {
             </div>
           </div>
         </SimpleBanner>
-        <div className={`row justify-content-center mt-5 mx-xs-0 mx-sm-0`}>
+        <div className="row justify-content-center mt-5 mx-xs-0 mx-sm-0">
           <div className={` ${styles.captcha}`}>
             <input name="check" type="checkbox" onClick={checkedButton} />
-            <label className="mr-5">&nbsp; No soy un robot </label>
+            <label htmlFor="my-check" className="mr-5">
+              {' '}
+              &nbsp; No soy un robot
+            </label>
             <img className="ml-5" src="/captcha.svg" alt="Document" />
           </div>
         </div>
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button disabled={disabled} type="button" className="btn-small col-12">
+            <button
+              disabled={!(formulario.isValid && formulario.dirty) || disabled}
+              type="button"
+              className="btn-small col-12"
+            >
               Envía tu comentario
             </button>
           </div>
@@ -232,6 +242,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 1 ? styles.active : ''}`}
                 onClick={() => handleOption(1)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/about-info.svg" alt="Document" />
                 <div>
@@ -245,6 +256,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 2 ? styles.active : ''}`}
                 onClick={() => handleOption(2)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/user.svg" alt="User" />
                 <div>
@@ -258,6 +270,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 3 ? styles.active : ''}`}
                 onClick={() => handleOption(3)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/security.svg" alt="Security" />
                 <div>
