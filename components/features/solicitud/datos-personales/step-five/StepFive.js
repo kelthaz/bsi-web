@@ -186,7 +186,9 @@ const StepFive = () => {
               <div className="row">
                 <span className={` ${styles['content-check']}`}>
                   <input id="my-check" className={` ${styles['my-check']}`} type="checkbox" onClick={checkedButton} />
-                  <label for="my-check" className={`${styles.label}`}></label>
+                  <label htmlFor="my-check" className={`${styles.label}`}>
+                    {' '}
+                  </label>
                 </span>
                 <p className="col-11">
                   Acepto: (1) los&nbsp;
@@ -198,7 +200,6 @@ const StepFive = () => {
                   productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o modificados a través
                   de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología.
                 </p>
-                {/* <input className="col-1 " type="checkbox" /> */}
               </div>
             </div>
           </div>
