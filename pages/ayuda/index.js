@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Link from 'next/link';
+// import Link from 'next/link';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
 import TextArea from '../../components/shared/text-area/TextArea';
@@ -14,7 +14,7 @@ import { campoRequerido, correoInvalido, longitudMaxima, numeroInvalido } from '
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
   const [option, setOption] = useState(1);
-  const [checked, seChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleOption = (opt) => {
     setOption(opt);
@@ -85,11 +85,10 @@ const Ayuda = () => {
 
   const checkedButton = () => {
     if (checked === false) {
-      seChecked(true);
+      setChecked(true);
     } else {
-      seChecked(false);
+      setChecked(false);
     }
-
     setDisabled(false);
   };
 
@@ -151,7 +150,7 @@ const Ayuda = () => {
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">
-                <Select name="state" formulario={formulario} size="small" items={items} inverted />
+                <Select name="state" label="Estado" formulario={formulario} size="small" items={items} inverted />
               </div>
             </div>
             <div className="row justify-content-center mx-0">
@@ -161,16 +160,23 @@ const Ayuda = () => {
             </div>
           </div>
         </SimpleBanner>
-        <div className={`row justify-content-center mt-5 `}>
+        <div className="row justify-content-center mt-5 mx-xs-0 mx-sm-0">
           <div className={` ${styles.captcha}`}>
             <input name="check" type="checkbox" onClick={checkedButton} />
-            <label className="mr-5">&nbsp; No soy un robot </label>
+            <label htmlFor="my-check" className="mr-5">
+              {' '}
+              &nbsp; No soy un robot
+            </label>
             <img className="ml-5" src="/captcha.svg" alt="Document" />
           </div>
         </div>
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button disabled={disabled} type="button" className="btn-small col-12">
+            <button
+              disabled={!(formulario.isValid && formulario.dirty) || disabled}
+              type="button"
+              className="btn-small col-12"
+            >
               Envía tu comentario
             </button>
           </div>
@@ -190,7 +196,7 @@ const Ayuda = () => {
                       <div className="sub text-secondary text-decoration-underline">5526774690</div>
                     </div>
                   </div>
-                  <div className="col-4 pl-xs-5 pl-md-4 pl-lg-0">
+                  <div className="col-4 pl-xs-4 pl-md-4 pl-lg-0">
                     <img className={`${styles['img-call-center']}`} src="/icon-call-center.svg" alt="Document" />
                   </div>
                 </div>
@@ -229,6 +235,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 1 ? styles.active : ''}`}
                 onClick={() => handleOption(1)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/about-info.svg" alt="Document" />
                 <div>
@@ -242,6 +249,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 2 ? styles.active : ''}`}
                 onClick={() => handleOption(2)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/user.svg" alt="User" />
                 <div>
@@ -255,6 +263,7 @@ const Ayuda = () => {
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 3 ? styles.active : ''}`}
                 onClick={() => handleOption(3)}
                 role="button"
+                tabIndex={0}
               >
                 <img src="/security.svg" alt="Security" />
                 <div>
