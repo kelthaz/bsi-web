@@ -18,10 +18,11 @@
 
       a {
         color: $white;
-      }
-
-      &:hover {
         text-decoration: underline;
+
+        &:hover {
+          color: $blue-morning;
+        }
       }
     }
   }
@@ -143,10 +144,11 @@
 
   a {
     @include overline;
-    color: $blue-morning;
+    color: $white;
+    text-decoration: underline;
 
     &:hover {
-      text-decoration: underline;
+      color: $blue-morning;
     }
   }
 }
