@@ -29,12 +29,12 @@ const StepThree = () => {
             businessAbout: datosPersonales.businessAbout,
           },
           validationSchema: Yup.object({
-            razonSocial: Yup.string().max(120, longitudMaxima).required(campoRequerido),
+            razonSocial: Yup.string().trim().max(120, longitudMaxima).required(campoRequerido),
             tipoEmpresa: Yup.string(),
-            businessName: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+            businessName: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
             sector: Yup.string().notOneOf(['Sector'], seleccionOpcion),
             giro: Yup.string().notOneOf(['Giro'], seleccionOpcion),
-            businessAbout: Yup.string().max(180, longitudMaxima).required(campoRequerido),
+            businessAbout: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
           }),
         }
       : {
@@ -45,10 +45,10 @@ const StepThree = () => {
             businessAbout: datosPersonales.businessAbout,
           },
           validationSchema: Yup.object({
-            businessName: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+            businessName: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
             sector: Yup.string().notOneOf(['Sector'], seleccionOpcion),
             giro: Yup.string().notOneOf(['Giro'], seleccionOpcion),
-            businessAbout: Yup.string().max(180, longitudMaxima).required(campoRequerido),
+            businessAbout: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
           }),
         };
 
@@ -73,7 +73,13 @@ const StepThree = () => {
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Anotado!</h2>
-            <p className="color-dark-gray sub">¿Cuál es el nombre comercial, sector y giro de tu negocio?</p>
+            <p className="color-dark-gray sub">
+              {datosPersonales.personType === 'Persona Moral' ? (
+                <span>¿Cuál es la razón social, nombre comercial, sector y giro de tu negocio?</span>
+              ) : (
+                <span>¿Cuál es el nombre comercial, sector y giro de tu negocio?</span>
+              )}
+            </p>
 
             {datosPersonales.personType === 'Persona Moral' && (
               <div className="row no-gutters">

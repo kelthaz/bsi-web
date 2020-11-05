@@ -31,7 +31,9 @@ const StepTwo = () => {
       <div className="contedor-solicitud">
         <div className="container p-0">
           <form>
-            <h2 className="color-blue-storm">¡Hola, {datosPersonales.name}!</h2>
+            <h2 className="color-blue-storm">
+              ¡Hola, {datosPersonales.name} {datosPersonales.secondName}!
+            </h2>
             <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
 
             <div className="row my-3">
