@@ -16,10 +16,6 @@ const Ayuda = () => {
   const [option, setOption] = useState(1);
   const [checked, setChecked] = useState(false);
 
-  const handleOption = (opt) => {
-    setOption(opt);
-  };
-
   const formulario = useFormik({
     initialValues: {
       name: '',
@@ -44,35 +40,116 @@ const Ayuda = () => {
 
   const aboutPymeItems = [
     {
-      title: '¿Cómo comienzo?',
+      title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
       content:
-        'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
+        'Debido al tipo de crédito que estás solicitando, por normatividad interna, es necesario que cuentes con una cuenta empresarial BanCoppel.',
     },
     {
-      title: '¿Cuánto es lo máximo que puedo solicitar?',
+      title: '¿Qué es un crédito PyME?',
       content:
-        'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
+        'Es un crédito simple, en donde en caso de ser aprobado, se depositará el monto del crédito en una sola exhibición. Teniendo mensualidades fijas a lo largo del plazo elegido.',
+    },
+    {
+      title: '¿Necesito contar con una Garantía?',
+      content:
+        'No requieres asignar una garantía hipotecaria o de algún otro tipo, únicamente deberás asignar un Obligado Solidario.',
+    },
+    {
+      title: '¿Necesito contar con una cuenta bancaria?',
+      content:
+        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. ' +
+        ' Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
+    },
+    {
+      title: '¿Qué pasa si me asignan un monto menor al que solicité?',
+      content:
+        'El monto autorizado depende de la capacidad de flujo y nivel de endeudamiento que identifique el motor paramétrico de la plataforma.',
+    },
+    {
+      title: '¿Qué pasa si mi Obligado Solidario no puede responder las preguntas en el momento?',
+      content:
+        'Si bien es muy importante que tu obligado solidario responda las preguntas cuanto antes. Cabe recordar que mientras más tiempo se tarde, mayor va a ser la tardanza al momento de otorgarte tu crédito.',
+    },
+    {
+      title: '¿Por qué no aceptan solicitud de Personas Físicas?',
+      content:
+        'No es posible otorgar créditos a personas físicas ya que esta es una plataforma para otorgar créditos únicamente a Personas físicas con actividad empresarial así como Personas morales. En caso de necesitar un crédito o préstamo personal, te invitamos a visitar nuestra página de inicio de BanCoppel personas.',
+    },
+    {
+      title: '¿Qué puedo hacer si me rechazan mi solicitud?',
+      content: 'Ponte en contacto con uno de nuestros asesores en la sección de ayuda.',
     },
     {
       title: '¿En cuánto tiempo recibo mi dinero?',
       content:
-        'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
+        'Una vez que firmado tu contrato, no debería pasar más de 72 horas hábiles para que veas el depósito reflejado en tu cuenta empresarial BanCoppel.',
     },
     {
-      title: '¿Necesito una cuenta empresarial?',
+      title: '¿Cómo puedo subir un documento corregido?',
       content:
-        'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
+        'Al momento de solicitarte alguna corrección, nos comunicaremos contigo a través de correo electrónico indicándote los pasos a seguir. ',
     },
     {
-      title: '¿En cuánto tiempo recibiría mi dinero?',
+      title: '¿Cuánto es lo máximo que puedo solicitar?',
+      content: 'Puedes solicitar desde $300,000 pesos hasta $12 millones de pesos',
+    },
+    {
+      title: '¿Cómo comienzo?',
       content:
-        'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla porttitor accumsan tincidunt.',
+        'Para comenzar tu proceso de solicitud será necesario que realices la simulación de tu crédito llenando los campos que aparecen en la pantalla de simulación y posteriormente dar click al botón de solicitar mi crédito.',
     },
   ];
 
+  const userAccount = [
+    {
+      title: '¿Es obligatorio el registro en la plataforma?',
+      content:
+        'Para poder llevar a cabo tu evaluación como solicitante es necesario durante el proceso la creación de tu usuario y contraseña.',
+    },
+    {
+      title: '¿Cómo puedo recuperar mi contraseña?',
+      content: 'Al dar click en el botón de iniciar sesión aparecerá una opción de recuperación de contraseña.',
+    },
+    {
+      title: '¿En donde puedo cambiar mi correo electrónico?',
+      content:
+        'Solo tienes que acceder a tu perfil haciendo clic en tu imagen de usuario. Ya dentro, podrás visualizar el campo de tu correo electrónico, mismo que podrás editar.',
+    },
+    {
+      title: '¿Cómo puedo cambiar mi contraseña?',
+      content:
+        'Solo tienes que acceder a tu perfil haciendo clic en tu imagen de usuario. Ya dentro, podrás visualizar las opciones para modificar tu contraseña.',
+    },
+    {
+      title: '¿Dónde puedo visualizar los documentos que ya he subido?',
+      content:
+        'Podrás visualizar el estatus de tus documentos en tu portal privado de cliente una vez iniciada tu sesión.',
+    },
+  ];
+
+  const dataSecurity = [
+    {
+      title: '¿Cómo BanCoppel protege mis datos personales?',
+      content:
+        'BanCoppel, se rige por las normas impuestas por la CMBV las cuales son muy estrictas y a través de nuestro aviso de privacidad el cual puedes consultar aquí (enlace al PDF)',
+    },
+    {
+      title: '¿Qué pasa si alguien accede a mi cuenta sin mi consentimiento?',
+      content:
+        'Si crees que alquien a accedido a tu cuenta, te recomendamos cambies urgentemente tu contraseña. En caso de que tengas tu acceso bloqueado, puedes comunicarte con nosotros enviándonos tus comentarios en el campo de centro de ayuda ubicado en la sección de ayuda de la página de inicio del portal PyME.',
+    },
+    {
+      title: '¿Cómo BanCoppel protege mi cuenta de crédito?',
+      content:
+        'En nuestra plataforma utilizamos todos los certificados de seguridad requeridos por la CNBV, y cifrado de 128 bits vía https.',
+    },
+  ];
+
+  const [array, setArray] = useState(aboutPymeItems);
+
   const acc = (
     <div className={styles['container-accordion']}>
-      {aboutPymeItems.map(({ title, content }) => (
+      {array.map(({ title, content }) => (
         <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
           <div>
             <p>{content}</p>
@@ -81,6 +158,12 @@ const Ayuda = () => {
       ))}
     </div>
   );
+
+  const handleOption = (opt) => {
+    setArray(opt);
+    setOption(opt);
+  };
+
   const [disabled, setDisabled] = useState(false);
 
   const checkedButton = () => {
@@ -233,7 +316,7 @@ const Ayuda = () => {
               <div
                 name="acerca-del-credito"
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 1 ? styles.active : ''}`}
-                onClick={() => handleOption(1)}
+                onClick={() => handleOption(aboutPymeItems)}
                 role="button"
                 tabIndex={0}
               >
@@ -247,7 +330,7 @@ const Ayuda = () => {
               <div
                 name="cuenta-usuario"
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 2 ? styles.active : ''}`}
-                onClick={() => handleOption(2)}
+                onClick={() => handleOption(userAccount)}
                 role="button"
                 tabIndex={0}
               >
@@ -261,7 +344,7 @@ const Ayuda = () => {
               <div
                 name="seguridad-datos"
                 className={`${styles.card} ${styles['about-pyme-box']} ${option === 3 ? styles.active : ''}`}
-                onClick={() => handleOption(3)}
+                onClick={() => handleOption(dataSecurity)}
                 role="button"
                 tabIndex={0}
               >

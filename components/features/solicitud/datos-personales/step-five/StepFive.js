@@ -23,7 +23,7 @@ const StepFive = () => {
       confirmarContraseña: datosPersonales.confirmarContraseña,
     },
     validationSchema: Yup.object({
-      rfc: Yup.string().min(12, '12 caracteres mínimo').required('Campo requerido'),
+      rfc: Yup.string().trim().min(12, '12 caracteres mínimo').required('Campo requerido'),
       contrasena: Yup.string()
         .max(20, 'máximo 20 caracteres')
         .min(8, '8 caracteres mínimo')
@@ -132,18 +132,30 @@ const StepFive = () => {
       <div className="contedor-solicitud ">
         <form onSubmit={formulario.handleSubmit} noValidate>
           <h2 className="color-blue-storm">¡Sólo falta crear tu cuenta!</h2>
-          <p className="color-dark-gray sub">
-            Tu usuario será el RFC con el que facturas y crearás una contraseña. Con tu cuenta podrás retomar el proceso
-            en cualquier momento.
-          </p>
+          {datosPersonales.personType === 'Persona Moral' ? (
+            <p className="color-dark-gray sub">
+              Tu usuario será el RFC con el que factura tu empresa y crearás una contraseña. Con tu cuenta podrás
+              retomar el proceso en cualquier momento.
+            </p>
+          ) : (
+            <p className="color-dark-gray sub">
+              Tu usuario será el RFC con el que facturas y crearás una contraseña. Con tu cuenta podrás retomar el
+              proceso en cualquier momento.
+            </p>
+          )}
 
           <div className="row no-gutters">
             <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
-              <p className="input color-gray">Mi RFC es</p>
+              {datosPersonales.personType === 'Persona Moral' ? (
+                <p className="input color-gray">El RFC es</p>
+              ) : (
+                <p className="input color-gray">Mi RFC es</p>
+              )}
             </div>
             <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
               <TextField
                 name="rfc"
+                format="uppercase"
                 maxlength={13}
                 formulario={formulario}
                 type="text"
@@ -176,6 +188,7 @@ const StepFive = () => {
               <TextField
                 name="confirmarContraseña"
                 formulario={formulario}
+                maxlength={20}
                 type="password"
                 size="big"
                 label="Contraseña"

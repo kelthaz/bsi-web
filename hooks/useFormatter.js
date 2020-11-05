@@ -10,7 +10,7 @@ const useFormatter = (format) => {
       return { formatter: uppercaseFormatter, changeSelection: true };
 
     default:
-      return (value) => value;
+      return { formatter: (value) => value, changeSelection: false };
   }
 };
 
