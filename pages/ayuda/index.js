@@ -13,7 +13,7 @@ import { campoRequerido, correoInvalido, longitudMaxima, numeroInvalido } from '
 
 const Ayuda = () => {
   const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
-  const [option, setOption] = useState(1);
+
   const [checked, setChecked] = useState(false);
 
   const formulario = useFormik({
@@ -145,6 +145,7 @@ const Ayuda = () => {
     },
   ];
 
+  const [option, setOption] = useState([]);
   const [array, setArray] = useState(aboutPymeItems);
 
   const acc = (
@@ -315,7 +316,7 @@ const Ayuda = () => {
             <div className="col-lg-5 col-md-5 col-sm-12">
               <div
                 name="acerca-del-credito"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option === 1 ? styles.active : ''}`}
+                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 12 ? styles.active : ''}`}
                 onClick={() => handleOption(aboutPymeItems)}
                 role="button"
                 tabIndex={0}
@@ -326,10 +327,10 @@ const Ayuda = () => {
                   <div className="body2">Todo sobre el crédito Pyme</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option === 1 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 12 && acc}</div>
               <div
                 name="cuenta-usuario"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option === 2 ? styles.active : ''}`}
+                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 5 ? styles.active : ''}`}
                 onClick={() => handleOption(userAccount)}
                 role="button"
                 tabIndex={0}
@@ -340,10 +341,10 @@ const Ayuda = () => {
                   <div className="body2">Tu sesión y administración</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option === 2 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 5 && acc}</div>
               <div
                 name="seguridad-datos"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option === 3 ? styles.active : ''}`}
+                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 3 ? styles.active : ''}`}
                 onClick={() => handleOption(dataSecurity)}
                 role="button"
                 tabIndex={0}
@@ -354,7 +355,7 @@ const Ayuda = () => {
                   <div className="body2">Protegemos tu información</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option === 3 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 3 && acc}</div>
             </div>
             <div className="col-lg-7 col-md-7 d-lg-block d-md-block d-sm-none d-none">{acc}</div>
           </div>

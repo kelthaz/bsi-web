@@ -88,7 +88,14 @@ const StepThree = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                  <TextField name="razonSocial" formulario={formulario} type="text" size="big" label="Razón social" />
+                  <TextField
+                    name="razonSocial"
+                    maxlength={120}
+                    formulario={formulario}
+                    type="text"
+                    size="big"
+                    label="Razón social"
+                  />
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                   <Select name="tipoEmpresa" formulario={formulario} size="big" items={itemsTipoEmpresa} />
@@ -106,6 +113,7 @@ const StepThree = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
+                  maxlength={120}
                   label="Nombre del negocio"
                 />
               </div>
@@ -132,6 +140,7 @@ const StepThree = () => {
             <div className="row no-gutters">
               <TextArea
                 name="businessAbout"
+                maxlength={180}
                 formulario={formulario}
                 label="Platícanos un poco a qué se dedica tu negocio..."
               />
