@@ -6,6 +6,7 @@ import SvgCross from '../../svgs/SvgCross';
 import SvgHidenPassword from '../../svgs/SvgHidenPassword';
 import SvgShowPassword from '../../svgs/SvgShowPassword';
 import styles from './text-field.module.scss';
+import useFormatter from '../../../hooks/useFormatter';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];
@@ -26,12 +27,14 @@ const seleccionaEstilo = (size, inverted) => {
 };
 
 const TextField = (props) => {
-  const { name, formulario, maxlength, capitalize, label, type, size, inverted, optional, validation } = props;
+  const { name, formulario, maxlength, capitalize, label, type, size, inverted, optional, validation, format } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
 
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
+
+  const { formatter, changeSelection } = useFormatter(format);
   const [typeInput, setTypeInput] = useState(type);
   const [active, setActive] = useState(false);
 
@@ -45,7 +48,10 @@ const TextField = (props) => {
     if (!touched[name]) {
       setFieldTouched(name, true);
     }
+    const { selectionStart, selectionEnd } = event.target;
+    event.target.value = formatter(event.target.value);
     handleChange(event);
+    if (changeSelection && type === 'text') event.target.setSelectionRange(selectionStart, selectionEnd);
   };
 
   const onHandleBlur = (event) => {
@@ -112,6 +118,7 @@ TextField.propTypes = {
   optional: PropTypes.bool,
   validation: PropTypes.bool,
   maxlength: PropTypes.number,
+  format: PropTypes.string,
 };
 
 TextField.defaultProps = {
@@ -119,6 +126,7 @@ TextField.defaultProps = {
   inverted: false,
   optional: false,
   validation: false,
+  format: '',
 };
 
 export default TextField;

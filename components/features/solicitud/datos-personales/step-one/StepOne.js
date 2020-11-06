@@ -20,10 +20,22 @@ const StepOne = () => {
       secondLastname: datosPersonales.secondLastname,
     },
     validationSchema: Yup.object({
-      name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-      secondName: Yup.string().max(60, longitudMaxima),
-      lastname: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-      secondLastname: Yup.string().max(60, longitudMaxima),
+      name: Yup.string()
+        .trim()
+        .matches(/^[a-zA-ZÑñ\s]+$/, 'Sin caracteres especiales o acentos ')
+        .max(60, longitudMaxima)
+        .required(campoRequerido),
+      secondName: Yup.string()
+        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
+        .max(60, longitudMaxima),
+      lastname: Yup.string()
+        .trim()
+        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
+        .max(60, longitudMaxima)
+        .required(campoRequerido),
+      secondLastname: Yup.string()
+        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
+        .max(60, longitudMaxima),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -50,11 +62,19 @@ const StepOne = () => {
                 <p className="input color-gray">Mi nombre es</p>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <TextField name="name" formulario={formulario} type="text" size="big" label="1º Nombre" />
+                <TextField
+                  format="uppercase"
+                  name="name"
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="1º Nombre"
+                />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <TextField
                   name="secondName"
+                  format="uppercase"
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -65,10 +85,18 @@ const StepOne = () => {
             </div>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <TextField name="lastname" formulario={formulario} type="text" size="big" label="Apellido paterno" />
+                <TextField
+                  format="uppercase"
+                  name="lastname"
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Apellido paterno"
+                />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TextField
+                  format="uppercase"
                   name="secondLastname"
                   formulario={formulario}
                   type="text"

@@ -42,6 +42,7 @@ const Simulador = ({ handleSimular }) => {
       handleSimular();
       // alert(JSON.stringify(values, null, 2));
     },
+    validateOnMount: true,
   });
 
   return (
@@ -143,14 +144,14 @@ const Simulador = ({ handleSimular }) => {
         </div>
 
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last mb-3">
+          <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3">
             <div className={styles['config-flex-first-button']}>
               <button type="button" className="btn-medium-secondary">
                 Retoma tu proceso
               </button>
             </div>
           </div>
-          <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first mb-3">
+          <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
             <div className={styles['config-flex-second-button']}>
               <button type="submit" className="btn-medium" disabled={!formulario.isValid}>
                 Simula tu crédito

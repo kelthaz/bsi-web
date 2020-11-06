@@ -182,6 +182,7 @@
   svg {
     display: inline-block;
     height: 80px;
+    padding-bottom: 16px;
     width: 80px;
   }
 
@@ -202,7 +203,7 @@
 
       svg {
         height: 48px;
-
+        padding-bottom: 0;
         width: 48px;
       }
     }
@@ -230,6 +231,10 @@
 
 .card-selected-blue-sky {
   border: 2px solid $blue-sky;
+
+  p {
+    color: $blue-sky;
+  }
 }
 
 .card-simple-transparent {

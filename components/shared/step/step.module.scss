@@ -5,6 +5,7 @@
   position: fixed;
   right: 0;
   top: 40%;
+  z-index: 1030;
 
   @include media('lg') {
     right: -15px;

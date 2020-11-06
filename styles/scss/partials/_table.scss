@@ -39,7 +39,7 @@
   @include scroll-config(4px);
 
   @include media('sm') {
-    @include config-table-horizontal-dividers(250px, 460px, 2);
+    @include config-table-horizontal-dividers(260px, 460px, 2);
   }
 
   thead {
