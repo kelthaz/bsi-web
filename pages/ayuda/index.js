@@ -237,7 +237,7 @@ const Ayuda = () => {
                 <Select name="state" label="Estado" formulario={formulario} size="small" items={items} inverted />
               </div>
             </div>
-            <div className="row justify-content-center mx-0">
+            <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>
               <div className={`col-12 ${styles['textarea-questions']}`}>
                 <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="300" />
               </div>
