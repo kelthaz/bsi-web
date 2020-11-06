@@ -65,6 +65,7 @@ const StepOne = () => {
                 <TextField
                   format="uppercase"
                   name="name"
+                  maxlength={60}
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -75,6 +76,7 @@ const StepOne = () => {
                 <TextField
                   name="secondName"
                   format="uppercase"
+                  maxlength={60}
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -88,6 +90,7 @@ const StepOne = () => {
                 <TextField
                   format="uppercase"
                   name="lastname"
+                  maxlength={60}
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -97,6 +100,7 @@ const StepOne = () => {
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TextField
                   format="uppercase"
+                  maxlength={60}
                   name="secondLastname"
                   formulario={formulario}
                   type="text"

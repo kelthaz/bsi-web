@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './text-area.module.scss';
 
 const TextArea = (props) => {
-  const { name, formulario, label, optional } = props;
+  const { name, formulario, label, optional, maxlength } = props;
   const { handleChange, values, handleBlur, errors, touched } = formulario;
 
   const hasError = () => touched[name] && errors[name];
@@ -18,6 +18,7 @@ const TextArea = (props) => {
           onChange={handleChange}
           onBlur={handleBlur}
           value={values[name]}
+          maxLength={maxlength}
           autoComplete="off"
           placeholder={label}
         >
@@ -38,6 +39,7 @@ TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   formulario: PropTypes.any.isRequired,
   optional: PropTypes.bool,
+  maxlength: PropTypes.number,
 };
 
 TextArea.defaultProps = {
