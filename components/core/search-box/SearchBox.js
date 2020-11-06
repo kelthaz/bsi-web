@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -6,20 +6,11 @@ import PropTypes from 'prop-types';
 
 import TextField from '../../shared/text-field/TextField';
 import styles from './search-box.module.scss';
+import useSearchEngine from '../../../hooks/useSearchEngine';
 
 const SearchBox = ({ unmount }) => {
   const [data, setData] = useState([]);
   const router = useRouter();
-
-  const originalData = [
-    { redirect: '/credito-pyme', text: 'Crédito Digital Pyme' },
-    { redirect: '/requisitos', text: 'Requisitos para un crédito de Crédito Simple PyME' },
-    { redirect: '/requisitos', text: 'Requisitos para una cuenta BanCoppel' },
-    { redirect: '/simulador', text: 'Simulador' },
-    { redirect: '/beneficios', text: 'Beneficios' },
-    { redirect: '/ayuda', text: 'Ayuda' },
-    { redirect: '/aviso-privacidad', text: 'Aviso de privacidad' },
-  ];
 
   const dismiss = () => {
     unmount();
@@ -37,26 +28,7 @@ const SearchBox = ({ unmount }) => {
     },
   });
 
-  useEffect(() => {
-    const val = formulario.values.search;
-    if (val.length > 0) {
-      setData(
-        originalData.filter(({ text }) => {
-          const listData = text
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase();
-          const valData = text
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase();
-          return listData.includes(valData);
-        })
-      );
-    } else {
-      setData([]);
-    }
-  }, [formulario.values.search]);
+  useSearchEngine(formulario.values.search, setData);
 
   const redirect = (url) => {
     router.push(url);
@@ -71,9 +43,19 @@ const SearchBox = ({ unmount }) => {
       <div className="d-flex justify-content-center my-5">
         <div className="col-xs-11 col-md-10 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
-          <img src="/search.svg" alt="Search icon" />
-          <TextField name="search" formulario={formulario} type="text" size="small" label="Buscar" inverted />
+          <TextField
+            name="search"
+            formulario={formulario}
+            type="text" size="small"
+            label={<img src="/search.svg" alt="Search icon" />}
+            inverted
+          />
           <ul className={styles['select-items']}>
+            <li>
+              <button disabled className={styles.item} type="button">
+                Principales sugerencias de reporte
+              </button>
+            </li>
             {data.map((item) => (
               <li key={item.text}>
                 <button className={styles.item} type="button" onClick={() => redirect(item.redirect)}>
