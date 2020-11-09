@@ -24,6 +24,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
+    "swr": "^0.3.8",
     "yup": "^0.29.3"
   },
   "devDependencies": {
