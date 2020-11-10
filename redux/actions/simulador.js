@@ -1,3 +1,4 @@
+import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 import * as types from '../types/types';
 
 export const updateDataSimulador = (dataSimulador) => ({
@@ -5,7 +6,25 @@ export const updateDataSimulador = (dataSimulador) => ({
   payload: dataSimulador,
 });
 
-export const nextStepDatosEmpresa = (payload) => ({
-  type: types.NEXT_STEP_DATOS_EMPRESA,
-  payload,
-});
+export const startUpdateDataSimulador = (dataSimulador) => async (dispatch) => {
+  const params = {
+    monto: dataSimulador.monto,
+    plazo: dataSimulador.plazo.valor,
+    periodicidad: dataSimulador.periodicidad.valor,
+  };
+  const resultSimulador = await SimuladorRepositorio.postSimulador(params).then((res) => res.data);
+  const resultSimuladorTabla = await SimuladorRepositorio.postSimuladorTabla(params).then((res) => res.data);
+
+  dispatch(
+    updateDataSimulador({
+      showResult: true,
+      dataSimulador: {
+        ...dataSimulador,
+        plazo: dataSimulador.plazo.descripcion,
+        periodicidad: dataSimulador.periodicidad.descripcion,
+      },
+      resultSimuladorTabla,
+      resultSimulador,
+    })
+  );
+};

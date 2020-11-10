@@ -6,13 +6,13 @@ import styles from './simulador.module.scss';
 import Modal from '../../components/shared/modal/Modal';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Simulador from '../../components/core/simulador/Simulador';
+import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 
-export const PageSimulador = () => {
+export const PageSimulador = ({ catalogo }) => {
   const [menuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
 
-  console.log(process.env.NEXT_PUBLIC_API_BANCOPPEL_PYME_HOSTNAME);
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
     { estado: 'Chihuahua', municipios: ['Ciudad Juárez', 'Chihuahua'] },
@@ -85,7 +85,12 @@ export const PageSimulador = () => {
     { estado: 'Tamaulipas', municipios: ['Tampico', 'Altamira', 'Ciudad Madero'] },
   ];
 
-  const { showResult, monto, plazo, periodicidad } = useSelector((state) => state.simulador);
+  const {
+    showResult,
+    dataSimulador: { monto, plazo, periodicidad },
+    resultSimulador: { tasaOrdinaria, comisionApertura, cat },
+    resultSimuladorTabla,
+  } = useSelector((state) => state.simulador);
 
   return (
     <div>
@@ -142,46 +147,16 @@ export const PageSimulador = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className={`body2 ${styles.td}`}>Disposición</td>
-                      <td className={`body2 ${styles.td}`}>22/Feb/2020</td>
-                      <td className={`body2 ${styles.td}`}>-</td>
-                      <td className={`body2 ${styles.td}`}>-</td>
-                      <td className={`body2 ${styles.td}`}>11,791,126.63</td>
-                      <td className={`body2 ${styles.td}`}>493,272.54</td>
-                    </tr>
-                    <tr>
-                      <td className={`${styles.td}`}>1</td>
-                      <td className={`${styles.td}`}>22/Mar/2020</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>11,791,126.63</td>
-                      <td className={`${styles.td}`}>493,272.54</td>
-                    </tr>
-                    <tr>
-                      <td className={`${styles.td}`}>2</td>
-                      <td className={`${styles.td}`}>22/Abr/2020</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>11,791,126.63</td>
-                      <td className={`${styles.td}`}>493,272.54</td>
-                    </tr>
-                    <tr>
-                      <td className={`${styles.td}`}>3</td>
-                      <td className={`${styles.td}`}>22/May/2020</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>11,791,126.63</td>
-                      <td className={`${styles.td}`}>493,272.54</td>
-                    </tr>
-                    <tr>
-                      <td className={`${styles.td}`}>4</td>
-                      <td className={`${styles.td}`}>22/Jun/2020</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>208,873.37</td>
-                      <td className={`${styles.td}`}>11,791,126.63</td>
-                      <td className={`${styles.td}`}>493,272.54</td>
-                    </tr>
+                    {resultSimuladorTabla.map(({ numeroAmortizacion, fecha, capital, interes, saldo, pagoMensual }) => (
+                      <tr>
+                        <td className={`body2 ${styles.td}`}>{numeroAmortizacion}</td>
+                        <td className={`body2 ${styles.td}`}>{fecha}</td>
+                        <td className={`body2 ${styles.td}`}>{capital}</td>
+                        <td className={`body2 ${styles.td}`}>{interes}</td>
+                        <td className={`body2 ${styles.td}`}>{saldo}</td>
+                        <td className={`body2 ${styles.td}`}>{pagoMensual}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -226,7 +201,7 @@ export const PageSimulador = () => {
 
       <section className="section-white-relative">
         <div className={styles['simulador-container']}>
-          <Simulador />
+          <Simulador catalogo={catalogo} />
         </div>
       </section>
 
@@ -246,10 +221,10 @@ export const PageSimulador = () => {
               <div className="row mx-0 mb-4 mt-4">
                 <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
                   <h1 className={styles['title-input']}>{mexicanWeightFormatter(monto)}</h1>
-                  <div className={styles['input-text']}>Solicitado</div>
+                  <div className={styles['input-text']}>Monto solicitado</div>
                 </div>
                 <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
-                  <h1 className={styles['title-input']}>25% anual</h1>
+                  <h1 className={styles['title-input']}>{tasaOrdinaria} anual</h1>
                   <div className={styles['input-text']}>Tasa ordinaria</div>
                 </div>
 
@@ -258,11 +233,11 @@ export const PageSimulador = () => {
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
                 <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>29.10%</h1>
+                  <h1 className={styles['title-input']}>{cat}</h1>
                   <div className={styles['input-text']}>CAT</div>
                 </div>
                 <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>2%</h1>
+                  <h1 className={styles['title-input']}>{comisionApertura}</h1>
                   <div className={styles['input-text']}>Comisión por apertura</div>
                 </div>
                 <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
@@ -348,6 +323,16 @@ export const PageSimulador = () => {
       )}
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
+
+  return {
+    props: {
+      catalogo,
+    },
+  };
 };
 
 export default PageSimulador;

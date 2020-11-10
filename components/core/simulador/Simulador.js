@@ -7,15 +7,20 @@ import Slider from '../../shared/slider/Slider';
 import styles from './simulador.module.scss';
 import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
 import { seleccionOpcion } from '../../../constants/errors';
-import { updateDataSimulador } from '../../../redux/actions/simulador';
+import { startUpdateDataSimulador } from '../../../redux/actions/simulador';
 
-const Simulador = ({ handleSimular }) => {
+const Simulador = ({ handleSimular, catalogo }) => {
   const dispatch = useDispatch();
-  const { monto, plazo, periodicidad, aniosEmpresa, ventasAnio } = useSelector((state) => state.simulador);
-  const itemsPaymentMonths = ['12 meses', '18 meses', '24 meses', '30 meses', '36 meses'];
-  const itemsPaymentTimes = ['Mensuales', 'Bimestrales'];
-  const itemsCompanyTime = ['Más de 2 años', 'Menos de 2 años'];
-  const itemsSalesYear = ['Más de $2 MDP', 'Menos de $2 MDP'];
+  const {
+    dataSimulador: { monto, plazo, periodicidad, aniosEmpresa, ventasAnio },
+  } = useSelector((state) => state.simulador);
+
+  const [montoItems, plazoItems, periodicidadItems, antiguedadItems, ventaItems] = catalogo;
+
+  const itemsPaymentMonths = plazoItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
+  const itemsPaymentTimes = periodicidadItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
+  const itemsCompanyTime = antiguedadItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
+  const itemsSalesYear = ventaItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
 
   const formulario = useFormik({
     initialValues: {
@@ -34,15 +39,16 @@ const Simulador = ({ handleSimular }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        updateDataSimulador({
-          showResult: true,
+        startUpdateDataSimulador({
           ...values,
+          plazo: plazoItems.parametrosCatalogo.find(({ descripcion }) => descripcion === values.plazo),
+          periodicidad: periodicidadItems.parametrosCatalogo.find(
+            ({ descripcion }) => descripcion === values.periodicidad
+          ),
         })
       );
       handleSimular();
-      // alert(JSON.stringify(values, null, 2));
     },
-    validateOnMount: true,
   });
 
   return (
@@ -57,7 +63,13 @@ const Simulador = ({ handleSimular }) => {
         </div>
 
         <div className="pb-4">
-          <Slider name="monto" formulario={formulario} min={300000} max={12000000} step={100000} />
+          <Slider
+            name="monto"
+            formulario={formulario}
+            min={montoItems.parametrosCatalogo[0].valor}
+            max={montoItems.parametrosCatalogo[montoItems.parametrosCatalogo.length - 1].valor}
+            step={100000}
+          />
         </div>
 
         <div className="row">
