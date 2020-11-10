@@ -12,7 +12,40 @@ import styles from './ayuda.module.scss';
 import { campoRequerido, correoInvalido, longitudMaxima, numeroInvalido } from '../../constants/errors';
 
 const Ayuda = () => {
-  const items = ['Aguascalientes', 'Bajo California Norte', 'Bajo California Sur'];
+  const items = [
+    'AGUASCALIENTES',
+    'BAJA CALIFORNIA NORTE',
+    'BAJA CALIFORNIA SUR',
+    'CAMPECHE',
+    'CHIAPAS',
+    'CHIHUAHUA',
+    'CIUDAD DE MÉXICO',
+    'COAHUILA',
+    'COLIMA',
+    'DURANGO',
+    'ESTADO DE MÉXICO',
+    'GUANAJUATO',
+    'GUERRERO',
+    'HIDALGO',
+    'JALISCO',
+    'MICHOACAN',
+    'MORELOS',
+    'NAYARIT',
+    'NUEVO LEON',
+    'OAXACA',
+    'PUEBLA',
+    'QUERETARO',
+    'QUINTANA ROO',
+    'SAN LUIS POTOSI',
+    'SINALOA',
+    'SONORA',
+    'TABASCO',
+    'TAMAULIPAS',
+    'TLAXCALA',
+    'VERACRUZ',
+    'YUCATAN',
+    'ZACATECAS',
+  ];
 
   const [checked, setChecked] = useState(false);
 
@@ -40,44 +73,13 @@ const Ayuda = () => {
 
   const aboutPymeItems = [
     {
-      title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
+      title: '¿Cómo comienzo?',
       content:
-        'Debido al tipo de crédito que estás solicitando, por normatividad interna, es necesario que cuentes con una cuenta empresarial BanCoppel.',
+        'Para comenzar tu proceso de solicitud será necesario que realices la simulación de tu crédito llenando los campos que aparecen en la pantalla de simulación y posteriormente dar click al botón de solicitar mi crédito.',
     },
     {
-      title: '¿Qué es un crédito PyME?',
-      content:
-        'Es un crédito simple, en donde en caso de ser aprobado, se depositará el monto del crédito en una sola exhibición. Teniendo mensualidades fijas a lo largo del plazo elegido.',
-    },
-    {
-      title: '¿Necesito contar con una Garantía?',
-      content:
-        'No requieres asignar una garantía hipotecaria o de algún otro tipo, únicamente deberás asignar un Obligado Solidario.',
-    },
-    {
-      title: '¿Necesito contar con una cuenta bancaria?',
-      content:
-        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. ' +
-        ' Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
-    },
-    {
-      title: '¿Qué pasa si me asignan un monto menor al que solicité?',
-      content:
-        'El monto autorizado depende de la capacidad de flujo y nivel de endeudamiento que identifique el motor paramétrico de la plataforma.',
-    },
-    {
-      title: '¿Qué pasa si mi Obligado Solidario no puede responder las preguntas en el momento?',
-      content:
-        'Si bien es muy importante que tu obligado solidario responda las preguntas cuanto antes. Cabe recordar que mientras más tiempo se tarde, mayor va a ser la tardanza al momento de otorgarte tu crédito.',
-    },
-    {
-      title: '¿Por qué no aceptan solicitud de Personas Físicas?',
-      content:
-        'No es posible otorgar créditos a personas físicas ya que esta es una plataforma para otorgar créditos únicamente a Personas físicas con actividad empresarial así como Personas morales. En caso de necesitar un crédito o préstamo personal, te invitamos a visitar nuestra página de inicio de BanCoppel personas.',
-    },
-    {
-      title: '¿Qué puedo hacer si me rechazan mi solicitud?',
-      content: 'Ponte en contacto con uno de nuestros asesores en la sección de ayuda.',
+      title: '¿Cuánto es lo máximo que puedo solicitar?',
+      content: 'Puedes solicitar desde $300,000 pesos hasta $12 millones de pesos',
     },
     {
       title: '¿En cuánto tiempo recibo mi dinero?',
@@ -85,18 +87,14 @@ const Ayuda = () => {
         'Una vez que firmado tu contrato, no debería pasar más de 72 horas hábiles para que veas el depósito reflejado en tu cuenta empresarial BanCoppel.',
     },
     {
-      title: '¿Cómo puedo subir un documento corregido?',
+      title: '¿Necesito una cuenta empresarial?',
       content:
-        'Al momento de solicitarte alguna corrección, nos comunicaremos contigo a través de correo electrónico indicándote los pasos a seguir. ',
+        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
     },
     {
-      title: '¿Cuánto es lo máximo que puedo solicitar?',
-      content: 'Puedes solicitar desde $300,000 pesos hasta $12 millones de pesos',
-    },
-    {
-      title: '¿Cómo comienzo?',
+      title: '¿En cuánto tiempo tarda el proceso de solicitud?',
       content:
-        'Para comenzar tu proceso de solicitud será necesario que realices la simulación de tu crédito llenando los campos que aparecen en la pantalla de simulación y posteriormente dar click al botón de solicitar mi crédito.',
+        'El tiempo de proceso en su totalidad varía dependiento del tiempo en que el solicitante sube todos los documentos requeridos. Una vez que nuestros analistas validen tus documentos se te notificará para agendar una fecha para la firma del contrato y en un plazo máximo de 72 horas hábiles podrás disponer de tu crédito en tu cuenta empresarial BanCoppel.',
     },
   ];
 
@@ -145,7 +143,7 @@ const Ayuda = () => {
     },
   ];
 
-  const [option, setOption] = useState([]);
+  const [option, setOption] = useState(1);
   const [array, setArray] = useState(aboutPymeItems);
 
   const acc = (
@@ -159,7 +157,6 @@ const Ayuda = () => {
       ))}
     </div>
   );
-
   const handleOption = (opt) => {
     setArray(opt);
     setOption(opt);
@@ -316,7 +313,9 @@ const Ayuda = () => {
             <div className="col-lg-5 col-md-5 col-sm-12">
               <div
                 name="acerca-del-credito"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 12 ? styles.active : ''}`}
+                className={`${styles.card} ${option === 1 ? styles.active : ''} ${styles['about-pyme-box']} ${
+                  option.length === 12 ? styles.active : ''
+                }`}
                 onClick={() => handleOption(aboutPymeItems)}
                 role="button"
                 tabIndex={0}

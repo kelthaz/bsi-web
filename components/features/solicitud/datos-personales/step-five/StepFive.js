@@ -16,27 +16,51 @@ const StepFive = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
-  const formulario = useFormik({
-    initialValues: {
-      rfc: datosPersonales.rfc,
-      contrasena: datosPersonales.contraseña,
-      confirmarContraseña: datosPersonales.confirmarContraseña,
-    },
-    validationSchema: Yup.object({
-      rfc: Yup.string().trim().min(12, '12 caracteres mínimo').required('Campo requerido'),
-      contrasena: Yup.string()
-        .max(20, 'máximo 20 caracteres')
-        .min(8, '8 caracteres mínimo')
-        .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
-        .matches(/^(?!.*(.)\1)/, 'Sin números consecutivos')
-        .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
-        .required('Campo requerido'),
 
-      confirmarContraseña: Yup.string()
-        .max(20, 'máximo 20 caracteres')
-        .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
-        .required('Campo requerido'),
-    }),
+  const { initialValues, validationSchema } =
+    datosPersonales.personType === 'Persona Moral'
+      ? {
+          initialValues: {
+            rfc: datosPersonales.rfc,
+            contrasena: datosPersonales.contraseña,
+            confirmarContraseña: datosPersonales.confirmarContraseña,
+          },
+          validationSchema: Yup.object({
+            rfc: Yup.string().trim().min(12, '12 caracteres mínimo').required('Campo requerido'),
+            contrasena: Yup.string()
+              .max(20, 'máximo 20 caracteres')
+              .min(8, '8 caracteres mínimo')
+              .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
+              .matches(/^(?!.*(.)\1)/, 'Sin números consecutivos')
+              .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
+              .required('Campo requerido'),
+
+            confirmarContraseña: Yup.string()
+              .max(20, 'máximo 20 caracteres')
+              .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
+              .required('Campo requerido'),
+          }),
+        }
+      : {
+          validationSchema: Yup.object({
+            rfc: Yup.string().trim().min(13, '13 caracteres mínimo').required('Campo requerido'),
+            contrasena: Yup.string()
+              .max(20, 'máximo 20 caracteres')
+              .min(8, '8 caracteres mínimo')
+              .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
+              .matches(/^(?!.*(.)\1)/, 'Sin números consecutivos')
+              .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
+              .required('Campo requerido'),
+
+            confirmarContraseña: Yup.string()
+              .max(20, 'máximo 20 caracteres')
+              .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
+              .required('Campo requerido'),
+          }),
+        };
+  const formulario = useFormik({
+    initialValues,
+    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
@@ -153,15 +177,27 @@ const StepFive = () => {
               )}
             </div>
             <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              <TextField
-                name="rfc"
-                format="uppercase"
-                maxlength={13}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="TLMF160693H17"
-              />
+              {datosPersonales.personType === 'Persona Moral' ? (
+                <TextField
+                  name="rfc"
+                  format="uppercase"
+                  maxlength={12}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="TLMF160693H17"
+                />
+              ) : (
+                <TextField
+                  name="rfc"
+                  format="uppercase"
+                  maxlength={13}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="TLMF160693H17"
+                />
+              )}
             </div>
             <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
               <p className="input color-gray">Mi contraseña será</p>

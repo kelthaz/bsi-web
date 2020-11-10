@@ -20,22 +20,10 @@ const StepOne = () => {
       secondLastname: datosPersonales.secondLastname,
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .trim()
-        .matches(/^[a-zA-ZÑñ\s]+$/, 'Sin caracteres especiales o acentos ')
-        .max(60, longitudMaxima)
-        .required(campoRequerido),
-      secondName: Yup.string()
-        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
-        .max(60, longitudMaxima),
-      lastname: Yup.string()
-        .trim()
-        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
-        .max(60, longitudMaxima)
-        .required(campoRequerido),
-      secondLastname: Yup.string()
-        .matches(/^[a-zA-Zñ\s]+$/, 'Sin caracteres especiales o acentos ')
-        .max(60, longitudMaxima),
+      name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      secondName: Yup.string().max(60, longitudMaxima),
+      lastname: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      secondLastname: Yup.string().max(60, longitudMaxima),
     }),
     onSubmit: (values) => {
       dispatch(
