@@ -2,11 +2,20 @@ import * as types from '../types/types';
 
 const initialState = {
   showResult: false,
-  monto: '6200000',
-  plazo: '',
-  periodicidad: '',
-  aniosEmpresa: '',
-  ventasAnio: 'Más de $2 MDP',
+  dataSimulador: {
+    monto: '6200000',
+    plazo: '',
+    periodicidad: '',
+    aniosEmpresa: '',
+    ventasAnio: 'Más de $2 MDP',
+  },
+  resultSimulador: {
+    tasaOrdinaria: '',
+    tasaMoratoria: '',
+    comisionApertura: '',
+    cat: '',
+  },
+  resultSimuladorTabla: [],
 };
 
 const simuladorReducer = (state = initialState, { type, payload }) => {
