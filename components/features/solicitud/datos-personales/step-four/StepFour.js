@@ -66,7 +66,14 @@ const StepFour = () => {
 
             <div className="row no-gutters">
               <div className="col-12">
-                <TextField name="email" formulario={formulario} type="email" size="big" label="ejemplo@mail.com" />
+                <TextField
+                  maxlength={100}
+                  name="email"
+                  formulario={formulario}
+                  type="email"
+                  size="big"
+                  label="ejemplo@mail.com"
+                />
               </div>
             </div>
 

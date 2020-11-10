@@ -12,6 +12,7 @@ export const PageSimulador = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
 
+  console.log(process.env.NEXT_PUBLIC_API_BANCOPPEL_PYME_HOSTNAME);
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
     { estado: 'Chihuahua', municipios: ['Ciudad Juárez', 'Chihuahua'] },
