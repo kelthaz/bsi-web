@@ -30,8 +30,13 @@ const SearchBox = ({ unmount }) => {
 
   useSearchEngine(formulario.values.search, setData);
 
-  const redirect = (url) => {
-    router.push(url);
+  const redirect = (item) => {
+    if (item.newTab) {
+      const win = window.open(item.redirect, '_blank');
+      win.focus();
+    } else {
+      router.push(item.redirect);
+    }
     dismiss();
   };
 
@@ -58,7 +63,7 @@ const SearchBox = ({ unmount }) => {
             </li>
             {data.map((item) => (
               <li key={item.text}>
-                <button className={styles.item} type="button" onClick={() => redirect(item.redirect)}>
+                <button className={styles.item} type="button" onClick={() => redirect(item)}>
                   {item.text}
                 </button>
               </li>
