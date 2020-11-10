@@ -95,6 +95,21 @@ export const Requisitos = () => {
         'Debido al tipo de crédito que estás solicitando, por normatividad interna, es necesario que cuentes con una cuenta empresarial BanCoppel.',
     },
     {
+      title: '¿Qué es un crédito PyME?',
+      content:
+        'Es un crédito simple, en donde en caso de ser aprobado, se depositará el monto del crédito en una sola exhibición. Teniendo mensualidades fijas a lo largo del plazo elegido.',
+    },
+    {
+      title: '¿Necesito contar con una Garantía?',
+      content:
+        'No requieres asignar una garantía hipotecaria o de algún otro tipo, únicamente deberás asignar un Obligado Solidario.',
+    },
+    {
+      title: '¿Necesito contar con una cuenta bancaria?',
+      content:
+        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
+    },
+    {
       title: '¿Qué pasa si me asignan un monto menor al que solicité?',
       content:
         'El monto autorizado depende de la capacidad de flujo y nivel de endeudamiento que identifique el motor paramétrico de la plataforma.',
@@ -126,7 +141,7 @@ export const Requisitos = () => {
     {
       title: '¿Cómo protegen mis datos personales?',
       content:
-        'BanCoppel se rige por las normas impuestas por la CNBV las cuales son muy estrictas y a través de nuestro aviso de privacidad el cual puedes consultar aquí (enlace al PDF).',
+        'BANCOPPEL, S. A., INSTITUCIÓN DE BANCA MÚLTIPLE de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su reglamento y los Lineamientos del Aviso de Privacidad, ponemos a disposición de las personas físicas de las que BanCoppel recaba sus Datos Personales (en lo sucesivo el/los “Titular(es)”) el presente Aviso de Privacidad, el cual podrá además ser consultado en todo momento a través de la página de Internet <a href="> www.bancoppel.com </a>',
     },
     {
       title: '¿Cuánto es lo máximo que puedo solicitar?',
@@ -338,9 +353,8 @@ export const Requisitos = () => {
                       />
                       <div>
                         Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
-                        recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar
-                        una <span className="sub">cuenta bancaria BanCoppel</span> para que te podamos desembolsar
-                        tu crédito cuando sea aprobado.{' '}
+                        recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
+                        de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
                         <a
                           className="sub"
                           href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"

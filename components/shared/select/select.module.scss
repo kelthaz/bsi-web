@@ -135,14 +135,33 @@
   left: 0;
   list-style-type: none;
   margin: 0;
-  max-height: 100vh;
-  overflow: hidden;
+  max-height: 160px;
+  overflow: auto;
   padding: 0;
   position: absolute;
   right: 0;
   transition: max-height 0.5s ease-in;
   visibility: visible;
   z-index: 99;
+}
+
+.select-items::-webkit-scrollbar {
+  height: 10px;
+  width: 6px;
+}
+
+.select-items::-webkit-scrollbar-thumb {
+  background: rgba(34, 90, 167, 0.2);
+  border-radius: 10px;
+}
+
+@supports (-moz-transform: translate(0, 0)) {
+  .select-items {
+    border-color: transparent;
+    height: 175px;
+    scrollbar-color: rgba(34, 90, 167, 0.2) transparent;
+    scrollbar-width: thin;
+  }
 }
 
 .item {

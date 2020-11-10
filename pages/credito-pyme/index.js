@@ -8,41 +8,33 @@ const CreditoPyme = () => {
   const accordionItems = [
     {
       title: 'Requisitos',
-      content: 'Tener más de 2 años operando y facturar más de $2 MDP al año.',
+      content: 'Tener más de 2 años de antigüedad de operación y facturar más de $2 millones de pesos al año.',
     },
     {
       title: 'Línea',
-      content: 'Puedes obtener hasta $12 MDP.',
+      content: 'Las líneas de crédito pueden ser desde lo $300,000 hasta los $12 millones de pesos.',
     },
     {
       title: 'Plazos',
-      content: 'Tus plazos podrán ser de 6 hasta 36 meses.',
+      content: 'Los plazos disponibles para el pago de tu crédito son de 6, 12, 18, 24, 30 y 36 meses.',
     },
     {
       title: 'Tasas',
-      content: 'Conoce más detalles sobre nuestras tasas <a href="#">aquí</a>.',
+      content:
+        'La tasa será a partir de una TIIE a 28 días más los puntos porcentuales de riesgo que den como resultado de tu evaluación de riesgo.',
     },
     {
       title: 'CAT',
-      content:
-        'PROMEDIO 29.1% Sin IVA, sobre un crédito de $746,619.84 de pesos, tasa de interés promedio anual de 20.00% con comisión por apertura del 1% sin IVA sobre el monto de la línea de crédito autorizada. Fecha de cálculo 30 de junio de 2019. Sólo para fines informativos y de comparación. Información sujeta a cambios en función de las condiciones aplicables al momento de contratar. Vigente al 31 de diciembre de 2019.',
+      content: 'El CAT será evaluado en base al riesgo de cliente que de como resultado el motor paramétrico.',
     },
     {
       title: 'Garantías',
-      content: 'Se requiere obligación solidaria',
+      content: 'Dependiendo el caso se solicitará una Obligación Solidaria.',
     },
     {
       title: 'Disposición',
-      content: 'Se realizará una sola disposición al inicio y se paga mediante amortizaciones mensuales programadas',
-    },
-    {
-      title: 'Pagos capital e intereses',
       content:
-        'Se cobra cada mes directamente a la cuenta bancaria BanCoppel del cliente el día de corte del crédito. También se permite pago anticipado.',
-    },
-    {
-      title: 'Redisposición',
-      content: 'Al liquidar el primer crédito podrá redisponer de uno nuevo si lo desea.',
+        'La disposición de tu crédito será realizada en una sola exhibición a tu cuenta empresarial BanCoppel registrada durante tu proceso de solicitud en la plataforma.',
     },
   ];
 
@@ -226,7 +218,7 @@ const CreditoPyme = () => {
               </h2>
               <Link href="simulador">
                 <button type="button" className="btn-link-arrow-right">
-                  Solicitar mi crédito
+                  Solicita tu crédito
                 </button>
               </Link>
             </div>
