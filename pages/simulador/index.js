@@ -94,7 +94,7 @@ export const PageSimulador = ({ catalogo }) => {
   } = useSelector((state) => state.simulador);
 
   return (
-    <div>
+    <div id="inicio">
       <div className="row justify-content-center">
         <Modal openModal={openModalZona} setOpenModal={setOpenModalZona}>
           <h4 className="color-blue-storm">Zonas Crédito Pyme disponibles</h4>
