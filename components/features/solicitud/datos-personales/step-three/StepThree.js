@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -8,14 +9,23 @@ import TextField from '../../../../shared/text-field/TextField';
 import TextArea from '../../../../shared/text-area/TextArea';
 import Select from '../../../../shared/select/Select';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
+import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
 
-const StepThree = () => {
+const StepThree = ({ sectores }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const [itemsGiro, setitemsGiro] = useState([]);
   const dispatch = useDispatch();
   const router = useRouter();
-  const itemsGiro = ['comercial', 'industrial', 'financiero', 'servicios'];
-  const itemsSector = ['primario', 'secundario', 'terciario', 'cuaternario'];
-  const itemsTipoEmpresa = ['S. en C. S.', 'S. en C. por A.', 'S. DE R.L.', 'S.A', 'S.C'];
+  const itemsSector = sectores.map(({ nombre }) => nombre);
+  const itemsTipoEmpresa = [
+    'S.A.',
+    'S.A. DE C.V.',
+    'S. DE R.L.',
+    'S. DE R.L. DE C.V.',
+    'S. EN C.',
+    'S. EN C. POR A.',
+    'S.N.C.',
+  ];
 
   const { initialValues, validationSchema } =
     datosPersonales.personType === 'Persona Moral'
@@ -66,6 +76,18 @@ const StepThree = () => {
     },
     validateOnMount: true,
   });
+
+  useEffect(() => {
+    if (formulario.values.sector !== 'Sector') {
+      const fetchData = async () => {
+        const giros = await SectoresRepositorio.getGiroPorSector(
+          sectores.find(({ nombre }) => formulario.values.sector === nombre).id
+        ).then((resp) => resp.data);
+        setitemsGiro(giros.map(({ nombre }) => nombre));
+      };
+      fetchData();
+    }
+  }, [formulario.values.sector]);
 
   return (
     <div className="contedor-fixed-tab">
@@ -159,6 +181,10 @@ const StepThree = () => {
       </div>
     </div>
   );
+};
+
+StepThree.propTypes = {
+  sectores: PropTypes.any.isRequired,
 };
 
 export default StepThree;

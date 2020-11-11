@@ -7,7 +7,7 @@ import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicit
 import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
 
-const Solicitud = ({ index }) => {
+const Solicitud = ({ index, data }) => {
   usePreventWindowUnload();
 
   const tabs = [
@@ -16,15 +16,15 @@ const Solicitud = ({ index }) => {
     { path: 'oferta', label: 'Oferta' },
     { path: 'documentacion', label: 'Documentación' },
   ];
-  const { component: Component, data } = solicitudRoutes[index];
+  const { component: Component, stepNumber } = solicitudRoutes[index];
   const { push, pathname, query } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
   } = useSelector((state) => state.solicitud);
 
   const steps = solicitudRoutes
-    .filter(({ data: { step }, tab }) => Number.isInteger(step) && tabRedux === tab)
-    .map(({ data: { step }, path }) => ({
+    .filter(({ stepNumber: step, tab }) => Number.isInteger(step) && tabRedux === tab)
+    .map(({ stepNumber: step, path }) => ({
       step,
       action: () => push(pathname, path),
     }));
@@ -32,7 +32,7 @@ const Solicitud = ({ index }) => {
   return (
     <>
       <TabInformativo
-        show={!!data.step}
+        show={!!stepNumber}
         tabs={tabs}
         currentTab={query.tab}
         currentStep={parseInt(query.step, 10)}
@@ -40,27 +40,36 @@ const Solicitud = ({ index }) => {
         steps={steps}
       />
       <Step
-        show={!!data.step}
+        show={!!stepNumber}
         currentStep={parseInt(query.step, 10)}
         valipStep={parseInt(stepRedux, 10)}
         steps={steps}
       />
-      <Component />
+      <Component {...data} />
       <SvgPatronesSolicitud className="only-lg fixed-left-bottom" />
     </>
   );
 };
 
 export async function getServerSideProps(context) {
+  const data = {};
   const { tab, step } = context.params;
   const index = solicitudRoutes.findIndex((route) => route.tab === tab && route.step === step);
+  const { services } = solicitudRoutes[index];
+  const respData = await Promise.all(services.map(({ service }) => service())).then((respArr) =>
+    respArr.map((resp) => resp.data)
+  );
+  services.forEach(({ name }, indexService) => {
+    data[name] = respData[indexService];
+  });
   return {
-    props: { index },
+    props: { index, data },
   };
 }
 
 Solicitud.propTypes = {
   index: PropTypes.number.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Solicitud;

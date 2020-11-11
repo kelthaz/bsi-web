@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import styles from './simulador.module.scss';
 import Modal from '../../components/shared/modal/Modal';
@@ -323,6 +324,10 @@ export const PageSimulador = ({ catalogo }) => {
       )}
     </div>
   );
+};
+
+PageSimulador.propTypes = {
+  catalogo: PropTypes.any.isRequired,
 };
 
 export const getStaticProps = async () => {
