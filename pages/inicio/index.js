@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import BannerInicio from '../../components/core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import Title from '../../components/shared/titles/title/Title';
 import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 import Simulador from '../../components/core/simulador/Simulador';
+import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 
-export const Home = () => {
+export const Home = ({ catalogo }) => {
   const router = useRouter();
   const handleSimular = () => router.push('/simulador').then(() => window.scrollTo(0, 958));
 
@@ -130,7 +132,7 @@ export const Home = () => {
         </section>
         <section className="section-white-relative">
           <div className={styles['simulador-container']}>
-            <Simulador handleSimular={handleSimular} />
+            <Simulador handleSimular={handleSimular} catalogo={catalogo} />
           </div>
         </section>
         <section className="section-white">
@@ -227,6 +229,20 @@ export const Home = () => {
       </article>
     </>
   );
+};
+
+Home.propTypes = {
+  catalogo: PropTypes.any.isRequired,
+};
+
+export const getStaticProps = async () => {
+  const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
+
+  return {
+    props: {
+      catalogo,
+    },
+  };
 };
 
 export default Home;
