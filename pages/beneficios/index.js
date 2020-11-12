@@ -58,12 +58,8 @@ const Beneficios = () => (
       <Section className={styles.section}>
         <div className="col-lg-6 col-md-6 d-none d-md-block position-relative">
           <div className={styles['online-bank-left-phone']}>
-            <img src="/beneficios/app.png" alt="Left phone" />
+            <img src="/beneficios/app.svg" alt="Left phone" />
           </div>
-          <div className={styles['online-bank-right-phone']}>
-            <img src="/beneficios/bacaexpress_1.png" alt="Right phone" />
-          </div>
-          <div className={styles.ellipse} />
         </div>
         <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
           <div className="mb-md-4">

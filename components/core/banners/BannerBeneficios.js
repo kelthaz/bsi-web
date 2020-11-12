@@ -10,7 +10,12 @@ const BannerBeneficios = () => {
         <TitleBanner
           linea1="Beneficios del"
           linea2="Crédito Digital Pyme"
-          description="Además de un financiamiento personalizado, tendrás acceso a herramientas y asesorías que te ayudarán a impulsar tu empresa."
+          description={
+            <span>
+              Además de un <strong>financiamiento personalizado</strong>, tendrás acceso a herramientas y asesorías que
+              te ayudarán a impulsar tu empresa.
+            </span>
+          }
         />
       </div>
     </>
@@ -26,7 +31,7 @@ const BannerBeneficios = () => {
       </div>
     </div>
   );
-  return <Banner backgroundImage="/BENEFICIOS_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerBeneficios;

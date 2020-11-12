@@ -12,6 +12,7 @@ import SvgDineroTarjeta from '../../components/svgs/SvgDineroTarjeta';
 import SvgCarpetaDocumento from '../../components/svgs/SvgCarpetaDocumento';
 import SvgDocumentoImagen from '../../components/svgs/SvgDocumentoImagen';
 import SvgPantallaRFC from '../../components/svgs/SvgPantallaRFC';
+import SvgTerceraTextura from '../../components/svgs/texturas/SvgTerceraTextura';
 
 export const Home = ({ catalogo }) => {
   const router = useRouter();
@@ -175,15 +176,18 @@ export const Home = ({ catalogo }) => {
           </div>
         </div>
       </section>
-      <section className="section-white">
+      <section className="section-white-relative">
         <div className="container py-lg-5 py-md-3 py-sm-4 py-xs-4 px-lg-0">
           <h2 className="color-blue-storm text-center">EMPRESARIOS COMO TÚ</h2>
           <p className="body1 color-gray-dark text-center">Confían en nosotros, conoce sus historias.</p>
           <div className="row justify-content-center mt-3 mb-5">
-            <div className="text-xs-center text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
+            <div className="text-xs-center z-indez-1  text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
               <VideoSelector color="blue-light" />
             </div>
           </div>
+        </div>
+        <div className={`${styles.textura} svg-textura-left-bottom`}>
+          <SvgTerceraTextura />
         </div>
       </section>
     </>

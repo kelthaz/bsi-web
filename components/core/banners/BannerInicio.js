@@ -9,9 +9,13 @@ const BannerInicio = () => {
   const bannerTextBlock = (
     <div className="flex-column-start-config">
       <TitleBanner
-        linea1="Da el siguiente"
-        linea2="gran salto"
-        description="Descubre un crédito diseñado para ti y las herramientas te ayudarán a elevar tu empresa."
+        linea1="CONOCE LA NUEVA"
+        linea2="OFERTA DE CRÉDITO DIGITAL PYME"
+        description={
+          <span>
+            Es la manera más <strong>simple, rápida y confiable</strong> para hacer crecer tu negocio.
+          </span>
+        }
       />
       <Link href="/simulador">
         <button type="button" className={`btn-big ${styles['button-margin']}`}>
@@ -26,7 +30,7 @@ const BannerInicio = () => {
       <div className={styles['banner-image-texture']}>
         <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
-      <div className={styles['banner-image-man']}>
+      <div className={styles['banner-image-man2']}>
         <img src="/BC_PYMES_1 1.png" alt="Mujer" />
       </div>
     </>
@@ -34,7 +38,7 @@ const BannerInicio = () => {
 
   return (
     <>
-      <Banner backgroundImage="/BC_PYMES_1.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+      <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
     </>
   );
 };
