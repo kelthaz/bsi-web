@@ -42,6 +42,11 @@ const StepFive = () => {
           }),
         }
       : {
+          initialValues: {
+            rfc: datosPersonales.rfc,
+            contrasena: datosPersonales.contraseña,
+            confirmarContraseña: datosPersonales.confirmarContraseña,
+          },
           validationSchema: Yup.object({
             rfc: Yup.string().trim().min(13, '13 caracteres mínimo').required('Campo requerido'),
             contrasena: Yup.string()
