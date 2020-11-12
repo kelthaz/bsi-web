@@ -59,6 +59,28 @@
   }
 }
 
+.banner-image-man2 {
+  position: relative;
+  top: -40px;
+
+  @include media('lg') {
+    top: 42px;
+  }
+
+  @include media('md') {
+    right: -140px;
+    top: -20px;
+
+    img {
+      height: 180px;
+    }
+  }
+
+  @include media('sm') {
+    right: -80px;
+  }
+}
+
 .banner-image-woman {
   position: relative;
   top: -26px;

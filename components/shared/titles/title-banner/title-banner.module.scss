@@ -51,20 +51,22 @@
 }
 
 .sub-text {
+  background-color: $blue-sky;
   border: 1.5px solid $blue-sky;
-  border-radius: 2px;
+  border-radius: 16px;
   box-sizing: border-box;
   padding: 15px;
   width: 100%;
 
   @include media('mobile') {
+    background-color: transparent;
     border: 0;
     margin-top: 10px;
     padding: 0;
   }
 
   p {
-    color: $blue-storm;
+    color: $white;
     margin: 0;
 
     @include media('mobile') {

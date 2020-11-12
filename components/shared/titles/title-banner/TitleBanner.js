@@ -9,11 +9,11 @@ const TitleBanner = (props) => {
       <div className={`d-none d-md-block ${styles.line}`} />
       <div>
         <div className={` ${styles.text}`}>
-          <h1 className="text-primary">{linea1}</h1>
-          <h1 className="text-secondary">{linea2}</h1>
+          <h1 className="color-white">{linea1}</h1>
+          <h1 className="color-yellow">{linea2}</h1>
         </div>
         <div className={` ${styles['sub-text']}`}>
-          <p className="sub">{description}</p>
+          <p className="body1">{description}</p>
         </div>
       </div>
     </div>

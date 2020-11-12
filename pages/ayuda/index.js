@@ -190,7 +190,7 @@ const Ayuda = () => {
   return (
     <>
       <form noValidate="novalidate">
-        <SimpleBanner>
+        <SimpleBanner showTexture>
           <div className="container">
             <div className="row justify-content-center mx-0">
               <h1 className={`col-xs-12 text-xs-center ${styles.title}`}>CENTRO DE AYUDA</h1>
@@ -306,7 +306,7 @@ const Ayuda = () => {
         </div>
         {/* </div> */}
 
-        <Title linea1="Todo sobre" linea2="crédito pyme" />
+        <Title linea1="Todo sobre" linea2="crédito digital pyme" />
 
         <div className="container">
           <div className="row py-5">
