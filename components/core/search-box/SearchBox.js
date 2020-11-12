@@ -46,7 +46,7 @@ const SearchBox = ({ unmount }) => {
         <img src="/x.svg" alt="Cerrar búsqueda" />
       </div>
       <div className="d-flex justify-content-center my-5">
-        <div className="col-xs-11 col-md-10 col-lg-4 p-0">
+        <div className="col-xs-11 col-md-7 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
           <TextField
             name="search"
