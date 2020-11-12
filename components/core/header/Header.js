@@ -160,6 +160,7 @@ const Header = () => {
   };
 
   const handleCategoryCompanies = ({ target }) => {
+    setMenuSelect({ ...menuSelect, category: target.innerHTML });
     setMenuSelectPeople({ ...menuSelectPeople, category2: target.innerHTML });
   };
 
