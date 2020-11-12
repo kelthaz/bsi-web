@@ -1,0 +1,89 @@
+.container-svg-card {
+  @include media('lg') {
+    svg {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  @include media('lg+') {
+    svg {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  @include media('md') {
+    padding-right: 10px;
+
+    svg {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}
+
+.container-svg-left-card {
+  padding: 0 20px;
+
+  @include media('lg') {
+    padding: 0;
+
+    svg {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  @include media('lg+') {
+    svg {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  @include media('md') {
+    padding: 0 20px;
+
+    svg {
+      height: 48px;
+      width: 48px;
+    }
+  }
+}
+
+.svg-textura-left-bottom {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.svg-textura-left-bottom-overflow {
+  bottom: 0;
+  position: inherit;
+  right: 95%;
+  z-index: 1;
+
+  @include media('md') {
+    display: none;
+  }
+}
+
+.svg-textura-right-top {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.svg-textura-right-top-overflow {
+  left: 95%;
+  position: inherit;
+  top: 0;
+  z-index: 1;
+
+  @include media('md') {
+    display: none;
+  }
+}
