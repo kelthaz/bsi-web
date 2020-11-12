@@ -56,11 +56,13 @@ const SearchBox = ({ unmount }) => {
             inverted
           />
           <ul className={styles['select-items']}>
-            <li>
-              <button disabled className={styles.item} type="button">
-                Principales sugerencias de reporte
-              </button>
-            </li>
+            {data.length > 0 && (
+              <li>
+                <button disabled className={styles.item} type="button">
+                  Principales sugerencias de reporte
+                </button>
+              </li>
+            )}
             {data.map((item) => (
               <li key={item.text}>
                 <button className={styles.item} type="button" onClick={() => redirect(item)}>

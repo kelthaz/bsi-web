@@ -64,3 +64,12 @@
     outline: none;
   }
 }
+
+.item[disabled] {
+  color: $gray-light;
+  cursor: inherit;
+
+  &:hover {
+    background: none;
+  }
+}
