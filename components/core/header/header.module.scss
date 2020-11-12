@@ -170,6 +170,23 @@
   }
 }
 
+.list-items {
+  border-right: 1.5px solid $blue-sky;
+  display: inline-block;
+  max-width: 165px;
+  width: 165px;
+}
+
+.list-item-position {
+  position: relative;
+}
+
+.margen-list {
+  left: 180px;
+  position: absolute;
+  top: 30px;
+}
+
 .menu {
   align-items: center;
   background: $blue-storm;
@@ -210,6 +227,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 20px 0;
   position: absolute;
   width: 100%;
   z-index: 100;
@@ -279,6 +297,10 @@
       }
     }
   }
+}
+
+.sub-menu-hover:hover {
+  color: $yellow-summer !important;
 }
 
 .category-selected {

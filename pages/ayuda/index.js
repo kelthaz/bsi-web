@@ -19,11 +19,11 @@ const Ayuda = () => {
     'CAMPECHE',
     'CHIAPAS',
     'CHIHUAHUA',
-    'CIUDAD DE MÉXICO',
+    'CIUDAD DE MEXICO',
     'COAHUILA',
     'COLIMA',
     'DURANGO',
-    'ESTADO DE MÉXICO',
+    'ESTADO DE MEXICO',
     'GUANAJUATO',
     'GUERRERO',
     'HIDALGO',
@@ -144,6 +144,7 @@ const Ayuda = () => {
   ];
 
   const [option, setOption] = useState(1);
+  const [nameSelected, setNameSelected] = useState('');
   const [array, setArray] = useState(aboutPymeItems);
 
   const acc = (
@@ -157,7 +158,8 @@ const Ayuda = () => {
       ))}
     </div>
   );
-  const handleOption = (opt) => {
+  const handleOption = (opt, name) => {
+    setNameSelected(name);
     setArray(opt);
     setOption(opt);
   };
@@ -313,10 +315,10 @@ const Ayuda = () => {
             <div className="col-lg-5 col-md-5 col-sm-12">
               <div
                 name="acerca-del-credito"
-                className={`${styles.card} ${option === 1 ? styles.active : ''} ${styles['about-pyme-box']} ${
-                  option.length === 12 ? styles.active : ''
+                className={`${styles.card}  ${styles['about-pyme-box']} ${option === 1 ? styles.active : ''} ${
+                  nameSelected === 'acerca-del-credito' ? styles.active : ''
                 }`}
-                onClick={() => handleOption(aboutPymeItems)}
+                onClick={() => handleOption(aboutPymeItems, 'acerca-del-credito')}
                 role="button"
                 tabIndex={0}
               >
@@ -326,11 +328,15 @@ const Ayuda = () => {
                   <div className="body2">Todo sobre el crédito Pyme</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 12 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">
+                {nameSelected === 'acerca-del-credito' && acc}
+              </div>
               <div
                 name="cuenta-usuario"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 5 ? styles.active : ''}`}
-                onClick={() => handleOption(userAccount)}
+                className={`${styles.card} ${styles['about-pyme-box']} ${
+                  nameSelected === 'cuenta-usuario' ? styles.active : ''
+                }`}
+                onClick={() => handleOption(userAccount, 'cuenta-usuario')}
                 role="button"
                 tabIndex={0}
               >
@@ -340,11 +346,13 @@ const Ayuda = () => {
                   <div className="body2">Tu sesión y administración</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 5 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">{nameSelected === 'cuenta-usuario' && acc}</div>
               <div
                 name="seguridad-datos"
-                className={`${styles.card} ${styles['about-pyme-box']} ${option.length === 3 ? styles.active : ''}`}
-                onClick={() => handleOption(dataSecurity)}
+                className={`${styles.card} ${styles['about-pyme-box']} ${
+                  nameSelected === 'seguridad-datos' ? styles.active : ''
+                }`}
+                onClick={() => handleOption(dataSecurity, 'seguridad-datos')}
                 role="button"
                 tabIndex={0}
               >
@@ -354,7 +362,7 @@ const Ayuda = () => {
                   <div className="body2">Protegemos tu información</div>
                 </div>
               </div>
-              <div className="d-lg-none d-md-none d-sm-block d-block">{option.length === 3 && acc}</div>
+              <div className="d-lg-none d-md-none d-sm-block d-block">{nameSelected === 'seguridad-datos' && acc}</div>
             </div>
             <div className="col-lg-7 col-md-7 d-lg-block d-md-block d-sm-none d-none">{acc}</div>
           </div>

@@ -21,14 +21,127 @@ const Header = () => {
   ];
 
   const menuOptions = [
-    { label: 'Cuenta Eje', link: 'https://www.bancoppel.com/cuenta_eje/empresarial.html' },
+    {
+      label: 'Crédito',
+      subMenu: [
+        {
+          value: 'Tarjeta de Crédito en línea',
+          link: 'https://www.bancoppel.com/credito_bcopp/tdc.html',
+        },
+        {
+          value: 'Tarjeta de Crédito BanCoppel',
+          link: 'https://www.bancoppel.com/credito_bcopp/tdco.html',
+        },
+        {
+          value: 'Tarjeta de Crédito BanCoppel Platinum',
+          link: 'https://www.bancoppel.com/credito_bcopp/tdcp.html',
+        },
+        {
+          value: 'Tarjeta de Crédito BanCoppel Grupo Coppel',
+          link: 'https://www.bancoppel.com/credito_bcopp/tdcg.html',
+        },
+        {
+          value: 'Préstamo Personal Bancoppel',
+          link: 'https://www.bancoppel.com/credito_bcopp/prestamo.html',
+        },
+        {
+          value: 'Préstamo Digital Bancoppel',
+          link: 'https://www.bancoppel.com/credito_bcopp/prestamo-digital.html',
+        },
+      ],
+    },
+    {
+      label: 'Ahorro',
+      subMenu: [
+        {
+          value: 'Cuenta Efectiva Digital',
+          link: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html',
+        },
+        {
+          value: 'Cuenta Efectiva Jóvenes',
+          link: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva_jovenes.html',
+        },
+        {
+          value: 'Cuenta Efectiva Cheques',
+          link: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva_cheques.htmll',
+        },
+        {
+          value: 'Sorteo Efectivo BanCoppel',
+          link: 'https://www.bancoppel.com/sorteo_bcopp/index.html',
+        },
+        // {
+        //   value: 'Cuenta Móvil - Transfer',
+        //   link: '/modal_bcopp/cuenta-movil.html',
+        // },
+      ],
+    },
+    {
+      label: 'Inversión',
+      subMenu: [
+        {
+          value: 'Inversión Creciente',
+          link: 'https://www.bancoppel.com/inversion_bcopp/inversion.html',
+        },
+        {
+          value: 'Pagaré',
+          link: 'https://www.bancoppel.com/inversion_bcopp/pagare.html',
+        },
+      ],
+    },
+    {
+      label: 'Envíos de dinero',
+      subMenu: [
+        {
+          value: 'Depósito a Cuenta',
+          link: 'https://www.bancoppel.com/remesas/abono-cuenta.html',
+        },
+        {
+          value: 'Cobro en Ventanilla',
+          link: 'https://www.bancoppel.com/remesas/efectivo.html',
+        },
+      ],
+    },
+    {
+      label: 'Banca en línea',
+      subMenu: [
+        {
+          value: 'Banca por Internet',
+          link: 'https://www.bancoppel.com/banca_personal_bcopp/main.html',
+        },
+        {
+          value: 'BanCoppel Express',
+          link: 'https://www.bancoppel.com/banca_personal_bcopp/express.html',
+        },
+      ],
+    },
+    {
+      label: 'Nómina activa',
+      subMenu: [
+        {
+          value: 'Conoce Nómina Activa',
+          link: 'https://www.bancoppel.com/nomina_personas/nomina_activa.html',
+        },
+      ],
+    },
+  ];
+
+  const menuOptions2 = [
+    {
+      label: 'Cuenta Eje',
+      link: 'https://www.bancoppel.com/cuenta_eje/empresarial.html',
+    },
     { label: 'EmpresaNet', link: 'https://www.bancoppel.com/empresanet_bcopp/empresanet.html' },
     { label: 'Nómina BanCoppel', link: 'https://www.bancoppel.com/nomina_empresas/nomina.html' },
     { label: 'BanCoppel Pyme', link: '#' },
   ];
 
+  // const subMenus = []
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
+  const [subMenus, setSubMenus] = useState([]);
+  const [nameLabel, setNameLabel] = useState('Crédito');
+  const [menuSelectPeople, setMenuSelectPeople] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
+  const [menuSelect, setMenuSelect] = useState({ category: 'Personas', option: 'BanCoppel Pyme' });
   const [pageSelect, setPageSelect] = useState();
   const [toggleSearchBox, setToggleSearchBox] = useState();
   const [openModal, setOpenModal] = useState(false);
@@ -38,11 +151,23 @@ const Header = () => {
   }, [pathname]);
 
   const { category } = menuSelect;
+  const { category2 } = menuSelectPeople;
 
   const handleMenu = () => setMenuOpen(!menuOpen);
 
   const handleCategory = ({ target }) => {
     setMenuSelect({ ...menuSelect, category: target.innerHTML });
+  };
+
+  const handleCategoryCompanies = ({ target }) => {
+    setMenuSelectPeople({ ...menuSelectPeople, category2: target.innerHTML });
+  };
+
+  const setSubMenusPeople = (subMenu, label) => {
+    setSubMenus(subMenu);
+    setNameLabel(label);
+
+    return subMenu;
   };
 
   const handlePage = (target) => {
@@ -133,20 +258,65 @@ const Header = () => {
                 <h4 onClick={handleCategory}>Personas</h4>
               </li>
               <li className={category === 'Empresas' ? styles['category-selected'] : ''}>
-                <h4 onClick={handleCategory}>Empresas</h4>
+                <h4 onClick={handleCategoryCompanies}>Empresas</h4>
               </li>
             </ul>
           </div>
           <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
-            <ul>
-              {menuOptions.map(({ label, link }) => (
-                <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
-                  <a target="_blank" rel="noreferrer" href={link} onClick={() => setMenuOpen(false)}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {category === 'Empresas' ? (
+              <ul>
+                {menuOptions2.map(({ label, link }) => (
+                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                    <a
+                      className="col-3"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={link}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className={`${styles['list-items']}`}>
+                {menuOptions.map(({ label, link, subMenu }) => (
+                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                    <div>
+                      <div>
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          href={link}
+                          onClick={() => setSubMenusPeople(subMenu, label)}
+                        >
+                          {label}
+                        </a>
+                      </div>
+
+                      <div className={`${styles['margen-list']}`}>
+                        {label === nameLabel
+                          ? subMenus.map((options) => (
+                              <li>
+                                <a
+                                  className={` ${styles['sub-menu-hover']}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  href={options.link}
+                                  onClick={() => setSubMenusPeople(subMenu, label)}
+                                >
+                                  {options.value}
+                                </a>
+                              </li>
+                            ))
+                          : ''}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
             <ul>
               {pages.map(({ label, link }) => (
                 <li key={label}>
