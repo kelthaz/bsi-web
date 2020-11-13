@@ -15,12 +15,12 @@ const StepFour = () => {
 
   const formulario = useFormik({
     initialValues: {
-      phone: datosPersonales.phone,
-      email: datosPersonales.email,
+      celular: datosPersonales.phone,
+      correo: datosPersonales.correo,
     },
     validationSchema: Yup.object({
-      phone: Yup.string().trim().min(10, numeroInvalido).max(10, numeroInvalido).required(campoRequerido),
-      email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
+      celular: Yup.string().trim().min(10, numeroInvalido).max(10, numeroInvalido).required(campoRequerido),
+      correo: Yup.string().trim().email(correoInvalido).required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -54,7 +54,7 @@ const StepFour = () => {
                 </p>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <TextField name="phone" formulario={formulario} type="number" size="big" label="55-9999-9999" />
+                <TextField name="celular" formulario={formulario} type="number" size="big" label="55-9999-9999" />
               </div>
             </div>
 
@@ -68,7 +68,7 @@ const StepFour = () => {
               <div className="col-12">
                 <TextField
                   maxlength={100}
-                  name="email"
+                  name="correo"
                   formulario={formulario}
                   type="email"
                   size="big"

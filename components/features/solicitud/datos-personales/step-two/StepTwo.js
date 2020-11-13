@@ -9,7 +9,7 @@ const StepTwo = () => {
   const personaFisica = 'Persona Física con Actividad Empresarial';
   const personaMoral = 'Persona Moral';
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  const [selectPersonType, setSelectPersonType] = useState(datosPersonales.personType);
+  const [selectPersonType, setSelectPersonType] = useState(datosPersonales.tipoPersona);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -19,7 +19,7 @@ const StepTwo = () => {
         currentStep: { ...currentStep, step: '3' },
         datosPersonales: {
           ...datosPersonales,
-          personType: selectPersonType,
+          tipoPersona: selectPersonType,
         },
       })
     );
@@ -32,7 +32,7 @@ const StepTwo = () => {
         <div className="container p-0">
           <form>
             <h2 className="color-blue-storm">
-              ¡Hola, {datosPersonales.name} {datosPersonales.secondName}!
+              ¡Hola, {datosPersonales.name} {datosPersonales.segundoNombre}!
             </h2>
             <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
 
