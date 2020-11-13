@@ -16,7 +16,7 @@ const originalData = [
 
 const useSearchEngine = (value, setData) => {
   useEffect(() => {
-    if (value.length > 0) {
+    if (value.length > 3) {
       setData(
         originalData.filter(({ text }) => {
           const listData = text
