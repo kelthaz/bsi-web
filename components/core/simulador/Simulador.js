@@ -10,6 +10,7 @@ import { seleccionOpcion } from '../../../constants/errors';
 import { startUpdateDataSimulador } from '../../../redux/actions/simulador';
 import SvgPrimeraTextura from '../../svgs/texturas/SvgPrimeraTextura';
 import SvgSegundaTextura from '../../svgs/texturas/SvgSegundaTextura';
+import changeSelectModel from '../../../helpers/changeSelectModel';
 
 const Simulador = ({ handleSimular, catalogo }) => {
   const dispatch = useDispatch();
@@ -19,10 +20,11 @@ const Simulador = ({ handleSimular, catalogo }) => {
 
   const [montoItems, plazoItems, periodicidadItems, antiguedadItems, ventaItems] = catalogo;
 
-  const itemsPaymentMonths = plazoItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
-  const itemsPaymentTimes = periodicidadItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
-  const itemsCompanyTime = antiguedadItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
-  const itemsSalesYear = ventaItems.parametrosCatalogo.map(({ descripcion }) => descripcion);
+  const [min, max, step] = montoItems.parametrosCatalogo;
+  const itemsPaymentMonths = changeSelectModel('valor', 'descripcion', plazoItems.parametrosCatalogo);
+  const itemsPaymentTimes = changeSelectModel('valor', 'descripcion', periodicidadItems.parametrosCatalogo);
+  const itemsCompanyTime = changeSelectModel('valor', 'descripcion', antiguedadItems.parametrosCatalogo);
+  const itemsSalesYear = changeSelectModel('valor', 'descripcion', ventaItems.parametrosCatalogo);
 
   const formulario = useFormik({
     initialValues: {
@@ -34,10 +36,34 @@ const Simulador = ({ handleSimular, catalogo }) => {
     },
     validationSchema: Yup.object({
       monto: Yup.number(),
-      plazo: Yup.string().required(seleccionOpcion),
-      periodicidad: Yup.string().required(seleccionOpcion),
-      aniosEmpresa: Yup.string().required(seleccionOpcion),
-      ventasAnio: Yup.string(),
+      plazo: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+      periodicidad: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+      aniosEmpresa: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+      ventasAnio: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -70,13 +96,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
             </div>
 
             <div className="pb-4">
-              <Slider
-                name="monto"
-                formulario={formulario}
-                min={montoItems.parametrosCatalogo[0].valor}
-                max={montoItems.parametrosCatalogo[montoItems.parametrosCatalogo.length - 1].valor}
-                step={100000}
-              />
+              <Slider name="monto" formulario={formulario} min={min.valor} max={max.valor} step={step.valor} />
             </div>
 
             <div className="row">
@@ -156,6 +176,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
                       formulario={formulario}
                       size="small"
                       items={itemsSalesYear}
+                      defaultValue={1}
                     />
                   </div>
                 </div>
