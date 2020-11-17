@@ -230,9 +230,10 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
 
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>{plazo}</h1>
+                  <h1 className={styles['title-input']}>{plazo.label}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
+
                 <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
                   <h1 className={styles['title-input']}>{cat}</h1>
                   <div className={styles['input-text']}>CAT</div>
@@ -241,17 +242,14 @@ export const PageSimulador = ({ catalogo }) => {
                   <h1 className={styles['title-input']}>{comisionApertura}</h1>
                   <div className={styles['input-text']}>Comisión por apertura</div>
                 </div>
+
                 <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>
-                    {periodicidad === 'Bimestrales' ? 'Bimestral' : periodicidad}
-                  </h1>
+                  <h1 className={styles['title-input']}>{periodicidad.label}</h1>
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>$ 31,25</h1>
-                  <div className={styles['input-text']}>
-                    {periodicidad === 'Bimestrales' ? 'bimestrales' : periodicidad}
-                  </div>
+                  <div className={styles['input-text']}>{periodicidad.label}</div>
                 </div>
               </div>
             </div>
