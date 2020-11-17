@@ -69,10 +69,6 @@ const Simulador = ({ handleSimular, catalogo }) => {
       dispatch(
         startUpdateDataSimulador({
           ...values,
-          plazo: plazoItems.parametrosCatalogo.find(({ descripcion }) => descripcion === values.plazo),
-          periodicidad: periodicidadItems.parametrosCatalogo.find(
-            ({ descripcion }) => descripcion === values.periodicidad
-          ),
         })
       );
       handleSimular();

@@ -30,13 +30,13 @@ const StepThree = ({ sectores }) => {
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      businessName: datosPersonales.businessName,
+      nombreEmpresa: datosPersonales.nombreEmpresa,
       sector: datosPersonales.sector,
       giro: datosPersonales.giro,
-      businessAbout: datosPersonales.businessAbout,
+      descripcionEmpresa: datosPersonales.descripcionEmpresa,
     },
     validationSchema: Yup.object({
-      businessName: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      nombreEmpresa: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       sector: Yup.object()
         .shape({
           value: Yup.string(),
@@ -51,12 +51,12 @@ const StepThree = ({ sectores }) => {
         })
         .nullable()
         .required(seleccionOpcion),
-      businessAbout: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
+      descripcionEmpresa: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
     }),
   };
 
   if (datosPersonales.tipoPersona === 'Persona Moral') {
-    initialValues.razonSocial = datosPersonales.businessName;
+    initialValues.razonSocial = datosPersonales.nombreEmpresa;
     initialValues.tipoSociedad = datosPersonales.tipoSociedad;
     validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
     validationSchema.tipoSociedad = Yup.string();
@@ -138,7 +138,7 @@ const StepThree = ({ sectores }) => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  name="businessName"
+                  name="nombreEmpresa"
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -175,7 +175,7 @@ const StepThree = ({ sectores }) => {
 
             <div className="row no-gutters">
               <TextArea
-                name="businessAbout"
+                name="descripcionEmpresa"
                 maxlength={180}
                 formulario={formulario}
                 label="Platícanos un poco a qué se dedica tu negocio..."

@@ -7,10 +7,11 @@ export const updateDataSimulador = (dataSimulador) => ({
 });
 
 export const startUpdateDataSimulador = (dataSimulador) => async (dispatch) => {
+  console.log(dataSimulador);
   const params = {
     monto: dataSimulador.monto,
-    plazo: dataSimulador.plazo.valor,
-    periodicidad: dataSimulador.periodicidad.valor,
+    plazo: dataSimulador.plazo.value,
+    periodicidad: dataSimulador.periodicidad.value,
   };
   const resultSimulador = await SimuladorRepositorio.postSimulador(params).then((res) => res.data);
   const resultSimuladorTabla = await SimuladorRepositorio.postSimuladorTabla(params).then((res) => res.data);
@@ -18,11 +19,7 @@ export const startUpdateDataSimulador = (dataSimulador) => async (dispatch) => {
   dispatch(
     updateDataSimulador({
       showResult: true,
-      dataSimulador: {
-        ...dataSimulador,
-        plazo: dataSimulador.plazo.descripcion,
-        periodicidad: dataSimulador.periodicidad.descripcion,
-      },
+      dataSimulador,
       resultSimuladorTabla,
       resultSimulador,
     })
