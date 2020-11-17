@@ -207,6 +207,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
 
 Simulador.propTypes = {
   handleSimular: PropTypes.func,
+  catalogo: PropTypes.any.isRequired,
 };
 
 Simulador.defaultProps = {
