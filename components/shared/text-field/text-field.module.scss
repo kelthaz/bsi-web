@@ -13,6 +13,7 @@
   display: block;
   font-family: $futura-book;
   font-size: $size;
+
   width: 100%;
 
   @if $size == 32px {
@@ -20,6 +21,8 @@
   } @else {
     padding: 8px 12px;
   }
+
+  padding-right: 50px;
 
   &:focus {
     outline: none;
@@ -105,7 +108,6 @@
 
 .indicador-error {
   border-bottom: 1.5px solid $red;
-  padding-right: 60px;
 }
 
 @mixin help-text-config($color) {
@@ -162,7 +164,7 @@
   border: 0;
   padding: 0;
   position: absolute;
-  right: 35px;
+  right: 25px;
   top: 15%;
 
   &:focus {
@@ -188,7 +190,7 @@
 }
 
 .button-password-inverted {
-  @include button-password-config($blue-morning);
+  @include button-password-config('gray');
 }
 
 .button-password {

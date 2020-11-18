@@ -28,10 +28,11 @@ const StepFive = () => {
           validationSchema: Yup.object({
             rfc: Yup.string().trim().min(12, '12 caracteres mínimo').required('Campo requerido'),
             contrasena: Yup.string()
+              .trim()
               .max(20, 'máximo 20 caracteres')
               .min(8, '8 caracteres mínimo')
               .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
-              .matches(/^(?!.*(.)\1)/, 'Sin números consecutivos')
+              .matches(/^(?!.*?\d{2}).+$/gm, 'Sin números consecutivos')
               .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
               .required('Campo requerido'),
 
@@ -53,7 +54,7 @@ const StepFive = () => {
               .max(20, 'máximo 20 caracteres')
               .min(8, '8 caracteres mínimo')
               .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
-              .matches(/^(?!.*(.)\1)/, 'Sin números consecutivos')
+              .matches(/^(?!.*?\d{2}).+$/, 'Sin números consecutivos')
               .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
               .required('Campo requerido'),
 
@@ -139,7 +140,7 @@ const StepFive = () => {
     if (/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/.test(form.values.contrasena)) {
       validation.hiddenCapital = true;
     }
-    if (/^(?!.*(.)\1)/.test(form.values.contrasena)) {
+    if (/^(?!.*?\d{2}).+$/.test(form.values.contrasena)) {
       validation.notConsecutives = true;
     }
     if (/\d{1,}/.test(form.values.contrasena)) {
@@ -210,6 +211,7 @@ const StepFive = () => {
             <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
               <TextField
                 name="contrasena"
+                format="passwordspace"
                 maxlength={20}
                 formulario={formulario}
                 type="password"
@@ -228,6 +230,7 @@ const StepFive = () => {
             <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
               <TextField
                 name="confirmarContraseña"
+                format="passwordspace"
                 formulario={formulario}
                 maxlength={20}
                 type="password"

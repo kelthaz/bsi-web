@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const Agradecimientos = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
 
   return (
     <div className="container">
-      <div className="contedor-solicitud ">
+      <div className={`contedor-solicitud ${styles['container-height']}`}>
         <div className="row mt-xs-5 mt-md-0">
           <div className="col-md-10 mt-xs-5 mt-md-0">
             <div className="d-block d-md-none col-md-2 col-xs-12 text-xs-center mt-4">
