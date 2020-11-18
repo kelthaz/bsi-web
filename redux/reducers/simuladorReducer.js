@@ -4,10 +4,10 @@ const initialState = {
   showResult: false,
   dataSimulador: {
     monto: '6200000',
-    plazo: '',
-    periodicidad: '',
-    aniosEmpresa: '',
-    ventasAnio: 'Más de $2 MDP',
+    plazo: null,
+    periodicidad: null,
+    aniosEmpresa: null,
+    ventasAnio: null,
   },
   resultSimulador: {
     tasaOrdinaria: '',

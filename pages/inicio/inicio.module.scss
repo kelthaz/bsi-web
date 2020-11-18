@@ -67,6 +67,10 @@
   height: 400px;
 }
 
+.textura {
+  bottom: -158px;
+}
+
 .center-content {
   align-items: flex-start;
   display: flex;
@@ -248,104 +252,6 @@
 .subtitle {
   font-size: 36px;
 }
-
-// @media only screen and (max-width: 600px) {
-//   .image-home {
-//     left: 10px;
-//   }
-// }
-
-// @media only screen and (max-width: 769px) {
-//   .design-pipe {
-//     border-bottom: 2px solid #81c1ea;
-//     border-right: 0;
-//   }
-
-//   .color-white {
-//     line-height: 28.8px;
-//   }
-
-//   .chunk-box {
-//     bottom: 254px;
-//     top: -29px;
-//   }
-
-//   .image-home {
-//     top: 60px;
-//   }
-
-//   .title-benefits {
-//     top: 0;
-//   }
-
-//   .text-radius {
-//     font-size: 10px;
-//   }
-
-//   .circle1 {
-//     left: 18%;
-//     top: 98%;
-//   }
-
-//   .circle2 {
-//     left: 15%;
-//     top: 70%;
-//   }
-
-//   .circle3 {
-//     left: 20%;
-//     top: 43%;
-//   }
-
-//   .circle5 {
-//     left: 80%;
-//     top: 40%;
-//   }
-
-//   .subtitle {
-//     font-size: 32px;
-//   }
-// }
-
-// @media (min-width: 769px) and (max-width: 1024px) {
-//   .chunk-box {
-//     bottom: 465px;
-//   }
-
-//   .text-radius {
-//     font-size: 14px;
-//   }
-
-//   .circle {
-//     height: 87px;
-//     width: 91px;
-//   }
-
-//   .circle1 {
-//     left: 18%;
-//     top: 82%;
-//   }
-
-//   .circle2 {
-//     left: 11%;
-//     top: 60%;
-//   }
-
-//   .circle3 {
-//     left: 15%;
-//     top: 38%;
-//   }
-
-//   .circle4 {
-//     left: 30%;
-//     top: 20%;
-//   }
-
-//   .circle5 {
-//     left: 78%;
-//     top: 30%;
-//   }
-// }
 
 .simulador-container {
   position: relative;

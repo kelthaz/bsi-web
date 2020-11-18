@@ -18,7 +18,7 @@ const StepFive = () => {
   const router = useRouter();
 
   const { initialValues, validationSchema } =
-    datosPersonales.personType === 'Persona Moral'
+    datosPersonales.tipoPersona === 'Persona Moral'
       ? {
           initialValues: {
             rfc: datosPersonales.rfc,
@@ -162,7 +162,7 @@ const StepFive = () => {
       <div className="contedor-solicitud ">
         <form onSubmit={formulario.handleSubmit} noValidate>
           <h2 className="color-blue-storm">¡Sólo falta crear tu cuenta!</h2>
-          {datosPersonales.personType === 'Persona Moral' ? (
+          {datosPersonales.tipoPersona === 'Persona Moral' ? (
             <p className="color-dark-gray sub">
               Tu usuario será el RFC con el que factura tu empresa y crearás una contraseña. Con tu cuenta podrás
               retomar el proceso en cualquier momento.
@@ -176,14 +176,14 @@ const StepFive = () => {
 
           <div className="row no-gutters">
             <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
-              {datosPersonales.personType === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
                 <p className="input color-gray">El RFC es</p>
               ) : (
                 <p className="input color-gray">Mi RFC es</p>
               )}
             </div>
             <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              {datosPersonales.personType === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
                 <TextField
                   name="rfc"
                   format="uppercase"

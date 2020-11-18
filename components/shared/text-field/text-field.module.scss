@@ -17,12 +17,12 @@
   width: 100%;
 
   @if $size == 32px {
-    padding: 0 12px;
+    padding: 0 6px;
   } @else {
     padding: 8px 12px;
   }
 
-  padding-right: 50px;
+  padding-right: 49px;
 
   &:focus {
     outline: none;

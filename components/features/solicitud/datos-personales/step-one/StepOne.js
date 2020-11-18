@@ -14,20 +14,20 @@ const StepOne = () => {
 
   const formulario = useFormik({
     initialValues: {
-      name: datosPersonales.name,
-      secondName: datosPersonales.secondName,
-      lastname: datosPersonales.lastname,
-      secondLastname: datosPersonales.secondLastname,
+      primerNombre: datosPersonales.primerNombre,
+      segundoNombre: datosPersonales.segundoNombre,
+      primerApellido: datosPersonales.primerApellido,
+      segundoApellido: datosPersonales.segundoApellido,
     },
     validationSchema: Yup.object({
-      name: Yup.string()
+      primerNombre: Yup.string()
         .trim()
         .matches(/^[a-zA-ZÑ0-9\u0300-\u0303\u036f]+$/, sinCaracteresEspeciales)
         .max(60, longitudMaxima)
         .required(campoRequerido),
-      secondName: Yup.string().max(60, longitudMaxima),
-      lastname: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-      secondLastname: Yup.string().max(60, longitudMaxima),
+      segundoNombre: Yup.string().max(60, longitudMaxima),
+      primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      segundoApellido: Yup.string().max(60, longitudMaxima),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -56,7 +56,7 @@ const StepOne = () => {
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
                   format="uppercase"
-                  name="name"
+                  name="primerNombre"
                   maxlength={60}
                   formulario={formulario}
                   type="text"
@@ -66,7 +66,7 @@ const StepOne = () => {
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <TextField
-                  name="secondName"
+                  name="segundoNombre"
                   format="uppercase"
                   maxlength={60}
                   formulario={formulario}
@@ -81,7 +81,7 @@ const StepOne = () => {
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
                   format="uppercase"
-                  name="lastname"
+                  name="primerApellido"
                   maxlength={60}
                   formulario={formulario}
                   type="text"
@@ -93,7 +93,7 @@ const StepOne = () => {
                 <TextField
                   format="uppercase"
                   maxlength={60}
-                  name="secondLastname"
+                  name="segundoApellido"
                   formulario={formulario}
                   type="text"
                   size="big"

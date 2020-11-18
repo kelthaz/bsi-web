@@ -9,42 +9,48 @@ import Title from '../../components/shared/titles/title/Title';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Select from '../../components/shared/select/Select';
 import styles from './ayuda.module.scss';
-import { campoRequerido, correoInvalido, longitudMaxima, numeroInvalido } from '../../constants/errors';
+import {
+  campoRequerido,
+  correoInvalido,
+  longitudMaxima,
+  numeroInvalido,
+  seleccionOpcion,
+} from '../../constants/errors';
 
 const Ayuda = () => {
   const items = [
-    'AGUASCALIENTES',
-    'BAJA CALIFORNIA NORTE',
-    'BAJA CALIFORNIA SUR',
-    'CAMPECHE',
-    'CHIAPAS',
-    'CHIHUAHUA',
-    'CIUDAD DE MEXICO',
-    'COAHUILA',
-    'COLIMA',
-    'DURANGO',
-    'ESTADO DE MEXICO',
-    'GUANAJUATO',
-    'GUERRERO',
-    'HIDALGO',
-    'JALISCO',
-    'MICHOACAN',
-    'MORELOS',
-    'NAYARIT',
-    'NUEVO LEON',
-    'OAXACA',
-    'PUEBLA',
-    'QUERETARO',
-    'QUINTANA ROO',
-    'SAN LUIS POTOSI',
-    'SINALOA',
-    'SONORA',
-    'TABASCO',
-    'TAMAULIPAS',
-    'TLAXCALA',
-    'VERACRUZ',
-    'YUCATAN',
-    'ZACATECAS',
+    { value: 1, label: 'AGUASCALIENTES' },
+    { value: 2, label: 'BAJA CALIFORNIA NORTE' },
+    { value: 3, label: 'BAJA CALIFORNIA SUR' },
+    { value: 4, label: 'CAMPECHE' },
+    { value: 5, label: 'CHIAPAS' },
+    { value: 6, label: 'CHIHUAHUA' },
+    { value: 7, label: 'CIUDAD DE MEXICO' },
+    { value: 8, label: 'COAHUILA' },
+    { value: 9, label: 'COLIMA' },
+    { value: 10, label: 'DURANGO' },
+    { value: 11, label: 'ESTADO DE MEXICO' },
+    { value: 12, label: 'GUANAJUATO' },
+    { value: 13, label: 'GUERRERO' },
+    { value: 14, label: 'HIDALGO' },
+    { value: 15, label: 'JALISCO' },
+    { value: 16, label: 'MICHOACAN' },
+    { value: 17, label: 'MORELOS' },
+    { value: 18, label: 'NAYARIT' },
+    { value: 19, label: 'NUEVO LEON' },
+    { value: 20, label: 'OAXACA' },
+    { value: 21, label: 'PUEBLA' },
+    { value: 22, label: 'QUERETARO' },
+    { value: 23, label: 'QUINTANA ROO' },
+    { value: 24, label: 'SAN LUIS POTOSI' },
+    { value: 25, label: 'SINALOA' },
+    { value: 26, label: 'SONORA' },
+    { value: 27, label: 'TABASCO' },
+    { value: 28, label: 'TAMAULIPAS' },
+    { value: 29, label: 'TLAXCALA' },
+    { value: 30, label: 'VERACRUZ' },
+    { value: 31, label: 'YUCATAN' },
+    { value: 32, label: 'ZACATECAS' },
   ];
 
   const [checked, setChecked] = useState(false);
@@ -54,7 +60,7 @@ const Ayuda = () => {
       name: '',
       phone: '',
       email: '',
-      state: 'Estado',
+      state: null,
       tellUs: '',
       check: false,
     },
@@ -68,7 +74,13 @@ const Ayuda = () => {
         .required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
       email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
-      state: Yup.string().notOneOf(['Estado'], 'Selecciona una opción'),
+      state: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
       check: Yup.boolean().required(campoRequerido),
     }),
     onSubmit: (values) => {
@@ -197,7 +209,7 @@ const Ayuda = () => {
   return (
     <>
       <form noValidate="novalidate">
-        <SimpleBanner>
+        <SimpleBanner showTexture>
           <div className="container">
             <div className="row justify-content-center mx-0">
               <h1 className={`col-xs-12 text-xs-center ${styles.title}`}>CENTRO DE AYUDA</h1>
@@ -313,7 +325,7 @@ const Ayuda = () => {
         </div>
         {/* </div> */}
 
-        <Title linea1="Todo sobre" linea2="crédito pyme" />
+        <Title linea1="Todo sobre" linea2="crédito digital pyme" />
 
         <div className="container">
           <div className="row py-5">

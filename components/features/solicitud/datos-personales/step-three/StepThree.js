@@ -10,57 +10,57 @@ import TextArea from '../../../../shared/text-area/TextArea';
 import Select from '../../../../shared/select/Select';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
 import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
+import changeSelectModel from '../../../../../helpers/changeSelectModel';
 
 const StepThree = ({ sectores }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  const [itemsGiro, setitemsGiro] = useState([]);
+  const [itemsGiro, setItemsGiro] = useState([]);
   const dispatch = useDispatch();
   const router = useRouter();
-  const itemsSector = sectores.map(({ nombre }) => nombre);
+  const itemsSector = changeSelectModel('id', 'nombre', sectores);
   const itemsTipoEmpresa = [
-    'S.A.',
-    'S.A. DE C.V.',
-    'S. DE R.L.',
-    'S. DE R.L. DE C.V.',
-    'S. EN C.',
-    'S. EN C. POR A.',
-    'S.N.C.',
+    { value: 10, label: 'S.A.' },
+    { value: 20, label: 'S.A. DE C.V.' },
+    { value: 30, label: 'S. DE R.L.' },
+    { value: 40, label: 'S. DE R.L. DE C.V.' },
+    { value: 60, label: 'S. EN C.' },
+    { value: 70, label: 'S. EN C. POR A.' },
+    { value: 110, label: 'S.N.C.' },
   ];
 
-  const { initialValues, validationSchema } =
-    datosPersonales.personType === 'Persona Moral'
-      ? {
-          initialValues: {
-            razonSocial: datosPersonales.businessName,
-            tipoEmpresa: datosPersonales.tipoEmpresa,
-            businessName: datosPersonales.businessName,
-            sector: datosPersonales.sector,
-            giro: datosPersonales.giro,
-            businessAbout: datosPersonales.businessAbout,
-          },
-          validationSchema: Yup.object({
-            razonSocial: Yup.string().trim().max(120, longitudMaxima).required(campoRequerido),
-            tipoEmpresa: Yup.string(),
-            businessName: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-            sector: Yup.string().notOneOf(['Sector'], seleccionOpcion),
-            giro: Yup.string().notOneOf(['Giro'], seleccionOpcion),
-            businessAbout: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
-          }),
-        }
-      : {
-          initialValues: {
-            businessName: datosPersonales.businessName,
-            sector: datosPersonales.sector,
-            giro: datosPersonales.giro,
-            businessAbout: datosPersonales.businessAbout,
-          },
-          validationSchema: Yup.object({
-            businessName: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-            sector: Yup.string().notOneOf(['Sector'], seleccionOpcion),
-            giro: Yup.string().notOneOf(['Giro'], seleccionOpcion),
-            businessAbout: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
-          }),
-        };
+  const { initialValues, validationSchema } = {
+    initialValues: {
+      nombreEmpresa: datosPersonales.nombreEmpresa,
+      sector: datosPersonales.sector,
+      giro: datosPersonales.giro,
+      descripcionEmpresa: datosPersonales.descripcionEmpresa,
+    },
+    validationSchema: Yup.object({
+      nombreEmpresa: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      sector: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+      giro: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+      descripcionEmpresa: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
+    }),
+  };
+
+  if (datosPersonales.tipoPersona === 'Persona Moral') {
+    initialValues.razonSocial = datosPersonales.nombreEmpresa;
+    initialValues.tipoSociedad = datosPersonales.tipoSociedad;
+    validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
+    validationSchema.tipoSociedad = Yup.string();
+  }
 
   const formulario = useFormik({
     initialValues,
@@ -78,12 +78,13 @@ const StepThree = ({ sectores }) => {
   });
 
   useEffect(() => {
-    if (formulario.values.sector !== 'Sector') {
+    if (formulario.values.sector) {
       const fetchData = async () => {
-        const giros = await SectoresRepositorio.getGiroPorSector(
-          sectores.find(({ nombre }) => formulario.values.sector === nombre).id
-        ).then((resp) => resp.data);
-        setitemsGiro(giros.map(({ nombre }) => nombre));
+        const giros = await SectoresRepositorio.getGiroPorSector(formulario.values.sector.value).then(
+          (resp) => resp.data
+        );
+        formulario.setFieldValue('giro', null);
+        setItemsGiro(changeSelectModel('id', 'nombre', giros));
       };
       fetchData();
     }
@@ -96,20 +97,20 @@ const StepThree = ({ sectores }) => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Anotado!</h2>
             <p className="color-dark-gray sub">
-              {datosPersonales.personType === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
                 <span>¿Cuál es la razón social, nombre comercial, sector y giro de tu negocio?</span>
               ) : (
                 <span>¿Cuál es el nombre comercial, sector y giro de tu negocio?</span>
               )}
             </p>
 
-            {datosPersonales.personType === 'Persona Moral' && (
+            {datosPersonales.tipoPersona === 'Persona Moral' && (
               <div className="row no-gutters">
-                <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                   <p className="input color-gray">La razón social es</p>
                 </div>
 
-                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                   <TextField
                     name="razonSocial"
                     maxlength={120}
@@ -119,8 +120,14 @@ const StepThree = ({ sectores }) => {
                     label="Razón social"
                   />
                 </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                  <Select name="tipoEmpresa" formulario={formulario} size="big" items={itemsTipoEmpresa} />
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <Select
+                    name="tipoSociedad"
+                    formulario={formulario}
+                    size="big"
+                    items={itemsTipoEmpresa}
+                    label="Tipo sociedad"
+                  />
                 </div>
               </div>
             )}
@@ -131,7 +138,7 @@ const StepThree = ({ sectores }) => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  name="businessName"
+                  name="nombreEmpresa"
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -146,7 +153,7 @@ const StepThree = ({ sectores }) => {
                 <p className="input color-gray">el sector es de</p>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <Select name="sector" formulario={formulario} size="big" items={itemsSector} />
+                <Select name="sector" formulario={formulario} size="big" items={itemsSector} label="Sector" />
               </div>
             </div>
 
@@ -155,13 +162,20 @@ const StepThree = ({ sectores }) => {
                 <p className="input color-gray">y el giro es de</p>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <Select name="giro" formulario={formulario} size="big" items={itemsGiro} />
+                <Select
+                  name="giro"
+                  formulario={formulario}
+                  size="big"
+                  items={itemsGiro}
+                  label="Giro"
+                  disabled={itemsGiro.length === 0}
+                />
               </div>
             </div>
 
             <div className="row no-gutters">
               <TextArea
-                name="businessAbout"
+                name="descripcionEmpresa"
                 maxlength={180}
                 formulario={formulario}
                 label="Platícanos un poco a qué se dedica tu negocio..."

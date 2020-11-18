@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './select.module.scss';
+import useOnClick from '../../../hooks/useOnClick';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];
@@ -10,20 +11,31 @@ const seleccionaEstilo = (size, inverted) => {
     finalStyles.push(styles['indicador-inverted']);
     finalStyles.push(styles['indicador-activo-inverted']);
     finalStyles.push(styles['help-text-inverted']);
+    finalStyles.push(styles['placeholder-color-inverted']);
   } else {
     finalStyles.push(size === 'big' ? styles['select-big'] : styles['select-small']);
     finalStyles.push(styles.indicador);
     finalStyles.push(styles['indicador-activo']);
     finalStyles.push(styles['help-text']);
+    finalStyles.push(styles['placeholder-color']);
   }
   return finalStyles;
 };
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label } = props;
-  const [selectStyle, indicadorStyle, indicadorActiveStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
+  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue } = props;
+  const [selectStyle, indicadorStyle, indicadorActiveStyle, helpTextStyle, placeholderStyle] = seleccionaEstilo(
+    size,
+    inverted
+  );
   const { values, errors, touched, setFieldValue, setFieldTouched } = formulario;
+
+  useEffect(() => {
+    if (defaultValue !== null) {
+      setFieldValue(name, items[defaultValue]);
+    }
+  }, []);
 
   const handleToggle = () => {
     if (!touched[name] && toggle) {
@@ -31,41 +43,37 @@ const Select = (props) => {
     }
     setToggle(!toggle);
   };
+
+  useOnClick(toggle, handleToggle);
+
   const handleItem = (itemMap) => {
     setFieldValue(name, itemMap);
   };
-
-  useEffect(() => {
-    if (toggle) {
-      window.addEventListener('click', handleToggle);
-    }
-
-    return () => {
-      window.removeEventListener('click', handleToggle);
-    };
-  }, [toggle]);
 
   return (
     <div className={styles['custom-select']}>
       <button
         type="button"
-        className={`${selectStyle} ${toggle ? indicadorActiveStyle : indicadorStyle} ${
-          touched[name] && errors[name] ? styles['indicador-error'] : ''
-        }`}
+        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${selectStyle} ${
+          toggle ? indicadorActiveStyle : indicadorStyle
+        } ${touched[name] && errors[name] ? styles['indicador-error'] : ''}`}
         onClick={() => !toggle && handleToggle()}
+        disabled={disabled}
       >
-        {values[name] === '' ? label : values[name]}
+        {values[name] ? values[name].label : label}
       </button>
       <ul role="menu" className={`${styles['select-items']} ${toggle ? '' : styles['select-hide']}`}>
         {items.map((itemMap) => (
-          <li role="none" key={itemMap}>
+          <li role="none" key={itemMap.value}>
             <button
               role="menuitem"
-              className={`${styles.item} ${values[name] === itemMap ? styles['item-selected'] : ''}`}
+              className={`${styles.item} ${
+                values[name] && values[name].value === itemMap.value ? styles['item-selected'] : ''
+              }`}
               type="button"
               onClick={() => handleItem(itemMap)}
             >
-              {itemMap}
+              {itemMap.label}
             </button>
           </li>
         ))}
@@ -85,11 +93,15 @@ Select.propTypes = {
   optional: PropTypes.bool,
   items: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
+  defaultValue: PropTypes.number,
+  disabled: PropTypes.bool,
 };
 
 Select.defaultProps = {
   inverted: false,
   optional: false,
+  defaultValue: null,
+  disabled: false,
 };
 
 export default Select;

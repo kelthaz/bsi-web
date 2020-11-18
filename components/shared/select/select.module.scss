@@ -2,6 +2,7 @@
 @import '../../../styles/scss/modules/mixins';
 
 .custom-select {
+  @include scroll-config(6px);
   position: relative;
   width: 100%;
 }
@@ -59,6 +60,14 @@
   @include indicador-config($red);
 }
 
+.placeholder-color-inverted {
+  color: $blue-shadow !important;
+}
+
+.placeholder-color {
+  color: $gray-light !important;
+}
+
 @mixin config-select-config($color, $size) {
   background-color: transparent;
   color: $color;
@@ -99,6 +108,12 @@
     transition: transform 0.3s linear;
     width: 21px;
   }
+
+  &:disabled {
+    background-color: $blue-light;
+    border-bottom: 1.5px solid $gray-light;
+    cursor: not-allowed;
+  }
 }
 
 .select-small {
@@ -128,6 +143,7 @@
 }
 
 .select-items {
+  @include scroll-config-firefox;
   background-color: $white;
   border: 1px solid $blue-shadow;
   border-radius: 0 0 16px 16px;
@@ -140,7 +156,7 @@
   padding: 0;
   position: absolute;
   right: 0;
-  transition: max-height 0.5s ease-in;
+  transition: max-height 0.3s ease-in;
   visibility: visible;
   z-index: 99;
 }
@@ -190,8 +206,8 @@
   max-height: 0;
   overflow: hidden;
 
-  transition: max-height 0.5s ease-out;
-  transition: border 0.5s;
+  transition: max-height 0.3s ease-out;
+  transition: border 0.3s;
 }
 
 .item-selected {

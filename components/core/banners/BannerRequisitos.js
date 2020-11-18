@@ -6,9 +6,14 @@ import styles from './banner.module.scss';
 const BannerRequisitos = () => {
   const bannerTextBlock = (
     <TitleBanner
-      linea1="Todo para"
-      linea2="comenzar"
-      description="Conforme vayas avanzando, te solicitararemos algunos documentos dependiendo de las respuestas que nos vayas dando."
+      linea1="REQUISITOS PARA"
+      linea2="COMENZAR"
+      description={
+        <span>
+          Conforme vayas avanzando, <strong>te solicitararemos algunos documentos</strong> dependiendo de las respuestas
+          que nos vayas dando.
+        </span>
+      }
     />
   );
 
@@ -23,7 +28,7 @@ const BannerRequisitos = () => {
     </>
   );
 
-  return <Banner backgroundImage="/requisitos/banner.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerRequisitos;

@@ -8,9 +8,11 @@ import Modal from '../../components/shared/modal/Modal';
 import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Simulador from '../../components/core/simulador/Simulador';
 import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
+import downloadFile from '../../helpers/downloadFile';
+import dateFormatter from '../../helpers/dateFormatter';
+import { date } from 'yup';
 
 export const PageSimulador = ({ catalogo }) => {
-  const [menuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
 
@@ -93,6 +95,17 @@ export const PageSimulador = ({ catalogo }) => {
     resultSimuladorTabla,
   } = useSelector((state) => state.simulador);
 
+  const handleDownloadTable = async () => {
+    const tablaPdf = await SimuladorRepositorio.postSimuladorTablaPdf({
+      monto,
+      plazo: plazo.value,
+      periodicidad: periodicidad.value,
+    }).then((resp) => resp);
+    console.log(tablaPdf);
+    console.log(tablaPdf.headers);
+    downloadFile(tablaPdf.data, `Tabla_de_Amortización_${dateFormatter(new Date())}`, 'pdf');
+  };
+
   return (
     <div id="inicio">
       <div className="row justify-content-center">
@@ -149,7 +162,7 @@ export const PageSimulador = ({ catalogo }) => {
                   </thead>
                   <tbody>
                     {resultSimuladorTabla.map(({ numeroAmortizacion, fecha, capital, interes, saldo, pagoMensual }) => (
-                      <tr>
+                      <tr key={numeroAmortizacion}>
                         <td className={`body2 ${styles.td}`}>{numeroAmortizacion}</td>
                         <td className={`body2 ${styles.td}`}>{fecha}</td>
                         <td className={`body2 ${styles.td}`}>{capital}</td>
@@ -163,7 +176,7 @@ export const PageSimulador = ({ catalogo }) => {
               </div>
               <div className="col-md-1 px-md-0" />
               <div className="col-md-12 mt-3  text-center">
-                <button type="button" className={` ${menuOpen ? 'btn-medium-yellow' : 'btn-medium'}`}>
+                <button type="button" className="btn-medium" onClick={handleDownloadTable}>
                   Descargar tabla
                 </button>
               </div>
@@ -230,9 +243,10 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
 
                 <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>{plazo}</h1>
+                  <h1 className={styles['title-input']}>{plazo.label}</h1>
                   <div className={styles['input-text']}>Plazo del crédito</div>
                 </div>
+
                 <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
                   <h1 className={styles['title-input']}>{cat}</h1>
                   <div className={styles['input-text']}>CAT</div>
@@ -241,17 +255,14 @@ export const PageSimulador = ({ catalogo }) => {
                   <h1 className={styles['title-input']}>{comisionApertura}</h1>
                   <div className={styles['input-text']}>Comisión por apertura</div>
                 </div>
+
                 <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>
-                    {periodicidad === 'Bimestrales' ? 'Bimestral' : periodicidad}
-                  </h1>
+                  <h1 className={styles['title-input']}>{periodicidad.label}</h1>
                   <div className={styles['input-text']}>Esquema de pago</div>
                 </div>
                 <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
                   <h1 className={styles['title-input']}>$ 31,25</h1>
-                  <div className={styles['input-text']}>
-                    {periodicidad === 'Bimestrales' ? 'bimestrales' : periodicidad}
-                  </div>
+                  <div className={styles['input-text']}>{periodicidad.label}</div>
                 </div>
               </div>
             </div>
@@ -297,12 +308,7 @@ export const PageSimulador = ({ catalogo }) => {
                   <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
                     <div className="row">
                       <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
-                        <button
-                          type="button"
-                          className={`col-md-12 ${styles['solicitud-button']} ${
-                            menuOpen ? 'btn-medium-yellow' : 'btn-medium'
-                          }`}
-                        >
+                        <button type="button" className={`col-md-12 ${styles['solicitud-button']} btn-medium`}>
                           <span className="d-none d-md-block">Comienza tu solicitud</span>
                           <span className="d-sm-block d-md-none">Comienza tu solicitud</span>
                         </button>

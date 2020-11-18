@@ -6,9 +6,13 @@ import styles from './banner.module.scss';
 const BannerCreditoPyme = () => {
   const bannerTextBlock = (
     <TitleBanner
-      linea1="Diseñado para"
-      linea2="ser más simple"
-      description="Sabemos que hay muchas cosas en qué ocuparte, este proceso entiende tu ritmo de trabajo."
+      linea1="CARACTERÍSTICAS"
+      linea2="DEL CRÉDITO DIGITAL PYME"
+      description={
+        <span>
+          Con este proceso <strong>adquiere de forma rápida un crédito</strong> para que se adapte a tu negocio y a ti.
+        </span>
+      }
     />
   );
 
@@ -23,9 +27,7 @@ const BannerCreditoPyme = () => {
     </>
   );
 
-  return (
-    <Banner backgroundImage="/credito-pyme/banner.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
-  );
+  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerCreditoPyme;

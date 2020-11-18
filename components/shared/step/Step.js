@@ -7,7 +7,6 @@ const Step = (props) => {
   const numStep = steps.length;
 
   const handleStep = (step, action) => {
-    console.log(step, action);
     if (step !== currentStep) {
       action();
     }
