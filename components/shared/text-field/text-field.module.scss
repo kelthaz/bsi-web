@@ -17,7 +17,7 @@
   width: 100%;
 
   @if $size == 32px {
-    padding: 0 6px;
+    padding: 0 12px;
   } @else {
     padding: 8px 12px;
   }
@@ -190,7 +190,7 @@
 }
 
 .button-password-inverted {
-  @include button-password-config('gray');
+  @include button-password-config($gray);
 }
 
 .button-password {

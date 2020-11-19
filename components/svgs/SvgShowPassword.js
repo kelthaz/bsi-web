@@ -6,7 +6,7 @@ const SvgShowPassword = (props) => (
       strokeWidth={2}
       strokeLinecap="round"
     />
-    <circle cx={12} cy={14} r={5} fill="gray" />
+    <circle cx={12} cy={14} r={5} fill="#636363" />
   </svg>
 );
 
