@@ -101,8 +101,6 @@ export const PageSimulador = ({ catalogo }) => {
       plazo: plazo.value,
       periodicidad: periodicidad.value,
     }).then((resp) => resp);
-    console.log(tablaPdf);
-    console.log(tablaPdf.headers);
     downloadFile(tablaPdf.data, `Tabla_de_Amortización_${dateFormatter(new Date())}`, 'pdf');
   };
 

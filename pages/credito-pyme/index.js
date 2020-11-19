@@ -2,6 +2,15 @@ import Link from 'next/link';
 import BannerCreditoPyme from '../../components/core/banners/BannerCreditoPyme';
 import Accordion from '../../components/shared/accordion/Accordion';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
+import SvgCargaTusDocumentos from '../../components/svgs/credito-pyme/SvgCargaTusDocumentos';
+import SvgConoceTuOferta from '../../components/svgs/credito-pyme/SvgConoceTuOferta';
+import SvgDatosEmpresa from '../../components/svgs/credito-pyme/SvgDatosEmpresa';
+import SvgDatosPersonales from '../../components/svgs/credito-pyme/SvgDatosPersonales';
+import SvgCalendario from '../../components/svgs/icons-cards/SvgCalendario';
+import SvgCargarDocumentos from '../../components/svgs/icons-cards/SvgCargarDocumentos';
+import SvgTarjetaCredito from '../../components/svgs/icons-cards/SvgTarjetaCredito';
+import SvgPrimeraTextura from '../../components/svgs/texturas/SvgPrimeraTextura';
+import SvgSextaTextura from '../../components/svgs/texturas/SvgSextaTextura';
 import styles from './credito-pyme.module.scss';
 
 const CreditoPyme = () => {
@@ -41,18 +50,23 @@ const CreditoPyme = () => {
   return (
     <>
       <BannerCreditoPyme />
-      <section className="section-white">
+      <section className="section-blue-storm-relative">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12">
               <div className={styles['title-line-left']}>
                 <h2>
-                  <span>CARACTERÍSTICAS</span>
-                  <br />
                   <span>
-                    DE NUESTRO
+                    CONOCE A
                     <br />
-                    CRÉDITO
+                    DETALLE
+                    <br />
+                  </span>
+
+                  <span>
+                    EL CRÉDITO
+                    <br />
+                    DIGITAL PYME
                   </span>
                 </h2>
                 <p>Conoce más sobre los requisitos, plazos y garantías de un crédito pyme.</p>
@@ -71,46 +85,52 @@ const CreditoPyme = () => {
             </div>
           </div>
         </div>
+        <div className="svg-textura-left-bottom">
+          <SvgPrimeraTextura />
+        </div>
       </section>
-      <section className="section-blue-storm">
+      <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
+          <h2 className="color-blue-storm text-center p-lg-5 p-md-4 p-sm-2 p-xs-2">PASO A PASO</h2>
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TitleSection inverted orden="01" linea1="Datos" linea2="personales" />
-              <div className="card-simple-white">
+              <TitleSection orden="01" linea1="Datos" linea2="personales" />
+              <div className="card-simple-blue-light">
                 <p>
-                  El primer bloque de Datos Personales es para conocerte, por lo que te solicitaremos información básica
-                  como tu nombre y tus datos de contacto.
+                  En este primer paso necesitamos conocerte, es por eso que te solicitaremos información básica como tu
+                  nombre y datos de contacto. Es necesario contar con el RFC con el que facturas.
                 </p>
-                <p>Para este bloque de la solicitud será indispensable contar con tu RFC con el que facturas.</p>
               </div>
             </div>
 
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
-              <div className={styles['container-svg']}>
-                <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/pantalla-circulo.svg" alt="" />
+              <div className="svg-section">
+                <SvgDatosPersonales />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="section-white">
+      <section className="section-blue-storm-relative">
+        <div className="svg-textura-right-top">
+          <SvgSextaTextura />
+        </div>
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
-              <div className={styles['container-svg']}>
-                <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/edificio-circulo.svg" alt="" />
+              <div className="svg-section">
+                <SvgDatosEmpresa />
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TitleSection orden="02" linea1="Datos de" linea2="tu empresa" />
+              <TitleSection orden="02" linea1="Datos de" linea2="tu empresa" inverted />
               <div className="card-simple-blue-light">
                 <p>
-                  El segundo bloque de Datos de tu Empresa es para conocer mejor tu negocio, aquí platicaremos un poco
-                  de dónde está ubicado, cuántos empleados tienes, etc.
+                  Para continuar, necesitamos conocer mejor tu negocio, platicaremos un poco de dónde está ubicado,
+                  cuántos empleados tienes, etc.
                 </p>
                 <p>
-                  Aquí te solicitaremos tu e-firma y tu CIEC (dependiendo qué tipo de persona seas) y designarás a tu
+                  Te solicitaremos tu e.firma y tu CIEC (dependiendo qué tipo de persona seas) y designarás a tu
                   Obligado Solidario.
                 </p>
                 <p>Conoce todos los requisitos por tipo de persona.</p>
@@ -124,34 +144,34 @@ const CreditoPyme = () => {
           </div>
         </div>
       </section>
-      <section className="section-blue-night">
+      <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TitleSection inverted orden="03" linea1="conoce" linea2="tu oferta" />
-              <div className="card-simple-white">
+              <TitleSection orden="03" linea1="conoce" linea2="tu oferta" />
+              <div className="card-simple-blue-light">
                 <p>¡Llegó la hora de conocer cuanto te podremos otorgar!</p>
                 <p>Además podrás vincular tu cuenta bancaria BanCoppel si ya cuentas con una.</p>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
-              <div className={styles['container-svg']}>
-                <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/buscar-circulo.svg" alt="" />
+              <div className="svg-section">
+                <SvgConoceTuOferta />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="section-white">
+      <section className="section-blue-storm">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
-              <div className={styles['container-svg']}>
-                <img className="p-lg-5 p-md-4 p-sm-2 p-xs-2" src="/documentos-circulo.svg" alt="" />
+              <div className="svg-section">
+                <SvgCargaTusDocumentos />
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TitleSection orden="04" linea1="carga tus" linea2="documentos" />
+              <TitleSection orden="04" linea1="carga tus" linea2="documentos" inverted />
               <div className="card-simple-blue-light">
                 <p>
                   Finalmente, te solicitaremos algunos documentos dependiendo el tipo de persona que seas para completar
@@ -162,7 +182,7 @@ const CreditoPyme = () => {
           </div>
         </div>
       </section>
-      <section className="section-blue-storm">
+      <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
           <div className={`row p-lg-5 p-md-4 p-sm-2 p-xs-2 ${styles['container-title']}`}>
             <h2>¿Y DESPUÉS?</h2>
@@ -171,31 +191,37 @@ const CreditoPyme = () => {
               para que recibas a un ejecutivo en tu negocio, firmes tu contrato y finalmente ¡depositarte tu dinero!
             </p>
           </div>
-          <div className="row">
+          <div className="row px-lg-5">
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-sm-2 pb-xs-2">
-              <div className="card-simple-white-img">
-                <img alt="" src="/ready-sheet.svg" />
+              <div className="card-blue-night text-md-center">
+                <div className="container-svg-card">
+                  <SvgCargarDocumentos />
+                </div>
                 <div>
-                  <h4>Revisión</h4>
-                  <p>de documentos</p>
+                  <h4 className="color-white m-0">Revisión</h4>
+                  <p className="color-white body2 m-0">de documentos</p>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-sm-2 pb-xs-2">
-              <div className="card-simple-white-img">
-                <img alt="" src="/schedule.svg" />
+              <div className="card-blue-night text-md-center">
+                <div className="container-svg-card">
+                  <SvgCalendario />
+                </div>
                 <div>
-                  <h4>Agendar cita</h4>
-                  <p>para firmar contrato</p>
+                  <h4 className="color-white m-0">Agendar cita</h4>
+                  <p className="color-white body2 m-0">para firmar contrato</p>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pb-sm-2 pb-xs-2">
-              <div className="card-simple-white-img">
-                <img alt="" src="/money.svg" />
+              <div className="card-blue-night text-md-center">
+                <div className="container-svg-card">
+                  <SvgTarjetaCredito />
+                </div>
                 <div>
-                  <h4>Depositar tu dinero</h4>
-                  <p>en cuenta BanCoppel</p>
+                  <h4 className="color-white m-0">Depositar el dinero</h4>
+                  <p className="color-white body2 m-0">en tu cuenta BanCoppel</p>
                 </div>
               </div>
             </div>

@@ -27,7 +27,20 @@ const seleccionaEstilo = (size, inverted) => {
 };
 
 const TextField = (props) => {
-  const { name, formulario, maxlength, capitalize, label, type, size, inverted, optional, validation, format } = props;
+  const {
+    name,
+    formulario,
+    maxlength,
+    capitalize,
+    label,
+    type,
+    size,
+    inverted,
+    optional,
+    validation,
+    format,
+    paste,
+  } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
 
@@ -59,6 +72,14 @@ const TextField = (props) => {
     setActive(false);
   };
 
+  const onPaste = (event) => {
+    if (!paste) {
+      event.preventDefault();
+    } else {
+      onHandleChange(event);
+    }
+  };
+
   const hasError = () => touched[name] && errors[name];
 
   return (
@@ -77,6 +98,7 @@ const TextField = (props) => {
         autoComplete="off"
         placeholder={size === 'big' ? label : ''}
         onFocus={() => setActive(true)}
+        onPaste={onPaste}
       />
 
       {size === 'small' && (
@@ -117,6 +139,7 @@ TextField.propTypes = {
   inverted: PropTypes.bool,
   optional: PropTypes.bool,
   validation: PropTypes.bool,
+  paste: PropTypes.bool,
   maxlength: PropTypes.number,
   format: PropTypes.string,
 };
@@ -126,6 +149,7 @@ TextField.defaultProps = {
   inverted: false,
   optional: false,
   validation: false,
+  paste: true,
   format: '',
 };
 
