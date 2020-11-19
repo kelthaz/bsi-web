@@ -41,11 +41,11 @@ const Header = () => {
           link: 'https://www.bancoppel.com/credito_bcopp/tdcg.html',
         },
         {
-          value: 'Préstamo Personal Bancoppel',
+          value: 'Préstamo Personal BanCoppel',
           link: 'https://www.bancoppel.com/credito_bcopp/prestamo.html',
         },
         {
-          value: 'Préstamo Digital Bancoppel',
+          value: 'Préstamo Digital BanCoppel',
           link: 'https://www.bancoppel.com/credito_bcopp/prestamo-digital.html',
         },
       ],
@@ -63,7 +63,7 @@ const Header = () => {
         },
         {
           value: 'Cuenta Efectiva Cheques',
-          link: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva_cheques.htmll',
+          link: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva_cheques.html',
         },
         {
           value: 'Sorteo Efectivo BanCoppel',
@@ -153,7 +153,10 @@ const Header = () => {
   const { category } = menuSelect;
   const { category2 } = menuSelectPeople;
 
-  const handleMenu = () => setMenuOpen(!menuOpen);
+  const handleMenu = () => {
+    setMenuOpen(!menuOpen);
+    setSubMenusPeople(menuOptions[0].subMenu, 'Crédito');
+  };
 
   const handleCategory = ({ target }) => {
     setMenuSelect({ ...menuSelect, category: target.innerHTML });
@@ -254,20 +257,20 @@ const Header = () => {
       {menuOpen && (
         <>
           <div className={styles.menu}>
-            <ul>
-              <li className={category === 'Personas' ? styles['category-selected'] : ''}>
+            <ul className={`${styles['ul-padding']}`}>
+              <li className={category === 'Personas' ? styles['category-selected'] : styles['li-padding']}>
                 <h4 onClick={handleCategory}>Personas</h4>
               </li>
-              <li className={category === 'Empresas' ? styles['category-selected'] : ''}>
+              <li className={category === 'Empresas' ? styles['category-selected'] : styles['li-padding']}>
                 <h4 onClick={handleCategoryCompanies}>Empresas</h4>
               </li>
             </ul>
           </div>
           <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
             {category === 'Empresas' ? (
-              <ul>
+              <ul className={`${styles['ul-padding']}`}>
                 {menuOptions2.map(({ label, link }) => (
-                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                  <li key={link} className={label === '' ? styles['option-selected'] : ''}>
                     <a
                       className="col-3"
                       target="_blank"
@@ -283,9 +286,9 @@ const Header = () => {
             ) : (
               <ul className={`${styles['list-items']}`}>
                 {menuOptions.map(({ label, link, subMenu }) => (
-                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                  <li key={link}>
                     <div>
-                      <div>
+                      <div className={label === nameLabel ? styles['option-selected'] : ''}>
                         <a
                           target="_blank"
                           rel="noreferrer"
