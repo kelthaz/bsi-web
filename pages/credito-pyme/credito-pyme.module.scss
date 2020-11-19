@@ -1,58 +1,9 @@
 @import '../../styles/scss/modules/mixins';
 @import '../../styles/scss/modules/var';
 
-// .text-title {
-//   margin-top: 100px;
-
-//   @include media('mobile') {
-//     margin-top: 30px;
-//   }
-// }
-
-// .banner-image-texture {
-//   position: absolute;
-//   right: 20px;
-//   top: 130px;
-
-//   @include media('mobile') {
-//     top: 0;
-
-//     img {
-//       display: block;
-//       height: auto;
-//       max-height: 300px;
-//       width: auto;
-//     }
-//   }
-// }
-
-// .banner-image-man {
-//   position: absolute;
-//   right: 110px;
-//   top: 30px;
-
-//   @include media('mobile') {
-//     right: 25%;
-//     top: 0;
-
-//     img {
-//       display: block;
-//       height: auto;
-//       max-height: 190px;
-//       width: auto;
-//     }
-//   }
-// }
-
-.container-svg {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  img {
-    width: 100%;
-  }
+.first-section {
+  bottom: -100px;
+  position: relative;
 }
 
 .container-final-section {
@@ -79,7 +30,7 @@
 
 .container-title {
   h2 {
-    color: $white;
+    color: $blue-storm;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
@@ -87,16 +38,16 @@
 
   p {
     @include body-2;
-    color: $white;
+    color: $gray-dark;
     padding: 0 12%;
     text-align: center;
   }
 }
 
 .title-line-left {
-  border-bottom: 2px solid $blue-sky;
+  border-bottom: 2px solid $blue-morning;
   border-bottom-left-radius: 10px;
-  border-left: 2px solid $blue-sky;
+  border-left: 2px solid $blue-morning;
   padding: 0 20px;
   width: 100%;
 
@@ -126,28 +77,28 @@
     width: 100%;
 
     span:first-child {
-      color: $blue-storm;
+      color: $white;
     }
 
     span:last-child {
-      color: $blue-sky;
+      color: $blue-morning;
     }
   }
 
   p {
     @include body-2;
-    color: $gray-dark;
+    color: $white;
   }
 
   &::before {
-    background-color: $white;
-    border: $blue-sky solid 2px;
+    background-color: $blue-storm;
+    border: $blue-morning solid 2px;
     border-radius: 50%;
     content: '';
     float: left;
     height: 10px;
-    left: -26px;
-    position: relative;
+    left: -4px;
+    position: absolute;
     width: 10px;
   }
 }
