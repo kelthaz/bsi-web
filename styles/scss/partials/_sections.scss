@@ -11,6 +11,11 @@
   @include section-config($blue-storm);
 }
 
+.section-blue-storm-relative {
+  @include section-config($blue-storm);
+  position: relative;
+}
+
 .section-blue-night {
   @include section-config($blue-night);
 }
