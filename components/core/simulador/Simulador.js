@@ -67,11 +67,13 @@ const Simulador = ({ handleSimular, catalogo }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        startUpdateDataSimulador({
-          ...values,
-        })
+        startUpdateDataSimulador(
+          {
+            ...values,
+          },
+          handleSimular
+        )
       );
-      handleSimular();
     },
   });
 
