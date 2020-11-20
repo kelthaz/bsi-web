@@ -66,8 +66,13 @@ const Ayuda = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-      phone: Yup.string().trim().min(10, numeroInvalido).max(10, numeroInvalido).required(campoRequerido),
-      tellUs: Yup.string().trim().max(140, longitudMaxima).required(campoRequerido),
+      phone: Yup.string()
+        .matches(/[0-9]+$/, ';')
+        .trim()
+        .min(10, numeroInvalido)
+        .max(10, numeroInvalido)
+        .required(campoRequerido),
+      tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
       email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
       state: Yup.object()
         .shape({
@@ -251,7 +256,7 @@ const Ayuda = () => {
             </div>
             <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>
               <div className={`col-12 ${styles['textarea-questions']}`}>
-                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="300" />
+                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="180" />
               </div>
             </div>
           </div>
@@ -337,7 +342,13 @@ const Ayuda = () => {
               >
                 <img src="/about-info.svg" alt="Document" />
                 <div>
-                  <div className="sub ">Acerca del crédito</div>
+                  <div
+                    className={`sub ${option === 1 ? styles['selected-tittle'] : ''} ${
+                      nameSelected === 'acerca-del-credito' ? styles['selected-tittle'] : ''
+                    }`}
+                  >
+                    Acerca del crédito
+                  </div>
                   <div className="body2">Todo sobre el crédito Pyme</div>
                 </div>
               </div>
@@ -355,7 +366,9 @@ const Ayuda = () => {
               >
                 <img src="/user.svg" alt="User" />
                 <div>
-                  <div className="sub">Cuenta de usuario</div>
+                  <div className={`sub ${nameSelected === 'cuenta-usuario' ? styles['selected-tittle'] : ''}`}>
+                    Cuenta de usuario
+                  </div>
                   <div className="body2">Tu sesión y administración</div>
                 </div>
               </div>
@@ -371,7 +384,9 @@ const Ayuda = () => {
               >
                 <img src="/security.svg" alt="Security" />
                 <div>
-                  <div className="sub ">Seguridad de datos</div>
+                  <div className={`sub ${nameSelected === 'seguridad-datos' ? styles['selected-tittle'] : ''}`}>
+                    Seguridad de datos
+                  </div>
                   <div className="body2">Protegemos tu información</div>
                 </div>
               </div>

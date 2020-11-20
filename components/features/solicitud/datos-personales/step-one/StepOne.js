@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
+import { longitudMaxima, campoRequerido, sinCaracteresEspeciales } from '../../../../../constants/errors';
 
 const StepOne = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -20,7 +20,11 @@ const StepOne = () => {
       segundoApellido: datosPersonales.segundoApellido,
     },
     validationSchema: Yup.object({
-      primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      primerNombre: Yup.string()
+        .trim()
+        .matches(/^[a-zA-ZÑ0-9\u0300-\u0303\u036f]+$/, sinCaracteresEspeciales)
+        .max(60, longitudMaxima)
+        .required(campoRequerido),
       segundoNombre: Yup.string().max(60, longitudMaxima),
       primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       segundoApellido: Yup.string().max(60, longitudMaxima),

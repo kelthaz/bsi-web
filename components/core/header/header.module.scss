@@ -173,7 +173,7 @@
 .list-items {
   border-right: 1.5px solid $blue-sky;
   display: inline-block;
-  max-width: 165px;
+  max-width: 197px;
   width: 165px;
 }
 
@@ -182,9 +182,9 @@
 }
 
 .margen-list {
-  left: 180px;
+  left: 210px;
   position: absolute;
-  top: 30px;
+  top: 7px;
 }
 
 .menu {
@@ -204,7 +204,6 @@
 
     margin: 0;
     padding-bottom: 0;
-    padding-left: 32px;
     padding-top: 0;
 
     li {
@@ -227,7 +226,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px 0;
+  padding: 8px 0;
   position: absolute;
   width: 100%;
   z-index: 100;
@@ -238,14 +237,12 @@
     justify-content: space-around;
     list-style-type: none;
     margin: 0;
-    padding-bottom: 10px;
     padding-left: 32px;
-    padding-top: 10px;
     width: 100%;
 
     li {
       padding-bottom: 10px;
-      padding-top: 10px;
+      padding-top: 8px;
       text-align: left;
     }
 
@@ -271,7 +268,6 @@
     list-style-type: none;
     margin: 0;
     padding-bottom: 10px;
-    padding-left: 32px;
     padding-top: 10px;
 
     li {
@@ -303,9 +299,18 @@
   color: $yellow-summer !important;
 }
 
+.ul-padding {
+  padding: 0;
+}
+
+.li-padding {
+  padding: 0 60px !important;
+}
+
 .category-selected {
   border-bottom: 1.5px solid $yellow-summer;
   color: $blue-morning !important;
+  padding: 0 60px !important;
 }
 
 .option-selected {
