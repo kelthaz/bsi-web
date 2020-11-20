@@ -13,10 +13,11 @@ import SvgCarpetaDocumento from '../../components/svgs/SvgCarpetaDocumento';
 import SvgDocumentoImagen from '../../components/svgs/SvgDocumentoImagen';
 import SvgPantallaRFC from '../../components/svgs/SvgPantallaRFC';
 import SvgTerceraTextura from '../../components/svgs/texturas/SvgTerceraTextura';
+import offsetTop from '../../helpers/offsetTop';
 
 export const Home = ({ catalogo }) => {
   const router = useRouter();
-  const handleSimular = () => router.push('/simulador').then(() => window.scrollTo(0, 958));
+  const handleSimular = () => router.push('/simulador').then(() => window.scrollTo(0, offsetTop('result-simulador')));
 
   return (
     <>
