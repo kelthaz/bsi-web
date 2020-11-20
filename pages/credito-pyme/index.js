@@ -69,7 +69,7 @@ const CreditoPyme = () => {
                     DIGITAL PYME
                   </span>
                 </h2>
-                <p>Conoce más sobre los requisitos, plazos y garantías de un crédito pyme.</p>
+                <p>Todo sobre los requisitos, plazos y garantías de un Crédito Digital Pyme.</p>
               </div>
             </div>
             <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
@@ -91,7 +91,9 @@ const CreditoPyme = () => {
       </section>
       <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <h2 className="color-blue-storm text-center p-lg-5 p-md-4 p-sm-2 p-xs-2">PASO A PASO</h2>
+          <h2 id="paso a paso" className="color-blue-storm text-center p-lg-5 p-md-4 p-sm-2 p-xs-2">
+            PASO A PASO
+          </h2>
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TitleSection orden="01" linea1="Datos" linea2="personales" />
@@ -124,7 +126,7 @@ const CreditoPyme = () => {
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TitleSection orden="02" linea1="Datos de" linea2="tu empresa" inverted />
-              <div className="card-simple-blue-light">
+              <div className="card-simple-white">
                 <p>
                   Para continuar, necesitamos conocer mejor tu negocio, platicaremos un poco de dónde está ubicado,
                   cuántos empleados tienes, etc.
@@ -172,7 +174,7 @@ const CreditoPyme = () => {
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TitleSection orden="04" linea1="carga tus" linea2="documentos" inverted />
-              <div className="card-simple-blue-light">
+              <div className="card-simple-white">
                 <p>
                   Finalmente, te solicitaremos algunos documentos dependiendo el tipo de persona que seas para completar
                   tu solicitud.
