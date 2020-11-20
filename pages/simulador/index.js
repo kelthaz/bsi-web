@@ -155,7 +155,7 @@ export const PageSimulador = ({ catalogo }) => {
                       <th className={` ${styles.th}`}>Capital</th>
                       <th className={` ${styles.th}`}>Intereses</th>
                       <th className={` ${styles.th}`}>Saldo</th>
-                      <th className={` ${styles.th}`}>Pago Mensual</th>
+                      <th className={` ${styles.th}`}>Pago</th>
                     </tr>
                   </thead>
                   <tbody>
