@@ -360,7 +360,7 @@
   }
 }
 
-@media screen and (max-width: 549px) {
+@include media('sm') {
   .margen-list {
     background: $blue-storm;
     border-top: 1.5px solid $blue-sky;
