@@ -86,8 +86,10 @@ const Simulador = ({ handleSimular, catalogo }) => {
             <div className="flex-column-center-config">
               <h3 className="color-blue-storm">¿Cuánto dinero necesitas?</h3>
               <p>
-                <span className="body2 color-gray">Necesito </span>
-                <span className="input2 color-gray-dark">{mexicanWeightFormatter(formulario.values.monto)}</span>
+                <span className="input2 color-gray">Necesito </span>
+                <span className={`input2 color-blue-night ${styles['border-bottom-gray']}`}>
+                  {mexicanWeightFormatter(formulario.values.monto)}
+                </span>
               </p>
             </div>
 
