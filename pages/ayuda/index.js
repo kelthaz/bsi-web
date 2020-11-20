@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -293,8 +294,11 @@ const Ayuda = () => {
                   <div className="mt-5 mb-3 col-8 px-xs-0">
                     <div className="sub text-primary mb-3">Llámanos directo</div>
                     <div className="body2 mb-3">
-                      Un ejecutivo responderá todas tus dudas.
-                      <div className="sub text-secondary text-decoration-underline">5526774690</div>
+                      <span>Un ejecutivo responderá todas tus dudas. </span>
+
+                      <a href="tel:5526774690" className="link">
+                        5526774690
+                      </a>
                     </div>
                   </div>
                   <div className="col-4 pl-xs-4 pl-md-4 pl-lg-0">

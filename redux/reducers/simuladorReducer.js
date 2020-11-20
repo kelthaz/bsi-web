@@ -14,6 +14,7 @@ const initialState = {
     tasaMoratoria: '',
     comisionApertura: '',
     cat: '',
+    pago: '',
   },
   resultSimuladorTabla: [],
 };

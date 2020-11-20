@@ -99,6 +99,12 @@ h5 {
   text-decoration-color: $gray;
 }
 
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Colors
 
 p {

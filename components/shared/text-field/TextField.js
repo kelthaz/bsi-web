@@ -62,7 +62,7 @@ const TextField = (props) => {
       setFieldTouched(name, true);
     }
     const { selectionStart, selectionEnd } = event.target;
-    event.target.value = formatter(event.target.value);
+    event.target.value = formatter(event.target.value.trim());
     handleChange(event);
     if (changeSelection && type === 'text') event.target.setSelectionRange(selectionStart, selectionEnd);
   };

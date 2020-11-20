@@ -90,7 +90,7 @@ export const PageSimulador = ({ catalogo }) => {
   const {
     showResult,
     dataSimulador: { monto, plazo, periodicidad },
-    resultSimulador: { tasaOrdinaria, comisionApertura, cat },
+    resultSimulador: { tasaOrdinaria, comisionApertura, cat, pago },
     resultSimuladorTabla,
   } = useSelector((state) => state.simulador);
 
@@ -260,7 +260,7 @@ export const PageSimulador = ({ catalogo }) => {
                     <div className={styles['input-text']}>Esquema de pago</div>
                   </div>
                   <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                    <h1 className={styles['title-input']}>$ 31,25</h1>
+                    <h1 className={styles['title-input']}>{pago}</h1>
                     <div className={styles['input-text']}>{periodicidad.label}</div>
                   </div>
                 </div>
