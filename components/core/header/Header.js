@@ -141,7 +141,7 @@ const Header = () => {
   const [subMenus, setSubMenus] = useState([]);
   const [nameLabel, setNameLabel] = useState('Crédito');
   const [menuSelectPeople, setMenuSelectPeople] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
-  const [menuSelect, setMenuSelect] = useState({ category: 'Personas', option: 'BanCoppel Pyme' });
+  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
   const [pageSelect, setPageSelect] = useState();
   const [toggleSearchBox, setToggleSearchBox] = useState();
   const [openModal, setOpenModal] = useState(false);
@@ -276,7 +276,7 @@ const Header = () => {
           </div>
           <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
             {category === 'Empresas' ? (
-              <ul className={``}>
+              <ul>
                 {menuOptions2.map(({ label, link }) => (
                   <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
                     <a
