@@ -70,14 +70,14 @@ const VideoSelector = ({ color }) => {
   };
 
   const renderSlider = sliderOptions.map((option) => (
-    <div key={option.id} className={`${option.active ? 'd-block' : 'd-none'} ${currentSlide}`}>
+    <div key={option.id} className={`${option.active ? 'd-block ' : 'd-none'} ${currentSlide}`}>
       <div className="col-xs-12 col-sm-12 col-md-6 col-lg-7">
         <div className={styles['video-preview']}>
           <iframe className={styles.video} src={option.src} start="100" frameBorder="0" />
         </div>
       </div>
-      <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 offset-lg-6 offset-md-6 ">
-        <div>
+      <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 offset-lg-6 offset-md-6  ">
+        <div className="ml-xs-0 ml-md-4 ml-lg-0">
           <h4 className={color === 'blue-storm' ? 'text-white' : 'text-primary'}>{option.title}</h4>
           {option.subtitle && <p className={styles['text-gray']}>{option.subtitle}</p>}
           <p className={`body2 ${color === 'blue-storm' ? 'text-white' : 'text-dark'}`}>{option.parragraph}</p>
@@ -93,14 +93,18 @@ const VideoSelector = ({ color }) => {
         <div className="row justify-content-md-end justify-content-xs-center">
           <button
             type="button"
-            className={`mr-3 ${styles.a} ${styles.next} ${styles.round} ${color === 'blue-storm' && styles['btn-blue-morning']}`}
+            className={`mr-3 ${styles.a} ${styles.next} ${styles.round} ${
+              color === 'blue-storm' && styles['btn-blue-morning']
+            }`}
             onClick={() => slideHandler('prev')}
           >
             &#10094;
           </button>
           <button
             type="button"
-            className={`${styles.a} ${styles.next} ${styles.round} ${color === 'blue-storm' && styles['btn-blue-morning']}`}
+            className={`${styles.a} ${styles.next} ${styles.round} ${
+              color === 'blue-storm' && styles['btn-blue-morning']
+            }`}
             onClick={() => slideHandler('next')}
           >
             &#10095;
