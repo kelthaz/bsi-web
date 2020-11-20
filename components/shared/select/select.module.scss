@@ -130,6 +130,9 @@
 
 .select-small-blue {
   @include config-select-config($blue-storm, 24px);
+  @include media('md') {
+    font-size: 16px;
+  }
 }
 
 .select-small {

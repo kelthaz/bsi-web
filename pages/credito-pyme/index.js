@@ -52,7 +52,7 @@ const CreditoPyme = () => {
       <BannerCreditoPyme />
       <section className="section-blue-storm-relative">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+          <div className="row p-lg-5 p-md-0 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12">
               <div className={styles['title-line-left']}>
                 <h2>
@@ -94,7 +94,7 @@ const CreditoPyme = () => {
           <h2 id="paso a paso" className="color-blue-storm text-center p-lg-5 p-md-4 p-sm-2 p-xs-2">
             PASO A PASO
           </h2>
-          <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+          <div className="row p-lg-5 p-md-0 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TitleSection orden="01" linea1="Datos" linea2="personales" />
               <div className="card-simple-blue-light">
@@ -118,7 +118,7 @@ const CreditoPyme = () => {
           <SvgSextaTextura />
         </div>
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+          <div className="row p-lg-5 p-md-0 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
               <div className="svg-section">
                 <SvgDatosEmpresa />
@@ -148,7 +148,7 @@ const CreditoPyme = () => {
       </section>
       <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+          <div className="row p-lg-5 p-md-0 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TitleSection orden="03" linea1="conoce" linea2="tu oferta" />
               <div className="card-simple-blue-light">
@@ -166,7 +166,7 @@ const CreditoPyme = () => {
       </section>
       <section className="section-blue-storm">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className="row p-lg-5 p-md-4 p-sm-2 p-xs-2 no-gutters">
+          <div className="row p-lg-5 p-md-0 p-sm-2 p-xs-2 no-gutters">
             <div className="col-lg-6 col-md-6 d-lg-block d-md-block d-sm-none d-xs-none">
               <div className="svg-section">
                 <SvgCargaTusDocumentos />
@@ -186,7 +186,7 @@ const CreditoPyme = () => {
       </section>
       <section className="section-white">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className={`row p-lg-5 p-md-4 p-sm-2 p-xs-2 ${styles['container-title']}`}>
+          <div className={`row p-lg-5 p-md-0 p-sm-2 p-xs-2 ${styles['container-title']}`}>
             <h2>¿Y DESPUÉS?</h2>
             <p>
               Cuando termines tu solicitud, nuestro equipo revisará tus documentos y nos pondremos en contacto contigo
@@ -232,7 +232,7 @@ const CreditoPyme = () => {
       </section>
       <section className="section-blue-light">
         <div className="container py-lg-3 py-md-3 py-sm-4 py-xs-4">
-          <div className={`row p-lg-5 p-md-4 p-sm-2 p-xs-2 ${styles['container-final-section']}`}>
+          <div className={`row p-lg-5 p-md-0 p-sm-2 p-xs-2 ${styles['container-final-section']}`}>
             <h2>
               <span>DA EL SIGUIENTE</span>
               <br />

@@ -233,6 +233,7 @@ button {
   @include media('md') {
     bottom: 0;
     position: fixed;
+    z-index: 1030;
   }
 
   &:disabled {
