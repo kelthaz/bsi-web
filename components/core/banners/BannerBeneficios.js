@@ -12,8 +12,8 @@ const BannerBeneficios = () => {
           linea2="Crédito Digital Pyme"
           description={
             <span>
-              Además de un <strong>financiamiento personalizado</strong>, tendrás acceso a herramientas y asesorías que
-              te ayudarán a impulsar tu empresa.
+              Además de un <strong>financiamiento personalizado</strong>, tendrás acceso a herramientas que te ayudarán
+              a impulsar tu empresa.
             </span>
           }
         />

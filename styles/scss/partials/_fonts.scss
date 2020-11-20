@@ -93,6 +93,18 @@ h5 {
 .text-decoration-underline {
   text-decoration: underline;
 }
+
+.text-decoration-underline-gray {
+  text-decoration: underline;
+  text-decoration-color: $gray;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Colors
 
 p {

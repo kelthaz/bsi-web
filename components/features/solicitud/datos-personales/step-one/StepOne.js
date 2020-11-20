@@ -20,11 +20,7 @@ const StepOne = () => {
       segundoApellido: datosPersonales.segundoApellido,
     },
     validationSchema: Yup.object({
-      primerNombre: Yup.string()
-        .trim()
-        .matches(/^[a-zA-ZÑ0-9\u0300-\u0303\u036f]+$/, sinCaracteresEspeciales)
-        .max(60, longitudMaxima)
-        .required(campoRequerido),
+      primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       segundoNombre: Yup.string().max(60, longitudMaxima),
       primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       segundoApellido: Yup.string().max(60, longitudMaxima),
@@ -61,7 +57,7 @@ const StepOne = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
-                  label="1º Nombre"
+                  label="Nombre"
                 />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -72,7 +68,7 @@ const StepOne = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
-                  label="2º Nombre"
+                  label="Nombre"
                   optional
                 />
               </div>
@@ -98,7 +94,6 @@ const StepOne = () => {
                   type="text"
                   size="big"
                   label="Apellido materno"
-                  optional
                 />
               </div>
             </div>

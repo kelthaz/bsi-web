@@ -67,11 +67,13 @@ const Simulador = ({ handleSimular, catalogo }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        startUpdateDataSimulador({
-          ...values,
-        })
+        startUpdateDataSimulador(
+          {
+            ...values,
+          },
+          handleSimular
+        )
       );
-      handleSimular();
     },
   });
 
@@ -86,8 +88,10 @@ const Simulador = ({ handleSimular, catalogo }) => {
             <div className="flex-column-center-config">
               <h3 className="color-blue-storm">¿Cuánto dinero necesitas?</h3>
               <p>
-                <span className="body2 color-gray">Necesito </span>
-                <span className="input2 color-gray-dark">{mexicanWeightFormatter(formulario.values.monto)}</span>
+                <span className="input2 color-gray">Necesito </span>
+                <span className={`input2 color-blue-night ${styles['border-bottom-gray']}`}>
+                  {mexicanWeightFormatter(formulario.values.monto)}
+                </span>
               </p>
             </div>
 
@@ -97,14 +101,12 @@ const Simulador = ({ handleSimular, catalogo }) => {
 
             <div className="row">
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <p className="sub color-blue-storm text-lg-left text-md-left text-sm-center text-xs-center px-md-0 px-sm-5 px-xs-5">
-                  ¿En cuántos meses quieres pagarlo?
-                </p>
+                <p className="sub color-blue-storm text-left">¿En cuántos meses quieres pagarlo?</p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-6 col-md-6 d-none d-md-block pt-2">
+                  <div className="col-lg-6 col-md-8 d-none d-md-block pt-2">
                     <span className="input2 color-gray">Quiero pagarlo en</span>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                  <div className="col-lg-6 col-md-4 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="plazo"
@@ -117,14 +119,12 @@ const Simulador = ({ handleSimular, catalogo }) => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <p className="sub color-blue-storm text-lg-left text-md-left text-sm-center text-xs-center px-md-0 px-sm-5 px-xs-5">
-                  ¿Cómo quieres que sean tus plazos?
-                </p>
+                <p className="sub color-blue-storm text-left">¿Cómo quieres que sean tus plazos?</p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-5 col-md-5 d-none d-md-block pt-2">
+                  <div className="col-lg-5 col-md-6 d-none d-md-block pt-2">
                     <span className="input2 color-gray">Quiero plazos</span>
                   </div>
-                  <div className="col-lg-7 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="periodicidad"
@@ -140,14 +140,12 @@ const Simulador = ({ handleSimular, catalogo }) => {
 
             <div className="row">
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <p className="sub color-blue-storm text-lg-left text-md-left text-sm-center text-xs-center px-md-0 px-sm-5 px-xs-5">
-                  ¿Cuál es la antigüedad de tu empresa?
-                </p>
+                <p className="sub color-blue-storm text-left">¿Cuál es la antigüedad de tu empresa?</p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-6 col-md-6 d-none d-md-block pt-2">
+                  <div className="col-lg-6 col-md-7 d-none d-md-block pt-2">
                     <span className="input2 color-gray">Mi empresa tiene</span>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                  <div className="col-lg-6 col-md-5 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="aniosEmpresa"
@@ -161,14 +159,12 @@ const Simulador = ({ handleSimular, catalogo }) => {
               </div>
 
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <p className="sub color-blue-storm text-lg-left text-md-left text-sm-center text-xs-center px-md-0 px-sm-5 px-xs-5">
-                  ¿Cuánto vendes anualmente?
-                </p>
+                <p className="sub color-blue-storm text-left">¿Cuánto vendes anualmente?</p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-5 col-md-5 d-none d-md-block pt-2">
+                  <div className="col-lg-5 col-md-6 d-none d-md-block pt-2">
                     <span className="input2 color-gray">Al año vendo</span>
                   </div>
-                  <div className="col-lg-7 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="ventasAnio"

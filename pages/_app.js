@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
+import ChatBot from '../components/core/chatbot/ChatBot';
 import Footer from '../components/core/footer/Footer';
 import Header from '../components/core/header/Header';
 import { useStore } from '../redux/store';
@@ -22,6 +23,7 @@ const App = ({ Component, pageProps }) => {
       <Header />
       <Component {...pageProps} />
       <Footer />
+      <ChatBot />
     </Provider>
   );
 };
