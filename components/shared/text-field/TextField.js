@@ -140,7 +140,7 @@ TextField.propTypes = {
   optional: PropTypes.bool,
   validation: PropTypes.bool,
   paste: PropTypes.bool,
-  maxlength: PropTypes.number,
+  maxlength: PropTypes.number.isRequired,
   format: PropTypes.string,
 };
 

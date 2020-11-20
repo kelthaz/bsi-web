@@ -24,7 +24,7 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue } = props;
+  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue } = props;
   const [selectStyle, indicadorStyle, indicadorActiveStyle, helpTextStyle, placeholderStyle] = seleccionaEstilo(
     size,
     inverted
@@ -54,9 +54,11 @@ const Select = (props) => {
     <div className={styles['custom-select']}>
       <button
         type="button"
-        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${selectStyle} ${
-          toggle ? indicadorActiveStyle : indicadorStyle
-        } ${touched[name] && errors[name] ? styles['indicador-error'] : ''}`}
+        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${
+          blue ? styles['select-small-blue'] : selectStyle
+        } ${toggle ? indicadorActiveStyle : indicadorStyle} ${
+          touched[name] && errors[name] ? styles['indicador-error'] : ''
+        }`}
         onClick={() => !toggle && handleToggle()}
         disabled={disabled}
       >
@@ -95,6 +97,7 @@ Select.propTypes = {
   label: PropTypes.string.isRequired,
   defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
+  blue: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -102,6 +105,7 @@ Select.defaultProps = {
   optional: false,
   defaultValue: null,
   disabled: false,
+  blue: false,
 };
 
 export default Select;

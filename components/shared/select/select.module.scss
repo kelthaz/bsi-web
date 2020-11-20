@@ -93,10 +93,10 @@
   }
 
   &::after {
-    @if $color == $gray {
-      background-image: url('/chevron-gray.svg');
-    } @else {
+    @if $color == $white {
       background-image: url('/chevron-blue-morning.svg');
+    } @else {
+      background-image: url('/chevron-gray.svg');
     }
 
     background-position: 100% center;
@@ -114,6 +114,10 @@
     border-bottom: 1.5px solid $gray-light;
     cursor: not-allowed;
   }
+}
+
+.select-small-blue {
+  @include config-select-config($blue-storm, 24px);
 }
 
 .select-small {

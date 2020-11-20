@@ -10,7 +10,6 @@ import Simulador from '../../components/core/simulador/Simulador';
 import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 import downloadFile from '../../helpers/downloadFile';
 import dateFormatter from '../../helpers/dateFormatter';
-import { date } from 'yup';
 
 export const PageSimulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -185,8 +184,8 @@ export const PageSimulador = ({ catalogo }) => {
       <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
           <div className={`col-auto my-auto ${styles[('banner-title', 'title-mb')]}`}>
-            <h1 className={styles['color-white']}>¡TÚ DISEÑAS</h1>
-            <h1 className={styles['color-blue-morning']}>TU CRÉDITO!</h1>
+            <h1 className={`${styles['color-white']} text-center`}>¡SIMULA TU </h1>
+            <h1 className={`${styles['color-blue-morning']} text-center`}>CRÉDITO DIGITAL PYME!</h1>
           </div>
         </div>
         <div className="row justify-content-center mx-0">

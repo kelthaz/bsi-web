@@ -101,16 +101,17 @@ const Simulador = ({ handleSimular, catalogo }) => {
                   ¿En cuántos meses quieres pagarlo?
                 </p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-4 col-md-5 d-none d-md-block pt-2">
-                    <span className="body2 color-gray">Quiero pagarlo en</span>
+                  <div className="col-lg-6 col-md-6 d-none d-md-block pt-2">
+                    <span className="input2 color-gray">Quiero pagarlo en</span>
                   </div>
-                  <div className="col-lg-8 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="plazo"
                       formulario={formulario}
-                      size="small"
+                      size="smallb"
                       items={itemsPaymentMonths}
+                      blue
                     />
                   </div>
                 </div>
@@ -120,16 +121,17 @@ const Simulador = ({ handleSimular, catalogo }) => {
                   ¿Cómo quieres que sean tus plazos?
                 </p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-4 col-md-5 d-none d-md-block pt-2">
-                    <span className="body2 color-gray">Quiero plazos</span>
+                  <div className="col-lg-5 col-md-5 d-none d-md-block pt-2">
+                    <span className="input2 color-gray">Quiero plazos</span>
                   </div>
-                  <div className="col-lg-8 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-7 col-md-7 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="periodicidad"
                       formulario={formulario}
                       size="small"
                       items={itemsPaymentTimes}
+                      blue
                     />
                   </div>
                 </div>
@@ -142,16 +144,17 @@ const Simulador = ({ handleSimular, catalogo }) => {
                   ¿Cuál es la antigüedad de tu empresa?
                 </p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-4 col-md-5 d-none d-md-block pt-2">
-                    <span className="body2 color-gray">Mi empresa tiene</span>
+                  <div className="col-lg-6 col-md-6 d-none d-md-block pt-2">
+                    <span className="input2 color-gray">Mi empresa tiene</span>
                   </div>
-                  <div className="col-lg-8 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="aniosEmpresa"
                       formulario={formulario}
                       size="small"
                       items={itemsCompanyTime}
+                      blue
                     />
                   </div>
                 </div>
@@ -162,10 +165,10 @@ const Simulador = ({ handleSimular, catalogo }) => {
                   ¿Cuánto vendes anualmente?
                 </p>
                 <div className="row no-gutters ">
-                  <div className="col-lg-4 col-md-5 d-none d-md-block pt-2">
-                    <span className="body2 color-gray">Al año vendo</span>
+                  <div className="col-lg-5 col-md-5 d-none d-md-block pt-2">
+                    <span className="input2 color-gray">Al año vendo</span>
                   </div>
-                  <div className="col-lg-8 col-md-7 col-xs-12 col-sm-12">
+                  <div className="col-lg-7 col-md-7 col-xs-12 col-sm-12">
                     <Select
                       label="Seleccione..."
                       name="ventasAnio"
@@ -173,6 +176,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
                       size="small"
                       items={itemsSalesYear}
                       defaultValue={1}
+                      blue
                     />
                   </div>
                 </div>

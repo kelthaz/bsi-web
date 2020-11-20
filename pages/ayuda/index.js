@@ -213,9 +213,10 @@ const Ayuda = () => {
           <div className="container">
             <div className="row justify-content-center mx-0">
               <h1 className={`col-xs-12 text-xs-center ${styles.title}`}>CENTRO DE AYUDA</h1>
-              <h4 className={`col-xs-12 col-md-8 text-xs-center px-xs-0 ${styles.bt1}`}>
-                Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
-              </h4>
+              <p className={`col-xs-12 col-md-8 text-xs-center px-xs-0 body1 ${styles.bt1}`}>
+                Queremos que tomes la mejor decisión con toda la información a tu alcance.
+                <strong> Si tienes dudas contáctanos.</strong>
+              </p>
             </div>
             <div className="row justify-content-center mt-5 mx-0 ">
               <div className="col-sm-12 col-md-6 mb-5">
