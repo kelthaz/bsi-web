@@ -233,11 +233,34 @@ button {
   @include media('md') {
     bottom: 0;
     position: fixed;
+    z-index: 1030;
   }
 
   &:disabled {
     background-color: $gray-light;
   }
+}
+
+@mixin config-svg-button-input {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  position: absolute;
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.svg-button-input-small {
+  @include config-svg-button-input;
+  right: 6px;
+  top: 12px;
 }
 
 .btn-big {

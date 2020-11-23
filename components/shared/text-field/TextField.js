@@ -47,9 +47,10 @@ const TextField = (props) => {
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
-  const { formatter, changeSelection } = useFormatter(format);
+  const { formatter, changeSelection, changeSelectionFunc } = useFormatter(format);
   const [typeInput, setTypeInput] = useState(type);
   const [active, setActive] = useState(false);
+  let keyPress = '';
 
   const handleViewPassword = () => {
     if (type === 'password') {
@@ -57,14 +58,22 @@ const TextField = (props) => {
     }
   };
 
+  const beforeInput = (event) => {
+    keyPress = event.key;
+  };
+
   const onHandleChange = (event) => {
     if (!touched[name]) {
       setFieldTouched(name, true);
     }
-    const { selectionStart, selectionEnd } = event.target;
-    event.target.value = formatter(event.target.value);
+    const { selectionStart, selectionEnd } = changeSelectionFunc(event, keyPress);
+
+    event.target.value = formatter(event.target.value.trim());
     handleChange(event);
-    if (changeSelection && type === 'text') event.target.setSelectionRange(selectionStart, selectionEnd);
+
+    if (changeSelection) {
+      event.target.setSelectionRange(selectionStart, selectionEnd);
+    }
   };
 
   const onHandleBlur = (event) => {
@@ -99,6 +108,7 @@ const TextField = (props) => {
         placeholder={size === 'big' ? label : ''}
         onFocus={() => setActive(true)}
         onPaste={onPaste}
+        onKeyDown={beforeInput}
       />
 
       {size === 'small' && (
@@ -140,7 +150,7 @@ TextField.propTypes = {
   optional: PropTypes.bool,
   validation: PropTypes.bool,
   paste: PropTypes.bool,
-  maxlength: PropTypes.number,
+  maxlength: PropTypes.number.isRequired,
   format: PropTypes.string,
 };
 

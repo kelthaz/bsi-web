@@ -10,7 +10,6 @@ import Simulador from '../../components/core/simulador/Simulador';
 import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 import downloadFile from '../../helpers/downloadFile';
 import dateFormatter from '../../helpers/dateFormatter';
-import { date } from 'yup';
 
 export const PageSimulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -91,7 +90,7 @@ export const PageSimulador = ({ catalogo }) => {
   const {
     showResult,
     dataSimulador: { monto, plazo, periodicidad },
-    resultSimulador: { tasaOrdinaria, comisionApertura, cat },
+    resultSimulador: { tasaOrdinaria, comisionApertura, cat, pago },
     resultSimuladorTabla,
   } = useSelector((state) => state.simulador);
 
@@ -155,7 +154,7 @@ export const PageSimulador = ({ catalogo }) => {
                       <th className={` ${styles.th}`}>Capital</th>
                       <th className={` ${styles.th}`}>Intereses</th>
                       <th className={` ${styles.th}`}>Saldo</th>
-                      <th className={` ${styles.th}`}>Pago Mensual</th>
+                      <th className={` ${styles.th}`}>Pago</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -185,8 +184,8 @@ export const PageSimulador = ({ catalogo }) => {
       <SimpleBanner className="overflow-hidden">
         <div className="row justify-content-center">
           <div className={`col-auto my-auto ${styles[('banner-title', 'title-mb')]}`}>
-            <h1 className={styles['color-white']}>¡TÚ DISEÑAS</h1>
-            <h1 className={styles['color-blue-morning']}>TU CRÉDITO!</h1>
+            <h1 className={`${styles['color-white']} text-center`}>¡SIMULA TU </h1>
+            <h1 className={`${styles['color-blue-morning']} text-center`}>CRÉDITO DIGITAL PYME!</h1>
           </div>
         </div>
         <div className="row justify-content-center mx-0">
@@ -216,116 +215,119 @@ export const PageSimulador = ({ catalogo }) => {
           <Simulador catalogo={catalogo} />
         </div>
       </section>
-
-      {showResult && (
-        <div>
-          <div className={`container col-sm-8 col-md-6 col-lg-6 px-0  ${styles['title-info']}`}>
-            <div className="row justify-content">
-              <div className="col-xs-12">
-                <h2>TU CRÉDITO PYME</h2>
-              </div>
-              <div className="col-xs-1" />
-              <div className="text-center col-xs-10">
-                <p className={`${styles['sub-title']}`}>A continuación te presentamos el resultado de tu simulación:</p>{' '}
-              </div>
-            </div>
-            <div className={`container ${styles['result-info']}`}>
-              <div className="row mx-0 mb-4 mt-4">
-                <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                  <h1 className={styles['title-input']}>{mexicanWeightFormatter(monto)}</h1>
-                  <div className={styles['input-text']}>Monto solicitado</div>
+      <div id="result-simulador">
+        {showResult && (
+          <div>
+            <div className={`container col-sm-8 col-md-6 col-lg-6 px-0  ${styles['title-info']}`}>
+              <div className="row justify-content">
+                <div className="col-xs-12">
+                  <h2>TU CRÉDITO PYME</h2>
                 </div>
-                <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
-                  <h1 className={styles['title-input']}>{tasaOrdinaria} anual</h1>
-                  <div className={styles['input-text']}>Tasa ordinaria</div>
-                </div>
-
-                <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>{plazo.label}</h1>
-                  <div className={styles['input-text']}>Plazo del crédito</div>
-                </div>
-
-                <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                  <h1 className={styles['title-input']}>{cat}</h1>
-                  <div className={styles['input-text']}>CAT</div>
-                </div>
-                <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>{comisionApertura}</h1>
-                  <div className={styles['input-text']}>Comisión por apertura</div>
-                </div>
-
-                <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>{periodicidad.label}</h1>
-                  <div className={styles['input-text']}>Esquema de pago</div>
-                </div>
-                <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                  <h1 className={styles['title-input']}>$ 31,25</h1>
-                  <div className={styles['input-text']}>{periodicidad.label}</div>
+                <div className="col-xs-1" />
+                <div className="text-center col-xs-10">
+                  <p className={`${styles['sub-title']}`}>
+                    A continuación te presentamos el resultado de tu simulación:
+                  </p>
                 </div>
               </div>
-            </div>
-            <div className="row justify-content-center mx-0  mt-4">
-              <button className="btn-link-arrow-right " type="button" onClick={() => setOpenModal(true)}>
-                Mira tu tabla de amortización
-              </button>
-            </div>
-          </div>
-          <div className="container col-xs-11 col-sm-11 col-md-9 col-lg-8">
-            <div className="row mx-0 mb-5 mt-2">
-              <div
-                className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 pr-md-4 pr-lg-0 mt-4 px-0 ${styles['resume-text']}`}
-              >
-                <div className="px-md-0 px-xs-3 px-lg-5">
-                  <div className="row mb-sm-4">
-                    <p className="col-md-8 col-lg-9 col-sm-9 col-xs-8 px-0">
-                      ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
-                    </p>
-                    <div className="col-md-4 col-lg-3 col-sm-3 col-xs-4 text-right">
-                      <img alt="" src="/Sesion.png" />
-                    </div>
-                    <div className="col-md-12 mt-md-1 mb-xs-4 px-0">
-                      <button className="btn-link-arrow-right" type="button">
-                        Retoma tu proceso
-                      </button>
-                    </div>
+              <div className={`container ${styles['result-info']}`}>
+                <div className="row mx-0 mb-4 mt-4">
+                  <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <h1 className={styles['title-input']}>{mexicanWeightFormatter(monto)}</h1>
+                    <div className={styles['input-text']}>Monto solicitado</div>
+                  </div>
+                  <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
+                    <h1 className={styles['title-input']}>{tasaOrdinaria} anual</h1>
+                    <div className={styles['input-text']}>Tasa ordinaria</div>
+                  </div>
+
+                  <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
+                    <h1 className={styles['title-input']}>{plazo.label}</h1>
+                    <div className={styles['input-text']}>Plazo del crédito</div>
+                  </div>
+
+                  <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
+                    <h1 className={styles['title-input']}>{cat}</h1>
+                    <div className={styles['input-text']}>CAT</div>
+                  </div>
+                  <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                    <h1 className={styles['title-input']}>{comisionApertura}</h1>
+                    <div className={styles['input-text']}>Comisión por apertura</div>
+                  </div>
+
+                  <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                    <h1 className={styles['title-input']}>{periodicidad.label}</h1>
+                    <div className={styles['input-text']}>Esquema de pago</div>
+                  </div>
+                  <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
+                    <h1 className={styles['title-input']}>{pago}</h1>
+                    <div className={styles['input-text']}>{periodicidad.label}</div>
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0">
-                <div className="px-md-4">
-                  <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
-                    <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
-                      ¿Te gusta este esquema
-                      <span className="d-none d-md-inline">de crédito?</span>
-                      <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
-                    </p>
-                    <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">
-                      <img className={styles['img-solicitud']} alt="" src="/Solicitud.svg" />
-                    </div>
-                  </div>
-                  <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
-                    <div className="row">
-                      <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
-                        <button type="button" className={`col-md-12 ${styles['solicitud-button']} btn-medium`}>
-                          <span className="d-none d-md-block">Comienza tu solicitud</span>
-                          <span className="d-sm-block d-md-none">Comienza tu solicitud</span>
+              <div className="row justify-content-center mx-0  mt-4">
+                <button className="btn-link-arrow-right " type="button" onClick={() => setOpenModal(true)}>
+                  Mira tu tabla de amortización
+                </button>
+              </div>
+            </div>
+            <div className="container col-xs-11 col-sm-11 col-md-9 col-lg-8">
+              <div className="row mx-0 mb-5 mt-2">
+                <div
+                  className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 pr-md-4 pr-lg-0 mt-4 px-0 ${styles['resume-text']}`}
+                >
+                  <div className="px-md-0 px-xs-3 px-lg-5">
+                    <div className="row mb-sm-4">
+                      <p className="col-md-8 col-lg-9 col-sm-9 col-xs-8 px-0">
+                        ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
+                      </p>
+                      <div className="col-md-4 col-lg-3 col-sm-3 col-xs-4 text-right">
+                        <img alt="" src="/Sesion.png" />
+                      </div>
+                      <div className="col-md-12 mt-md-1 mb-xs-4 px-0">
+                        <button className="btn-link-arrow-right" type="button">
+                          Retoma tu proceso
                         </button>
-                      </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0">
+                  <div className="px-md-4">
+                    <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
+                      <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
+                        ¿Te gusta este esquema
+                        <span className="d-none d-md-inline">de crédito?</span>
+                        <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
+                      </p>
+                      <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">
+                        <img className={styles['img-solicitud']} alt="" src="/Solicitud.svg" />
+                      </div>
+                    </div>
+                    <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
+                      <div className="row">
+                        <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+                          <button type="button" className={`col-md-12 ${styles['solicitud-button']} btn-medium`}>
+                            <span className="d-none d-md-block">Comienza tu solicitud</span>
+                            <span className="d-sm-block d-md-none">Comienza tu solicitud</span>
+                          </button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={`row justify-content-center mb-md-4 ${styles['slogan-solicitud']}`}>
-              <div className="d-flex justify-content-center col-xs-12 col-sm-8 col-md-6 col-lg-6 mb-md-5 mb-xs-5">
-                <h1 className={`${styles['last-title']}`}>
-                  ¡Ya queremos saber qué grandes planes tienes para tu negocio!
-                </h1>
+              <div className={`row justify-content-center mb-md-4 ${styles['slogan-solicitud']}`}>
+                <div className="d-flex justify-content-center col-xs-12 col-sm-8 col-md-6 col-lg-6 mb-md-5 mb-xs-5">
+                  <h1 className={`${styles['last-title']}`}>
+                    ¡Ya queremos saber qué grandes planes tienes para tu negocio!
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

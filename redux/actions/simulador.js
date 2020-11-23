@@ -6,7 +6,7 @@ export const updateDataSimulador = (dataSimulador) => ({
   payload: dataSimulador,
 });
 
-export const startUpdateDataSimulador = (dataSimulador) => async (dispatch) => {
+export const startUpdateDataSimulador = (dataSimulador, handleSimular) => async (dispatch) => {
   const params = {
     monto: dataSimulador.monto,
     plazo: dataSimulador.plazo.value,
@@ -23,4 +23,6 @@ export const startUpdateDataSimulador = (dataSimulador) => async (dispatch) => {
       resultSimulador,
     })
   );
+
+  handleSimular();
 };

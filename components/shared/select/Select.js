@@ -3,16 +3,20 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './select.module.scss';
 import useOnClick from '../../../hooks/useOnClick';
+import SvgChevron from '../../svgs/SvgChevron';
+// import SvgCross from '../../svgs/SvgCross';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];
   if (inverted) {
+    finalStyles.push(styles['arrow-inverted']);
     finalStyles.push(size === 'big' ? styles['select-big-inverted'] : styles['select-small-inverted']);
     finalStyles.push(styles['indicador-inverted']);
     finalStyles.push(styles['indicador-activo-inverted']);
     finalStyles.push(styles['help-text-inverted']);
     finalStyles.push(styles['placeholder-color-inverted']);
   } else {
+    finalStyles.push(styles.arrow);
     finalStyles.push(size === 'big' ? styles['select-big'] : styles['select-small']);
     finalStyles.push(styles.indicador);
     finalStyles.push(styles['indicador-activo']);
@@ -24,11 +28,15 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue } = props;
-  const [selectStyle, indicadorStyle, indicadorActiveStyle, helpTextStyle, placeholderStyle] = seleccionaEstilo(
-    size,
-    inverted
-  );
+  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue } = props;
+  const [
+    arrrowStyle,
+    selectStyle,
+    indicadorStyle,
+    indicadorActiveStyle,
+    helpTextStyle,
+    placeholderStyle,
+  ] = seleccionaEstilo(size, inverted);
   const { values, errors, touched, setFieldValue, setFieldTouched } = formulario;
 
   useEffect(() => {
@@ -54,9 +62,25 @@ const Select = (props) => {
     <div className={styles['custom-select']}>
       <button
         type="button"
-        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${selectStyle} ${
-          toggle ? indicadorActiveStyle : indicadorStyle
-        } ${touched[name] && errors[name] ? styles['indicador-error'] : ''}`}
+        className={`svg-button-input-small ${arrrowStyle} ${toggle ? styles['arrow-active'] : ''}`}
+        onClick={() => handleToggle()}
+      >
+        <SvgChevron />
+      </button>
+      {/* {values[name] && <button
+        type="button"
+        className={`svg-button-input-small ${styles['deselect-item']}`}
+        onClick={() => setFieldValue(name, null)}
+      >
+        <SvgCross />
+      </button>} */}
+      <button
+        type="button"
+        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${
+          blue ? styles['select-small-blue'] : selectStyle
+        } ${toggle ? indicadorActiveStyle : indicadorStyle} ${
+          touched[name] && errors[name] ? styles['indicador-error'] : ''
+        }`}
         onClick={() => !toggle && handleToggle()}
         disabled={disabled}
       >
@@ -95,6 +119,7 @@ Select.propTypes = {
   label: PropTypes.string.isRequired,
   defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
+  blue: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -102,6 +127,7 @@ Select.defaultProps = {
   optional: false,
   defaultValue: null,
   disabled: false,
+  blue: false,
 };
 
 export default Select;

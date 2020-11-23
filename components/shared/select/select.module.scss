@@ -32,20 +32,10 @@
 
 .indicador-activo {
   @include indicador-config($blue-sky);
-
-  &::after {
-    transform: rotate(180deg);
-    transition: transform 0.3s linear;
-  }
 }
 
 .indicador-activo-inverted {
   @include indicador-config($yellow-summer);
-
-  &::after {
-    transform: rotate(180deg);
-    transition: transform 0.3s linear;
-  }
 }
 
 .indicador {
@@ -75,7 +65,6 @@
   font-family: $futura-book;
   font-size: $size;
   overflow: hidden;
-  padding: 12px;
   text-align: left;
   text-overflow: ellipsis;
   user-select: none;
@@ -83,36 +72,66 @@
   width: 100%;
 
   @if $size == 32px {
-    padding: 0 0 0 12px;
+    padding: 0 24px 0 12px;
   } @else {
-    padding: 8px 0 8px 12px;
+    padding: 8px 24px 8px 12px;
   }
 
   &:focus {
     outline: 0;
   }
 
-  &::after {
-    @if $color == $gray {
-      background-image: url('/chevron-gray.svg');
-    } @else {
-      background-image: url('/chevron-blue-morning.svg');
-    }
-
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    background-size: 21px 21px;
-    content: '';
-    float: right;
-    height: 21px;
-    transition: transform 0.3s linear;
-    width: 21px;
-  }
-
   &:disabled {
     background-color: $blue-light;
     border-bottom: 1.5px solid $gray-light;
     cursor: not-allowed;
+  }
+}
+
+.arrow {
+  transform: rotate(90deg);
+  transition: transform 0.3s linear;
+
+  svg {
+    path {
+      stroke: $gray;
+    }
+  }
+}
+
+.arrow-active {
+  transform: rotate(270deg);
+  transition: transform 0.3s linear;
+}
+
+.arrow-inverted {
+  transform: rotate(90deg);
+  transition: transform 0.3s linear;
+
+  svg {
+    path {
+      stroke: $blue-morning;
+    }
+  }
+}
+
+.deselect-item {
+  right: 24px;
+
+  svg {
+    path {
+      stroke: $gray;
+    }
+  }
+}
+
+.deselect-item-inverted {
+}
+
+.select-small-blue {
+  @include config-select-config($blue-storm, 24px);
+  @include media('md') {
+    font-size: 16px;
   }
 }
 
@@ -159,25 +178,6 @@
   transition: max-height 0.3s ease-in;
   visibility: visible;
   z-index: 99;
-}
-
-.select-items::-webkit-scrollbar {
-  height: 10px;
-  width: 6px;
-}
-
-.select-items::-webkit-scrollbar-thumb {
-  background: rgba(34, 90, 167, 0.2);
-  border-radius: 10px;
-}
-
-@supports (-moz-transform: translate(0, 0)) {
-  .select-items {
-    border-color: transparent;
-    max-height: 160px;
-    scrollbar-color: rgba(34, 90, 167, 0.2) transparent;
-    scrollbar-width: thin;
-  }
 }
 
 .item {

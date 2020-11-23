@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -208,14 +209,15 @@ const Ayuda = () => {
 
   return (
     <>
-      <form noValidate="novalidate">
+      <form noValidate="novalidate" onSubmit={formulario.handleSubmit}>
         <SimpleBanner showTexture>
           <div className="container">
             <div className="row justify-content-center mx-0">
               <h1 className={`col-xs-12 text-xs-center ${styles.title}`}>CENTRO DE AYUDA</h1>
-              <h4 className={`col-xs-12 col-md-8 text-xs-center px-xs-0 ${styles.bt1}`}>
-                Queremos que tomes la mejor decisión con toda la información a tu alcance. Si tienes dudas contáctanos.
-              </h4>
+              <p className={`col-xs-12 col-md-8 text-xs-center px-xs-0 body1 ${styles.bt1}`}>
+                Queremos que tomes la mejor decisión con toda la información a tu alcance.
+                <strong> Si tienes dudas contáctanos.</strong>
+              </p>
             </div>
             <div className="row justify-content-center mt-5 mx-0 ">
               <div className="col-sm-12 col-md-6 mb-5">
@@ -255,7 +257,7 @@ const Ayuda = () => {
             </div>
             <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>
               <div className={`col-12 ${styles['textarea-questions']}`}>
-                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="180" />
+                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxlength={180} />
               </div>
             </div>
           </div>
@@ -274,7 +276,7 @@ const Ayuda = () => {
           <div className="col-auto">
             <button
               disabled={!(formulario.isValid && formulario.dirty) || disabled}
-              type="button"
+              type="submit"
               className="btn-small col-12"
             >
               Envía tu comentario
@@ -292,8 +294,11 @@ const Ayuda = () => {
                   <div className="mt-5 mb-3 col-8 px-xs-0">
                     <div className="sub text-primary mb-3">Llámanos directo</div>
                     <div className="body2 mb-3">
-                      Un ejecutivo responderá todas tus dudas.
-                      <div className="sub text-secondary text-decoration-underline">5526774690</div>
+                      <span>Un ejecutivo responderá todas tus dudas. </span>
+
+                      <a href="tel:5526774690" className="link">
+                        5526774690
+                      </a>
                     </div>
                   </div>
                   <div className="col-4 pl-xs-4 pl-md-4 pl-lg-0">

@@ -40,9 +40,6 @@ const Beneficios = () => (
             <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
               Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
               específicamente en ti como empresario PyME.
-              <button type="button" className="btn-link-arrow-right pt-3">
-                Conoce más sobre las tasas
-              </button>
             </div>
           </div>
           <div className={`d-none d-md-flex ${styles['section-texture']}`}>
@@ -71,7 +68,7 @@ const Beneficios = () => (
               rápida, autónoma y segura.
               <br />
               <br />
-              <span className="sub text-primary">¿Tienes que ir a una sucursal?</span>
+              <span className="sub color-blue-storm">¿Tienes que ir a una sucursal?</span>
               <br />
               Contamos con más de 1,150 con el mejor horario de la banca: 365 días del año, de 10:00 am a 8:00 pm.
             </div>
@@ -80,7 +77,7 @@ const Beneficios = () => (
       </Section>
 
       {/* Crecer tu negocio */}
-      <section className={`overflow-hidden ${styles.section} section-blue-night`}>
+      <section className={`overflow-hidden ${styles.section} section-blue-storm`}>
         <div className={`container ${styles['container-img']}`}>
           <div className="row p-lg-5 p-md-4 p-sm-2 p-xm-1">
             <div
@@ -119,9 +116,6 @@ const Beneficios = () => (
             <div className={`body2 ${styles['text-box']}`}>
               Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
               remodelación de ensueño.
-              <br />
-              <br />Y recuerda que hay situaciones que no controlamos, un crédito te servirá para afrontar todos los
-              imprevistos.
             </div>
           </div>
         </div>

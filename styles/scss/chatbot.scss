@@ -8,6 +8,7 @@ $border-radius: 14px;
 .inbenta {
   // Launcher
   .inbenta-bot__launcher {
+    display: none !important;
     background-color: $yellow-summer;
     border-radius: 50%;
     height: 60px;
@@ -31,6 +32,9 @@ $border-radius: 14px;
 
   // Chat
   .inbenta-bot {
+    .ui-draggable {
+      bottom: 100px !important;
+    }
     .inbenta-bot__chat {
       background-color: $white;
       border-radius: $border-radius;
@@ -77,7 +81,13 @@ $border-radius: 14px;
             align-items: flex-start;
 
             .messages__message__avatar {
-              background-color: $blue-storm;
+              background-color: white;
+              background-image: url('/fernanda.png');
+              background-repeat: round;
+            }
+
+            .inbenta-bot-icon.inbenta-bot-icon--avatar {
+              display: none;
             }
 
             .messages__message__content {
