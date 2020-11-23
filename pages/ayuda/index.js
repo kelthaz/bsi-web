@@ -209,7 +209,7 @@ const Ayuda = () => {
 
   return (
     <>
-      <form noValidate="novalidate">
+      <form noValidate="novalidate" onSubmit={formulario.handleSubmit}>
         <SimpleBanner showTexture>
           <div className="container">
             <div className="row justify-content-center mx-0">
@@ -276,7 +276,7 @@ const Ayuda = () => {
           <div className="col-auto">
             <button
               disabled={!(formulario.isValid && formulario.dirty) || disabled}
-              type="button"
+              type="submit"
               className="btn-small col-12"
             >
               Envía tu comentario

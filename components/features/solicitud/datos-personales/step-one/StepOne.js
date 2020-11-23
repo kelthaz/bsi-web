@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { longitudMaxima, campoRequerido, sinCaracteresEspeciales } from '../../../../../constants/errors';
+import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
 
 const StepOne = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
