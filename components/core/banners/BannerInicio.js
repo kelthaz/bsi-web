@@ -19,7 +19,7 @@ const BannerInicio = () => {
       />
       <Link href="/simulador">
         <button type="button" className={`btn-big ${styles['button-margin']}`}>
-          Solicita ya tu crédito
+          Solicita tu crédito
         </button>
       </Link>
     </div>

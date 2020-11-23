@@ -4,15 +4,31 @@
   "title": "BANCOPPEL, S.A., INSTITUCIÓN DE BANCA MÚLTIPLE",
   "aviso": [
     {
-      "numeracion": true,
-      "item": "EL RESPONSABLE DEL TRATAMIENTO DE LOS DATOS PERSONALES. BANCOPPEL, S.A., INSTITUCIÓN DE BANCA MÚLTIPLE (en lo sucesivo Responsable).",
-      "subitems": []
+      "id": 1,
+      "item": "1. EL RESPONSABLE DEL TRATAMIENTO DE LOS DATOS PERSONALES. BANCOPPEL, S.A., INSTITUCIÓN DE BANCA MÚLTIPLE (en lo sucesivo Responsable)."
     },
     {
-      "numeracion": true,
-      "item": "DOMICILIO DEL RESPONSABLE. Avenida Insurgentes Sur No. 553, Sexto Piso, Colonia Escandón, Delegación Miguel Hidalgo, México, Distrito Federal, C.P. 11800.",
-      "subitems": []
+      "id": 2,
+      "item": "2. DOMICILIO DEL RESPONSABLE. Avenida Insurgentes Sur No. 553, Sexto Piso, Colonia Escandón, Delegación Miguel Hidalgo, México, Distrito Federal, C.P. 11800."
     },
+    {
+      "id": 3,
+      "item": "3. DATOS PERSONALES. El Responsable informa a los Titulares que los Datos Personales que recaba de estos últimos son:"
+    },
+    {
+      "id": 4,
+      "item": "a. Datos de identificación: nombre completo, fotografía, dirección, teléfonos, estado civil, régimen conyugal, huellas dactilares, sexo, correo electrónico, Registro Federal de Contribuyentes (R.F.C.), nacionalidad y fecha de nacimiento."
+    },
+    {
+      "id": 5,
+      "item": "b. Datos financieros o patrimoniales: depósitos a la vista e inversiones, bienes muebles e inmuebles, , historial crediticio, , avales otorgados, así como datos que permitan estimar su solvencia económica y capacidad de pago."
+    },
+    {
+      "id": 6,
+      "item": "Datos financieros o patrimoniales: depósitos a la vista e inversiones, bienes muebles e inmuebles, , historial crediticio, , avales otorgados, así como datos que permitan estimar su solvencia económica y capacidad de pago."
+    }
+  ]
+}
     {
       "numeracion": true,
       "item": "DATOS PERSONALES. El Responsable informa a los Titulares que los Datos Personales que recaba de estos últimos son:",
