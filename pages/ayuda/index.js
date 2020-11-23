@@ -223,6 +223,7 @@ const Ayuda = () => {
               <div className="col-sm-12 col-md-6 mb-5">
                 <TextField
                   name="name"
+                  format="uppercase"
                   formulario={formulario}
                   size="small"
                   capitalize

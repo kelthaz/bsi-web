@@ -330,6 +330,10 @@
 }
 
 @include media('md') {
+  .ul-border {
+    border-bottom: 1.5px solid $blue-sky;
+  }
+
   .header-top,
   .menu-header {
     padding-bottom: 15px;
@@ -350,10 +354,6 @@
   }
 
   .items-menu {
-    ul:first-child {
-      border-bottom: 1.5px solid $blue-sky;
-    }
-
     ul:last-child {
       display: flex;
     }
@@ -372,7 +372,7 @@
   }
 
   .list-items {
-    border-right: none;
+    border-right: 0;
   }
 }
 
@@ -408,7 +408,7 @@
   .margen-list {
     background: $blue-storm;
     border-top: 1.5px solid $blue-sky;
-    left: -7px;
+    left: -1px;
     padding: 0 32px;
     position: absolute;
     top: 261px;

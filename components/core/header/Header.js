@@ -276,7 +276,7 @@ const Header = () => {
           </div>
           <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
             {category === 'Empresas' ? (
-              <ul>
+              <ul className={`${styles['ul-border']}`}>
                 {menuOptions2.map(({ label, link }) => (
                   <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
                     <a
@@ -325,7 +325,7 @@ const Header = () => {
               </ul>
             )}
             {category === 'Empresas' ? (
-              <ul className={` ${'d-none d-sm-block d-lg-none' && category === 'Empresas'}`}>
+              <ul className={`${'d-none d-sm-block d-lg-none' && category === 'Empresas'}`}>
                 {pages.map(({ label, link }) => (
                   <li key={label}>
                     <Link href={link}>

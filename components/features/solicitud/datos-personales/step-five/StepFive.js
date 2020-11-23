@@ -8,6 +8,15 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
+import { regexUpperAndLowerCase, regexNoConsecutives, regexMinOneNumber } from '../../../../../constants/regex';
+import {
+  longitudMaxima,
+  campoRequerido,
+  longitudMinima,
+  lowerUpperCase,
+  noConsecutives,
+  minOneNumber,
+} from '../../../../../constants/errors';
 
 const StepFive = () => {
   const [resultState, setResulState] = useState(false);
@@ -26,20 +35,20 @@ const StepFive = () => {
             confirmarContraseña: datosPersonales.confirmarContraseña,
           },
           validationSchema: Yup.object({
-            rfc: Yup.string().trim().min(12, '12 caracteres mínimo').required('Campo requerido'),
+            rfc: Yup.string().trim().min(12, longitudMinima).required(campoRequerido),
             contrasena: Yup.string()
               .trim()
-              .max(20, 'máximo 20 caracteres')
-              .min(8, '8 caracteres mínimo')
-              .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
-              .matches(/^(?!.*?\d{2}).+$/gm, 'Sin números consecutivos')
-              .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
-              .required('Campo requerido'),
+              .max(20, longitudMaxima)
+              .min(8, 'Longitud mínima: 8 caracteres')
+              .matches(regexUpperAndLowerCase, lowerUpperCase)
+              .matches(regexNoConsecutives, noConsecutives)
+              .matches(regexMinOneNumber, minOneNumber)
+              .required(campoRequerido),
 
             confirmarContraseña: Yup.string()
-              .max(20, 'máximo 20 caracteres')
+              .max(20, longitudMaxima)
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
-              .required('Campo requerido'),
+              .required(campoRequerido),
           }),
         }
       : {
@@ -49,19 +58,19 @@ const StepFive = () => {
             confirmarContraseña: datosPersonales.confirmarContraseña,
           },
           validationSchema: Yup.object({
-            rfc: Yup.string().trim().min(13, '13 caracteres mínimo').required('Campo requerido'),
+            rfc: Yup.string().trim().min(13, longitudMinima).required(campoRequerido),
             contrasena: Yup.string()
-              .max(20, 'máximo 20 caracteres')
-              .min(8, '8 caracteres mínimo')
-              .matches(/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/, 'Debe tener mínimo 1 letra mayúscula y 1 minúscula')
-              .matches(/^(?!.*?\d{2}).+$/, 'Sin números consecutivos')
-              .matches(/\d{1,}/, 'Debe tener mínimo 1 número')
-              .required('Campo requerido'),
+              .max(20, longitudMaxima)
+              .min(8, 'Longitud mínima: 8 caracteres')
+              .matches(regexUpperAndLowerCase, lowerUpperCase)
+              .matches(regexNoConsecutives, noConsecutives)
+              .matches(regexMinOneNumber, minOneNumber)
+              .required(campoRequerido),
 
             confirmarContraseña: Yup.string()
-              .max(20, 'máximo 20 caracteres')
+              .max(20, longitudMaxima)
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
-              .required('Campo requerido'),
+              .required(campoRequerido),
           }),
         };
   const formulario = useFormik({
@@ -99,7 +108,7 @@ const StepFive = () => {
   };
   const textFieldValidated = (form) => {
     switch (form.errors.contrasena) {
-      case '8 caracteres mínimo':
+      case 'Longitud mínima: 8 caracteres':
         validation = {
           hiddenMaxMin: !validation.hiddenMaxMin,
           hiddenCapital: false,
@@ -137,13 +146,13 @@ const StepFive = () => {
     if (form.values.contrasena.length > 8 && form.values.contrasena.length < 20) {
       validation.hiddenMaxMin = true;
     }
-    if (/^((?:.*[A-Z]){1})((?:.*[a-z]){1})/.test(form.values.contrasena)) {
+    if (regexUpperAndLowerCase.test(form.values.contrasena)) {
       validation.hiddenCapital = true;
     }
-    if (/^(?!.*?\d{2}).+$/.test(form.values.contrasena)) {
+    if (regexNoConsecutives.test(form.values.contrasena)) {
       validation.notConsecutives = true;
     }
-    if (/\d{1,}/.test(form.values.contrasena)) {
+    if (regexMinOneNumber.test(form.values.contrasena)) {
       validation.minNum = true;
     }
     return validation;
@@ -186,7 +195,7 @@ const StepFive = () => {
               {datosPersonales.tipoPersona === 'Persona Moral' ? (
                 <TextField
                   name="rfc"
-                  format="uppercase"
+                  format="rfcformatter"
                   maxlength={12}
                   formulario={formulario}
                   type="text"
@@ -196,7 +205,7 @@ const StepFive = () => {
               ) : (
                 <TextField
                   name="rfc"
-                  format="uppercase"
+                  format="rfcformatter"
                   maxlength={13}
                   formulario={formulario}
                   type="text"
