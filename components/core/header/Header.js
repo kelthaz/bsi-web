@@ -155,7 +155,7 @@ const Header = () => {
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
-    setSubMenusPeople(menuOptions[0].subMenu, 'Crédito');
+    setMenusPeople(menuOptions[0].subMenu, 'Crédito');
   };
 
   const handleCategory = ({ target }) => {
@@ -170,6 +170,14 @@ const Header = () => {
   const setSubMenusPeople = (subMenu, label) => {
     setSubMenus(subMenu);
     setNameLabel(label);
+    setMenuOpen(!menuOpen);
+
+    return subMenu;
+  };
+
+  const setMenusPeople = (subMenu, label) => {
+    setNameLabel(label);
+    setSubMenus(subMenu);
 
     return subMenu;
   };
@@ -268,9 +276,9 @@ const Header = () => {
           </div>
           <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
             {category === 'Empresas' ? (
-              <ul className={`${styles['ul-padding']}`}>
+              <ul className={``}>
                 {menuOptions2.map(({ label, link }) => (
-                  <li key={link} className={label === '' ? styles['option-selected'] : ''}>
+                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
                     <a
                       className="col-3"
                       target="_blank"
@@ -289,12 +297,7 @@ const Header = () => {
                   <li key={link}>
                     <div>
                       <div className={label === nameLabel ? styles['option-selected'] : ''}>
-                        <a
-                          target="_blank"
-                          rel="noreferrer"
-                          href={link}
-                          onClick={() => setSubMenusPeople(subMenu, label)}
-                        >
+                        <a target="_blank" rel="noreferrer" href={link} onClick={() => setMenusPeople(subMenu, label)}>
                           {label}
                         </a>
                       </div>
@@ -321,21 +324,25 @@ const Header = () => {
                 ))}
               </ul>
             )}
-            <ul>
-              {pages.map(({ label, link }) => (
-                <li key={label}>
-                  <Link href={link}>
-                    <button
-                      type="button"
-                      className={pageSelect === link ? styles['option-selected-yellow'] : ''}
-                      onClick={() => handlePage(link)}
-                    >
-                      {label}
-                    </button>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {category === 'Empresas' ? (
+              <ul className={` ${'d-none d-sm-block d-lg-none' && category === 'Empresas'}`}>
+                {pages.map(({ label, link }) => (
+                  <li key={label}>
+                    <Link href={link}>
+                      <button
+                        type="button"
+                        className={pageSelect === link ? styles['option-selected-yellow'] : ''}
+                        onClick={() => handlePage(link)}
+                      >
+                        {label}
+                      </button>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span></span>
+            )}
           </div>
         </>
       )}

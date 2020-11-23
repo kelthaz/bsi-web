@@ -257,7 +257,7 @@ const Ayuda = () => {
             </div>
             <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>
               <div className={`col-12 ${styles['textarea-questions']}`}>
-                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxLength="180" />
+                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxlength={180} />
               </div>
             </div>
           </div>
