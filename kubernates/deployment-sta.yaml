@@ -1,0 +1,177 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: temporal-sta-portal
+  annotations:
+    iconClass: icon-js
+    tags: nodejs, react, web app
+    template.openshift.io/provider-display-name: "Red Hat, Inc."
+    openshift.io/display-name: "React Web Application"
+    description: Build a basic React Web Application
+message: "The following service(s) have been created in your project: ${NAME}.\n\nMore message text here"
+parameters:
+  - name: NAME
+    displayName: "Name"
+    description: "The name assigned to all of the frontend objects defined in this template."
+    required: true
+    value: "temporal-sta-portal"
+  - name: NAMESPACE
+    displayName: "Namespace"
+    description: "The OpenShift Namespace where the ImageStream resides."
+    required: true
+    value: "openshift"
+  - name: MEMORY_LIMIT
+    displayName: "Memory Limit"
+    description: "Maximum amount of memory the container can use."
+    required: true
+    value: "512Mi"
+  - name: SOURCE_REPOSITORY_URL
+    description: The source URL for the application
+    displayName: Source URL
+    value: "https://github.com/mchavezcdmx/final-test"
+    required: true
+  - name: SOURCE_REPOSITORY_REF
+    description: The branch name for the application
+    displayName: Source Branch
+    value: master
+    required: true
+  - name: SOURCE_REPOSITORY_DIR
+    description: The location within the source repo of the application
+    displayName: Source Directory
+    value: .
+    required: true
+  - name: OUTPUT_DIR
+    description: The location of the compiled static files from your web apps builder
+    displayName: Output Directory
+    value: build
+    required: false
+  - name: YARN_ENABLED
+    description: A flag to enable the use of the Yarn package manager
+    displayName: Yarn Enabled
+    value: "true"
+    required: false
+  - name: GITHUB_WEBHOOK_SECRET
+    description: A secret string used to configure the GitHub webhook.
+    displayName: GitHub Webhook Secret
+    required: true
+    from: '[a-zA-Z0-9]{40}'
+    generate: expression
+  - name: NODEJS_VERSION
+    description: Version of NodeJS image to be used (10, 12, or latest).
+    displayName: Version of NodeJS Image
+    value: "12"
+    required: true
+objects:
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      name: '${NAME}'
+      labels:
+        app: '${NAME}'
+    spec: {}
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      name: '${NAME}'
+      labels:
+        app: '${NAME}'
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: '${NAME}:latest'
+      postCommit: {}
+      resources: {}
+      source:
+        git:
+          uri: '${SOURCE_REPOSITORY_URL}'
+          ref: '${SOURCE_REPOSITORY_REF}'
+        type: Git
+      strategy:
+        type: Source
+        sourceStrategy:
+          env:
+            - name: OUTPUT_DIR
+              value: ${OUTPUT_DIR}
+            - name: YARN_ENABLED
+              value: ${YARN_ENABLED}
+          from:
+            kind: DockerImage
+            name: "ubi8/nodejs-12"
+      triggers:
+        - github:
+            secret: '${GITHUB_WEBHOOK_SECRET}'
+          type: GitHub
+        - type: ConfigChange
+        - imageChange: {}
+          type: ImageChange
+    status:
+      lastVersion: 0
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: '${NAME}'
+      labels:
+        app: '${NAME}'
+    spec:
+      template:
+        spec:
+          containers:
+            - image: '${NAME}:latest'
+              name: '${NAME}'
+              securityContext:
+                privileged: false
+              ports:
+                - containerPort: 3000
+                  name: http
+                  protocol: TCP
+
+        metadata:
+          labels:
+            app: '${NAME}'
+      replicas: 1
+      selector:
+        app: '${NAME}'
+      triggers:
+        - type: ConfigChange
+        - type: ImageChange
+          imageChangeParams:
+            automatic: true
+            containerNames:
+              - '${NAME}'
+            from:
+              kind: ImageStreamTag
+              name: '${NAME}:latest'
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        app: ${NAME}
+      name: ${NAME}
+    spec:
+      ports:
+        - name: http
+          port: 3000
+      selector:
+        app: ${NAME}
+      type: ClusterIP
+      resources:
+        limits:
+          cpu: '1'
+          memory: 64M
+        requests:
+          cpu: 100m
+          memory: 32M
+
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      labels:
+        app: ${NAME}
+      name: ${NAME}
+    spec:
+      port:
+        targetPort: 3000
+      to:
+        kind: Service
+        name: ${NAME}
