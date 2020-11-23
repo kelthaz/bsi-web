@@ -107,7 +107,7 @@ export const PageSimulador = ({ catalogo }) => {
     <div id="inicio">
       <div className="row justify-content-center">
         <Modal openModal={openModalZona} setOpenModal={setOpenModalZona}>
-          <h4 className="color-blue-storm">Zonas Crédito Pyme disponibles</h4>
+          <h4 className="color-blue-storm">Zonas Crédito Digital Pyme disponibles</h4>
           <table className="table-horizontal-dividers-two-column">
             <thead>
               <tr>
@@ -198,8 +198,8 @@ export const PageSimulador = ({ catalogo }) => {
         <div className="row justify-content-center mx-0 mt-4">
           <div className="col-md-8">
             <div className={`body2 text-center ${styles['color-white']}`}>
-              Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito PyME ni podrá residir
-              tu Obligado Solidario.
+              Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pyme ni podrá
+              residir tu Obligado Solidario.
             </div>
           </div>
         </div>

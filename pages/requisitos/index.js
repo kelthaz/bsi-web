@@ -224,7 +224,7 @@ export const Requisitos = () => {
   return (
     <>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <h4 className="color-blue-storm">Zonas Crédito Pyme disponibles</h4>
+        <h4 className="color-blue-storm">Zonas Crédito Digital Pyme disponibles</h4>
         <table className="table-horizontal-dividers-two-column">
           <thead>
             <tr>
@@ -268,8 +268,8 @@ export const Requisitos = () => {
                 Solidario, dependiendo el tipo de persona.
               </p>
               <p className="body2 text-white text-center">
-                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un crédito Pyme ni podrá
-                residir tu Obligado Solidario.
+                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pyme ni
+                podrá residir tu Obligado Solidario.
               </p>
               <button
                 type="button"
@@ -352,17 +352,20 @@ export const Requisitos = () => {
                         alt="Nota de persona física"
                       />
                       <div>
-                        Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
-                        recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una Cuenta
-                        de Cheques para que te podamos desembolsar tu crédito cuando sea aprobado.{' '}
-                        <a
-                          className="sub"
-                          href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Conoce más
-                        </a>
+                        <p>
+                          Si eres <span className="sub">Persona Física con Actividad Empresarial (PFAE)</span> te
+                          recomendamos antes de iniciar tu proceso, acudir a una Sucursal Bancoppel y aperturar una
+                          <strong> Cuenta Bancaria Bancoppel </strong>para que te podamos desembolsar tu crédito cuando
+                          sea aprobado.{' '}
+                          <a
+                            className="sub"
+                            href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Conoce más
+                          </a>
+                        </p>
                       </div>
                     </div>
                   </TabItem>
@@ -426,7 +429,7 @@ export const Requisitos = () => {
                 <div className={`d-flex mx-auto ${styles['note-storm']} ${styles['w-490']}`}>
                   <img className="d-none d-md-block pr-3" src="/requisitos/security-note.svg" alt="Nota de seguridad" />
                   <div>
-                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma o tu CIEC.{' '}
+                    Tus datos estarán protegidos y nunca almacenaremos tu e.firma.{' '}
                     <a
                       className="sub"
                       href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg"
@@ -495,7 +498,11 @@ export const Requisitos = () => {
                     <span>tu duda?</span>
                   </h2>
                 </div>
-                <button type="button" className="btn-link-arrow-right mx-auto">
+                <button
+                  type="button"
+                  className="btn-link-arrow-right mx-auto"
+                  onClick={() => router.push('/ayuda').then(() => window.scrollTo(0, 0))}
+                >
                   Contáctate con nosotros
                 </button>
               </div>
@@ -510,7 +517,7 @@ export const Requisitos = () => {
                 <button
                   type="button"
                   className="btn-link-arrow-right-inverted mx-auto"
-                  onClick={() => router.push('/simulador#inicio')}
+                  onClick={() => router.push('/simulador')}
                 >
                   Solicita tu crédito
                 </button>

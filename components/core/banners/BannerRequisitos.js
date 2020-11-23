@@ -10,7 +10,7 @@ const BannerRequisitos = () => {
       linea2="COMENZAR"
       description={
         <span>
-          Conforme vayas avanzando, <strong>te solicitararemos algunos documentos</strong> dependiendo de las respuestas
+          Conforme vayas avanzando, <strong>te solicitaremos algunos documentos</strong> dependiendo de las respuestas
           que nos vayas dando.
         </span>
       }

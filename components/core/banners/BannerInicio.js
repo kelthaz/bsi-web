@@ -13,7 +13,7 @@ const BannerInicio = () => {
         linea2="OFERTA DE CRÉDITO DIGITAL PYME"
         description={
           <span>
-            Es la manera más <strong>simple, rápida y confiable</strong> para hacer crecer tu negocio.
+            Es la manera <strong>más simple, rápida y confiable</strong> para hacer crecer tu negocio.
           </span>
         }
       />
