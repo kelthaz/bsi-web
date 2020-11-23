@@ -9,7 +9,11 @@ const BannerBeneficios = () => {
       <div className={`row justify-content-center ${styles['text-title']}`}>
         <TitleBanner
           linea1="Beneficios del"
-          linea2="Crédito Digital Pyme"
+          linea2={
+            <span>
+              Crédito <br /> Digital Pyme
+            </span>
+          }
           description={
             <span>
               Además de un <strong>financiamiento personalizado</strong>, tendrás acceso a herramientas que te ayudarán

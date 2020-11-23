@@ -12,7 +12,7 @@ const BannerCreditoPyme = () => {
         linea2="DEL CRÉDITO DIGITAL PYME"
         description={
           <span>
-            <strong>adquiere de forma rápida un crédito</strong> que se adapte a tu negocio y a ti.
+            Con este proceso <strong>adquiere de forma rápida un crédito</strong> que se adapte a tu negocio y a ti.
           </span>
         }
       />
