@@ -1,0 +1,86 @@
+@import '../../../styles/scss/modules/var';
+
+/* form starting stylings ------------------------------- */
+.group {
+  position: relative;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1.5px solid $blue-morning;
+  color: $white;
+  display: block;
+  font-family: $futura-book;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* LABEL ======================================= */
+.label {
+  color: $white;
+  left: 5px;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+}
+
+.right-label {
+  color: $white;
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+
+/* active state */
+.input:focus ~ .label,
+.input:valid ~ .label {
+  display: none;
+}
+
+.input:valid ~ .right-label {
+  display: block;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  display: block;
+  position: relative;
+  width: 300px;
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%;
+  }
+}
+
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  height: 60%;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  top: 25%;
+  width: 100px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
