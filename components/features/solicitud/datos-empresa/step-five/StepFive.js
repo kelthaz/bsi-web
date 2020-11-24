@@ -52,7 +52,7 @@ const StepFive = () => {
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
-        <div className="container mt-md-5 pt-md-5 px-xs-0">
+        <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className={`color-dark-gray sub ${styles.info}`}>¿Cuál es el teléfono de tu empresa?</p>
             <div className="row no-gutters">
