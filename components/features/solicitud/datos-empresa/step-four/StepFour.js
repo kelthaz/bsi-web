@@ -9,23 +9,23 @@ import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido, longitudMinima } from '../../../../../constants/errors';
 
 const StepFour = () => {
-  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      primerNombre: datosPersonales.primerNombre,
-      segundoNombre: datosPersonales.segundoNombre,
-      primerApellido: datosPersonales.primerApellido,
-      segundoApellido: datosPersonales.segundoApellido,
-      celular: datosPersonales.celular,
+      primerNombreRecibe: datosEmpresa.primerNombre,
+      segundoNombreRecibe: datosEmpresa.segundoNombre,
+      primerApellidoRecibe: datosEmpresa.primerApellido,
+      segundoApellidoRecibe: datosEmpresa.segundoApellido,
+      celularRecibe: datosEmpresa.celular,
     },
     validationSchema: Yup.object({
-      primerNombre: Yup.string().required(campoRequerido),
-      primerApellido: Yup.string().required(campoRequerido),
-      segundoApellido: Yup.string().required(campoRequerido),
-      celular: Yup.string().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
+      primerNombreRecibe: Yup.string().required(campoRequerido),
+      primerApellidoRecibe: Yup.string().required(campoRequerido),
+      segundoApellidoRecibe: Yup.string().required(campoRequerido),
+      celularRecibe: Yup.string().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
     }),
   };
 
@@ -36,7 +36,7 @@ const StepFour = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { ...currentStep, step: '4' },
-          datosEmpresa: { ...datosPersonales, ...values },
+          datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
@@ -57,7 +57,7 @@ const StepFour = () => {
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
-                  name="primerNombre"
+                  name="primerNombreRecibe"
                   format="uppercase"
                   maxlength={12}
                   formulario={formulario}
@@ -68,7 +68,7 @@ const StepFour = () => {
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
-                  name="segundoNombre"
+                  name="segundoNombreRecibe"
                   format="uppercase"
                   maxlength={60}
                   formulario={formulario}
@@ -80,7 +80,7 @@ const StepFour = () => {
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
-                  name="primerApellido"
+                  name="primerApellidoRecibe"
                   format="uppercase"
                   maxlength={20}
                   formulario={formulario}
@@ -91,7 +91,7 @@ const StepFour = () => {
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
-                  name="segundoApellido"
+                  name="segundoApellidoRecibe"
                   format="uppercase"
                   formulario={formulario}
                   maxlength={20}
