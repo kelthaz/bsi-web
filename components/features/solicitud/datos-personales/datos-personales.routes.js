@@ -1,4 +1,5 @@
 import Bienvenida from './bienvenida/Bienvenida';
+import GranSalto from './gran-salto/GranSalto';
 import StepOne from './step-one/StepOne';
 import StepTwo from './step-two/StepTwo';
 import StepThree from './step-three/StepThree';
@@ -14,6 +15,14 @@ const datosPersonalesRoutes = [
     path: '/solicitud/datos-personales/bienvenida',
     stepNumber: null,
     component: Bienvenida,
+    services: [],
+  },
+  {
+    tab: 'datos-personales',
+    step: 'gran-salto',
+    path: '/solicitud/datos-personales/gran-salto',
+    stepNumber: null,
+    component: GranSalto,
     services: [],
   },
   {

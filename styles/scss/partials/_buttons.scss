@@ -265,6 +265,11 @@ button {
 
 .btn-big {
   @include button-config(180px);
+  @include button-background($blue-storm);
+}
+
+.btn-big-inverted {
+  @include button-config(180px);
   @include button-background($yellow-summer);
 }
 
@@ -288,7 +293,7 @@ button {
   @include button-background($blue-storm);
 }
 
-.btn-big-secondary {
+.btn-big-inverted-secondary {
   @include button-config(180px);
   @include button-background();
 }
@@ -311,6 +316,28 @@ button {
 .btn-mini-secondary {
   @include button-config(80px, 32px, 8px);
   @include button-background();
+}
+
+.center-first-button {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  @include media('md') {
+    justify-content: center;
+  }
+}
+
+.center-second-button {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  @include media('md') {
+    justify-content: center;
+  }
 }
 
 // End Buttons

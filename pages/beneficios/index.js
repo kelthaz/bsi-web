@@ -114,7 +114,7 @@ const Beneficios = () => (
           </div>
           <div>
             <div className={`body2 ${styles['text-box']}`}>
-              Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
+              Asegura que tendrás el flujo necesario para los pagos de nómina, tu próxima gran inversión o esa
               remodelación de ensueño.
             </div>
           </div>

@@ -31,7 +31,6 @@
   z-index: 2;
 
   @include media('mobile') {
-    background: none;
     margin-bottom: 30px;
     padding-left: 16px;
     padding-right: 16px;

@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import styles from './simulador.module.scss';
 import Modal from '../../components/shared/modal/Modal';
-import mexicanWeightFormatter from '../../helpers/moneyFormatter';
 import Simulador from '../../components/core/simulador/Simulador';
 import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 import downloadFile from '../../helpers/downloadFile';
 import dateFormatter from '../../helpers/dateFormatter';
+import ResultSimulador from '../../components/core/simulador/ResultSimulador';
 
 export const PageSimulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -90,7 +90,6 @@ export const PageSimulador = ({ catalogo }) => {
   const {
     showResult,
     dataSimulador: { monto, plazo, periodicidad },
-    resultSimulador: { tasaOrdinaria, comisionApertura, cat, pago },
     resultSimuladorTabla,
   } = useSelector((state) => state.simulador);
 
@@ -218,10 +217,10 @@ export const PageSimulador = ({ catalogo }) => {
       <div id="result-simulador">
         {showResult && (
           <div>
-            <div className={`container col-sm-8 col-md-6 col-lg-6 px-0  ${styles['title-info']}`}>
+            <div className={`container  ${styles['title-info']}`}>
               <div className="row justify-content">
                 <div className="col-xs-12">
-                  <h2>TU CRÉDITO PYME</h2>
+                  <h2>TU CRÉDITO DIGITAL PYME</h2>
                 </div>
                 <div className="col-xs-1" />
                 <div className="text-center col-xs-10">
@@ -230,41 +229,10 @@ export const PageSimulador = ({ catalogo }) => {
                   </p>
                 </div>
               </div>
-              <div className={`container ${styles['result-info']}`}>
-                <div className="row mx-0 mb-4 mt-4">
-                  <div className="text-left order-md-1  col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                    <h1 className={styles['title-input']}>{mexicanWeightFormatter(monto)}</h1>
-                    <div className={styles['input-text']}>Monto solicitado</div>
-                  </div>
-                  <div className="text-left order-md-2 col-xs-6 col-sm-6 col-md-5 col-lg-3 ">
-                    <h1 className={styles['title-input']}>{tasaOrdinaria} anual</h1>
-                    <div className={styles['input-text']}>Tasa ordinaria</div>
-                  </div>
-
-                  <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                    <h1 className={styles['title-input']}>{plazo.label}</h1>
-                    <div className={styles['input-text']}>Plazo del crédito</div>
-                  </div>
-
-                  <div className="text-left order-md-4  order-5 col-xs-6 col-sm-6 col-md-3 col-lg-3 mt-xs-4 mt-md-4 mt-lg-0">
-                    <h1 className={styles['title-input']}>{cat}</h1>
-                    <div className={styles['input-text']}>CAT</div>
-                  </div>
-                  <div className="text-left order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                    <h1 className={styles['title-input']}>{comisionApertura}</h1>
-                    <div className={styles['input-text']}>Comisión por apertura</div>
-                  </div>
-
-                  <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                    <h1 className={styles['title-input']}>{periodicidad.label}</h1>
-                    <div className={styles['input-text']}>Esquema de pago</div>
-                  </div>
-                  <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-xs-4 mt-md-4">
-                    <h1 className={styles['title-input']}>{pago}</h1>
-                    <div className={styles['input-text']}>{periodicidad.label}</div>
-                  </div>
-                </div>
+              <div className="px-lg-5">
+                <ResultSimulador />
               </div>
+
               <div className="row justify-content-center mx-0  mt-4">
                 <button className="btn-link-arrow-right " type="button" onClick={() => setOpenModal(true)}>
                   Mira tu tabla de amortización

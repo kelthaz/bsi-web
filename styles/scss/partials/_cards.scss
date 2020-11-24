@@ -64,9 +64,13 @@
   }
 }
 
-@mixin config-card($color) {
+@mixin config-card($color, $border-color: none) {
   background-color: $color;
   border-radius: 16px;
+  @if $border-color != none {
+    border: 1.5px solid $border-color;
+  }
+
   padding: 24px;
   width: 100%;
 
@@ -91,6 +95,10 @@
     @include body-2;
     color: $gray-dark;
   }
+}
+
+.card-simple-border-blue-storm {
+  @include config-card(transparent, $blue-storm);
 }
 
 @mixin config-card-sombra($color) {

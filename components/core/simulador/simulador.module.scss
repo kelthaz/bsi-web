@@ -1,28 +1,6 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
-.config-flex-first-button {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-
-  @include media('md') {
-    justify-content: center;
-  }
-}
-
-.config-flex-second-button {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-
-  @include media('md') {
-    justify-content: center;
-  }
-}
-
 .simulador-container {
   position: relative;
 }
