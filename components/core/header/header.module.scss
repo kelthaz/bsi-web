@@ -330,6 +330,10 @@
 }
 
 @include media('md') {
+  .ul-border {
+    border-bottom: 1.5px solid $blue-sky;
+  }
+
   .header-top,
   .menu-header {
     padding-bottom: 15px;
@@ -350,10 +354,6 @@
   }
 
   .items-menu {
-    ul:first-child {
-      border-bottom: 1.5px solid $blue-sky;
-    }
-
     ul:last-child {
       display: flex;
     }
@@ -372,11 +372,11 @@
   }
 
   .list-items {
-    border-right: none;
+    border-right: 0;
   }
 }
 
-@media screen and (max-width: 414px) {
+@include media('sm') {
   .header-top,
   .menu-header {
     padding-left: 5px;
@@ -408,11 +408,11 @@
   .margen-list {
     background: $blue-storm;
     border-top: 1.5px solid $blue-sky;
-    left: -7px;
+    left: -1px;
     padding: 0 32px;
     position: absolute;
     top: 261px;
-    width: 382px;
+    width: 100%;
   }
 
   .list-items {
@@ -439,7 +439,7 @@
     padding: 0 32px;
     position: absolute;
     top: 261px;
-    width: 367px;
+    width: 100%;
   }
 
   .list-items {

@@ -22,7 +22,13 @@ const initialState = {
     contrasena: '',
     rfc: '',
   },
-  datosEmpresa: {},
+  datosEmpresa: {
+    primerNombreRecibe: '',
+    celularRecibe: '',
+    segundoNombreRecibe: '',
+    apellidoPaternoRecibe: '',
+    apellidoMaternoRecibe: '',
+  },
   oferta: {},
   documentacion: {},
 };

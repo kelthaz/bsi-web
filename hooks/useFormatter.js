@@ -1,5 +1,6 @@
 import phoneFormatter, { phoneSelectionChange } from '../helpers/phoneFormatter';
 import uppercaseFormatter from '../helpers/uppercaseFormatter';
+import rfcFormatter from '../helpers/rfcFormatter';
 import passwordSpace from '../helpers/passwordSpace';
 
 const defaultSelectionChange = (event) => {
@@ -22,6 +23,9 @@ const useFormatter = (format) => {
         changeSelection: true,
         changeSelectionFunc: defaultSelectionChange,
       };
+
+    case 'rfcformatter':
+      return { formatter: rfcFormatter, changeSelection: true, changeSelectionFunc: defaultSelectionChange };
 
     case 'passwordspace':
       return {
