@@ -22,10 +22,10 @@ const StepFour = () => {
       celular: datosPersonales.celular,
     },
     validationSchema: Yup.object({
-      primerNombre: Yup.string().trim().required(campoRequerido),
-      segundoNombre: Yup.string().trim().required(campoRequerido),
-      primerApellido: Yup.string().trim().required(campoRequerido),
-      celular: Yup.string().trim().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
+      primerNombre: Yup.string().required(campoRequerido),
+      primerApellido: Yup.string().required(campoRequerido),
+      segundoApellido: Yup.string().required(campoRequerido),
+      celular: Yup.string().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
     }),
   };
 
