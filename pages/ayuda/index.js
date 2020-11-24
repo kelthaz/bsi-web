@@ -71,7 +71,7 @@ const Ayuda = () => {
         .matches(/[0-9]+$/, ';')
         .trim()
         .min(10, numeroInvalido)
-        .max(10, numeroInvalido)
+        .max(12, numeroInvalido)
         .required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
       email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
@@ -245,11 +245,12 @@ const Ayuda = () => {
               <div className="col-sm-12 col-md-6 mb-5">
                 <TextField
                   name="phone"
+                  format="phone"
                   formulario={formulario}
                   size="small"
                   label="Número de teléfono"
-                  type="number"
-                  inverted
+                  type="tel"
+                  maxlength={12}
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">

@@ -262,9 +262,12 @@ const StepFive = () => {
                     Términos y Condiciones
                   </a>
                   , (2) el&nbsp;
-                  <a className="btn-link-blue">Aviso de Privacidad</a>, (3) tu Solicitud de Crédito y que (4) los
-                  productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o modificados a través
-                  de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología.
+                  <a href="/aviso-privacidad" className="btn-link-blue">
+                    Aviso de Privacidad
+                  </a>
+                  , (3) tu Solicitud de Crédito y que (4) los productos y/o servicios que ofrece BanCoppel serán
+                  promocionados, aceptados y/o modificados a través de medios electrónicos, telefónicos, digitales y/o
+                  cualquier otra tecnología.
                 </p>
               </div>
             </div>
