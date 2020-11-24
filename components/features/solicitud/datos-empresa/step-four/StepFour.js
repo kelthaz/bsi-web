@@ -47,8 +47,8 @@ const StepFour = () => {
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
-        <div className="container p-0 ">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+        <div className="container p-0 mt-5">
+          <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
             <p className="color-dark-gray sub">
               Por favor compártenos el nombre de una persona que pudiera recibir tu Token BanCoppel en caso de que tú no
               estuvieras en el domicilio que nos diste.

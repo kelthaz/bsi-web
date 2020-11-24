@@ -56,10 +56,10 @@ const StepFive = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className={`color-dark-gray sub ${styles.info}`}>¿Cuál es el teléfono de tu empresa?</p>
             <div className="row no-gutters">
-              <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
+              <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Nos pueden contactar al</p>
               </div>
-              <div className="col-lg-5 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+              <div className="col-lg-5 col-md-5 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="celular"
                   formulario={formulario}
@@ -70,7 +70,7 @@ const StepFive = () => {
                   maxlength={12}
                 />
               </div>
-              <div className="col-lg-12 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+              <div className="col-lg-12 col-md-12 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <div className=" py-1 card-simple-gray">
                   <div className="row">
                     <span className={`ml-1 mt-2 ${styles['content-check']}`}>
