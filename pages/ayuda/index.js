@@ -355,7 +355,7 @@ const Ayuda = () => {
                   >
                     Acerca del crédito
                   </div>
-                  <div className="body2">Todo sobre el crédito Pyme</div>
+                  <div className="body2">Todo sobre el Crédito Digital Pyme</div>
                 </div>
               </div>
               <div className="d-lg-none d-md-none d-sm-block d-block">

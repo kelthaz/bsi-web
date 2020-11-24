@@ -9,20 +9,24 @@ const BannerCreditoPyme = () => {
     <div className="flex-column-start-config">
       <TitleBanner
         linea1="CARACTERÍSTICAS"
-        linea2="DEL CRÉDITO DIGITAL PYME"
+        linea2={
+          <span>
+            DEL CRÉDITO <br /> DIGITAL PYME
+          </span>
+        }
         description={
           <span>
-            <strong>adquiere de forma rápida un crédito</strong> que se adapte a tu negocio y a ti.
+            Con este proceso <strong>adquiere de forma rápida un crédito</strong> que se adapte a tu negocio y a ti.
           </span>
         }
       />
 
       <button
         type="button"
-        className={`btn-big ${styles['button-margin']}`}
+        className={`btn-big-inverted ${styles['button-margin']}`}
         onClick={() => window.scrollTo(0, offsetTop('paso a paso'))}
       >
-        Ve características
+        Ver características
       </button>
     </div>
   );

@@ -88,7 +88,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
             <div className="flex-column-center-config">
               <h3 className="color-blue-storm">¿Cuánto dinero necesitas?</h3>
               <p>
-                <span className="input2 color-gray">Necesito </span>
+                <span className="input2 color-gray only-lg-inline">Necesito </span>
                 <span className={`input2 color-blue-night ${styles['border-bottom-gray']}`}>
                   {mexicanWeightFormatter(formulario.values.monto)}
                 </span>
@@ -181,14 +181,14 @@ const Simulador = ({ handleSimular, catalogo }) => {
 
             <div className="row">
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3">
-                <div className={styles['config-flex-first-button']}>
+                <div className="center-first-button">
                   <button type="button" className="btn-medium-secondary">
                     Retoma tu proceso
                   </button>
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
-                <div className={styles['config-flex-second-button']}>
+                <div className="center-second-button">
                   <button type="submit" className="btn-medium" disabled={!formulario.isValid}>
                     Simula tu crédito
                   </button>

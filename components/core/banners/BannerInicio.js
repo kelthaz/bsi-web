@@ -13,12 +13,12 @@ const BannerInicio = () => {
         linea2="OFERTA DE CRÉDITO DIGITAL PYME"
         description={
           <span>
-            Es la manera más <strong>simple, rápida y confiable</strong> para hacer crecer tu negocio.
+            Es la manera <strong>más simple, rápida y confiable</strong> para hacer crecer tu negocio.
           </span>
         }
       />
       <Link href="/simulador">
-        <button type="button" className={`btn-big ${styles['button-margin']}`}>
+        <button type="button" className={`btn-big-inverted ${styles['button-margin']}`}>
           Solicita tu crédito
         </button>
       </Link>

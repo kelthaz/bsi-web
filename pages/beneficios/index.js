@@ -38,8 +38,8 @@ const Beneficios = () => (
           </div>
           <div>
             <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
-              Nuestras tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
-              específicamente en ti como empresario PyME.
+              Las tasas varían dependiendo del diseño de tu crédito, sin embargo son muy atractivas y pensadas
+              específicamente en ti como empresario Pyme.
             </div>
           </div>
           <div className={`d-none d-md-flex ${styles['section-texture']}`}>
@@ -88,8 +88,8 @@ const Beneficios = () => (
               </div>
               <div>
                 <div className={`body2 ${styles['text-box']} ${styles['bg-white']}`}>
-                  Invierte tu crédito en maquinaria, equipamiento o algún otro tipo de activo fijo que haga trabajar y
-                  crecer tu dinero por ti.
+                  Invierte tu crédito en capital de trabajo, maquinaria, equipamiento o algún otro tipo de activo fijo
+                  que haga trabajar y crecer tu dinero por ti.
                   <br />
                   <br />
                   <span className="sub text-primary">¡Hazlo crecer tanto económicamente como físicamente!</span>
@@ -114,7 +114,7 @@ const Beneficios = () => (
           </div>
           <div>
             <div className={`body2 ${styles['text-box']}`}>
-              Asegura que tendrás el flujo necesario para ese pago de nómina, tu próxima gran inversión o esa
+              Asegura que tendrás el flujo necesario para los pagos de nómina, tu próxima gran inversión o esa
               remodelación de ensueño.
             </div>
           </div>
