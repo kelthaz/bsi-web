@@ -258,11 +258,11 @@ const StepFive = () => {
                 </span>
                 <p className="col-11">
                   Acepto: (1) los&nbsp;
-                  <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                  <a className="link" target="_blank" rel="noreferrer">
                     Términos y Condiciones
                   </a>
                   , (2) el&nbsp;
-                  <a href="/aviso-privacidad" className="btn-link-blue">
+                  <a href="/aviso-privacidad" className="link">
                     Aviso de Privacidad
                   </a>
                   , (3) tu Solicitud de Crédito y que (4) los productos y/o servicios que ofrece BanCoppel serán

@@ -9,17 +9,17 @@ import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido, longitudMinima } from '../../../../../constants/errors';
 
 const StepFour = () => {
-  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      nombre: datosPersonales.nombre,
-      segundoNombre: datosPersonales.segundoNombre,
-      apellidoPaterno: datosPersonales.apellidoPaterno,
-      apellidoMaterno: datosPersonales.apellidoMaterno,
-      celular: datosPersonales.celular,
+      nombre: datosEmpresa.nombre,
+      segundoNombre: datosEmpresa.segundoNombre,
+      apellidoPaterno: datosEmpresa.apellidoPaterno,
+      apellidoMaterno: datosEmpresa.apellidoMaterno,
+      celular: datosEmpresa.celular,
     },
     validationSchema: Yup.object({
       nombre: Yup.string().trim().required(campoRequerido),
@@ -36,7 +36,7 @@ const StepFour = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { ...currentStep, step: '4' },
-          datosPersonales: { ...datosPersonales, ...values },
+          datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
@@ -45,85 +45,87 @@ const StepFour = () => {
   });
 
   return (
-    <div className="container px-xs-0">
+    <div className="contedor-fixed">
       <div className="contedor-solicitud ">
-        <form onSubmit={formulario.handleSubmit} noValidate>
-          <p className="color-dark-gray sub">
-            Por favor compártenos el nombre de una persona que pudiera recibir tu Token BanCoppel en caso de que tú no
-            estuvieras en el domicilio que nos diste.
-          </p>
+        <div className="container p-0 ">
+          <form onSubmit={formulario.handleSubmit} noValidate>
+            <p className="color-dark-gray sub">
+              Por favor compártenos el nombre de una persona que pudiera recibir tu Token BanCoppel en caso de que tú no
+              estuvieras en el domicilio que nos diste.
+            </p>
 
-          <div className="row no-gutters">
-            <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              <TextField
-                name="nombre"
-                format="uppercase"
-                maxlength={12}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Nombre"
+            <div className="row no-gutters">
+              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="nombre"
+                  format="uppercase"
+                  maxlength={12}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Nombre"
+                />
+              </div>
+              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="segundoNombre"
+                  format="uppercase"
+                  maxlength={60}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Nombre"
+                  optional
+                />
+              </div>
+              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="apellidoPaterno"
+                  format="uppercase"
+                  maxlength={20}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Apellido paterno"
+                />
+              </div>
+              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="apellidoMaterno"
+                  format="uppercase"
+                  formulario={formulario}
+                  maxlength={20}
+                  type="text"
+                  size="big"
+                  label="Apellido materno"
+                />
+              </div>
+              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                <p className="d-none d-md-block  input color-gray">Su número es</p>
+                <p className="d-block d-sm-none  input color-gray">Mi número es</p>
+              </div>
+              <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="celular"
+                  formulario={formulario}
+                  type="tel"
+                  size="big"
+                  label="55-9999-9999"
+                  format="phone"
+                  maxlength={12}
+                />
+              </div>
+            </div>
+            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+              <button
+                type="submit"
+                className="cicle-button-blue my-3"
+                aria-label="Avanzar"
+                disabled={!formulario.isValid}
               />
             </div>
-            <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              <TextField
-                name="segundoNombre"
-                format="uppercase"
-                maxlength={60}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Nombre"
-                optional
-              />
-            </div>
-            <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              <TextField
-                name="apellidoPaterno"
-                format="uppercase"
-                maxlength={20}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Apellido paterno"
-              />
-            </div>
-            <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-              <TextField
-                name="apellidoMaterno"
-                format="uppercase"
-                formulario={formulario}
-                maxlength={20}
-                type="text"
-                size="big"
-                label="Apellido materno"
-              />
-            </div>
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-              <p className="d-none d-md-block  input color-gray">Su número es</p>
-              <p className="d-block d-sm-none  input color-gray">Mi número es</p>
-            </div>
-            <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
-              <TextField
-                name="celular"
-                formulario={formulario}
-                type="tel"
-                size="big"
-                label="55-9999-9999"
-                format="phone"
-                maxlength={12}
-              />
-            </div>
-          </div>
-          <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
-            <button
-              type="submit"
-              className="cicle-button-blue my-3"
-              aria-label="Avanzar"
-              disabled={!formulario.isValid}
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const useFormatter = (format) => {
       };
 
     case 'rfcformatter':
-      return { formatter: rfcFormatter, changeSelection: true };
+      return { formatter: rfcFormatter, changeSelection: true, changeSelectionFunc: defaultSelectionChange };
 
     case 'passwordspace':
       return {

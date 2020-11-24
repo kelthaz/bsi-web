@@ -250,6 +250,7 @@ const Ayuda = () => {
                   size="small"
                   label="Número de teléfono"
                   type="tel"
+                  inverted
                   maxlength={12}
                 />
               </div>
