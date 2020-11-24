@@ -15,11 +15,11 @@ const StepFour = () => {
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      primerNombreRecibe: datosEmpresa.primerNombre,
-      segundoNombreRecibe: datosEmpresa.segundoNombre,
-      primerApellidoRecibe: datosEmpresa.primerApellido,
-      segundoApellidoRecibe: datosEmpresa.segundoApellido,
-      celularRecibe: datosEmpresa.celular,
+      primerNombreRecibe: datosEmpresa.primerNombreRecibe,
+      segundoNombreRecibe: datosEmpresa.segundoNombreRecibe,
+      primerApellidoRecibe: datosEmpresa.primerApellidoRecibe,
+      segundoApellidoRecibe: datosEmpresa.segundoApellidoRecibe,
+      celularRecibe: datosEmpresa.celularRecibe,
     },
     validationSchema: Yup.object({
       primerNombreRecibe: Yup.string().required(campoRequerido),

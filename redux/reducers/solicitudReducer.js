@@ -23,7 +23,7 @@ const initialState = {
     rfc: '',
   },
   datosEmpresa: {
-    nombreRecibe: '',
+    primerNombreRecibe: '',
     celularRecibe: '',
     segundoNombreRecibe: '',
     apellidoPaternoRecibe: '',
