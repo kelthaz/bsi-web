@@ -18,7 +18,7 @@ const BannerInicio = () => {
         }
       />
       <Link href="/simulador">
-        <button type="button" className={`btn-big ${styles['button-margin']}`}>
+        <button type="button" className={`btn-big-inverted ${styles['button-margin']}`}>
           Solicita tu crédito
         </button>
       </Link>

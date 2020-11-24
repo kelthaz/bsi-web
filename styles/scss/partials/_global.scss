@@ -15,6 +15,10 @@ a {
 
 @include scroll-config(16px);
 
+@include media('md') {
+  @include scroll-config(8px);
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
