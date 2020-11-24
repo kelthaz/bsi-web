@@ -17,11 +17,12 @@ import {
   noConsecutives,
   minOneNumber,
 } from '../../../../../constants/errors';
+import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 
 const StepFive = () => {
   const [resultState, setResulState] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-  const [checked, setChecked] = useState(false);
+  // const [disabled, setDisabled] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -33,6 +34,7 @@ const StepFive = () => {
             rfc: datosPersonales.rfc,
             contrasena: datosPersonales.contraseña,
             confirmarContraseña: datosPersonales.confirmarContraseña,
+            aceptoTerminos: datosPersonales.aceptoTerminos,
           },
           validationSchema: Yup.object({
             rfc: Yup.string().trim().min(12, longitudMinima).required(campoRequerido),
@@ -49,6 +51,8 @@ const StepFive = () => {
               .max(20, longitudMaxima)
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
               .required(campoRequerido),
+
+            aceptoTerminos: Yup.boolean().oneOf([true], 'Must Accept Privacy Policy'),
           }),
         }
       : {
@@ -56,6 +60,7 @@ const StepFive = () => {
             rfc: datosPersonales.rfc,
             contrasena: datosPersonales.contraseña,
             confirmarContraseña: datosPersonales.confirmarContraseña,
+            aceptoTerminos: datosPersonales.aceptoTerminos,
           },
           validationSchema: Yup.object({
             rfc: Yup.string().trim().min(13, longitudMinima).required(campoRequerido),
@@ -71,8 +76,10 @@ const StepFive = () => {
               .max(20, longitudMaxima)
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
               .required(campoRequerido),
+            aceptoTerminos: Yup.boolean().oneOf([true], 'Must Accept Privacy Policy'),
           }),
         };
+
   const formulario = useFormik({
     initialValues,
     validationSchema,
@@ -91,21 +98,23 @@ const StepFive = () => {
     },
   });
 
-  const checkedButton = () => {
-    if (checked === false) {
-      setChecked(true);
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-      setChecked(false);
-    }
-  };
+  // const checkedButton = () => {
+  //   if (checked === false) {
+  //     setChecked(true);
+  //     setDisabled(true);
+  //   } else {
+  //     setDisabled(false);
+  //     setChecked(false);
+  //   }
+  // };
+
   let validation = {
     hiddenMaxMin: true,
     hiddenCapital: true,
     minNum: true,
     notConsecutives: true,
   };
+
   const textFieldValidated = (form) => {
     switch (form.errors.contrasena) {
       case 'Longitud mínima: 8 caracteres':
@@ -248,28 +257,8 @@ const StepFive = () => {
               />
             </div>
 
-            <div className="card-simple-gray">
-              <div className="row">
-                <span className={` ${styles['content-check']}`}>
-                  <input id="my-check" className={` ${styles['my-check']}`} type="checkbox" onClick={checkedButton} />
-                  <label htmlFor="my-check" className={`${styles.label}`}>
-                    {' '}
-                  </label>
-                </span>
-                <p className="col-11">
-                  Acepto: (1) los&nbsp;
-                  <a className="link" target="_blank" rel="noreferrer">
-                    Términos y Condiciones
-                  </a>
-                  , (2) el&nbsp;
-                  <a href="/aviso-privacidad" className="link">
-                    Aviso de Privacidad
-                  </a>
-                  , (3) tu Solicitud de Crédito y que (4) los productos y/o servicios que ofrece BanCoppel serán
-                  promocionados, aceptados y/o modificados a través de medios electrónicos, telefónicos, digitales y/o
-                  cualquier otra tecnología.
-                </p>
-              </div>
+            <div className="card-simple-blue-light">
+              <CheckTextBox name="aceptoTerminos" formulario={formulario} />
             </div>
           </div>
           <div className="flex-column-center-config my-3 ">
@@ -277,7 +266,7 @@ const StepFive = () => {
               className="btn-medium"
               type="submit"
               aria-label="Avanzar"
-              disabled={!(formulario.isValid && formulario.dirty) || disabled === false}
+              disabled={!(formulario.isValid && formulario.dirty)}
             >
               <span>Crea tu contraseña</span>
             </button>

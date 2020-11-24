@@ -21,6 +21,7 @@ const initialState = {
     correo: '',
     contrasena: '',
     rfc: '',
+    aceptoTerminos: false,
   },
   datosEmpresa: {
     primerNombreRecibe: '',
