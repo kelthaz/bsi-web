@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-import TextField from '../../shared/text-field/TextField';
 import styles from './search-box.module.scss';
+import TextFieldSB from '../../shared/text-field-sb/TextFieldSB';
 import useSearchEngine from '../../../hooks/useSearchEngine';
 
 const SearchBox = ({ unmount }) => {
+  const [value, setValue] = useState('');
   const [data, setData] = useState([]);
   const router = useRouter();
 
@@ -16,19 +15,7 @@ const SearchBox = ({ unmount }) => {
     unmount();
   };
 
-  const formulario = useFormik({
-    initialValues: {
-      search: '',
-    },
-    validationSchema: Yup.object({
-      search: Yup.string().max(255, 'El campo debe contener 255 caracteres o menos'),
-    }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-
-  useSearchEngine(formulario.values.search, setData);
+  useSearchEngine(value, setData);
 
   const redirect = (item) => {
     if (item.newTab) {
@@ -40,6 +27,10 @@ const SearchBox = ({ unmount }) => {
     dismiss();
   };
 
+  const handler = (evt) => {
+    setValue(evt.target.value);
+  };
+
   return (
     <div className={styles['search-box']}>
       <div className={styles.close} onClick={dismiss} role="button" tabIndex="0">
@@ -48,12 +39,9 @@ const SearchBox = ({ unmount }) => {
       <div className="d-flex justify-content-center my-5">
         <div className="col-xs-11 col-md-7 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
-          <TextField
-            name="search"
-            formulario={formulario}
-            type="text" size="small"
-            label={<img src="/search.svg" alt="Search icon" />}
-            inverted
+          <TextFieldSB
+            value={value}
+            onChange={handler}
           />
           <ul className={styles['select-items']}>
             {data.length > 0 && (
