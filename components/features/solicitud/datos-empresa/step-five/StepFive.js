@@ -56,10 +56,10 @@ const StepFive = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className={`color-dark-gray sub ${styles.info}`}>¿Cuál es el teléfono de tu empresa?</p>
             <div className="row no-gutters">
-              <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
+              <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Nos pueden contactar al</p>
               </div>
-              <div className="col-lg-5 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+              <div className="col-lg-5 col-md-5 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="celular"
                   formulario={formulario}
