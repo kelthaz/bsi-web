@@ -4,7 +4,6 @@ import SvgDocumentos from '../../../../svgs/SvgDocumentos';
 import SvgOferta from '../../../../svgs/SvgOferta';
 import SvgPersona from '../../../../svgs/SvgPersona';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
-import styles from './gran-salto.module.scss';
 
 const GranSalto = () => (
   <div className="contedor-fixed">
@@ -27,19 +26,19 @@ const GranSalto = () => (
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
+            <div className="card-simple-transparent-img disabled-card-svg">
               <SvgPersonaMoral />
               <p>Datos de tu empresa</p>
             </div>
           </div>
           <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-            <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
+            <div className="card-simple-transparent-img disabled-card-svg">
               <SvgOferta />
               <p>Oferta</p>
             </div>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <div className={`card-simple-transparent-img ${styles['disabled-card']}`}>
+            <div className="card-simple-transparent-img disabled-card-svg">
               <SvgDocumentos />
               <p>Documentación</p>
             </div>
@@ -47,7 +46,7 @@ const GranSalto = () => (
         </div>
         <div className="row flex-column-start-config">
           <p className="body2 color-gray-dark">En este primer bloque deberás contar con:</p>
-          <div className={`card-simple-blue-light ${styles['list-style']}`}>
+          <div className="card-simple-blue-light list-onboarding">
             <ul>
               <li>RFC</li>
             </ul>

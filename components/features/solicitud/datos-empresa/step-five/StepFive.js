@@ -71,7 +71,7 @@ const StepFive = () => {
                 />
               </div>
               <div className="col-lg-12 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <div className=" py-1 card-simple-gray">
+                <div className=" py-1 card-simple-blue-light">
                   <div className="row">
                     <span className={`ml-1 mt-2 ${styles['content-check']}`}>
                       <input

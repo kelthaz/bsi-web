@@ -6,17 +6,6 @@
   z-index: 2;
 }
 
-.card-simple-gray {
-  background-color: #f4f6f9;
-  border-radius: 16px;
-  color: $gray-dark;
-  padding: 24px;
-
-  p {
-    @include body-2();
-  }
-}
-
 .card-simple-blue-night {
   background-color: $blue-night;
   border-radius: 16px;
@@ -311,4 +300,14 @@
   background-color: $blue-light;
   border-radius: 16px;
   padding: 0 20px;
+}
+
+.disabled-card-svg {
+  p {
+    color: $gray-light;
+  }
+
+  svg {
+    filter: grayscale(100%);
+  }
 }
