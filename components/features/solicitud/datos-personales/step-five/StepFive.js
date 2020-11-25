@@ -1,5 +1,4 @@
-/* eslint-disable complexity */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -46,7 +45,7 @@ const StepFive = () => {
         .matches(regexMinOneNumber, minOneNumber)
         .required(campoRequerido),
 
-      confirmarContraseña: Yup.string()
+      confirmarContrasena: Yup.string()
         .max(20, longitudMaxima)
         .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
         .required(campoRequerido),
