@@ -1,0 +1,14 @@
+.list-onboarding {
+  margin-bottom: 24px;
+  width: 100%;
+
+  ul {
+    color: $blue-storm;
+    margin-bottom: 0;
+    padding-left: 24px;
+
+    li {
+      @include body-2;
+    }
+  }
+}

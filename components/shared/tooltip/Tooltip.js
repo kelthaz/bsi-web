@@ -16,7 +16,10 @@ const Tooltip = ({ message, position }) => (
 
 Tooltip.propTypes = {
   message: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
+  position: PropTypes.string,
 };
 
+Tooltip.defaultProps = {
+  position: 'botttom',
+};
 export default Tooltip;

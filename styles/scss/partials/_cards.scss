@@ -301,3 +301,13 @@
   border-radius: 16px;
   padding: 0 20px;
 }
+
+.disabled-card-svg {
+  p {
+    color: $gray-light;
+  }
+
+  svg {
+    filter: grayscale(100%);
+  }
+}

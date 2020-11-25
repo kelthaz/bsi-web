@@ -15,7 +15,7 @@ const CheckTextBox = ({ name, formulario, children }) => {
             className={` ${styles['my-check']}`}
             type="checkbox"
             onChange={handleChange}
-            value={values[name]}
+            checked={values[name]}
           />
           <label htmlFor={name} className={`${styles.label}`}>
             {' '}
