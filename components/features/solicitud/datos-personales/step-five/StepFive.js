@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
-import styles from '../../../../shared/validate-password/validate-password.module.scss';
 import { regexUpperAndLowerCase, regexNoConsecutives, regexMinOneNumber } from '../../../../../constants/regex';
 import {
   longitudMaxima,
@@ -16,13 +15,13 @@ import {
   lowerUpperCase,
   noConsecutives,
   minOneNumber,
+  aceptarTerminos,
 } from '../../../../../constants/errors';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
+import Link from 'next/link';
 
 const StepFive = () => {
   const [resultState, setResulState] = useState(false);
-  // const [disabled, setDisabled] = useState(false);
-  // const [checked, setChecked] = useState(false);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -52,7 +51,7 @@ const StepFive = () => {
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
               .required(campoRequerido),
 
-            aceptoTerminos: Yup.boolean().oneOf([true], 'Must Accept Privacy Policy'),
+            aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos),
           }),
         }
       : {
@@ -76,7 +75,7 @@ const StepFive = () => {
               .max(20, longitudMaxima)
               .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
               .required(campoRequerido),
-            aceptoTerminos: Yup.boolean().oneOf([true], 'Must Accept Privacy Policy'),
+            aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos),
           }),
         };
 
@@ -97,16 +96,6 @@ const StepFive = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/agradecimiento');
     },
   });
-
-  // const checkedButton = () => {
-  //   if (checked === false) {
-  //     setChecked(true);
-  //     setDisabled(true);
-  //   } else {
-  //     setDisabled(false);
-  //     setChecked(false);
-  //   }
-  // };
 
   let validation = {
     hiddenMaxMin: true,
@@ -256,10 +245,26 @@ const StepFive = () => {
                 label="Contraseña"
               />
             </div>
+          </div>
 
-            <div className="card-simple-blue-light">
-              <CheckTextBox name="aceptoTerminos" formulario={formulario} />
-            </div>
+          <div className="row">
+            <CheckTextBox name="aceptoTerminos" formulario={formulario}>
+              <p className="m-0">
+                <span>Acepto: (1) los </span>
+                <a className="link" target="_blank" rel="noreferrer">
+                  Términos y Condiciones
+                </a>
+                <span>, (2) el </span>
+                <Link href="/aviso-privacidad">
+                  <a className="link">Aviso de Privacidad</a>
+                </Link>
+                <span>
+                  , (3) tu Solicitud de Crédito y que (4) los productos y/o servicios que ofrece BanCoppel serán
+                  promocionados, aceptados y/o modificados a través de medios electrónicos, telefónicos, digitales y/o
+                  cualquier otra tecnología.
+                </span>
+              </p>
+            </CheckTextBox>
           </div>
           <div className="flex-column-center-config my-3 ">
             <button

@@ -1,37 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './check-text-box.module.scss';
 
 const CheckTextBox = ({ name, formulario, children }) => {
-  const { values, handleChange } = formulario;
+  const { values, handleChange, errors } = formulario;
+
   return (
-    <div className="row">
-      <span className={` ${styles['content-check']}`}>
-        <input
-          id={name}
-          name={name}
-          className={` ${styles['my-check']}`}
-          type="checkbox"
-          onChange={handleChange}
-          value={values[name]}
-        />
-        <label htmlFor={name} className={`${styles.label}`}>
-          {' '}
-        </label>
-      </span>
-      <p className="col-11">
-        Acepto: (1) los&nbsp;
-        <a className="link" target="_blank" rel="noreferrer">
-          Términos y Condiciones
-        </a>
-        , (2) el&nbsp;
-        <a href="/aviso-privacidad" className="link">
-          Aviso de Privacidad
-        </a>
-        , (3) tu Solicitud de Crédito y que (4) los productos y/o servicios que ofrece BanCoppel serán promocionados,
-        aceptados y/o modificados a través de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología.
-      </p>
-    </div>
+    <>
+      <div className={`card-simple-blue-light ${styles['container-check-text']}`}>
+        <div className={`${styles['container-check']}`}>
+          <input
+            id={name}
+            name={name}
+            className={` ${styles['my-check']}`}
+            type="checkbox"
+            onChange={handleChange}
+            value={values[name]}
+          />
+          <label htmlFor={name} className={`${styles.label}`}>
+            {' '}
+          </label>
+        </div>
+        <div>{children}</div>
+      </div>
+      <span className="color-red">{errors[name] ? errors[name] : ''}&nbsp;</span>
+    </>
   );
+};
+
+CheckTextBox.propTypes = {
+  name: PropTypes.string.isRequired,
+  formulario: PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default CheckTextBox;
