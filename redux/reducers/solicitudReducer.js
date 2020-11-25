@@ -29,7 +29,7 @@ const initialState = {
     celular: '',
     apellidoPaternoRecibe: '',
     apellidoMaternoRecibe: '',
-    amountPeople: '',
+    amountPeople: null,
     curp: '',
   },
   oferta: {},
