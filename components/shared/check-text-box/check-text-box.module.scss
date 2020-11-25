@@ -1,7 +1,16 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
-.content-check {
+.container-check-text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container-check {
+  margin-right: 10px;
   position: relative;
 }
 
@@ -17,8 +26,8 @@
 }
 
 .label::after {
-  border-bottom: 2px solid #225aa7;
-  border-right: 2px solid #225aa7;
+  border-bottom: 2px solid $blue-storm;
+  border-right: 2px solid $blue-storm;
   content: '';
   display: none;
   height: 10px;
@@ -30,7 +39,8 @@
 }
 
 .label {
-  border: 2px solid #225aa7;
+  background-color: $white;
+  border: 2px solid $blue-storm;
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
