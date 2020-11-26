@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import Link from 'next/link';
 
 const StepEight = () => {
   const { datosEmpresa } = useSelector((state) => state.solicitud);
@@ -35,9 +36,11 @@ const StepEight = () => {
               </p>
             </div>
             <div className="text-center offset-md-4 offset-xs-3 my-3 ">
-              <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>De acuerdo</span>
-              </button>
+              <Link href="/simulador">
+                <button className="btn-medium" type="submit" aria-label="Avanzar">
+                  <span>De acuerdo</span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
