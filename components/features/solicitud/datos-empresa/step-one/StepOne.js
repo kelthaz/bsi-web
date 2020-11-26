@@ -113,7 +113,7 @@ const StepOne = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={!(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>
