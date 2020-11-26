@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const Agradecimientos = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);

@@ -1,5 +1,4 @@
-/* eslint-disable complexity */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,25 +6,21 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido, longitudMinima } from '../../../../../constants/errors';
+import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const StepFour = () => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
+  const [disabled, setDisabled] = useState(false);
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      primerNombreRecibe: datosEmpresa.primerNombreRecibe,
-      segundoNombreRecibe: datosEmpresa.segundoNombreRecibe,
-      primerApellidoRecibe: datosEmpresa.primerApellidoRecibe,
-      segundoApellidoRecibe: datosEmpresa.segundoApellidoRecibe,
-      celularRecibe: datosEmpresa.celularRecibe,
+      celular: datosEmpresa.celular,
     },
     validationSchema: Yup.object({
-      primerNombreRecibe: Yup.string().required(campoRequerido),
-      primerApellidoRecibe: Yup.string().required(campoRequerido),
-      segundoApellidoRecibe: Yup.string().required(campoRequerido),
-      celularRecibe: Yup.string().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
+      celular: Yup.string().trim().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
     }),
   };
 
@@ -39,72 +34,32 @@ const StepFour = () => {
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/6');
     },
     validateOnMount: true,
   });
 
+  const checkedButton = () => {
+    if (checked === false) {
+      setChecked(true);
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+      setChecked(false);
+    }
+  };
+
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
-        <div className="container p-0 mt-5">
-          <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
-            <p className="color-dark-gray sub">
-              Por favor compártenos el nombre de una persona que pudiera recibir tu Token BanCoppel en caso de que tú no
-              estuvieras en el domicilio que nos diste.
-            </p>
-
+        <div className="container p-0">
+          <form onSubmit={formulario.handleSubmit} noValidate>
+            <p className={`color-dark-gray sub ${styles.info}`}>¿Cuál es el teléfono de tu empresa?</p>
             <div className="row no-gutters">
-              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="primerNombreRecibe"
-                  format="uppercase"
-                  maxlength={12}
-                  formulario={formulario}
-                  type="text"
-                  size="big"
-                  label="Nombre"
-                />
+              <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
+                <p className="input color-gray">Nos pueden contactar al</p>
               </div>
-              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="segundoNombreRecibe"
-                  format="uppercase"
-                  maxlength={60}
-                  formulario={formulario}
-                  type="text"
-                  size="big"
-                  label="Nombre"
-                  optional
-                />
-              </div>
-              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="primerApellidoRecibe"
-                  format="uppercase"
-                  maxlength={20}
-                  formulario={formulario}
-                  type="text"
-                  size="big"
-                  label="Apellido paterno"
-                />
-              </div>
-              <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="segundoApellidoRecibe"
-                  format="uppercase"
-                  formulario={formulario}
-                  maxlength={20}
-                  type="text"
-                  size="big"
-                  label="Apellido materno"
-                />
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                <p className="d-none d-md-block  input color-gray">Su número es</p>
-                <p className="d-block d-sm-none  input color-gray">Mi número es</p>
-              </div>
-              <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
+              <div className="col-lg-5 col-md-5 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="celular"
                   formulario={formulario}
@@ -115,13 +70,31 @@ const StepFour = () => {
                   maxlength={12}
                 />
               </div>
+              <div className="col-lg-12 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className=" py-1 card-simple-blue-light">
+                  <div className="row">
+                    <span className={`ml-1 mt-2 ${styles['content-check']}`}>
+                      <input
+                        id="my-check"
+                        className={`${styles['my-check']}`}
+                        type="checkbox"
+                        onClick={checkedButton}
+                      />
+                      <label htmlFor="my-check" className={`${styles.label}`}>
+                        {' '}
+                      </label>
+                    </span>
+                    <p className="mt-2 col-11">No tengo número de empresa, solo el personal.</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={!formulario.isValid || disabled === false}
               />
             </div>
           </form>

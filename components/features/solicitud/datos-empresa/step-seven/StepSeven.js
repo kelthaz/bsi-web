@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido } from '../../../../../constants/errors';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
@@ -42,21 +41,19 @@ const StepSeven = () => {
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className={`color-dark-gray sub ${styles.info}`}>Ahora dinos, ¿Cuál es tu CURP?</p>
+            <p className={`color-dark-gray sub ${styles.info}`}>¿Ya tienes una cuenta bancaria en BanCoppel?</p>
             <div className="row no-gutters">
-              <div className="col-lg-3 col-md-1 col-sm-12 col-xs-12 ">
-                <p className="input color-gray">Mi CURP es </p>
+              <div className="col-lg-1 col-md-2  col-xs-2 ">
+                <label htmlFor="yes">
+                  <input type="radio" name="yes" />
+                  &nbsp;Sí
+                </label>
               </div>
-              <div className="col-lg-7 col-md-5  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="curp"
-                  format="rfcformatter"
-                  maxlength={13}
-                  formulario={formulario}
-                  type="text"
-                  size="big"
-                  label="TLMF160693H17"
-                />
+              <div className="col-lg-1 col-md-2  col-xs-2 ">
+                <label htmlFor="no">
+                  <input type="radio" id="male" name="no" />
+                  &nbsp;No
+                </label>
               </div>
             </div>
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
