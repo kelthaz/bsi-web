@@ -19,7 +19,6 @@ import {
 } from '../../../../../constants/errors';
 
 const StepEight = () => {
-  const [checked, setChecked] = useState(false);
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const router = useRouter();
@@ -56,16 +55,6 @@ const StepEight = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/9');
     },
   });
-
-  const checkedButton = () => {
-    if (checked === false) {
-      setChecked(true);
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-      setChecked(false);
-    }
-  };
 
   return (
     <div className="contedor-fixed">
