@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import TextField from '../../../../shared/text-field/TextField';
-import { longitudMaxima, campoRequerido, longitudMinima } from '../../../../../constants/errors';
+import Select from '../../../../shared/select/Select';
+import { campoRequerido } from '../../../../../constants/errors';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const StepFive = () => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
-  const [disabled, setDisabled] = useState(false);
-  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+  const items = [
+    { value: 1, label: '40 a 60' },
+    { value: 2, label: '60 a 80' },
+  ];
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      celular: datosEmpresa.celular,
+      amountPeople: datosEmpresa.amountPeople,
     },
     validationSchema: Yup.object({
-      celular: Yup.string().trim().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
+      amountPeople: Yup.string().required(campoRequerido),
     }),
   };
 
@@ -30,7 +32,7 @@ const StepFive = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '5' },
+          currentStep: { tab: 'datos-empresa', step: '6' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
@@ -39,54 +41,18 @@ const StepFive = () => {
     validateOnMount: true,
   });
 
-  const checkedButton = () => {
-    if (checked === false) {
-      setChecked(true);
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-      setChecked(false);
-    }
-  };
-
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className={`color-dark-gray sub ${styles.info}`}>¿Cuál es el teléfono de tu empresa?</p>
+            <p className={`color-dark-gray sub ${styles.info}`}>¿Cuántos empleados tiene la empresa?</p>
             <div className="row no-gutters">
-              <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
-                <p className="input color-gray">Nos pueden contactar al</p>
+              <div className="col-lg-1 col-md-1 col-sm-12 col-xs-1 ">
+                <p className="input color-gray">De</p>
               </div>
-              <div className="col-lg-5 col-md-5 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="celular"
-                  formulario={formulario}
-                  type="tel"
-                  size="big"
-                  label="55-9999-9999"
-                  format="phone"
-                  maxlength={12}
-                />
-              </div>
-              <div className="col-lg-12 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <div className=" py-1 card-simple-blue-light">
-                  <div className="row">
-                    <span className={`ml-1 mt-2 ${styles['content-check']}`}>
-                      <input
-                        id="my-check"
-                        className={`${styles['my-check']}`}
-                        type="checkbox"
-                        onClick={checkedButton}
-                      />
-                      <label htmlFor="my-check" className={`${styles.label}`}>
-                        {' '}
-                      </label>
-                    </span>
-                    <p className="mt-2 col-11">No tengo número de empresa, solo el personal.</p>
-                  </div>
-                </div>
+              <div className="col-lg-5 col-md-5  col-xs-11 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <Select name="amountPeople" label="40 a 60" formulario={formulario} size="big" items={items} />
               </div>
             </div>
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
@@ -94,7 +60,7 @@ const StepFive = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid || disabled === false}
+                disabled={!formulario.isValid}
               />
             </div>
           </form>
