@@ -12,12 +12,7 @@ import styles from './StepEight.module.scss';
 import SvgPrivacidad from '../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 
-import {
-  longitudMaxima,
-  campoRequerido,
-  longitudMinima,
-  aceptarTerminos,
-} from '../../../../../constants/errors';
+import { longitudMaxima, campoRequerido, longitudMinima, aceptarTerminos } from '../../../../../constants/errors';
 
 const StepEight = () => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
@@ -29,15 +24,11 @@ const StepEight = () => {
   const { initialValues, validationSchema } = {
     initialValues: {
       ciec: datosEmpresa.ciec,
-      firmaElectronica: false
+      firmaElectronica: false,
     },
     validationSchema: Yup.object({
-      ciec: Yup.string()
-        .max(20, longitudMaxima)
-        .min(7, longitudMinima)
-        .required(campoRequerido),
-        firmaElectronica: Yup.boolean()
-        .oneOf([true], aceptarTerminos)
+      ciec: Yup.string().max(20, longitudMaxima).min(7, longitudMinima).required(campoRequerido),
+      firmaElectronica: Yup.boolean().oneOf([true], aceptarTerminos),
     }),
   };
   const formulario = useFormik({
@@ -49,7 +40,7 @@ const StepEight = () => {
           currentStep: { tab: 'datos-empresa', step: '8' },
           datosEmpresa: {
             ...datosEmpresa,
-            ...values
+            ...values,
           },
         })
       );
@@ -65,8 +56,8 @@ const StepEight = () => {
             <div className={styles['modal-container']}>
               <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
               <p className="dark-gray body2">
-                Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos
-                tus credenciales del SAT para que firmes la autorización y poder consultarlo.
+                Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus
+                credenciales del SAT para que firmes la autorización y poder consultarlo.
               </p>
               <p className="sub color-gray">
                 <SvgPrivacidad /> Tus datos estarán protegidos.
@@ -80,21 +71,16 @@ const StepEight = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="¿Qué es la CIEC y por qué solicitamos esto?"
-               />
+              />
             </div>
-<<<<<<< HEAD
-            <div className="text-center offset-md-4 offset-xs-3 my-3 ">
-              <Link href="/simulador">
-                <button className="btn-medium" type="submit" aria-label="Avanzar">
-                  <span>De acuerdo</span>
-                </button>
-              </Link>
-=======
           </Modal>
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="color-dark-gray sub">
-              Primero necesitamos que nos autorices acceso con tu clave CIEC.<br />
-              <a className="sub link" onClick={() => setOpenWhyCiec(true)} role="button" tabIndex="0">¿Por qué te pedimos esto?</a>
+              Primero necesitamos que nos autorices acceso con tu clave CIEC.
+              <br />
+              <a className="sub link" onClick={() => setOpenWhyCiec(true)} role="button" tabIndex="0">
+                ¿Por qué te pedimos esto?
+              </a>
             </p>
 
             <div className="row no-gutters">
@@ -117,11 +103,13 @@ const StepEight = () => {
                 <div className="row">
                   <SvgPrivacidad />
                   <p className="col-11">
-                    Tus datos estarán protegidos.<br />
+                    Tus datos estarán protegidos.
+                    <br />
                     Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
                     <a className="btn-link-blue" target="_blank" rel="noreferrer">
                       clic aquí
-                    </a>.
+                    </a>
+                    .
                   </p>
                 </div>
               </div>
@@ -130,9 +118,11 @@ const StepEight = () => {
                 <div className="row">
                   <CheckTextBox name="firmaElectronica" formulario={formulario}>
                     <p className="body3 color-gray mb-0">
-                      Acepto <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                      Acepto{' '}
+                      <a className="btn-link-blue" target="_blank" rel="noreferrer">
                         términos y condiciones
-                      </a> de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.
+                      </a>{' '}
+                      de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.
                     </p>
                   </CheckTextBox>
                 </div>
@@ -145,7 +135,6 @@ const StepEight = () => {
                 aria-label="Avanzar"
                 disabled={!(formulario.isValid && formulario.dirty)}
               />
->>>>>>> staging
             </div>
           </form>
         </div>
