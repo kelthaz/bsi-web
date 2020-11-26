@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import Select from '../../../../shared/select/Select';
-import { campoRequerido } from '../../../../../constants/errors';
+import { campoRequerido, seleccionOpcion } from '../../../../../constants/errors';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const StepFive = () => {
@@ -22,7 +22,13 @@ const StepFive = () => {
       amountPeople: datosEmpresa.amountPeople,
     },
     validationSchema: Yup.object({
-      amountPeople: Yup.string().required(campoRequerido),
+      amountPeople: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
     }),
   };
 
