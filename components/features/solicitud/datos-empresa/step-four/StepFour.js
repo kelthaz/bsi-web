@@ -30,11 +30,11 @@ const StepFour = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '4' },
+          currentStep: { tab: 'datos-empresa', step: '5' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/6');
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
     },
     validateOnMount: true,
   });

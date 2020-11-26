@@ -28,7 +28,7 @@ const StepSix = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '6' },
+          currentStep: { tab: 'datos-empresa', step: '7' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );

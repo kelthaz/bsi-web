@@ -1,8 +1,26 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 
 const StepEight = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const formulario = useFormik({
+    onSubmit: (values) => {
+      dispatch(
+        nextStepDatosPersonales({
+          currentStep: { tab: 'datos-empresa', step: '5' },
+          datosEmpresa: { ...datosEmpresa, ...values },
+        })
+      );
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/7');
+    },
+    validateOnMount: true,
+  });
 
   return (
     <div className="contedor-fixed">

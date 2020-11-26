@@ -35,11 +35,11 @@ const StepThree = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '3' },
+          currentStep: { tab: 'datos-empresa', step: '4' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
+      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/4');
     },
     validateOnMount: true,
   });
@@ -106,7 +106,7 @@ const StepThree = () => {
               </div>
               <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
                 <TextField
-                  name="celular"
+                  name="celularRecibe"
                   formulario={formulario}
                   type="tel"
                   size="big"
