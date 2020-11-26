@@ -9,6 +9,7 @@ import StepSix from './step-six/StepSix';
 import StepSeven from './step-seven/StepSeven';
 import StepEight from './step-eight/StepEight';
 import StepNine from './step-nine/StepNine';
+import GraciasContacto from './gracias-contacto/GraciasContacto';
 
 const datosEmpresaRoutes = [
   {
@@ -73,6 +74,14 @@ const datosEmpresaRoutes = [
     path: '/solicitud/datos-empresa/7',
     stepNumber: 7,
     component: StepSeven,
+    services: [],
+  },
+  {
+    tab: 'datos-empresa',
+    step: 'gracias-contacto',
+    path: '/solicitud/datos-empresa/gracias-contacto',
+    stepNumber: null,
+    component: GraciasContacto,
     services: [],
   },
   {
