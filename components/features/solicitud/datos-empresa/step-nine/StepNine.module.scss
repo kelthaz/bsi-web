@@ -1,0 +1,29 @@
+.icon-card {
+  padding: 16px;
+  width: 200px;
+}
+
+.scrollable-container {
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(218, 224, 233, 0.3);
+  height: 400px;
+  overflow-y: scroll;
+  padding: 24px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.modal-container {
+  padding: 10px;
+  width: 440px;
+}
