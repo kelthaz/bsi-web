@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { longitudMaxima, campoRequerido, longitudMinima } from '../../../../../constants/errors';
+import { numeroInvalido, campoRequerido } from '../../../../../constants/errors';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const StepFour = () => {
@@ -20,7 +20,7 @@ const StepFour = () => {
       celular: datosEmpresa.celular,
     },
     validationSchema: Yup.object({
-      celular: Yup.string().trim().min(12, longitudMinima).max(12, longitudMaxima).required(campoRequerido),
+      celular: Yup.string().trim().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
     }),
   };
 
@@ -40,13 +40,15 @@ const StepFour = () => {
   });
 
   const checkedButton = () => {
-    if (checked === false) {
-      setChecked(true);
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-      setChecked(false);
-    }
+    setChecked(true);
+    setDisabled(true);
+    // if (checked === false) {
+    //   setChecked(true);
+    //   setDisabled(true);
+    // } else {
+    //   setDisabled(false);
+    //   setChecked(false);
+    // }
   };
 
   return (

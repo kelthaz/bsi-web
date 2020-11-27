@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { campoRequerido } from '../../../../../constants/errors';
+import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../constants/errors';
 import styles from '../../../../shared/validate-password/validate-password.module.scss';
 
 const StepSix = () => {
@@ -18,7 +18,7 @@ const StepSix = () => {
       curp: datosEmpresa.curp,
     },
     validationSchema: Yup.object({
-      curp: Yup.string().required(campoRequerido),
+      curp: Yup.string().max(18, longitudMaxima).min(18, longitudMinima).required(campoRequerido),
     }),
   };
 
@@ -51,7 +51,7 @@ const StepSix = () => {
                 <TextField
                   name="curp"
                   format="rfcformatter"
-                  maxlength={13}
+                  maxlength={18}
                   formulario={formulario}
                   type="text"
                   size="big"

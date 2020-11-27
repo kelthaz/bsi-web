@@ -1,14 +1,15 @@
 import Agradecimiento from './agradecimiento/Agradecimiento';
 import CuentaActiva from './cuenta-activada/CuentaActiva';
-import StepEight from './step-eight/StepEight';
-import StepFive from './step-five/StepFive';
-import StepFour from './step-four/StepFour';
-import StepNine from './step-nine/StepNine';
 import StepOne from './step-one/StepOne';
-import StepSeven from './step-seven/StepSeven';
-import StepSix from './step-six/StepSix';
-import StepThree from './step-three/StepThree';
 import StepTwo from './step-two/StepTwo';
+import StepThree from './step-three/StepThree';
+import StepFour from './step-four/StepFour';
+import StepFive from './step-five/StepFive';
+import StepSix from './step-six/StepSix';
+import StepSeven from './step-seven/StepSeven';
+import StepEight from './step-eight/StepEight';
+import StepNine from './step-nine/StepNine';
+import GraciasContacto from './gracias-contacto/GraciasContacto';
 
 const datosEmpresaRoutes = [
   {
@@ -73,6 +74,14 @@ const datosEmpresaRoutes = [
     path: '/solicitud/datos-empresa/7',
     stepNumber: 7,
     component: StepSeven,
+    services: [],
+  },
+  {
+    tab: 'datos-empresa',
+    step: 'gracias-contacto',
+    path: '/solicitud/datos-empresa/gracias-contacto',
+    stepNumber: null,
+    component: GraciasContacto,
     services: [],
   },
   {
