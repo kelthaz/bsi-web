@@ -6,24 +6,34 @@ import styles from './chatbot.module.scss';
 const ChatBot = () => {
 
   const [chatOpened, wasChatOpened] = useState(false);
+  const [showWelcomeCard, shouldShowWelcomeCard] = useState(false);
 
   const openChatBot = () => {
+    shouldShowWelcomeCard(false);
+    wasChatOpened(true);
     if (document.getElementsByClassName('inbenta-bot__launcher')[0]) {
       document.getElementsByClassName('inbenta-bot__launcher')[0].click();
-      wasChatOpened(true);
     } else {
       document.getElementsByClassName('header__actions__icon inbenta-bot-icon')[0].click();
     }
   };
 
+  const openWelcomeCard = () => {
+    if (!chatOpened && !showWelcomeCard) {
+      shouldShowWelcomeCard(true);
+    } else {
+      openChatBot();
+    }
+  };
+
   return (
     <>
-      {!chatOpened && (
+      {showWelcomeCard && (
         <div className={`card-simple-white-shadow ${styles['welcome-card']}`}>
           <div className="d-flex flex-row-reverse">
             <div
               className={styles['close-button']}
-              onClick={() => wasChatOpened(true)}
+              onClick={() => shouldShowWelcomeCard(false)}
               role="button"
               tabIndex={0}
             >
@@ -46,7 +56,7 @@ const ChatBot = () => {
       )}
       <div
         className={styles.launcher}
-        onClick={openChatBot}
+        onClick={openWelcomeCard}
         role="button"
         tabIndex={0}
       >
