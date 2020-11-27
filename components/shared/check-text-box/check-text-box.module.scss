@@ -30,12 +30,12 @@
   border-right: 2px solid $blue-storm;
   content: '';
   display: none;
-  height: 10px;
-  left: 6px;
+  height: 12px;
+  left: 5px;
   position: absolute;
-  top: 2px;
+  top: 1px;
   transform: rotate(50deg);
-  width: 4px;
+  width: 6px;
 }
 
 .label {
@@ -44,7 +44,7 @@
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
-  height: 18px;
+  height: 20px;
   position: relative;
-  width: 18px;
+  width: 20px;
 }

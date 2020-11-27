@@ -10,3 +10,4 @@ export const numeroInvalido = () => 'Número telefónico inválido';
 export const correoInvalido = () => 'Correo inválido';
 export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acentos';
 export const aceptarTerminos = () => 'Debe aceptar los términos';
+export const codigoPostalInvalido = () => 'Código postal inválido';

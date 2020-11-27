@@ -100,11 +100,7 @@ const CuentaActiva = () => {
               </CheckTextBox>
             </div>
             <div className="flex-column-start-config">
-              <button
-                type="submit"
-                className="btn-medium flex-align-self-center my-3"
-                disabled={!(formulario.isValid && formulario.dirty)}
-              >
+              <button type="submit" className="btn-medium flex-align-self-center my-3" disabled={!formulario.isValid}>
                 ¡Comencemos!
               </button>
             </div>
