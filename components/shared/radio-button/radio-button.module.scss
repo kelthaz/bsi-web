@@ -5,31 +5,23 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 }
 
-.container-check {
+.container-input {
   margin-right: 10px;
   position: relative;
 }
 
 .my-check-box,
 .my-check {
-  --active: #fff;
-  --active-inner: #fff;
-  --focus: 2px rgba(39, 94, 254, 0.3);
-  --border: #bbc1e1;
-  --border-hover: #275efe;
-  --background: #fff;
-  --disabled: #f6f8ff;
-  --disabled-inner: #e1e6f9;
   appearance: none;
-  background: var(--b, var(--background));
-  border: 2px solid var(--bc, var(--border));
+  background: $white;
+  border: 2px solid $gray-light;
   cursor: pointer;
   display: inline-block;
-  height: 21px;
+  height: 23px;
   margin: 0;
   outline: none;
   position: relative;
@@ -46,45 +38,40 @@
   }
 
   &:checked {
-    --b: var(--active);
-    --bc: blue;
     --d-o: 0.3s;
     --d-t: 0.6s;
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    background: $white;
+    border: 2px solid $blue-storm;
   }
 
   &:disabled {
-    --b: var(--disabled);
+    background: $blue-light;
     cursor: not-allowed;
     opacity: 0.9;
-
-    &:checked {
-      --b: var(--disabled-inner);
-      --bc: var(--border);
-    }
   }
 
   &:hover {
     &:not(:checked) {
       &:not(:disabled) {
-        --bc: var(--border-hover);
+        border-color: $blue-storm;
       }
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 var(--focus);
+    box-shadow: 0 0 0 2px rgba($blue-storm, 0.3);
   }
 
   &:not(.switch) {
-    width: 21px;
+    width: 23px;
 
     &::after {
-      opacity: var(--o, 0);
+      opacity: var(--opacity, 0);
     }
 
     &:checked {
-      --o: 1;
+      --opacity: 1;
     }
   }
 }
@@ -95,7 +82,7 @@
 //     &:after {
 //       width: 5px;
 //       height: 9px;
-//       border: 2px solid var(--active-inner);
+//       border: 2px solid var($white);
 //       border-top: 0;
 //       border-left: 0;
 //       left: 7px;
@@ -115,11 +102,11 @@
 //       border-radius: 50%;
 //       width: 15px;
 //       height: 15px;
-//       background: var(--ab, var(--border));
+//       background: $gray-light;
 //       transform: translateX(var(--x, 0));
 //     }
 //     &:checked {
-//       --ab: var(--active-inner);
+//       --ab: var($white);
 //       --x: 17px;
 //     }
 //     &:disabled {
@@ -136,16 +123,10 @@
   border-radius: 50%;
 
   &::after {
-    background: radial-gradient(blue 52%, $white 40%);
+    background: radial-gradient($blue-storm 55%, $white 0%);
     border-radius: 50%;
     height: 19px;
-    // opacity: 0;
-    // transform: scale(var(--s, 0.7));
     width: 19px;
-  }
-
-  &:checked {
-    --s: 0.5;
   }
 }
 

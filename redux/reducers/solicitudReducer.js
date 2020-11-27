@@ -28,7 +28,7 @@ const initialState = {
     aceptoTerminosMultas: false,
     usoCredito: null,
     descripcionCredito: '',
-    direccionFiscal: {
+    domicilioFiscal: {
       calle: '',
       numExterior: '',
       numInterior: '',
@@ -39,7 +39,7 @@ const initialState = {
       estado: '',
     },
     esDomilicioComercial: null,
-    domiciolioComercial: {
+    domicilioComercial: {
       calle: '',
       numExterior: '',
       numInterior: '',
