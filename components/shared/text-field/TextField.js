@@ -40,6 +40,7 @@ const TextField = (props) => {
     validation,
     format,
     paste,
+    readonly,
   } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
@@ -109,6 +110,7 @@ const TextField = (props) => {
         onFocus={() => setActive(true)}
         onPaste={onPaste}
         onKeyDown={beforeInput}
+        readOnly={readonly}
       />
 
       {size === 'small' && (
@@ -152,6 +154,7 @@ TextField.propTypes = {
   paste: PropTypes.bool,
   maxlength: PropTypes.number.isRequired,
   format: PropTypes.string,
+  readonly: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -160,6 +163,7 @@ TextField.defaultProps = {
   optional: false,
   validation: false,
   paste: true,
+  readonly: false,
   format: '',
 };
 

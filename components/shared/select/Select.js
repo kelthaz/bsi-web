@@ -103,7 +103,7 @@ const Select = (props) => {
         ))}
       </ul>
       <span className={touched[name] && errors[name] ? styles['help-text-error'] : helpTextStyle}>
-        {touched[name] && errors[name] ? errors[name] : optional && 'Opcional'}&nbsp;
+        {touched[name] && errors[name] && items.length > 0 ? errors[name] : optional && 'Opcional'}&nbsp;
       </span>
     </div>
   );

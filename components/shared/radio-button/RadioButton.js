@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './radio-button.module.scss';
 
 const RadioButton = ({ name, formulario, children, value }) => {
-  const { setFieldTouched, touched, setFieldValue } = formulario;
+  const { setFieldTouched, touched, setFieldValue, values } = formulario;
 
   const handleOnChange = (event) => {
     if (!touched[name]) {
@@ -23,7 +23,8 @@ const RadioButton = ({ name, formulario, children, value }) => {
             className={` ${styles['my-check']}`}
             type="radio"
             value={value}
-            onClick={handleOnChange}
+            onChange={handleOnChange}
+            checked={value === values[name]}
           />
         </div>
         <div>{children}</div>

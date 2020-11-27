@@ -37,8 +37,9 @@ const initialState = {
       municipioAlcaldia: '',
       ciudad: '',
       estado: '',
+      esDomilicioComercial: null,
     },
-    esDomilicioComercial: null,
+
     domicilioComercial: {
       calle: '',
       numExterior: '',
@@ -48,8 +49,9 @@ const initialState = {
       municipioAlcaldia: '',
       ciudad: '',
       estado: '',
+      domicilioEntrega: null,
     },
-    domicilioEntrega: null,
+
     primerNombreRecibe: '',
     celularRecibe: '',
     segundoNombreRecibe: '',
