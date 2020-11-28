@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+.input-password-config {
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+}
+
 @mixin input-config($color, $size) {
   background-color: transparent;
   border: 0;
@@ -38,6 +43,17 @@
 .input-big {
   @include input-config($gray, 32px);
   border-bottom: 1.5px solid $gray;
+
+  @include media('md') {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+
+.input-big-password {
+  @include input-config($gray, 32px);
+  border-bottom: 1.5px solid $gray;
+  padding-right: 22px;
 
   @include media('md') {
     font-size: 16px;
@@ -108,6 +124,11 @@
   border-bottom: 1.5px solid $red;
 }
 
+.indicador-error-password {
+  border-bottom: 1.5px solid $red;
+  padding-right: 44px;
+}
+
 @mixin help-text-config($color) {
   @include body-3;
   color: $color;
@@ -157,13 +178,23 @@
   }
 }
 
+.status-icon-password {
+  position: absolute;
+  right: 22px;
+  top: 14px;
+
+  @include media('md') {
+    top: 7px;
+  }
+}
+
 @mixin button-password-config($color) {
   background-color: transparent;
   border: 0;
   padding: 0;
   position: absolute;
-  right: 25px;
-  top: 15%;
+  right: 0;
+  top: 14px;
 
   &:focus {
     outline: none;

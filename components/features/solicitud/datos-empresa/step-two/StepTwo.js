@@ -151,7 +151,7 @@ const StepTwo = () => {
       fetchData();
     }
   }, [formularioAuxiliar.values.codigoPostal]);
-  console.log(formularioAuxiliar.isValid, formularioAuxiliar.dirty, formularioAuxiliar.errors);
+
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
