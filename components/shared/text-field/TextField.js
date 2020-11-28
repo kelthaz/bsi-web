@@ -49,15 +49,9 @@ const TextField = (props) => {
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
   const { formatter, changeSelection, changeSelectionFunc } = useFormatter(format);
-  const [typeInput, setTypeInput] = useState(type);
+  const [showText, setShowText] = useState(false);
   const [active, setActive] = useState(false);
   let keyPress = '';
-
-  const handleViewPassword = () => {
-    if (type === 'password') {
-      setTypeInput(typeInput === 'text' ? 'password' : 'text');
-    }
-  };
 
   const beforeInput = (event) => {
     keyPress = event.key;
@@ -90,6 +84,7 @@ const TextField = (props) => {
     }
   };
 
+  const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
   const hasError = () => touched[name] && errors[name];
 
   return (
@@ -97,10 +92,12 @@ const TextField = (props) => {
       <input
         id={name}
         name={name}
-        className={`${inputStyle} ${capitalize ? styles.capitalize : ''} ${
-          hasError() ? styles['indicador-error'] : active && indicadorStyle
+        className={`${type === 'password' ? styles['input-big-password'] : inputStyle} ${
+          capitalize ? styles.capitalize : ''
+        } ${hasError() ? indicadorError : active && indicadorStyle} ${
+          !showText && type === 'password' ? styles['input-password-config'] : ''
         }`}
-        type={typeInput}
+        type={type === 'password' ? 'text' : type}
         onChange={onHandleChange}
         onBlur={onHandleBlur}
         value={values[name]}
@@ -125,17 +122,17 @@ const TextField = (props) => {
       )}
 
       <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
-        {hasError() ? active && errors[name] : active && optional && 'Opcional'}&nbsp;
+        {hasError() ? errors[name] : active && optional && 'Opcional'}&nbsp;
       </span>
+      {type === 'password' && (
+        <button className={styles['button-password-inverted']} type="button" onClick={() => setShowText(!showText)}>
+          {showText ? <SvgShowPassword /> : <SvgHidenPassword />}
+        </button>
+      )}
       {hasError() ? (
-        <div className={styles['status-icon']}>{active && error}</div>
+        <div className={type === 'password' ? styles['status-icon-password'] : styles['status-icon']}>{error}</div>
       ) : (
         validation && <div className={styles['status-icon']}>{active && status}</div>
-      )}
-      {type === 'password' && (
-        <button className={styles['button-password-inverted']} type="button" onClick={handleViewPassword}>
-          {typeInput === 'text' ? <SvgShowPassword /> : <SvgHidenPassword />}
-        </button>
       )}
     </div>
   );
