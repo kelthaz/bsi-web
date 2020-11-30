@@ -70,7 +70,7 @@ const AvisoPrivacidad = (props) => {
               <span>{fechaPublicacion}</span>
             </h4>
             <h4>
-              <span>Fecha de publicación: </span>
+              <span>Fecha de entrada en vigor: </span>
               <br className="only-xs" />
               <span>{fechaEntradaVigor}</span>
             </h4>
