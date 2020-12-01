@@ -24,7 +24,7 @@ parameters:
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
     required: true
-    value: "512Mi"
+    value: "1024Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
