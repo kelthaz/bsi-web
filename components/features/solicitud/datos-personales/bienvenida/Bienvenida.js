@@ -18,6 +18,10 @@ const Bienvenida = () => (
         <div className="py-3">
           <ResultSimulador />
         </div>
+        <p className="body2 color-gray-dark">
+          Si quieres cambiar el monto o las características de tu crédito da clic en “Cambia tu crédito”. Te recordamos
+          que esta será la única ocasión en que podrás modificar el monto.
+        </p>
         <div className="row">
           <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3">
             <div className="center-first-button">

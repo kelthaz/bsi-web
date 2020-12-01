@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 // import Link from 'next/link';
@@ -182,30 +182,13 @@ const Ayuda = () => {
     setOption(opt);
   };
 
-  const [disabled, setDisabled] = useState(false);
-
   const checkedButton = () => {
     if (checked === false) {
       setChecked(true);
     } else {
       setChecked(false);
     }
-    setDisabled(false);
   };
-
-  useEffect(() => {
-    if (
-      formulario.values.name === '' ||
-      formulario.values.email === '' ||
-      formulario.values.phone === '' ||
-      formulario.values.tellUs === '' ||
-      checked === false
-    ) {
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-    }
-  });
 
   return (
     <>
@@ -229,6 +212,7 @@ const Ayuda = () => {
                   capitalize
                   label="Nombre"
                   type="text"
+                  maxlength={60}
                   inverted
                 />
               </div>
@@ -278,7 +262,7 @@ const Ayuda = () => {
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
             <button
-              disabled={!(formulario.isValid && formulario.dirty) || disabled}
+              disabled={!(formulario.isValid && formulario.dirty && checked)}
               type="submit"
               className="btn-small col-12"
             >

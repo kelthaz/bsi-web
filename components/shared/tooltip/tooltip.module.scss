@@ -2,36 +2,47 @@
 @import '../../../styles/scss/modules/mixins';
 
 .tooltip {
-  position: relative;
-
-  .tooltiptext {
-    @include overline;
-    background-color: $white;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    color: $gray;
-    padding: 8px;
-    position: absolute;
-    visibility: hidden;
-    width: 192px;
-    z-index: 1;
-
-    @include media('md') {
-      right: 20px;
-    }
-  }
+  display: inline-block;
 
   &:hover {
-    .tooltiptext {
+    + .tooltiptext {
+      opacity: 1;
       visibility: visible;
     }
   }
 }
 
+.tooltiptext {
+  @include overline;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  color: $gray;
+  opacity: 0;
+  padding: 8px;
+  position: absolute;
+  transition: opacity 0.3s;
+  visibility: hidden;
+  width: 192px;
+  z-index: 1070;
+
+  @include media('md') {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .position-top {
   bottom: 20px;
+
+  @include media('md') {
+    bottom: 30px;
+  }
 }
 
 .position-bottom {
   top: 20px;
+  @include media('md') {
+    bottom: 30px;
+  }
 }

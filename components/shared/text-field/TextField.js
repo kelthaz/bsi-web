@@ -41,6 +41,7 @@ const TextField = (props) => {
     format,
     paste,
     readonly,
+    tabIndex,
   } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
@@ -108,6 +109,7 @@ const TextField = (props) => {
         onPaste={onPaste}
         onKeyDown={beforeInput}
         readOnly={readonly}
+        tabIndex="0"
       />
 
       {size === 'small' && (

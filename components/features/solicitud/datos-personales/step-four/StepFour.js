@@ -40,8 +40,8 @@ const StepFour = () => {
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Perfecto, {datosPersonales.primerNombre}!</h2>
-            <p className="color-dark-gray sub">
-              <span>Ahora, ¿cuál es tu número de teléfono celular y correo electrónico? </span>
+            <p className="color-dark-gray sub position-relative">
+              <span>Ahora, ¿cuál es tu número de teléfono celular y correo electrónico?</span>
               <Tooltip
                 message="Nos servirá para llamarte o enviarte mensajes de texto paradar seguimiento a tu solicitud del crédito."
                 position="bottom"

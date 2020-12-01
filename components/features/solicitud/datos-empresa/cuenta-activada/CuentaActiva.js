@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { aceptarTerminos } from '../../../../../constants/errors';
+import { campoRequerido, declararTerminos } from '../../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import SvgDocumentos from '../../../../svgs/SvgDocumentos';
 import SvgOferta from '../../../../svgs/SvgOferta';
 import SvgPersona from '../../../../svgs/SvgPersona';
-import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
+import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
 
 const CuentaActiva = () => {
   const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
@@ -22,7 +22,7 @@ const CuentaActiva = () => {
       aceptoTerminosMultas: datosEmpresa.aceptoTerminosMultas,
     },
     validationSchema: Yup.object({
-      aceptoTerminosMultas: Yup.boolean().oneOf([true], aceptarTerminos),
+      aceptoTerminosMultas: Yup.boolean().oneOf([true], declararTerminos).required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -46,32 +46,32 @@ const CuentaActiva = () => {
             <h2 className="color-blue-storm">¡Cuenta activada!</h2>
             <p className="body2 color-gray-dark">
               Gracias Alejandra, ahora vamos a comenzar el segundo bloque de datos de tu empresa para conocerla un poco
-              mejor, ¿te parece?
+              mejor, ¿Te parece?
             </p>
 
             <div className="row no-gutters">
               <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div className="card-simple-transparent-img disabled-card-svg">
                   <SvgPersona />
-                  <p>Datos Personales</p>
+                  <p className="py-md-3 py-xs-0">Datos personales</p>
                 </div>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div className="card-simple-transparent-img">
-                  <SvgPersonaMoral />
-                  <p>Datos de tu empresa</p>
+                  <SvgPersonaMoralColor />
+                  <p className="py-md-3 py-xs-0">Datos de tu empresa</p>
                 </div>
               </div>
               <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                 <div className="card-simple-transparent-img disabled-card-svg">
                   <SvgOferta />
-                  <p>Oferta</p>
+                  <p className="py-md-3 py-xs-0">Oferta</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div className="card-simple-transparent-img disabled-card-svg">
                   <SvgDocumentos />
-                  <p>Documentación</p>
+                  <p className="py-md-3 py-xs-0">Documentación</p>
                 </div>
               </div>
             </div>
@@ -80,8 +80,8 @@ const CuentaActiva = () => {
               <div className="card-simple-blue-light list-onboarding">
                 <ul>
                   <li>Tu CURP</li>
-                  <li>
-                    Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer) </span>
+                  <li className="position-relative">
+                    Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
                     <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
                   </li>
                   <li>Cuenta bancaria BanCoppel</li>
@@ -100,7 +100,11 @@ const CuentaActiva = () => {
               </CheckTextBox>
             </div>
             <div className="flex-column-start-config">
-              <button type="submit" className="btn-medium flex-align-self-center my-3" disabled={!formulario.isValid}>
+              <button
+                type="submit"
+                className="btn-medium flex-align-self-center my-3"
+                disabled={!formulario.values.aceptoTerminosMultas}
+              >
                 ¡Comencemos!
               </button>
             </div>

@@ -26,6 +26,13 @@ const simuladorReducer = (state = initialState, { type, payload }) => {
         ...state,
         ...payload,
       };
+
+    case types.UPDATE_SHOW_RESULT_SIMULADOR:
+      return {
+        ...state,
+        ...payload,
+      };
+
     default:
       return state;
   }

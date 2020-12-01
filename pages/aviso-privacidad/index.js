@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
+import SvgSeptimaTextura from '../../components/svgs/texturas/SvgSeptimaTextura';
 import styles from './aviso-privacidad.module.scss';
 
 const AvisoPrivacidad = (props) => {
@@ -55,6 +56,9 @@ const AvisoPrivacidad = (props) => {
 
   return (
     <>
+      <div className="svg-textura-center-top">
+        <SvgSeptimaTextura />
+      </div>
       <SimpleBanner>
         <div className="row justify-content-center mx-0">
           <div className={`col-auto my-auto text-center ${styles['banner-title']}`}>

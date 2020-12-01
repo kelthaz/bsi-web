@@ -21,6 +21,7 @@ const TextArea = (props) => {
           maxLength={maxlength}
           autoComplete="off"
           placeholder={label}
+          tabIndex="0"
         >
           {values[name]}
         </textarea>

@@ -9,6 +9,7 @@ import Title from '../../components/shared/titles/title/Title';
 import VideoSelector from '../../components/shared/video-selector/VideoSelector';
 import Modal from '../../components/shared/modal/Modal';
 import BannerRequisitos from '../../components/core/banners/BannerRequisitos';
+import Tooltip from '../../components/shared/tooltip/Tooltip';
 
 const Check = () => <img src="/check.svg" alt="Check" />;
 
@@ -150,75 +151,117 @@ export const Requisitos = () => {
   ];
 
   const documentosSolicitante = [
-    { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
-    { documento: 'RFC con el que facturas', fisica: true, moral: true },
-    { documento: 'CURP', fisica: true, moral: true },
-    { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: true, moral: true },
-    { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: true, moral: true },
+    { documento: 'Ser representante legal de la empresa', info: null, fisica: false, moral: true },
+    { documento: 'RFC con el que facturas', info: null, fisica: true, moral: true },
+    { documento: 'CURP', info: null, fisica: true, moral: true },
     {
-      documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>,
+      documento: 'e.firma y CIEC',
+      info: {
+        msg:
+          'Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas.',
+        type: 'tooltip',
+      },
+      fisica: true,
+      moral: true,
+    },
+    {
+      documento: 'Un obligado solidario',
+      info: {
+        msg:
+          'Es la persona física o moral que fungirá como responsable de cumplir con las obligaciones del acreditado en caso de que éste no cumpla con sus responsabilidades del crédito.',
+        type: 'tooltip',
+      },
+      fisica: true,
+      moral: true,
+    },
+    {
+      documento: 'Acta de matrimonio e INE de tu pareja',
+      info: { msg: 'Estos documentos te servirán como respaldo en caso de estar casado.', type: 'tooltip' },
       fisica: true,
       moral: false,
     },
-    { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
+    { documento: 'Acta constitutiva más reciente', info: null, fisica: false, moral: true },
     {
-      documento: (
-        <>
-          <span>Poderes notariales</span>
-          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
-        </>
-      ),
+      documento: 'Poderes notariales',
+
+      info: {
+        msg: 'Sólo si no vienen en tu acta constitutiva',
+        type: 'text',
+      },
       fisica: false,
       moral: true,
     },
     {
-      documento: (
-        <>
-          <span>Escrituras con reformas</span>
-          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
-        </>
-      ),
+      documento: 'Escrituras con reformas',
+      info: { msg: 'Sólo si no vienen en tu acta constitutiva', type: 'text' },
       fisica: false,
       moral: true,
     },
     { documento: 'Comprobante de domicilio', fisica: true, moral: true },
-    { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
+    {
+      documento: 'INE',
+      info: { msg: 'Identificación oficial vigente (INE o IFE).', type: 'tooltip' },
+      fisica: true,
+      moral: true,
+    },
   ];
 
   const documentosObligado = [
-    { documento: 'Ser representante legal de la empresa', fisica: false, moral: true },
-    { documento: 'RFC con el que facturas', fisica: true, moral: true },
-    { documento: 'CURP', fisica: true, moral: true },
-    { documento: <span className={styles.info}>e.firma y CIEC</span>, fisica: false, moral: true },
-    { documento: <span className={styles.info}>Un obligado solidario</span>, fisica: false, moral: false },
+    { documento: 'Ser representante legal de la empresa', info: null, fisica: false, moral: true },
+    { documento: 'RFC con el que facturas', info: null, fisica: true, moral: true },
+    { documento: 'CURP', info: null, fisica: true, moral: true },
     {
-      documento: <span className={styles.info}>Acta de matrimonio e INE de tu pareja</span>,
+      documento: 'e.firma y CIEC',
+      info: {
+        msg:
+          'Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas.',
+        type: 'tooltip',
+      },
+      fisica: false,
+      moral: true,
+    },
+    {
+      documento: 'Un obligado solidario',
+      info: {
+        msg:
+          'Es la persona física o moral que fungirá como responsable de cumplir con las obligaciones del acreditado en caso de que éste no cumpla con sus responsabilidades del crédito.',
+        type: 'tooltip',
+      },
+      fisica: false,
+      moral: false,
+    },
+    {
+      documento: 'Acta de matrimonio e INE de tu pareja',
+      info: {
+        msg: 'Estos documentos te servirán como respaldo en caso de estar casado.',
+        type: 'tooltip',
+      },
       fisica: true,
       moral: false,
     },
-    { documento: 'Acta constitutiva más reciente', fisica: false, moral: true },
+    { documento: 'Acta constitutiva más reciente', info: null, fisica: false, moral: true },
     {
-      documento: (
-        <>
-          <span>Poderes notariales</span>
-          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
-        </>
-      ),
+      documento: 'Poderes notariales',
+      info: { msg: 'Sólo si no vienen en tu acta constitutiva', type: 'text' },
       fisica: false,
       moral: true,
     },
     {
-      documento: (
-        <>
-          <span>Escrituras con reformas</span>
-          <span className={styles['text-info']}>Sólo si no vienen en tu acta constitutiva</span>
-        </>
-      ),
+      documento: 'Escrituras con reformas',
+      info: {
+        msg: 'Sólo si no vienen en tu acta constitutiva',
+        type: 'text',
+      },
       fisica: false,
       moral: true,
     },
-    { documento: 'Comprobante de domicilio', fisica: true, moral: true },
-    { documento: <span className={styles.info}>INE</span>, fisica: true, moral: true },
+    { documento: 'Comprobante de domicilio', info: null, fisica: true, moral: true },
+    {
+      documento: 'INE',
+      info: { msg: 'Identificación oficial vigente (INE o IFE).', type: 'tooltip' },
+      fisica: true,
+      moral: true,
+    },
   ];
 
   return (
@@ -293,10 +336,10 @@ export const Requisitos = () => {
                       <table>
                         <thead>
                           <tr>
-                            <th width="40%">
+                            <th width="50%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center align-top" width="25%">
+                            <th className="text-center align-top" width="30%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
                               <h4 className="text-primary">Persona Física con Actividad Empresarial</h4>
                             </th>
@@ -307,9 +350,17 @@ export const Requisitos = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {documentosSolicitante.map(({ documento, fisica, moral }) => (
+                          {documentosSolicitante.map(({ documento, info, fisica, moral }) => (
                             <tr key={documento}>
-                              <td className="body2">{documento}</td>
+                              <td className="body2 position-relative">
+                                {documento}{' '}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </td>
                               <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
                               <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
                             </tr>
@@ -326,26 +377,42 @@ export const Requisitos = () => {
                         icon="arrow"
                       >
                         <ul className={styles['requirement-list']}>
-                          {documentosSolicitante.map(({ documento, fisica }) => (
-                            <li className="d-flex" key={documento}>
+                          {documentosSolicitante.map(({ documento, info, fisica }) => (
+                            <li className="row" key={documento}>
                               <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
-                              <div className="col-10 px-0 body3">{documento}</div>
+                              <div className="col-10 px-0 body2">
+                                {documento}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </div>
                             </li>
                           ))}
                         </ul>
                       </Accordion>
                       <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
-                          {documentosSolicitante.map(({ documento, moral }) => (
-                            <li className="d-flex" key={documento}>
+                          {documentosSolicitante.map(({ documento, info, moral }) => (
+                            <li className="row" key={documento}>
                               <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
-                              <div className="col-10 px-0 body3">{documento}</div>
+                              <div className="col-10 px-0 body2">
+                                {documento}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </div>
                             </li>
                           ))}
                         </ul>
                       </Accordion>
                     </div>
-                    <div className={`d-flex my-5 mx-auto col-auto body2 ${styles['note-light']} ${styles['w-800']}`}>
+                    <div className={`d-flex my-4 mx-auto col-auto body2 ${styles['note-light']} ${styles['w-800']}`}>
                       <img
                         className="d-none d-md-block pr-3"
                         src="/requisitos/natural-person-note.svg"
@@ -373,12 +440,12 @@ export const Requisitos = () => {
                     {/* Desktop */}
                     <div className="d-none d-md-block px-4 pt-4">
                       <table>
-                        <thead className="pb-2">
+                        <thead>
                           <tr>
-                            <th width="45%">
+                            <th width="50%">
                               <h4 className="text-primary">Documentos para cargar</h4>
                             </th>
-                            <th className="text-center align-top" width="40%">
+                            <th className="text-center align-top" width="30%">
                               <img src="/requisitos/PFAE.svg" alt="PFAE" />
                               <h4 className="text-primary">Persona Física</h4>
                             </th>
@@ -389,9 +456,17 @@ export const Requisitos = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {documentosObligado.map(({ documento, fisica, moral }) => (
+                          {documentosObligado.map(({ documento, info, fisica, moral }) => (
                             <tr key={documento}>
-                              <td className="body2">{documento}</td>
+                              <td className="body2 position-relative">
+                                {documento}{' '}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </td>
                               <td className="body2 text-center">{fisica ? <Check /> : '-'}</td>
                               <td className="body2 text-center">{moral ? <Check /> : '-'}</td>
                             </tr>
@@ -403,20 +478,36 @@ export const Requisitos = () => {
                     <div className="d-block d-md-none mx-3">
                       <Accordion title="Persona Física" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
-                          {documentosObligado.map(({ documento, fisica }) => (
-                            <li className="d-flex" key={documento}>
+                          {documentosObligado.map(({ documento, info, fisica }) => (
+                            <li className="row" key={documento}>
                               <div className="col-2 px-0 text-center my-auto">{fisica ? <Check /> : '-'}</div>
-                              <div className="col-10 px-0 body3">{documento}</div>
+                              <div className="col-10 px-0 body2">
+                                {documento}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </div>
                             </li>
                           ))}
                         </ul>
                       </Accordion>
                       <Accordion title="Persona Moral" expanded={false} color="blue" icon="arrow">
                         <ul className={styles['requirement-list']}>
-                          {documentosObligado.map(({ documento, moral }) => (
-                            <li className="d-flex" key={documento}>
+                          {documentosObligado.map(({ documento, info, moral }) => (
+                            <li className="row" key={documento}>
                               <div className="col-2 px-0 text-center my-auto">{moral ? <Check /> : '-'}</div>
-                              <div className="col-10 px-0 body3">{documento}</div>
+                              <div className="col-10 px-0 body2">
+                                {documento}
+                                {info &&
+                                  (info.type === 'tooltip' ? (
+                                    <Tooltip message={info.msg} />
+                                  ) : (
+                                    <span className={styles['text-info']}>{info.msg}</span>
+                                  ))}
+                              </div>
                             </li>
                           ))}
                         </ul>

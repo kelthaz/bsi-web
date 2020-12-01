@@ -171,6 +171,12 @@ export const Home = ({ catalogo }) => {
                 <div className={`${styles.circle6} ${styles.circle}`}>
                   <span className="button color-white">Tasas atractivas</span>
                 </div>
+                <div className={`${styles.circle7} ${styles.circle} `}>
+                  <span className="button color-white">Proceso ágil</span>
+                </div>
+                <div className={`${styles.circle8} ${styles.circle}`}>
+                  <span className="button color-white">Sin tanto papeleo</span>
+                </div>
                 <img className={styles['img-position']} src="/home-company-image.png" alt="women" />
               </div>
             </div>
