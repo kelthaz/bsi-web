@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { numeroInvalido, correoInvalido, campoRequerido } from '../../../../../constants/errors';
+import { correo } from '../../../../../constants/regex';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
@@ -20,7 +21,7 @@ const StepFour = () => {
     },
     validationSchema: Yup.object({
       celular: Yup.string().trim().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
-      correo: Yup.string().trim().email(correoInvalido).required(campoRequerido),
+      correo: Yup.string().trim().email(correoInvalido).matches(correo, correoInvalido).required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(

@@ -127,6 +127,7 @@ const StepFive = () => {
               <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
                 <TextField
                   name="contrasena"
+                  paste={false}
                   format="passwordspace"
                   maxlength={20}
                   formulario={formulario}
@@ -147,6 +148,7 @@ const StepFive = () => {
                 <TextField
                   name="confirmarContrasena"
                   format="passwordspace"
+                  paste={false}
                   formulario={formulario}
                   maxlength={20}
                   type="password"
