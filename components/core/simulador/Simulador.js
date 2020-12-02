@@ -2,19 +2,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import Select from '../../shared/select/Select';
 import Slider from '../../shared/slider/Slider';
 import styles from './simulador.module.scss';
 import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
 import { seleccionOpcion } from '../../../constants/errors';
-import { startUpdateDataSimulador } from '../../../redux/actions/simulador';
+import { startUpdateDataSimulador, updateShowResultSimulador } from '../../../redux/actions/simulador';
 import SvgPrimeraTextura from '../../svgs/texturas/SvgPrimeraTextura';
 import SvgSegundaTextura from '../../svgs/texturas/SvgSegundaTextura';
 import changeSelectModel from '../../../helpers/changeSelectModel';
+import offsetTop from '../../../helpers/offsetTop';
 
 const Simulador = ({ handleSimular, catalogo }) => {
   const dispatch = useDispatch();
   const {
+    showResult,
     dataSimulador: { monto, plazo, periodicidad, aniosEmpresa, ventasAnio },
   } = useSelector((state) => state.simulador);
 
@@ -77,6 +80,12 @@ const Simulador = ({ handleSimular, catalogo }) => {
     },
   });
 
+  useEffect(() => {
+    if (showResult) {
+      dispatch(updateShowResultSimulador());
+    }
+  }, [formulario.values]);
+
   return (
     <div className={styles['simulador-container']}>
       <div className="svg-textura-left-bottom">
@@ -119,7 +128,7 @@ const Simulador = ({ handleSimular, catalogo }) => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <p className="sub color-blue-storm text-left">¿Cómo quieres que sean tus plazos?</p>
+                <p className="sub color-blue-storm text-left">¿Cómo quieres los plazos de tu pago?</p>
                 <div className="row no-gutters ">
                   <div className="col-lg-5 col-md-6 d-none d-md-block pt-2">
                     <span className="input2 color-gray">Quiero plazos</span>
@@ -211,7 +220,7 @@ Simulador.propTypes = {
 };
 
 Simulador.defaultProps = {
-  handleSimular: () => {},
+  handleSimular: () => window.scrollTo(0, offsetTop('result-simulador')),
 };
 
 export default Simulador;

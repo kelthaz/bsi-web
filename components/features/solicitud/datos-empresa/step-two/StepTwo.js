@@ -157,8 +157,8 @@ const StepTwo = () => {
       <div className="contedor-solicitud">
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className="color-dark-gray sub">
-              Por favor compártenos tu domicilio fiscal.&nbsp;
+            <p className="color-dark-gray sub position-relative">
+              Por favor compártenos tu domicilio fiscal.
               <Tooltip message="Es el domicilio con el que tu negocio está registrado ante el SAT." />
             </p>
 
@@ -256,8 +256,8 @@ const StepTwo = () => {
 
             {formulario.values.esDomilicioComercial === 'no' && (
               <>
-                <p className="color-dark-gray sub">
-                  Compártenos tu domicilio comercial..&nbsp;
+                <p className="color-dark-gray sub position-relative">
+                  Compártenos tu domicilio comercial..
                   <Tooltip message="Necesitamos que nos confirmes tu dirección para recibír tu token físico." />
                 </p>
                 <div className="row no-gutters">
@@ -375,9 +375,14 @@ const StepTwo = () => {
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
                 disabled={
-                  !(formulario.isValid && formulario.dirty) &&
-                  formulario.values.esDomilicioComercial === 'no' &&
-                  !(formularioAuxiliar.isValid && formularioAuxiliar.dirty)
+                  formulario.values.esDomilicioComercial === 'no'
+                    ? !(
+                        formulario.isValid &&
+                        formulario.dirty &&
+                        formularioAuxiliar.isValid &&
+                        formularioAuxiliar.dirty
+                      )
+                    : !(formulario.isValid && formulario.dirty)
                 }
               />
             </div>

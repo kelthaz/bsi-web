@@ -1,7 +1,7 @@
 import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
 import * as types from '../types/types';
 
-export const updateDataSimulador = (dataSimulador) => ({
+const updateDataSimulador = (dataSimulador) => ({
   type: types.UPDATE_DATA_SIMULADOR,
   payload: dataSimulador,
 });
@@ -26,3 +26,8 @@ export const startUpdateDataSimulador = (dataSimulador, handleSimular) => async 
 
   handleSimular();
 };
+
+export const updateShowResultSimulador = () => ({
+  type: types.UPDATE_SHOW_RESULT_SIMULADOR,
+  payload: { showResult: false },
+});

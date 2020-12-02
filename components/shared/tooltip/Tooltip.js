@@ -4,14 +4,17 @@ import styles from './tooltip.module.scss';
 import SvgInformation from '../../svgs/SvgInformation';
 
 const Tooltip = ({ message, position }) => (
-  <span className={styles.tooltip}>
-    <SvgInformation />
+  <>
+    <span className={styles.tooltip}>
+      &nbsp;
+      <SvgInformation />
+    </span>
     <span
       className={`${styles.tooltiptext} ${position === 'bottom' ? styles['position-bottom'] : styles['position-top']}`}
     >
       {message}
     </span>
-  </span>
+  </>
 );
 
 Tooltip.propTypes = {

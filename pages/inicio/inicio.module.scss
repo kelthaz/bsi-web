@@ -208,11 +208,40 @@
 
 .circle6 {
   background: $blue-morning;
-  left: 80%;
+  left: 78%;
   top: 32%;
 
   @include media('lg') {
     left: 84%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle7 {
+  background: $blue-storm;
+  left: 80%;
+  padding: 10px;
+  top: 57%;
+
+  @include media('lg') {
+    left: 84%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle8 {
+  background: $blue-sky;
+  left: 75%;
+  top: 82%;
+
+  @include media('lg') {
+    left: 75%;
   }
 
   @include media('md') {

@@ -6,9 +6,11 @@ import Step from '../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicitud';
 import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
+import { useEffect, useState } from 'react';
 
 const Solicitud = ({ index, data }) => {
   usePreventWindowUnload();
+  const [showComponent, setShowComponent] = useState(true);
 
   const tabs = [
     { path: 'datos-personales', label: 'Datos personales' },
@@ -17,7 +19,7 @@ const Solicitud = ({ index, data }) => {
     { path: 'documentacion', label: 'Documentación' },
   ];
   const { component: Component, stepNumber } = solicitudRoutes[index];
-  const { push, pathname, query } = useRouter();
+  const { push, pathname, query, events } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
   } = useSelector((state) => state.solicitud);
@@ -28,6 +30,24 @@ const Solicitud = ({ index, data }) => {
       step,
       action: () => push(pathname, path),
     }));
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setShowComponent(false);
+    };
+
+    const handleRouteChangeComplete = () => {
+      setShowComponent(true);
+    };
+
+    events.on('routeChangeStart', handleRouteChange);
+    events.on('routeChangeComplete', handleRouteChangeComplete);
+
+    return () => {
+      events.off('routeChangeStart', handleRouteChange);
+      events.off('routeChangeComplete', handleRouteChangeComplete);
+    };
+  }, []);
 
   return (
     <>
@@ -45,7 +65,7 @@ const Solicitud = ({ index, data }) => {
         valipStep={parseInt(stepRedux, 10)}
         steps={steps}
       />
-      <Component {...data} />
+      {showComponent && <Component {...data} />}
       <SvgPatronesSolicitud className="only-lg fixed-left-bottom" />
     </>
   );

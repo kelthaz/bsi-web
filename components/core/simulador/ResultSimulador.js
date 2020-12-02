@@ -36,13 +36,13 @@ const ResultSimulador = () => {
       </div>
 
       <div className="text-left order-xs-4 order-md-5 col-xs-6 col-sm-6 col-md-3 col-lg-3">
-        <h4 className="color-blue-storm">{periodicidad.label}</h4>
+        <h4 className="color-blue-storm">{periodicidad.label.replace('es', '')}</h4>
         <p className="body3 color-gray">Esquema de pago</p>
       </div>
 
       <div className="text-left order-md-7 col-xs-6 col-sm-6 col-md-3 col-lg-3">
         <h4 className="color-blue-storm">{pago}</h4>
-        <p className="body3 color-gray">{periodicidad.label}</p>
+        <p className="body3 color-gray">Pagos {periodicidad.label.toLowerCase()}</p>
       </div>
     </div>
   );

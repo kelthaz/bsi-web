@@ -49,6 +49,9 @@
 }
 
 .only-xs {
+  @include media('lg+') {
+    display: none;
+  }
   @include media('lg') {
     display: none;
   }

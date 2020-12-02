@@ -41,6 +41,7 @@ const TextField = (props) => {
     format,
     paste,
     readonly,
+    disabled,
   } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
@@ -108,12 +109,14 @@ const TextField = (props) => {
         onPaste={onPaste}
         onKeyDown={beforeInput}
         readOnly={readonly}
+        tabIndex="0"
+        disabled={disabled}
       />
 
       {size === 'small' && (
         <label
           htmlFor={name}
-          className={`${labelStyle} ${hasError() ? styles['label-error'] : ''} ${
+          className={`${disabled ? styles['label-disabled'] : labelStyle} ${hasError() ? styles['label-error'] : ''} ${
             values[name] !== '' || active ? styles['label-active'] : ''
           }`}
         >
@@ -152,6 +155,7 @@ TextField.propTypes = {
   maxlength: PropTypes.number.isRequired,
   format: PropTypes.string,
   readonly: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -161,6 +165,7 @@ TextField.defaultProps = {
   validation: false,
   paste: true,
   readonly: false,
+  disabled: false,
   format: '',
 };
 

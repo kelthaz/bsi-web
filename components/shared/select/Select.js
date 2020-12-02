@@ -28,7 +28,7 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue } = props;
+  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue, tabIndex } = props;
   const [
     arrrowStyle,
     selectStyle,
@@ -40,7 +40,7 @@ const Select = (props) => {
   const { values, errors, touched, setFieldValue, setFieldTouched } = formulario;
 
   useEffect(() => {
-    if (defaultValue !== null) {
+    if (!values[name] && defaultValue !== null) {
       setFieldValue(name, items[defaultValue]);
     }
   }, []);
@@ -64,6 +64,7 @@ const Select = (props) => {
         type="button"
         className={`svg-button-input-small ${arrrowStyle} ${toggle ? styles['arrow-active'] : ''}`}
         onClick={() => handleToggle()}
+        tabIndex="-1"
       >
         <SvgChevron />
       </button>
@@ -83,6 +84,9 @@ const Select = (props) => {
         }`}
         onClick={() => !toggle && handleToggle()}
         disabled={disabled}
+        tabIndex="0"
+        // onFocus={() => !toggle && handleToggle()}
+        // onBlur={() => handleToggle()}
       >
         {values[name] ? values[name].label : label}
       </button>
@@ -96,6 +100,7 @@ const Select = (props) => {
               }`}
               type="button"
               onClick={() => handleItem(itemMap)}
+              tabIndex="-1"
             >
               {itemMap.label}
             </button>

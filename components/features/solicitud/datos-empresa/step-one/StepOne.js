@@ -61,13 +61,13 @@ const StepOne = () => {
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <h2 className="color-blue-storm">Platícanos...</h2>
-            <p className="color-dark-gray sub">
-              ¿Para qué usarás tu crédito?{' '}
+            <p className="color-dark-gray sub position-relative">
+              ¿Para qué usarás tu crédito?
               <Tooltip message="Esto nos ayudará a entender un poco más el objetivo por el cual estás solicitando tu crédito. " />
             </p>
 
             <div className="row my-3">
-              <div className="col-lg-6 col-md-6 col-sm-12 pl-lg-5 pl-md-5 col-xs-12 mb-sm-2 mb-xs-2">
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-lg-5 pl-md-5  mb-sm-2 mb-xs-2">
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
@@ -82,7 +82,7 @@ const StepOne = () => {
                   <p className="px-md-5 px-lg-5">{capitalTrabajo.label}</p>
                 </button>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5 mb-sm-2 mb-xs-2">
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${

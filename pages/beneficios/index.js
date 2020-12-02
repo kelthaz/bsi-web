@@ -60,7 +60,7 @@ const Beneficios = () => (
         </div>
         <div className={`col-lg-6 col-md-6 ${styles['section-content']}`}>
           <div className="mb-md-4">
-            <TitleSection orden="03" linea1="Cuenta y" linea2="banca en línea" />
+            <TitleSection orden="03" linea1="banca" linea2="en línea" />
           </div>
           <div>
             <div className={`body2 ${styles['text-box']}`}>
