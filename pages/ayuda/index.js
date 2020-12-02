@@ -70,7 +70,7 @@ const Ayuda = () => {
       phone: Yup.string()
         .matches(/[0-9]+$/, ';')
         .trim()
-        .min(10, numeroInvalido)
+        .min(12, numeroInvalido)
         .max(12, numeroInvalido)
         .required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
