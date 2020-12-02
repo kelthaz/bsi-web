@@ -23,8 +23,13 @@ const StepNine = () => {
   const { initialValues } = {
     initialValues: {
       nombreSolicitante: datosPersonales.primerNombre,
-      rfc: datosEmpresa.curp,
-      numeroExtension: false,
+      rfc: datosPersonales.rfc,
+      colonia: datosEmpresa.domicilioFiscal.colonia,
+      numeroExtension: datosEmpresa.domicilioFiscal.numExterior,
+      numeroInterior: datosEmpresa.domicilioFiscal.numInterior,
+      estado: datosEmpresa.domicilioFiscal.estado,
+      codigoPostal: datosEmpresa.domicilioFiscal.codigoPostal,
+      alcaldia: datosEmpresa.domicilioFiscal.municipioAlcaldia,
     },
   };
   const formulario = useFormik({
@@ -134,17 +139,18 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
                       <TextField
                         name="rfc"
-                        value={datosPersonales.rfc}
                         maxlength={12}
                         formulario={formulario}
                         type="text"
                         size="small"
                         label="RFC"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -155,6 +161,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Fecha de Nacimiento/Constitución:"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -165,26 +172,29 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Domicilio"
+                        disabled
                       />
                     </div>
                     <div className="col-3">
                       <TextField
-                        name="numeroExtension"
+                        name="numeroExterior"
                         maxlength={12}
                         formulario={formulario}
                         type="text"
                         size="small"
                         label="No. Ext."
+                        disabled
                       />
                     </div>
                     <div className="col-3">
                       <TextField
-                        name="numeroInterno"
+                        name="numeroInterior"
                         maxlength={12}
                         formulario={formulario}
                         type="text"
                         size="small"
                         label="No. Int."
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -195,6 +205,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Colonia"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -205,6 +216,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Alcaldía/Municipio"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -215,6 +227,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Código Postal"
+                        disabled
                       />
                     </div>
                     <div className="col-6">
@@ -225,6 +238,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Estado"
+                        disabled
                       />
                     </div>
                     <div className="col-12">
@@ -236,6 +250,7 @@ const StepNine = () => {
                         label="Teléfono"
                         format="phone"
                         maxlength={12}
+                        disabled
                       />
                     </div>
                     <div className="col-12">
@@ -246,6 +261,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Representante legal (solo Persona Moral):"
+                        disabled
                       />
                     </div>
                     <div className="col-12">
@@ -256,6 +272,7 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Fecha en que se autoriza la consulta:"
+                        disabled
                       />
                     </div>
                   </div>
