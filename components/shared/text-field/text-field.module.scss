@@ -18,13 +18,13 @@
   display: block;
   font-family: $futura-book;
   font-size: $size;
-
+  height: 50px;
   width: 100%;
 
   @if $size == 32px {
     padding: 0 12px;
   } @else {
-    padding: 8px 12px;
+    padding: 24px 12px 8px;
   }
 
   &:focus {
@@ -37,6 +37,13 @@
 
   &::placeholder {
     color: $gray-light;
+  }
+
+  &:disabled {
+    background-color: $blue-light;
+    border-bottom: 1.5px solid $gray-light;
+    color: $gray-light;
+    cursor: not-allowed;
   }
 }
 
@@ -72,7 +79,7 @@
 }
 
 .input-small {
-  @include input-config($white, 16px);
+  @include input-config($gray-dark, 16px);
   border-bottom: 1.5px solid $gray;
 }
 
@@ -85,9 +92,10 @@
   @include body-2;
   color: $color;
   left: 12px;
+  margin: 0;
   pointer-events: none;
   position: absolute;
-  top: 10px;
+  top: 12px;
   transition: 0.2s ease all;
 }
 
@@ -103,9 +111,13 @@
   @include config-label($red);
 }
 
+.label-disabled {
+  @include config-label($gray-light);
+}
+
 .label-active {
   font-size: 12px !important;
-  top: -16px;
+  top: 4px;
 }
 
 .capitalize {
