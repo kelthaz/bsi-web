@@ -49,12 +49,10 @@ const StepNine = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/agradecimiento');
     },
   });
-  console.log(datosEmpresa);
-  console.log(datosPersonales);
 
   return (
-    <div className="contedor-fixed">
-      <div className={`contedor-solicitud ${styles['bg-white']}`}>
+    <div className="contedor-fixed-tab">
+      <div className="contedor-solicitud">
         <div className="container p-0 mt-4">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
@@ -154,8 +152,8 @@ const StepNine = () => {
                 <p className="d-none d-md-block sub color-blue-storm">
                   AUTORIZACIÓN PARA SOLICITAR REPORTES DE CRÉDITO PERSONAS FISICAS / PERSONAS MORALES
                 </p>
-                <div className="row">
-                  <a className="mt-1 sub link d-block d-sm-none" onClick={() => setOpenModalMobile(true)}>
+                <div className="row d-block d-sm-none">
+                  <a className="mt-1 sub link " onClick={() => setOpenModalMobile(true)}>
                     ¿Cuál es el proceso de autorización?
                   </a>
                   <Tooltip message="." position="top" />
@@ -178,7 +176,7 @@ const StepNine = () => {
                     caso durante el tiempo que mantengamos relación jurídica.
                   </p>
                   <div className="row">
-                    <div className="col-md-12 col-xs-12">
+                    <div className="col-md-12 col-xs-12 d-none d-md-block">
                       <TextField
                         name="nombreSolicitante"
                         value={datosPersonales.primerNombre}
@@ -187,6 +185,18 @@ const StepNine = () => {
                         type="text"
                         size="small"
                         label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
+                        disabled
+                      />
+                    </div>
+                    <div className="col-md-12 col-xs-12 d-block d-sm-none">
+                      <TextField
+                        name="nombreSolicitante"
+                        value={datosPersonales.primerNombre}
+                        maxlength={18}
+                        formulario={formulario}
+                        type="text"
+                        size="small"
+                        label="Nombre del Solicitante"
                         disabled
                       />
                     </div>
