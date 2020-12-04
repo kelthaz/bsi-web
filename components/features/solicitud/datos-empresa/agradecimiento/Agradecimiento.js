@@ -9,8 +9,8 @@ const Agradecimientos = () => {
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
         <div className="container">
-          <div className="row mt-xs-5 mt-md-0">
-            <div className="col-md-10 mt-xs-5 mt-md-0">
+          <div className="row">
+            <div className="col-md-10">
               <div className="d-block d-md-none col-md-2 col-xs-12 text-xs-center mt-4">
                 <SvgOffer />
               </div>
