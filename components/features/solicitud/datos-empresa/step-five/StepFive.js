@@ -15,6 +15,7 @@ const StepFive = () => {
   const items = [
     { value: 1, label: '40 a 60' },
     { value: 2, label: '60 a 80' },
+    { value: 3, label: 'Más de 60' },
   ];
 
   const { initialValues, validationSchema } = {
