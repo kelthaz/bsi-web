@@ -190,7 +190,7 @@ const CreditoPyme = () => {
             <h2>¿Y DESPUÉS?</h2>
             <p>
               Cuando termines tu solicitud, nuestro equipo revisará tus documentos y nos pondremos en contacto contigo
-              para que recibas a un ejecutivo en tu negocio, firmes tu contrato y finalmente ¡depositarte tu dinero
+              para que recibas a un ejecutivo en tu negocio, firmes tu contrato y finalmente depositarte tu dinero.
             </p>
           </div>
           <div className="row px-lg-5">

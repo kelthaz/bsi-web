@@ -15,7 +15,7 @@ import { longitudMaxima, campoRequerido, longitudMinima, aceptarTerminos } from 
 
 const StepEight = () => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -76,12 +76,12 @@ const StepEight = () => {
         <div className="contedor-solicitud">
           <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              <p className="color-dark-gray sub">
-                Primero necesitamos que nos autorices acceso con tu clave CIEC.
-                <br />
-                <a className="sub link m-0" onClick={() => setOpenWhyCiec(true)}>
+              <p className="color-dark-gray sub ">
+                Primero necesitamos que nos autorices acceso con tu clave CIEC
+                {datosPersonales.tipoPersona === 'Persona Moral' && ' de la empresa'}.
+                <button type="button" className="btn-link sub" onClick={() => setOpenWhyCiec(true)}>
                   ¿Por qué te pedimos esto?
-                </a>
+                </button>
               </p>
 
               <div className="row no-gutters">
@@ -108,7 +108,7 @@ const StepEight = () => {
                       Tus datos estarán protegidos.
                       <br />
                       Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
-                      <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                      <a className="link " target="_blank" rel="noreferrer">
                         clic aquí
                       </a>
                       .
@@ -121,7 +121,7 @@ const StepEight = () => {
                     <CheckTextBox name="terminosCiec" formulario={formulario}>
                       <p className="body3 color-gray mb-0">
                         Acepto{' '}
-                        <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                        <a className="link" target="_blank" rel="noreferrer">
                           términos y condiciones
                         </a>{' '}
                         de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios

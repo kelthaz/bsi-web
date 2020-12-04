@@ -158,6 +158,13 @@ button {
   @include config-link($white, $blue-morning);
 }
 
+.btn-link {
+  @include config-link($blue-sky, $blue-night);
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
 .btn-link-arrow-right {
   @include config-link($blue-sky, $blue-night);
   align-items: center;

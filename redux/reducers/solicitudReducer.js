@@ -2,7 +2,7 @@ import * as types from '../types/types';
 
 const initialState = {
   currentStep: {
-    tab: 'datos-personales',
+    tab: 'datos-empresa',
     step: '1',
   },
   datosPersonales: {
@@ -10,7 +10,7 @@ const initialState = {
     segundoNombre: '',
     primerApellido: '',
     segundoApellido: '',
-    tipoPersona: '',
+    tipoPersona: 'Persona Moral',
     razonSocial: '',
     tipoSociedad: null,
     nombreEmpresa: '',
