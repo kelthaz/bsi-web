@@ -39,26 +39,24 @@ const SearchBox = ({ unmount }) => {
       <div className="d-flex justify-content-center my-5">
         <div className="col-xs-11 col-md-7 col-lg-4 p-0">
           <h2 className={`text-center ${styles.text}`}>¿Cómo te podemos ayudar?</h2>
-          <TextFieldSB
-            value={value}
-            onChange={handler}
-          />
-          <ul className={styles['select-items']}>
-            {data.length > 0 && (
+          <TextFieldSB value={value} onChange={handler} />
+          {data.length > 0 && (
+            <ul className={styles['select-items']}>
               <li>
                 <button disabled className={styles.item} type="button">
                   Principales sugerencias de reporte
                 </button>
               </li>
-            )}
-            {data.map((item) => (
-              <li key={item.text}>
-                <button className={styles.item} type="button" onClick={() => redirect(item)}>
-                  {item.text}
-                </button>
-              </li>
-            ))}
-          </ul>
+
+              {data.map((item) => (
+                <li key={item.text}>
+                  <button className={styles.item} type="button" onClick={() => redirect(item)}>
+                    {item.text}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

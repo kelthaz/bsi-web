@@ -85,8 +85,8 @@ const Ayuda = () => {
         .required(seleccionOpcion),
       check: Yup.boolean().required(campoRequerido),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: () => {
+      // alert(JSON.stringify(values, null, 2));
     },
   });
 
