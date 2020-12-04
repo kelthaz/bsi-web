@@ -64,7 +64,7 @@ const StepFour = () => {
   });
 
   return (
-    <div className="contedor-fixed">
+    <div className="contedor-fixed-tab">
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>

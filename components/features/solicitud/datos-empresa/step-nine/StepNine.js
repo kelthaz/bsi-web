@@ -49,12 +49,10 @@ const StepNine = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/agradecimiento');
     },
   });
-  console.log(datosEmpresa);
-  console.log(datosPersonales);
 
   return (
-    <div className="contedor-fixed">
-      <div className={`contedor-solicitud ${styles['bg-white']}`}>
+    <div className="contedor-fixed-tab">
+      <div className="contedor-solicitud">
         <div className="container p-0 mt-4">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
