@@ -44,7 +44,7 @@ const StepFour = () => {
             <p className="color-dark-gray sub position-relative">
               <span>Ahora, ¿cuál es tu número de teléfono celular y correo electrónico?</span>
               <Tooltip
-                message="Nos servirá para llamarte o enviarte mensajes de texto paradar seguimiento a tu solicitud del crédito."
+                message="Nos servirá para llamarte o enviarte mensajes de texto para dar seguimiento a tu solicitud del crédito."
                 position="bottom"
               />
             </p>

@@ -6,10 +6,10 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { campoRequerido, numeroInvalido } from '../../../../../constants/errors';
+import { campoRequerido, longitudMaxima, numeroInvalido } from '../../../../../constants/errors';
 
 const StepThree = () => {
-  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -21,9 +21,11 @@ const StepThree = () => {
       segundoApellidoRecibe: datosEmpresa.segundoApellidoRecibe,
       celularRecibe: datosEmpresa.celularRecibe,
     },
-    validationSchema: Yup.object({
-      primerNombreRecibe: Yup.string().required(campoRequerido),
-      primerApellidoRecibe: Yup.string().required(campoRequerido),
+    validationSchema: Yup.object().shape({
+      primerNombreRecibe: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+      segundoNombreRecibe: Yup.string().max(60, longitudMaxima),
+      primerApellidoRecibe: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+      segundoApellidoRecibe: Yup.string().max(60, longitudMaxima),
       celularRecibe: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
     }),
   };
@@ -120,7 +122,7 @@ const StepThree = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={!(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

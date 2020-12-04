@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { campoRequerido, declararTerminos } from '../../../../../constants/errors';
+import { declararTerminos } from '../../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
@@ -22,7 +22,7 @@ const CuentaActiva = () => {
       aceptoTerminosMultas: datosEmpresa.aceptoTerminosMultas,
     },
     validationSchema: Yup.object({
-      aceptoTerminosMultas: Yup.boolean().oneOf([true], declararTerminos).required(campoRequerido),
+      aceptoTerminosMultas: Yup.boolean().oneOf([true], declararTerminos),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -45,8 +45,8 @@ const CuentaActiva = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Cuenta activada!</h2>
             <p className="body2 color-gray-dark">
-              Gracias Alejandra, ahora vamos a comenzar el segundo bloque de datos de tu empresa para conocerla un poco
-              mejor, ¿Te parece?
+              {`${datosPersonales.primerNombre}, ahora vamos a comenzar el segundo bloque de datos de tu empresa para
+              conocerla un poco mejor, ¿Te parece?`}
             </p>
 
             <div className="row no-gutters">
@@ -84,7 +84,7 @@ const CuentaActiva = () => {
                     Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
                     <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
                   </li>
-                  <li>Cuenta bancaria BanCoppel</li>
+                  {datosPersonales.tipoPersona === 'Persona Moral' && <li>Cuenta bancaria BanCoppel</li>}
                 </ul>
               </div>
             </div>

@@ -6,6 +6,7 @@ export const lowerUpperCase = () => 'Debe tener mínimo 1 letra mayúscula y 1 m
 export const noConsecutives = () => 'Sin números consecutivos';
 export const minOneNumber = () => 'Debe tener mínimo 1 número';
 export const seleccionOpcion = () => 'Selecciona una opción';
+export const ingreseOpcion = () => 'Ingrese una opción';
 export const numeroInvalido = () => 'Número telefónico inválido';
 export const correoInvalido = () => 'Correo inválido';
 export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acentos';

@@ -61,6 +61,7 @@
   @include input-config($gray, 32px);
   border-bottom: 1.5px solid $gray;
   padding-right: 22px;
+  user-select: none;
 
   @include media('md') {
     font-size: 16px;

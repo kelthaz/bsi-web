@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../constants/errors';
-import styles from '../../../../shared/validate-password/validate-password.module.scss';
+import Tooltip from '../../../../shared/tooltip/Tooltip';
 
 const StepSix = () => {
-  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -42,7 +42,13 @@ const StepSix = () => {
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className={`color-dark-gray sub ${styles.info}`}>Ahora dinos, ¿Cuál es tu CURP?</p>
+            <p className="color-dark-gray sub position-relative">
+              {datosPersonales.tipoPersona === 'Persona Moral'
+                ? 'Ahora dinos, ¿cuál es el CURP del Representante Legal'
+                : 'Ahora dinos, ¿Cuál es tu CURP?'}
+              <Tooltip message="Es la Clave Única de Registro de Población (CURP) que consta de 18 caracteres. " />
+            </p>
+
             <div className="row no-gutters">
               <div className="col-lg-3 col-md-1 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Mi CURP es </p>

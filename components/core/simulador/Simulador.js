@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Select from '../../shared/select/Select';
 import Slider from '../../shared/slider/Slider';
 import styles from './simulador.module.scss';
@@ -20,9 +20,9 @@ const Simulador = ({ handleSimular, catalogo }) => {
     showResult,
     dataSimulador: { monto, plazo, periodicidad, aniosEmpresa, ventasAnio },
   } = useSelector((state) => state.simulador);
+  const isFirstRun = useRef(true);
 
   const [montoItems, plazoItems, periodicidadItems, antiguedadItems, ventaItems] = catalogo;
-
   const [min, max, step] = montoItems.parametrosCatalogo;
   const itemsPaymentMonths = changeSelectModel('valor', 'descripcion', plazoItems.parametrosCatalogo);
   const itemsPaymentTimes = changeSelectModel('valor', 'descripcion', periodicidadItems.parametrosCatalogo);
@@ -81,6 +81,10 @@ const Simulador = ({ handleSimular, catalogo }) => {
   });
 
   useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
     if (showResult) {
       dispatch(updateShowResultSimulador());
     }

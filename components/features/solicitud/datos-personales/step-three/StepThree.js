@@ -29,13 +29,33 @@ const StepThree = ({ sectores }) => {
   ];
 
   const { initialValues, validationSchema } = {
+    initialValues: {},
+    validationSchema: {},
+  };
+
+  if (datosPersonales.tipoPersona === 'Persona Moral') {
+    initialValues.razonSocial = datosPersonales.nombreEmpresa;
+    initialValues.tipoSociedad = datosPersonales.tipoSociedad;
+    validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
+    validationSchema.tipoSociedad = Yup.object()
+      .shape({
+        value: Yup.string(),
+        label: Yup.string(),
+      })
+      .nullable()
+      .required(seleccionOpcion);
+  }
+
+  const formulario = useFormik({
     initialValues: {
+      ...initialValues,
       nombreEmpresa: datosPersonales.nombreEmpresa,
       sector: datosPersonales.sector,
       giro: datosPersonales.giro,
       descripcionEmpresa: datosPersonales.descripcionEmpresa,
     },
-    validationSchema: Yup.object({
+    validationSchema: Yup.object().shape({
+      ...validationSchema,
       nombreEmpresa: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       sector: Yup.object()
         .shape({
@@ -53,18 +73,6 @@ const StepThree = ({ sectores }) => {
         .required(seleccionOpcion),
       descripcionEmpresa: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
     }),
-  };
-
-  if (datosPersonales.tipoPersona === 'Persona Moral') {
-    initialValues.razonSocial = datosPersonales.nombreEmpresa;
-    initialValues.tipoSociedad = datosPersonales.tipoSociedad;
-    validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
-    validationSchema.tipoSociedad = Yup.string();
-  }
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({

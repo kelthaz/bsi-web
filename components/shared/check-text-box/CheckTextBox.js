@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './check-text-box.module.scss';
 
 const CheckTextBox = ({ name, formulario, children }) => {
-  const { values, setFieldTouched, handleChange, errors, touched } = formulario;
-
-  const handleOnChange = (event) => {
-    if (!touched[name]) {
-      setFieldTouched(name, true);
-    }
-    handleChange(event);
-  };
+  const { values, setFieldValue, errors } = formulario;
 
   return (
     <>
@@ -21,8 +14,8 @@ const CheckTextBox = ({ name, formulario, children }) => {
             name={name}
             className={` ${styles['my-check']}`}
             type="checkbox"
-            onChange={handleOnChange}
-            checked={values[name]}
+            onChange={() => setFieldValue(name, !values[name])}
+            checked={!!values[name]}
           />
           <label htmlFor={name} className={`${styles.label}`}>
             {' '}
@@ -30,7 +23,7 @@ const CheckTextBox = ({ name, formulario, children }) => {
         </div>
         <div>{children}</div>
       </div>
-      <span className="color-red">{errors[name] && touched[name] ? errors[name] : ''}&nbsp;</span>
+      <span className="color-red">{errors[name] && values[name] !== null ? errors[name] : ''}&nbsp;</span>
     </>
   );
 };

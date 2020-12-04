@@ -2,6 +2,7 @@
 @import '../../../styles/scss/modules/mixins';
 
 .search-box {
+  @include scroll-config(10px);
   background-color: $blue-storm;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -27,6 +28,7 @@
 }
 
 .select-items {
+  @include scroll-config-firefox;
   background-color: $white;
   border-radius: 0 0 16px 16px;
   border-radius: 0 0 16px 16px;
@@ -34,8 +36,8 @@
   left: 0;
   list-style-type: none;
   margin: 0;
-  max-height: 100vh;
-  overflow: hidden;
+  max-height: 200px;
+  overflow: scroll;
   padding: 0;
   position: relative;
   right: 0;

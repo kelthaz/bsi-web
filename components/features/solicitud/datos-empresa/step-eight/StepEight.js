@@ -11,12 +11,7 @@ import styles from './StepEight.module.scss';
 import SvgPrivacidad from '../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 
-import {
-  longitudMaxima,
-  campoRequerido,
-  longitudMinima,
-  aceptarTerminos,
-} from '../../../../../constants/errors';
+import { longitudMaxima, campoRequerido, longitudMinima, aceptarTerminos } from '../../../../../constants/errors';
 
 const StepEight = () => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
@@ -28,17 +23,14 @@ const StepEight = () => {
   const { initialValues, validationSchema } = {
     initialValues: {
       ciec: datosEmpresa.ciec,
-      firmaElectronica: false
+      terminosCiec: datosEmpresa.terminosCiec,
     },
     validationSchema: Yup.object({
-      ciec: Yup.string()
-        .max(20, longitudMaxima)
-        .min(7, longitudMinima)
-        .required(campoRequerido),
-        firmaElectronica: Yup.boolean()
-        .oneOf([true], aceptarTerminos)
+      ciec: Yup.string().max(20, longitudMaxima).min(7, longitudMinima).required(campoRequerido),
+      terminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
   };
+
   const formulario = useFormik({
     initialValues,
     validationSchema,
@@ -48,7 +40,7 @@ const StepEight = () => {
           currentStep: { tab: 'datos-empresa', step: '8' },
           datosEmpresa: {
             ...datosEmpresa,
-            ...values
+            ...values,
           },
         })
       );
@@ -57,90 +49,101 @@ const StepEight = () => {
   });
 
   return (
-    <div className="contedor-fixed">
-      <div className="contedor-solicitud">
-        <div className="container p-0">
-          <Modal openModal={openWhyCiec} setOpenModal={setOpenWhyCiec}>
-            <div className={styles['modal-container']}>
-              <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
-              <p className="dark-gray body2">
-                Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos
-                tus credenciales del SAT para que firmes la autorización y poder consultarlo.
+    <>
+      <Modal openModal={openWhyCiec} setOpenModal={setOpenWhyCiec}>
+        <div className={styles['modal-container']}>
+          <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
+          <p className="dark-gray body2">
+            Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus credenciales
+            del SAT para que firmes la autorización y poder consultarlo.
+          </p>
+          <p className="sub color-gray">
+            <SvgPrivacidad /> Tus datos estarán protegidos.
+          </p>
+          <iframe
+            className={styles['modal-video']}
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/r7HHOYZQb4M"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="¿Qué es la CIEC y por qué solicitamos esto?"
+          />
+        </div>
+      </Modal>
+      <div className="contedor-fixed">
+        <div className="contedor-solicitud">
+          <div className="container p-0">
+            <form onSubmit={formulario.handleSubmit} noValidate>
+              <p className="color-dark-gray sub">
+                Primero necesitamos que nos autorices acceso con tu clave CIEC.
+                <br />
+                <a className="sub link m-0" onClick={() => setOpenWhyCiec(true)}>
+                  ¿Por qué te pedimos esto?
+                </a>
               </p>
-              <p className="sub color-gray">
-                <SvgPrivacidad /> Tus datos estarán protegidos.
-              </p>
-              <iframe
-                className={styles['modal-video']}
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/r7HHOYZQb4M"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="¿Qué es la CIEC y por qué solicitamos esto?"
-               />
-            </div>
-          </Modal>
-          <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className="color-dark-gray sub">
-              Primero necesitamos que nos autorices acceso con tu clave CIEC.<br />
-              <a className="sub link" onClick={() => setOpenWhyCiec(true)} role="button" tabIndex="0">¿Por qué te pedimos esto?</a>
-            </p>
 
-            <div className="row no-gutters">
-              <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
-                <p className="input color-gray">Mi CIEC es</p>
+              <div className="row no-gutters">
+                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                  <p className="input color-gray">Mi CIEC es</p>
+                </div>
+                <div className="col-lg-6 col-md-6 col-xs-12 ">
+                  <TextField
+                    name="ciec"
+                    format="passwordspace"
+                    maxlength={20}
+                    formulario={formulario}
+                    type="password"
+                    size="big"
+                    label="**********"
+                  />
+                </div>
               </div>
-              <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
-                <TextField
-                  name="ciec"
-                  format="passwordspace"
-                  maxlength={20}
-                  formulario={formulario}
-                  type="password"
-                  size="big"
-                  label="**********"
+              <div className="row no-gutters">
+                <div className="card-simple">
+                  <div className="row">
+                    <SvgPrivacidad />
+                    <p className="col-11 body2">
+                      Tus datos estarán protegidos.
+                      <br />
+                      Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
+                      <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                        clic aquí
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </div>
+
+                <div className="card-simple-gray">
+                  <div className="row">
+                    <CheckTextBox name="terminosCiec" formulario={formulario}>
+                      <p className="body3 color-gray mb-0">
+                        Acepto{' '}
+                        <a className="btn-link-blue" target="_blank" rel="noreferrer">
+                          términos y condiciones
+                        </a>{' '}
+                        de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios
+                        electrónicos.
+                      </p>
+                    </CheckTextBox>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+                <button
+                  type="submit"
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                  disabled={!(formulario.isValid && formulario.dirty)}
                 />
               </div>
-
-              <div className="card-simple">
-                <div className="row">
-                  <SvgPrivacidad />
-                  <p className="col-11">
-                    Tus datos estarán protegidos.<br />
-                    Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
-                    <a className="btn-link-blue" target="_blank" rel="noreferrer">
-                      clic aquí
-                    </a>.
-                  </p>
-                </div>
-              </div>
-
-              <div className="card-simple-gray">
-                <div className="row">
-                  <CheckTextBox name="firmaElectronica" formulario={formulario}>
-                    <p className="body3 color-gray mb-0">
-                      Acepto <a className="btn-link-blue" target="_blank" rel="noreferrer">
-                        términos y condiciones
-                      </a> de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.
-                    </p>
-                  </CheckTextBox>
-                </div>
-              </div>
-            </div>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
-              <button
-                type="submit"
-                className="cicle-button-blue my-3"
-                aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
-              />
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
