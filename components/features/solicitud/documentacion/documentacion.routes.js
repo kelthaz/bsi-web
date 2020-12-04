@@ -11,7 +11,7 @@ import StepThree from './StepThree';
 import StepTwo from './StepTwo';
 import UltimaEtapa from './UltimaEtapa';
 
-const datosEmpresaRoutes = [
+const documentacionRoutes = [
   {
     tab: 'documentacion',
     step: 'ultima-etapa',
@@ -110,4 +110,4 @@ const datosEmpresaRoutes = [
   },
 ];
 
-export default datosEmpresaRoutes;
+export default documentacionRoutes;
