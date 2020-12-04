@@ -5,15 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import SvgLegalex from '../../../../svgs/SvgLegalex';
 import styles from './StepNine.module.scss';
 import SvgNoGuardamosNada from '../../../../svgs/icons-cards/SvgNoGuardamosNada';
+import SvgFirmaElectronica from '../../../../svgs/icons-cards/SvgFirmaElectronica';
 import Modal from '../../../../shared/modal/Modal';
 import SvgBuroRevision from '../../../../svgs/SvgBuroRevision';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import TextField from '../../../../shared/text-field/TextField';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import { aceptarTerminos } from '../../../../../constants/errors';
+import Tooltip from '../../../../shared/tooltip/Tooltip';
 
 const StepNine = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
+  const [openModalMobile, setOpenModalMobile] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const router = useRouter();
@@ -49,8 +51,8 @@ const StepNine = () => {
   });
 
   return (
-    <div className="contedor-fixed">
-      <div className={`contedor-solicitud ${styles['bg-white']}`}>
+    <div className="contedor-fixed-tab">
+      <div className="contedor-solicitud">
         <div className="container p-0 mt-4">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
@@ -73,9 +75,46 @@ const StepNine = () => {
                 </div>
               </div>
             </Modal>
+            <Modal openModal={openModalMobile} setOpenModal={setOpenModalMobile}>
+              <div className={styles['modal-container']}>
+                <span className="sub color-blue-storm ">Proceso de autorización</span>
+                <div className="row mt-3 card-white text-md-center ">
+                  <div className="mr-2">
+                    <img src="/buro.png" alt="Buro de crédito" />
+                  </div>
+                  <div className="mt-2">
+                    <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
+                    <p className="color-gray body3">Después de la consulta no guardaremos tus archivos</p>
+                  </div>
+                </div>
+                <div className="row mt-4 card-white text-md-center">
+                  <div>
+                    <SvgFirmaElectronica />
+                  </div>
+                  <div>
+                    <h4 className="color-blue-storm sub">Firma electrónica de documentos</h4>
+                    <p className="color-gray body3">
+                      Usa tu e.firma
+                      <br />
+                      <a className="body3 link">¿Por qué te pedimos esto?</a>
+                    </p>
+                  </div>
+                </div>
+                <div className="row  mt-3 text-md-center ">
+                  <div className="mr-2">
+                    <SvgNoGuardamosNada />
+                  </div>
+                  <div>
+                    <h4 className="color-blue-storm sub pb-auto">No guardamos nada</h4>
+                    <p className="color-gray body3">Después de la consulta no guardaremos tus archivos</p>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+
             <h4 className="color-blue-storm">Autorización para la consulta de Buró de Crédito</h4>
             <div className="row justify-content-between">
-              <div className={`card-white text-md-center ${styles['icon-card']}`}>
+              <div className={` d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
                 <div className="container-svg-card">
                   <img src="/buro.png" alt="Buro de crédito" />
                 </div>
@@ -84,7 +123,7 @@ const StepNine = () => {
                   <p className="color-gray body3">Esto para conocer un poco más sobre ti</p>
                 </div>
               </div>
-              <div className={`card-white text-md-center ${styles['icon-card']}`}>
+              <div className={`d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
                 <div className="container-svg-card">
                   <SvgLegalex />
                 </div>
@@ -97,7 +136,7 @@ const StepNine = () => {
                   </p>
                 </div>
               </div>
-              <div className={`card-white text-md-center ${styles['icon-card']}`}>
+              <div className={`d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
                 <div className="container-svg-card">
                   <SvgNoGuardamosNada />
                 </div>
@@ -110,9 +149,16 @@ const StepNine = () => {
 
             <div className={styles['scrollable-container']}>
               <div>
-                <p className="sub color-blue-storm">
+                <p className="d-none d-md-block sub color-blue-storm">
                   AUTORIZACIÓN PARA SOLICITAR REPORTES DE CRÉDITO PERSONAS FISICAS / PERSONAS MORALES
                 </p>
+                <div className="row d-block d-sm-none">
+                  <a className="mt-1 sub link " onClick={() => setOpenModalMobile(true)}>
+                    ¿Cuál es el proceso de autorización?
+                  </a>
+                  <Tooltip message="." position="top" />
+                </div>
+                <p className="mt-5 d-block d-sm-none sub color-blue-storm">Contrato de Revisión de Buró de Crédito</p>
                 <div className="body2">
                   <p className="mb-4">
                     Por este conducto autorizo expresamente a BanCoppel, S.A., Institución de Banca Múltiple, para que
@@ -130,7 +176,7 @@ const StepNine = () => {
                     caso durante el tiempo que mantengamos relación jurídica.
                   </p>
                   <div className="row">
-                    <div className="col-12">
+                    <div className="col-md-12 col-xs-12 d-none d-md-block">
                       <TextField
                         name="nombreSolicitante"
                         value={datosPersonales.primerNombre}
@@ -142,7 +188,19 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-12 col-xs-12 d-block d-sm-none">
+                      <TextField
+                        name="nombreSolicitante"
+                        value={datosPersonales.primerNombre}
+                        maxlength={18}
+                        formulario={formulario}
+                        type="text"
+                        size="small"
+                        label="Nombre del Solicitante"
+                        disabled
+                      />
+                    </div>
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="rfc"
                         maxlength={12}
@@ -153,7 +211,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="fechaNacimiento"
                         maxlength={12}
@@ -164,7 +222,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="domicilio"
                         maxlength={12}
@@ -175,7 +233,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-3">
+                    <div className="col-md-3 col-xs-12">
                       <TextField
                         name="numeroExterior"
                         maxlength={12}
@@ -186,7 +244,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-3">
+                    <div className="col-md-3 col-xs-12">
                       <TextField
                         name="numeroInterior"
                         maxlength={12}
@@ -197,7 +255,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="colonia"
                         maxlength={12}
@@ -208,7 +266,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="alcaldia"
                         maxlength={12}
@@ -219,7 +277,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="codigoPostal"
                         maxlength={12}
@@ -230,7 +288,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-xs-12">
                       <TextField
                         name="estado"
                         maxlength={12}
@@ -241,7 +299,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-12 col-xs-12">
                       <TextField
                         name="telefono"
                         formulario={formulario}
@@ -253,7 +311,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-12 col-xs-12">
                       <TextField
                         name="representanteLegal"
                         maxlength={12}
@@ -264,7 +322,7 @@ const StepNine = () => {
                         disabled
                       />
                     </div>
-                    <div className="col-12">
+                    <div className="col-md-12 col-xs-12">
                       <TextField
                         name="fechaAutorizacion"
                         maxlength={12}
@@ -293,9 +351,7 @@ const StepNine = () => {
 
             <div className="row no-gutters mt-4">
               <CheckTextBox name="firmaElectronica" formulario={formulario}>
-                <p className="body3 color-gray mb-0">
-                  Fimar electronicamente la autorización de consulta de Buro de Crédito.
-                </p>
+                Fimar electronicamente la autorización de consulta de Buro de Crédito.
               </CheckTextBox>
             </div>
             <div className="row no-gutters">

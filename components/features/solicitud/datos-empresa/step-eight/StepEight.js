@@ -72,7 +72,7 @@ const StepEight = () => {
           />
         </div>
       </Modal>
-      <div className="contedor-fixed">
+      <div className="contedor-fixed-tab">
         <div className="contedor-solicitud">
           <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
@@ -108,7 +108,7 @@ const StepEight = () => {
                       Tus datos estarán protegidos.
                       <br />
                       Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
-                      <a className="link " target="_blank" rel="noreferrer">
+                      <a className="sub link" target="_blank" rel="noreferrer">
                         clic aquí
                       </a>
                       .
@@ -119,9 +119,9 @@ const StepEight = () => {
                 <div className="card-simple-gray">
                   <div className="row">
                     <CheckTextBox name="terminosCiec" formulario={formulario}>
-                      <p className="body3 color-gray mb-0">
+                      <p className=" color-gray mb-0">
                         Acepto{' '}
-                        <a className="link" target="_blank" rel="noreferrer">
+                        <a className="sub link" target="_blank" rel="noreferrer">
                           términos y condiciones
                         </a>{' '}
                         de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios
