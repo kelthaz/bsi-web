@@ -33,7 +33,7 @@ const TextField = (props) => {
     maxlength,
     capitalize,
     label,
-    type,
+    type: typeInput,
     size,
     inverted,
     optional,
@@ -44,18 +44,24 @@ const TextField = (props) => {
     disabled,
   } = props;
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { handleChange, values, handleBlur, errors, touched, setFieldTouched } = formulario;
+  const { handleChange, values, handleBlur, errors, touched, setFieldTouched, setFieldValue } = formulario;
+
+  const [type, setType] = useState(typeInput);
 
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
   const { formatter, changeSelection, changeSelectionFunc } = useFormatter(format);
-  const [showText, setShowText] = useState(false);
   const [active, setActive] = useState(false);
+
   let keyPress = '';
+  let pasteCurrent = false;
 
   const beforeInput = (event) => {
-    keyPress = event.key;
+    // if (!pasteCurrent && event.data.length === 2) {
+    //   event.preventDefault();
+    // }
+    // setFieldValue(name, event.data);
   };
 
   const onHandleChange = (event) => {
@@ -64,12 +70,15 @@ const TextField = (props) => {
     }
     const { selectionStart, selectionEnd } = changeSelectionFunc(event, keyPress);
 
-    event.target.value = formatter(event.target.value.trim());
+    event.target.value = formatter(event.target.value.trimStart());
     handleChange(event);
 
     if (changeSelection) {
       event.target.setSelectionRange(selectionStart, selectionEnd);
     }
+
+    keyPress = '';
+    pasteCurrent = false;
   };
 
   const onHandleBlur = (event) => {
@@ -81,7 +90,7 @@ const TextField = (props) => {
     if (!paste) {
       event.preventDefault();
     } else {
-      onHandleChange(event);
+      pasteCurrent = true;
     }
   };
 
@@ -95,22 +104,28 @@ const TextField = (props) => {
         name={name}
         className={`${type === 'password' ? styles['input-big-password'] : inputStyle} ${
           capitalize ? styles.capitalize : ''
-        } ${hasError() ? indicadorError : active && indicadorStyle} ${
-          !showText && type === 'password' ? styles['input-password-config'] : ''
-        }`}
-        type={type === 'password' ? 'text' : type}
+        } ${hasError() ? indicadorError : active && indicadorStyle} `}
+        type={type}
         onChange={onHandleChange}
-        onBlur={onHandleBlur}
+        onBlur={(event) => {
+          onHandleBlur(event);
+          setFieldValue(name, values[name].trim());
+        }}
         value={values[name]}
         maxLength={maxlength}
         autoComplete="off"
         placeholder={size === 'big' ? label : ''}
-        onFocus={() => setActive(true)}
+        onFocus={() => {
+          setActive(true);
+        }}
         onPaste={onPaste}
-        onKeyDown={beforeInput}
+        onKeyDown={(event) => {
+          keyPress = event.key;
+        }}
         readOnly={readonly}
         tabIndex="0"
         disabled={disabled}
+        onBeforeInput={beforeInput}
       />
 
       {size === 'small' && (
@@ -127,13 +142,17 @@ const TextField = (props) => {
       <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
         {hasError() ? errors[name] : active && optional && 'Opcional'}&nbsp;
       </span>
-      {type === 'password' && (
-        <button className={styles['button-password-inverted']} type="button" onClick={() => setShowText(!showText)}>
-          {showText ? <SvgShowPassword /> : <SvgHidenPassword />}
+      {typeInput === 'password' && (
+        <button
+          className={styles['button-password-inverted']}
+          type="button"
+          onClick={() => setType(type === 'password' ? 'text' : 'password')}
+        >
+          {type === 'text' ? <SvgShowPassword /> : <SvgHidenPassword />}
         </button>
       )}
       {hasError() ? (
-        <div className={type === 'password' ? styles['status-icon-password'] : styles['status-icon']}>{error}</div>
+        <div className={typeInput === 'password' ? styles['status-icon-password'] : styles['status-icon']}>{error}</div>
       ) : (
         validation && <div className={styles['status-icon']}>{active && status}</div>
       )}

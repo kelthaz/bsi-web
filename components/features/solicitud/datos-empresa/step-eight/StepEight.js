@@ -23,11 +23,11 @@ const StepEight = () => {
   const { initialValues, validationSchema } = {
     initialValues: {
       ciec: datosEmpresa.ciec,
-      terminosCiec: datosEmpresa.terminosCiec,
+      autorizoTerminosCiec: datosEmpresa.autorizoTerminosCiec,
     },
     validationSchema: Yup.object({
       ciec: Yup.string().max(20, longitudMaxima).min(7, longitudMinima).required(campoRequerido),
-      terminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
+      autorizoTerminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
   };
 
@@ -118,7 +118,7 @@ const StepEight = () => {
 
                 <div className="card-simple-gray">
                   <div className="row">
-                    <CheckTextBox name="terminosCiec" formulario={formulario}>
+                    <CheckTextBox name="autorizoTerminosCiec" formulario={formulario}>
                       <p className=" color-gray mb-0">
                         Acepto{' '}
                         <a className="sub link" target="_blank" rel="noreferrer">

@@ -350,12 +350,12 @@ const StepNine = () => {
             </div>
 
             <div className="row no-gutters mt-4">
-              <CheckTextBox name="firmaElectronica" formulario={formulario}>
+              <CheckTextBox name="autorizacionFirmaElectronica" formulario={formulario}>
                 Fimar electronicamente la autorización de consulta de Buro de Crédito.
               </CheckTextBox>
             </div>
             <div className="row no-gutters">
-              <CheckTextBox name="autorizacion" formulario={formulario}>
+              <CheckTextBox name="autorizacionConsultaBancoppel" formulario={formulario}>
                 <p className="body3 color-gray mb-0">
                   Autorizo a partir de este momento a BanCoppel a consultar mis antecedentes crediticios ante las
                   Sociedades de Información Crediticia que estime conveniente y durante el tiempo que mantengamos

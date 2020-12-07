@@ -154,13 +154,13 @@ export const Home = ({ catalogo }) => {
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div className={styles['container-info-img']}>
                 <div className={`${styles.circle1} ${styles.circle}`}>
-                  <span className="button color-white">Cuenta y banca en línea</span>
+                  <span className="button color-white">Banca en línea</span>
                 </div>
                 <div className={`${styles.circle2} ${styles.circle}`}>
                   <span className="button color-white">Apoyo constante</span>
                 </div>
                 <div className={`${styles.circle3} ${styles.circle}`}>
-                  <span className="button color-white">Proceso digital</span>
+                  <span className="button color-white">Crédito digital</span>
                 </div>
                 <div className={`${styles.circle4} ${styles.circle}`}>
                   <span className="button color-white">Flujo de operación</span>
