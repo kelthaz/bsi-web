@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import SvgOk from '../../../../svgs/SvgOk';
 
 const Agradecimientos = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
@@ -9,10 +10,10 @@ const Agradecimientos = () => {
     <div className="contedor-fixed">
       <div className="contedor-solicitud ">
         <div className="container">
-          <div className="row mt-xs-5 mt-md-0">
-            <div className="col-md-10 mt-xs-5 mt-md-0">
+          <div className="row">
+            <div className="col-md-10">
               <div className="d-block d-md-none col-md-2 col-xs-12 text-xs-center mt-4">
-                <img src="/ok.svg" alt="Imagen del banner" />
+                <SvgOk />
               </div>
               <h2 className="text-xs-center text-md-left color-blue-storm mt-5">
                 ¡Gracias, {datosPersonales.primerNombre}!
@@ -22,7 +23,7 @@ const Agradecimientos = () => {
               </p>
             </div>
             <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center mt-4">
-              <img src="/ok.svg" alt="Imagen del banner" />
+              <SvgOk />
             </div>
             <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-empresa/cuenta-activa">
               <button className="btn-medium" type="submit" aria-label="Avanzar">
