@@ -1,10 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './text-area.module.scss';
+import useFormatter from '../../../hooks/useFormatter';
 
 const TextArea = (props) => {
-  const { name, formulario, label, optional, maxlength } = props;
-  const { handleChange, values, handleBlur, errors, touched } = formulario;
+  const { name, formulario, label, optional, maxlength, format } = props;
+  const { handleChange, values, handleBlur, errors, touched, setFieldTouched, setFieldValue } = formulario;
+
+  const { formatter, changeSelection } = useFormatter(format);
+
+  const beforeInput = (event) => {
+    if (formatter(event.data.trimStart()) === '') {
+      event.preventDefault();
+    }
+  };
+
+  const onHandleChange = (event) => {
+    const { selectionStart, selectionEnd, value } = event.target;
+    const formattedValue = formatter(value.trimStart());
+
+    if (!touched[name] && formattedValue !== values[name]) {
+      setFieldTouched(name, true);
+    }
+
+    event.target.value = formattedValue;
+    handleChange(event);
+
+    if (changeSelection) {
+      const difference = formattedValue.length - value.length;
+      event.target.setSelectionRange(selectionStart + difference, selectionEnd + difference);
+    }
+  };
+
+  const onHandleBlur = (event) => {
+    setFieldValue(name, values[name].trim());
+    handleBlur(event);
+  };
 
   const hasError = () => touched[name] && errors[name];
 
@@ -15,13 +46,14 @@ const TextArea = (props) => {
           id={name}
           name={name}
           className={styles['text-area']}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          onChange={onHandleChange}
+          onBlur={onHandleBlur}
           value={values[name]}
           maxLength={maxlength}
           autoComplete="off"
           placeholder={label}
           tabIndex="0"
+          onBeforeInput={beforeInput}
         >
           {values[name]}
         </textarea>
@@ -38,9 +70,10 @@ const TextArea = (props) => {
 TextArea.propTypes = {
   label: PropTypes.any.isRequired,
   name: PropTypes.string.isRequired,
+  format: PropTypes.string.isRequired,
   formulario: PropTypes.any.isRequired,
+  maxlength: PropTypes.number.isRequired,
   optional: PropTypes.bool,
-  maxlength: PropTypes.number,
 };
 
 TextArea.defaultProps = {

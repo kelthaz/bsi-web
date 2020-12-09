@@ -6,11 +6,6 @@
   width: 100%;
 }
 
-.input-password-config {
-  -webkit-text-security: disc;
-  -moz-text-security: disc;
-}
-
 @mixin input-config($color, $size) {
   background-color: transparent;
   border: 0;
@@ -44,6 +39,11 @@
     border-bottom: 1.5px solid $gray-light;
     color: $gray-light;
     cursor: not-allowed;
+  }
+
+  &::-ms-reveal,
+  &::-ms-clear {
+    display: none;
   }
 }
 
