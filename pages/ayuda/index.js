@@ -17,7 +17,7 @@ import {
   numeroInvalido,
   seleccionOpcion,
 } from '../../constants/errors';
-import { correo } from '../../constants/regex';
+import { regexMail } from '../../constants/regex';
 
 const Ayuda = () => {
   const items = [
@@ -75,7 +75,7 @@ const Ayuda = () => {
         .max(12, numeroInvalido)
         .required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
-      email: Yup.string().trim().matches(correo, correoInvalido).email(correoInvalido).required(campoRequerido),
+      email: Yup.string().trim().matches(regexMail, correoInvalido).email(correoInvalido).required(campoRequerido),
       state: Yup.object()
         .shape({
           value: Yup.string(),

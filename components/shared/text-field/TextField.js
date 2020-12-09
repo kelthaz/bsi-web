@@ -58,9 +58,9 @@ const TextField = (props) => {
   let pasteCurrent = false;
 
   const beforeInput = (event) => {
-    // if (!pasteCurrent && event.data.length === 2) {
-    //   event.preventDefault();
-    // }
+    if (!pasteCurrent && event.data.length === 2) {
+      event.preventDefault();
+    }
     // setFieldValue(name, event.data);
   };
 
