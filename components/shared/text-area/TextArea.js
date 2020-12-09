@@ -10,7 +10,7 @@ const TextArea = (props) => {
   const { formatter, changeSelection } = useFormatter(format);
 
   const beforeInput = (event) => {
-    if (formatter(event.data.trimStart()) === '') {
+    if (formatter(event.data) === '') {
       event.preventDefault();
     }
   };

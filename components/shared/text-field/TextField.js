@@ -57,7 +57,7 @@ const TextField = (props) => {
   let keyPress = '';
 
   const beforeInput = (event) => {
-    if (formatter(event.data.trimStart()) === '') {
+    if (formatter(event.data) === '') {
       event.preventDefault();
     }
   };

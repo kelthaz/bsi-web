@@ -1,5 +1,5 @@
 export const regexLettersSpace = /[^A-Za-zÁÉÍÓÚáéíóúñÑ ]+/g;
-export const regexTextArea = /[^A-Za-zÁÉÍÓÚáéíóúñÑ1234567890 ,.!¡?¿"()'-:;*]+/g;
+export const regexTextArea = /[^A-Za-zÁÉÍÓÚáéíóúñÑ1234567890,.!¡?¿"()'-:; ]+/g;
 export const regexEmail = /[^A-Za-z1234567890@.]+/g;
 
 export const regexUpperAndLowerCase = /^(?=.*[a-z])(?=.*[A-Z])/;
