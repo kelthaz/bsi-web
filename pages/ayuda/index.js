@@ -69,12 +69,7 @@ const Ayuda = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-      phone: Yup.string()
-        .matches(/[0-9]+$/, ';')
-        .trim()
-        .min(12, numeroInvalido)
-        .max(12, numeroInvalido)
-        .required(campoRequerido),
+      phone: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
       email: Yup.string().trim().matches(regexMail, correoInvalido).email(correoInvalido).required(campoRequerido),
       state: Yup.object()
@@ -225,6 +220,7 @@ const Ayuda = () => {
                   size="small"
                   label="Correo electrónico"
                   type="email"
+                  format="email"
                   inverted
                 />
               </div>
