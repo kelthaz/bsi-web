@@ -189,6 +189,7 @@ const StepThree = ({ sectores }) => {
                 maxlength={180}
                 formulario={formulario}
                 label="Platícanos un poco a qué se dedica tu negocio..."
+                format="textArea"
               />
             </div>
 

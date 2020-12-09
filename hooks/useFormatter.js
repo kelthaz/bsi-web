@@ -1,7 +1,9 @@
-import phoneFormatter, { phoneSelectionChange } from '../helpers/phoneFormatter';
+import phoneFormatter from '../helpers/phoneFormatter';
 import uppercaseFormatter from '../helpers/uppercaseFormatter';
 import rfcFormatter from '../helpers/rfcFormatter';
 import passwordSpace from '../helpers/passwordSpace';
+import emailFormatter from '../helpers/emailFormatter';
+import textAreaFormatter from '../helpers/textAreaFormatter';
 
 const defaultSelectionChange = (event) => {
   const { selectionStart, selectionEnd } = event.target;
@@ -14,24 +16,33 @@ const useFormatter = (format) => {
       return {
         formatter: phoneFormatter,
         changeSelection: true,
-        changeSelectionFunc: phoneSelectionChange,
       };
 
     case 'uppercase':
       return {
         formatter: uppercaseFormatter,
         changeSelection: true,
-        changeSelectionFunc: defaultSelectionChange,
       };
 
     case 'rfcformatter':
-      return { formatter: rfcFormatter, changeSelection: true, changeSelectionFunc: defaultSelectionChange };
+      return { formatter: rfcFormatter, changeSelection: true };
 
     case 'passwordspace':
       return {
         formatter: passwordSpace,
         changeSelection: true,
-        changeSelectionFunc: defaultSelectionChange,
+      };
+
+    case 'email':
+      return {
+        formatter: emailFormatter,
+        changeSelection: false,
+      };
+
+    case 'textArea':
+      return {
+        formatter: textAreaFormatter,
+        changeSelection: true,
       };
 
     default:

@@ -106,6 +106,7 @@ const StepOne = () => {
                 maxlength={180}
                 formulario={formulario}
                 label="Platícanos un poco más sobre qué harás con este crédito..."
+                format="textArea"
               />
             </div>
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">

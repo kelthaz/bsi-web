@@ -51,37 +51,38 @@ const TextField = (props) => {
   const error = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
-  const { formatter, changeSelection, changeSelectionFunc } = useFormatter(format);
+  const { formatter, changeSelection } = useFormatter(format);
   const [active, setActive] = useState(false);
 
   let keyPress = '';
-  let pasteCurrent = false;
 
   const beforeInput = (event) => {
-    if (!pasteCurrent && event.data.length === 2) {
+    if (formatter(event.data.trimStart()) === '') {
       event.preventDefault();
     }
-    // setFieldValue(name, event.data);
   };
 
   const onHandleChange = (event) => {
-    if (!touched[name]) {
+    const { selectionStart, selectionEnd, value } = event.target;
+    const formattedValue = formatter(value.trimStart());
+
+    if (!touched[name] && formattedValue !== values[name]) {
       setFieldTouched(name, true);
     }
-    const { selectionStart, selectionEnd } = changeSelectionFunc(event, keyPress);
 
-    event.target.value = formatter(event.target.value.trimStart());
+    event.target.value = formattedValue;
     handleChange(event);
 
     if (changeSelection) {
-      event.target.setSelectionRange(selectionStart, selectionEnd);
+      const difference = keyPress === 'Delete' ? 0 : formattedValue.length - value.length;
+      event.target.setSelectionRange(selectionStart + difference, selectionEnd + difference);
     }
 
     keyPress = '';
-    pasteCurrent = false;
   };
 
   const onHandleBlur = (event) => {
+    setFieldValue(name, values[name].trim());
     handleBlur(event);
     setActive(false);
   };
@@ -89,8 +90,6 @@ const TextField = (props) => {
   const onPaste = (event) => {
     if (!paste) {
       event.preventDefault();
-    } else {
-      pasteCurrent = true;
     }
   };
 
@@ -109,7 +108,6 @@ const TextField = (props) => {
         onChange={onHandleChange}
         onBlur={(event) => {
           onHandleBlur(event);
-          setFieldValue(name, values[name].trim());
         }}
         value={values[name]}
         maxLength={maxlength}

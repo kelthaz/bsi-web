@@ -17,7 +17,6 @@ import {
   numeroInvalido,
   seleccionOpcion,
 } from '../../constants/errors';
-import { regexMail } from '../../constants/regex';
 
 const Ayuda = () => {
   const items = [
@@ -75,7 +74,7 @@ const Ayuda = () => {
         .max(12, numeroInvalido)
         .required(campoRequerido),
       tellUs: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
-      email: Yup.string().trim().matches(regexMail, correoInvalido).email(correoInvalido).required(campoRequerido),
+      email: Yup.string().trim().email(correoInvalido).required(campoRequerido),
       state: Yup.object()
         .shape({
           value: Yup.string(),
@@ -245,7 +244,13 @@ const Ayuda = () => {
             </div>
             <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>
               <div className={`col-12 ${styles['textarea-questions']}`}>
-                <TextArea name="tellUs" formulario={formulario} label="Cuéntanos tus dudas..." maxlength={180} />
+                <TextArea
+                  name="tellUs"
+                  formulario={formulario}
+                  label="Cuéntanos tus dudas..."
+                  maxlength={180}
+                  format="textArea"
+                />
               </div>
             </div>
           </div>
