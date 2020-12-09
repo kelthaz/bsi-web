@@ -13,8 +13,8 @@ const StepFive = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const items = [
-    { value: 1, label: '40 a 60' },
-    { value: 2, label: '60 a 80' },
+    { value: 1, label: '0 a 40' },
+    { value: 2, label: '40 a 60' },
     { value: 3, label: 'Más de 60' },
   ];
 

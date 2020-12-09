@@ -27,11 +27,14 @@ const StepNine = () => {
       nombreSolicitante: datosPersonales.primerNombre,
       rfc: datosPersonales.rfc,
       colonia: datosEmpresa.domicilioFiscal.colonia,
+      telefono: datosEmpresa.celularRecibe,
       numeroExtension: datosEmpresa.domicilioFiscal.numExterior,
       numeroInterior: datosEmpresa.domicilioFiscal.numInterior,
       estado: datosEmpresa.domicilioFiscal.estado,
       codigoPostal: datosEmpresa.domicilioFiscal.codigoPostal,
       alcaldia: datosEmpresa.domicilioFiscal.municipioAlcaldia,
+      representanteLegal: datosEmpresa.primerNombreRecibe,
+      domicilio: datosEmpresa.domicilioFiscal.esDomilicioComercial,
     },
   };
   const formulario = useFormik({
