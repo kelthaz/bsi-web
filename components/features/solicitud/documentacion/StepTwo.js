@@ -9,7 +9,6 @@ import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import TextField from '../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, numeroInvalido, correoInvalido } from '../../../../constants/errors';
-import { regexMail } from '../../../../constants/regex';
 import SvgEnviado from '../../../svgs/SvgEnviado';
 
 const StepTwo = () => {
@@ -32,7 +31,7 @@ const StepTwo = () => {
       segundoNombreDoc: Yup.string().max(60, longitudMaxima),
       primerApellidoDoc: Yup.string().max(60, longitudMaxima).required(campoRequerido),
       segundoApellidoDoc: Yup.string().max(60, longitudMaxima),
-      correoDoc: Yup.string().trim().matches(regexMail, correoInvalido).email(correoInvalido).required(campoRequerido),
+      correoDoc: Yup.string().trim().email(correoInvalido).required(campoRequerido),
       celularDoc: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
     }),
   };
@@ -136,7 +135,14 @@ const StepTwo = () => {
                 <p className="input color-gray">Su correo es</p>
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 pb-sm-3 pb-xs-3">
-                <TextField name="correoDoc" formulario={formulario} size="big" label="Correo@mail.com" type="email" />
+                <TextField
+                  name="correoDoc"
+                  formulario={formulario}
+                  size="big"
+                  label="Correo@mail.com"
+                  type="email"
+                  format="email"
+                />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Su teléfono es</p>
