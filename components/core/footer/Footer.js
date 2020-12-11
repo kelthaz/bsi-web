@@ -1,6 +1,11 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import styles from './footer.module.scss';
 import Accordion from '../../shared/accordion/Accordion';
+import SvgLogoBanCoppelInverted from '../../svgs/logos/SvgLogoBanCoppelInverted';
+import SvgLogoYoutube from '../../svgs/logos/SvgLogoYoutube';
+import SvgLogoFacebook from '../../svgs/logos/SvgLogoFacebook';
+import SvgLogoLinkedLink from '../../svgs/logos/SvgLogoLinkedLink';
 
 const Footer = () => {
   const { pathname } = useRouter();
@@ -19,13 +24,11 @@ const Footer = () => {
     { about: 'Tips de seguridad', link: 'https://www.bancoppel.com/acerca_bancoppel/tips.html' },
   ];
 
-  const copyright = 'Copyright © 2020 BanCoppel S.A. Institución de Banca Múltiple - Todos los derechos reservados';
-
   return (
     !pathname.includes('solicitud') && (
       <footer className={styles.footer}>
         <div className={`${styles['footer-container']} container`}>
-          <img src="/bancoppel-blanco.svg" className="logo" alt="" />
+          <SvgLogoBanCoppelInverted />
 
           <div className={styles['second-content']}>
             <div>
@@ -58,13 +61,13 @@ const Footer = () => {
               <span>EU. y Canadá: 866 2543790</span>
               <div>
                 <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
-                  <img alt="" src="/facebook.svg" />
+                  <SvgLogoFacebook />
                 </a>
                 <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
-                  <img alt="" src="/linkedin.svg" />
+                  <SvgLogoLinkedLink />
                 </a>
                 <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
-                  <img alt="" src="/youtube.svg" />
+                  <SvgLogoYoutube />
                 </a>
               </div>
             </div>
@@ -90,13 +93,13 @@ const Footer = () => {
                 <span>EU. y Canadá: 866 2543790</span>
                 <div>
                   <a target="_blank" rel="noreferrer" href="https://www.facebook.com/BanCoppel/">
-                    <img alt="" src="/facebook.svg" />
+                    <SvgLogoFacebook />
                   </a>
                   <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/bancoppel/">
-                    <img alt="" src="/linkedin.svg" />
+                    <SvgLogoLinkedLink />
                   </a>
                   <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCiLO44Yr96fpdkv-ZN-duqg">
-                    <img alt="" src="/youtube.svg" />
+                    <SvgLogoYoutube />
                   </a>
                 </div>
               </div>
@@ -104,15 +107,27 @@ const Footer = () => {
           </div>
 
           <div className={styles['third-content']}>
-            <img src="/ipab.svg" alt="" />
-            <img src="/bancoppel-vida.svg" alt="" />
-            <img src="/afore.svg" alt="" />
-            <img src="/fintech.svg" alt="" />
-            <img src="/buro.svg" alt="" />
-            <img src="/check-confianza.svg" alt="" />
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/ipab.svg" alt="" width="80" height="50" />
+            </div>
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/bancoppel-vida.svg" alt="" width="130" height="40" />
+            </div>
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/afore.svg" alt="" width="210" height="26" />
+            </div>
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/fintech.svg" alt="" width="50" height="44" />
+            </div>
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/buro.svg" alt="" width="50" height="50" />
+            </div>
+            <div className="m-xs-2 m-sm-0">
+              <Image src="/check-confianza.svg" alt="" width="77" height="34" />
+            </div>
           </div>
 
-          <span>{copyright}</span>
+          <span>Copyright © 2020 BanCoppel S.A. Institución de Banca Múltiple - Todos los derechos reservados</span>
 
           <div className={styles['four-content']}>
             <span>

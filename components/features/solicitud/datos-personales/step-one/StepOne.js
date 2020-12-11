@@ -8,7 +8,7 @@ import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
 
 const StepOne = () => {
-  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const { datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -28,13 +28,12 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '2' },
+          currentStep: { tab: 'datos-personales', step: '2' },
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/2');
     },
-    validateOnMount: true,
   });
 
   return (
@@ -105,7 +104,7 @@ const StepOne = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={!(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

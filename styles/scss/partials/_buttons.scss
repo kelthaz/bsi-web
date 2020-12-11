@@ -5,11 +5,6 @@ button {
   }
 }
 
-%disabled {
-  background-color: $gray-light;
-  color: $white;
-}
-
 %transition-before {
   &::before {
     left: 0;
@@ -42,99 +37,153 @@ button {
   }
 }
 
-@mixin button-background($color: $white, $inverted: false) {
+@mixin button-background($color: $white) {
+  // background-color: transparent;
+  // border: 2px solid $blue-storm;
+  box-sizing: border-box;
+  // color: $blue-storm;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s all ease;
+  z-index: 1;
+
+  &::before {
+    // background-color: $blue-storm;
+    bottom: 0;
+    content: '';
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    transition: 0.5s all ease;
+    z-index: -2;
+  }
+
+  &:hover:enabled {
+    @extend %transition-before;
+  }
+
+  &:focus {
+    @extend %transition-before;
+  }
+
+  &:disabled {
+    background-color: $gray-light;
+    border: 0;
+    color: $white;
+  }
+
   @if $color == $white {
     background-color: transparent;
     border: 2px solid $blue-storm;
-    box-sizing: border-box;
     color: $blue-storm;
-    overflow: hidden;
-    position: relative;
-    transition: 0.5s all ease;
-    z-index: 1;
 
     &::before {
       background-color: $blue-storm;
-      bottom: 0;
-      content: '';
-      left: 50%;
-      opacity: 0;
-      position: absolute;
-      right: 50%;
-      top: 0;
-      transition: 0.5s all ease;
-      z-index: -2;
     }
 
-    @if $inverted {
-      border-color: $white;
+    &:hover:enabled {
       color: $white;
-
-      &:hover {
-        color: $blue-storm;
-      }
-
-      &:focus {
-        color: $blue-storm;
-      }
-
-      &::before {
-        background-color: $white;
-      }
-    } @else {
-      &:hover {
-        color: $white;
-      }
-
-      &:focus {
-        color: $white;
-      }
-    }
-
-    &:hover {
-      @extend %transition-before;
     }
 
     &:focus {
-      @extend %transition-before;
-    }
-  } @else if $color == $blue-storm {
-    background-color: $color;
-    border: 0;
-    color: $white;
-    transition: 0.3s;
-
-    &:hover:enabled {
-      background-color: $blue-night;
-      transform: scale(1.2);
-    }
-
-    &:focus {
-      background-color: $blue-night;
-    }
-
-    &:disabled {
-      @extend %disabled;
-    }
-  } @else {
-    background-color: $color;
-    border: 0;
-    color: $blue-storm;
-    transition: 0.3s;
-
-    &:hover:enabled {
-      background-color: $blue-morning;
-      transform: scale(1.2);
-    }
-
-    &:focus {
-      background-color: $blue-morning;
-    }
-
-    &:disabled {
-      @extend %disabled;
+      color: $white;
     }
   }
+
+  @if $color == $blue-night {
+    background-color: transparent;
+    border: 2px solid $white;
+    color: $white;
+
+    &::before {
+      background-color: $white;
+    }
+
+    &:hover:enabled {
+      color: $blue-night;
+    }
+
+    &:focus {
+      color: $blue-night;
+    }
+  }
+
+  @if $color == $blue-storm {
+    background-color: $blue-storm;
+    border: 0;
+    color: $white;
+
+    &::before {
+      background-color: $blue-night;
+    }
+  }
+
+  @if $color == $yellow-summer {
+    background-color: $yellow-summer;
+    border: 0;
+    color: $blue-night;
+
+    &::before {
+      background-color: $blue-morning;
+    }
+  }
+}
+
+.btn-big {
+  @include button-config(180px);
+  @include button-background($blue-storm);
+}
+
+.btn-big-inverted {
+  @include button-config(180px);
+  @include button-background($yellow-summer);
+}
+
+.btn-medium {
+  @include button-config(150px);
+  @include button-background($blue-storm);
+}
+
+.btn-medium-yellow {
+  @include button-config(150px);
+  @include button-background($yellow-summer);
+}
+
+.btn-small {
+  @include button-config(120px);
+  @include button-background($blue-storm);
+}
+
+.btn-mini {
+  @include button-config(80px, 32px, 8px);
+  @include button-background($blue-storm);
+}
+
+.btn-big-inverted-secondary {
+  @include button-config(180px);
+  @include button-background();
+}
+
+.btn-medium-secondary {
+  @include button-config(150px);
+  @include button-background();
+}
+
+.btn-medium-secondary-inverted {
+  @include button-config(150px);
+  @include button-background($blue-night);
+}
+
+.btn-small-secondary {
+  @include button-config(120px);
+  @include button-background();
+}
+
+.btn-mini-secondary {
+  @include button-config(80px, 32px, 8px);
+  @include button-background();
 }
 
 @mixin config-link($color, $color-hover) {
@@ -268,61 +317,6 @@ button {
   @include config-svg-button-input;
   right: 6px;
   top: 12px;
-}
-
-.btn-big {
-  @include button-config(180px);
-  @include button-background($blue-storm);
-}
-
-.btn-big-inverted {
-  @include button-config(180px);
-  @include button-background($yellow-summer);
-}
-
-.btn-medium {
-  @include button-config(150px);
-  @include button-background($blue-storm);
-}
-
-.btn-medium-yellow {
-  @include button-config(150px);
-  @include button-background($yellow-summer);
-}
-
-.btn-small {
-  @include button-config(120px);
-  @include button-background($blue-storm);
-}
-
-.btn-mini {
-  @include button-config(80px, 32px, 8px);
-  @include button-background($blue-storm);
-}
-
-.btn-big-inverted-secondary {
-  @include button-config(180px);
-  @include button-background();
-}
-
-.btn-medium-secondary {
-  @include button-config(150px);
-  @include button-background();
-}
-
-.btn-medium-secondary-inverted {
-  @include button-config(150px);
-  @include button-background($white, true);
-}
-
-.btn-small-secondary {
-  @include button-config(120px);
-  @include button-background();
-}
-
-.btn-mini-secondary {
-  @include button-config(80px, 32px, 8px);
-  @include button-background();
 }
 
 .center-first-button {
