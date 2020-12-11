@@ -70,7 +70,8 @@ const Beneficios = () => (
               <br />
               <span className="sub color-blue-storm">¿Tienes que ir a una sucursal?</span>
               <br />
-              Contamos con más de 1,150 con el mejor horario de la banca: 365 días del año, de 10:00 am a 8:00 pm.
+              Contamos con más de 1,150 sucursales con el mejor horario de la banca: 365 días del año, de 10:00 am a
+              8:00 pm.
             </div>
           </div>
         </div>
