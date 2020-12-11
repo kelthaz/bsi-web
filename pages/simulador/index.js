@@ -265,7 +265,7 @@ export const PageSimulador = ({ catalogo }) => {
                     <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
                       <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
                         ¿Te gusta este esquema
-                        <span className="d-none d-md-inline">de crédito?</span>
+                        <span className="d-none d-md-inline"> de crédito?</span>
                         <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
                       </p>
                       <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">

@@ -6,6 +6,7 @@ import SvgLogoBanCoppelInverted from '../../svgs/logos/SvgLogoBanCoppelInverted'
 import SvgLogoYoutube from '../../svgs/logos/SvgLogoYoutube';
 import SvgLogoFacebook from '../../svgs/logos/SvgLogoFacebook';
 import SvgLogoLinkedLink from '../../svgs/logos/SvgLogoLinkedLink';
+// import img from '../../../public/ipab.svg';
 
 const Footer = () => {
   const { pathname } = useRouter();

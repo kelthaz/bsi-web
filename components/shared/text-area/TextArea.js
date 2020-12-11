@@ -17,7 +17,7 @@ const TextArea = (props) => {
 
   const onHandleChange = (event) => {
     const { selectionStart, selectionEnd, value } = event.target;
-    const formattedValue = formatter(value.trimStart());
+    const formattedValue = formatter(value.trimStart().replace(/\s+/g, ' '));
 
     if (!touched[name] && formattedValue !== values[name]) {
       setFieldTouched(name, true);
@@ -33,7 +33,7 @@ const TextArea = (props) => {
   };
 
   const onHandleBlur = (event) => {
-    setFieldValue(name, values[name].trim());
+    setFieldValue(name, values[name].trimEnd());
     handleBlur(event);
   };
 
