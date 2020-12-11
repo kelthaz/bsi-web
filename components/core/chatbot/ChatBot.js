@@ -21,6 +21,8 @@ const ChatBot = () => {
   const openWelcomeCard = () => {
     if (!chatOpened && !showWelcomeCard) {
       shouldShowWelcomeCard(true);
+    } else if (!chatOpened && showWelcomeCard) {
+      shouldShowWelcomeCard(false);
     } else {
       openChatBot();
     }
