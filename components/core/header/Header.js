@@ -199,7 +199,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className={styles['relative-header']}>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
         <div className={styles['modal-container']}>
           <h4 className="color-blue-storm">Estas por salir del proceso...</h4>

@@ -51,6 +51,7 @@
   @include only-lg-inline;
   @include sub;
   color: $gray-light;
+  display: inline-block;
   margin: 0 8px;
 
   @include media('lg+') {
@@ -60,7 +61,7 @@
 
 .tab-active {
   color: $blue-storm;
-  display: inline;
+  display: inline-block;
   position: relative;
 
   &::before {

@@ -10,6 +10,8 @@ import SimuladorRepositorio from '../../services/simulador/simulador.repositorio
 import downloadFile from '../../helpers/downloadFile';
 import dateFormatter from '../../helpers/dateFormatter';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
+import SvgLoginCheck from '../../components/svgs/icons-cards/SvgLoginCheck';
+import SvgDocumentoCheck from '../../components/svgs/icons-cards/SvgDocumentoCheck';
 
 export const PageSimulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -216,11 +218,13 @@ export const PageSimulador = ({ catalogo }) => {
       </section>
       <div id="result-simulador">
         {showResult && (
-          <div>
-            <div className={`container  ${styles['title-info']}`}>
+          <>
+            <div className="container">
               <div className="row justify-content">
                 <div className="col-xs-12">
-                  <h2>TU CRÉDITO DIGITAL PYME</h2>
+                  <h2 className="text-center color-blue-storm">
+                    TU CRÉDITO <br /> DIGITAL PYME
+                  </h2>
                 </div>
                 <div className="col-xs-1" />
                 <div className="text-center col-xs-10">
@@ -238,50 +242,36 @@ export const PageSimulador = ({ catalogo }) => {
                   Mira tu tabla de amortización
                 </button>
               </div>
-            </div>
-            <div className="container col-xs-11 col-sm-11 col-md-9 col-lg-8">
-              <div className="row mx-0 mb-5 mt-2">
-                <div
-                  className={`col-xs-12 col-sm-12 col-md-6 col-lg-6 pr-md-4 pr-lg-0 mt-4 px-0 ${styles['resume-text']}`}
-                >
-                  <div className="px-md-0 px-xs-3 px-lg-5">
-                    <div className="row mb-sm-4">
-                      <p className="col-md-8 col-lg-9 col-sm-9 col-xs-8 px-0">
-                        ¿Ya habías comenzado tu solicitud? ¡Retómala aquí!
-                      </p>
-                      <div className="col-md-4 col-lg-3 col-sm-3 col-xs-4 text-right">
-                        <img alt="" src="/Sesion.png" />
-                      </div>
-                      <div className="col-md-12 mt-md-1 mb-xs-4 px-0">
-                        <button className="btn-link-arrow-right" type="button">
-                          Retoma tu proceso
-                        </button>
+              <div className="row p-lg-4 py-md-5 px-md-0 p-sm-4 no-gutters">
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 my-2">
+                  <div className="card-transparent-only-row line-card">
+                    <div className="flex-row-center-config">
+                      <p className="body2 gray-dark">¿Ya habías comenzado tu solicitud? ¡Retómala aquí!</p>
+                      <div className="container-svg-left-card">
+                        <SvgLoginCheck />
                       </div>
                     </div>
+
+                    <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+                      <button className="btn-link-arrow-right" type="button">
+                        Retoma tu proceso
+                      </button>
+                    </Link>
                   </div>
                 </div>
-                <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 mt-md-4 px-0">
-                  <div className="px-md-4">
-                    <div className="row mt-sm-4 mt-md-0 mt-xs-4 mb-xs-4">
-                      <p className="col-md-9 col-sm-9 col-xs-8 col-lg-8">
-                        ¿Te gusta este esquema
-                        <span className="d-none d-md-inline"> de crédito?</span>
-                        <span className={`d-block ${styles['start-request-button']}`}>¡Inicia tu solicitud ahora!</span>
-                      </p>
-                      <div className="col-md-3 col-sm-3 col-xs-4 col-lg-2 pr-xs-5 pr-sm-0 pr-md-0 text-md-right">
-                        <img className={styles['img-solicitud']} alt="" src="/Solicitud.svg" />
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 my-2">
+                  <div className="card-transparent-only-row">
+                    <div className="flex-row-center-config">
+                      <p className="body2 gray-dark">¿Te gusta éste esquema de crédito? ¡Inicia tu solicitud ahora!</p>
+                      <div className="container-svg-left-card">
+                        <SvgDocumentoCheck />
                       </div>
                     </div>
-                    <div className="col-md-10 col-sm-9 col-xs-8 offset-xs-2 offset-md-0 col-lg-8">
-                      <div className="row">
-                        <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
-                          <button type="button" className={`col-md-12 ${styles['solicitud-button']} btn-medium`}>
-                            <span className="d-none d-md-block">Comienza tu solicitud</span>
-                            <span className="d-sm-block d-md-none">Comienza tu solicitud</span>
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
+                    <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+                      <button className="btn-big" type="button">
+                        Comienza tu solicitud
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -293,7 +283,7 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

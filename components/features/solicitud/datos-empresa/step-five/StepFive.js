@@ -45,7 +45,6 @@ const StepFive = () => {
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/6');
     },
-    validateOnMount: true,
   });
 
   return (

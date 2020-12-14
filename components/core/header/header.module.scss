@@ -11,6 +11,11 @@
   }
 }
 
+.relative-header {
+  position: relative;
+  z-index: 100;
+}
+
 %button-circle-config {
   background-position: 50% center;
   background-repeat: no-repeat;
