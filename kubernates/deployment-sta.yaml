@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: temporal-sta-portal
+  name: bsi-cred-pyme-web
   annotations:
     iconClass: icon-js
     tags: nodejs, react, web app
@@ -14,7 +14,7 @@ parameters:
     displayName: "Name"
     description: "The name assigned to all of the frontend objects defined in this template."
     required: true
-    value: "temporal-sta-portal"
+    value: "bsi-cred-pyme-web"
   - name: NAMESPACE
     displayName: "Namespace"
     description: "The OpenShift Namespace where the ImageStream resides."
@@ -24,16 +24,16 @@ parameters:
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
     required: true
-    value: "1024Mi"
+    value: "90000Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
-    value: "https://github.com/mchavezcdmx/final-test"
+    value: "https://10.26.168.19:20443/gms2/bsi-cr-pyme/front-web/bsi-cred-pyme-web.git"
     required: true
   - name: SOURCE_REPOSITORY_REF
     description: The branch name for the application
     displayName: Source Branch
-    value: master
+    value: staging
     required: true
   - name: SOURCE_REPOSITORY_DIR
     description: The location within the source repo of the application
@@ -48,6 +48,10 @@ parameters:
   - name: YARN_ENABLED
     description: A flag to enable the use of the Yarn package manager
     displayName: Yarn Enabled
+    value: "true"
+  - name: GIT_SSL_NO_VERIFY
+    description: A flag to enable
+    displayName: SSL
     value: "true"
     required: false
   - name: GITHUB_WEBHOOK_SECRET
@@ -83,21 +87,22 @@ objects:
       postCommit: {}
       resources: {}
       source:
+        contextDir: /
         git:
           uri: '${SOURCE_REPOSITORY_URL}'
           ref: '${SOURCE_REPOSITORY_REF}'
+        sourceSecret: 
+          name: "gitlab-bancoppel"
         type: Git
       strategy:
-        type: Source
         sourceStrategy:
           env:
-            - name: OUTPUT_DIR
-              value: ${OUTPUT_DIR}
-            - name: YARN_ENABLED
-              value: ${YARN_ENABLED}
+            - name: GIT_SSL_NO_VERIFY
+              value: ${GIT_SSL_NO_VERIFY}
           from:
             kind: DockerImage
             name: "ubi8/nodejs-12"
+          type: Source
       triggers:
         - github:
             secret: '${GITHUB_WEBHOOK_SECRET}'
