@@ -6,7 +6,7 @@ import SvgCargaDocumento from '../../../svgs/SvgCargaDocumento';
 import SvgEmpresa from '../../../svgs/SvgEmpresa';
 
 const RevisarCorreo = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
 
   return (
     <div className="contedor-fixed">
@@ -14,8 +14,8 @@ const RevisarCorreo = () => {
         <div className="container ">
           <h2 className="color-blue-storm">¡Gracias, Alejandra!</h2>
           <p className="body2 color-gray-dark">
-            José deberá revisar su correo electrónico para acceder a la plataforma donde podrá responder un formulario
-            similar al tuyo:
+            {datosEmpresa.primerNombreRecibe} deberá revisar su correo electrónico para acceder a la plataforma donde
+            podrá responder un formulario similar al tuyo:
           </p>
 
           <div className="row justify-content-between">
