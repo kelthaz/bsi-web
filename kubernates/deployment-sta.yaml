@@ -4,10 +4,10 @@ metadata:
   name: bsi-cred-pyme-web
   annotations:
     iconClass: icon-js
-    tags: nodejs, react, web app
+    tags: nodejs, react, web-app
     template.openshift.io/provider-display-name: "Red Hat, Inc."
-    openshift.io/display-name: "React Web Application"
-    description: Build a basic React Web Application
+    openshift.io/display-name: "BanCoppel | Pymes"
+    description: Build a React Web Application
 message: "The following service(s) have been created in your project: ${NAME}.\n\nMore message text here"
 parameters:
   - name: NAME
@@ -19,12 +19,12 @@ parameters:
     displayName: "Namespace"
     description: "The OpenShift Namespace where the ImageStream resides."
     required: true
-    value: "openshift"
+    value: "bsi-cr-pyme-web-stg"
   - name: MEMORY_LIMIT
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
     required: true
-    value: "90000Mi"
+    value: "100000Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
@@ -40,6 +40,10 @@ parameters:
     displayName: Source Directory
     value: .
     required: true
+  - name: SOURCE_SECRET
+    description: The source secret name 
+    displayName: Source secret
+    value: "gitlab-bancoppel"
   - name: OUTPUT_DIR
     description: The location of the compiled static files from your web apps builder
     displayName: Output Directory
@@ -73,6 +77,7 @@ objects:
       labels:
         app: '${NAME}'
     spec: {}
+
   - apiVersion: v1
     kind: BuildConfig
     metadata:
@@ -92,7 +97,7 @@ objects:
           uri: '${SOURCE_REPOSITORY_URL}'
           ref: '${SOURCE_REPOSITORY_REF}'
         sourceSecret: 
-          name: "gitlab-bancoppel"
+          name: '${SOURCE_SECRET}'
         type: Git
       strategy:
         sourceStrategy:
@@ -112,6 +117,7 @@ objects:
           type: ImageChange
     status:
       lastVersion: 0
+
   - apiVersion: v1
     kind: DeploymentConfig
     metadata:
@@ -130,7 +136,6 @@ objects:
                 - containerPort: 3000
                   name: http
                   protocol: TCP
-
         metadata:
           labels:
             app: '${NAME}'
@@ -147,6 +152,7 @@ objects:
             from:
               kind: ImageStreamTag
               name: '${NAME}:latest'
+
   - apiVersion: v1
     kind: Service
     metadata:
@@ -162,11 +168,11 @@ objects:
       type: ClusterIP
       resources:
         limits:
-          cpu: '1'
-          memory: 64M
+          cpu: 500m
+          memory: 512Mi
         requests:
-          cpu: 100m
-          memory: 32M
+          cpu: 300m
+          memory: 512Mi
 
   - apiVersion: v1
     kind: Route
@@ -180,3 +186,6 @@ objects:
       to:
         kind: Service
         name: ${NAME}
+        weight: 100
+      wildcardPolicy: None
+
