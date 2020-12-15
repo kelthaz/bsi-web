@@ -51,7 +51,7 @@ const StepEight = () => {
   return (
     <>
       <Modal openModal={openWhyCiec} setOpenModal={setOpenWhyCiec}>
-        <div className={styles['modal-container']}>
+        <div className={`d-sm-none d-xs-none d-md-block d-lg-block ${styles['modal-container']}`}>
           <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
           <p className="dark-gray body2">
             Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus credenciales
@@ -61,8 +61,29 @@ const StepEight = () => {
             <SvgPrivacidad /> Tus datos estarán protegidos.
           </p>
           <iframe
-            className={styles['modal-video']}
+            className={`d-sm-none d-xs-none	d-md-block d-lg-block ${styles['modal-video']}`}
             width="560"
+            height="315"
+            src="https://www.youtube.com/embed/r7HHOYZQb4M"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="¿Qué es la CIEC y por qué solicitamos esto?"
+          />
+        </div>
+
+        <div className="d-none d-sm-block d-xs-block d-md-none container px-xs-0 px-md-0">
+          <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
+          <p className="dark-gray body2">
+            Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus credenciales
+            del SAT para que firmes la autorización y poder consultarlo.
+          </p>
+          <p className="sub color-gray">
+            <SvgPrivacidad /> Tus datos estarán protegidos y no almacenaremos tu CIEC.
+          </p>
+          <iframe
+            className={`d-none d-sm-block d-xs-block d-md-none ${styles['modal-video']}`}
+            width="325"
             height="315"
             src="https://www.youtube.com/embed/r7HHOYZQb4M"
             frameBorder="0"

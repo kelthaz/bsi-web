@@ -142,7 +142,7 @@ export const Requisitos = () => {
     {
       title: '¿Cómo protegen mis datos personales?',
       content:
-        'BANCOPPEL, S. A., INSTITUCIÓN DE BANCA MÚLTIPLE de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su reglamento y los Lineamientos del Aviso de Privacidad, ponemos a disposición de las personas físicas de las que BanCoppel recaba sus Datos Personales (en lo sucesivo el/los “Titular(es)”) el presente Aviso de Privacidad, el cual podrá además ser consultado en todo momento a través de la página de Internet <a href="> www.bancoppel.com </a>',
+        'BANCOPPEL, S. A., INSTITUCIÓN DE BANCA MÚLTIPLE de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su reglamento y los Lineamientos del Aviso de Privacidad, ponemos a disposición de las personas físicas de las que BanCoppel recaba sus Datos Personales (en lo sucesivo el/los “Titular(es)”) el presente Aviso de Privacidad, el cual podrá además ser consultado en todo momento a través de la página de Internet www.bancoppel.com ',
     },
     {
       title: '¿Cuánto es lo máximo que puedo solicitar?',
