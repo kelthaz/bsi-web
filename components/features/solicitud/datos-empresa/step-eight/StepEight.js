@@ -26,7 +26,7 @@ const StepEight = () => {
       autorizoTerminosCiec: datosEmpresa.autorizoTerminosCiec,
     },
     validationSchema: Yup.object({
-      ciec: Yup.string().max(20, longitudMaxima).min(7, longitudMinima).required(campoRequerido),
+      ciec: Yup.string().max(8, longitudMaxima).min(8, longitudMinima).required(campoRequerido),
       autorizoTerminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
   };
@@ -77,8 +77,10 @@ const StepEight = () => {
           <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <p className="color-dark-gray sub ">
-                Primero necesitamos que nos autorices acceso con tu clave CIEC
-                {datosPersonales.tipoPersona === 'Persona Moral' && ' de la empresa'}.
+                {datosPersonales.tipoPersona === 'Persona Moral'
+                  ? 'Primero necesitamos que nos autorices acceso de lectura con la clave CIEC de la empresa. '
+                  : 'Primero necesitamos que nos autorices acceso con tu clave CIEC. '}
+
                 <button type="button" className="btn-link sub" onClick={() => setOpenWhyCiec(true)}>
                   ¿Por qué te pedimos esto?
                 </button>
@@ -92,7 +94,7 @@ const StepEight = () => {
                   <TextField
                     name="ciec"
                     format="passwordspace"
-                    maxlength={20}
+                    maxlength={8}
                     formulario={formulario}
                     type="password"
                     size="big"
@@ -108,7 +110,12 @@ const StepEight = () => {
                       Tus datos estarán protegidos.
                       <br />
                       Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
-                      <a className="sub link" target="_blank" rel="noreferrer">
+                      <a
+                        className="sub link"
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://aplicaciones.sat.gob.mx/PTSC/ADC/resources/pages/operaciones/generarContrasena/ingresarRfc.xhtml"
+                      >
                         clic aquí
                       </a>
                       .
@@ -120,12 +127,13 @@ const StepEight = () => {
                   <div className="row">
                     <CheckTextBox name="autorizoTerminosCiec" formulario={formulario}>
                       <p className=" color-gray mb-0">
-                        Acepto{' '}
+                        {'Acepto '}
                         <a className="sub link" target="_blank" rel="noreferrer">
                           términos y condiciones
-                        </a>{' '}
-                        de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios
-                        electrónicos.
+                        </a>
+                        {datosPersonales.tipoPersona === 'Persona Moral'
+                          ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
+                          : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
                       </p>
                     </CheckTextBox>
                   </div>

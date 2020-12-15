@@ -4,6 +4,7 @@ import rfcFormatter from '../helpers/rfcFormatter';
 import passwordSpace from '../helpers/passwordSpace';
 import emailFormatter from '../helpers/emailFormatter';
 import textAreaFormatter from '../helpers/textAreaFormatter';
+import numberFormatter from '../helpers/numberFormatter';
 
 const defaultSelectionChange = (event) => {
   const { selectionStart, selectionEnd } = event.target;
@@ -36,6 +37,18 @@ const useFormatter = (format) => {
     case 'email':
       return {
         formatter: emailFormatter,
+        changeSelection: false,
+      };
+
+    case 'number':
+      return {
+        formatter: numberFormatter,
+        changeSelection: false,
+      };
+
+    case 'alphanumeric':
+      return {
+        formatter: numberFormatter,
         changeSelection: false,
       };
 

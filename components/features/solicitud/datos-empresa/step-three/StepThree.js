@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -42,7 +41,6 @@ const StepThree = () => {
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/4');
     },
-    validateOnMount: true,
   });
 
   return (
