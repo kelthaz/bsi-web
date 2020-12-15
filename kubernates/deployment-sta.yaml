@@ -24,7 +24,12 @@ parameters:
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
     required: true
-    value: "100000Mi"
+    value: "512Mi"
+  - name: MEMORY_REQUEST
+    displayName: "Memory Limit"
+    description: "Maximum amount of memory the container can use."
+    required: true
+    value: "512Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
@@ -136,6 +141,13 @@ objects:
                 - containerPort: 3000
                   name: http
                   protocol: TCP
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+                requests:
+                  cpu: 300m
+                  memory: 512Mi
         metadata:
           labels:
             app: '${NAME}'
@@ -188,4 +200,3 @@ objects:
         name: ${NAME}
         weight: 100
       wildcardPolicy: None
-
