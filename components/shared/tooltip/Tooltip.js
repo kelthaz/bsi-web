@@ -23,6 +23,6 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-  position: 'botttom',
+  position: 'top',
 };
 export default Tooltip;

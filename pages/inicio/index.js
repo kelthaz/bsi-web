@@ -92,7 +92,7 @@ export const Home = ({ catalogo }) => {
                 </div>
 
                 <Link href="credito-pyme">
-                  <button className="mb-2 btn-link-arrow-right-inverted" type="button">
+                  <button className="btn-link-arrow-right-inverted" type="button">
                     Leer más sobre el crédito
                   </button>
                 </Link>

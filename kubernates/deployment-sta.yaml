@@ -1,45 +1,54 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: temporal-sta-portal
+  name: bsi-cred-pyme-web
   annotations:
     iconClass: icon-js
-    tags: nodejs, react, web app
+    tags: nodejs, react, web-app
     template.openshift.io/provider-display-name: "Red Hat, Inc."
-    openshift.io/display-name: "React Web Application"
-    description: Build a basic React Web Application
+    openshift.io/display-name: "BanCoppel | Pymes"
+    description: Build a React Web Application
 message: "The following service(s) have been created in your project: ${NAME}.\n\nMore message text here"
 parameters:
   - name: NAME
     displayName: "Name"
     description: "The name assigned to all of the frontend objects defined in this template."
     required: true
-    value: "temporal-sta-portal"
+    value: "bsi-cred-pyme-web"
   - name: NAMESPACE
     displayName: "Namespace"
     description: "The OpenShift Namespace where the ImageStream resides."
     required: true
-    value: "openshift"
+    value: "bsi-cr-pyme-web-stg"
   - name: MEMORY_LIMIT
     displayName: "Memory Limit"
     description: "Maximum amount of memory the container can use."
     required: true
-    value: "1024Mi"
+    value: "512Mi"
+  - name: MEMORY_REQUEST
+    displayName: "Memory Limit"
+    description: "Maximum amount of memory the container can use."
+    required: true
+    value: "512Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
-    value: "https://github.com/mchavezcdmx/final-test"
+    value: "https://10.26.168.19:20443/gms2/bsi-cr-pyme/front-web/bsi-cred-pyme-web.git"
     required: true
   - name: SOURCE_REPOSITORY_REF
     description: The branch name for the application
     displayName: Source Branch
-    value: master
+    value: staging
     required: true
   - name: SOURCE_REPOSITORY_DIR
     description: The location within the source repo of the application
     displayName: Source Directory
     value: .
     required: true
+  - name: SOURCE_SECRET
+    description: The source secret name 
+    displayName: Source secret
+    value: "gitlab-bancoppel"
   - name: OUTPUT_DIR
     description: The location of the compiled static files from your web apps builder
     displayName: Output Directory
@@ -48,6 +57,10 @@ parameters:
   - name: YARN_ENABLED
     description: A flag to enable the use of the Yarn package manager
     displayName: Yarn Enabled
+    value: "true"
+  - name: GIT_SSL_NO_VERIFY
+    description: A flag to enable
+    displayName: SSL
     value: "true"
     required: false
   - name: GITHUB_WEBHOOK_SECRET
@@ -69,6 +82,7 @@ objects:
       labels:
         app: '${NAME}'
     spec: {}
+
   - apiVersion: v1
     kind: BuildConfig
     metadata:
@@ -83,21 +97,22 @@ objects:
       postCommit: {}
       resources: {}
       source:
+        contextDir: /
         git:
           uri: '${SOURCE_REPOSITORY_URL}'
           ref: '${SOURCE_REPOSITORY_REF}'
+        sourceSecret: 
+          name: '${SOURCE_SECRET}'
         type: Git
       strategy:
-        type: Source
         sourceStrategy:
           env:
-            - name: OUTPUT_DIR
-              value: ${OUTPUT_DIR}
-            - name: YARN_ENABLED
-              value: ${YARN_ENABLED}
+            - name: GIT_SSL_NO_VERIFY
+              value: ${GIT_SSL_NO_VERIFY}
           from:
             kind: DockerImage
             name: "ubi8/nodejs-12"
+          type: Source
       triggers:
         - github:
             secret: '${GITHUB_WEBHOOK_SECRET}'
@@ -107,6 +122,7 @@ objects:
           type: ImageChange
     status:
       lastVersion: 0
+
   - apiVersion: v1
     kind: DeploymentConfig
     metadata:
@@ -125,7 +141,13 @@ objects:
                 - containerPort: 3000
                   name: http
                   protocol: TCP
-
+              resources:
+                limits:
+                  cpu: 500m
+                  memory: 512Mi
+                requests:
+                  cpu: 300m
+                  memory: 512Mi
         metadata:
           labels:
             app: '${NAME}'
@@ -142,6 +164,7 @@ objects:
             from:
               kind: ImageStreamTag
               name: '${NAME}:latest'
+
   - apiVersion: v1
     kind: Service
     metadata:
@@ -157,11 +180,11 @@ objects:
       type: ClusterIP
       resources:
         limits:
-          cpu: '1'
-          memory: 64M
+          cpu: 500m
+          memory: 512Mi
         requests:
-          cpu: 100m
-          memory: 32M
+          cpu: 300m
+          memory: 512Mi
 
   - apiVersion: v1
     kind: Route
@@ -175,3 +198,5 @@ objects:
       to:
         kind: Service
         name: ${NAME}
+        weight: 100
+      wildcardPolicy: None

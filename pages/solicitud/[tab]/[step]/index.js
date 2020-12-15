@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import TabInformativo from '../../../../components/shared/tab-informativo/TabInformativo';
 import Step from '../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicitud';
 import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
-import { useEffect, useState } from 'react';
 
 const Solicitud = ({ index, data }) => {
   usePreventWindowUnload();
