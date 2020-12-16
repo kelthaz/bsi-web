@@ -164,10 +164,26 @@ const StepTwo = () => {
 
             <div className="row no-gutters">
               <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                <TextField name="calle" maxlength={60} formulario={formulario} type="text" size="big" label="Calle" />
+                <TextField
+                  name="calle"
+                  maxlength={60}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Calle"
+                  format="alphanumeric"
+                />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                <TextField name="numExterior" maxlength={6} formulario={formulario} type="text" size="big" label="#" />
+                <TextField
+                  name="numExterior"
+                  maxlength={6}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="#"
+                  format="alphanumeric"
+                />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                 <TextField
@@ -177,6 +193,7 @@ const StepTwo = () => {
                   type="text"
                   size="big"
                   label="Int."
+                  format="alphanumeric"
                 />
               </div>
 
@@ -188,6 +205,7 @@ const StepTwo = () => {
                   type="text"
                   size="big"
                   label="C.P"
+                  format="number"
                 />
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -258,7 +276,7 @@ const StepTwo = () => {
               <>
                 <p className="color-dark-gray sub position-relative">
                   Compártenos tu domicilio comercial..
-                  <Tooltip message="Necesitamos que nos confirmes tu dirección para recibír tu token físico." />
+                  <Tooltip message="Es el domicilio en el que realizas la operación día a día de tu negocio." />
                 </p>
                 <div className="row no-gutters">
                   <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
@@ -269,6 +287,7 @@ const StepTwo = () => {
                       type="text"
                       size="big"
                       label="Calle"
+                      format="alphanumeric"
                     />
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
@@ -279,6 +298,7 @@ const StepTwo = () => {
                       type="text"
                       size="big"
                       label="#"
+                      format="alphanumeric"
                     />
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
@@ -289,6 +309,7 @@ const StepTwo = () => {
                       type="text"
                       size="big"
                       label="Int."
+                      format="alphanumeric"
                     />
                   </div>
 
@@ -300,6 +321,7 @@ const StepTwo = () => {
                       type="text"
                       size="big"
                       label="C.P"
+                      format="number"
                     />
                   </div>
                   <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -353,8 +375,9 @@ const StepTwo = () => {
                 <div className="row no-gutters card-simple-blue-light">
                   <div className="col-lg-12 pb-2">
                     <RadioButton name="domicilioEntrega" formulario={formularioAuxiliar} value="domicilioComercial">
-                      <p className="input color-gray m-0">
+                      <p className="input color-gray m-0 position-relative">
                         Utilizar mi domicilio comercial para recibir mi Token BanCoppel.
+                        <Tooltip message="Necesitamos que nos confirmes tu dirección para recibír tu token físico." />
                       </p>
                     </RadioButton>
                   </div>

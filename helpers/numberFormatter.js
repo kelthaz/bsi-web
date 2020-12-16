@@ -1,5 +1,5 @@
-import { regexNumbers } from '../constants/regex';
+import { regexNumber } from '../constants/regex';
 
-const numberFormatter = (value) => value.replace(regexNumbers, '');
+const numberFormatter = (value) => value.replace(regexNumber, '');
 
 export default numberFormatter;

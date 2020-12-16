@@ -65,6 +65,7 @@ const Select = (props) => {
         className={`svg-button-input-small ${arrrowStyle} ${toggle ? styles['arrow-active'] : ''}`}
         onClick={() => handleToggle()}
         tabIndex="-1"
+        disabled={disabled}
       >
         <SvgChevron />
       </button>
