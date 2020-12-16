@@ -48,18 +48,36 @@ const UltimaEtapa = () => {
             <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
               <ul>
-                <li>Acta constitutiva </li>
-                <li className="position-relative">Poderes notariales</li>
-                <li className="position-relative">
-                  Escrituras con reformas <span className="color-gray">(Opcional)</span>
-                </li>
-                <li className="position-relative">
-                  Comprobante de domicilio comercial <span className="color-gray">(No mayor a tres meses)</span>
-                </li>
-                <li className="position-relative">
-                  Comprobante de domicilio fiscal <span className="ml-xs-1 color-gray">(No mayor a tres meses)</span>
-                </li>
-                <li className="position-relative">INE del representante legal</li>
+                {
+                  datosPersonales.tipoPersona === 'Persona Moral' ?
+                    <li>Acta constitutiva </li> :
+                    <li>Comprobante de domicilio comercial
+                      <span className="color-gray"> (No mayor a tres meses)</span>
+                    </li>
+                }
+                {datosPersonales.tipoPersona === 'Persona Moral' ?
+                  <li className="position-relative">Poderes notariales</li> :
+                  <li className="position-relative">Comprobante de domicilio fiscal
+                    <span className="color-gray"> (No mayor a tres meses) </span>
+                  </li>
+                }
+                {datosPersonales.tipoPersona === 'Persona Moral' ?
+                  <li className="position-relative">Escrituras con reformas <span className="color-gray">(Opcional)</span></li> :
+                  <li className="position-relative">Tu INE</li>
+                }
+                {datosPersonales.tipoPersona === 'Persona Moral' ?
+                  <li className="position-relative">Comprobante de domicilio comercial <span className="color-gray">(No mayor a tres meses)</span></li> :
+                  <li className="position-relative">
+                    Acta de matrimonio <span className="color-gray">(Si estás casado)</span>
+                  </li>
+                }
+                {datosPersonales.tipoPersona === 'Persona Moral' ?
+                  <li className="position-relative">Comprobante de domicilio fiscal <span className="ml-xs-1 color-gray">(No mayor a tres meses)</span></li> :
+                  <li className="position-relative">INE de tu pareja <span className="color-gray">(Si estás casado)</span></li>
+                }
+                {datosPersonales.tipoPersona === 'Persona Moral' ?
+                  <li className="position-relative">INE del representante legal</li> :
+                  <span className="color-gray"></span>}
               </ul>
             </div>
           </div>
