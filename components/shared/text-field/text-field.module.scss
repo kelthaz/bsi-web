@@ -45,6 +45,16 @@
   &::-ms-clear {
     display: none;
   }
+
+  &::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+  }
+
+  &,
+  &::before,
+  &::after {
+    user-select: initial;
+  }
 }
 
 .input-big {

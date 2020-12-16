@@ -46,7 +46,6 @@ const StepTwo = () => {
                   <div>
                     <SvgPersonaFisicaActividadFisica />
                   </div>
-
                   <p className="px-md-5 px-lg-5">{personaFisica}</p>
                 </button>
               </div>

@@ -57,7 +57,7 @@ const UltimaEtapa = () => {
                   Comprobante de domicilio comercial <span className="color-gray">(No mayor a tres meses)</span>
                 </li>
                 <li className="position-relative">
-                  Comprobante de domicilio fiscal <span className="color-gray">(No mayor a tres meses)</span>
+                  Comprobante de domicilio fiscal <span className="ml-xs-1 color-gray">(No mayor a tres meses)</span>
                 </li>
                 <li className="position-relative">INE del representante legal</li>
               </ul>
