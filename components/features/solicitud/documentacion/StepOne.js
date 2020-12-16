@@ -70,7 +70,7 @@ const StepOne = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className={`px-0 ${styles['modal-container-video']}`}>
+        <div className={`container px-xs-0 px-md-0 ${styles['modal-container-video']}`}>
           <div>
             <h4 className="color-blue-storm">¿Quién es un Obligado Solidario y por qué solicitamos uno?</h4>
             <p className="dark-gray body2">
@@ -108,7 +108,7 @@ const StepOne = () => {
                     type="button"
                     className={`d-sm-none d-xs-none	d-md-block d-lg-block card-simple-white-svg card-button ${
                       values.usoCredito && values.usoCredito.value === capitalTrabajo.value && 'card-selected-blue-sky'
-                    }`}
+                      }`}
                     onClick={() => handleUsoCredito(capitalTrabajo)}
                   >
                     <div className="row">
@@ -126,7 +126,7 @@ const StepOne = () => {
                     type="button"
                     className={`d-none d-sm-block d-xs-block d-md-none card-simple-white-svg-simple card-button ${
                       values.usoCredito && values.usoCredito.value === capitalTrabajo.value && 'card-selected-blue-sky'
-                    }`}
+                      }`}
                     onClick={() => handleUsoCredito(capitalTrabajo)}
                   >
                     <div className="row">
@@ -153,7 +153,7 @@ const StepOne = () => {
                       values.usoCredito &&
                       values.usoCredito.value === adquisicionActivacion.value &&
                       'card-selected-blue-sky'
-                    }`}
+                      }`}
                     onClick={() => handleUsoCredito(adquisicionActivacion)}
                   >
                     <div className="row">
@@ -173,7 +173,7 @@ const StepOne = () => {
                       values.usoCredito &&
                       values.usoCredito.value === adquisicionActivacion.value &&
                       'card-selected-blue-sky'
-                    }`}
+                      }`}
                     onClick={() => handleUsoCredito(adquisicionActivacion)}
                   >
                     <div className="row">

@@ -6,7 +6,9 @@
 
 .modal-video {
   border-radius: 6px;
-
+  height: 315px;
+  width: 560px;
+  
   @include media('sm') {
     height: 315px;
     width: 320px;
