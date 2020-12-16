@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import SvgLegalex from '../../../../svgs/SvgLegalex';
@@ -84,9 +85,11 @@ const StepNine = () => {
           </p>
 
           <div className="d-flex justify-content-center">
-            <button className="btn-medium" type="submit" aria-label="Avanzar">
-              <span>Continuar</span>
-            </button>
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-empresa/agradecimiento">
+              <button className="btn-medium" type="submit" aria-label="Avanzar">
+                <span>Continuar</span>
+              </button>
+            </Link>
           </div>
         </div>
       </Modal>
