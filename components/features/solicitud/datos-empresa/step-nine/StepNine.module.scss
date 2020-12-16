@@ -41,7 +41,13 @@
 
   @include media('sm') {
     height: 315px;
-    width: 320px;
+    width: 325px;
   }
 }
 
+@media screen and (max-width: 541px) and (min-width: 420px) {
+ .modal-video  {
+    height: 315px;
+    width: 420px;
+  }
+}
