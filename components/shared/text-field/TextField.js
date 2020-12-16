@@ -129,9 +129,9 @@ const TextField = (props) => {
       {size === 'small' && (
         <label
           htmlFor={name}
-          className={`${disabled ? styles['label-disabled'] : labelStyle} ${hasError() ? styles['label-error'] : ''} ${
-            values[name] !== '' || active ? styles['label-active'] : ''
-          }`}
+          className={`text-overflow ${disabled ? styles['label-disabled'] : labelStyle} ${
+            hasError() ? styles['label-error'] : ''
+          } ${values[name] !== '' || active ? styles['label-active'] : ''}`}
         >
           {label}
         </label>

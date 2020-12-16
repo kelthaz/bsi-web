@@ -29,6 +29,10 @@
 .modal-container {
   padding: 10px;
   width: 440px;
+
+  @include media('md') {
+    width: 290px;
+  }
 }
 
 .modal-container-video {
