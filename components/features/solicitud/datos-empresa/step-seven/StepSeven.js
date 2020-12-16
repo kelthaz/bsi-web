@@ -28,7 +28,7 @@ const StepSeven = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: 'gracias-contacto' },
+          currentStep: { tab: 'datos-empresa', step: '8' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
@@ -53,7 +53,7 @@ const StepSeven = () => {
                 <Tooltip message="Necesitamos validar tu número de cuenta bancaria BanCoppel (11 dígitos) o tu CLABE (18 dígitos) en la que se te depositaría el crédito en caso de ser aprobado." />
               </p>
             )}
-            <div className="row no-gutters">
+            <div className="row no-gutters py-3">
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
                 <RadioButton name="tieneCuentaBancoppel" formulario={formulario} value="si">
                   <p className="input color-gray m-0">Sí</p>
@@ -65,7 +65,7 @@ const StepSeven = () => {
                 </RadioButton>
               </div>
             </div>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+            <div className="flex-column-center-config">
               <button
                 type="submit"
                 className="cicle-button-blue my-3"

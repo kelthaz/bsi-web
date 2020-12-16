@@ -64,7 +64,7 @@ const StepFive = () => {
                 <Select name="numeroEmpleados" label="40 a 60" formulario={formulario} size="big" items={items} />
               </div>
             </div>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+            <div className="flex-column-center-config">
               <button
                 type="submit"
                 className="cicle-button-blue my-3"

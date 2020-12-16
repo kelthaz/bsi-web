@@ -139,7 +139,7 @@ const StepEight = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+              <div className="flex-column-center-config">
                 <button
                   type="submit"
                   className="cicle-button-blue my-3"

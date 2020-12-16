@@ -2,17 +2,17 @@ import * as types from '../types/types';
 
 const initialState = {
   currentStep: {
-    tab: 'datos-personales',
+    tab: 'datos-empresa',
     step: '1',
   },
   datosPersonales: {
-    primerNombre: '',
-    segundoNombre: '',
-    primerApellido: '',
-    segundoApellido: '',
-    tipoPersona: '',
-    razonSocial: '',
-    tipoSociedad: null,
+    primerNombre: 'sdfdsfsdfss',
+    segundoNombre: 'fsf',
+    primerApellido: 'fdf',
+    segundoApellido: 'fdf',
+    tipoPersona: 'Persona Moral',
+    razonSocial: 'fsdfsdf',
+    tipoSociedad: 's.a',
     nombreEmpresa: '',
     sector: null,
     giro: null,

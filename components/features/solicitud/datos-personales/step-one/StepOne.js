@@ -99,7 +99,7 @@ const StepOne = () => {
             <div className="row card-simple-blue-light text-md-center ">
               <p>Favor de llenar los campos con los nombres y apellidos presentados en tu Identificación oficial INE</p>
             </div>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+            <div className="flex-column-center-config">
               <button
                 type="submit"
                 className="cicle-button-blue my-3"

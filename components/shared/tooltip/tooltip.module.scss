@@ -38,7 +38,7 @@
 
   @include media('md') {
     bottom: -70px;
-    top: 0;
+    top: 100%;
   }
 }
 
@@ -47,6 +47,6 @@
 
   @include media('md') {
     bottom: -70px;
-    top: 0;
+    top: 100%;
   }
 }
