@@ -51,7 +51,7 @@ const StepEight = () => {
   return (
     <>
       <Modal openModal={openWhyCiec} setOpenModal={setOpenWhyCiec}>
-        <div className={styles['modal-container']}>
+        <div className={`container px-xs-0 px-md-0 ${styles['modal-container']}`}>
           <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
           <p className="dark-gray body2">
             Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus credenciales
@@ -61,7 +61,7 @@ const StepEight = () => {
             <SvgPrivacidad /> Tus datos estarán protegidos.
           </p>
           <iframe
-            className={styles['modal-video']}
+            className={` ${styles['modal-video']}`}
             width="560"
             height="315"
             src="https://www.youtube.com/embed/r7HHOYZQb4M"

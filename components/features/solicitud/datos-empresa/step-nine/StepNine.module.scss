@@ -35,3 +35,19 @@
   padding: 10px;
   width: 565px;
 }
+
+.modal-video {
+  border-radius: 6px;
+
+  @include media('sm') {
+    height: 315px;
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 541px) and (min-width: 420px) {
+ .modal-video  {
+    height: 315px;
+    width: 420px;
+  }
+}

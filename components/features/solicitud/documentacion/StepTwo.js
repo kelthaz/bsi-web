@@ -55,7 +55,7 @@ const StepTwo = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className={styles['modal-container']}>
+        <div className="container px-xs-0 px-md-0">
           <div className="d-flex justify-content-center pb-4">
             <SvgEnviado />
           </div>
@@ -68,9 +68,9 @@ const StepTwo = () => {
             </p>
           </div>
           <div className="d-flex justify-content-center">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/3">
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/revisar-correo">
               <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>Continuemos</span>
+                <span>Continuar</span>
               </button>
             </Link>
           </div>
