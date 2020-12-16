@@ -28,7 +28,7 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue, tabIndex } = props;
+  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue } = props;
   const [
     arrrowStyle,
     selectStyle,

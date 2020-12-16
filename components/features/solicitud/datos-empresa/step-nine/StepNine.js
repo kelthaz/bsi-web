@@ -26,7 +26,11 @@ const StepNine = () => {
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      nombreSolicitante: datosPersonales.primerNombre,
+      nombreSolicitante: `${
+        datosPersonales.tipoPersona === 'Persona Moral'
+          ? `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad}`
+          : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`
+      }`,
       rfc: datosPersonales.rfc,
       colonia: datosEmpresa.domicilioFiscal.colonia,
       telefono: datosEmpresa.celularRecibe,
@@ -65,18 +69,20 @@ const StepNine = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className="container px-xs-0 px-md-0">
+        <div className={styles['modal-container']}>
           <div className="d-flex justify-content-center pb-4">
             <SvgCheckText />
           </div>
-          <div>
-            <h4 className="color-blue-storm">¡Gracias {datosPersonales.primerNombre}!</h4>
-            <p className="dark-gray body2">
-              La revisión del Buró de Crédito ha sido realizada con éxito.
-              <br />
-              ¡Analizaremos esta información para poder calcular tu oferta!
-            </p>
-          </div>
+
+          <h4 className="color-blue-storm">¡Gracias {datosPersonales.primerNombre}!</h4>
+          <p className="dark-gray body2">
+            {datosPersonales.tipoPersona === 'Persona Moral'
+              ? 'La revisión del Buró de Crédito, y la firma del Kit de Apertura y la Solicitud de EmpresaNet han sido realizadas con éxito.'
+              : 'La revisión del Buró de Crédito ha sido realizada con éxito.'}
+            <br />
+          </p>
+          <p>¡Analizaremos esta información para poder calcular tu oferta!</p>
+
           <div className="d-flex justify-content-center">
             <button className="btn-medium" type="submit" aria-label="Avanzar">
               <span>Continuar</span>
@@ -190,27 +196,14 @@ const StepNine = () => {
                       mantengamos relación jurídica.
                     </p>
                     <div className="row">
-                      <div className="col-md-12 col-xs-12 d-none d-md-block">
+                      <div className="col-md-12 col-xs-12">
                         <TextField
                           name="nombreSolicitante"
-                          value={datosPersonales.primerNombre}
                           maxlength={18}
                           formulario={formulario}
                           type="text"
                           size="small"
                           label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
-                          disabled
-                        />
-                      </div>
-                      <div className="col-md-12 col-xs-12 d-block d-sm-none">
-                        <TextField
-                          name="nombreSolicitante"
-                          value={datosPersonales.primerNombre}
-                          maxlength={18}
-                          formulario={formulario}
-                          type="text"
-                          size="small"
-                          label="Nombre del Solicitante"
                           disabled
                         />
                       </div>

@@ -5,6 +5,7 @@ import passwordSpace from '../helpers/passwordSpace';
 import emailFormatter from '../helpers/emailFormatter';
 import textAreaFormatter from '../helpers/textAreaFormatter';
 import numberFormatter from '../helpers/numberFormatter';
+import alphanumericFormatter from '../helpers/alphanumericFormatter';
 
 const defaultSelectionChange = (event) => {
   const { selectionStart, selectionEnd } = event.target;
@@ -48,7 +49,7 @@ const useFormatter = (format) => {
 
     case 'alphanumeric':
       return {
-        formatter: numberFormatter,
+        formatter: alphanumericFormatter,
         changeSelection: false,
       };
 
