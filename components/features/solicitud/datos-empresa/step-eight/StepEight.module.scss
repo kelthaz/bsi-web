@@ -1,7 +1,14 @@
+@import '../../../../../styles/scss/modules/mixins';
+
 .modal-container {
   width: 560px;
 }
 
 .modal-video {
   border-radius: 6px;
+
+  @include media('sm') {
+    height: 315px;
+    width: 320px;
+  }
 }

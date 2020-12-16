@@ -1,7 +1,9 @@
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
+import { seleccionOpcion } from '../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../svgs/SvgPersonaFisica';
 import SvgPersonaMoralBlue from '../../../svgs/SvgPersonaMoralBlue';
@@ -25,22 +27,29 @@ const StepOne = () => {
     subLabel: 'Deberá ser una empresa que responderá con su patrimonio',
   };
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [disabled, setDisabled] = useState(true);
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { documentacion } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const formulario = useFormik({
     initialValues: {
-      usoCredito: datosEmpresa.usoCredito,
-      descripcionCredito: datosEmpresa.descripcionCredito,
+      usoCredito: documentacion.usoCredito,
     },
+    validationSchema: Yup.object({
+      usoCredito: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+    }),
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'documentacion', step: '2' },
           datosEmpresa: {
-            ...datosEmpresa,
+            ...documentacion,
             ...values,
           },
         })
@@ -52,12 +61,6 @@ const StepOne = () => {
   const { values, setFieldTouched, setFieldValue, touched } = formulario;
 
   const handleUsoCredito = (usoCredito) => {
-    if (usoCredito.label === 'Persona Física' || 'Persona Moral') {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-    console.log('lol', usoCredito);
     if (!touched.usoCredito) {
       setFieldTouched('usoCredito', true);
     }
@@ -192,7 +195,12 @@ const StepOne = () => {
                 </div>
               </div>
               <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
-                <button disabled={disabled} type="submit" className="cicle-button-blue my-3" aria-label="Avanzar" />
+                <button
+                  disabled={!(formulario.isValid && formulario.dirty)}
+                  type="submit"
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                />
               </div>
             </form>
           </div>
