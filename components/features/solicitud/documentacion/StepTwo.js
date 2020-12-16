@@ -68,7 +68,7 @@ const StepTwo = () => {
             </p>
           </div>
           <div className="d-flex justify-content-center">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/3">
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/revisar-correo">
               <button className="btn-medium" type="submit" aria-label="Avanzar">
                 <span>Continuar</span>
               </button>
