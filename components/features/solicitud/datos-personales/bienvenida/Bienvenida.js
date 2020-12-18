@@ -34,7 +34,7 @@ const Bienvenida = () => (
           </div>
           <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
             <div className="center-second-button">
-              <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/gran-salto">
+              <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/gran-salto" replace>
                 <button type="submit" className="btn-big">
                   Comienza tu solicitud
                 </button>
