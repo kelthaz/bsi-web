@@ -12,6 +12,7 @@ import {
   regexNoConsecutives,
   regexMinOneNumber,
   regexRFCFisica,
+  regexRFCMoral,
 } from '../../../../../constants/regex';
 import {
   longitudMaxima,
@@ -40,7 +41,7 @@ const StepFive = () => {
     validationSchema: Yup.object({
       rfc: Yup.string()
         .trim()
-        .matches(regexRFCFisica, rfcInvalido)
+        .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
         .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
         .required(campoRequerido),
       contrasena: Yup.string()
