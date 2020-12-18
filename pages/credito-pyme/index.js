@@ -21,7 +21,7 @@ const CreditoPyme = () => {
     },
     {
       title: 'Línea',
-      content: 'Las líneas de crédito pueden ser desde lo $300,000 hasta los $12 millones de pesos.',
+      content: 'Las líneas de crédito pueden ser desde los $300,000 hasta los $12 millones de pesos.',
     },
     {
       title: 'Plazos',

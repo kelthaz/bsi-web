@@ -7,7 +7,12 @@ import Link from 'next/link';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
-import { regexUpperAndLowerCase, regexNoConsecutives, regexMinOneNumber } from '../../../../../constants/regex';
+import {
+  regexUpperAndLowerCase,
+  regexNoConsecutives,
+  regexMinOneNumber,
+  regexRFCFisica,
+} from '../../../../../constants/regex';
 import {
   longitudMaxima,
   campoRequerido,
@@ -16,6 +21,7 @@ import {
   noConsecutives,
   minOneNumber,
   aceptarTerminos,
+  rfcInvalido,
 } from '../../../../../constants/errors';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 
@@ -34,6 +40,7 @@ const StepFive = () => {
     validationSchema: Yup.object({
       rfc: Yup.string()
         .trim()
+        .matches(regexRFCFisica, rfcInvalido)
         .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
         .required(campoRequerido),
       contrasena: Yup.string()
