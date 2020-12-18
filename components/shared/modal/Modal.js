@@ -4,7 +4,7 @@ import useOnClickOutTarget from '../../../hooks/useOnClickOutTarget';
 import styles from './modal.module.scss';
 
 const Modal = (props) => {
-  const { children, openModal, setOpenModal } = props;
+  const { children, openModal, setOpenModal, closModalIcon = false } = props;
   useOnClickOutTarget('modal', openModal, setOpenModal);
 
   return (
@@ -12,9 +12,10 @@ const Modal = (props) => {
       <div className={styles.modal}>
         <div id="modal" className={styles['modal-centered']}>
           <div className={styles['modal-content']}>
-            <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
-              <SvgCross />
-            </button>
+            {closModalIcon === false ?
+              <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
+                <SvgCross />
+              </button> : <span />}
             {children}
           </div>
         </div>
