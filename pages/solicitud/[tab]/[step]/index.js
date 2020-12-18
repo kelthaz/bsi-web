@@ -66,7 +66,7 @@ const Solicitud = ({ index, data }) => {
         steps={steps}
       />
       {showComponent && <Component {...data} />}
-      <SvgPatronesSolicitud className="only-lg fixed-left-bottom" />
+      <SvgPatronesSolicitud className="fixed-left-bottom" />
     </>
   );
 };

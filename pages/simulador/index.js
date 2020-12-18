@@ -243,8 +243,8 @@ export const PageSimulador = ({ catalogo }) => {
                 </button>
               </div>
               <div className="row p-lg-4 py-md-5 px-md-0 p-sm-4 no-gutters">
-                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 my-2">
-                  <div className="card-transparent-only-row line-card">
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 my-2 py-xs-4 line-card">
+                  <div className="card-transparent-only-row ">
                     <div className="flex-row-center-config">
                       <p className="body2 gray-dark">¿Ya habías comenzado tu solicitud? ¡Retómala aquí!</p>
                       <div className="container-svg-left-card">
@@ -259,7 +259,7 @@ export const PageSimulador = ({ catalogo }) => {
                     </Link>
                   </div>
                 </div>
-                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 my-2">
+                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-xs-4 my-2">
                   <div className="card-transparent-only-row">
                     <div className="flex-row-center-config">
                       <p className="body2 gray-dark">¿Te gusta éste esquema de crédito? ¡Inicia tu solicitud ahora!</p>
@@ -267,11 +267,13 @@ export const PageSimulador = ({ catalogo }) => {
                         <SvgDocumentoCheck />
                       </div>
                     </div>
-                    <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
-                      <button className="btn-big" type="button">
-                        Comienza tu solicitud
-                      </button>
-                    </Link>
+                    <div className="w-100 d-flex justify-content-md-start justify-content-xs-center">
+                      <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+                        <button className="btn-big" type="button">
+                          Comienza tu solicitud
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -50,10 +50,10 @@ const StepSix = () => {
             </p>
 
             <div className="row no-gutters">
-              <div className="col-lg-3 col-md-1 col-sm-12 col-xs-12 ">
+              <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Mi CURP es </p>
               </div>
-              <div className="col-lg-7 col-md-5  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+              <div className="col-lg-7 col-md-7 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="curp"
                   format="rfcformatter"
@@ -65,7 +65,7 @@ const StepSix = () => {
                 />
               </div>
             </div>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+            <div className="flex-column-center-config">
               <button
                 type="submit"
                 className="cicle-button-blue my-3"

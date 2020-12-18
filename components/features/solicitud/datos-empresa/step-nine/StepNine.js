@@ -81,8 +81,8 @@ const StepNine = () => {
               ? 'La revisión del Buró de Crédito, y la firma del Kit de Apertura y la Solicitud de EmpresaNet han sido realizadas con éxito.'
               : 'La revisión del Buró de Crédito ha sido realizada con éxito.'}
             <br />
+            ¡Analizaremos esta información para poder calcular tu oferta!
           </p>
-          <p>¡Analizaremos esta información para poder calcular tu oferta!</p>
 
           <div className="d-flex justify-content-center">
             <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-empresa/agradecimiento">

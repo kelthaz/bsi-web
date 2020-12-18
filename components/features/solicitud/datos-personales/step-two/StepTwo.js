@@ -76,7 +76,7 @@ const StepTwo = () => {
                 BanCoppel Personas!
               </a>
             </p>
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+            <div className="flex-column-center-config">
               <button
                 type="button"
                 className="cicle-button-blue my-3"

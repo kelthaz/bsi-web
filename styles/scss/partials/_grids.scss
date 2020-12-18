@@ -4,6 +4,7 @@
   bottom: 0;
   left: 0;
   overflow: auto;
+  overflow-x: hidden;
   position: fixed;
   right: 0;
   top: $top-size;
@@ -47,8 +48,13 @@
 
 .fixed-left-bottom {
   bottom: 0;
+  display: none;
   left: 0;
   position: fixed;
   z-index: -1;
+
+  @include media('lg+') {
+    display: block;
+  }
 }
 // End grid
