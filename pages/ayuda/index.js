@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import Link from 'next/link';
+import PropTypes from 'prop-types';
 import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
 import TextField from '../../components/shared/text-field/TextField';
 import TextArea from '../../components/shared/text-area/TextArea';
@@ -17,8 +17,9 @@ import {
   numeroInvalido,
   seleccionOpcion,
 } from '../../constants/errors';
+import AccordionRepositorio from '../../services/simulador/acordeon.repositorio';
 
-const Ayuda = () => {
+const Ayuda = ({ accordion }) => {
   const items = [
     { value: 1, label: 'AGUASCALIENTES' },
     { value: 2, label: 'BAJA CALIFORNIA NORTE' },
@@ -84,77 +85,11 @@ const Ayuda = () => {
     },
   });
 
-  const aboutPymeItems = [
-    {
-      title: '¿Cómo comienzo?',
-      content:
-        'Para comenzar tu proceso de solicitud será necesario que realices la simulación de tu crédito llenando los campos que aparecen en la pantalla de simulación y posteriormente dar click al botón de solicitar mi crédito.',
-    },
-    {
-      title: '¿Cuánto es lo máximo que puedo solicitar?',
-      content: 'Puedes solicitar desde $300,000 pesos hasta $12 millones de pesos',
-    },
-    {
-      title: '¿En cuánto tiempo recibo mi dinero?',
-      content:
-        'Una vez que firmado tu contrato, no debería pasar más de 72 horas hábiles para que veas el depósito reflejado en tu cuenta empresarial BanCoppel.',
-    },
-    {
-      title: '¿Necesito una cuenta empresarial?',
-      content:
-        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
-    },
-    {
-      title: '¿En cuánto tiempo tarda el proceso de solicitud?',
-      content:
-        'El tiempo de proceso en su totalidad varía dependiento del tiempo en que el solicitante sube todos los documentos requeridos. Una vez que nuestros analistas validen tus documentos se te notificará para agendar una fecha para la firma del contrato y en un plazo máximo de 72 horas hábiles podrás disponer de tu crédito en tu cuenta empresarial BanCoppel.',
-    },
-  ];
+  const aboutPymeItems = accordion.filter((accordionItem) => accordionItem.subseccion === 'acerca');
 
-  const userAccount = [
-    {
-      title: '¿Es obligatorio el registro en la plataforma?',
-      content:
-        'Para poder llevar a cabo tu evaluación como solicitante es necesario durante el proceso la creación de tu usuario y contraseña.',
-    },
-    {
-      title: '¿Cómo puedo recuperar mi contraseña?',
-      content: 'Al dar click en el botón de iniciar sesión aparecerá una opción de recuperación de contraseña.',
-    },
-    {
-      title: '¿En donde puedo cambiar mi correo electrónico?',
-      content:
-        'Solo tienes que acceder a tu perfil haciendo clic en tu imagen de usuario. Ya dentro, podrás visualizar el campo de tu correo electrónico, mismo que podrás editar.',
-    },
-    {
-      title: '¿Cómo puedo cambiar mi contraseña?',
-      content:
-        'Solo tienes que acceder a tu perfil haciendo clic en tu imagen de usuario. Ya dentro, podrás visualizar las opciones para modificar tu contraseña.',
-    },
-    {
-      title: '¿Dónde puedo visualizar los documentos que ya he subido?',
-      content:
-        'Podrás visualizar el estatus de tus documentos en tu portal privado de cliente una vez iniciada tu sesión.',
-    },
-  ];
+  const userAccount = accordion.filter((accordionItem) => accordionItem.subseccion === 'cuenta');
 
-  const dataSecurity = [
-    {
-      title: '¿Cómo BanCoppel protege mis datos personales?',
-      content:
-        'BanCoppel, se rige por las normas impuestas por la CMBV las cuales son muy estrictas y a través de nuestro aviso de privacidad el cual puedes consultar aquí (enlace al PDF)',
-    },
-    {
-      title: '¿Qué pasa si alguien accede a mi cuenta sin mi consentimiento?',
-      content:
-        'Si crees que alquien a accedido a tu cuenta, te recomendamos cambies urgentemente tu contraseña. En caso de que tengas tu acceso bloqueado, puedes comunicarte con nosotros enviándonos tus comentarios en el campo de centro de ayuda ubicado en la sección de ayuda de la página de inicio del portal PyME.',
-    },
-    {
-      title: '¿Cómo BanCoppel protege mi cuenta de crédito?',
-      content:
-        'En nuestra plataforma utilizamos todos los certificados de seguridad requeridos por la CNBV, y cifrado de 128 bits vía https.',
-    },
-  ];
+  const dataSecurity = accordion.filter((accordionItem) => accordionItem.subseccion === 'seguridad');
 
   const [option, setOption] = useState(1);
   const [nameSelected, setNameSelected] = useState('');
@@ -162,15 +97,16 @@ const Ayuda = () => {
 
   const acc = (
     <div className={styles['container-accordion']}>
-      {array.map(({ title, content }) => (
-        <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
+      {array.map(({ titulo, contenido }) => (
+        <Accordion key={titulo} color="blue" icon="cross" title={titulo} expanded={false}>
           <div>
-            <p>{content}</p>
+            <p>{contenido}</p>
           </div>
         </Accordion>
       ))}
     </div>
   );
+
   const handleOption = (opt, name) => {
     setNameSelected(name);
     setArray(opt);
@@ -219,6 +155,7 @@ const Ayuda = () => {
                   label="Correo electrónico"
                   type="email"
                   format="email"
+                  maxlength={60}
                   inverted
                 />
               </div>
@@ -391,6 +328,20 @@ const Ayuda = () => {
       </section>
     </>
   );
+};
+
+Ayuda.propTypes = {
+  accordion: PropTypes.any.isRequired,
+};
+
+export const getStaticProps = async () => {
+  const accordion = await AccordionRepositorio.getAccordionPorSector('ayuda').then((res) => res.data);
+
+  return {
+    props: {
+      accordion,
+    },
+  };
 };
 
 export default Ayuda;

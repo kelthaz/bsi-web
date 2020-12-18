@@ -6,5 +6,6 @@ export const apiEndpointSimulador = '/interna/publico/v1/simulador';
 export const apiEndpointSectores = '/interna/publico/v1/solicitud/catalogo/sectores/';
 export const apiEndpointGiroPorSector = (idSector) =>
   `/interna/publico/v1/solicitud/catalogo/sectores/${idSector}/giros`;
+export const apiEndpointAcordion = (landing) => `/interna/publico/v1/administrador/contenido/landing/${landing}`;
 
 export const apiEndpointCodigoPostal = '/interna/publico/v1/solicitud/catalogo/localizaciones';

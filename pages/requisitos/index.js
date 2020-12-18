@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-
+import PropTypes from 'prop-types';
 import styles from './requisitos.module.scss';
 import Accordion from '../../components/shared/accordion/Accordion';
 import Tab from '../../components/shared/tab/Tab';
@@ -10,10 +10,11 @@ import VideoSelector from '../../components/shared/video-selector/VideoSelector'
 import Modal from '../../components/shared/modal/Modal';
 import BannerRequisitos from '../../components/core/banners/BannerRequisitos';
 import Tooltip from '../../components/shared/tooltip/Tooltip';
+import AccordionRepositorio from '../../services/simulador/acordeon.repositorio';
 
 const Check = () => <img src="/check.svg" alt="Check" />;
 
-export const Requisitos = () => {
+export const Requisitos = ({ accordionItems }) => {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
 
@@ -87,67 +88,6 @@ export const Requisitos = () => {
     },
     { estado: 'Sonora', municipios: ['Hermosillo'] },
     { estado: 'Tamaulipas', municipios: ['Tampico', 'Altamira', 'Ciudad Madero'] },
-  ];
-
-  const accordionItems = [
-    {
-      title: '¿Por qué no puedo usar mi propia cuenta bancaria para el depósito?',
-      content:
-        'Debido al tipo de crédito que estás solicitando, por normatividad interna, es necesario que cuentes con una cuenta empresarial BanCoppel.',
-    },
-    {
-      title: '¿Qué es un crédito PyME?',
-      content:
-        'Es un crédito simple, en donde en caso de ser aprobado, se depositará el monto del crédito en una sola exhibición. Teniendo mensualidades fijas a lo largo del plazo elegido.',
-    },
-    {
-      title: '¿Necesito contar con una Garantía?',
-      content:
-        'No requieres asignar una garantía hipotecaria o de algún otro tipo, únicamente deberás asignar un Obligado Solidario.',
-    },
-    {
-      title: '¿Necesito contar con una cuenta bancaria?',
-      content:
-        'Si eres Persona Fisica con Actividad Empresarial es necesario contar con una cuenta bancaria en BanCoppel, por lo que te recomendamos visitar tu sucursal más cercana. Si eres Persona Moral no es necesario contar con una cuenta bancaria, por que durante el flujo se te aperturará una cuenta empresarial con BanCoppel.',
-    },
-    {
-      title: '¿Qué pasa si me asignan un monto menor al que solicité?',
-      content:
-        'El monto autorizado depende de la capacidad de flujo y nivel de endeudamiento que identifique el motor paramétrico de la plataforma.',
-    },
-    {
-      title: '¿Qué pasa si mi Obligado Solidario no puede responder las preguntas en el momento?',
-      content:
-        'Si bien es muy importante que tu obligado solidario responda las preguntas cuanto antes. Cabe recordar que mientras más tiempo se tarde, mayor va a ser la tardanza al momento de otorgarte tu crédito.',
-    },
-    {
-      title: '¿Por qué no aceptan solicitud de Personas Físicas?',
-      content:
-        'No es posible otorgar créditos a personas físicas ya que esta es una plataforma para otorgar créditos únicamente a Personas físicas con actividad empresarial así como Personas morales. En caso de necesitar un crédito o préstamo personal, te invitamos a visitar nuestra página de inicio de BanCoppel personas.',
-    },
-    {
-      title: '¿Qué puedo hacer si me rechazan mi solicitud?',
-      content: 'Ponte en contacto con uno de nuestros asesores en la sección de ayuda.',
-    },
-    {
-      title: '¿En cuánto tiempo recibo mi dinero?',
-      content:
-        'Una vez que firmado tu contrato, no debería pasar más de 72 horas hábiles para que veas el depósito reflejado en tu cuenta empresarial BanCoppel.',
-    },
-    {
-      title: '¿Cómo puedo subir un documento corregido?',
-      content:
-        'Al momento de solicitarte alguna corrección, nos comunicaremos contigo a través de correo electrónico indicándote los pasos a seguir. ',
-    },
-    {
-      title: '¿Cómo protegen mis datos personales?',
-      content:
-        'BANCOPPEL, S. A., INSTITUCIÓN DE BANCA MÚLTIPLE de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su reglamento y los Lineamientos del Aviso de Privacidad, ponemos a disposición de las personas físicas de las que BanCoppel recaba sus Datos Personales (en lo sucesivo el/los “Titular(es)”) el presente Aviso de Privacidad, el cual podrá además ser consultado en todo momento a través de la página de Internet www.bancoppel.com',
-    },
-    {
-      title: '¿Cuánto es lo máximo que puedo solicitar?',
-      content: 'Puedes solicitar desde $300,000 pesos hasta $12 millones de pesos',
-    },
   ];
 
   const documentosSolicitante = [
@@ -565,11 +505,18 @@ export const Requisitos = () => {
               </div>
               <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div className="card-accordion">
-                  {accordionItems.map(({ title, content }) => (
-                    <Accordion key={title} color="blue" icon="cross" title={title} expanded={false}>
-                      <div>
-                        <p>{content}</p>
-                      </div>
+                  {accordionItems.map(({ titulo, contenido, enlace }) => (
+                    <Accordion key={titulo} color="blue" icon="cross" title={titulo} expanded={false}>
+                      {enlace ? (
+                        <p>
+                          {contenido.split('<<<')[0]}
+                          <a target="_blank" rel="noreferrer" href={enlace}>
+                            {contenido.split('<<<')[1].replace('>>>', '')}
+                          </a>
+                        </p>
+                      ) : (
+                        <p>{contenido}</p>
+                      )}
                     </Accordion>
                   ))}
                 </div>
@@ -619,6 +566,20 @@ export const Requisitos = () => {
       </article>
     </>
   );
+};
+
+Requisitos.propTypes = {
+  accordionItems: PropTypes.any.isRequired,
+};
+
+export const getStaticProps = async () => {
+  const accordionItems = await AccordionRepositorio.getAccordionPorSector('requisitos').then((res) => res.data);
+
+  return {
+    props: {
+      accordionItems,
+    },
+  };
 };
 
 export default Requisitos;
