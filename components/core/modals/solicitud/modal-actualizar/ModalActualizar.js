@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import Modal from '../../../../shared/modal/Modal';
+import { resetChangePage } from '../../../../../redux/actions/formulario';
 
 const ModalActualizar = ({ openModal, setOpenModal, formulario }) => {
   const { push } = useRouter();
+  const dispatch = useDispatch();
   const { routePage } = useSelector((state) => state.formulario);
 
   const handleModalFirstOption = () => {
@@ -20,7 +23,7 @@ const ModalActualizar = ({ openModal, setOpenModal, formulario }) => {
   };
 
   return (
-    <Modal openModal={openModal} setOpenModal={setOpenModal}>
+    <Modal openModal={openModal} setOpenModal={setOpenModal} onClose={() => dispatch(resetChangePage())}>
       <div className="modal-alerta-container">
         <h4 className="color-blue-storm">
           {formulario.isValid
@@ -44,6 +47,12 @@ const ModalActualizar = ({ openModal, setOpenModal, formulario }) => {
       </div>
     </Modal>
   );
+};
+
+ModalActualizar.propTypes = {
+  openModal: PropTypes.bool.isRequired,
+  formulario: PropTypes.any.isRequired,
+  setOpenModal: PropTypes.func.isRequired,
 };
 
 export default ModalActualizar;

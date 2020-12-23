@@ -1,4 +1,4 @@
-import { CHANGE_PAGE, UPDATE_SHOW_MODAL } from '../types/types';
+import { CHANGE_PAGE, RESET_CHANGE_PAGE } from '../types/types';
 
 const initialState = {
   changePage: false,
@@ -13,10 +13,9 @@ const formularioReducer = (state = initialState, { type, payload }) => {
         ...payload,
       };
 
-    case UPDATE_SHOW_MODAL:
+    case RESET_CHANGE_PAGE:
       return {
-        ...state,
-        ...payload,
+        ...initialState,
       };
 
     default:

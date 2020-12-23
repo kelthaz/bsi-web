@@ -1,19 +1,26 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetChangePage } from '../redux/actions/formulario';
 
 const useOnChangePage = (formulario, route, currentStep) => {
   const { push, query } = useRouter();
+  const dispatch = useDispatch();
   const { changePage, routePage } = useSelector((state) => state.formulario);
   const [openModal, setOpenModal] = useState(false);
+
+  const changeRoute = (newRoute) => {
+    if (formulario.dirty) {
+      setOpenModal(true);
+    } else {
+      push('/solicitud/[tab]/[step]', newRoute);
+      dispatch(resetChangePage());
+    }
+  };
+
   useEffect(() => {
     if (changePage) {
-      if (formulario.dirty) {
-        console.log('abrio');
-        setOpenModal(true);
-      } else {
-        push('/solicitud/[tab]/[step]', routePage);
-      }
+      changeRoute(routePage);
     }
   }, [changePage]);
 
@@ -22,10 +29,8 @@ const useOnChangePage = (formulario, route, currentStep) => {
     if (currentStep.step === query.step) {
       formulario.handleSubmit();
       push('/solicitud/[tab]/[step]', route);
-    } else if (formulario.dirty) {
-      setOpenModal(true);
     } else {
-      push('/solicitud/[tab]/[step]', route);
+      changeRoute(route);
     }
   };
 

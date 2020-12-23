@@ -5,7 +5,6 @@ export const onChangePage = (changePage, routePage) => ({
   payload: { changePage, routePage },
 });
 
-export const updateShowModal = (showModal, route) => ({
-  type: types.CHANGE_PAGE,
-  payload: { showModal, route },
+export const resetChangePage = () => ({
+  type: types.RESET_CHANGE_PAGE,
 });
