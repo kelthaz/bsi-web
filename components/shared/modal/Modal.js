@@ -6,16 +6,18 @@ import styles from './modal.module.scss';
 const Modal = (props) => {
   const { children, openModal, setOpenModal, closModalIcon = false } = props;
   useOnClickOutTarget('modal', openModal, setOpenModal);
-
   return (
     openModal && (
       <div className={styles.modal}>
         <div id="modal" className={styles['modal-centered']}>
           <div className={styles['modal-content']}>
-            {closModalIcon === false ?
+            {closModalIcon === false ? (
               <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
                 <SvgCross />
-              </button> : <span />}
+              </button>
+            ) : (
+              <span />
+            )}
             {children}
           </div>
         </div>
