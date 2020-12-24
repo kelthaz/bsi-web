@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './check-text-box.module.scss';
 
-const CheckTextBox = ({ name, formulario, children }) => {
+const CheckTextBox = ({ name, formulario, children, notBackground = true }) => {
   const { values, setFieldValue, errors } = formulario;
 
   return (
     <>
-      <div className={`card-simple-blue-light ${styles['container-check-text']}`}>
+      <div
+        className={
+          notBackground
+            ? `card-simple-blue-light ${styles['container-check-text']}`
+            : `${styles['container-check-text']}`
+        }
+      >
         <div className={`${styles['container-check']}`}>
           <input
             id={name}
@@ -23,7 +29,11 @@ const CheckTextBox = ({ name, formulario, children }) => {
         </div>
         <div>{children}</div>
       </div>
-      <span className="color-red">{errors[name] && values[name] !== null ? errors[name] : ''}&nbsp;</span>
+      {notBackground ? (
+        <span className="color-red">{errors[name] && values[name] !== null ? errors[name] : ''}&nbsp;</span>
+      ) : (
+        ''
+      )}
     </>
   );
 };

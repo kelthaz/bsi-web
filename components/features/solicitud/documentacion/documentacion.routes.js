@@ -1,8 +1,9 @@
-import StepEight from '../datos-empresa/step-eight/StepEight';
-import StepNine from '../datos-empresa/step-nine/StepNine';
+import StepEight from './step-eight/StepEight';
+import StepNine from './StepNine';
 import RevisarCorreo from './RevisarCorreo';
 import StepFive from './StepFive';
 import StepFour from './StepFour';
+import Agradecimiento from './agradecimiento/Agradecimiento';
 import StepOne from './StepOne';
 import StepSeven from './StepSeven';
 import StepSix from './StepSix';
@@ -96,7 +97,7 @@ const documentacionRoutes = [
     tab: 'documentacion',
     step: '10',
     path: '/solicitud/documentacion/10',
-    stepNumber: 9,
+    stepNumber: 10,
     component: StepTen,
     services: [],
   },
@@ -106,6 +107,14 @@ const documentacionRoutes = [
     path: '/solicitud/documentacion/revisar-correo',
     stepNumber: null,
     component: RevisarCorreo,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'agradecimiento',
+    path: '/solicitud/documentacion/agradecimiento',
+    stepNumber: null,
+    component: Agradecimiento,
     services: [],
   },
 ];
