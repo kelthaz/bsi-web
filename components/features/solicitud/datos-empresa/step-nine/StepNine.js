@@ -129,7 +129,7 @@ const StepNine = () => {
           </div>
         </div>
       </Modal>
-      <div className="contedor-fixed-tab">
+      <div className="contedor-fixed">
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">
             <form onSubmit={formulario.handleSubmit} noValidate>

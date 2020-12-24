@@ -16,8 +16,10 @@ import {
   longitudMaxima,
   numeroInvalido,
   seleccionOpcion,
+  captcha,
 } from '../../constants/errors';
 import AccordionRepositorio from '../../services/simulador/acordeon.repositorio';
+import Captcha from '../../components/shared/captcha/Captcha';
 
 const Ayuda = ({ accordion }) => {
   const items = [
@@ -64,7 +66,7 @@ const Ayuda = ({ accordion }) => {
       email: '',
       state: null,
       tellUs: '',
-      check: false,
+      check: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -78,7 +80,7 @@ const Ayuda = ({ accordion }) => {
         })
         .nullable()
         .required(seleccionOpcion),
-      check: Yup.boolean().required(campoRequerido),
+      check: Yup.string().required(captcha),
     }),
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
@@ -188,7 +190,13 @@ const Ayuda = ({ accordion }) => {
             </div>
           </div>
         </SimpleBanner>
-        <div className="row justify-content-center mt-5 mx-xs-0 mx-sm-0">
+        <div className="container">
+          <div className="row d-flex justify-content-center mt-5 mx-xs-0 mx-sm-0">
+            <Captcha name="check" formulario={formulario} />
+          </div>
+        </div>
+
+        {/* <div className="row justify-content-center mt-5 mx-xs-0 mx-sm-0">
           <div className={` ${styles.captcha}`}>
             <input name="check" type="checkbox" onClick={checkedButton} />
             <label htmlFor="my-check" className="mr-5">
@@ -197,7 +205,7 @@ const Ayuda = ({ accordion }) => {
             </label>
             <img className="ml-5" src="/captcha.svg" alt="Document" />
           </div>
-        </div>
+        </div> */}
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
             <button
