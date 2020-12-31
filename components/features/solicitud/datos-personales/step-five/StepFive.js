@@ -38,14 +38,12 @@ const StepFive = () => {
       confirmarContrasena: datosPersonales.confirmarContrasena,
       aceptoTerminos: datosPersonales.aceptoTerminos,
     },
-    validationSchema: Yup.object({
+    validationSchema: Yup.object().shape({
       rfc: Yup.string()
-        .trim()
         .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
         .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
         .required(campoRequerido),
       contrasena: Yup.string()
-        .trim()
         .max(20, longitudMaxima)
         .min(8, longitudMinima)
         .matches(regexUpperAndLowerCase, lowerUpperCase)

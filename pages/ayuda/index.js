@@ -57,8 +57,6 @@ const Ayuda = ({ accordion }) => {
     { value: 32, label: 'ZACATECAS' },
   ];
 
-  const [checked, setChecked] = useState(false);
-
   const formulario = useFormik({
     initialValues: {
       name: '',
@@ -113,14 +111,6 @@ const Ayuda = ({ accordion }) => {
     setNameSelected(name);
     setArray(opt);
     setOption(opt);
-  };
-
-  const checkedButton = () => {
-    if (checked === false) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
   };
 
   return (
@@ -195,24 +185,9 @@ const Ayuda = ({ accordion }) => {
             <Captcha name="check" formulario={formulario} />
           </div>
         </div>
-
-        {/* <div className="row justify-content-center mt-5 mx-xs-0 mx-sm-0">
-          <div className={` ${styles.captcha}`}>
-            <input name="check" type="checkbox" onClick={checkedButton} />
-            <label htmlFor="my-check" className="mr-5">
-              {' '}
-              &nbsp; No soy un robot
-            </label>
-            <img className="ml-5" src="/captcha.svg" alt="Document" />
-          </div>
-        </div> */}
         <div className="row justify-content-center pt-3 mx-0">
           <div className="col-auto">
-            <button
-              disabled={!(formulario.isValid && formulario.dirty && checked)}
-              type="submit"
-              className="btn-small col-12"
-            >
+            <button disabled={!(formulario.isValid && formulario.dirty)} type="submit" className="btn-small col-12">
               Envía tu comentario
             </button>
           </div>
@@ -243,26 +218,6 @@ const Ayuda = ({ accordion }) => {
             </div>
           </div>
         </section>
-        <div className="container">
-          {/* <div className={`row py-5 ${styles['border-contact']}`}> */}
-          {/* <div className="col-lg-6 col-md-6 col-sm-12">
-              <div className="d-flex flex-row align-items-center">
-                <div className="col-8">
-                  <div className="sub text-primary mb-3">Chat</div>
-                  <div className="body2 mb-3">Si prefieres, manda tus dudas por nuestro chat.</div>
-                  <Link href="requisitos">
-                    <button className="btn-link text-primary" type="button">
-                      Ver todos los requisitos
-                    </button>
-                  </Link>
-                </div>
-                <div className="col-4">
-                  <img src="/chat.svg" alt="" />
-                </div>
-              </div>
-            </div> */}
-        </div>
-        {/* </div> */}
 
         <Title linea1="Todo sobre" linea2="crédito digital pyme" />
 

@@ -26,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    !pathname.includes('solicitud') && (
+    !(pathname.includes('solicitud') || pathname.includes('login')) && (
       <footer className={styles.footer}>
         <div className={`${styles['footer-container']} container`}>
           <SvgLogoBanCoppelInverted />

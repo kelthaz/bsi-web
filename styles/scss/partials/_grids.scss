@@ -10,6 +10,11 @@
   top: $top-size;
 }
 
+.contedor-fixed-login {
+  @include contenedor-flex-config(0);
+  background-color: $blue-storm;
+}
+
 .contedor-fixed {
   @include contenedor-flex-config(74px);
 }
@@ -35,6 +40,20 @@
     margin: 16px auto;
     min-height: calc(100% - (16px * 2));
     width: 290px;
+  }
+}
+
+.contedor-login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 60px auto;
+  min-height: calc(100% - (60px * 2));
+  @include media('md') {
+    margin: 30px auto;
+    min-height: calc(100% - (30px * 2));
   }
 }
 
