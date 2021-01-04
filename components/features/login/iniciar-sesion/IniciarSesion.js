@@ -29,54 +29,58 @@ const IniciarSesion = () => {
   });
 
   return (
-    <div className="card-simple-white">
-      <Tab>
-        <TabItem tab="Portal Bancario" keyTab="1">
-          sdf
-        </TabItem>
-        <TabItem tab="Plataforma Pyme" keyTab="2">
-          <form onSubmit={formulario.handleSubmit} noValidate>
-            <h2 className="color-blue-storm text-center pt-3">¡Bienvenido!</h2>
-            <p className="body2 color-gray-dark text-center">
-              Ingresa tu RFC y contraseña para ingresar a la plataforma o retomar tu solicitud.
-            </p>
+    <div className="">
+      <div className="card-simple-white">
+        <Tab>
+          <TabItem tab="Portal Bancario" keyTab="1">
+            sdf
+          </TabItem>
+          <TabItem tab="Plataforma Pyme" keyTab="2">
+            <form onSubmit={formulario.handleSubmit} noValidate>
+              <h2 className="color-blue-storm text-center pt-3">¡Bienvenido!</h2>
+              <p className="body2 color-gray-dark text-center">
+                Ingresa tu RFC y contraseña para ingresar a la plataforma o retomar tu solicitud.
+              </p>
 
-            <TextField
-              name="rfc"
-              format="rfcformatter"
-              maxlength={13}
-              formulario={formulario}
-              type="text"
-              size="small"
-              label="RFC"
-            />
-            <TextField
-              name="contrasena"
-              paste={false}
-              format="passwordspace"
-              maxlength={20}
-              formulario={formulario}
-              type="password"
-              size="small"
-              label="Contraseña"
-            />
-            <RadioButton name="mantenerSesion" formulario={formulario} value="si">
-              Mantener sesión iniciada
-            </RadioButton>
-            <Captcha name="check" formulario={formulario} />
-            <div className="row">
-              <button type="submit" className="btn-medium">
-                Iniciar sesión
-              </button>
-            </div>
-            <div className="row">
-              <button type="button" className="btn-link">
-                ¿Olvidaste tu contraseña?
-              </button>
-            </div>
-          </form>
-        </TabItem>
-      </Tab>
+              <TextField
+                name="rfc"
+                format="rfcformatter"
+                maxlength={13}
+                formulario={formulario}
+                type="text"
+                size="small"
+                label="RFC"
+              />
+              <TextField
+                name="contrasena"
+                paste={false}
+                format="passwordspace"
+                maxlength={20}
+                formulario={formulario}
+                type="password"
+                size="small"
+                label="Contraseña"
+              />
+              <div className="py-3">
+                <RadioButton name="mantenerSesion" formulario={formulario} value="si">
+                  Mantener sesión iniciada
+                </RadioButton>
+              </div>
+              <Captcha name="check" formulario={formulario} />
+              <div className="row d-flex justify-content-center py-3">
+                <button type="submit" className="btn-medium">
+                  Iniciar sesión
+                </button>
+              </div>
+              <div className="row d-flex justify-content-center py-3">
+                <button type="button" className="btn-link">
+                  ¿Olvidaste tu contraseña?
+                </button>
+              </div>
+            </form>
+          </TabItem>
+        </Tab>
+      </div>
     </div>
   );
 };
