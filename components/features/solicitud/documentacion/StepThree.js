@@ -9,6 +9,24 @@ import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
 import TextField from '../../../shared/text-field/TextField';
 
+import {
+  regexUpperAndLowerCase,
+  regexNoConsecutives,
+  regexMinOneNumber,
+  regexRFCFisica,
+  regexRFCMoral,
+} from '../../../../constants/regex';
+import {
+  longitudMaxima,
+  campoRequerido,
+  longitudMinima,
+  lowerUpperCase,
+  noConsecutives,
+  minOneNumber,
+  aceptarTerminos,
+  rfcInvalido,
+} from '../../../../constants/errors';
+
 const StepThree = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -56,6 +74,17 @@ const StepThree = () => {
       // primerNombreDoc: Yup.string().max(60, 10).required('campoRequerido'),
     }),
   };
+
+  const subformValidationSchema = Yup.object().shape({
+    nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+    rfc: Yup.string()
+            .trim()
+            .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
+            .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
+            .required(campoRequerido),
+    porcentajeDirecto: Yup.number().max(100).min(0),
+    porcentajeIndirecto: Yup.number().max(100).min(0)
+  });
 
   const items = [
     {label: '1', value: 1},
