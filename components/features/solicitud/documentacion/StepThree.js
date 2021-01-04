@@ -26,6 +26,7 @@ import {
   aceptarTerminos,
   rfcInvalido,
 } from '../../../../constants/errors';
+import { array } from 'yup/lib/locale';
 
 const StepThree = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,17 @@ const StepThree = () => {
   const [formEjerceControlMap, setFormEjerceControlMap] = useState([]);
 
   const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+
+  const subformValidationSchema = Yup.object().shape({
+    nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+    rfc: Yup.string()
+            .trim()
+            .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
+            .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
+            .required(campoRequerido),
+    porcentajeDirecto: Yup.number().max(100).min(0),
+    porcentajeIndirecto: Yup.number().max(100).min(0)
+  });
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -71,20 +83,9 @@ const StepThree = () => {
       // ejerceControlMoral: 'no'
     },
     validationSchema: Yup.object().shape({
-      // primerNombreDoc: Yup.string().max(60, 10).required('campoRequerido'),
+      controladosMoral: array().of(subformValidationSchema)
     }),
   };
-
-  const subformValidationSchema = Yup.object().shape({
-    nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-    rfc: Yup.string()
-            .trim()
-            .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
-            .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
-            .required(campoRequerido),
-    porcentajeDirecto: Yup.number().max(100).min(0),
-    porcentajeIndirecto: Yup.number().max(100).min(0)
-  });
 
   const items = [
     {label: '1', value: 1},
