@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -6,22 +6,19 @@ import * as Yup from 'yup';
 
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
-import Select from '../../../shared/select/Select';
-import TextField from '../../../shared/text-field/TextField';
+import { campoRequerido } from '../../../../constants/errors';
 
 const StepFour = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [formEjerceControlMap, setFormEjerceControlMap] = useState([]);
 
   const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
 
   const { initialValues, validationSchema } = {
-    initialValues: {
-      // ejerceControlMoral: 'no'
-    },
+    initialValues: { },
     validationSchema: Yup.object().shape({
-      // primerNombreDoc: Yup.string().max(60, 10).required('campoRequerido'),
+      ejerceControlMoral: Yup.string().required(campoRequerido),
+      ejerceControlFisica: Yup.string().required(campoRequerido),
     }),
   };
 

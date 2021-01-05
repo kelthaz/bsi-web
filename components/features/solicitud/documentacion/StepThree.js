@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -9,28 +9,19 @@ import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
 import TextField from '../../../shared/text-field/TextField';
 
-import {
-  regexUpperAndLowerCase,
-  regexNoConsecutives,
-  regexMinOneNumber,
-  regexRFCFisica,
-  regexRFCMoral,
-} from '../../../../constants/regex';
+import { regexRFCMoral } from '../../../../constants/regex';
 import {
   longitudMaxima,
   campoRequerido,
   longitudMinima,
-  lowerUpperCase,
-  noConsecutives,
-  minOneNumber,
-  aceptarTerminos,
   rfcInvalido,
+  numeroMaximo,
+  numeroMinimo,
 } from '../../../../constants/errors';
 
 const StepThree = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  // const [formEjerceControlMap, setFormEjerceControlMap] = useState([]);
 
   const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
 
@@ -38,20 +29,23 @@ const StepThree = () => {
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
     rfc: Yup.string()
       .trim()
-      .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
-      .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
+      .matches(regexRFCMoral, rfcInvalido)
+      .min(12, longitudMinima)
       .required(campoRequerido),
-    porcentajeDirecto: Yup.number().max(100).min(0),
-    porcentajeIndirecto: Yup.number().max(100).min(0),
+    porcentajeDirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
+    porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
   });
 
   const { initialValues, validationSchema } = {
     initialValues: {
       controladosMoral: [],
       ejerceControlMoral: null,
+      ejerceControlFisica: null,
       cantidadEjerceControl: null,
     },
     validationSchema: Yup.object().shape({
+      ejerceControlMoral: Yup.string().required(campoRequerido),
+      ejerceControlFisica: Yup.string().required(campoRequerido),
       controladosMoral: Yup.array().of(subformValidationSchema),
     }),
   };
@@ -157,7 +151,7 @@ const StepThree = () => {
                   </div>
                   <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                     <TextField
-                      format="uppercase"
+                      format="rfcformatter"
                       name={`controladosMoral[${index}].rfc`}
                       maxlength={60}
                       formulario={formulario}
@@ -178,7 +172,7 @@ const StepThree = () => {
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
                     <TextField
-                      format="uppercase"
+                      format="number"
                       name={`controladosMoral[${index}].porcentajeDirecto`}
                       maxlength={60}
                       formulario={formulario}
@@ -192,7 +186,7 @@ const StepThree = () => {
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
                     <TextField
-                      format="uppercase"
+                      format="number"
                       name={`controladosMoral[${index}].porcentajeIndirecto`}
                       maxlength={60}
                       formulario={formulario}

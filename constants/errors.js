@@ -14,3 +14,5 @@ export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acento
 export const aceptarTerminos = () => 'Debe aceptar los términos';
 export const declararTerminos = () => 'Debe declarar los términos';
 export const codigoPostalInvalido = () => 'Código postal inválido';
+export const numeroMinimo = ({ min }) => `El número debe ser mayor o igual a ${min}`;
+export const numeroMaximo = ({ max }) => `El número debe ser menor o igual a ${max}`;

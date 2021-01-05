@@ -8,62 +8,44 @@ import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
 import TextField from '../../../shared/text-field/TextField';
+import {
+  campoRequerido,
+  longitudMaxima,
+  longitudMinima,
+  rfcInvalido
+} from '../../../../constants/errors';
+import { regexRFCFisica } from '../../../../constants/regex';
 
 const StepFive = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [formEjerceControlMap, setFormEjerceControlMap] = useState([]);
 
   const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
 
+  const subformValidationSchema = Yup.object().shape({
+    primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+    segundoNombre: Yup.string().trim().max(60, longitudMaxima),
+    primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+    segundoApellido: Yup.string().trim().max(60, longitudMaxima),
+    rfc: Yup.string()
+      .trim()
+      .matches(regexRFCFisica, rfcInvalido)
+      .min(13, longitudMinima)
+      .required(campoRequerido),
+    parentesco: Yup.string().required(campoRequerido)
+  });
+
   const { initialValues, validationSchema } = {
     initialValues: {
-      controladosFisica: [
-        {
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: 'Hermano'
-        },
-        {
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: 'Hermano'
-        },
-        {
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: 'Hermano'
-        },
-        {
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: 'Hermano'
-        },
-        {
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: 'Hermano'
-        }
-      ]
-      // ejerceControlMoral: 'no'
+      controladosFisica: [],
+      ejerceControlMoral: null,
+      ejerceControlFisica: null,
+      cantidadEjerceControl: null,
     },
     validationSchema: Yup.object().shape({
-      // primerNombreDoc: Yup.string().max(60, 10).required('campoRequerido'),
+      ejerceControlMoral: Yup.string().required(campoRequerido),
+      ejerceControlFisica: Yup.string().required(campoRequerido),
+      controladosFisica: Yup.array().of(subformValidationSchema),
     }),
   };
 
@@ -90,110 +72,21 @@ const StepFive = () => {
     validateOnMount: true,
   });
 
-  const formEjerceControl = (amount) => {
-    const arr = [];
-    for (let index = 0; index < amount; index++) {
-      arr.push(
-        <section key={index}>
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-              <p className="input color-gray">Su nombre es</p>
-            </div>
-          </div>
-          <div className="row no-gutters">
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <TextField
-                format="uppercase"
-                name={`controladosFisica[${index}].primerNombre`}
-                maxlength={60}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Nombre"
-              />
-            </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TextField
-                format="uppercase"
-                maxlength={60}
-                name={`controladosFisica[${index}].segundoNombre`}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="2º Nombre"
-              />
-            </div>
-          </div>
-          <div className="row no-gutters">
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <TextField
-                format="uppercase"
-                name={`controladosFisica[${index}].primerApellido`}
-                maxlength={60}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Apellido paterno"
-              />
-            </div>
-            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-              <TextField
-                format="uppercase"
-                maxlength={60}
-                name={`controladosFisica[${index}].segundoApellido`}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Apellido materno"
-              />
-            </div>
-          </div>
-          <div className="row no-gutters">
-            <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
-              <p className="input color-gray">Su RFC es</p>
-            </div>
-            <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-              <TextField
-                format="uppercase"
-                name={`controladosFisica[${index}].rfc`}
-                maxlength={60}
-                formulario={formulario}
-                type="text"
-                size="big"
-                label="Ej. TLF280693H17"
-              />
-            </div>
-          </div>
-          <div className="row no-gutters">
-            <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
-              <p className="input color-gray">Parentesco</p>
-            </div>
-            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-              <Select
-                name={`controladosFisica[${index}].parentesco`}
-                formulario={formulario}
-                size="big"
-                items={[
-                  {label: 'Hermano', value: 'Hermano'},
-                  {label: 'Padre', value: 'Padre'},
-                  {label: 'Madre', value: 'Madre'}
-                ]}
-                defaultValue={0}
-                label=""
-              />
-            </div>
-          </div>
-        </section>
-      );
-    }
-    return arr;
-  };
-
   useEffect(() => {
     if (formulario.values.ejerceControlMoral === 'si') {
-      setFormEjerceControlMap(formEjerceControl(formulario.values.cantidadEjerceControl.value));
+      formulario.setFieldValue(
+        'controladosFisica',
+        [...Array(formulario.values.cantidadEjerceControl.value).keys()].map(() => ({
+          primerNombre: '',
+          segundoNombre: '',
+          primerApellido: '',
+          segundoApellido: '',
+          rfc: '',
+          parentesco: ''
+        }))
+      );
     } else {
-      setFormEjerceControlMap([]);
+      formulario.setFieldValue('controladosMoral', []);
     }
   }, [formulario.values.ejerceControlMoral, formulario.values.cantidadEjerceControl]);
 
@@ -238,10 +131,104 @@ const StepFive = () => {
                 </RadioButton>
               </div>
             </div>
-            {
-              formEjerceControlMap.map((form) => <>{form}</>)
-                                  .reduce((acc, x) => acc === null ? x : <>{acc} <hr /> {x}</>, null)
-            }
+            {formulario.values.controladosFisica.map((value, index) => (
+              <section key={value}>
+                <div className="row no-gutters">
+                  <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                    <p className="input color-gray">Su nombre es</p>
+                  </div>
+                </div>
+                <div className="row no-gutters">
+                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                    <TextField
+                      format="uppercase"
+                      name={`controladosFisica[${index}].primerNombre`}
+                      maxlength={60}
+                      formulario={formulario}
+                      type="text"
+                      size="big"
+                      label="Nombre"
+                    />
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <TextField
+                      format="uppercase"
+                      maxlength={60}
+                      name={`controladosFisica[${index}].segundoNombre`}
+                      formulario={formulario}
+                      type="text"
+                      size="big"
+                      label="2º Nombre"
+                    />
+                  </div>
+                </div>
+                <div className="row no-gutters">
+                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                    <TextField
+                      format="uppercase"
+                      name={`controladosFisica[${index}].primerApellido`}
+                      maxlength={60}
+                      formulario={formulario}
+                      type="text"
+                      size="big"
+                      label="Apellido paterno"
+                    />
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <TextField
+                      format="uppercase"
+                      maxlength={60}
+                      name={`controladosFisica[${index}].segundoApellido`}
+                      formulario={formulario}
+                      type="text"
+                      size="big"
+                      label="Apellido materno"
+                    />
+                  </div>
+                </div>
+                <div className="row no-gutters">
+                  <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
+                    <p className="input color-gray">Su RFC es</p>
+                  </div>
+                  <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                    <TextField
+                      format="rfcformatter"
+                      name={`controladosFisica[${index}].rfc`}
+                      maxlength={60}
+                      formulario={formulario}
+                      type="text"
+                      size="big"
+                      label="Ej. TLF280693H17"
+                    />
+                  </div>
+                </div>
+                <div className="row no-gutters">
+                  <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
+                    <p className="input color-gray">Parentesco</p>
+                  </div>
+                  <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
+                    <Select
+                      name={`controladosFisica[${index}].parentesco`}
+                      formulario={formulario}
+                      size="big"
+                      items={[
+                        {label: 'Cónyuges', value: 'Cónyuges'},
+                        {label: 'Concubinos', value: 'oncubinos'},
+                        {label: 'Hijos', value: 'Hijos'},
+                        {label: 'Padres', value: 'Padres'},
+                        {label: 'Suegros', value: 'Suegros'},
+                        {label: 'Hijos de cónyuge', value: 'Hijos de cónyuge'},
+                        {label: 'Hermanos', value: 'Hermanos'},
+                        {label: 'Abuelos', value: 'Abuelos'},
+                        {label: 'Nietos', value: 'Nietos'},
+                        {label: 'Cuñados', value: 'Cuñados'}
+                      ]}
+                      label=""
+                    />
+                  </div>
+                </div>
+              </section>
+            ))}
             <p className="sub color-blue-storm">
               <img src="/requisitos/PM.svg" alt="Persona moral"/>
               Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
