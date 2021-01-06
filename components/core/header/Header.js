@@ -199,154 +199,161 @@ const Header = () => {
   };
 
   return (
-    <header className={styles['relative-header']}>
-      <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <div className={styles['modal-container']}>
-          <h4 className="color-blue-storm">Estas por salir del proceso...</h4>
-          <p className="dark-gray body2">
-            En este punto tu información no se guardará y deberás comenzar desde el principio si decides retomar tu
-            solicitud. ¿Estás seguro de querer salirte?
-          </p>
-          <div className="flex-row-center-config">
-            <button type="button" className="btn-medium-secondary mr-2" onClick={handleModal}>
-              Sí, salir
-            </button>
-
-            <button type="button" className="btn-medium ml-2" onClick={() => setOpenModal(false)}>
-              No, continuar
-            </button>
-          </div>
-        </div>
-      </Modal>
-      <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
-        <div>
-          {!pathname.includes('solicitud') && (
-            <button type="button" onClick={handleMenu}>
-              {}
-            </button>
-          )}
-          <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
-        </div>
-        <div>
-          {pathname.includes('solicitud') ? (
-            <img src="/circle-cross.svg" alt="" onClick={() => setOpenModal(true)} />
-          ) : (
-            <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
-          )}
-          {!pathname.includes('solicitud') && (
-            <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
-              Inicia sesión
-            </button>
-          )}
-          {!pathname.includes('solicitud') && (
-            <Link href="simulador">
-              <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
-                Solicita tu crédito
+    !pathname.includes('login') && (
+      <header className={styles['relative-header']}>
+        <Modal openModal={openModal} setOpenModal={setOpenModal}>
+          <div className={styles['modal-container']}>
+            <h4 className="color-blue-storm">Estas por salir del proceso...</h4>
+            <p className="dark-gray body2">
+              En este punto tu información no se guardará y deberás comenzar desde el principio si decides retomar tu
+              solicitud. ¿Estás seguro de querer salirte?
+            </p>
+            <div className="flex-row-center-config">
+              <button type="button" className="btn-medium-secondary mr-2" onClick={handleModal}>
+                Sí, salir
               </button>
-            </Link>
-          )}
-          {!pathname.includes('solicitud') && <button type="button">{}</button>}
-        </div>
-      </div>
-      {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}
-      {!menuOpen && !pathname.includes('solicitud') && (
-        <nav className={styles['header-bottom']}>
-          <ul>
-            {pages.map(({ label, link }) => (
-              <li key={label} className={pageSelect === link ? styles['page-selected'] : ''}>
-                <Link href={link}>
-                  <a>{label}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
-      {menuOpen && (
-        <>
-          <div className={styles.menu}>
-            <ul className={`${styles['ul-padding']}`}>
-              <li className={category === 'Personas' ? styles['category-selected'] : styles['li-padding']}>
-                <h4 onClick={handleCategory}>Personas</h4>
-              </li>
-              <li className={category === 'Empresas' ? styles['category-selected'] : styles['li-padding']}>
-                <h4 onClick={handleCategoryCompanies}>Empresas</h4>
-              </li>
-            </ul>
-          </div>
-          <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
-            {category === 'Empresas' ? (
-              <ul className={`${styles['ul-border']}`}>
-                {menuOptions2.map(({ label, link }) => (
-                  <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
-                    <a
-                      className="col-3"
-                      target="_blank"
-                      rel="noreferrer"
-                      href={link}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className={`${styles['list-items']}`}>
-                {menuOptions.map(({ label, link, subMenu }) => (
-                  <li key={link}>
-                    <div>
-                      <div className={label === nameLabel ? styles['option-selected'] : ''}>
-                        <a target="_blank" rel="noreferrer" href={link} onClick={() => setMenusPeople(subMenu, label)}>
-                          {label}
-                        </a>
-                      </div>
 
-                      <div className={`${styles['margen-list']}`}>
-                        {label === nameLabel
-                          ? subMenus.map((options) => (
-                              <li>
-                                <a
-                                  className={` ${styles['sub-menu-hover']}`}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  href={options.link}
-                                  onClick={() => setSubMenusPeople(subMenu, label)}
-                                >
-                                  {options.value}
-                                </a>
-                              </li>
-                            ))
-                          : ''}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <button type="button" className="btn-medium ml-2" onClick={() => setOpenModal(false)}>
+                No, continuar
+              </button>
+            </div>
+          </div>
+        </Modal>
+        <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
+          <div>
+            {!pathname.includes('solicitud') && (
+              <button type="button" onClick={handleMenu}>
+                {}
+              </button>
             )}
-            {category === 'Empresas' ? (
-              <ul className={`${'d-none d-sm-block d-lg-none' && category === 'Empresas'}`}>
-                {pages.map(({ label, link }) => (
-                  <li key={label}>
-                    <Link href={link}>
-                      <button
-                        type="button"
-                        className={pageSelect === link ? styles['option-selected-yellow'] : ''}
-                        onClick={() => handlePage(link)}
+            <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
+          </div>
+          <div>
+            {pathname.includes('solicitud') ? (
+              <img src="/circle-cross.svg" alt="" onClick={() => setOpenModal(true)} />
+            ) : (
+              <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
+            )}
+            {!pathname.includes('solicitud') && (
+              <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
+                Inicia sesión
+              </button>
+            )}
+            {!pathname.includes('solicitud') && (
+              <Link href="simulador">
+                <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
+                  Solicita tu crédito
+                </button>
+              </Link>
+            )}
+            {!pathname.includes('solicitud') && <button type="button">{}</button>}
+          </div>
+        </div>
+        {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}
+        {!menuOpen && !pathname.includes('solicitud') && (
+          <nav className={styles['header-bottom']}>
+            <ul>
+              {pages.map(({ label, link }) => (
+                <li key={label} className={pageSelect === link ? styles['page-selected'] : ''}>
+                  <Link href={link}>
+                    <a>{label}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+        {menuOpen && (
+          <>
+            <div className={styles.menu}>
+              <ul className={`${styles['ul-padding']}`}>
+                <li className={category === 'Personas' ? styles['category-selected'] : styles['li-padding']}>
+                  <h4 onClick={handleCategory}>Personas</h4>
+                </li>
+                <li className={category === 'Empresas' ? styles['category-selected'] : styles['li-padding']}>
+                  <h4 onClick={handleCategoryCompanies}>Empresas</h4>
+                </li>
+              </ul>
+            </div>
+            <div className={`${styles['items-menu']} ${styles['menu-active']}`}>
+              {category === 'Empresas' ? (
+                <ul className={`${styles['ul-border']}`}>
+                  {menuOptions2.map(({ label, link }) => (
+                    <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                      <a
+                        className="col-3"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={link}
+                        onClick={() => setMenuOpen(false)}
                       >
                         {label}
-                      </button>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <span></span>
-            )}
-          </div>
-        </>
-      )}
-    </header>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <ul className={`${styles['list-items']}`}>
+                  {menuOptions.map(({ label, link, subMenu }) => (
+                    <li key={link}>
+                      <div>
+                        <div className={label === nameLabel ? styles['option-selected'] : ''}>
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={link}
+                            onClick={() => setMenusPeople(subMenu, label)}
+                          >
+                            {label}
+                          </a>
+                        </div>
+
+                        <div className={`${styles['margen-list']}`}>
+                          {label === nameLabel
+                            ? subMenus.map((options) => (
+                                <li>
+                                  <a
+                                    className={` ${styles['sub-menu-hover']}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    href={options.link}
+                                    onClick={() => setSubMenusPeople(subMenu, label)}
+                                  >
+                                    {options.value}
+                                  </a>
+                                </li>
+                              ))
+                            : ''}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {category === 'Empresas' ? (
+                <ul className={`${'d-none d-sm-block d-lg-none' && category === 'Empresas'}`}>
+                  {pages.map(({ label, link }) => (
+                    <li key={label}>
+                      <Link href={link}>
+                        <button
+                          type="button"
+                          className={pageSelect === link ? styles['option-selected-yellow'] : ''}
+                          onClick={() => handlePage(link)}
+                        >
+                          {label}
+                        </button>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <span></span>
+              )}
+            </div>
+          </>
+        )}
+      </header>
+    )
   );
 };
 

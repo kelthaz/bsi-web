@@ -96,7 +96,7 @@ const datosEmpresaRoutes = [
     tab: 'datos-empresa',
     step: '9',
     path: '/solicitud/datos-empresa/9',
-    stepNumber: 9,
+    stepNumber: null,
     component: StepNine,
     services: [],
   },

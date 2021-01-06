@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import styles from './step.module.scss';
+import { onChangePage } from '../../../redux/actions/formulario';
 
-const Step = (props) => {
-  const { show, currentStep, valipStep, steps } = props;
+const Step = ({ show, currentStep, valipStep, steps }) => {
+  const dispatch = useDispatch();
   const numStep = steps.length;
 
   const handleStep = (step, action) => {
     if (step !== currentStep) {
-      action();
+      dispatch(onChangePage(true, action));
     }
   };
 
