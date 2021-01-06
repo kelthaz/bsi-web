@@ -1,5 +1,6 @@
-import StepEight from './step-eight/StepEight';
-import StepNine from './StepNine';
+import StepEight from '../datos-empresa/step-eight/StepEight';
+import StepNine from '../datos-empresa/step-nine/StepNine';
+import Gracias from './Gracias';
 import RevisarCorreo from './RevisarCorreo';
 import StepFive from './StepFive';
 import StepFour from './StepFour';
@@ -51,6 +52,14 @@ const documentacionRoutes = [
     path: '/solicitud/documentacion/4',
     stepNumber: 4,
     component: StepFour,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'gracias',
+    path: '/solicitud/documentacion/gracias',
+    stepNumber: null,
+    component: Gracias,
     services: [],
   },
   {
