@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../constants/errors';
+import SvgPM from '../../../svgs/SvgPM';
 
 const StepFour = () => {
   const dispatch = useDispatch();
@@ -33,8 +34,7 @@ const StepFour = () => {
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/gracias');
-    },
-    validateOnMount: true,
+    }
   });
 
   return (
@@ -43,7 +43,7 @@ const StepFour = () => {
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral"/>
+              <SvgPM />
               Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
             </p>
             <p className="sub color-dark-gray">
@@ -62,7 +62,7 @@ const StepFour = () => {
               </div>
             </div>
             <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral"/>
+              <SvgPM />
               Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
             </p>
             <p className="sub color-dark-gray">
@@ -86,7 +86,7 @@ const StepFour = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid)}
+                disabled={!(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>
