@@ -10,7 +10,7 @@ const initialState = {
     segundoNombre: '',
     primerApellido: '',
     segundoApellido: '',
-    tipoPersona: '',
+    tipoPersona: 'Persona Moral',
     razonSocial: '',
     tipoSociedad: null,
     nombreEmpresa: '',

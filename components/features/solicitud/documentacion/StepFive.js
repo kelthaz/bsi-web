@@ -12,7 +12,8 @@ import {
   campoRequerido,
   longitudMaxima,
   longitudMinima,
-  rfcInvalido
+  rfcInvalido,
+  seleccionOpcion,
 } from '../../../../constants/errors';
 import { regexRFCFisica } from '../../../../constants/regex';
 
@@ -27,12 +28,14 @@ const StepFive = () => {
     segundoNombre: Yup.string().trim().max(60, longitudMaxima),
     primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
     segundoApellido: Yup.string().trim().max(60, longitudMaxima),
-    rfc: Yup.string()
-      .trim()
-      .matches(regexRFCFisica, rfcInvalido)
-      .min(13, longitudMinima)
-      .required(campoRequerido),
-    parentesco: Yup.string().required(campoRequerido)
+    rfc: Yup.string().trim().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
+    parentesco: Yup.object()
+      .shape({
+        value: Yup.string(),
+        label: Yup.string(),
+      })
+      .nullable()
+      .required(seleccionOpcion),
   });
 
   const { initialValues, validationSchema } = {
@@ -50,11 +53,11 @@ const StepFive = () => {
   };
 
   const items = [
-    {label: '1', value: 1},
-    {label: '2', value: 2},
-    {label: '3', value: 3},
-    {label: '4', value: 4},
-    {label: '5', value: 5}
+    { label: '1', value: 1 },
+    { label: '2', value: 2 },
+    { label: '3', value: 3 },
+    { label: '4', value: 4 },
+    { label: '5', value: 5 },
   ];
 
   const formulario = useFormik({
@@ -82,7 +85,7 @@ const StepFive = () => {
           primerApellido: '',
           segundoApellido: '',
           rfc: '',
-          parentesco: ''
+          parentesco: null,
         }))
       );
     } else {
@@ -96,12 +99,10 @@ const StepFive = () => {
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral"/>
+              <img src="/requisitos/PM.svg" alt="Persona moral" />
               Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
             </p>
-            <p className="sub color-dark-gray">
-              ¿Existe una persona física relacionada?
-            </p>
+            <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
             <div className="d-flex">
               <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="si">
@@ -122,11 +123,7 @@ const StepFive = () => {
                 </RadioButton>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <RadioButton
-                  name="ejerceControlMoral"
-                  formulario={formulario}
-                  value="no"
-                >
+                <RadioButton name="ejerceControlMoral" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -212,33 +209,35 @@ const StepFive = () => {
                       formulario={formulario}
                       size="big"
                       items={[
-                        {label: 'Cónyuges', value: 'Cónyuges'},
-                        {label: 'Concubinos', value: 'oncubinos'},
-                        {label: 'Hijos', value: 'Hijos'},
-                        {label: 'Padres', value: 'Padres'},
-                        {label: 'Suegros', value: 'Suegros'},
-                        {label: 'Hijos de cónyuge', value: 'Hijos de cónyuge'},
-                        {label: 'Hermanos', value: 'Hermanos'},
-                        {label: 'Abuelos', value: 'Abuelos'},
-                        {label: 'Nietos', value: 'Nietos'},
-                        {label: 'Cuñados', value: 'Cuñados'}
+                        { label: 'Cónyuges', value: 'Cónyuges' },
+                        { label: 'Concubinos', value: 'oncubinos' },
+                        { label: 'Hijos', value: 'Hijos' },
+                        { label: 'Padres', value: 'Padres' },
+                        { label: 'Suegros', value: 'Suegros' },
+                        { label: 'Hijos de cónyuge', value: 'Hijos de cónyuge' },
+                        { label: 'Hermanos', value: 'Hermanos' },
+                        { label: 'Abuelos', value: 'Abuelos' },
+                        { label: 'Nietos', value: 'Nietos' },
+                        { label: 'Cuñados', value: 'Cuñados' },
                       ]}
-                      label=""
+                      label="Parentesco"
                     />
                   </div>
                 </div>
               </section>
             ))}
             <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral"/>
+              <img src="/requisitos/PM.svg" alt="Persona moral" />
               Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
             </p>
-            <p className="sub color-dark-gray">
-              ¿Existe una persona física relacionada?
-            </p>
+            <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
             <div className="d-flex">
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="si"><span className="input color-gray">Sí</span></RadioButton>
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="no"><span className="input color-gray">No</span></RadioButton>
+              <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
+                <span className="input color-gray">Sí</span>
+              </RadioButton>
+              <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
+                <span className="input color-gray">No</span>
+              </RadioButton>
             </div>
 
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
@@ -246,7 +245,7 @@ const StepFive = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid)}
+                disabled={!formulario.isValid}
               />
             </div>
           </form>
