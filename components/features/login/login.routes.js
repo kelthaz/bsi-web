@@ -17,7 +17,7 @@ const loginRoutes = [
     step: '',
     path: '/login/olvidar-contrasena',
     stepNumber: null,
-    option: 'olvidar-contrasena',
+    option: 'olvide-contrasena',
     component: OlvidoContrasena,
     services: [],
   },

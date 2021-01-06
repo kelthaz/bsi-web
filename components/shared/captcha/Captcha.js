@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import ReCAPTCHA from 'react-google-recaptcha';
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ const Captcha = ({ name, formulario }) => {
   const YOURSITEKEY = '6LcdaBIaAAAAAPywpDSkzysM4LfuypP3EZUEzCN2';
   const recaptchaRef = useRef();
   const [loading, setLoading] = useState(false);
+  const [size, setSize] = useState();
 
   const onChange = (token) => {
     setFieldValue(name, token);
@@ -24,6 +25,16 @@ const Captcha = ({ name, formulario }) => {
     }, 500);
   };
 
+  useEffect(() => {
+    const updateSize = () => {
+      setSize(window.innerWidth < 480 ? 'compact' : 'normal');
+    };
+    window.addEventListener('resize', updateSize);
+    updateSize();
+
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
   const hasError = () => touched[name] && errors[name];
 
   return (
@@ -33,7 +44,16 @@ const Captcha = ({ name, formulario }) => {
       </Head>
       {!loading && (
         <div className={hasError() ? styles['captcha-container-error'] : styles['captcha-container']}>
-          <ReCAPTCHA ref={recaptchaRef} sitekey={YOURSITEKEY} onChange={onChange} onExpired={onExpired} />
+          {size && (
+            <ReCAPTCHA
+              key={size}
+              ref={recaptchaRef}
+              sitekey={YOURSITEKEY}
+              onChange={onChange}
+              onExpired={onExpired}
+              size={size}
+            />
+          )}
           <span className={styles['help-text-error']}>{hasError() && errors[name]}&nbsp;</span>
         </div>
       )}

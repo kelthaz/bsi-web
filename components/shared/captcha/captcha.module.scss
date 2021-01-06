@@ -6,6 +6,9 @@
   color: $color;
   display: inline-block;
   width: 301px;
+  @include media('sm') {
+    width: 210px;
+  }
 }
 
 .help-text {
@@ -43,6 +46,11 @@
     > div:first-child {
       margin-bottom: -3px;
       margin-right: -2.5px;
+
+      @include media('sm') {
+        margin-bottom: -7px;
+        margin-right: -6.5px;
+      }
     }
   }
 }

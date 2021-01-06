@@ -7,30 +7,34 @@ import SvgSegundaTexturaLogin from '../../../components/svgs/texturas/SvgSegunda
 import SvgTerceraTexturaLogin from '../../../components/svgs/texturas/SvgTerceraTexturaLogin';
 
 const Option = ({ index, data }) => {
-  const { component: Component } = loginRoutes[index];
+  const { component: Component, path } = loginRoutes[index];
 
   return (
     <div className="contedor-fixed-login">
       <div className="contedor-login">
         <div className="container z-indez-1">
           <div className="row">
-            <div className="col-6 d-flex flex-column justify-content-center">
+            <div className="col-lg-6 col-md-5 col-sm-12 col-xs-12 d-flex flex-md-column flex-xs-row justify-content-center py-3">
               <SvgLogoBanCoppelInverted />
             </div>
-            <div className="col-6">
-              <Component data={data} />
+            <div className="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+              <div className={path.includes('iniciar-sesion') ? 'card-login-1' : 'card-login'}>
+                <Component data={data} />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="svg-textura-left-bottom-0 ">
-        <SvgPrimeraTexturaLogin />
-      </div>
-      <div className="svg-textura-left-bottom-0 ">
-        <SvgSegundaTexturaLogin />
-      </div>
-      <div className="svg-textura-right-bottom-0 ">
-        <SvgTerceraTexturaLogin />
+      <div className="position-relative">
+        <div className="svg-textura-left-bottom-0 ">
+          <SvgPrimeraTexturaLogin />
+        </div>
+        <div className="svg-textura-left-bottom-0 ">
+          <SvgSegundaTexturaLogin />
+        </div>
+        <div className="svg-textura-right-bottom-0 ">
+          <SvgTerceraTexturaLogin />
+        </div>
       </div>
     </div>
   );

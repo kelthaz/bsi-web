@@ -94,6 +94,7 @@ const TextField = (props) => {
   };
 
   const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
+  const inputStylePassword = size === 'big' ? styles['input-big-password'] : styles['input-small-password'];
   const hasError = () => touched[name] && errors[name];
 
   return (
@@ -101,9 +102,9 @@ const TextField = (props) => {
       <input
         id={name}
         name={name}
-        className={`${type === 'password' ? styles['input-big-password'] : inputStyle} ${
-          capitalize ? styles.capitalize : ''
-        } ${hasError() ? indicadorError : active && indicadorStyle} `}
+        className={`${type === 'password' ? inputStylePassword : inputStyle} ${capitalize ? styles.capitalize : ''} ${
+          hasError() ? indicadorError : active && indicadorStyle
+        } `}
         type={type}
         onChange={onHandleChange}
         onBlur={(event) => {
