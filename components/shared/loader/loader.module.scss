@@ -1,0 +1,63 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.container-loader {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  overflow: auto;
+  overflow-x: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1080;
+}
+
+.spinner {
+  animation: spin 1.5s ease infinite;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: #002a61;
+  height: 300px;
+  position: absolute;
+  width: 300px;
+
+  &::before {
+    animation: spin 3s linear infinite;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-top-color: #225aa7;
+    bottom: 7px;
+    content: '';
+    left: 7px;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+  }
+
+  &::after {
+    animation: spin 1.5s ease infinite;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-top-color: #ffbe12;
+    bottom: 15px;
+    content: '';
+    left: 15px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
