@@ -18,7 +18,7 @@ const FileInput = (props) => {
   };
 
   return (
-    <div className={`row ${styles.group}`}>
+    <div className={`${styles.group}`}>
       <div
         className={`col-md-7 col-xs-12 ${subText ? 'mb-0' : 'mb-1'}  ${
           styles.label
