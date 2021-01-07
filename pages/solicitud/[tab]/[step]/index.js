@@ -19,7 +19,7 @@ const Solicitud = ({ index, data }) => {
     { path: 'documentacion', label: 'Documentación' },
   ];
   const { component: Component, stepNumber } = solicitudRoutes[index];
-  const { push, pathname, query, events } = useRouter();
+  const { query, events } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
   } = useSelector((state) => state.solicitud);
@@ -28,7 +28,7 @@ const Solicitud = ({ index, data }) => {
     .filter(({ stepNumber: step, tab }) => Number.isInteger(step) && tabRedux === tab)
     .map(({ stepNumber: step, path }) => ({
       step,
-      action: () => push(pathname, path),
+      action: path,
     }));
 
   useEffect(() => {

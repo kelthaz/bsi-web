@@ -1,4 +1,5 @@
 export const campoRequerido = () => 'Campo requerido';
+export const captcha = () => 'La verificación caducó. Vuelve a marcar la casilla de verificación.';
 export const longitudMaxima = ({ max }) => `Longitud máxima: ${max} caracteres`;
 export const longitudMinima = ({ min }) => `Longitud mínima: ${min} caracteres`;
 export const campoInvalido = () => 'Campo inválido';
@@ -14,3 +15,5 @@ export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acento
 export const aceptarTerminos = () => 'Debe aceptar los términos';
 export const declararTerminos = () => 'Debe declarar los términos';
 export const codigoPostalInvalido = () => 'Código postal inválido';
+export const numeroMinimo = ({ min }) => `El número debe ser mayor o igual a ${min}`;
+export const numeroMaximo = ({ max }) => `El número debe ser menor o igual a ${max}`;

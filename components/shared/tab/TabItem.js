@@ -10,8 +10,12 @@ const TabItem = (props) => {
   );
 };
 
+TabItem.defaultProps = {
+  children: <></>,
+};
+
 TabItem.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
   tab: PropTypes.string.isRequired,
   keyTab: PropTypes.string.isRequired,
 };

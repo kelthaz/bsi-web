@@ -1,0 +1,56 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: inline-block;
+  width: 301px;
+  @include media('sm') {
+    width: 210px;
+  }
+}
+
+.help-text {
+  @include help-text-config($gray);
+}
+
+.help-text-inverted {
+  @include help-text-config($blue-shadow);
+}
+
+.help-text-error {
+  @include help-text-config($red);
+}
+
+.captcha-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.captcha-container-error {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  > div:first-child {
+    border: 1.5px solid $red;
+    border-radius: 3px;
+    display: inline-block;
+
+    > div:first-child {
+      margin-bottom: -3px;
+      margin-right: -2.5px;
+
+      @include media('sm') {
+        margin-bottom: -7px;
+        margin-right: -6.5px;
+      }
+    }
+  }
+}

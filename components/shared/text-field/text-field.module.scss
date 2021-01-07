@@ -79,6 +79,13 @@
   }
 }
 
+.input-small-password {
+  @include input-config($gray, 16px);
+  border-bottom: 1.5px solid $gray;
+  padding-right: 22px;
+  user-select: none;
+}
+
 .input-big-inverted {
   @include input-config($gray, 32px);
   border-bottom: 1.5px solid $blue-morning;

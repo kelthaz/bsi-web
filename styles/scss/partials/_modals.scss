@@ -1,0 +1,7 @@
+.modal-alerta-container {
+  width: 424px;
+
+  @include media('sm') {
+    width: 270px;
+  }
+}

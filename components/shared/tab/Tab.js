@@ -2,15 +2,14 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tab.module.scss';
 
-const Tab = (props) => {
-  const { children } = props;
+const Tab = ({ children, initOption }) => {
   const tabItems = children.map(({ props: propsChild }) => ({
     tab: propsChild.tab,
     keyTab: propsChild.keyTab,
     children: propsChild.children,
   }));
 
-  const [tabOpen, setTabOpen] = useState(tabItems[0]);
+  const [tabOpen, setTabOpen] = useState(tabItems[initOption]);
 
   return (
     <>
@@ -35,6 +34,11 @@ const Tab = (props) => {
 
 Tab.propTypes = {
   children: PropTypes.any.isRequired,
+  initOption: PropTypes.number,
+};
+
+Tab.defaultProps = {
+  initOption: 0,
 };
 
 export default Tab;

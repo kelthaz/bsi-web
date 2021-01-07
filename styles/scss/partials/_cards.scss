@@ -1,3 +1,32 @@
+.card-login-1 {
+  background-color: $white;
+  border-radius: 16px;
+  height: 645px;
+  padding: 10px 30px 24px;
+  width: 100%;
+
+  @include media('md') {
+    padding: 10px 0 24px;
+  }
+
+  @include media('sm') {
+    height: 724px;
+  }
+}
+
+.card-login {
+  background-color: $white;
+  border-radius: 16px;
+  height: 645px;
+  padding: 10px 30px 24px;
+  width: 100%;
+
+  @include media('md') {
+    height: 540px;
+    padding: 10px 16px 24px;
+  }
+}
+
 .card-simple-white-shadow {
   background-color: $white;
   border-radius: 16px;
@@ -268,7 +297,7 @@
   }
 }
 
-// TODO Actualizar 
+// TODO Actualizar
 .card-simple-white-svg-simple {
   align-items: center;
   background-color: $white;

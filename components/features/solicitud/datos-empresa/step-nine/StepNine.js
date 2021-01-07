@@ -31,7 +31,7 @@ const StepNine = () => {
         datosPersonales.tipoPersona === 'Persona Moral'
           ? `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad}`
           : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`
-        }`,
+      }`,
       rfc: datosPersonales.rfc,
       colonia: datosEmpresa.domicilioFiscal.colonia,
       telefono: datosEmpresa.celularRecibe,
@@ -69,7 +69,7 @@ const StepNine = () => {
 
   return (
     <>
-      <Modal closModalIcon={true} openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
+      <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation} closeable={false}>
         <div className={styles['modal-container']}>
           <div className="d-flex justify-content-center pb-4">
             <SvgCheckText />
@@ -129,7 +129,7 @@ const StepNine = () => {
           </div>
         </div>
       </Modal>
-      <div className="contedor-fixed-tab">
+      <div className="contedor-fixed">
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">
             <form onSubmit={formulario.handleSubmit} noValidate>

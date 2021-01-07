@@ -37,16 +37,17 @@ const Select = (props) => {
     helpTextStyle,
     placeholderStyle,
   ] = seleccionaEstilo(size, inverted);
-  const { values, errors, touched, setFieldValue, setFieldTouched } = formulario;
+  const { setFieldValue, setFieldTouched, getFieldMeta } = formulario;
+  const { error, touched, value } = getFieldMeta(name);
 
   useEffect(() => {
-    if (!values[name] && defaultValue !== null) {
+    if (!value && defaultValue !== null) {
       setFieldValue(name, items[defaultValue]);
     }
   }, []);
 
   const handleToggle = () => {
-    if (!touched[name] && toggle) {
+    if (!touched && toggle) {
       setFieldTouched(name, true);
     }
     setToggle(!toggle);
@@ -78,27 +79,23 @@ const Select = (props) => {
       </button>} */}
       <button
         type="button"
-        className={`${!toggle && !values[name] ? placeholderStyle : ''} ${
-          blue ? styles['select-small-blue'] : selectStyle
-        } ${toggle ? indicadorActiveStyle : indicadorStyle} ${
-          touched[name] && errors[name] ? styles['indicador-error'] : ''
-        }`}
+        className={`${!toggle && !value ? placeholderStyle : ''} ${blue ? styles['select-small-blue'] : selectStyle} ${
+          toggle ? indicadorActiveStyle : indicadorStyle
+        } ${touched && error ? styles['indicador-error'] : ''}`}
         onClick={() => !toggle && handleToggle()}
         disabled={disabled}
         tabIndex="0"
         // onFocus={() => !toggle && handleToggle()}
         // onBlur={() => handleToggle()}
       >
-        {values[name] ? values[name].label : label}
+        {value ? value.label : label}
       </button>
       <ul role="menu" className={`${styles['select-items']} ${toggle ? '' : styles['select-hide']}`}>
         {items.map((itemMap) => (
           <li role="none" key={itemMap.value}>
             <button
               role="menuitem"
-              className={`${styles.item} ${
-                values[name] && values[name].value === itemMap.value ? styles['item-selected'] : ''
-              }`}
+              className={`${styles.item} ${value && value.value === itemMap.value ? styles['item-selected'] : ''}`}
               type="button"
               onClick={() => handleItem(itemMap)}
               tabIndex="-1"
@@ -108,8 +105,8 @@ const Select = (props) => {
           </li>
         ))}
       </ul>
-      <span className={touched[name] && errors[name] ? styles['help-text-error'] : helpTextStyle}>
-        {touched[name] && errors[name] && items.length > 0 ? errors[name] : optional && 'Opcional'}&nbsp;
+      <span className={touched && error ? styles['help-text-error'] : helpTextStyle}>
+        {touched && error && items.length > 0 ? error : optional && 'Opcional'}&nbsp;
       </span>
     </div>
   );
