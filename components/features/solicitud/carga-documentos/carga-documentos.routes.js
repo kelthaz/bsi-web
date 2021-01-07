@@ -7,7 +7,7 @@ import Felicidades from './Felicidades';
 
 const cargaDocumentosRoutes = [
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: 'bienvenida',
     path: '/solicitud/carga-documentos/bienvenida',
     stepNumber: null,
@@ -15,7 +15,7 @@ const cargaDocumentosRoutes = [
     services: [],
   },
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: '1',
     path: '/solicitud/carga-documentos/1',
     stepNumber: 1,
@@ -23,7 +23,7 @@ const cargaDocumentosRoutes = [
     services: [],
   },
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: '2',
     path: '/solicitud/carga-documentos/2',
     stepNumber: 2,
@@ -31,7 +31,7 @@ const cargaDocumentosRoutes = [
     services: [],
   },
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: '3',
     path: '/solicitud/carga-documentos/3',
     stepNumber: 3,
@@ -39,7 +39,7 @@ const cargaDocumentosRoutes = [
     services: [],
   },
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: '4',
     path: '/solicitud/carga-documentos/todo-listo',
     stepNumber: null,
@@ -47,13 +47,13 @@ const cargaDocumentosRoutes = [
     services: [],
   },
   {
-    tab: 'cargaDocumentos',
+    tab: 'carga-documentos',
     step: 'gracias',
     path: '/solicitud/carga-documentos/felicidades',
     stepNumber: null,
     component: Felicidades,
     services: [],
-  }
+  },
 ];
 
 export default cargaDocumentosRoutes;
