@@ -60,57 +60,57 @@ const StepSeven = () => {
               </div>
               <div className="row ">
                 <div className="pt-3 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="concentracion" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="concentracion" formulario={formulario}>
                     <p className="ml-1">Concentración / Disperción de fondos</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-3 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="compraDivisas" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="compraDivisas" formulario={formulario}>
                     <p className="ml-1 ">Compra venta de divisas</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="administracionGastos" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="administracionGastos" formulario={formulario}>
                     <p className="ml-1 ">Administración de gastos / Ingresos</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="pagoNomina" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="pagoNomina" formulario={formulario}>
                     <p className="ml-1 ">Pago de nómina</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="cuentaEje" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="cuentaEje" formulario={formulario}>
                     <p className="ml-1 ">Cuenta eje</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="pagoCredito" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="pagoCredito" formulario={formulario}>
                     <p className="ml-1 ">Pago de crédito</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="pagoRelacionado" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="pagoRelacionado" formulario={formulario}>
                     <p className="ml-1 ">Pago relacionado</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="pagoComisiones" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="pagoComisiones" formulario={formulario}>
                     <p className="ml-1 ">Pago de comisiones</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="giros" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="giros" formulario={formulario}>
                     <p className="ml-1 ">Giros y/o transferencias al extranjero</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-6 px-0">
-                  <CheckTextBox notBackground={false} name="pagoProveedores" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="pagoProveedores" formulario={formulario}>
                     <p className="ml-1 ">Pago de proveedores</p>
                   </CheckTextBox>
                 </div>
                 <div className="pt-2 col-md-4 px-0">
-                  <CheckTextBox notBackground={false} name="otros" formulario={formulario}>
+                  <CheckTextBox isGrayColor notBackground={false} name="otros" formulario={formulario}>
                     <p className="ml-1 ">Otros, especifique</p>
                   </CheckTextBox>
                 </div>

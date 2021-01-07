@@ -49,3 +49,15 @@
   position: relative;
   width: 20px;
 }
+
+.gray-label {
+  border-color: $gray;
+
+  &::after {
+    border-color: $blue-storm;
+  }
+}
+
+.my-check:checked + .gray-label {
+  border-color: $blue-storm;
+}
