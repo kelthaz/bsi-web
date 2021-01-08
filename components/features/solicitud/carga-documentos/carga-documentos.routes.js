@@ -40,7 +40,7 @@ const cargaDocumentosRoutes = [
   },
   {
     tab: 'carga-documentos',
-    step: '4',
+    step: 'todo-listo',
     path: '/solicitud/carga-documentos/todo-listo',
     stepNumber: null,
     component: TodoListo,
@@ -48,7 +48,7 @@ const cargaDocumentosRoutes = [
   },
   {
     tab: 'carga-documentos',
-    step: 'gracias',
+    step: 'felicidades',
     path: '/solicitud/carga-documentos/felicidades',
     stepNumber: null,
     component: Felicidades,

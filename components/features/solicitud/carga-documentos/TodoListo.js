@@ -5,7 +5,7 @@ import SvgCargaDocumento from '../../../svgs/SvgCargaDocumento';
 
 import styles from './carga-documentos.module.scss';
 
-const Test = () => (
+const TodoListo = () => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud">
       <div className="container p-0 text-center">
@@ -34,4 +34,4 @@ const Test = () => (
   </div>
 );
 
-export default Test;
+export default TodoListo;
