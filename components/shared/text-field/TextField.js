@@ -43,12 +43,15 @@ const TextField = (props) => {
     readonly,
     disabled,
   } = props;
+
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { handleChange, values, handleBlur, errors, touched, setFieldTouched, setFieldValue } = formulario;
+  const { setFieldTouched, setFieldValue, getFieldMeta } = formulario;
+
+  const { error, touched, value } = getFieldMeta(name);
 
   const [type, setType] = useState(typeInput);
 
-  const error = <SvgCross className={styles['icon-error']} />;
+  const iconError = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
   const { formatter, changeSelection } = useFormatter(format);
@@ -63,27 +66,27 @@ const TextField = (props) => {
   };
 
   const onHandleChange = (event) => {
-    const { selectionStart, selectionEnd, value } = event.target;
-    const formattedValue = formatter(value.trimStart().replace(/\s+/g, ' '));
+    const { selectionStart, selectionEnd, value: valueTarget } = event.target;
+    const formattedValue = formatter(valueTarget.trimStart().replace(/\s+/g, ' '));
 
-    if (!touched[name] && formattedValue !== values[name]) {
+    if (!touched && formattedValue !== value) {
       setFieldTouched(name, true);
     }
 
-    event.target.value = formattedValue;
-    handleChange(event);
+    // event.target.value = formattedValue;
+    setFieldValue(name, formattedValue);
 
     if (changeSelection) {
-      const difference = keyPress === 'Delete' ? 0 : formattedValue.length - value.length;
+      const difference = keyPress === 'Delete' ? 0 : formattedValue.length - valueTarget.length;
       event.target.setSelectionRange(selectionStart + difference, selectionEnd + difference);
     }
 
     keyPress = '';
   };
 
-  const onHandleBlur = (event) => {
-    setFieldValue(name, values[name].trimEnd());
-    handleBlur(event);
+  const onHandleBlur = () => {
+    setFieldValue(name, value.trimEnd());
+    setFieldTouched(name, true);
     setActive(false);
   };
 
@@ -93,9 +96,9 @@ const TextField = (props) => {
     }
   };
 
-  const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
   const inputStylePassword = size === 'big' ? styles['input-big-password'] : styles['input-small-password'];
-  const hasError = () => touched[name] && errors[name];
+  const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
+  const hasError = () => touched && error;
 
   return (
     <div className={`${styles.group}`}>
@@ -107,10 +110,8 @@ const TextField = (props) => {
         } `}
         type={type}
         onChange={onHandleChange}
-        onBlur={(event) => {
-          onHandleBlur(event);
-        }}
-        value={values[name]}
+        onBlur={onHandleBlur}
+        value={value}
         maxLength={maxlength}
         autoComplete="off"
         placeholder={size === 'big' ? label : ''}
@@ -132,14 +133,14 @@ const TextField = (props) => {
           htmlFor={name}
           className={`text-overflow ${disabled ? styles['label-disabled'] : labelStyle} ${
             hasError() ? styles['label-error'] : ''
-          } ${values[name] !== '' || active ? styles['label-active'] : ''}`}
+          } ${value !== '' || active ? styles['label-active'] : ''}`}
         >
           {label}
         </label>
       )}
 
       <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
-        {hasError() ? errors[name] : active && optional && 'Opcional'}&nbsp;
+        {hasError() ? error : active && optional && 'Opcional'}&nbsp;
       </span>
       {typeInput === 'password' && (
         <button
@@ -151,7 +152,9 @@ const TextField = (props) => {
         </button>
       )}
       {hasError() ? (
-        <div className={typeInput === 'password' ? styles['status-icon-password'] : styles['status-icon']}>{error}</div>
+        <div className={typeInput === 'password' ? styles['status-icon-password'] : styles['status-icon']}>
+          {iconError}
+        </div>
       ) : (
         validation && <div className={styles['status-icon']}>{active && status}</div>
       )}

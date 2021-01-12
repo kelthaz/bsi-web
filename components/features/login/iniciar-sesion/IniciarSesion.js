@@ -9,6 +9,7 @@ import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } 
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import RadioButton from '../../../shared/radio-button/RadioButton';
+import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
 
 const IniciarSesion = () => {
   const formulario = useFormik({
@@ -61,9 +62,9 @@ const IniciarSesion = () => {
           label="Contraseña"
         />
         <div className="py-3">
-          <RadioButton name="mantenerSesion" formulario={formulario} value="si">
-            Mantener sesión iniciada
-          </RadioButton>
+          <CheckTextBox notBackground={false} name="mantenerSesion" formulario={formulario}>
+            <p className="ml-1 body3">Mantener sesión iniciada</p>
+          </CheckTextBox>
         </div>
         <Captcha name="check" formulario={formulario} />
         <div className="row d-flex justify-content-center py-3">

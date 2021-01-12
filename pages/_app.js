@@ -7,6 +7,7 @@ import Header from '../components/core/header/Header';
 import { useStore } from '../redux/store';
 import '../styles/styles.scss';
 import '../styles/scss/chatbot.scss';
+import Loader from '../components/shared/loader/Loader';
 
 const App = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
@@ -24,6 +25,7 @@ const App = ({ Component, pageProps }) => {
       <Component {...pageProps} />
       <Footer />
       <ChatBot />
+      <Loader />
     </Provider>
   );
 };
