@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
+import Tooltip from '../../../shared/tooltip/Tooltip';
 import TextField from '../../../shared/text-field/TextField';
 import {
   campoRequerido,
@@ -47,7 +47,9 @@ const StepFive = () => {
     },
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
-      ejerceControlFisica: Yup.string().required(campoRequerido),
+      ejerceControlFisica: `${
+        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
+      }`,
       controladosFisica: Yup.array().of(subformValidationSchema),
     }),
   };
@@ -98,11 +100,17 @@ const StepFive = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-blue-storm">
+                <img src="/requisitos/PM.svg" alt="Persona moral" />
+                Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
+              </p>
+            ) : (
+              ''
+            )}
+            <p className="sub color-dark-gray">
+              ¿Existe una persona física relacionada? <Tooltip message="..." />
             </p>
-            <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
             <div className="d-flex">
               <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="si">
@@ -226,20 +234,31 @@ const StepFive = () => {
                 </div>
               </section>
             ))}
-            <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
-            </p>
-            <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
-            <div className="d-flex">
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
-                <span className="input color-gray">Sí</span>
-              </RadioButton>
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
-                <span className="input color-gray">No</span>
-              </RadioButton>
-            </div>
-
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-blue-storm">
+                <img src="/requisitos/PM.svg" alt="Persona moral" />
+                Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
+              </p>
+            ) : (
+              ''
+            )}{' '}
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
+            ) : (
+              ''
+            )}
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <div className="d-flex">
+                <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
+                  <span className="input color-gray">Sí</span>
+                </RadioButton>
+                <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
+                  <span className="input color-gray">No</span>
+                </RadioButton>
+              </div>
+            ) : (
+              ''
+            )}
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="submit"

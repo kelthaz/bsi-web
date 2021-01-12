@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-
+import Tooltip from '../../../shared/tooltip/Tooltip';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
@@ -27,11 +27,7 @@ const StepThree = () => {
 
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-    rfc: Yup.string()
-      .trim()
-      .matches(regexRFCMoral, rfcInvalido)
-      .min(12, longitudMinima)
-      .required(campoRequerido),
+    rfc: Yup.string().trim().matches(regexRFCMoral, rfcInvalido).min(12, longitudMinima).required(campoRequerido),
     porcentajeDirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
     porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
   });
@@ -45,7 +41,9 @@ const StepThree = () => {
     },
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
-      ejerceControlFisica: Yup.string().required(campoRequerido),
+      ejerceControlFisica: `${
+        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
+      }`,
       controladosMoral: Yup.array().of(subformValidationSchema),
     }),
   };
@@ -93,15 +91,34 @@ const StepThree = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className="body2">
-              Ahora vamos a realizarte unas preguntas que nos deberás contestar como Persona Moral (
-              {datosPersonales.nombreEmpresa}) y como Persona Física ({datosPersonales.primerNombre})
-            </p>
-            <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
-            </p>
-            <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="body2">
+                Ahora vamos a realizarte unas preguntas que nos deberás contestar como Persona Moral (
+                {datosPersonales.nombreEmpresa}) y como Persona Física ({datosPersonales.primerNombre})
+              </p>
+            ) : (
+              <p className="body2">Vamos a realizarte unas preguntas más.</p>
+            )}
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-blue-storm">
+                <img src="/requisitos/PM.svg" alt="Persona moral" />
+                Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
+              </p>
+            ) : (
+              ''
+            )}
+
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-dark-gray">
+                ¿Existe una persona moral sobre la que tú ejerces control?
+                <Tooltip message="..." />
+              </p>
+            ) : (
+              <p className="sub color-dark-gray">
+                Cuéntanos, ¿Existe una persona moral sobre la que tú ejerces control?
+                <Tooltip message="..." />
+              </p>
+            )}
             <div className="d-flex">
               <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="si">
@@ -198,20 +215,31 @@ const StepThree = () => {
                 </div>
               </div>
             ))}
-            <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
-            </p>
-            <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
-            <div className="d-flex">
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
-                <span className="input color-gray">Sí</span>
-              </RadioButton>
-              <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
-                <span className="input color-gray">No</span>
-              </RadioButton>
-            </div>
-
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-blue-storm">
+                <img src="/requisitos/PM.svg" alt="Persona moral" />
+                Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
+              </p>
+            ) : (
+              ''
+            )}
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
+            ) : (
+              ''
+            )}
+            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              <div className="d-flex">
+                <RadioButton name="m" formulario={formulario} value="si">
+                  <span className="input color-gray">Sí</span>
+                </RadioButton>
+                <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
+                  <span className="input color-gray">No</span>
+                </RadioButton>
+              </div>
+            ) : (
+              ''
+            )}
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="submit"

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './file-input.module.scss';
 
 const FileInput = (props) => {
-  const { text, subText } = props;
+  const { text, subText, grayText } = props;
   const [getFileButton, setGetFileButton] = useState(null);
 
   const onChangeFileHandler = (event) => {
@@ -25,7 +25,9 @@ const FileInput = (props) => {
         } py-xs-4 py-md-0   pb-md-3 px-xs-0 px-md-3`}
         htlmFor="myfile"
       >
-        <div className="body3">{text}</div>
+        <div className="body3">
+          {text} <span className={`body3 ${styles['gray-text']} pb-md-3`}>{grayText}</span>
+        </div>
 
         <span className={`body3 ${styles['sub-text']} pb-md-3`}>{subText}</span>
       </div>
@@ -61,8 +63,9 @@ const FileInput = (props) => {
 FileInput.propTypes = {
   text: PropTypes.string.isRequired,
   subText: PropTypes.string,
+  grayText: PropTypes.string,
 };
 
-FileInput.defaultProps = { subText: '' };
+FileInput.defaultProps = { subText: '', grayText: '' };
 
 export default FileInput;

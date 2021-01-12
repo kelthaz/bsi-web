@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
-import TextField from '../../../shared/text-field/TextField';
 import FileInput from '../../../shared/file-input/FileInput';
+import RadioButton from '../../../shared/radio-button/RadioButton';
 import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import Modal from '../../../shared/modal/Modal';
 import { campoRequerido } from '../../../../constants/errors';
@@ -75,46 +75,76 @@ const StepSix = () => {
           <div className="container pl-md-3 pl-xs-0 p-0">
             <form className="mt-xs2 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
               <div className="row pl-3 pb-md-3 pb-xs-1">
-                <p className="color-dark-gray sub">Ahora necesitamos que nos compartas los siguientes documentos:</p>
+                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                  <p className="color-dark-gray sub">Ahora necesitamos que nos compartas los siguientes documentos:</p>
+                ) : (
+                  <p className="color-dark-gray sub">
+                    Para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada(o)?
+                  </p>
+                )}
               </div>
-              <div className="row ">
-                <div className="col-md-12 pb-md-4">
-                  <FileInput formulario={formulario} name="actaConstitutiva" text="Acta constitutiva" />
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                <div className="row ">
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput formulario={formulario} name="actaConstitutiva" text="Acta constitutiva" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput
+                      formulario={formulario}
+                      name="poderNotarial"
+                      text="Poderes notariales"
+                      subText="Opcional sólo si no vienen en tu acta constitutiva"
+                    />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Escrituras con reformas" subText="Opcional" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Comprobante de domicilio comercial" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Comprobante de domicilio fiscal" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="INE del representante legal" subText="Por el frente" />
+                  </div>
+                  <div className="col-md-12 pb-md-4 pb-xs-3">
+                    <FileInput text="INE del representante legal" subText="Por el reverso" />
+                  </div>
                 </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput
-                    formulario={formulario}
-                    name="poderNotarial"
-                    text="Poderes notariales"
-                    subText="Opcional sólo si no vienen en tu acta constitutiva"
-                  />
+              ) : (
+                <div className="row">
+                  <div className="col-12">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="siMancomunados">
+                      <span className="input color-gray">Sí, por bienes mancomunados</span>
+                    </RadioButton>
+                  </div>
+                  <div className="col-12 mt-3">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="siSeparados">
+                      <span className="input color-gray">Sí, por bienes separados</span>
+                    </RadioButton>
+                  </div>
+                  <div className="col-12 mt-3">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="no">
+                      <span className="input color-gray">No</span>
+                    </RadioButton>
+                  </div>
                 </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Escrituras con reformas" subText="Opcional" />
+              )}
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                <div className="row ">
+                  <p className="color-dark-gray sub">
+                    Haz{' '}
+                    <a className="link sub" onClick={() => setOpenConfirmation(true)}>
+                      clic aquí
+                    </a>{' '}
+                    si no cuentas con tus documentos escaneados o quieres saber nuestras recomendaciones para tus
+                    documentos.
+                  </p>
                 </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Comprobante de domicilio comercial" />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Comprobante de domicilio fiscal" />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="INE del representante legal" subText="Por el frente" />
-                </div>
-                <div className="col-md-12 pb-md-4 pb-xs-3">
-                  <FileInput text="INE del representante legal" subText="Por el reverso" />
-                </div>
-              </div>
-              <div className="row ">
-                <p className="color-dark-gray sub">
-                  Haz{' '}
-                  <a className="link sub" onClick={() => setOpenConfirmation(true)}>
-                    clic aquí
-                  </a>{' '}
-                  si no cuentas con tus documentos escaneados o quieres saber nuestras recomendaciones para tus
-                  documentos.
-                </p>
-              </div>
+              ) : (
+                ''
+              )}
               <div className="flex-column-center-config">
                 <button type="submit" className="cicle-button-blue my-3" aria-label="Avanzar" />
               </div>

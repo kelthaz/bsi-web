@@ -55,6 +55,10 @@
   color: $blue-storm;
 }
 
+.gray-text {
+  color: $gray;
+}
+
 @media screen and (max-width: 540px) {
   .label-text-button {
     bottom: 16px;

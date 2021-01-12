@@ -99,6 +99,7 @@ const initialState = {
     comprobanteDomicilioFiscal: null,
     ine: null,
     ineReverso: null,
+    comprobanteComercial: null,
   },
 };
 
