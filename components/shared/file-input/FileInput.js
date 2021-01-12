@@ -19,17 +19,12 @@ const FileInput = (props) => {
 
   return (
     <div className={`${styles.group}`}>
-      <div
-        className={`col-md-7 col-xs-12 ${subText ? 'mb-0' : 'mb-1'}  ${
-          styles.label
-        } py-xs-4 py-md-0   pb-md-3 px-xs-0 px-md-3`}
-        htlmFor="myfile"
-      >
+      <div className={`${subText ? 'mb-0' : 'mb-1'}  ${styles.label}`} htlmFor="myfile">
         <div className="body3">
-          {text} <span className={`body3 ${styles['gray-text']} pb-md-3`}>{grayText}</span>
+          {text} <span className={`body3 ${styles['gray-text']}`}>{grayText}</span>
         </div>
 
-        <span className={`body3 ${styles['sub-text']} pb-md-3`}>{subText}</span>
+        <span className={`body3 ${styles['sub-text']}`}>{subText}</span>
       </div>
       {getFileButton && (
         <div className={`body3 ${styles['uploaded-file']}`}>
@@ -50,7 +45,7 @@ const FileInput = (props) => {
       </label>
       <input
         onChange={onChangeFileHandler}
-        className={`col-5 ${styles.input}`}
+        className={`${styles.input}`}
         accept="image/png, image/jpg, application/pdf"
         type="file"
         id="inputFile"

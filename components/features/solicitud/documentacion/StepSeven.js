@@ -74,7 +74,7 @@ const StepSeven = () => {
         <div className="contedor-solicitud mw-100">
           <div className="container pl-md-3 pl-xs-0 p-0">
             <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
-              <div className="row ">
+              <div className="row px-md-3 px-xs-0">
                 {datosPersonales.tipoPersona === 'Persona Moral' ? (
                   <h2 className="color-blue-storm">Ahora, sobre tu cuenta...</h2>
                 ) : (
@@ -99,7 +99,7 @@ const StepSeven = () => {
                 )}
               </div>
               {datosPersonales.tipoPersona === 'Persona Moral' ? (
-                <div className="row ">
+                <div className="row px-md-3 px-xs-0">
                   <div className="pt-3 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="concentracion" formulario={formulario}>
                       <p className="ml-1">Concentración / Disperción de fondos</p>
@@ -166,12 +166,13 @@ const StepSeven = () => {
                   </div>
                 </div>
               ) : (
-                <div className="row ">
+                <div className="row px-md-3 px-xs-0">
                   <div className="col-md-12 pb-md-4">
                     <FileInput
                       formulario={formulario}
                       name="comprobanteComercial"
                       text="Comprobante de domicilio comercial"
+                      subText="asdasdasdasdasdasdasdasdasdasdsadsdafdasda"
                     />
                   </div>
                   <div className="col-md-12 pb-md-4">

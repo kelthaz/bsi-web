@@ -84,7 +84,7 @@ const StepSix = () => {
                 )}
               </div>
               {datosPersonales.tipoPersona === 'Persona Moral' ? (
-                <div className="row ">
+                <div className="row px-md-3 px-xs-0">
                   <div className="col-md-12 pb-md-4">
                     <FileInput formulario={formulario} name="actaConstitutiva" text="Acta constitutiva" />
                   </div>
