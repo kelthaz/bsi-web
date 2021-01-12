@@ -146,7 +146,12 @@ const StepSix = () => {
                 ''
               )}
               <div className="flex-column-center-config">
-                <button type="submit" className="cicle-button-blue my-3" aria-label="Avanzar" />
+                <button
+                  disabled={!formulario.dirty}
+                  type="submit"
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                />
               </div>
             </form>
           </div>

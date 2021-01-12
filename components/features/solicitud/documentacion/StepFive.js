@@ -91,7 +91,7 @@ const StepFive = () => {
         }))
       );
     } else {
-      formulario.setFieldValue('controladosMoral', []);
+      formulario.setFieldValue('controladosFisica', []);
     }
   }, [formulario.values.ejerceControlMoral, formulario.values.cantidadEjerceControl]);
 

@@ -15,12 +15,12 @@ const Gracias = () => {
           <div className="col-9">
             <h2 className="color-blue-storm">¡Gracias por tu tiempo, Alejandra!</h2>
             <p className="body2 color-gray-dark">
-              La información que nos has compartido hasta ahora nos ha ayudado a conocerte
-              mejor y a determinar que el tipo de crédito que tú necesitas.
+              La información que nos has compartido hasta ahora nos ha ayudado a conocerte mejor y a determinar que el
+              tipo de crédito que tú necesitas.
             </p>
             <p className="body2 color-gray-dark">
-              Un asesor BanCoppel se pondrá en contacto contigo en muy poco tiempo para
-              ayudarte con los siguientes pasos y darte la atención que necesitas.
+              Un asesor BanCoppel se pondrá en contacto contigo en muy poco tiempo para ayudarte con los siguientes
+              pasos y darte la atención que necesitas.
             </p>
           </div>
           <div className="col-3"></div>
