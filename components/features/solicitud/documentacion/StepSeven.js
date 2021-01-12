@@ -172,7 +172,6 @@ const StepSeven = () => {
                       formulario={formulario}
                       name="comprobanteComercial"
                       text="Comprobante de domicilio comercial"
-                      subText="asdasdasdasdasdasdasdasdasdasdsadsdafdasda"
                     />
                   </div>
                   <div className="col-md-12 pb-md-4">
