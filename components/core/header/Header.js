@@ -235,9 +235,11 @@ const Header = () => {
               <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
             )}
             {!pathname.includes('solicitud') && (
-              <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
-                Inicia sesión
-              </button>
+              <Link href="/login/[option]" as="/login/iniciar-sesion">
+                <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
+                  Inicia sesión
+                </button>
+              </Link>
             )}
             {!pathname.includes('solicitud') && (
               <Link href="simulador">

@@ -96,6 +96,7 @@ const TextField = (props) => {
     }
   };
 
+  const inputStylePassword = size === 'big' ? styles['input-big-password'] : styles['input-small-password'];
   const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
   const hasError = () => touched && error;
 
