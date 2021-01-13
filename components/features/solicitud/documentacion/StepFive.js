@@ -8,6 +8,7 @@ import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
 import Tooltip from '../../../shared/tooltip/Tooltip';
 import TextField from '../../../shared/text-field/TextField';
+import SvgPm from '../../../svgs/SvgPM';
 import {
   campoRequerido,
   longitudMaxima,
@@ -102,7 +103,7 @@ const StepFive = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             {datosPersonales.tipoPersona === 'Persona Moral' ? (
               <p className="sub color-blue-storm">
-                <img src="/requisitos/PM.svg" alt="Persona moral" />
+                <SvgPm />
                 Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
               </p>
             ) : (
