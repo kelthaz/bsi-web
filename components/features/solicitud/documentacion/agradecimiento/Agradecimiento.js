@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SvgOk from '../../../../svgs/SvgOk';
@@ -42,9 +43,11 @@ const Agradecimientos = () => {
               <SvgOk />
             </div>
           </div>
-          <button className="btn-medium offset-md-4 offset-xs-3" type="submit" aria-label="Avanzar">
-            <span>Finalizar</span>
-          </button>
+          <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/bienvenida" replace>
+            <button type="submit" className="btn-medium offset-md-4 offset-xs-3">
+              Finalizar
+            </button>
+          </Link>
         </div>
       </div>
     </div>
