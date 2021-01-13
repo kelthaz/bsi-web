@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgUsuario from '../../../svgs/SvgUsuario';
+import SvgUsuario from '../../../../svgs/SvgUsuario';
 
-import styles from './carga-documentos.module.scss';
+import styles from '../carga-documentos.module.scss';
 
 const StepTwo = () => (
   <div className="contedor-fixed">
