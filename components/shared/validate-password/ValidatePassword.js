@@ -15,16 +15,19 @@ const ValidatePassword = ({ formulario, field, showAlways = false }) => {
   });
 
   const textFieldValidated = () => {
-    setValidation({
-      hiddenMaxMin: !(values[field].length >= 8 && values[field].length <= 20),
-      hiddenCapital: !regexUpperAndLowerCase.test(values[field]),
-      minNum: !regexMinOneNumber.test(values[field]),
-      notConsecutives: !regexNoConsecutives.test(values[field]),
-    });
+    if (values[field]) {
+      setValidation({
+        hiddenMaxMin: !(values[field].length >= 8 && values[field].length <= 20),
+        hiddenCapital: !regexUpperAndLowerCase.test(values[field]),
+        minNum: !regexMinOneNumber.test(values[field]),
+        notConsecutives: !regexNoConsecutives.test(values[field]),
+      });
+    }
   };
 
   useEffect(() => {
     textFieldValidated();
+
     if (!showAlways) {
       if (values[field] && values[field].length > 0) {
         setResulState(true);
@@ -36,7 +39,7 @@ const ValidatePassword = ({ formulario, field, showAlways = false }) => {
 
   return (
     resultState && (
-      <>
+      <div className="w-100">
         <div htmlFor="max-min">
           <img hidden={validation.hiddenMaxMin} src="/check.svg" alt="Check" />
           <span className={`mr-2  ${!validation.hiddenMaxMin ? styles['hide-check'] : styles['show-check']}`} />
@@ -57,7 +60,7 @@ const ValidatePassword = ({ formulario, field, showAlways = false }) => {
           <span className={`mr-2  ${!validation.notConsecutives ? styles['hide-check'] : styles['show-check']}`} />
           <span className="body3 color-gray-dark">Sin números consecutivos</span>
         </div>
-      </>
+      </div>
     )
   );
 };

@@ -4,13 +4,14 @@ const initialState = {
   currentStep: {
     tab: 'datos-personales',
     step: '1',
+    lastStep: false,
   },
   datosPersonales: {
     primerNombre: '',
     segundoNombre: '',
     primerApellido: '',
     segundoApellido: '',
-    tipoPersona: '',
+    tipoPersona: null,
     razonSocial: '',
     tipoSociedad: null,
     nombreEmpresa: '',

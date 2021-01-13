@@ -2,11 +2,13 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import TabInformativo from '../../../../components/shared/tab-informativo/TabInformativo';
 import Step from '../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../components/svgs/SvgPatronesSolicitud';
 import solicitudRoutes from '../../../../components/features/solicitud/solicitud.routes';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
+import ModalActualizar from '../../../../components/core/modals/solicitud/modal-actualizar/ModalActualizar';
 
 const Solicitud = ({ index, data }) => {
   usePreventWindowUnload();
@@ -18,7 +20,7 @@ const Solicitud = ({ index, data }) => {
     { path: 'oferta', label: 'Oferta' },
     { path: 'documentacion', label: 'Documentación' },
   ];
-  const { component: Component, stepNumber } = solicitudRoutes[index];
+  const { component: Component, stepNumber, step: currentStep } = solicitudRoutes[index];
   const { query, events } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
@@ -30,6 +32,10 @@ const Solicitud = ({ index, data }) => {
       step,
       action: path,
     }));
+
+  // useEffect(() => {
+  //   console.log(index);
+  // }, [index]);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -51,14 +57,20 @@ const Solicitud = ({ index, data }) => {
 
   return (
     <>
-      <TabInformativo
-        show={!!stepNumber}
-        tabs={tabs}
-        currentTab={query.tab}
-        currentStep={parseInt(query.step, 10)}
-        valipStep={parseInt(stepRedux, 10)}
-        steps={steps}
-      />
+      {/* <Head>
+        <title>{`BanCoppel | Pymes - Paso: ${currentStep}`}</title>
+      </Head> */}
+      <ModalActualizar />
+      {showComponent && (
+        <TabInformativo
+          show={!!stepNumber}
+          tabs={tabs}
+          currentTab={query.tab}
+          currentStep={parseInt(query.step, 10)}
+          valipStep={parseInt(stepRedux, 10)}
+          steps={steps}
+        />
+      )}
       <Step
         show={!!stepNumber}
         currentStep={parseInt(query.step, 10)}

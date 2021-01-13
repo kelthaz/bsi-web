@@ -1,40 +1,55 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetChangePage } from '../redux/actions/formulario';
+import { onShowModal, resetChangePage } from '../redux/actions/formulario';
 
 const useOnChangePage = (formulario, route, currentStep) => {
-  const { push, query } = useRouter();
+  const { push, query, beforePopState, asPath, replace } = useRouter();
   const dispatch = useDispatch();
-  const { changePage, routePage } = useSelector((state) => state.formulario);
-  const [openModal, setOpenModal] = useState(false);
+  const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
 
-  const changeRoute = (newRoute) => {
+  const changeRoute = (newRoute, reset) => {
     if (formulario.dirty) {
-      setOpenModal(true);
+      dispatch(onShowModal(true, formulario.isValid, newRoute));
     } else {
       push('/solicitud/[tab]/[step]', newRoute);
-      dispatch(resetChangePage());
+      if (reset) {
+        dispatch(resetChangePage());
+      }
     }
   };
 
   useEffect(() => {
     if (changePage) {
-      changeRoute(routePage);
+      changeRoute(routePage, true);
     }
   }, [changePage]);
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    if (handleSubmit) {
+      formulario.handleSubmit();
+    }
+  }, [handleSubmit]);
+
+  // useEffect(() => {
+  //   beforePopState(({ url, as, options }) => {
+  //     console.log(url, as, options, asPath);
+  //     push('/solicitud/[tab]/[step]', asPath);
+  //     return false;
+  //   });
+  // }, []);
+
+  const onHandleSubmit = (event) => {
     event.preventDefault();
     if (currentStep.step === query.step) {
       formulario.handleSubmit();
       push('/solicitud/[tab]/[step]', route);
     } else {
-      changeRoute(route);
+      changeRoute(route, false);
     }
   };
 
-  return { openModal, setOpenModal, handleSubmit };
+  return [onHandleSubmit];
 };
 
 export default useOnChangePage;

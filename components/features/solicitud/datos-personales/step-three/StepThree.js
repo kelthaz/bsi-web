@@ -11,13 +11,15 @@ import Select from '../../../../shared/select/Select';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
 import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
 import changeSelectModel from '../../../../../helpers/changeSelectModel';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepThree = ({ sectores }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const [itemsGiro, setItemsGiro] = useState([]);
   const dispatch = useDispatch();
-  const router = useRouter();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
     { value: 20, label: 'S.A. DE C.V.' },
@@ -76,17 +78,17 @@ const StepThree = ({ sectores }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '4' },
+          currentStep: validate ? { tab: 'datos-personales', step: '4' } : { ...currentStep },
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/4');
     },
-    validateOnMount: true,
   });
 
+  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/4', currentStep);
+
   useEffect(() => {
-    if (formulario.values.sector) {
+    if (formulario.values.sector && formulario.dirty) {
       const fetchData = async () => {
         const giros = await SectoresRepositorio.getGiroPorSector(formulario.values.sector.value).then(
           (resp) => resp.data
@@ -102,7 +104,7 @@ const StepThree = ({ sectores }) => {
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Anotado!</h2>
             <p className="color-dark-gray sub">
               {datosPersonales.tipoPersona === 'Persona Moral' ? (
@@ -198,7 +200,7 @@ const StepThree = ({ sectores }) => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

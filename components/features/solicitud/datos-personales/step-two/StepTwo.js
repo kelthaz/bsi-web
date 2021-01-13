@@ -1,36 +1,64 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { seleccionOpcion } from '../../../../../constants/errors';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
 const StepTwo = () => {
-  const personaFisica = 'Persona Física con Actividad Empresarial';
-  const personaMoral = 'Persona Moral';
+  const personaFisica = { value: '1', label: 'Persona Física con Actividad Empresarial' };
+  const personaMoral = { value: '2', label: 'Persona Moral' };
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  const [selectPersonType, setSelectPersonType] = useState(datosPersonales.tipoPersona);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
-  const handleNext = () => {
-    dispatch(
-      nextStepDatosPersonales({
-        currentStep: { ...currentStep, step: '3' },
-        datosPersonales: {
-          ...datosPersonales,
-          tipoPersona: selectPersonType,
-        },
-      })
-    );
-    router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/3');
+  const formulario = useFormik({
+    initialValues: {
+      tipoPersona: datosPersonales.tipoPersona,
+    },
+    validationSchema: Yup.object().shape({
+      tipoPersona: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
+    }),
+    onSubmit: (values) => {
+      dispatch(
+        nextStepDatosPersonales({
+          currentStep: validate ? { tab: 'datos-personales', step: '3' } : { ...currentStep },
+          datosPersonales: {
+            ...datosPersonales,
+            ...values,
+          },
+        })
+      );
+    },
+  });
+
+  const { values, setFieldTouched, setFieldValue, touched } = formulario;
+
+  const handleTipoPersona = async (tipoPersona) => {
+    await setFieldValue('tipoPersona', tipoPersona);
+    if (!touched.tipoPersona) {
+      await setFieldTouched('tipoPersona', true);
+    }
   };
+
+  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/3', currentStep);
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container p-0">
-          <form>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm text-overflow">¡Hola, {datosPersonales.primerNombre}!</h2>
             <p className="color-dark-gray sub">Conozcámonos un poco más, ¿Qué tipo de persona eres?</p>
 
@@ -39,29 +67,29 @@ const StepTwo = () => {
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    selectPersonType === personaFisica && 'card-selected-blue-sky'
+                    values.tipoPersona && values.tipoPersona.value === personaFisica.value && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => setSelectPersonType(personaFisica)}
+                  onClick={() => handleTipoPersona(personaFisica)}
                 >
                   <div>
                     <SvgPersonaFisicaActividadFisica />
                   </div>
-                  <p className="px-md-5 px-lg-5">{personaFisica}</p>
+                  <p className="px-md-5 px-lg-5">{personaFisica.label}</p>
                 </button>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    selectPersonType === personaMoral && 'card-selected-blue-sky'
+                    values.tipoPersona && values.tipoPersona.value === personaMoral.value && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => setSelectPersonType(personaMoral)}
+                  onClick={() => handleTipoPersona(personaMoral)}
                 >
                   <div>
                     <SvgPersonaMoral />
                   </div>
 
-                  <p>{personaMoral}</p>
+                  <p>{personaMoral.label}</p>
                 </button>
               </div>
             </div>
@@ -78,11 +106,10 @@ const StepTwo = () => {
             </p>
             <div className="flex-column-center-config">
               <button
-                type="button"
+                type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                onClick={handleNext}
-                disabled={!selectPersonType}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

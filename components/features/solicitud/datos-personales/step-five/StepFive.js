@@ -25,11 +25,11 @@ import {
   rfcInvalido,
 } from '../../../../../constants/errors';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepFive = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -66,23 +66,20 @@ const StepFive = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          datosPersonales: {
-            ...datosPersonales,
-            ...values,
-            validSteps: ['agradecimiento'],
-            currentStep: 'agradecimiento',
-          },
+          currentStep: { ...currentStep, lastStep: true },
+          datosPersonales: { ...datosPersonales, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/agradecimiento');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/agradecimiento', currentStep);
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Sólo falta crear tu cuenta!</h2>
             {datosPersonales.tipoPersona === 'Persona Moral' ? (
               <p className="color-dark-gray sub">
@@ -130,7 +127,7 @@ const StepFive = () => {
               <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Mi contraseña será</p>
               </div>
-              <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
+              <div className="col-lg-5 col-md-5 col-xs-12">
                 <TextField
                   name="contrasena"
                   paste={false}
@@ -164,7 +161,7 @@ const StepFive = () => {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row no-gutters">
               <CheckTextBox name="aceptoTerminos" formulario={formulario}>
                 <p className="m-0">
                   <span>Acepto: (1) los </span>
@@ -188,7 +185,7 @@ const StepFive = () => {
                 className="btn-medium"
                 type="submit"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={!currentStep.lastStep && !(formulario.isValid && formulario.dirty)}
               >
                 <span>Crea tu contraseña</span>
               </button>

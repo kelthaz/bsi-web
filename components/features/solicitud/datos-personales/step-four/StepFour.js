@@ -7,11 +7,13 @@ import { numeroInvalido, correoInvalido, campoRequerido } from '../../../../../c
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepFour = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -29,16 +31,16 @@ const StepFour = () => {
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-personales/5');
     },
-    validateOnMount: true,
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/5', currentStep);
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Perfecto, {datosPersonales.primerNombre}!</h2>
             <p className="color-dark-gray sub position-relative">
               <span>Ahora, ¿cuál es tu número de teléfono celular y correo electrónico?</span>
@@ -91,7 +93,7 @@ const StepFour = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>
