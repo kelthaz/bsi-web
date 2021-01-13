@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import RadioButton from '../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../constants/errors';
-import SvgPM from '../../../svgs/SvgPM';
+import SvgPM from '../../../svgs/carga-documentos/SvgPM';
 
 const StepFour = () => {
   const dispatch = useDispatch();

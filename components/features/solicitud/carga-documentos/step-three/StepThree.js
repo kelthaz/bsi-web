@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgVideo from '../../../svgs/SvgVideo';
+import SvgVideo from '../../../../svgs/SvgVideo';
 
-import styles from './carga-documentos.module.scss';
+import styles from '../carga-documentos.module.scss';
 
 const StepThree = () => (
   <div className="contedor-fixed">

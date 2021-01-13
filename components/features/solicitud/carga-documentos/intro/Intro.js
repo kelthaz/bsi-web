@@ -2,10 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 
-import SvgCargaDocumento from '../../../svgs/SvgCargaDocumento';
+import SvgCargaDocumento from '../../../../svgs/SvgCargaDocumento';
 
-import styles from './carga-documentos.module.scss';
-import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
+import styles from '../carga-documentos.module.scss';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 
 const Intro = () => {
 
