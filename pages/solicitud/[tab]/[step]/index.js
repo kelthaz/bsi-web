@@ -21,6 +21,13 @@ const Solicitud = ({ index, data }) => {
     { path: 'documentacion', label: 'Documentación' },
   ];
   const { component: Component, stepNumber, step: currentStep } = solicitudRoutes[index];
+
+  const tabsBiometrico = [
+    { path: '1', label: 'Identificación oficial' },
+    { path: '2', label: 'Biometrico Foto' },
+    { path: '3', label: 'Biometrico Video' },
+  ];
+
   const { query, events } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
@@ -64,13 +71,14 @@ const Solicitud = ({ index, data }) => {
       {showComponent && (
         <TabInformativo
           show={!!stepNumber}
-          tabs={tabs}
-          currentTab={query.tab}
+          tabs={query.tab === 'carga-documentos' ? tabsBiometrico : tabs}
+          currentTab={query.tab === 'carga-documentos' ? query.step : query.tab}
           currentStep={parseInt(query.step, 10)}
           valipStep={parseInt(stepRedux, 10)}
           steps={steps}
         />
       )}
+
       <Step
         show={!!stepNumber}
         currentStep={parseInt(query.step, 10)}
