@@ -27,7 +27,7 @@ const StepOne = () => {
     subLabel: 'Deberá ser una empresa que responderá con su patrimonio',
   };
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { documentacion } = useSelector((state) => state.solicitud);
+  const { documentacion, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -47,15 +47,16 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '2' },
+          currentStep: { tab: 'documentacion', step: '1' },
           datosEmpresa: {
-            ...documentacion,
+            ...datosEmpresa,
             ...values,
           },
         })
       );
       router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/2');
     },
+    validateOnMount: true,
   });
 
   const { values, setFieldTouched, setFieldValue, touched } = formulario;

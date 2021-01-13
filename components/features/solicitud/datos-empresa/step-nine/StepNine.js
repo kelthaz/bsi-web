@@ -102,17 +102,17 @@ const StepNine = () => {
             </div>
             <div className="mt-2 col-xs-8">
               <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
-              <p className="color-gray body3">Después de la consulta no guardaremos tus archivos</p>
+              <p className="color-gray body3">Esto para conocer un poco más sobre ti</p>
             </div>
           </div>
           <div className="row mt-4 card-white text-md-center">
             <div className="col-xs-4">
-              <SvgFirmaElectronica />
+              <SvgLegalex />
             </div>
             <div className="col-xs-8">
-              <h4 className="color-blue-storm sub">Firma electrónica de documentos</h4>
+              <h4 className="color-blue-storm sub">Firma segura con Legalex GS</h4>
               <p className="color-gray body3">
-                Usa tu e.firma
+                Puedes firmar de forma segura con tu e.firm
                 <br />
                 <a className="link">¿Por qué te pedimos esto?</a>
               </p>
@@ -179,7 +179,9 @@ const StepNine = () => {
                     </a>
                     <Tooltip message="." position="top" />
                   </div>
-                  <p className="mt-5 d-block d-sm-none sub color-blue-storm">Contrato de Revisión de Buró de Crédito</p>
+                  <p className="mt-5 d-block d-sm-none sub color-blue-storm">
+                    AUTORIZACIÓN PARA SOLICITAR REPORTES DE CRÉDITO PERSONAS FISICAS / PERSONAS MORALES
+                  </p>
                   <div className="body2">
                     <p className="mb-4">
                       Por este conducto autorizo expresamente a{' '}

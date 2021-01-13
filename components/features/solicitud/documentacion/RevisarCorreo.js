@@ -90,7 +90,7 @@ const RevisarCorreo = () => {
             </p>
           </div>
           <div className="flex-column-start-config">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/4">
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/3">
               <button type="submit" className="btn-medium flex-align-self-center my-3">
                 Continuar
               </button>

@@ -3,7 +3,7 @@ import * as React from 'react';
 function SvgLegalex(props) {
   return (
     <svg
-      width={134}
+      width={110}
       height={50}
       viewBox="0 0 134 50"
       fill="none"

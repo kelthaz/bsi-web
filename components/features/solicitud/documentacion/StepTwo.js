@@ -43,7 +43,7 @@ const StepTwo = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: 'revisar-correo' },
+          currentStep: { tab: 'documentacion', step: '2' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
@@ -54,7 +54,7 @@ const StepTwo = () => {
 
   return (
     <>
-      <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
+      <Modal closeable={false} openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
         <div className="container px-xs-0 px-md-0">
           <div className="d-flex justify-content-center pb-4">
             <SvgEnviado />
@@ -70,7 +70,7 @@ const StepTwo = () => {
           <div className="d-flex justify-content-center">
             <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/revisar-correo">
               <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>Continuar</span>
+                <span>Continuemos</span>
               </button>
             </Link>
           </div>

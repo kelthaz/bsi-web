@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './check-text-box.module.scss';
 
-const CheckTextBox = ({ name, formulario, children, notBackground = true }) => {
+const CheckTextBox = ({ name, formulario, children, notBackground = true, isGrayColor }) => {
   const { values, setFieldValue, errors } = formulario;
+
+  const labelClasses = [styles.label];
+
+  if (isGrayColor) {
+    labelClasses.push(styles['gray-label']);
+  }
 
   return (
     <>
@@ -23,7 +29,7 @@ const CheckTextBox = ({ name, formulario, children, notBackground = true }) => {
             onChange={() => setFieldValue(name, !values[name])}
             checked={!!values[name]}
           />
-          <label htmlFor={name} className={`${styles.label}`}>
+          <label htmlFor={name} className={labelClasses.join(' ')}>
             {' '}
           </label>
         </div>

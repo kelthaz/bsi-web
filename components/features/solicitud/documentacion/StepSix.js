@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
-import TextField from '../../../shared/text-field/TextField';
+import FileInput from '../../../shared/file-input/FileInput';
+import RadioButton from '../../../shared/radio-button/RadioButton';
 import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import Modal from '../../../shared/modal/Modal';
+import { campoRequerido } from '../../../../constants/errors';
 
 const StepSix = () => {
   const { documentacion } = useSelector((state) => state.solicitud);
+  const { datosPersonales } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { initialValues } = {
+  const { initialValues, validationSchema } = {
     initialValues: {
       actaConstitutiva: documentacion.actaConstitutiva,
       poderNotarial: documentacion.poderNotarial,
@@ -23,10 +27,14 @@ const StepSix = () => {
       ine: documentacion.ine,
       ineReverso: documentacion.ineReverso,
     },
+    validationSchema: Yup.object({
+      // actaConstitutiva: Yup.string().required(campoRequerido),
+    }),
   };
 
   const formulario = useFormik({
     initialValues,
+    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
@@ -63,124 +71,87 @@ const StepSix = () => {
         </div>
       </Modal>
       <div className="contedor-fixed-tab">
-        <div className="contedor-solicitud mw-100">
+        <div className="contedor-solicitud mt-xs-0 mt-md-5">
           <div className="container pl-md-3 pl-xs-0 p-0">
-            <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
-              <div className="row ">
-                <p className="color-dark-gray sub">Ahora necesitamos que nos compartas los siguientes documentos:</p>
+            <form className="mt-xs2 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
+              <div className="row pl-3 pb-md-3 pb-xs-1">
+                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                  <p className="color-dark-gray sub">Ahora necesitamos que nos compartas los siguientes documentos:</p>
+                ) : (
+                  <p className="color-dark-gray sub">
+                    Para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada(o)?
+                  </p>
+                )}
               </div>
-              <div className="row ">
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="actaConstitutiva"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="Acta constitutiva"
-                  />
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                <div className="row px-md-3 px-xs-0">
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput formulario={formulario} name="actaConstitutiva" text="Acta constitutiva" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput
+                      formulario={formulario}
+                      name="poderNotarial"
+                      text="Poderes notariales"
+                      subText="Opcional sólo si no vienen en tu acta constitutiva"
+                    />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Escrituras con reformas" subText="Opcional" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Comprobante de domicilio comercial" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="Comprobante de domicilio fiscal" />
+                  </div>
+                  <div className="col-md-12 pb-md-4">
+                    <FileInput text="INE del representante legal" subText="Por el frente" />
+                  </div>
+                  <div className="col-md-12 pb-md-4 pb-xs-3">
+                    <FileInput text="INE del representante legal" subText="Por el reverso" />
+                  </div>
                 </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
+              ) : (
+                <div className="row">
+                  <div className="col-12">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="siMancomunados">
+                      <span className="input color-gray">Sí, por bienes mancomunados</span>
+                    </RadioButton>
+                  </div>
+                  <div className="col-12 mt-3">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="siSeparados">
+                      <span className="input color-gray">Sí, por bienes separados</span>
+                    </RadioButton>
+                  </div>
+                  <div className="col-12 mt-3">
+                    <RadioButton name="bienesSeparados" formulario={formulario} value="no">
+                      <span className="input color-gray">No</span>
+                    </RadioButton>
+                  </div>
                 </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="poderNotarial"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="Poderes notariales"
-                  />
+              )}
+              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                <div className="row ">
+                  <p className="color-dark-gray sub">
+                    Haz{' '}
+                    <a className="link sub" onClick={() => setOpenConfirmation(true)}>
+                      clic aquí
+                    </a>{' '}
+                    si no cuentas con tus documentos escaneados o quieres saber nuestras recomendaciones para tus
+                    documentos.
+                  </p>
                 </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="escrituraReforma"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="Escrituras con reformas"
-                  />
-                </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="comprobanteDomicilioComercial"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="Comprobante de domicilio comercial"
-                  />
-                </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="comprobanteDomicilioFiscal"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="Comprobante de domicilio fiscal"
-                  />
-                </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="ine"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="INE del representante legal"
-                  />
-                </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-                <div className="col-md-6 pl-0">
-                  <TextField
-                    name="ineReverso"
-                    formulario={formulario}
-                    type="text"
-                    size="small"
-                    label="INE del representante legal"
-                  />
-                </div>
-                <div className="col-md-6 pl-0">
-                  <button type="submit" className="btn-small">
-                    Examinar
-                  </button>
-                </div>
-              </div>
-              <div className="row ">
-                <p className="color-dark-gray sub">
-                  Haz
-                  <a className="link sub" onClick={() => setOpenConfirmation(true)}>
-                    clic aquí
-                  </a>
-                  si no cuentas con tus documentos escaneados o quieres saber nuestras recomendaciones para tus
-                  documentos.
-                </p>
-              </div>
+              ) : (
+                ''
+              )}
               <div className="flex-column-center-config">
-                <button type="submit" className="cicle-button-blue my-3" aria-label="Avanzar" />
+                <button
+                  disabled={!formulario.dirty}
+                  type="submit"
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                />
               </div>
             </form>
           </div>

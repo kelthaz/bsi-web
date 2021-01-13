@@ -1,0 +1,85 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.uploaded-file {
+  background-color: $blue-light;
+  border-radius: 10px;
+  bottom: 43px;
+  left: 380px;
+  padding: 4px 10px;
+  position: absolute;
+}
+
+.remove-upload {
+  color: $blue-sky;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  padding-bottom: 1rem !important;
+  position: relative;
+}
+
+.label-text-button {
+  background-color: $blue-storm;
+  border-radius: 6px;
+  bottom: 25px;
+  color: $white;
+  cursor: pointer;
+  font-family: Futura;
+  left: 540px;
+  padding: 5px 7px;
+  position: absolute;
+}
+
+.label-sub-text-button {
+  background-color: $blue-storm;
+  border-radius: 6px;
+  bottom: 20px;
+  color: $white;
+  cursor: pointer;
+  font-family: Futura;
+  left: 540px;
+  padding: 5px 7px;
+  position: absolute;
+}
+
+.group {
+  border-bottom: 2px solid $blue-light;
+  width: 100%;
+}
+
+.sub-text {
+  color: $blue-storm;
+}
+
+.gray-text {
+  color: $gray;
+}
+
+@include media('md') {
+  .label {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .label-text-button {
+    bottom: 16px;
+    left: 230px;
+    position: relative;
+  }
+
+  .label-sub-text-button {
+    left: 230px;
+    position: relative;
+  }
+
+  .uploaded-file {
+    bottom: 20px;
+    left: 16px;
+    padding: 4px 8px;
+    position: absolute;
+  }
+}
