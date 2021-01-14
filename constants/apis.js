@@ -9,3 +9,8 @@ export const apiEndpointGiroPorSector = (idSector) =>
 export const apiEndpointAcordion = (landing) => `/interna/publico/v1/administrador/contenido/landing/${landing}`;
 
 export const apiEndpointCodigoPostal = '/interna/publico/v1/solicitud/catalogo/localizaciones';
+
+export const apiEndpointEmailage = '/externas/admin/v1/emailage/querying-email';
+
+export const apiEndpointRegistro = '/interna/publico/v1/registro';
+export const apiEndpointLogin = '/login';

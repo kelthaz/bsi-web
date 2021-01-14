@@ -8,6 +8,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import EmailageRepositorio from '../../../../../services/solicitud/emailage.repositorio';
 
 const StepFour = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -33,6 +34,17 @@ const StepFour = () => {
       );
     },
   });
+
+  const validateEmail = async () => {
+    if (!formulario.errors.correo) {
+      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo).then(
+        (resp) => resp.data.fraudRisk.split(' ')[0]
+      );
+      if (emailScore >= 800) {
+        formulario.setFieldError('correo', 'El correo no cumple con los requerimientos');
+      }
+    }
+  };
 
   const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/5', currentStep);
 
@@ -84,6 +96,7 @@ const StepFour = () => {
                   size="big"
                   label="ejemplo@mail.com"
                   format="email"
+                  afterBlur={validateEmail}
                 />
               </div>
             </div>
