@@ -2,14 +2,23 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tab.module.scss';
 
-const Tab = ({ children, initOption }) => {
+const Tab = ({ children, initOption, onClick }) => {
   const tabItems = children.map(({ props: propsChild }) => ({
     tab: propsChild.tab,
     keyTab: propsChild.keyTab,
     children: propsChild.children,
+    onChangeOption: propsChild.onChangeOption,
+    blocked: propsChild.blocked,
   }));
 
   const [tabOpen, setTabOpen] = useState(tabItems[initOption]);
+
+  const handleOption = (tabItem) => {
+    if (!tabItem.blocked) {
+      setTabOpen({ ...tabItem });
+    }
+    tabItem.onChangeOption();
+  };
 
   return (
     <>
@@ -20,7 +29,7 @@ const Tab = ({ children, initOption }) => {
             key={tabItem.keyTab}
             style={{ width: `${100 / tabItems.length}%` }}
             className={`${styles['tab-links']} ${tabOpen.keyTab === tabItem.keyTab ? styles['tab-active'] : ''}`}
-            onClick={() => setTabOpen({ ...tabItem })}
+            onClick={() => handleOption(tabItem)}
           >
             {tabItem.tab}
           </button>
