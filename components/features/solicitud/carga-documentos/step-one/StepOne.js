@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgINE from '../../../svgs/SvgINE';
+import SvgINE from '../../../../svgs/carga-documentos/SvgINE';
 
-import styles from './carga-documentos.module.scss';
+import styles from '../carga-documentos.module.scss';
 
 const Test = () => (
   <div className="contedor-fixed">

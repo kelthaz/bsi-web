@@ -1,9 +1,9 @@
-import Intro from './Intro';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
-import StepThree from './StepThree';
-import TodoListo from './TodoListo';
-import Felicidades from './Felicidades';
+import Intro from './intro/Intro';
+import StepOne from './step-one/StepOne';
+import StepTwo from './step-two/StepTwo';
+import StepThree from './step-three/StepThree';
+import TodoListo from './todo-listo/TodoListo';
+import Felicidades from './felicidades/Felicidades';
 
 const cargaDocumentosRoutes = [
   {

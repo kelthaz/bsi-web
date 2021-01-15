@@ -8,7 +8,6 @@ import { regexRFCFisicaMoral } from '../../../../constants/regex';
 import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
-import RadioButton from '../../../shared/radio-button/RadioButton';
 import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
 
 const IniciarSesion = () => {
@@ -33,7 +32,12 @@ const IniciarSesion = () => {
   return (
     <>
       <Tab initOption={1}>
-        <TabItem tab="Portal Bancario" keyTab="1" />
+        <TabItem
+          tab="Portal Bancario"
+          keyTab="1"
+          onChangeOption={() => window.open('https://www.bancoppel.com/empresas/index.html')}
+          blocked
+        />
         <TabItem tab="Plataforma Pyme" keyTab="2" />
       </Tab>
       <form onSubmit={formulario.handleSubmit} noValidate className="px-xs-3 px-md-0">

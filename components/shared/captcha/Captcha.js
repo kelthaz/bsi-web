@@ -6,7 +6,7 @@ import styles from './captcha.module.scss';
 
 const Captcha = ({ name, formulario }) => {
   const { errors, touched, setFieldTouched, setFieldValue } = formulario;
-  const YOURSITEKEY = '6LcdaBIaAAAAAPywpDSkzysM4LfuypP3EZUEzCN2';
+  const YOURSITEKEY = process.env.NEXT_PUBLIC_CLAVE_SITIO;
   const recaptchaRef = useRef();
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState();

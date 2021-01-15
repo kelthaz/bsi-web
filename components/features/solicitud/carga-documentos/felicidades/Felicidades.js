@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgOkElipse from '../../../svgs/SvgOkElipse';
+import SvgOkElipse from '../../../../svgs/carga-documentos/SvgOkElipse';
 
-import styles from './carga-documentos.module.scss';
+import styles from '../carga-documentos.module.scss';
 
 const Felicidades = () => (
   <div className="contedor-fixed">
