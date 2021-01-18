@@ -1,5 +1,5 @@
-import StepEight from '../datos-empresa/step-eight/StepEight';
-import StepNine from '../datos-empresa/step-nine/StepNine';
+import StepEight from './step-eight/StepEight';
+import StepNine from './StepNine';
 import Gracias from './Gracias';
 import RevisarCorreo from './RevisarCorreo';
 import StepFive from './StepFive';

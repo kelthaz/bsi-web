@@ -27,7 +27,7 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '8' },
+          currentStep: { tab: 'documentacion', step: '9' },
           documentacion: { ...documentacion, ...values },
         })
       );

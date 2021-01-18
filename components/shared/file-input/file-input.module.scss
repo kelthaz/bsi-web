@@ -21,6 +21,7 @@
 .label {
   padding-bottom: 1rem !important;
   position: relative;
+  width: 620px;
 }
 
 .label-text-button {
@@ -63,6 +64,7 @@
 @include media('md') {
   .label {
     padding-bottom: 1.5rem !important;
+    width: 310px;
   }
 
   .label-text-button {

@@ -167,31 +167,54 @@ const StepSeven = () => {
                 </div>
               ) : (
                 <div className="row px-md-3 px-xs-0">
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput
-                      formulario={formulario}
-                      name="comprobanteComercial"
-                      text="Comprobante de domicilio comercial"
-                    />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Comprobante de domicilio fiscal" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Acta de matrimonio" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Tu INE" grayText="(por el frente)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Tu INE" grayText="(por el reverso)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="INE de tu pareja" grayText="(por el frente)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
-                  </div>
+                  {documentacion.bienesSeparados !== 'no' ? (
+                    <div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput
+                          formulario={formulario}
+                          name="comprobanteComercial"
+                          text="Comprobante de domicilio comercial"
+                        />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Comprobante de domicilio fiscal" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Acta de matrimonio" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="INE de tu pareja" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput
+                          formulario={formulario}
+                          name="comprobanteComercial"
+                          text="Comprobante de domicilio comercial"
+                        />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Comprobante de domicilio fiscal" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
               {datosPersonales.tipoPersona === 'Persona Moral' ? (

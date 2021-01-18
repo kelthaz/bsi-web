@@ -35,10 +35,13 @@ const StepFour = () => {
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/gracias');
+      if (formulario.values.ejerceControlMoral === 'no') {
+        router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/gracias');
+      } else {
+        router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/5');
+      }
     },
   });
-
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
@@ -103,7 +106,7 @@ const StepFour = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={!formulario.dirty}
               />
             </div>
           </form>
