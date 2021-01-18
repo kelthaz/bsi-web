@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 import ResultSimulador from '../../../../core/simulador/ResultSimulador';
 import ModalTablaAmortizacion from '../modal-tabla-amortizacion/ModalTablaAmortizacion';
+import Particles from '../../../../shared/confetti/Confetti';
 
 const AprobacionCuentaPersona = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -20,8 +21,28 @@ const AprobacionCuentaPersona = () => {
     { numeroAmortizacion: '7', fecha: '22/Ago/2020', capital: '48,807', interes: '31,250', saldo: '1,451,193.00', pagoMensual: '80,057.28' },
   ];
 
+  const idTest = 1;
+  const [particles, setParticles] = useState([]);
+
+  const clean = (id) => {
+    setParticles(particles.filter((_id) => _id !== id));
+  };
+
+  useEffect(() => {
+    let id = idTest;
+    id += 1;
+
+    setParticles([...particles, id]);
+    setTimeout(() => {
+      clean(id);
+    }, 5000);
+  }, []);
+
   return (
     <div className="contedor-fixed">
+      {particles.map((id) => (
+        <Particles key={id} count={Math.floor(window.innerWidth / 20)} />
+      ))}
       <ModalTablaAmortizacion
         dataSimulador={{ monto: 1500000, plazo: '24 meses', periodicidad: 'Bimestral  ' }}
         resultSimuladorTabla={resultSimuladorTabla}
