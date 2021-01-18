@@ -9,6 +9,7 @@ import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } 
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
+import LoginRepositorio from '../../../../services/login/login.repositorio';
 
 const IniciarSesion = () => {
   const formulario = useFormik({
@@ -24,8 +25,13 @@ const IniciarSesion = () => {
       check: Yup.string().required(captcha),
       mantenerSesion: Yup.string(),
     }),
-    onSubmit: (values) => {
-      alert(values);
+    onSubmit: async (values) => {
+      const valid = await LoginRepositorio.postLogin({
+        username: values.rfc,
+        password: values.contrasena,
+      })
+        .then(() => true)
+        .catch(() => false);
     },
   });
 
@@ -78,7 +84,7 @@ const IniciarSesion = () => {
         </div>
         <div className="row d-flex justify-content-center ">
           <Link href="/login/[option]" as="/login/olvide-contrasena">
-            <button type="button" className="btn-link">
+            <button type="button" className="btn-link" disabled={!(formulario.isValid && formulario.dirty)}>
               ¿Olvidaste tu contraseña?
             </button>
           </Link>

@@ -3,19 +3,33 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onShowModal, resetChangePage } from '../redux/actions/formulario';
 
-const useOnChangePage = (formulario, route, currentStep) => {
+const useOnChangePage = (formulario, route, currentStep, validation = () => true) => {
   const { push, query, beforePopState, asPath, replace } = useRouter();
   const dispatch = useDispatch();
   const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
 
-  const changeRoute = (newRoute, reset) => {
+  const changeRoute = async (newRoute, reset) => {
     if (formulario.dirty) {
-      dispatch(onShowModal(true, formulario.isValid, newRoute));
+      const resultValidation = await validation();
+      dispatch(onShowModal(true, resultValidation && formulario.isValid, newRoute));
     } else {
       push('/solicitud/[tab]/[step]', newRoute);
       if (reset) {
         dispatch(resetChangePage());
       }
+    }
+  };
+
+  const onHandleSubmit = async (event) => {
+    event.preventDefault();
+    if (currentStep.step === query.step) {
+      const resultValidation = await validation();
+      if (resultValidation) {
+        formulario.handleSubmit();
+        push('/solicitud/[tab]/[step]', route);
+      }
+    } else {
+      changeRoute(route, false);
     }
   };
 
@@ -38,16 +52,6 @@ const useOnChangePage = (formulario, route, currentStep) => {
   //     return false;
   //   });
   // }, []);
-
-  const onHandleSubmit = (event) => {
-    event.preventDefault();
-    if (currentStep.step === query.step) {
-      formulario.handleSubmit();
-      push('/solicitud/[tab]/[step]', route);
-    } else {
-      changeRoute(route, false);
-    }
-  };
 
   return [onHandleSubmit];
 };

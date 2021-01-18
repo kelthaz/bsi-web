@@ -2,9 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { nextStepDatosPersonales, resetDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
 import {
@@ -26,9 +25,14 @@ import {
 } from '../../../../../constants/errors';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import LoginRepositorio from '../../../../../services/login/login.repositorio';
 
 const StepFive = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const { changePage } = useSelector((state) => state.formulario);
+  const {
+    dataSimulador: { monto, plazo, periodicidad },
+  } = useSelector((state) => state.simulador);
   const dispatch = useDispatch();
 
   const { initialValues, validationSchema } = {
@@ -63,17 +67,46 @@ const StepFive = () => {
   const formulario = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      dispatch(
-        nextStepDatosPersonales({
-          currentStep: { ...currentStep, lastStep: true },
-          datosPersonales: { ...datosPersonales, ...values },
-        })
-      );
+    onSubmit: async (values) => {
+      if (changePage) {
+        dispatch(
+          nextStepDatosPersonales({
+            currentStep: { ...currentStep, lastStep: true },
+            datosPersonales: { ...datosPersonales, ...values },
+          })
+        );
+      } else {
+        dispatch(resetDatosPersonales());
+      }
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/agradecimiento', currentStep);
+  const validateSaveInfo = async () => {
+    const data = {
+      ...datosPersonales,
+      tipoPersona: datosPersonales.tipoPersona.value,
+      sector: datosPersonales.sector.value,
+      giro: datosPersonales.giro.value,
+      rfc: formulario.values.rfc,
+      password: formulario.values.contrasena,
+      simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
+    };
+    delete data.aceptoTerminos;
+    delete data.contrasena;
+    delete data.confirmarContrasena;
+    const valid = await LoginRepositorio.postRegistro(data)
+      .then(() => true)
+      .catch(() => false);
+
+    return valid;
+  };
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/datos-personales/agradecimiento',
+    currentStep,
+    validateSaveInfo
+  );
 
   return (
     <div className="contedor-fixed-tab">
