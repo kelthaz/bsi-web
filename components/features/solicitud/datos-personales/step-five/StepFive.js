@@ -68,38 +68,45 @@ const StepFive = () => {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      if (!changePage) {
-        const data = {
-          ...datosPersonales,
-          tipoPersona: datosPersonales.tipoPersona.value,
-          sector: datosPersonales.sector.value,
-          giro: datosPersonales.giro.value,
-          rfc: values.rfc,
-          password: values.contrasena,
-          simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
-        };
-        delete data.aceptoTerminos;
-        delete data.contrasena;
-        delete data.confirmarContrasena;
-        delete data.segundoNombre;
-        delete data.descripcionEmpresa;
-        delete data.nombreEmpresa;
-        delete data.razonSocial;
-        delete data.tipoSociedad;
-        await LoginRepositorio.postRegistro(data);
-        dispatch(resetDatosPersonales());
-      } else {
+      if (changePage) {
         dispatch(
           nextStepDatosPersonales({
             currentStep: { ...currentStep, lastStep: true },
             datosPersonales: { ...datosPersonales, ...values },
           })
         );
+      } else {
+        dispatch(resetDatosPersonales());
       }
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/agradecimiento', currentStep);
+  const validateSaveInfo = async () => {
+    const data = {
+      ...datosPersonales,
+      tipoPersona: datosPersonales.tipoPersona.value,
+      sector: datosPersonales.sector.value,
+      giro: datosPersonales.giro.value,
+      rfc: formulario.values.rfc,
+      password: formulario.values.contrasena,
+      simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
+    };
+    delete data.aceptoTerminos;
+    delete data.contrasena;
+    delete data.confirmarContrasena;
+    const valid = await LoginRepositorio.postRegistro(data)
+      .then(() => true)
+      .catch(() => false);
+
+    return valid;
+  };
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/datos-personales/agradecimiento',
+    currentStep,
+    validateSaveInfo
+  );
 
   return (
     <div className="contedor-fixed-tab">

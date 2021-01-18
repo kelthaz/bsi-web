@@ -41,12 +41,14 @@ const StepFour = () => {
         (resp) => resp.data.fraudRisk.split(' ')[0]
       );
       if (emailScore >= 800) {
-        formulario.setFieldError('correo', 'El correo no cumple con los requerimientos');
+        formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
+        return false;
       }
     }
+    return true;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/5', currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/5', currentStep, validateEmail);
 
   return (
     <div className="contedor-fixed-tab">
@@ -96,7 +98,6 @@ const StepFour = () => {
                   size="big"
                   label="ejemplo@mail.com"
                   format="email"
-                  afterBlur={validateEmail}
                 />
               </div>
             </div>
