@@ -1,12 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
 
-const ResultSimulador = () => {
-  const {
-    dataSimulador: { monto, plazo, periodicidad },
-    resultSimulador: { tasaOrdinaria, comisionApertura, cat, pago },
-  } = useSelector((state) => state.simulador);
+const ResultSimulador = ({ dataSimulador, resultSimulador }) => {
+  const { monto, plazo, periodicidad } = dataSimulador;
+  const { tasaOrdinaria, comisionApertura, cat, pago } = resultSimulador;
 
   return (
     <div className="row card-simple-border-blue-storm no-gutters">
@@ -46,6 +45,11 @@ const ResultSimulador = () => {
       </div>
     </div>
   );
+};
+
+ResultSimulador.propTypes = {
+  dataSimulador: PropTypes.object.isRequired,
+  resultSimulador: PropTypes.object.isRequired
 };
 
 export default ResultSimulador;

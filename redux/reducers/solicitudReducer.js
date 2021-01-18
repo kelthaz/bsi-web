@@ -68,7 +68,11 @@ const initialState = {
     autorizacionFirmaElectronica: null,
     autorizacionConsultaBancoppel: null,
   },
-  oferta: {},
+  oferta: {
+    conCuenta: false,
+    tipoPersona: 'Persona Moral',
+    clabe: null
+  },
   documentacion: {
     concentracion: null,
     compraDivisas: null,

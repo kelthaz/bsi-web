@@ -90,10 +90,12 @@ export const PageSimulador = ({ catalogo }) => {
   ];
 
   const {
-    showResult,
-    dataSimulador: { monto, plazo, periodicidad },
-    resultSimuladorTabla,
+    showResult, dataSimulador, resultSimulador, resultSimuladorTabla
   } = useSelector((state) => state.simulador);
+
+  const {
+    monto, plazo, periodicidad
+  } = dataSimulador;
 
   const handleDownloadTable = async () => {
     const tablaPdf = await SimuladorRepositorio.postSimuladorTablaPdf({
@@ -234,7 +236,7 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
               </div>
               <div className="px-lg-5">
-                <ResultSimulador />
+                <ResultSimulador dataSimulador={ dataSimulador } resultSimulador={ resultSimulador }/>
               </div>
 
               <div className="row justify-content-center mx-0  mt-4">
