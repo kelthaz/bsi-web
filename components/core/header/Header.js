@@ -221,7 +221,7 @@ const Header = () => {
         </Modal>
         <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
           <div>
-            {!pathname.includes('solicitud') && (
+            {!(pathname.includes('solicitud') || pathname.includes('obligado-solidario')) && (
               <button type="button" onClick={handleMenu}>
                 {}
               </button>
@@ -229,30 +229,32 @@ const Header = () => {
             <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
           </div>
           <div>
-            {pathname.includes('solicitud') ? (
+            {pathname.includes('solicitud') || pathname.includes('obligado-solidario') ? (
               <img src="/circle-cross.svg" alt="" onClick={() => setOpenModal(true)} />
             ) : (
               <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
             )}
-            {!pathname.includes('solicitud') && (
+            {!(pathname.includes('solicitud') || pathname.includes('obligado-solidario')) && (
               <Link href="/login/[option]" as="/login/iniciar-sesion">
                 <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
                   Inicia sesión
                 </button>
               </Link>
             )}
-            {!pathname.includes('solicitud') && (
+            {!(pathname.includes('solicitud') || pathname.includes('obligado-solidario')) && (
               <Link href="simulador">
                 <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
                   Solicita tu crédito
                 </button>
               </Link>
             )}
-            {!pathname.includes('solicitud') && <button type="button">{}</button>}
+            {!(pathname.includes('solicitud') || pathname.includes('obligado-solidario')) && (
+              <button type="button">{}</button>
+            )}
           </div>
         </div>
         {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}
-        {!menuOpen && !pathname.includes('solicitud') && (
+        {!menuOpen && !(pathname.includes('solicitud') || pathname.includes('obligado-solidario')) && (
           <nav className={styles['header-bottom']}>
             <ul>
               {pages.map(({ label, link }) => (

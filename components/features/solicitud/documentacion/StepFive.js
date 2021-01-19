@@ -8,7 +8,6 @@ import RadioButton from '../../../shared/radio-button/RadioButton';
 import Select from '../../../shared/select/Select';
 import Tooltip from '../../../shared/tooltip/Tooltip';
 import TextField from '../../../shared/text-field/TextField';
-import SvgPm from '../../../svgs/SvgPM';
 import {
   campoRequerido,
   longitudMaxima,
@@ -17,6 +16,7 @@ import {
   seleccionOpcion,
 } from '../../../../constants/errors';
 import { regexRFCFisica } from '../../../../constants/regex';
+import SvgPersonaMoral from '../../../svgs/SvgPersonaMoral';
 
 const StepFive = () => {
   const dispatch = useDispatch();
@@ -103,7 +103,7 @@ const StepFive = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             {datosPersonales.tipoPersona === 'Persona Moral' ? (
               <p className="sub color-blue-storm">
-                <SvgPm />
+                <SvgPersonaMoral />
                 Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
               </p>
             ) : (

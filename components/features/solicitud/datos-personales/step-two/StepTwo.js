@@ -10,8 +10,8 @@ import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaAc
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
 const StepTwo = () => {
-  const personaFisica = { value: '1', label: 'Persona Física con Actividad Empresarial' };
-  const personaMoral = { value: '2', label: 'Persona Moral' };
+  const personaFisica = { value: 'FISICA', label: 'Persona Física con Actividad Empresarial' };
+  const personaMoral = { value: 'MORAL', label: 'Persona Moral' };
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const { query } = useRouter();

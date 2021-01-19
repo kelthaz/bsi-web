@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgCargaDocumento from '../../../svgs/SvgCargaDocumento';
+import SvgCargaDocumento from '../../../../svgs/SvgCargaDocumento';
 
-import styles from './carga-documentos.module.scss';
+import styles from '../carga-documentos.module.scss';
 
 const TodoListo = () => (
   <div className="contedor-fixed">

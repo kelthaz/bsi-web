@@ -42,6 +42,7 @@ const TextField = (props) => {
     paste,
     readonly,
     disabled,
+    afterBlur,
   } = props;
 
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
@@ -88,6 +89,7 @@ const TextField = (props) => {
     setFieldValue(name, value.trimEnd());
     setFieldTouched(name, true);
     setActive(false);
+    afterBlur();
   };
 
   const onPaste = (event) => {
@@ -177,6 +179,7 @@ TextField.propTypes = {
   format: PropTypes.string,
   readonly: PropTypes.bool,
   disabled: PropTypes.bool,
+  afterBlur: PropTypes.func,
 };
 
 TextField.defaultProps = {
@@ -188,6 +191,7 @@ TextField.defaultProps = {
   readonly: false,
   disabled: false,
   format: '',
+  afterBlur: () => {},
 };
 
 export default TextField;

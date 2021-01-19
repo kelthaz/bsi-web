@@ -8,8 +8,8 @@ import { regexRFCFisicaMoral } from '../../../../constants/regex';
 import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
-import RadioButton from '../../../shared/radio-button/RadioButton';
 import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
+import LoginRepositorio from '../../../../services/login/login.repositorio';
 
 const IniciarSesion = () => {
   const formulario = useFormik({
@@ -25,15 +25,25 @@ const IniciarSesion = () => {
       check: Yup.string().required(captcha),
       mantenerSesion: Yup.string(),
     }),
-    onSubmit: (values) => {
-      alert(values);
+    onSubmit: async (values) => {
+      const valid = await LoginRepositorio.postLogin({
+        username: values.rfc,
+        password: values.contrasena,
+      })
+        .then(() => true)
+        .catch(() => false);
     },
   });
 
   return (
     <>
       <Tab initOption={1}>
-        <TabItem tab="Portal Bancario" keyTab="1" />
+        <TabItem
+          tab="Portal Bancario"
+          keyTab="1"
+          onChangeOption={() => window.open('https://www.bancoppel.com/empresas/index.html')}
+          blocked
+        />
         <TabItem tab="Plataforma Pyme" keyTab="2" />
       </Tab>
       <form onSubmit={formulario.handleSubmit} noValidate className="px-xs-3 px-md-0">
@@ -74,7 +84,7 @@ const IniciarSesion = () => {
         </div>
         <div className="row d-flex justify-content-center ">
           <Link href="/login/[option]" as="/login/olvide-contrasena">
-            <button type="button" className="btn-link">
+            <button type="button" className="btn-link" disabled={!(formulario.isValid && formulario.dirty)}>
               ¿Olvidaste tu contraseña?
             </button>
           </Link>
