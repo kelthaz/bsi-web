@@ -7,15 +7,15 @@
 }
 
 .text-container {
-  color: #282828;
-  font-family: Futura;
+  color: $gray-dark;
+  font-family: $futura-book;
   font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
   .text-container {
-    color: #282828;
-    font-family: Futura;
+    color: $gray-dark;
+    font-family: $futura-book;
     font-size: 14px;
   }
 }
@@ -54,8 +54,8 @@
 
 .th {
   background-color: $white;
-  color: #636363;
-  font-family: Futura;
+  color: $gray;
+  font-family: $futura-book;
   font-size: 14px;
   padding-bottom: 4px;
   padding-right: 25px;
