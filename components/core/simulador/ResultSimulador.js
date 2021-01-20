@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
+import mexicanWeightFormatter from '../../../helpers/mexicanWeightFormatter';
 
 const ResultSimulador = ({ dataSimulador, resultSimulador }) => {
   const { monto, plazo, periodicidad } = dataSimulador;
