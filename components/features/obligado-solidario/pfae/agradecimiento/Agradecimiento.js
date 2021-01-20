@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SvgOk from '../../../../svgs/SvgOk';
 
-const gracias = () => {
+const Agradecimiento = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
 
   return (
@@ -15,11 +15,11 @@ const gracias = () => {
                 <SvgOk />
               </div>
               <div className="col-md-10 px-xs-0 px-md-2">
-                <h2 className="text-xs-center text-md-left color-blue-storm">¡Gracias por tu tiempo José!</h2>
+                <h2 className="text-xs-center text-md-left color-blue-storm">¡Gracias, José!</h2>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
                 <p className="body2 text-xs-center text-md-left color-dark-gray sub pt-2">
-                  La información que nos has compartido nos ha ayudado a conocerte mejor.
+                  Con esto hemos concluído el proceso. ¡Te agradecemos tu tiempo!
                 </p>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
@@ -28,11 +28,7 @@ const gracias = () => {
                   próximos pasos.
                 </p>
               </div>
-              <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="text-xs-center text-md-left pt-2"> ¡En BanCoppel agradecemos tu confianza!</p>
-              </div>
             </div>
-
             <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center mt-5">
               <SvgOk />
             </div>
@@ -45,4 +41,4 @@ const gracias = () => {
     </div>
   );
 };
-export default gracias;
+export default Agradecimiento;

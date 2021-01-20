@@ -7,7 +7,6 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../constants/errors';
-import SvgPM from '../../../../svgs/carga-documentos/SvgPM';
 
 const StepSeven = () => {
   const dispatch = useDispatch();
@@ -47,14 +46,6 @@ const StepSeven = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
-              <p className="sub color-blue-storm">
-                <SvgPM />
-                Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
-              </p>
-            ) : (
-              ''
-            )}
             <p className="sub color-dark-gray">
               ¿Existe una persona moral que ejerce control sobre ti?
               <Tooltip message="..." />
@@ -71,35 +62,6 @@ const StepSeven = () => {
                 </RadioButton>
               </div>
             </div>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
-              <p className="sub color-blue-storm">
-                <SvgPM />
-                Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
-              </p>
-            ) : (
-              ''
-            )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
-              <p className="sub color-dark-gray">¿Existe una persona moral que ejerce control sobre ti?</p>
-            ) : (
-              ''
-            )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
-              <div className="d-flex">
-                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
-                    <span className="input color-gray">Sí</span>
-                  </RadioButton>
-                </div>
-                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <RadioButton name="ejerceControlFisica" formulario={formulario} value="no">
-                    <span className="input color-gray">No</span>
-                  </RadioButton>
-                </div>
-              </div>
-            ) : (
-              ''
-            )}
 
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button

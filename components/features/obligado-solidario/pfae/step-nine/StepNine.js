@@ -32,11 +32,11 @@ const StepNine = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '10' },
+          currentStep: { tab: 'preguntas', step: '10' },
           documentacion: { ...documentacion, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/10');
+      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/10');
     },
     validateOnMount: true,
   });

@@ -1,3 +1,4 @@
+import Bienvenido from './bienvenido/Bienvenido';
 import Gracias from './gracias/Gracias';
 import StepOne from './step-one/StepOne';
 import StepTwo from './step-two/StepTwo';
@@ -8,8 +9,19 @@ import StepSix from './step-six/StepSix';
 import StepSeven from './step-seven/StepSeven';
 import StepEight from './step-eight/StepEight';
 import StepNine from './step-nine/StepNine';
+import StepTen from './step-ten/StepTen';
+import StepEleven from './step-eleven/StepEleven';
+import Agradecimiento from './agradecimiento/Agradecimiento';
 
 const pfaeRoutes = [
+  {
+    tab: 'preguntas',
+    step: 'bienvenido',
+    path: '/obligado-solidario/pfae/preguntas/bienvenido',
+    stepNumber: null,
+    component: Bienvenido,
+    services: [],
+  },
   {
     tab: 'preguntas',
     step: 'gracias',
@@ -88,6 +100,30 @@ const pfaeRoutes = [
     path: '/obligado-solidario/pfae/preguntas/9',
     stepNumber: 9,
     component: StepNine,
+    services: [],
+  },
+  {
+    tab: 'preguntas',
+    step: '10',
+    path: '/obligado-solidario/pfae/preguntas/10',
+    stepNumber: 10,
+    component: StepTen,
+    services: [],
+  },
+  {
+    tab: 'preguntas',
+    step: '11',
+    path: '/obligado-solidario/pfae/preguntas/11',
+    stepNumber: 11,
+    component: StepEleven,
+    services: [],
+  },
+  {
+    tab: 'preguntas',
+    step: 'Agradecimiento',
+    path: '/obligado-solidario/pfae/preguntas/agradecimiento',
+    stepNumber: null,
+    component: Agradecimiento,
     services: [],
   },
 ];
