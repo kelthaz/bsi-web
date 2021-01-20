@@ -63,13 +63,17 @@ const StepThree = () => {
               <p className="color-dark-gray sub">
                 ¿Tienes cuentas con depósitos e inversiones líquidas? <Tooltip message="..." />
               </p>
-              <div className="d-flex">
-                <RadioButton name="cuentasLiquidas" formulario={formulario} value="si">
-                  <span className="input color-gray">Sí</span>
-                </RadioButton>
-                <RadioButton name="cuentasLiquidas" formulario={formulario} value="no">
-                  <span className="input color-gray">No</span>
-                </RadioButton>
+              <div className="row">
+                <div className="col-md-2 col-xs-4">
+                  <RadioButton name="cuentasLiquidas" formulario={formulario} value="si">
+                    <span className="input color-gray">Sí</span>
+                  </RadioButton>
+                </div>
+                <div className="col-md-6 col-xs-4">
+                  <RadioButton name="cuentasLiquidas" formulario={formulario} value="no">
+                    <span className="input color-gray">No</span>
+                  </RadioButton>
+                </div>
               </div>
               {cantCuentas ? (
                 <div className="row no-gutters mt-3">
