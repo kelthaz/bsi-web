@@ -53,7 +53,7 @@ const StepThree = () => {
     } else if (formulario.values.cuentasLiquidas === 'no') {
       setCantCuentas(false);
     }
-  });
+  }, [formulario.values.cuentasLiquidas]);
   return (
     <>
       <div className="contedor-fixed-tab">
@@ -63,7 +63,7 @@ const StepThree = () => {
               <p className="color-dark-gray sub">
                 ¿Tienes cuentas con depósitos e inversiones líquidas? <Tooltip message="..." />
               </p>
-              <div className="d-flex">
+              <div className="row">
                 <RadioButton name="cuentasLiquidas" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
