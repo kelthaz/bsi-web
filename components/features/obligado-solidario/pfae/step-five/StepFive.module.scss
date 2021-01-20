@@ -1,0 +1,8 @@
+@import '../../../../../styles/scss/modules/mixins';
+@import '../../../../../styles/scss/modules/var';
+
+.line {
+  background-color: $gray-light;
+  bottom: 20px;
+  left: 100px;
+}

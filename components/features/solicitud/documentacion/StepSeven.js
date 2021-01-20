@@ -102,57 +102,57 @@ const StepSeven = () => {
                 <div className="row px-md-3 px-xs-0">
                   <div className="pt-3 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="concentracion" formulario={formulario}>
-                      <p className="ml-1">Concentración / Disperción de fondos</p>
+                      <p className="body2 ml-1">Concentración / Disperción de fondos</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-3 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="compraDivisas" formulario={formulario}>
-                      <p className="ml-1 ">Compra venta de divisas</p>
+                      <p className="body2 ml-1 ">Compra venta de divisas</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="administracionGastos" formulario={formulario}>
-                      <p className="ml-1 ">Administración de gastos / Ingresos</p>
+                      <p className="body2 ml-1 ">Administración de gastos / Ingresos</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="pagoNomina" formulario={formulario}>
-                      <p className="ml-1 ">Pago de nómina</p>
+                      <p className="body2 ml-1 ">Pago de nómina</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="cuentaEje" formulario={formulario}>
-                      <p className="ml-1 ">Cuenta eje</p>
+                      <p className="body2 ml-1 ">Cuenta eje</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="pagoCredito" formulario={formulario}>
-                      <p className="ml-1 ">Pago de crédito</p>
+                      <p className="body2 ml-1 ">Pago de crédito</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="pagoRelacionado" formulario={formulario}>
-                      <p className="ml-1 ">Pago relacionado</p>
+                      <p className="body2 ml-1 ">Pago relacionado</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="pagoComisiones" formulario={formulario}>
-                      <p className="ml-1 ">Pago de comisiones</p>
+                      <p className="body2 ml-1 ">Pago de comisiones</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="giros" formulario={formulario}>
-                      <p className="ml-1 ">Giros y/o transferencias al extranjero</p>
+                      <p className="body2 ml-1 ">Giros y/o transferencias al extranjero</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="pagoProveedores" formulario={formulario}>
-                      <p className="ml-1 ">Pago de proveedores</p>
+                      <p className="body2 ml-1 ">Pago de proveedores</p>
                     </CheckTextBox>
                   </div>
                   <div className="pt-2 col-md-4 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="otros" formulario={formulario}>
-                      <p className="ml-1 ">Otros, especifique</p>
+                      <p className="body2 ml-1 ">Otros, especifique</p>
                     </CheckTextBox>
                   </div>
                   <div className="col-md-7 pl-0">
@@ -167,31 +167,54 @@ const StepSeven = () => {
                 </div>
               ) : (
                 <div className="row px-md-3 px-xs-0">
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput
-                      formulario={formulario}
-                      name="comprobanteComercial"
-                      text="Comprobante de domicilio comercial"
-                    />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Comprobante de domicilio fiscal" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Acta de matrimonio" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Tu INE" grayText="(por el frente)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="Tu INE" grayText="(por el reverso)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="INE de tu pareja" grayText="(por el frente)" />
-                  </div>
-                  <div className="col-md-12 pb-md-4">
-                    <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
-                  </div>
+                  {documentacion.bienesSeparados !== 'no' ? (
+                    <div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput
+                          formulario={formulario}
+                          name="comprobanteComercial"
+                          text="Comprobante de domicilio comercial"
+                        />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Comprobante de domicilio fiscal" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Acta de matrimonio" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="INE de tu pareja" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput
+                          formulario={formulario}
+                          name="comprobanteComercial"
+                          text="Comprobante de domicilio comercial"
+                        />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Comprobante de domicilio fiscal" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el frente)" />
+                      </div>
+                      <div className="col-md-12 pb-md-4">
+                        <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
               {datosPersonales.tipoPersona === 'Persona Moral' ? (
@@ -209,7 +232,12 @@ const StepSeven = () => {
                 </div>
               )}
               <div className="flex-column-center-config">
-                <button type="submit" className="cicle-button-blue my-3" aria-label="Avanzar" />
+                <button
+                  type="submit"
+                  disabled={!(formulario.dirty && formulario.isValid)}
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                />
               </div>
             </form>
           </div>
