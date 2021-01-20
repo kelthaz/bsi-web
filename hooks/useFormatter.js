@@ -1,4 +1,4 @@
-import phoneFormatter from '../helpers/phoneFormatter';
+import phoneFormatter, { changeSelectionPhoneFormatter } from '../helpers/phoneFormatter';
 import uppercaseFormatter from '../helpers/uppercaseFormatter';
 import rfcFormatter from '../helpers/rfcFormatter';
 import passwordSpace from '../helpers/passwordSpace';
@@ -6,61 +6,44 @@ import emailFormatter from '../helpers/emailFormatter';
 import textAreaFormatter from '../helpers/textAreaFormatter';
 import numberFormatter from '../helpers/numberFormatter';
 import alphanumericFormatter from '../helpers/alphanumericFormatter';
+import moneyFormatter, { changeSelectionMoneyFormatter } from '../helpers/moneyFormatter';
 
-const defaultSelectionChange = (event) => {
-  const { selectionStart, selectionEnd } = event.target;
-  return { selectionStart, selectionEnd };
+const changeSelectionDefault = (keyPress, value, valueTarget, formattedValue, selectionStart, target) => {
+  const difference = keyPress === 'Delete' ? 0 : formattedValue.length - valueTarget.length;
+  target.setSelectionRange(selectionStart + difference, selectionStart + difference);
 };
 
 const useFormatter = (format) => {
   switch (format) {
     case 'phone':
-      return {
-        formatter: phoneFormatter,
-        changeSelection: true,
-      };
+      return [phoneFormatter, changeSelectionPhoneFormatter];
 
     case 'uppercase':
-      return {
-        formatter: uppercaseFormatter,
-        changeSelection: true,
-      };
+      return [uppercaseFormatter, changeSelectionDefault];
 
     case 'rfcformatter':
-      return { formatter: rfcFormatter, changeSelection: true };
+      return [rfcFormatter, changeSelectionMoneyFormatter];
 
     case 'passwordspace':
-      return {
-        formatter: passwordSpace,
-        changeSelection: true,
-      };
+      return [passwordSpace, changeSelectionMoneyFormatter];
+
+    case 'money':
+      return [moneyFormatter, changeSelectionMoneyFormatter];
 
     case 'email':
-      return {
-        formatter: emailFormatter,
-        changeSelection: false,
-      };
+      return [emailFormatter, () => {}];
 
     case 'number':
-      return {
-        formatter: numberFormatter,
-        changeSelection: false,
-      };
+      return [numberFormatter, () => {}];
 
     case 'alphanumeric':
-      return {
-        formatter: alphanumericFormatter,
-        changeSelection: false,
-      };
+      return [alphanumericFormatter, () => {}];
 
     case 'textArea':
-      return {
-        formatter: textAreaFormatter,
-        changeSelection: true,
-      };
+      return [textAreaFormatter, changeSelectionMoneyFormatter];
 
     default:
-      return { formatter: (value) => value, changeSelection: false, changeSelectionFunc: defaultSelectionChange };
+      return [(value) => value, () => {}];
   }
 };
 
