@@ -72,7 +72,7 @@ const StepSix = () => {
       </Modal>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud mt-xs-0 mt-md-5">
-          <div className="container pl-md-3 pl-xs-0 p-0">
+          <div className="container pl-md-3 pl-xs-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <div className="row pl-3 pb-md-3 pb-xs-1">
                 {datosPersonales.tipoPersona === 'Persona Moral' ? (
