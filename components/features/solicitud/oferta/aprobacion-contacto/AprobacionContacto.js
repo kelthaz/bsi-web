@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Particles from '../../../../shared/confetti/Confetti';
+import Confetti from '../../../../shared/confetti/Confetti';
 
 const AprobacionContacto = () => {
 
-  const idTest = 1;
+  const idConfetti = 1;
   const [particles, setParticles] = useState([]);
 
   const clean = (id) => {
@@ -12,7 +12,7 @@ const AprobacionContacto = () => {
   };
 
   useEffect(() => {
-    let id = idTest;
+    let id = idConfetti;
     id += 1;
 
     setParticles([...particles, id]);
@@ -24,7 +24,7 @@ const AprobacionContacto = () => {
   return (
     <div className="contedor-fixed">
       {particles.map((id) => (
-        <Particles key={id} count={Math.floor(window.innerWidth / 20)} />
+        <Confetti key={id} count={Math.floor(window.innerWidth / 20)} />
       ))}
       <div className="contedor-solicitud">
         <div className="container p-0 text-center">
