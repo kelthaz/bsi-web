@@ -53,7 +53,7 @@ const StepThree = () => {
     } else if (formulario.values.cuentasLiquidas === 'no') {
       setCantCuentas(false);
     }
-  });
+  }, [formulario.values.cuentasLiquidas]);
   return (
     <>
       <div className="contedor-fixed-tab">
