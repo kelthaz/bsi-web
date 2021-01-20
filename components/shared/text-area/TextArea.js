@@ -7,7 +7,7 @@ const TextArea = (props) => {
   const { name, formulario, label, optional, maxlength, format } = props;
   const { handleChange, values, handleBlur, errors, touched, setFieldTouched, setFieldValue } = formulario;
 
-  const { formatter, changeSelection } = useFormatter(format);
+  const [formatter, changeSelection] = useFormatter(format);
 
   const beforeInput = (event) => {
     if (formatter(event.data) === '') {
@@ -16,8 +16,8 @@ const TextArea = (props) => {
   };
 
   const onHandleChange = (event) => {
-    const { selectionStart, selectionEnd, value } = event.target;
-    const formattedValue = formatter(value.trimStart().replace(/\s+/g, ' '));
+    const { selectionStart, value: valueTarget } = event.target;
+    const formattedValue = formatter(valueTarget.trimStart().replace(/\s+/g, ' '));
 
     if (!touched[name] && formattedValue !== values[name]) {
       setFieldTouched(name, true);
@@ -26,10 +26,7 @@ const TextArea = (props) => {
     event.target.value = formattedValue;
     handleChange(event);
 
-    if (changeSelection) {
-      const difference = formattedValue.length - value.length;
-      event.target.setSelectionRange(selectionStart + difference, selectionEnd + difference);
-    }
+    changeSelection('', '', valueTarget, formattedValue, selectionStart, event.target);
   };
 
   const onHandleBlur = (event) => {

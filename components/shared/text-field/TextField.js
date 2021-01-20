@@ -26,25 +26,23 @@ const seleccionaEstilo = (size, inverted) => {
   return finalStyles;
 };
 
-const TextField = (props) => {
-  const {
-    name,
-    formulario,
-    maxlength,
-    capitalize,
-    label,
-    type: typeInput,
-    size,
-    inverted,
-    optional,
-    validation,
-    format,
-    paste,
-    readonly,
-    disabled,
-    afterBlur,
-  } = props;
-
+const TextField = ({
+  name,
+  formulario,
+  maxlength,
+  capitalize,
+  label,
+  type: typeInput,
+  size,
+  inverted,
+  optional,
+  validation,
+  format,
+  paste,
+  readonly,
+  disabled,
+  afterBlur,
+}) => {
   const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
   const { setFieldTouched, setFieldValue, getFieldMeta } = formulario;
 
@@ -55,7 +53,7 @@ const TextField = (props) => {
   const iconError = <SvgCross className={styles['icon-error']} />;
   const status = <SvgCheckOk className={iconCheckStyle} />;
 
-  const { formatter, changeSelection } = useFormatter(format);
+  const [formatter, changeSelection] = useFormatter(format);
   const [active, setActive] = useState(false);
 
   let keyPress = '';
@@ -66,22 +64,15 @@ const TextField = (props) => {
     }
   };
 
-  const onHandleChange = (event) => {
-    const { selectionStart, selectionEnd, value: valueTarget } = event.target;
+  const onHandleChange = async (event) => {
+    const { selectionStart, value: valueTarget } = event.target;
     const formattedValue = formatter(valueTarget.trimStart().replace(/\s+/g, ' '));
 
     if (!touched && formattedValue !== value) {
-      setFieldTouched(name, true);
+      await setFieldTouched(name, true);
     }
-
-    // event.target.value = formattedValue;
-    setFieldValue(name, formattedValue);
-
-    if (changeSelection) {
-      const difference = keyPress === 'Delete' ? 0 : formattedValue.length - valueTarget.length;
-      event.target.setSelectionRange(selectionStart + difference, selectionEnd + difference);
-    }
-
+    await setFieldValue(name, formattedValue);
+    changeSelection(keyPress, value, valueTarget, formattedValue, selectionStart, event.target);
     keyPress = '';
   };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import mexicanWeightFormatter from '../../../helpers/moneyFormatter';
+import mexicanWeightFormatter from '../../../helpers/mexicanWeightFormatter';
 
 const ResultSimulador = () => {
   const {
