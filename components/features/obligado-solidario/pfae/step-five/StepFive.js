@@ -29,7 +29,16 @@ const StepFive = () => {
 
   const { datosEmpresa } = useSelector((state) => state.solicitud);
 
-  const itemsTipoTerreno = [{ value: 1, label: 'Terreno' }];
+  const itemsTipoTerreno = [
+    {
+      value: 1,
+      label: 'Casa',
+    },
+    { value: 2, label: 'Departamento' },
+    { value: 3, label: 'Edificio' },
+    { value: 4, label: 'Terreno' },
+    { value: 5, label: 'Lote Comercial' },
+  ];
 
   const formularioAuxiliar = useFormik({
     initialValues: {
