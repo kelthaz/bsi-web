@@ -27,7 +27,9 @@ const ObligadoSolidario = ({ index, data }) => {
   } = useSelector((state) => state.obligado);
 
   const steps = obligadoSolidarioRoutes
-    .filter(({ stepNumber: step, tab }) => Number.isInteger(step) && tabRedux === tab)
+    .filter(
+      ({ stepNumber: step, tab, path }) => Number.isInteger(step) && tabRedux === tab && path.includes(query.person)
+    )
     .map(({ stepNumber: step, path }) => ({
       step,
       action: path,
