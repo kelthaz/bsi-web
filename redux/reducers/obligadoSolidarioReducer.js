@@ -3,10 +3,40 @@ import * as types from '../types/types';
 const initialState = {
   currentStep: {
     tab: 'preguntas',
-    step: 'bienvenida',
+    step: '1',
     lastStep: false,
   },
-  pm: {},
+  pm: {
+    aceptar: false,
+    razonSocial: '',
+    tipoSociedad: null,
+    nombreEmpresa: '',
+    sector: null,
+    giro: null,
+    descripcionEmpresa: '',
+    domicilioFiscal: {
+      calle: '',
+      numExterior: '',
+      numInterior: '',
+      codigoPostal: '',
+      colonia: null,
+      municipioAlcaldia: '',
+      ciudad: '',
+      estado: '',
+      esDomilicioComercial: null,
+    },
+    domicilioComercial: {
+      calle: '',
+      numExterior: '',
+      numInterior: '',
+      codigoPostal: '',
+      colonia: null,
+      municipioAlcaldia: '',
+      ciudad: '',
+      estado: '',
+      domicilioEntrega: null,
+    },
+  },
   pfae: {},
 };
 

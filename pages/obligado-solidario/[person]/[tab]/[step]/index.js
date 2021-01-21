@@ -6,7 +6,6 @@ import Head from 'next/head';
 import TabInformativo from '../../../../../components/shared/tab-informativo/TabInformativo';
 import Step from '../../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../../components/svgs/SvgPatronesSolicitud';
-import solicitudRoutes from '../../../../../components/features/solicitud/solicitud.routes';
 import usePreventWindowUnload from '../../../../../hooks/usePreventWindowUnload';
 import ModalActualizar from '../../../../../components/core/modals/solicitud/modal-actualizar/ModalActualizar';
 import obligadoSolidarioRoutes from '../../../../../components/features/obligado-solidario/obligado-solidario.routes';
@@ -25,9 +24,9 @@ const ObligadoSolidario = ({ index, data }) => {
   const { query, events } = useRouter();
   const {
     currentStep: { step: stepRedux, tab: tabRedux },
-  } = useSelector((state) => state.solicitud);
+  } = useSelector((state) => state.obligado);
 
-  const steps = solicitudRoutes
+  const steps = obligadoSolidarioRoutes
     .filter(({ stepNumber: step, tab }) => Number.isInteger(step) && tabRedux === tab)
     .map(({ stepNumber: step, path }) => ({
       step,
@@ -87,7 +86,7 @@ const ObligadoSolidario = ({ index, data }) => {
 
 export async function getServerSideProps(context) {
   const data = {};
-  const index = obligadoSolidarioRoutes.findIndex((route) => route.path === context.resolvedUrl);
+  const index = obligadoSolidarioRoutes.findIndex((route) => context.resolvedUrl.includes(route.path));
   const { services } = obligadoSolidarioRoutes[index];
   const respData = await Promise.all(services.map(({ service }) => service())).then((respArr) =>
     respArr.map((resp) => resp.data)

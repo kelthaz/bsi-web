@@ -229,6 +229,12 @@
   justify-content: flex-start;
   padding: 24px 0;
 
+  p {
+    @include sub;
+    color: $blue-storm;
+    text-align: center;
+  }
+
   @include media('md') {
     flex-direction: row;
 
@@ -240,12 +246,6 @@
       margin: 0;
       text-align: left;
     }
-  }
-
-  p {
-    @include sub;
-    color: $blue-storm;
-    text-align: center;
   }
 }
 

@@ -1,12 +1,10 @@
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { campoRequerido, codigoPostalInvalido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
-import { createSelectModel } from '../../../../../helpers/changeSelectModel';
+import useFindCodigoPostal from '../../../../../hooks/useFindCodigoPostal';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import LocalizacionRepositorio from '../../../../../services/simulador/localizacion.repositorio';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Select from '../../../../shared/select/Select';
 import TextField from '../../../../shared/text-field/TextField';
@@ -16,7 +14,6 @@ const StepTwo = () => {
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const router = useRouter();
-  const [itemsGiro, setItemsGiro] = useState([]);
 
   const formularioAuxiliar = useFormik({
     initialValues: {
@@ -104,53 +101,23 @@ const StepTwo = () => {
     },
   });
 
-  useEffect(() => {
-    if (formulario.values.codigoPostal.length === 5) {
-      const fetchData = async () => {
-        const { municipio, asentamientos, ciudad } = await LocalizacionRepositorio.getLocalizacion(
-          formulario.values.codigoPostal
-        )
-          .then((resp) => resp.data)
-          .catch(() => {
-            formulario.setFieldValue('colonia', null);
-            return {
-              municipio: { nombre: '', estado: { nombre: '' } },
-              ciudad: '',
-              asentamientos: [],
-            };
-          });
-        formulario.setFieldValue('municipioAlcaldia', municipio.nombre);
-        formulario.setFieldValue('ciudad', ciudad);
-        formulario.setFieldValue('estado', municipio.estado.nombre);
-        setItemsGiro(createSelectModel(asentamientos));
-      };
-      fetchData();
-    }
-  }, [formulario.values.codigoPostal]);
+  const [coloniasAuxiliar] = useFindCodigoPostal(
+    formularioAuxiliar,
+    'codigoPostal',
+    'colonia',
+    'municipioAlcaldia',
+    'ciudad',
+    'estado'
+  );
 
-  useEffect(() => {
-    if (formularioAuxiliar.values.codigoPostal.length === 5) {
-      const fetchData = async () => {
-        const { municipio, asentamientos, ciudad } = await LocalizacionRepositorio.getLocalizacion(
-          formularioAuxiliar.values.codigoPostal
-        )
-          .then((resp) => resp.data)
-          .catch(() => {
-            formulario.setFieldValue('colonia', null);
-            return {
-              municipio: { nombre: '', estado: { nombre: '' } },
-              ciudad: '',
-              asentamientos: [],
-            };
-          });
-        formularioAuxiliar.setFieldValue('municipioAlcaldia', municipio.nombre);
-        formularioAuxiliar.setFieldValue('ciudad', ciudad);
-        formularioAuxiliar.setFieldValue('estado', municipio.estado.nombre);
-        setItemsGiro(createSelectModel(asentamientos));
-      };
-      fetchData();
-    }
-  }, [formularioAuxiliar.values.codigoPostal]);
+  const [colonias] = useFindCodigoPostal(
+    formulario,
+    'codigoPostal',
+    'colonia',
+    'municipioAlcaldia',
+    'ciudad',
+    'estado'
+  );
 
   return (
     <div className="contedor-fixed-tab">
@@ -215,9 +182,9 @@ const StepTwo = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
-                  items={itemsGiro}
+                  items={colonias}
                   label="Colonia"
-                  disabled={itemsGiro.length === 0}
+                  disabled={colonias.length === 0}
                 />
               </div>
 
@@ -331,9 +298,9 @@ const StepTwo = () => {
                       formulario={formularioAuxiliar}
                       type="text"
                       size="big"
-                      items={itemsGiro}
+                      items={coloniasAuxiliar}
                       label="Colonia"
-                      disabled={itemsGiro.length === 0}
+                      disabled={coloniasAuxiliar.length === 0}
                     />
                   </div>
 

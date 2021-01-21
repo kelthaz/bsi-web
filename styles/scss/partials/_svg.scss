@@ -52,6 +52,13 @@
   }
 }
 
+.container-svg-always-small-card {
+  svg {
+    height: 48px;
+    width: 48px;
+  }
+}
+
 .svg-textura-left-bottom {
   bottom: 10px;
   left: 10px;
