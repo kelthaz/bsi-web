@@ -7,6 +7,10 @@ const initialState = {
     lastStep: false,
   },
   pm: {
+    primerNombre: 'José',
+    segundoNombre: '',
+    primerApellido: 'Álvarez',
+    segundoApellido: 'Ruiz',
     aceptar: false,
     razonSocial: '',
     tipoSociedad: null,
