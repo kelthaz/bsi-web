@@ -18,7 +18,7 @@ const ObligadoSolidario = ({ index, data }) => {
   const tabs = [
     { path: 'preguntas', label: 'Preguntas' },
     { path: 'carga-documentos', label: 'Carga de documentos' },
-    { path: 'autorización', label: 'Autorización' },
+    { path: 'autorizacion', label: 'Autorización' },
   ];
   const { component: Component, stepNumber, step: currentStep } = obligadoSolidarioRoutes[index];
 

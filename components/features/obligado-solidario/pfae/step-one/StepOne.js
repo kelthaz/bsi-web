@@ -154,7 +154,7 @@ const StepOne = () => {
     <>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud ">
-          <div className="container p-0 mt-5">
+          <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <p className="color-dark-gray sub">
                 Alejandra ya nos ha platicado un poco sobre ti, por lo que te pediremos solo poco más de información

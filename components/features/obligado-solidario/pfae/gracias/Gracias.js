@@ -18,18 +18,18 @@ const gracias = () => {
                 <h2 className="text-xs-center text-md-left color-blue-storm">¡Gracias por tu tiempo José!</h2>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="body2 text-xs-center text-md-left color-dark-gray sub pt-2">
+                <p className="body2 text-xs-center text-md-left color-dark-gray sub pt-3">
                   La información que nos has compartido nos ha ayudado a conocerte mejor.
                 </p>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="text-xs-center text-md-left pt-2">
+                <p className="text-xs-center text-md-left pt-1">
                   Le enviaremos un correo electrónico a Alejandra para indicarle que has terminado y hacerle saber los
                   próximos pasos.
                 </p>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="text-xs-center text-md-left pt-2"> ¡En BanCoppel agradecemos tu confianza!</p>
+                <p className="text-xs-center text-md-left pt-1"> ¡En BanCoppel agradecemos tu confianza!</p>
               </div>
             </div>
 

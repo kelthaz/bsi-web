@@ -44,19 +44,19 @@ const StepSeven = () => {
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
-        <div className="container ">
+        <div className="container p-0">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="sub color-dark-gray">
               ¿Existe una persona moral que ejerce control sobre ti?
               <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div className="col-md-2 col-xs-4 pl-0">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
-              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div className="col-md-6 col-xs-6">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>

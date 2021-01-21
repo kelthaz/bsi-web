@@ -29,7 +29,7 @@ const Agradecimiento = () => {
                 </p>
               </div>
             </div>
-            <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center mt-5">
+            <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center px-0">
               <SvgOk />
             </div>
           </div>

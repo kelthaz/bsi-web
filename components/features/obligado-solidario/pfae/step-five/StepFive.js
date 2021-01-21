@@ -192,11 +192,11 @@ const StepFive = () => {
               ¿Cuentas con inmuebles propios? <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-md-8 col-xs-8 pl-xs-0 pl-md-3">
+              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1">
                 <RadioButton name="inmueblesPropios" formulario={formulario} value="si">
                   <div className="d-flex">
                     <div className="input mt-xs-4 mt-md-2 color-gray col-8 pr-xs-0 pr-md-3">Sí, son</div>
-                    <div className="col-md-7 col-xs-8 pl-xs-0 pl-md-3">
+                    <div className="col-md-7 col-xs-8 pl-xs-0 px-md-0">
                       <Select
                         name="cantInmuebles"
                         formulario={formulario}
@@ -210,7 +210,7 @@ const StepFive = () => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2">
+              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-md-0">
                 <RadioButton name="inmueblesPropios" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
@@ -234,140 +234,140 @@ const StepFive = () => {
                     />
                   </div>
                   <p className="col-7 input color-dark-gray sub">¿Dónde se encuentra ubicado?</p>
-                  <div className="row no-gutters">
-                    <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                      <TextField
-                        name="calle"
-                        maxlength={60}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="Calle"
-                        format="alphanumeric"
-                      />
-                    </div>
-                    <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                      <TextField
-                        name="numExterior"
-                        maxlength={6}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="#"
-                        format="alphanumeric"
-                      />
-                    </div>
-                    <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                      <TextField
-                        name="numInterior"
-                        maxlength={6}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="Int."
-                        format="alphanumeric"
-                      />
-                    </div>
-
-                    <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                      <TextField
-                        name="codigoPostal"
-                        maxlength={5}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="C.P"
-                        format="number"
-                      />
-                    </div>
-                    <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                      <Select
-                        name="colonia"
-                        maxlength={120}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        items={itemsGiro}
-                        label="Colonia"
-                        disabled={itemsGiro.length === 0}
-                      />
-                    </div>
-
-                    <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                      <TextField
-                        name="municipioAlcaldia"
-                        maxlength={50}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="Municipio/Alcaldía"
-                        readonly
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <TextField
-                        name="ciudad"
-                        maxlength={50}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="Ciudad"
-                        readonly
-                      />
-                    </div>
-
-                    <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <TextField
-                        name="estado"
-                        maxlength={50}
-                        formulario={formularioAuxiliar}
-                        type="text"
-                        size="big"
-                        label="Estado"
-                        readonly
-                      />
-                    </div>
-                    <p className="col-12 color-dark-gray sub">Escribe los datos de la escritura</p>
-                    <div className="col-12">
-                      <TextArea
-                        name="tellUs"
-                        formulario={formulario}
-                        label="Utiliza este espacio para platicarnos sobre el número de escritura pública, el nombre
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
+                        <TextField
+                          name="calle"
+                          maxlength={60}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="Calle"
+                          format="alphanumeric"
+                        />
+                      </div>
+                      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
+                        <TextField
+                          name="numExterior"
+                          maxlength={6}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="#"
+                          format="alphanumeric"
+                        />
+                      </div>
+                      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <TextField
+                          name="numInterior"
+                          maxlength={6}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="Int."
+                          format="alphanumeric"
+                        />
+                      </div>
+                      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
+                        <TextField
+                          name="codigoPostal"
+                          maxlength={5}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="C.P"
+                          format="number"
+                        />
+                      </div>
+                      <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <Select
+                          name="colonia"
+                          maxlength={120}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          items={itemsGiro}
+                          label="Colonia"
+                          disabled={itemsGiro.length === 0}
+                        />
+                      </div>
+                      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+                        <TextField
+                          name="municipioAlcaldia"
+                          maxlength={50}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="Municipio/Alcaldía"
+                          readonly
+                        />
+                      </div>
+                      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <TextField
+                          name="ciudad"
+                          maxlength={50}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="Ciudad"
+                          readonly
+                        />
+                      </div>
+                      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <TextField
+                          name="estado"
+                          maxlength={50}
+                          formulario={formularioAuxiliar}
+                          type="text"
+                          size="big"
+                          label="Estado"
+                          readonly
+                        />
+                      </div>
+                      <p className="col-12 color-dark-gray sub">Escribe los datos de la escritura</p>
+                      <div className="col-12">
+                        <TextArea
+                          name="tellUs"
+                          formulario={formulario}
+                          label="Utiliza este espacio para platicarnos sobre el número de escritura pública, el nombre
                             y número del Notario Público que lo registró, la fecha de registro y el nombre del vendedor."
-                        maxlength={180}
-                        format="textArea"
-                      />
-                    </div>
-                    <p className="col-12 color-dark-gray sub">Escribe el número de folio mercantil</p>
-                    <div className="col-12">
-                      <TextArea
-                        name="tellUs"
-                        formulario={formulario}
-                        label="Utiliza este espacio para escribir el número de folio mercantil (libro, secciones y fojas)."
-                        maxlength={180}
-                        format="textArea"
-                      />
-                    </div>
-                    <p className="col-12 color-dark-gray sub">Escribe el valor aproximado </p>
-                    <div className="col-md-5 col-xs-12 pl-md-0">
-                      <TextField
-                        maxlength={60}
-                        name={`empresaInversion[${index}].invierto`}
-                        formulario={formulario}
-                        type="text"
-                        size="big"
-                        label="$0.00"
-                      />
-                    </div>
-                    <p className="col-12 color-dark-gray sub">Escribe los datos del gravamen (si aplica)</p>
-                    <div className="col-12">
-                      <TextArea
-                        name="tellUs"
-                        formulario={formulario}
-                        label="Utiliza este espacio si aplica para escribir el banco y el monto del gravamen"
-                        maxlength={180}
-                        format="textArea"
-                      />
+                          maxlength={180}
+                          format="textArea"
+                        />
+                      </div>
+                      <p className="col-12 color-dark-gray sub">Escribe el número de folio mercantil</p>
+                      <div className="col-12">
+                        <TextArea
+                          name="tellUs"
+                          formulario={formulario}
+                          label="Utiliza este espacio para escribir el número de folio mercantil (libro, secciones y fojas)."
+                          maxlength={180}
+                          format="textArea"
+                        />
+                      </div>
+                      <p className="col-12 color-dark-gray sub">Escribe el valor aproximado </p>
+                      <div className="col-md-5 col-xs-12">
+                        <TextField
+                          maxlength={60}
+                          name={`empresaInversion[${index}].invierto`}
+                          formulario={formulario}
+                          type="text"
+                          size="big"
+                          label="$0.00"
+                          format="money"
+                        />
+                      </div>
+                      <p className="col-12 color-dark-gray sub">Escribe los datos del gravamen (si aplica)</p>
+                      <div className="col-12">
+                        <TextArea
+                          name="tellUs"
+                          formulario={formulario}
+                          label="Utiliza este espacio si aplica para escribir el banco y el monto del gravamen"
+                          maxlength={180}
+                          format="textArea"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

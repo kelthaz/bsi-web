@@ -37,11 +37,11 @@ const StepTen = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '11' },
+          currentStep: { tab: 'autorización', step: '11' },
           documentacion: { ...documentacion, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/11');
+      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/autorizacion/11');
     },
     validateOnMount: true,
   });
@@ -63,7 +63,7 @@ const StepTen = () => {
             </p>
           </div>
           <div className="flex-column-center-config mt-2">
-            <button type="submit" className="btn-big">
+            <button onClick={() => setOpenConfirmation(false)} type="submit" className="btn-big">
               Continuar
             </button>
           </div>
@@ -89,16 +89,16 @@ const StepTen = () => {
                       <FileInput text="Acta de matrimonio" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" grayText="(por el frente)" />
+                      <FileInput text="Tu INE" subText="(por el frente)" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      <FileInput text="Tu INE" subText="(por el reverso)" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" grayText="(por el frente)" />
+                      <FileInput text="INE de tu pareja" subText="(por el frente)" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
+                      <FileInput text="INE de tu pareja" subText="(por el reverso)" />
                     </div>
                   </div>
                 ) : (
@@ -110,10 +110,10 @@ const StepTen = () => {
                       <FileInput text="Comprobante de domicilio fiscal" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" grayText="(por el frente)" />
+                      <FileInput text="Tu INE" subText="(por el frente)" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" grayText="(por el reverso)" />
+                      <FileInput text="Tu INE" subText="(por el reverso)" />
                     </div>
                   </div>
                 )}

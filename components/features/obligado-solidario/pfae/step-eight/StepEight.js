@@ -8,7 +8,14 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Select from '../../../../shared/select/Select';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import TextField from '../../../../shared/text-field/TextField';
-import { campoRequerido, longitudMaxima, longitudMinima, seleccionOpcion } from '../../../../../constants/errors';
+import { regexRFCFisica } from '../../../../../constants/regex';
+import {
+  campoRequerido,
+  longitudMaxima,
+  longitudMinima,
+  seleccionOpcion,
+  rfcInvalido,
+} from '../../../../../constants/errors';
 
 const StepEight = () => {
   const dispatch = useDispatch();
@@ -21,7 +28,7 @@ const StepEight = () => {
     segundoNombre: Yup.string().trim().max(60, longitudMaxima),
     primerApellido: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
     segundoApellido: Yup.string().trim().max(60, longitudMaxima),
-    rfc: Yup.string().trim().min(13, longitudMinima).required(campoRequerido),
+    rfc: Yup.string().trim().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
     parentesco: Yup.object()
       .shape({
         value: Yup.string(),
@@ -57,11 +64,11 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '' },
+          currentStep: { tab: 'carga-documentos', step: '9' },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/9');
+      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/carga-documentos/9');
     },
     validateOnMount: true,
   });
@@ -93,11 +100,11 @@ const StepEight = () => {
               ¿Existe una persona física relacionada? <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8  pl-xs-0 pl-md-3">
+              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1">
                 <RadioButton name="existePersonaFIsica" formulario={formulario} value="si">
                   <div className="d-flex">
                     <div className="input mt-xs-4 mt-md-2 pr-xs-0 pr-md-3 color-gray col-8">Sí, son</div>
-                    <div className="col-lg-7 col-md-7 col-sm-8 col-xs-8 pl-xs-0 pl-md-3">
+                    <div className="col-md-7 col-xs-8 pl-xs-0 px-md-0">
                       <Select
                         name="cantidadEjerceControl"
                         formulario={formulario}
@@ -111,7 +118,7 @@ const StepEight = () => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-xs-4 mt-md-2">
+              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-md-0">
                 <RadioButton name="existePersonaFIsica" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
@@ -189,10 +196,10 @@ const StepEight = () => {
                   </div>
                 </div>
                 <div className="row no-gutters">
-                  <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
+                  <div className="col-md-4 col-xs-6">
                     <p className="input color-gray">Parentesco</p>
                   </div>
-                  <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
+                  <div className="col-md-6 col-xs-12 pr-lg-2 pr-md-2">
                     <Select
                       name={`controladosFisica[${index}].parentesco`}
                       formulario={formulario}

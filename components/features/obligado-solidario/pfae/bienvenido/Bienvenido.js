@@ -91,6 +91,9 @@ const Bienvenido = () => {
                 </li>
               </ul>
             </div>
+            <p className="body2 mt-xs-3 mt-md-2 mb-md-4 color-gray-dark">
+              Te tomará aproximadamente 10 minutos, te sugerimos no salir antes de concluirlo.
+            </p>
             <div className="card-simple-blue-light list-onboarding">
               <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
                 <p className="body3 ml-1 ">
