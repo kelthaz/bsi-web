@@ -35,9 +35,9 @@ const StepSeven = () => {
         })
       );
       if (formulario.values.ejerceControlMoral === 'no') {
-        router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/gracias');
-      } else {
         router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/8');
+      } else {
+        router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/gracias');
       }
     },
   });

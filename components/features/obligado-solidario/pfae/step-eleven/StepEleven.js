@@ -85,7 +85,7 @@ const StepEleven = () => {
                   </div>
                   <div className="col-md-3 col-xs-12 px-md-0">
                     <TextField
-                      maxlength={20}
+                      maxlength={4}
                       name="terminacion"
                       formulario={formulario}
                       type="text"

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import Link from 'next/link';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { declararTerminos } from '../../../../../constants/errors';
 import SvgCargaDocumento from '../../../../svgs/SvgCargaDocumento';
@@ -112,13 +113,15 @@ const Bienvenido = () => {
             </div>
           </div>
           <div className="flex-column-start-config">
-            <button
-              disabled={!(formulario.dirty && formulario.isValid)}
-              type="submit"
-              className="btn-medium flex-align-self-center my-3"
-            >
-              ¡Comencemos!
-            </button>
+            <Link href="/obligado-solidario/pfae/[tab]/[step]" as="/obligado-solidario/pfae/preguntas/1">
+              <button
+                disabled={!(formulario.dirty && formulario.isValid)}
+                type="submit"
+                className="btn-medium flex-align-self-center my-3"
+              >
+                ¡Comencemos!
+              </button>
+            </Link>
           </div>
         </div>
       </div>
