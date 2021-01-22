@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -9,13 +8,13 @@ import TextField from '../../../../shared/text-field/TextField';
 import TextArea from '../../../../shared/text-area/TextArea';
 import Select from '../../../../shared/select/Select';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
-import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
 import changeSelectModel from '../../../../../helpers/changeSelectModel';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import useFindGiroBySector from '../../../../../hooks/useFindGiroBySector';
 
 const StepThree = ({ sectores }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  const [itemsGiro, setItemsGiro] = useState([]);
+
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
   const { query } = useRouter();
@@ -85,20 +84,8 @@ const StepThree = ({ sectores }) => {
     },
   });
 
+  const [itemsGiro] = useFindGiroBySector(formulario, 'sector', 'giro');
   const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/4', currentStep);
-
-  useEffect(() => {
-    if (formulario.values.sector && formulario.dirty) {
-      const fetchData = async () => {
-        const giros = await SectoresRepositorio.getGiroPorSector(formulario.values.sector.value).then(
-          (resp) => resp.data
-        );
-        formulario.setFieldValue('giro', null);
-        setItemsGiro(changeSelectModel('id', 'nombre', giros));
-      };
-      fetchData();
-    }
-  }, [formulario.values.sector]);
 
   return (
     <div className="contedor-fixed-tab">

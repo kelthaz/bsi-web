@@ -1,0 +1,57 @@
+@import '../../../../../styles/scss/modules/mixins';
+// @import '../../../styles/scss/modules/mixins';
+
+.icon-card {
+  padding: 16px;
+  width: 200px;
+}
+
+.scrollable-container {
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(218, 224, 233, 0.3);
+  padding: 24px;
+
+  @include media('sm') {
+    border-radius: 0;
+    box-shadow: none;
+    padding: none;
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.modal-container {
+  padding: 10px;
+  width: 440px;
+
+  @include media('md') {
+    width: 290px;
+  }
+}
+
+.modal-container-video {
+  padding: 10px;
+  width: 565px;
+}
+
+.modal-video {
+  border-radius: 6px;
+
+  @include media('sm') {
+    height: 315px;
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 541px) and (min-width: 420px) {
+ .modal-video  {
+    height: 315px;
+    width: 420px;
+  }
+}

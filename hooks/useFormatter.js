@@ -22,10 +22,10 @@ const useFormatter = (format) => {
       return [uppercaseFormatter, changeSelectionDefault];
 
     case 'rfcformatter':
-      return [rfcFormatter, changeSelectionMoneyFormatter];
+      return [rfcFormatter, changeSelectionDefault];
 
     case 'passwordspace':
-      return [passwordSpace, changeSelectionMoneyFormatter];
+      return [passwordSpace, changeSelectionDefault];
 
     case 'money':
       return [moneyFormatter, changeSelectionMoneyFormatter];

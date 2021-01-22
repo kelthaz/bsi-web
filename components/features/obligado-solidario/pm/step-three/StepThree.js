@@ -3,36 +3,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
-import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { regexRFCFisica } from '../../../../../constants/regex';
+import { regexRFCMoral } from '../../../../../constants/regex';
 import { campoRequerido, longitudMinima, longitudMaxima, rfcInvalido } from '../../../../../constants/errors';
+import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
 
-const StepTwo = () => {
-  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
+const StepThree = () => {
+  const { pm } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const formulario = useFormik({
     initialValues: {
-      rfc: datosPersonales.rfc,
-      curp: datosEmpresa.curp,
+      rfc: pm.rfc,
+      curp: pm.curp,
     },
     validationSchema: Yup.object({
-      rfc: Yup.string().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
+      rfc: Yup.string().matches(regexRFCMoral, rfcInvalido).min(12, longitudMinima).required(campoRequerido),
       curp: Yup.string().max(18, longitudMaxima).min(18, longitudMinima).required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '3' },
-          datosEmpresa: {
-            ...datosEmpresa,
+        nextStepObligadoSolidario({
+          currentStep: { tab: 'preguntas', step: '4' },
+          pm: {
+            ...pm,
             ...values,
           },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/3');
+      router.push('/obligado-solidario/pm/[tab]/[step]', '/obligado-solidario/pm/preguntas/4');
     },
   });
 
@@ -42,26 +42,28 @@ const StepTwo = () => {
         <div className="contedor-solicitud ">
           <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              <p className="color-dark-gray sub">Ahora dinos, ¿cuál es tu RFC y tu CURP?</p>
+              <p className="color-dark-gray sub">
+                Ahora dinos, ¿cuál es el RFC de la empresa y el CURP del Representante Legal?
+              </p>
               <div className="row no-gutters">
-                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                  <p className="input color-gray">Mi RFC es </p>
+                <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
+                  <p className="input color-gray">El RFC de la empresa es</p>
                 </div>
-                <div className="col-lg-7 col-md-6 col-xs-12 pr-md-2 pb-xs-3 pb-md-0">
+                <div className="col-lg-5 col-md-5 col-xs-12 pb-md-0 pb-xs-3">
                   <TextField
                     name="rfc"
                     format="rfcformatter"
-                    maxlength={13}
+                    maxlength={12}
                     formulario={formulario}
                     type="text"
                     size="big"
-                    label="Ej. TLF280693H17"
+                    label="TLF280693HVZJ"
                   />
                 </div>
-                <div className="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
-                  <p className="input color-gray">Mi CURP es </p>
+                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                  <p className="input color-gray">El CURP es</p>
                 </div>
-                <div className="col-lg-8 col-md-7 col-xs-12 pr-md-2 pb-xs-3 pb-md-0">
+                <div className="col-lg-9 col-md-7 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                   <TextField
                     name="curp"
                     format="rfcformatter"
@@ -88,4 +90,5 @@ const StepTwo = () => {
     </>
   );
 };
-export default StepTwo;
+
+export default StepThree;

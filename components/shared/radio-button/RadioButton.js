@@ -27,7 +27,7 @@ const RadioButton = ({ name, formulario, children, value }) => {
             checked={value === values[name]}
           />
         </div>
-        <div>{children}</div>
+        <div className={`${styles['container-content']}`}>{children}</div>
       </div>
     </>
   );
