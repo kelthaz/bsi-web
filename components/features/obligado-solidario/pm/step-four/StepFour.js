@@ -41,12 +41,12 @@ const StepFour = () => {
 
   const formulario = useFormik({
     initialValues: {
-      controladosMorales: [],
-      ejerceControlMoral: null,
-      cantidadEjerceControlMoral: null,
-      controladosFisicos: [],
-      ejerceControlFisico: null,
-      cantidadEjerceControlFisico: null,
+      controladosMorales: pm.controladosMorales,
+      ejerceControlMoral: pm.ejerceControlMoral,
+      cantidadEjerceControlMoral: pm.cantidadEjerceControlMoral,
+      controladosFisicos: pm.controladosFisicos,
+      ejerceControlFisico: pm.ejerceControlFisico,
+      cantidadEjerceControlFisico: pm.cantidadEjerceControlFisico,
     },
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
@@ -69,7 +69,7 @@ const StepFour = () => {
     if (formulario.values.ejerceControlFisico === 'si') {
       formulario.setFieldValue(
         'controladosFisicos',
-        [...Array(formulario.values.cantidadEjerceControlFisico.value).keys()].map(() => ({
+        [...Array(formulario.values.cantidadEjerceControlFisico.value)].map(() => ({
           nombreNegocio: '',
           rfc: '',
           porcentajeDirecto: '',

@@ -114,7 +114,7 @@ const StepSeven = () => {
 
               <div className="flex-column-center-config">
                 <button
-                  disabled={!formulario.dirty}
+                  // disabled={!formulario.dirty}
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"

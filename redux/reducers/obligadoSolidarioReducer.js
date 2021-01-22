@@ -40,6 +40,12 @@ const initialState = {
       estado: '',
       domicilioEntrega: null,
     },
+    controladosMorales: [],
+    ejerceControlMoral: null,
+    cantidadEjerceControlMoral: null,
+    controladosFisicos: [],
+    ejerceControlFisico: null,
+    cantidadEjerceControlFisico: null,
   },
   pfae: {},
 };
