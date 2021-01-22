@@ -40,14 +40,14 @@ const StepTwo = () => {
     <>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud ">
-          <div className="container p-0 mt-5">
+          <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <p className="color-dark-gray sub">Ahora dinos, ¿cuál es tu RFC y tu CURP?</p>
               <div className="row no-gutters">
                 <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                   <p className="input color-gray">Mi RFC es </p>
                 </div>
-                <div className="col-lg-7 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-7 col-md-6 col-xs-12 pr-md-2 pb-xs-3 pb-md-0">
                   <TextField
                     name="rfc"
                     format="rfcformatter"
@@ -61,7 +61,7 @@ const StepTwo = () => {
                 <div className="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
                   <p className="input color-gray">Mi CURP es </p>
                 </div>
-                <div className="col-lg-8 col-md-7 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-8 col-md-7 col-xs-12 pr-md-2 pb-xs-3 pb-md-0">
                   <TextField
                     name="curp"
                     format="rfcformatter"

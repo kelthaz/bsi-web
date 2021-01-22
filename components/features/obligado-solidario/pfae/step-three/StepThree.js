@@ -24,12 +24,12 @@ const StepThree = () => {
     initialValues: {
       cuentasLiquidas: null,
       cuentasArray: [],
+      cuentas: '',
     },
     validationSchema: Yup.object().shape({
       cuentasArray: Yup.array().of(subformValidationSchema),
     }),
   };
-
   const formulario = useFormik({
     initialValues,
     validationSchema,
@@ -58,7 +58,7 @@ const StepThree = () => {
     <>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud ">
-          <div className="container p-0 mt-5">
+          <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <p className="color-dark-gray sub">
                 ¿Tienes cuentas con depósitos e inversiones líquidas? <Tooltip message="..." />
@@ -86,6 +86,7 @@ const StepThree = () => {
                       type="text"
                       size="big"
                       label="$.00"
+                      format="money"
                     />
                   </div>
                 </div>
@@ -97,7 +98,7 @@ const StepThree = () => {
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={!formulario.isValid}
+                  disabled={!formulario.dirty}
                 />
               </div>
             </form>

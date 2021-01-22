@@ -223,9 +223,9 @@ const StepSeven = () => {
                 <div className="row ">
                   <p className="color-dark-gray sub">
                     Haz{' '}
-                    <a className="link sub" onClick={() => setOpenConfirmation(true)}>
+                    <button type="button" className="btn-link" onClick={() => setOpenConfirmation(true)}>
                       clic aquí
-                    </a>{' '}
+                    </button>{' '}
                     si no cuentas con tus documentos escaneados o quieres saber nuestras recomendaciones para tus
                     documentos.
                   </p>
@@ -234,7 +234,7 @@ const StepSeven = () => {
               <div className="flex-column-center-config">
                 <button
                   type="submit"
-                  disabled={!(formulario.dirty && formulario.isValid)}
+                  // disabled={!(formulario.dirty && formulario.isValid)}
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
                 />

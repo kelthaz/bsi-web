@@ -32,11 +32,11 @@ const StepNine = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '10' },
+          currentStep: { tab: 'carga-documentos', step: '10' },
           documentacion: { ...documentacion, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/10');
+      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/carga-documentos/10');
     },
     validateOnMount: true,
   });
@@ -47,7 +47,7 @@ const StepNine = () => {
         <div className="contedor-solicitud mt-xs-0 mt-md-5">
           <div className="container pl-md-3 pl-xs-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              <div className="row pl-3 pb-md-3 pb-xs-1">
+              <div className="row pl-3 pb-xs-1">
                 <p className="color-dark-gray sub">
                   Para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada(o)?
                 </p>

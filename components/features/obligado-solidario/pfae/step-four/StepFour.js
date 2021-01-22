@@ -105,11 +105,11 @@ const StepFour = () => {
               ¿Tienes acciones en otras empresas? <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-md-8 col-xs-8 pl-xs-0 pl-md-3">
+              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1">
                 <RadioButton name="tieneAcciones" formulario={formulario} value="si">
                   <div className="d-flex">
                     <div className="input mt-xs-4 mt-md-2 color-gray col-8 pr-xs-0 pr-md-3">Sí, son</div>
-                    <div className="col-md-7 col-xs-8 pl-xs-0 pl-md-3">
+                    <div className="col-md-7 col-xs-8 pl-xs-0 px-md-0">
                       <Select
                         name="cantAcciones"
                         formulario={formulario}
@@ -123,7 +123,7 @@ const StepFour = () => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2">
+              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-md-0">
                 <RadioButton name="tieneAcciones" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
@@ -181,6 +181,7 @@ const StepFour = () => {
                       type="text"
                       size="big"
                       label="$0.00"
+                      format="money"
                     />
                   </div>
                 </div>

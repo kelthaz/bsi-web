@@ -9,7 +9,7 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Select from '../../../../shared/select/Select';
 import TextField from '../../../../shared/text-field/TextField';
 
-import { regexRFCMoral } from '../../../../../constants/regex';
+import { regexRFCFisica } from '../../../../../constants/regex';
 import {
   longitudMaxima,
   campoRequerido,
@@ -27,7 +27,7 @@ const StepSix = () => {
 
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
-    rfc: Yup.string().trim().matches(regexRFCMoral, rfcInvalido).min(12, longitudMinima).required(campoRequerido),
+    rfc: Yup.string().trim().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
     porcentajeDirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
     porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
   });
@@ -92,11 +92,11 @@ const StepSix = () => {
               <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8  pl-xs-0 pl-md-3">
+              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="si">
                   <div className="d-flex">
                     <div className="input  mt-xs-4 mt-md-2 pr-xs-0 pr-md-3 color-gray col-8">Sí, son</div>
-                    <div className="col-lg-7 col-md-7 col-sm-8 col-xs-8  pl-xs-0 pl-md-3">
+                    <div className="col-md-7 col-xs-8 pl-xs-0 px-md-0">
                       <Select
                         name="cantidadEjerceControl"
                         formulario={formulario}
@@ -110,7 +110,7 @@ const StepSix = () => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-xs-4 mt-md-2">
+              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-md-0">
                 <RadioButton name="ejerceControlMoral" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
@@ -142,7 +142,7 @@ const StepSix = () => {
                     <TextField
                       format="rfcformatter"
                       name={`controladosMoral[${index}].rfc`}
-                      maxlength={60}
+                      maxlength={13}
                       formulario={formulario}
                       type="text"
                       size="big"
