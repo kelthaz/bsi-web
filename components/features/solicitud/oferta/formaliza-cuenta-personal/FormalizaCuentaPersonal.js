@@ -59,11 +59,11 @@ const FormalizaCuentaPersonal = () => {
           </div>
           <div className="row">
             <div className="col-12">
-              <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/1">
+              {/* <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/1"> */}
                 <button type="button" className="btn-medium-secondary my-3 mx-3">
                   Guarda tu proceso
                 </button>
-              </Link>
+              {/* </Link> */}
               <Link href="/solicitud/[tab]/[step]" as="/solicitud/oferta/validacion">
                 <button type="button" className="btn-medium my-3 mx-3">
                   Continua tu solicitud

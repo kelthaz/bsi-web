@@ -43,7 +43,7 @@ const AprobacionContacto = () => {
           </div>
           <div className="row pt-4">
             <div className="col-12 text-center">
-              <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+              <Link href="/solicitud/[tab]/[step]" as="/solicitud/oferta/formaliza">
                 <button className="btn-medium" type="button">
                   Entendido
                 </button>
