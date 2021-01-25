@@ -100,11 +100,11 @@ const StepEight = () => {
               ¿Existe una persona física relacionada? <Tooltip message="..." />
             </p>
             <div className="d-flex">
-              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1">
+              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1 pr-md-0">
                 <RadioButton name="existePersonaFIsica" formulario={formulario} value="si">
                   <div className="d-flex">
-                    <div className="input mt-xs-4 mt-md-2 pr-xs-0 pr-md-3 color-gray col-8">Sí, son</div>
-                    <div className="col-md-7 col-xs-8 pl-xs-0 px-md-0">
+                    <div className="input mt-xs-4 mt-md-2 color-gray col-5 px-xs-0 pr-md-3">Sí, son</div>
+                    <div className="col-md-4 col-xs-6 px-xs-0 px-md-0">
                       <Select
                         name="cantidadEjerceControl"
                         formulario={formulario}
@@ -118,7 +118,7 @@ const StepEight = () => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-md-0">
+              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-0">
                 <RadioButton name="existePersonaFIsica" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
