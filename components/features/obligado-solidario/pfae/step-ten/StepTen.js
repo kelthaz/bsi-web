@@ -89,16 +89,16 @@ const StepTen = () => {
                       <FileInput text="Acta de matrimonio" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="(por el frente)" />
+                      <FileInput text="Tu INE" subText="por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="(por el reverso)" />
+                      <FileInput text="Tu INE" subText="por el reverso" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" subText="(por el frente)" />
+                      <FileInput text="INE de tu pareja" subText="por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" subText="(por el reverso)" />
+                      <FileInput text="INE de tu pareja" subText="por el reverso" />
                     </div>
                   </div>
                 ) : (
@@ -107,13 +107,10 @@ const StepTen = () => {
                       <FileInput formulario={formulario} name="comprobanteDomicilio" text="Comprobante de domicilio" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Comprobante de domicilio fiscal" />
+                      <FileInput text="Tu INE" subText="por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="(por el frente)" />
-                    </div>
-                    <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="(por el reverso)" />
+                      <FileInput text="Tu INE" subText="por el reverso" />
                     </div>
                   </div>
                 )}
