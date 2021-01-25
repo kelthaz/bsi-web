@@ -37,57 +37,55 @@ const StepThree = () => {
   });
 
   return (
-    <>
-      <div className="contedor-fixed-tab">
-        <div className="contedor-solicitud ">
-          <div className="container p-0">
-            <form onSubmit={formulario.handleSubmit} noValidate>
-              <p className="color-dark-gray sub">
-                Ahora dinos, ¿cuál es el RFC de la empresa y el CURP del Representante Legal?
-              </p>
-              <div className="row no-gutters">
-                <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
-                  <p className="input color-gray">El RFC de la empresa es</p>
-                </div>
-                <div className="col-lg-5 col-md-5 col-xs-12 pb-md-0 pb-xs-3">
-                  <TextField
-                    name="rfc"
-                    format="rfcformatter"
-                    maxlength={12}
-                    formulario={formulario}
-                    type="text"
-                    size="big"
-                    label="TLF280693HVZJ"
-                  />
-                </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                  <p className="input color-gray">El CURP es</p>
-                </div>
-                <div className="col-lg-9 col-md-7 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                  <TextField
-                    name="curp"
-                    format="rfcformatter"
-                    maxlength={18}
-                    formulario={formulario}
-                    type="text"
-                    size="big"
-                    label="Ej. TLF280693HVZJNR03"
-                  />
-                </div>
+    <div className="contedor-fixed-tab">
+      <div className="contedor-solicitud ">
+        <div className="container p-0">
+          <form onSubmit={formulario.handleSubmit} noValidate>
+            <p className="color-dark-gray sub">
+              Ahora dinos, ¿cuál es el RFC de la empresa y el CURP del Representante Legal?
+            </p>
+            <div className="row no-gutters">
+              <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 ">
+                <p className="input color-gray">El RFC de la empresa es</p>
               </div>
-              <div className="flex-column-center-config">
-                <button
-                  type="submit"
-                  className="cicle-button-blue my-3"
-                  aria-label="Avanzar"
-                  disabled={!(formulario.isValid && formulario.dirty)}
+              <div className="col-lg-5 col-md-5 col-xs-12 pb-md-0 pb-xs-3">
+                <TextField
+                  name="rfc"
+                  format="rfcformatter"
+                  maxlength={12}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="TLF280693HVZJ"
                 />
               </div>
-            </form>
-          </div>
+              <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                <p className="input color-gray">El CURP es</p>
+              </div>
+              <div className="col-lg-9 col-md-7 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <TextField
+                  name="curp"
+                  format="rfcformatter"
+                  maxlength={18}
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="Ej. TLF280693HVZJNR03"
+                />
+              </div>
+            </div>
+            <div className="flex-column-center-config">
+              <button
+                type="submit"
+                className="cicle-button-blue my-3"
+                aria-label="Avanzar"
+                disabled={!(formulario.isValid && formulario.dirty)}
+              />
+            </div>
+          </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

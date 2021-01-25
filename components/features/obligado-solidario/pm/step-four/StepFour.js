@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -18,6 +17,7 @@ import {
   numeroMinimo,
 } from '../../../../../constants/errors';
 import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
+import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
 
 const StepFour = () => {
   const { pm } = useSelector((state) => state.obligado);
@@ -31,13 +31,7 @@ const StepFour = () => {
     porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
   });
 
-  const items = [
-    { label: '1', value: 1 },
-    { label: '2', value: 2 },
-    { label: '3', value: 3 },
-    { label: '4', value: 4 },
-    { label: '5', value: 5 },
-  ];
+  const items = [...Array(5).keys()].map((index) => ({ value: index + 1, label: (index + 1).toString() }));
 
   const formulario = useFormik({
     initialValues: {
@@ -65,41 +59,37 @@ const StepFour = () => {
     },
   });
 
-  useEffect(() => {
-    if (formulario.values.ejerceControlFisico === 'si') {
-      formulario.setFieldValue(
-        'controladosFisicos',
-        [...Array(formulario.values.cantidadEjerceControlFisico.value)].map(() => ({
-          nombreNegocio: '',
-          rfc: '',
-          porcentajeDirecto: '',
-          porcentajeIndirecto: '',
-        }))
-      );
-    } else {
-      formulario.setFieldValue('controladosFisicos', []);
-    }
-  }, [formulario.values.ejerceControlFisico, formulario.values.cantidadEjerceControlFisico]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.ejerceControlMoral === 'si',
+    [formulario.values.ejerceControlMoral, formulario.values.cantidadEjerceControlMoral],
+    {
+      nombreNegocio: '',
+      rfc: '',
+      porcentajeDirecto: '',
+      porcentajeIndirecto: '',
+    },
+    'controladosMorales',
+    'cantidadEjerceControlMoral'
+  );
 
-  useEffect(() => {
-    if (formulario.values.ejerceControlMoral === 'si') {
-      formulario.setFieldValue(
-        'controladosMorales',
-        [...Array(formulario.values.cantidadEjerceControlMoral.value).keys()].map(() => ({
-          nombreNegocio: '',
-          rfc: '',
-          porcentajeDirecto: '',
-          porcentajeIndirecto: '',
-        }))
-      );
-    } else {
-      formulario.setFieldValue('controladosMorales', []);
-    }
-  }, [formulario.values.ejerceControlMoral, formulario.values.cantidadEjerceControlMoral]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.ejerceControlFisico === 'si',
+    [formulario.values.ejerceControlFisico, formulario.values.cantidadEjerceControlFisico],
+    {
+      nombreNegocio: '',
+      rfc: '',
+      porcentajeDirecto: '',
+      porcentajeIndirecto: '',
+    },
+    'controladosFisicos',
+    'cantidadEjerceControlFisico'
+  );
 
   const formControlados = (nameControlador) =>
     formulario.values[nameControlador].map((value, index) => (
-      <div key={value}>
+      <div key={value.index}>
         <div className="row no-gutters">
           <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
             <p className="input color-gray">Se llama</p>
@@ -124,7 +114,7 @@ const StepFour = () => {
             <TextField
               format="rfcformatter"
               name={`${nameControlador}[${index}].rfc`}
-              maxlength={60}
+              maxlength={12}
               formulario={formulario}
               type="text"
               size="big"
@@ -145,9 +135,9 @@ const StepFour = () => {
             <TextField
               format="number"
               name={`${nameControlador}[${index}].porcentajeDirecto`}
-              maxlength={60}
+              maxlength={3}
               formulario={formulario}
-              type="text"
+              type="tel"
               size="big"
               label="%"
             />
@@ -159,9 +149,9 @@ const StepFour = () => {
             <TextField
               format="number"
               name={`${nameControlador}[${index}].porcentajeIndirecto`}
-              maxlength={60}
+              maxlength={3}
               formulario={formulario}
-              type="text"
+              type="tel"
               size="big"
               label="%"
             />

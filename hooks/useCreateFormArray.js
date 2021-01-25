@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
 
-const useCreateFormArray = (formulario, conditionReset, dependencies) => {
+const useCreateFormArray = (formulario, conditionReset, dependencies, obj, nameArray, nameNumberItems) => {
   useEffect(() => {
-    if (formulario.values.ejerceControlFisico === 'si') {
+    if (conditionReset) {
       formulario.setFieldValue(
-        'controladosFisicos',
-        [...Array(formulario.values.cantidadEjerceControlFisico.value).keys()].map(() => ({
-          nombreNegocio: '',
-          rfc: '',
-          porcentajeDirecto: '',
-          porcentajeIndirecto: '',
-        }))
+        nameArray,
+        [...Array(formulario.values[nameNumberItems].value).keys()].map((index) =>
+          formulario.values[nameArray][index] ? { ...formulario.values[nameArray][index] } : { index, ...obj }
+        )
       );
     } else {
-      formulario.setFieldValue('controladosFisicos', []);
+      formulario.setFieldValue(nameArray, []);
     }
-  }, [formulario.values.ejerceControlFisico, formulario.values.cantidadEjerceControlFisico]);
+  }, [...dependencies]);
 };
 
 export default useCreateFormArray;
