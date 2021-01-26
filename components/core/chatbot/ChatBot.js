@@ -4,7 +4,6 @@ import SvgCross from '../../svgs/SvgCross';
 import styles from './chatbot.module.scss';
 
 const ChatBot = () => {
-
   const [chatOpened, wasChatOpened] = useState(false);
   const [showWelcomeCard, shouldShowWelcomeCard] = useState(false);
 
@@ -43,9 +42,10 @@ const ChatBot = () => {
             </div>
           </div>
           <div className={styles.content}>
-            <img src="/fernanda.png" alt="Fernanda" />
+            <img className={`${styles['img-chatbot']}`} src="/FernandaChat-0.jpg" alt="Fernanda" />
             <p className="body2 pt-2">
-              <span className={styles['tc-storm']}>Hola, soy Fernanda</span><br />
+              <span className={styles['tc-storm']}>Hola, soy Fernanda</span>
+              <br />
               Conmigo puedes consultar todo lo que necesitas saber sobre el futuro crédito para tu Pyme.
             </p>
           </div>
@@ -56,12 +56,7 @@ const ChatBot = () => {
           </div>
         </div>
       )}
-      <div
-        className={styles.launcher}
-        onClick={openWelcomeCard}
-        role="button"
-        tabIndex={0}
-      >
+      <div className={styles.launcher} onClick={openWelcomeCard} role="button" tabIndex={0}>
         <div className={styles['launcher-image']} />
       </div>
     </>

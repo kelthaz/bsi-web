@@ -10,7 +10,7 @@ const BannerInicio = () => {
     <div className="flex-column-start-config">
       <TitleBanner
         linea1="CONOCE LA NUEVA"
-        linea2="OFERTA DE CRÉDITO DIGITAL PYME"
+        linea2="OFERTA DE CRÉDITO DIGITAL PYMES"
         description={
           <span>
             Es la manera <strong>más simple, rápida y confiable</strong> para hacer crecer tu negocio.

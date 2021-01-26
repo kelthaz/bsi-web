@@ -56,7 +56,7 @@ const OlvidoContrasena = () => {
 
             <h3 className="color-blue-storm text-center pt-3">¿No puedes entrar?</h3>
             <p className="body2 color-gray-dark text-center">
-              Ingresa tu correo que usaste en el registro del Crédito Digital Pyme, donde se enviarán las instrucciones
+              Ingresa tu correo que usaste en el registro del Crédito Digital Pymes, donde se enviarán las instrucciones
               para restablecer tu contraseña.
             </p>
 
