@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { onShowModal, resetChangePage } from '../redux/actions/formulario';
+import { onChangePage, onShowModal, resetChangePage } from '../redux/actions/formulario';
 
 const useOnChangePage = (formulario, route, currentStep, validation = () => true) => {
-  const { push, query, beforePopState, asPath, replace } = useRouter();
+  const { push, query, beforePopState, asPath } = useRouter();
   const dispatch = useDispatch();
   const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
 
@@ -45,13 +45,15 @@ const useOnChangePage = (formulario, route, currentStep, validation = () => true
     }
   }, [handleSubmit]);
 
-  // useEffect(() => {
-  //   beforePopState(({ url, as, options }) => {
-  //     console.log(url, as, options, asPath);
-  //     push('/solicitud/[tab]/[step]', asPath);
-  //     return false;
-  //   });
-  // }, []);
+  useEffect(() => {
+    beforePopState(({ as }) => {
+      if (as !== asPath) {
+        window.history.forward();
+        dispatch(onChangePage(true, as));
+      }
+      return false;
+    });
+  }, []);
 
   return [onHandleSubmit];
 };

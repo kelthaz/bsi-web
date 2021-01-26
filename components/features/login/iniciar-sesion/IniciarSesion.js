@@ -78,13 +78,13 @@ const IniciarSesion = () => {
         </div>
         <Captcha name="check" formulario={formulario} />
         <div className="row d-flex justify-content-center py-3">
-          <button type="submit" className="btn-medium">
+          <button type="submit" className="btn-medium" disabled={!(formulario.isValid && formulario.dirty)}>
             Iniciar sesión
           </button>
         </div>
         <div className="row d-flex justify-content-center ">
           <Link href="/login/[option]" as="/login/olvide-contrasena">
-            <button type="button" className="btn-link" disabled={!(formulario.isValid && formulario.dirty)}>
+            <button type="button" className="btn-link">
               ¿Olvidaste tu contraseña?
             </button>
           </Link>

@@ -20,7 +20,7 @@ const Solicitud = ({ index, data }) => {
     { path: 'oferta', label: 'Oferta' },
     { path: 'documentacion', label: 'Documentación' },
   ];
-  const { component: Component, stepNumber, step: currentStep } = solicitudRoutes[index];
+  const { component: Component, stepNumber, label } = solicitudRoutes[index];
 
   const tabsBiometrico = [
     { path: '1', label: 'Identificación oficial' },
@@ -39,10 +39,6 @@ const Solicitud = ({ index, data }) => {
       step,
       action: path,
     }));
-
-  // useEffect(() => {
-  //   console.log(index);
-  // }, [index]);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -64,9 +60,9 @@ const Solicitud = ({ index, data }) => {
 
   return (
     <>
-      {/* <Head>
-        <title>{`BanCoppel | Pymes - Paso: ${currentStep}`}</title>
-      </Head> */}
+      <Head>
+        <title>{`BanCoppel | Pymes - ${label}`}</title>
+      </Head>
       <ModalActualizar />
       {showComponent && (
         <TabInformativo
