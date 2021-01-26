@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -17,6 +16,7 @@ import {
 import { regexRFCFisica } from '../../../../../constants/regex';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
+import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
 
 const StepSix = () => {
   const dispatch = useDispatch();
@@ -39,13 +39,7 @@ const StepSix = () => {
       .required(seleccionOpcion),
   });
 
-  const items = [
-    { label: '1', value: 1 },
-    { label: '2', value: 2 },
-    { label: '3', value: 3 },
-    { label: '4', value: 4 },
-    { label: '5', value: 5 },
-  ];
+  const items = [...Array(5).keys()].map((index) => ({ value: index + 1, label: (index + 1).toString() }));
 
   const formulario = useFormik({
     initialValues: {
@@ -87,46 +81,41 @@ const StepSix = () => {
     },
   });
 
-  useEffect(() => {
-    if (formulario.values.tieneControladosFisicosComoMoral === 'si') {
-      console.log(formulario.values.cantidadControladosFisicosComoMoral);
-      formulario.setFieldValue(
-        'controladosFisicosComoMoral',
-        [...Array(formulario.values.cantidadControladosFisicosComoMoral.value).keys()].map(() => ({
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: null,
-        }))
-      );
-    } else {
-      formulario.setFieldValue('controladosFisicosComoMoral', []);
-    }
-  }, [formulario.values.tieneControladosFisicosComoMoral, formulario.values.cantidadControladosFisicosComoMoral]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.tieneControladosFisicosComoMoral === 'si',
+    [formulario.values.tieneControladosFisicosComoMoral, formulario.values.cantidadControladosFisicosComoMoral],
+    {
+      primerNombre: '',
+      segundoNombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      rfc: '',
+      parentesco: null,
+    },
+    'controladosFisicosComoMoral',
+    'cantidadControladosFisicosComoMoral'
+  );
 
-  useEffect(() => {
-    if (formulario.values.tieneControladosFisicosComoFisico === 'si') {
-      formulario.setFieldValue(
-        'controladosFisicosComoFisico',
-        [...Array(formulario.values.cantidadControladosFisicosComoFisico.value).keys()].map(() => ({
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: null,
-        }))
-      );
-    } else {
-      formulario.setFieldValue('controladosFisicosComoFisico', []);
-    }
-  }, [formulario.values.tieneControladosFisicosComoFisico, formulario.values.cantidadControladosFisicosComoFisico]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.tieneControladosFisicosComoFisico === 'si',
+    [formulario.values.tieneControladosFisicosComoFisico, formulario.values.cantidadControladosFisicosComoFisico],
+    {
+      primerNombre: '',
+      segundoNombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      rfc: '',
+      parentesco: null,
+    },
+    'controladosFisicosComoFisico',
+    'cantidadControladosFisicosComoFisico'
+  );
 
   const formControlados = (nameControlador) =>
     formulario.values[nameControlador].map((value, index) => (
-      <div key={value}>
+      <div key={value.index}>
         <div className="row no-gutters">
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
             <p className="input color-gray">Su nombre es</p>
