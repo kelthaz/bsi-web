@@ -12,15 +12,12 @@ const StepSeven = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
 
   const { initialValues, validationSchema } = {
     initialValues: {},
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
-      ejerceControlFisica: `${
-        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
-      }`,
     }),
   };
 
@@ -31,7 +28,7 @@ const StepSeven = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'obligado-solidario', step: '8' },
-          datosEmpresa: { ...datosEmpresa, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       if (formulario.values.ejerceControlMoral === 'no') {

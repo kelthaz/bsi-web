@@ -9,14 +9,14 @@ import { regexRFCFisica } from '../../../../../constants/regex';
 import { campoRequerido, longitudMinima, longitudMaxima, rfcInvalido } from '../../../../../constants/errors';
 
 const StepTwo = () => {
-  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const formulario = useFormik({
     initialValues: {
-      rfc: datosPersonales.rfc,
-      curp: datosEmpresa.curp,
+      rfc: pfae.rfc,
+      curp: pfae.curp,
     },
     validationSchema: Yup.object({
       rfc: Yup.string().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
@@ -26,8 +26,8 @@ const StepTwo = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'preguntas', step: '3' },
-          datosEmpresa: {
-            ...datosEmpresa,
+          pfae: {
+            ...pfae,
             ...values,
           },
         })

@@ -13,13 +13,13 @@ import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import styles from './Bienvenido.module.scss';
 
 const Bienvenido = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const router = useRouter();
   const dispatch = useDispatch();
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      aceptar: datosPersonales.aceptar,
+      aceptar: pfae.aceptar,
     },
     validationSchema: Yup.object({
       aceptar: Yup.boolean().oneOf([true], declararTerminos),
@@ -33,7 +33,7 @@ const Bienvenido = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'preguntas', step: '1' },
-          documentacion: { ...datosPersonales, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/1');
@@ -47,10 +47,10 @@ const Bienvenido = () => {
           <h2 className="color-blue-storm">¡Hola, José!</h2>
           <p className="body2 color-gray-dark">
             Alejandra Aguilar Ruíz te ha designado como su Obligado Solidario como parte del proceso de solicitud de un
-            crédito PyME BanCoppel.
+            crédito digital Pymes BanCoppel.
           </p>
           <p className="body2 color-gray-dark">
-            Este proceso es para conocerte mejor y e divide en los siguientes pasos:
+            Este proceso es para conocerte mejor y se divide en los siguientes pasos:
           </p>
 
           <div className="row no-gutters">
@@ -79,7 +79,9 @@ const Bienvenido = () => {
             <p className="body2 mt-xs-3 mt-md-2 color-gray-dark">Qué documentos deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
               <ul>
-                <li>Identificación oficial</li>
+                <li>
+                  Identificación oficial <span className="color-gray"> (vigente) </span>
+                </li>
                 <li className="position-relative">
                   Comprobante de domicilio
                   <span className="color-gray"> (No mayor a tres meses) </span>
@@ -98,14 +100,16 @@ const Bienvenido = () => {
             <div className="card-simple-blue-light list-onboarding">
               <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
                 <p className="body3 ml-1 ">
-                  Acepto: (1) los
+                  Acepto: (1) los{' '}
                   <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
                     Términos y Condiciones
                   </a>
                   , (2) el{' '}
-                  <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
-                    Aviso de Privacidad
-                  </a>
+                  <Link href="/aviso-privacidad">
+                    <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
+                      Aviso de Privacidad
+                    </a>
+                  </Link>
                   , y que (3) los productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o
                   modificados a través de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología.
                 </p>
