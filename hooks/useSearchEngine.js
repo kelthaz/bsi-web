@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const originalData = [
-  { redirect: '/credito-pyme', text: 'Crédito Digital Pyme' },
+  { redirect: '/credito-pyme', text: 'Crédito Digital Pymes' },
   { redirect: '/credito-pyme', text: 'Nuestro crédito' },
   { redirect: '/requisitos', text: 'Requisitos para un Crédito Simple PyME' },
   { redirect: '/requisitos', text: 'Requisitos para una cuenta BanCoppel' },

@@ -11,7 +11,7 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { campoRequerido } from '../../../../../constants/errors';
 
 const StepThree = () => {
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const [cantCuentas, setCantCuentas] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -22,9 +22,9 @@ const StepThree = () => {
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      cuentasLiquidas: null,
+      cuentasLiquidas: pfae.cuentasLiquidas,
       cuentasArray: [],
-      cuentas: '',
+      cuentas: pfae.cuentas,
     },
     validationSchema: Yup.object().shape({
       cuentasArray: Yup.array().of(subformValidationSchema),
@@ -37,8 +37,8 @@ const StepThree = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'preguntas', step: '4' },
-          datosEmpresa: {
-            ...datosEmpresa,
+          pfae: {
+            ...pfae,
             ...values,
           },
         })

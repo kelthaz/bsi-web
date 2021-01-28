@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Select from '../../../../shared/select/Select';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import TextField from '../../../../shared/text-field/TextField';
+import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
 import {
   campoRequerido,
   longitudMaxima,
@@ -21,7 +22,7 @@ const StepFour = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
     { value: 20, label: 'S.A. DE C.V.' },
@@ -72,29 +73,86 @@ const StepFour = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'preguntas', step: '5' },
-          datosEmpresa: { ...datosEmpresa, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/5');
     },
-    validateOnMount: true,
   });
 
-  useEffect(() => {
-    if (formulario.values.tieneAcciones === 'si') {
-      formulario.setFieldValue(
-        'empresaInversion',
-        [...Array(formulario.values.cantAcciones.value).keys()].map(() => ({
-          razonSocial: '',
-          tipoSociedad: '',
-          rfc: '',
-          invierto: '',
-        }))
-      );
-    } else {
-      formulario.setFieldValue('empresaInversion', []);
-    }
-  }, [formulario.values.tieneAcciones, formulario.values.cantAcciones]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.tieneAcciones === 'si',
+    [formulario.values.tieneAcciones, formulario.values.cantAcciones],
+    {
+      razonSocial: '',
+      tipoSociedad: '',
+      rfc: '',
+      invierto: '',
+    },
+    'empresaInversion',
+    'cantAcciones'
+  );
+
+  const formControlados = (nameControlador) =>
+    formulario.values[nameControlador].map((value, index) => (
+      <div key={value}>
+        <p className="sub color-gray">¿Cómo se llama la empresa y de cuánto es tu inversión?</p>
+        <div className="row ">
+          <div className="col-md-5 col-xs-12 pr-md-0">
+            <p className="input color-gray">La razón social es</p>
+          </div>
+          <div className="col-md-4 col-xs-12 px-md-0 px-xs-3">
+            <TextField
+              format="uppercase"
+              name={`${nameControlador}[${index}].razonSocial`}
+              maxlength={120}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Razón social"
+            />
+          </div>
+          <div className="col-md-3 col-xs-12 ">
+            <Select
+              name={`${nameControlador}[${index}].tipoSociedad`}
+              formulario={formulario}
+              size="big"
+              items={itemsTipoEmpresa}
+              label="S.A"
+            />
+          </div>
+          <div className="col-md-3 col-xs-12 ">
+            <p className="input color-gray">El RFC es </p>
+          </div>
+          <div className="col-md-8 col-xs-12 pr-lg-2 pr-md-2">
+            <TextField
+              name={`${nameControlador}[${index}].rfc`}
+              format="rfcformatter"
+              maxlength={13}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Ej. TLF280693HVZJNR03"
+            />
+          </div>
+          <div className="col-md-3 col-xs-12 pr-md-0">
+            <p className="input color-gray">Invierto </p>
+          </div>
+          <div className="col-md-5 col-xs-12 pl-md-0">
+            <TextField
+              maxlength={60}
+              name={`${nameControlador}[${index}].invierto`}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="$0.00"
+              format="money"
+            />
+          </div>
+        </div>
+      </div>
+    ));
 
   return (
     <div className="contedor-fixed-tab">
@@ -129,64 +187,9 @@ const StepFour = () => {
                 </RadioButton>
               </div>
             </div>
-            {formulario.values.empresaInversion.map((value, index) => (
-              <section key={value}>
-                <p className="sub color-gray">¿Cómo se llama la empresa y de cuánto es tu inversión?</p>
-                <div className="row ">
-                  <div className="col-md-5 col-xs-12 pr-md-0">
-                    <p className="input color-gray">La razón social es</p>
-                  </div>
-                  <div className="col-md-4 col-xs-12 px-md-0 px-xs-3">
-                    <TextField
-                      format="uppercase"
-                      name={`empresaInversion[${index}].razonSocial`}
-                      maxlength={120}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Razón social"
-                    />
-                  </div>
-                  <div className="col-md-3 col-xs-12 ">
-                    <Select
-                      name={`empresaInversion[${index}].tipoSociedad`}
-                      formulario={formulario}
-                      size="big"
-                      items={itemsTipoEmpresa}
-                      label="S.A"
-                    />
-                  </div>
-                  <div className="col-md-3 col-xs-12 ">
-                    <p className="input color-gray">El RFC es </p>
-                  </div>
-                  <div className="col-md-8 col-xs-12 pr-lg-2 pr-md-2">
-                    <TextField
-                      name={`empresaInversion[${index}].rfc`}
-                      format="rfcformatter"
-                      maxlength={13}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Ej. TLF280693HVZJNR03"
-                    />
-                  </div>
-                  <div className="col-md-3 col-xs-12 pr-md-0">
-                    <p className="input color-gray">Invierto </p>
-                  </div>
-                  <div className="col-md-5 col-xs-12 pl-md-0">
-                    <TextField
-                      maxlength={60}
-                      name={`empresaInversion[${index}].invierto`}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="$0.00"
-                      format="money"
-                    />
-                  </div>
-                </div>
-              </section>
-            ))}
+
+            {formControlados('empresaInversion')}
+
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="submit"

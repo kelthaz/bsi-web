@@ -1,46 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 
 const StepNine = () => {
-  const { documentacion } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { initialValues, validationSchema } = {
+  const { initialValues } = {
     initialValues: {
-      actaConstitutiva: documentacion.actaConstitutiva,
-      poderNotarial: documentacion.poderNotarial,
-      escrituraReforma: documentacion.escrituraReforma,
-      comprobanteDomicilioComercial: documentacion.comprobanteDomicilioComercial,
-      comprobanteDomicilioFiscal: documentacion.comprobanteDomicilioFiscal,
-      ine: documentacion.ine,
-      ineReverso: documentacion.ineReverso,
+      bienesSeparados: pfae.bienesSeparados,
     },
-    validationSchema: Yup.object({
-      // actaConstitutiva: Yup.string().required(campoRequerido),
-    }),
   };
 
   const formulario = useFormik({
     initialValues,
-    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'carga-documentos', step: '10' },
-          documentacion: { ...documentacion, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/carga-documentos/10');
     },
-    validateOnMount: true,
   });
-
   return (
     <>
       <div className="contedor-fixed-tab">

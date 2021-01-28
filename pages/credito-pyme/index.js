@@ -37,7 +37,7 @@ const CreditoPyme = ({ accordionItems }) => (
                   DIGITAL PYME
                 </span>
               </h2>
-              <p>Todo sobre los requisitos, plazos y garantías de un Crédito Digital Pyme.</p>
+              <p>Todo sobre los requisitos, plazos y garantías de un Crédito Digital Pymes.</p>
             </div>
           </div>
           <div className="col-lg-7 col-md-6 col-sm-12 col-xs-12">

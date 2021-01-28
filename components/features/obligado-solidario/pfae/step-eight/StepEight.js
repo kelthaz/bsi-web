@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
@@ -9,6 +9,7 @@ import Select from '../../../../shared/select/Select';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import TextField from '../../../../shared/text-field/TextField';
 import { regexRFCFisica } from '../../../../../constants/regex';
+import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
 import {
   campoRequerido,
   longitudMaxima,
@@ -21,7 +22,7 @@ const StepEight = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
 
   const subformValidationSchema = Yup.object().shape({
     primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -65,31 +66,128 @@ const StepEight = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'carga-documentos', step: '9' },
-          datosEmpresa: { ...datosEmpresa, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/carga-documentos/9');
     },
-    validateOnMount: true,
   });
 
-  useEffect(() => {
-    if (formulario.values.existePersonaFIsica === 'si') {
-      formulario.setFieldValue(
-        'controladosFisica',
-        [...Array(formulario.values.cantidadEjerceControl.value).keys()].map(() => ({
-          primerNombre: '',
-          segundoNombre: '',
-          primerApellido: '',
-          segundoApellido: '',
-          rfc: '',
-          parentesco: null,
-        }))
-      );
-    } else {
-      formulario.setFieldValue('controladosFisica', []);
-    }
-  }, [formulario.values.existePersonaFIsica, formulario.values.cantidadEjerceControl]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.existePersonaFIsica === 'si',
+    [formulario.values.existePersonaFIsica, formulario.values.cantidadEjerceControl],
+    {
+      primerNombre: '',
+      segundoNombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      rfc: '',
+      parentesco: '',
+    },
+    'controladosFisica',
+    'cantidadEjerceControl'
+  );
+
+  const formControlados = (nameControlador) =>
+    formulario.values[nameControlador].map((value, index) => (
+      <div key={value}>
+        <div className="row no-gutters">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+            <p className="input color-gray">Su nombre es</p>
+          </div>
+        </div>
+        <div className="row no-gutters">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+            <TextField
+              format="uppercase"
+              name={`${nameControlador}[${index}].primerNombre`}
+              maxlength={60}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Nombre"
+            />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <TextField
+              format="uppercase"
+              maxlength={60}
+              name={`${nameControlador}[${index}].segundoNombre`}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="2º Nombre"
+            />
+          </div>
+        </div>
+        <div className="row no-gutters">
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+            <TextField
+              format="uppercase"
+              name={`${nameControlador}[${index}].primerApellido`}
+              maxlength={60}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Apellido paterno"
+            />
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <TextField
+              format="uppercase"
+              maxlength={60}
+              name={`${nameControlador}[${index}].segundoApellido`}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Apellido materno"
+            />
+          </div>
+        </div>
+        <div className="row no-gutters">
+          <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
+            <p className="input color-gray">Su RFC es</p>
+          </div>
+          <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
+            <TextField
+              format="rfcformatter"
+              name={`${nameControlador}[${index}].rfc`}
+              maxlength={13}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="Ej. TLF280693H17"
+            />
+          </div>
+        </div>
+        <div className="row no-gutters">
+          <div className="col-md-4 col-xs-6">
+            <p className="input color-gray">Parentesco</p>
+          </div>
+          <div className="col-md-6 col-xs-12 pr-lg-2 pr-md-2">
+            <Select
+              name={`${nameControlador}[${index}].parentesco`}
+              formulario={formulario}
+              size="big"
+              items={[
+                { label: 'Cónyuges', value: 'Cónyuges' },
+                { label: 'Concubinos', value: 'oncubinos' },
+                { label: 'Hijos', value: 'Hijos' },
+                { label: 'Padres', value: 'Padres' },
+                { label: 'Suegros', value: 'Suegros' },
+                { label: 'Hijos de cónyuge', value: 'Hijos de cónyuge' },
+                { label: 'Hermanos', value: 'Hermanos' },
+                { label: 'Abuelos', value: 'Abuelos' },
+                { label: 'Nietos', value: 'Nietos' },
+                { label: 'Cuñados', value: 'Cuñados' },
+              ]}
+              label="Parentesco"
+            />
+          </div>
+        </div>
+      </div>
+    ));
 
   return (
     <div className="contedor-fixed-tab">
@@ -124,104 +222,7 @@ const StepEight = () => {
                 </RadioButton>
               </div>
             </div>
-            {formulario.values.controladosFisica.map((value, index) => (
-              <section key={value}>
-                <div className="row no-gutters">
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                    <p className="input color-gray">Su nombre es</p>
-                  </div>
-                </div>
-                <div className="row no-gutters">
-                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                    <TextField
-                      format="uppercase"
-                      name={`controladosFisica[${index}].primerNombre`}
-                      maxlength={60}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Nombre"
-                    />
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <TextField
-                      format="uppercase"
-                      maxlength={60}
-                      name={`controladosFisica[${index}].segundoNombre`}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="2º Nombre"
-                    />
-                  </div>
-                </div>
-                <div className="row no-gutters">
-                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                    <TextField
-                      format="uppercase"
-                      name={`controladosFisica[${index}].primerApellido`}
-                      maxlength={60}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Apellido paterno"
-                    />
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <TextField
-                      format="uppercase"
-                      maxlength={60}
-                      name={`controladosFisica[${index}].segundoApellido`}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Apellido materno"
-                    />
-                  </div>
-                </div>
-                <div className="row no-gutters">
-                  <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
-                    <p className="input color-gray">Su RFC es</p>
-                  </div>
-                  <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                    <TextField
-                      format="rfcformatter"
-                      name={`controladosFisica[${index}].rfc`}
-                      maxlength={60}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="Ej. TLF280693H17"
-                    />
-                  </div>
-                </div>
-                <div className="row no-gutters">
-                  <div className="col-md-4 col-xs-6">
-                    <p className="input color-gray">Parentesco</p>
-                  </div>
-                  <div className="col-md-6 col-xs-12 pr-lg-2 pr-md-2">
-                    <Select
-                      name={`controladosFisica[${index}].parentesco`}
-                      formulario={formulario}
-                      size="big"
-                      items={[
-                        { label: 'Cónyuges', value: 'Cónyuges' },
-                        { label: 'Concubinos', value: 'oncubinos' },
-                        { label: 'Hijos', value: 'Hijos' },
-                        { label: 'Padres', value: 'Padres' },
-                        { label: 'Suegros', value: 'Suegros' },
-                        { label: 'Hijos de cónyuge', value: 'Hijos de cónyuge' },
-                        { label: 'Hermanos', value: 'Hermanos' },
-                        { label: 'Abuelos', value: 'Abuelos' },
-                        { label: 'Nietos', value: 'Nietos' },
-                        { label: 'Cuñados', value: 'Cuñados' },
-                      ]}
-                      label="Parentesco"
-                    />
-                  </div>
-                </div>
-              </section>
-            ))}
+            {formControlados('controladosFisica')}
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
               <button
                 type="submit"

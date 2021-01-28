@@ -219,7 +219,7 @@ const Ayuda = ({ accordion }) => {
           </div>
         </section>
 
-        <Title linea1="Todo sobre" linea2="crédito digital pyme" />
+        <Title linea1="Todo sobre" linea2="crédito digital pymes" />
 
         <div className="container">
           <div className="row py-5">
@@ -242,7 +242,7 @@ const Ayuda = ({ accordion }) => {
                   >
                     Acerca del crédito
                   </div>
-                  <div className="body2">Todo sobre el Crédito Digital Pyme</div>
+                  <div className="body2">Todo sobre el Crédito Digital Pymes</div>
                 </div>
               </div>
               <div className="d-lg-none d-md-none d-sm-block d-block">
