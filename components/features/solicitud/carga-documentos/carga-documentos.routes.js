@@ -4,6 +4,8 @@ import StepTwo from './step-two/StepTwo';
 import StepThree from './step-three/StepThree';
 import TodoListo from './todo-listo/TodoListo';
 import Felicidades from './felicidades/Felicidades';
+import CapturaINE from './captura-ine/CapturaINE';
+import CapturaRostro from './captura-rostro/CapturaRostro';
 
 const cargaDocumentosRoutes = [
   {
@@ -24,10 +26,26 @@ const cargaDocumentosRoutes = [
   },
   {
     tab: 'carga-documentos',
+    step: 'captura-ine',
+    path: '/solicitud/carga-documentos/captura-ine',
+    stepNumber: null,
+    component: CapturaINE,
+    services: [],
+  },
+  {
+    tab: 'carga-documentos',
     step: '2',
     path: '/solicitud/carga-documentos/2',
     stepNumber: 2,
     component: StepTwo,
+    services: [],
+  },
+  {
+    tab: 'carga-documentos',
+    step: 'captura-rostro',
+    path: '/solicitud/carga-documentos/captura-rostro',
+    stepNumber: null,
+    component: CapturaRostro,
     services: [],
   },
   {
