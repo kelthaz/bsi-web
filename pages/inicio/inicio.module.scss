@@ -120,15 +120,23 @@
 }
 
 .img-position {
-  left: 20%;
+  height: 395px;
+  left: 32%;
   position: relative;
+  width: 197px;
 
   @include media('lg') {
     left: 10%;
   }
 
   @include media('md') {
-    width: 260px;
+    height: 350px;
+    left: 25%;
+    width: 180px;
+  }
+
+  @include media('sm') {
+    left: 15%;
   }
 }
 

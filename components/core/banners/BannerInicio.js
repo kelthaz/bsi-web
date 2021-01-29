@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-
 import Banner from '../../shared/banners/banner/Banner';
 import TitleBanner from '../../shared/titles/title-banner/TitleBanner';
 import styles from './banner.module.scss';
@@ -31,14 +30,14 @@ const BannerInicio = () => {
         <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
       <div className={styles['banner-image-man2']}>
-        <img src="/BC_PYMES_1 1.png" alt="Mujer" />
+        <img src="/chicaInicio.png" alt="Mujer" />
       </div>
     </>
   );
 
   return (
     <>
-      <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+      <Banner backgroundImage="/background-inicio.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
     </>
   );
 };
