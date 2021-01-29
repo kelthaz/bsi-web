@@ -33,16 +33,16 @@ const BannerCreditoPyme = () => {
 
   const bannerImageBlock = (
     <>
-      <div className={styles['banner-image-texture-2']}>
-        <img src="/requisitos/banner-texture.svg" alt="Textura del banner" />
+      <div className={styles['banner-image-texture']}>
+        <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
       <div className={styles['banner-image-man']}>
-        <img src="/credito-pyme/banner-image.png" alt="Imagen del banner" />
+        <img src="/chico-credito-pymes.png" alt="Imagen del banner" />
       </div>
     </>
   );
 
-  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return <Banner backgroundImage="/background-credito.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerCreditoPyme;

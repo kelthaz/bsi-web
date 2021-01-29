@@ -19,16 +19,18 @@ const BannerRequisitos = () => {
 
   const bannerImageBlock = (
     <>
-      <div className={styles['banner-image-texture-2']}>
-        <img src="/requisitos/banner-texture.svg" alt="Textura del banner" />
+      <div className={styles['banner-image-texture']}>
+        <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
-      <div className={styles['banner-image-man']}>
-        <img src="/requisitos/banner-image.png" alt="Imagen del banner" />
+      <div className={styles['banner-image-man-requisitos']}>
+        <img src="/chico-requisitos.png" alt="Imagen del banner" />
       </div>
     </>
   );
 
-  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return (
+    <Banner backgroundImage="/background-requisitos.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+  );
 };
 
 export default BannerRequisitos;

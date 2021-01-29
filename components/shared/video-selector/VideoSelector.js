@@ -7,7 +7,7 @@ const sliderOptions = [
   {
     id: 1,
     active: true,
-    src: 'https://www.youtube.com/watch?v=mJZYMWDL_0o&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/mJZYMWDL_0o',
     title: 'Ismael García López / Nuevo Grupo Visual SA de CV',
     subtitle: 'Atención cálida para asegurar tu futuro | BanCoppel Pymes',
     parragraph:
@@ -16,7 +16,7 @@ const sliderOptions = [
   {
     id: 2,
     active: false,
-    src: 'https://www.youtube.com/watch?v=VayHlVwGmGs&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/VayHlVwGmGs',
     title: 'Óscar Vélez González / PIZZETA SA de CV ',
     subtitle: 'Somos el aliado que tu empresa necesita | BanCoppel Pymes',
     parragraph:
@@ -25,7 +25,7 @@ const sliderOptions = [
   {
     id: 3,
     active: false,
-    src: 'https://www.youtube.com/watch?v=7DOtcx4pnuo&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/7DOtcx4pnuo',
     title: 'Sandra Quintana / Compupartes y Accesorios SA de CV ',
     subtitle: 'No dejes ir ningún proyecto por falta de liquidez | BanCoppel Pymes',
     parragraph:
@@ -34,7 +34,7 @@ const sliderOptions = [
   {
     id: 4,
     active: false,
-    src: 'https://www.youtube.com/watch?v=ELgjL7oe8AY&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/ELgjL7oe8AY',
     title: 'Alberto Kichik Sidauy / CAMISAS IMPALA SA de CV ',
     subtitle: 'Estamos ahí para tu crecimiento | BanCoppel Pymes',
     parragraph:
@@ -43,7 +43,7 @@ const sliderOptions = [
   {
     id: 5,
     active: false,
-    src: 'https://www.youtube.com/watch?v=ppIJmaa9ue8&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/ppIJmaa9ue8',
     title: 'Antonio Barón / TECNOSOCKS SA de CV ',
     subtitle: 'Sabemos escucharte | BanCoppel Pymes',
     parragraph:
@@ -52,7 +52,7 @@ const sliderOptions = [
   {
     id: 6,
     active: false,
-    src: 'https://www.youtube.com/watch?v=PMP6zcY6Fcc&feature=youtu.be',
+    src: 'https://www.youtube.com/embed/PMP6zcY6Fcc',
     title: 'Rubén Fresan / BEER- LINMEX SA de CV',
     subtitle: 'Te ofrecemos un trato cálido, cercano y entendemos tus necesidades',
     parragraph:
