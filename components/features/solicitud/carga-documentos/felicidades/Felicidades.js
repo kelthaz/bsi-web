@@ -26,9 +26,9 @@ const Felicidades = () => (
             tanto, te invitamos acceder a tu perfil desde aquí o tu computadora.
           </p>
         </div>
-        <div className="col-xs-12 col-sm-12 my-3">
-          <div className="center-second-button">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/felicidades" replace>
+        <div className="col-xs-12 col-sm-12 my-4">
+          <div className="text-center">
+            <Link href="/login/iniciar-sesion">
               <button type="submit" className="btn-medium">
                 Comenzar
               </button>
