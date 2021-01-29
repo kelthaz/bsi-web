@@ -22,8 +22,8 @@ const StepThree = () => (
             Leer el texto que aparecerá cuando inicies tu grabación y confirmala.
           </p>
         </div>
-        <div className="col-xs-12 col-sm-12 my-3">
-          <div className="center-second-button">
+        <div className="col-xs-12 col-sm-12 my-4">
+          <div className="text-center">
             <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/todo-listo" replace>
               <button type="submit" className="btn-medium">
                 Continuar

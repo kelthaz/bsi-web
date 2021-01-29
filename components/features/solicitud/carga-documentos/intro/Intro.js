@@ -50,8 +50,8 @@ const Intro = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
-            <div className="center-second-button">
+          <div className="col-xs-12 col-sm-12 my-3">
+            <div className="text-center">
               <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/1" replace>
                 <button type="submit" className="btn-medium" onClick={dispatchBiometricos}>
                   Comenzar

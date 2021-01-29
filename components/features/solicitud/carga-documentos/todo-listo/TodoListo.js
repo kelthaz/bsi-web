@@ -20,8 +20,8 @@ const TodoListo = () => (
             Hemos recibido tu documentación, la cual podrás revisar en tu carpeta de documentos de tu perfil de usuario.
           </p>
         </div>
-        <div className="col-xs-12 col-sm-12 my-3">
-          <div className="center-second-button">
+        <div className="col-xs-12 col-sm-12 my-4">
+          <div className="text-center">
             <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/felicidades" replace>
               <button type="submit" className="btn-medium">
                 Comenzar
