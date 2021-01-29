@@ -40,7 +40,6 @@ const StepSeven = () => {
       );
       router.push('/obligado-solidario/[person]/[tab]/[step]', '/obligado-solidario/pm/autorizacion/8');
     },
-    validateOnMount: true,
   });
 
   return (

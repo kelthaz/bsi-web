@@ -30,7 +30,12 @@ const IniciarSesion = () => {
         username: values.rfc,
         password: values.contrasena,
       })
-        .then(() => true)
+        .then((data) => {
+          const token = data.headers.authorization;
+          console.log(data.headers);
+          console.log(JSON.parse(atob(token.split('.')[1])));
+          return true;
+        })
         .catch(() => false);
     },
   });

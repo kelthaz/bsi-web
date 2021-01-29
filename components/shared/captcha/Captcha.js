@@ -9,7 +9,7 @@ const Captcha = ({ name, formulario }) => {
   const YOURSITEKEY = process.env.NEXT_PUBLIC_CLAVE_SITIO;
   const recaptchaRef = useRef();
   const [loading, setLoading] = useState(false);
-  const [size, setSize] = useState();
+  const [size, setSize] = useState('normal');
 
   const onChange = (token) => {
     setFieldValue(name, token);
