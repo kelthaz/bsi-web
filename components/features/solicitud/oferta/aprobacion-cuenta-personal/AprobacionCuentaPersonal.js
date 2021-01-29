@@ -89,9 +89,11 @@ const AprobacionCuentaPersona = () => {
           <div className="row">
             <div className="col-12">
               <p className="overline">
-                La TIIE con la que se calculará su crédito será la que calcule el Banco de México al
-                día de la firma del contrato, por lo que la TIIE mostrada en la propuesta emitida por
-                el motor será meramente informativa.
+                La tasa ordinaria con la cual se calculará tu crédito tomará como base la tasa TIIE a 28 días,
+                la cual publica Banco de México en su página Web de manera diaria
+                (<a href="https://www.banxico.org.mx" target="_blank" without rel="noreferrer">www.banxico.org.mx</a>) y se
+                tomará la publicada el día de la firma del contrato, por lo tanto la tasa de interés mostrada
+                en esta propuesta es únicamente para fines informativos.
               </p>
             </div>
           </div>
