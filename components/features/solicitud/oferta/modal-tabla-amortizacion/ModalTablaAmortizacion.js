@@ -40,7 +40,7 @@ const ModalTablaAmortizacion = ({ dataSimulador, resultSimuladorTabla, openModal
                   <th className={` ${styles.th}`}>Capital</th>
                   <th className={` ${styles.th}`}>Intereses</th>
                   <th className={` ${styles.th}`}>Saldo</th>
-                  <th className={` ${styles.th}`}>Pago</th>
+                  <th className={` ${styles.th}`}>Pago Mensual</th>
                 </tr>
               </thead>
               <tbody>
