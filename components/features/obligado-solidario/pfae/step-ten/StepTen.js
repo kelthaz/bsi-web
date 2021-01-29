@@ -9,27 +9,13 @@ import styles from './StepTen.module.scss';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 
 const StepTen = () => {
-  const { documentacion, datosPersonales } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const { initialValues } = {
-    initialValues: {
-      concentracion: documentacion.concentracion,
-      compraDivisas: documentacion.compraDivisas,
-      administracionGastos: documentacion.administracionGastos,
-      pagoNomina: documentacion.pagoNomina,
-      cuentaEje: documentacion.cuentaEje,
-      pagoCredito: documentacion.pagoCredito,
-      pagoRelacionado: documentacion.pagoRelacionado,
-      pagoComisiones: documentacion.pagoComisiones,
-      giros: documentacion.giros,
-      pagoProveedores: documentacion.pagoProveedores,
-      otros: documentacion.otros,
-      usoCuenta: documentacion.usoCuenta,
-      comprobanteDomicilio: documentacion.comprobanteDomicilio,
-    },
+    initialValues: {},
   };
 
   const formulario = useFormik({
@@ -38,12 +24,11 @@ const StepTen = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'autorización', step: '11' },
-          documentacion: { ...documentacion, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/autorizacion/11');
     },
-    validateOnMount: true,
   });
 
   return (
@@ -80,7 +65,7 @@ const StepTen = () => {
                 </p>
               </div>
               <div className="row px-md-3 px-xs-0">
-                {documentacion.bienesSeparados !== 'no' ? (
+                {pfae.bienesSeparados !== 'no' ? (
                   <div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput formulario={formulario} name="comprobanteDomicilio" text="Comprobante de domicilio" />

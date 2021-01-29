@@ -13,10 +13,15 @@ const StepEleven = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { pfae } = useSelector((state) => state.obligado);
 
   const { initialValues, validationSchema } = {
-    initialValues: { tienePrestamo: null, tieneCredito: null, eresTitular: null, aceptar: null },
+    initialValues: {
+      tienePrestamo: pfae.tienePrestamo,
+      tieneCredito: pfae.tieneCredito,
+      eresTitular: pfae.eresTitular,
+      aceptar: pfae.aceptar,
+    },
     validationSchema: Yup.object().shape({
       tienePrestamo: Yup.string().required(campoRequerido),
       tieneCredito: Yup.string().required(campoRequerido),
@@ -32,12 +37,11 @@ const StepEleven = () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: { tab: 'autorizacion', step: 'agradecimiento' },
-          datosEmpresa: { ...datosEmpresa, ...values },
+          pfae: { ...pfae, ...values },
         })
       );
       router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/autorizacion/agradecimiento');
     },
-    validateOnMount: true,
   });
   return (
     <div className="contedor-fixed-tab">

@@ -1,0 +1,83 @@
+@import '../../../styles/scss/modules/var';
+
+.canvas {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.overlay-ine {
+  background: linear-gradient(to right, $blue-morning 4px, transparent 4px) 0 0,
+    linear-gradient(to right, $blue-morning 4px, transparent 4px) 0 100%,
+    linear-gradient(to left, $blue-morning 4px, transparent 4px) 100% 0,
+    linear-gradient(to left, $blue-morning 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, $blue-morning 4px, transparent 4px) 0 0,
+    linear-gradient(to bottom, $blue-morning 4px, transparent 4px) 100% 0,
+    linear-gradient(to top, $blue-morning 4px, transparent 4px) 0 100%,
+    linear-gradient(to top, $blue-morning 4px, transparent 4px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  bottom: 50px;
+  left: 45px;
+  position: absolute;
+  right: 45px;
+  top: 50px;
+}
+
+.overlay {
+  background: linear-gradient(to right, $blue-morning 4px, transparent 4px) 0 0,
+    linear-gradient(to right, $blue-morning 4px, transparent 4px) 0 100%,
+    linear-gradient(to left, $blue-morning 4px, transparent 4px) 100% 0,
+    linear-gradient(to left, $blue-morning 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, $blue-morning 4px, transparent 4px) 0 0,
+    linear-gradient(to bottom, $blue-morning 4px, transparent 4px) 100% 0,
+    linear-gradient(to top, $blue-morning 4px, transparent 4px) 0 100%,
+    linear-gradient(to top, $blue-morning 4px, transparent 4px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  bottom: 40px;
+  left: 85px;
+  position: absolute;
+  right: 85px;
+  top: 40px;
+}
+
+.overlay-success {
+  background: linear-gradient(to right, $yellow-summer 4px, transparent 4px) 0 0,
+    linear-gradient(to right, $yellow-summer 4px, transparent 4px) 0 100%,
+    linear-gradient(to left, $yellow-summer 4px, transparent 4px) 100% 0,
+    linear-gradient(to left, $yellow-summer 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, $yellow-summer 4px, transparent 4px) 0 0,
+    linear-gradient(to bottom, $yellow-summer 4px, transparent 4px) 100% 0,
+    linear-gradient(to top, $yellow-summer 4px, transparent 4px) 0 100%,
+    linear-gradient(to top, $yellow-summer 4px, transparent 4px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  bottom: 40px;
+  left: 85px;
+  position: absolute;
+  right: 85px;
+  top: 40px;
+}
+
+.video {
+  // filter: brightness(1.2);
+  object-fit: fill;
+  position: absolute;
+  // -webkit-filter: brightness(1.2);
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}

@@ -1,11 +1,12 @@
 @import '../../../styles/scss/modules/mixins';
 
 .banner-image-texture {
+  left: 90px;
   position: absolute;
   top: -190px;
 
   @include media('md') {
-    right: 40px;
+    left: 120px;
     top: -80px;
 
     img {
@@ -14,7 +15,8 @@
   }
 
   @include media('sm') {
-    right: 0;
+    left: 80px;
+    top: -80px;
   }
 }
 
@@ -39,45 +41,94 @@
 
 .banner-image-man {
   position: relative;
+  right: 40px;
   top: -40px;
+
+  img {
+    height: 750px;
+  }
 
   @include media('lg') {
     top: -25px;
   }
 
   @include media('md') {
-    right: -140px;
+    right: -110px;
     top: -20px;
 
     img {
-      height: 180px;
+      height: 230px;
     }
   }
 
   @include media('sm') {
-    right: -80px;
+    right: -60px;
+
+    img {
+      height: 220px;
+    }
+  }
+}
+
+.banner-image-man-requisitos {
+  left: 120px;
+  position: relative;
+  top: -40px;
+
+  img {
+    height: 850px;
+  }
+
+  @include media('lg') {
+    top: -25px;
+  }
+
+  @include media('md') {
+    left: 150px;
+    top: -20px;
+
+    img {
+      height: 230px;
+    }
+  }
+
+  @include media('sm') {
+    left: 110px;
+
+    img {
+      height: 240px;
+    }
   }
 }
 
 .banner-image-man2 {
   position: relative;
-  top: -40px;
+  right: -35px;
+  top: -10px;
+
+  img {
+    height: 800px;
+  }
 
   @include media('lg') {
     top: 42px;
   }
 
   @include media('md') {
-    right: -140px;
+    right: -120px;
     top: -20px;
 
     img {
-      height: 180px;
+      height: 300px;
     }
   }
 
   @include media('sm') {
-    right: -80px;
+    right: -85px;
+
+    img {
+      height: 300px;
+    }
   }
 }
 

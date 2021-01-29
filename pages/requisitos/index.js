@@ -207,7 +207,7 @@ export const Requisitos = ({ accordionItems }) => {
   return (
     <>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
-        <h4 className="color-blue-storm">Zonas Crédito Digital Pyme disponibles</h4>
+        <h4 className="color-blue-storm">Zonas de cobertura de Crédito Digital Pymes</h4>
         <table className="table-horizontal-dividers-two-column">
           <thead>
             <tr>
@@ -251,7 +251,7 @@ export const Requisitos = ({ accordionItems }) => {
                 Solidario, dependiendo el tipo de persona.
               </p>
               <p className="body2 text-white text-center">
-                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pyme ni
+                Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pymes ni
                 podrá residir tu Obligado Solidario.
               </p>
               <button

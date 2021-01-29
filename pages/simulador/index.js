@@ -89,13 +89,9 @@ export const PageSimulador = ({ catalogo }) => {
     { estado: 'Tamaulipas', municipios: ['Tampico', 'Altamira', 'Ciudad Madero'] },
   ];
 
-  const {
-    showResult, dataSimulador, resultSimulador, resultSimuladorTabla
-  } = useSelector((state) => state.simulador);
+  const { showResult, dataSimulador, resultSimulador, resultSimuladorTabla } = useSelector((state) => state.simulador);
 
-  const {
-    monto, plazo, periodicidad
-  } = dataSimulador;
+  const { monto, plazo, periodicidad } = dataSimulador;
 
   const handleDownloadTable = async () => {
     const tablaPdf = await SimuladorRepositorio.postSimuladorTablaPdf({
@@ -110,7 +106,7 @@ export const PageSimulador = ({ catalogo }) => {
     <div id="inicio">
       <div className="row justify-content-center">
         <Modal openModal={openModalZona} setOpenModal={setOpenModalZona}>
-          <h4 className="color-blue-storm">Zonas Crédito Digital Pyme disponibles</h4>
+          <h4 className="color-blue-storm">Zonas Crédito Digital Pymes disponibles</h4>
           <table className="table-horizontal-dividers-two-column">
             <thead>
               <tr>
@@ -188,7 +184,7 @@ export const PageSimulador = ({ catalogo }) => {
         <div className="row justify-content-center">
           <div className={`col-auto my-auto ${styles[('banner-title', 'title-mb')]}`}>
             <h1 className={`${styles['color-white']} text-center`}>¡SIMULA TU </h1>
-            <h1 className={`${styles['color-blue-morning']} text-center`}>CRÉDITO DIGITAL PYME!</h1>
+            <h1 className={`${styles['color-blue-morning']} text-center`}>CRÉDITO DIGITAL PYMES!</h1>
           </div>
         </div>
         <div className="row justify-content-center mx-0">
@@ -201,8 +197,8 @@ export const PageSimulador = ({ catalogo }) => {
         <div className="row justify-content-center mx-0 mt-4">
           <div className="col-md-8">
             <div className={`body2 text-center ${styles['color-white']}`}>
-              Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pyme ni podrá
-              residir tu Obligado Solidario.
+              Ten en cuenta que hay algunas zonas del país de donde no podrás solicitar un Crédito Digital Pymes ni
+              podrá residir tu Obligado Solidario.
             </div>
           </div>
         </div>
@@ -236,7 +232,7 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
               </div>
               <div className="px-lg-5">
-                <ResultSimulador dataSimulador={ dataSimulador } resultSimulador={ resultSimulador }/>
+                <ResultSimulador dataSimulador={dataSimulador} resultSimulador={resultSimulador} />
               </div>
 
               <div className="row justify-content-center mx-0  mt-4">

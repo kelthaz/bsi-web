@@ -25,9 +25,9 @@ const StepTwo = () => (
             <li className="body2 color-blue-storm">Foto de tu rostro</li>
           </ul>
         </div>
-        <div className="col-xs-12 col-sm-12 my-3">
-          <div className="center-second-button">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/3" replace>
+        <div className="col-xs-12 col-sm-12 my-4">
+          <div className="text-center">
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/captura-rostro" replace>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>

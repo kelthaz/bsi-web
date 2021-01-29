@@ -28,9 +28,9 @@ const Test = () => (
             <li className="body2 color-blue-storm">Identificación oficial (INE)</li>
           </ul>
         </div>
-        <div className="col-xs-12 col-sm-12 my-3">
-          <div className="center-second-button">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/2" replace>
+        <div className="col-xs-12 col-sm-12 my-4">
+          <div className="text-center">
+            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/captura-ine" replace>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>

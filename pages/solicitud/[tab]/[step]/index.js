@@ -24,8 +24,8 @@ const Solicitud = ({ index, data }) => {
 
   const tabsBiometrico = [
     { path: '1', label: 'Identificación oficial' },
-    { path: '2', label: 'Biometrico Foto' },
-    { path: '3', label: 'Biometrico Video' },
+    { path: '2', label: 'Biométricos' },
+    { path: '3', label: 'Biométricos' },
   ];
 
   const { query, events } = useRouter();

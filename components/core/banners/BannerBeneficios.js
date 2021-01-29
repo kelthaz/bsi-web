@@ -11,7 +11,7 @@ const BannerBeneficios = () => {
           linea1="Beneficios del"
           linea2={
             <span>
-              Crédito <br /> Digital Pyme
+              Crédito <br /> Digital Pymes
             </span>
           }
           description={

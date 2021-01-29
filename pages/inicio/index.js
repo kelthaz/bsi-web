@@ -120,7 +120,7 @@ export const Home = ({ catalogo }) => {
       </section>
       <section className="section-white">
         <div className="container py-lg-5 py-md-3 py-sm-4 py-xs-4 px-lg-0">
-          <h2 className="color-blue-storm text-center">SIMULA TU CRÉDITO DIGITAL PYME</h2>
+          <h2 className="color-blue-storm text-center">SIMULA TU CRÉDITO DIGITAL PYMES</h2>
           <p className="body2 color-gray-dark text-center">
             Con esta poca información podremos <strong>diseñar una oferta que se ajuste a tu negocio.</strong>
             <br /> Para solicitarlo debes tener más de 2 años operando y facturar más de $2 Millones de pesos (MDP)
@@ -177,7 +177,7 @@ export const Home = ({ catalogo }) => {
                 <div className={`${styles.circle8} ${styles.circle}`}>
                   <span className="button color-white">Sin tanto papeleo</span>
                 </div>
-                <img className={styles['img-position']} src="/home-company-image.png" alt="women" />
+                <img className={styles['img-position']} src="/chica2Inicio.png" alt="women" />
               </div>
             </div>
           </div>

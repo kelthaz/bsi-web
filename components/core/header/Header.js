@@ -13,7 +13,7 @@ const Header = () => {
   const { pathname, push } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },
-    { label: 'Crédito Digital Pyme', link: 'credito-pyme' },
+    { label: 'Crédito Digital Pymes', link: 'credito-pyme' },
     { label: 'Requisitos', link: 'requisitos' },
     { label: 'Simulador', link: 'simulador' },
     { label: 'Beneficios', link: 'beneficios' },
@@ -132,7 +132,7 @@ const Header = () => {
     },
     { label: 'EmpresaNet', link: 'https://www.bancoppel.com/empresanet_bcopp/empresanet.html' },
     { label: 'Nómina BanCoppel', link: 'https://www.bancoppel.com/nomina_empresas/nomina.html' },
-    { label: 'BanCoppel Pyme', link: '#' },
+    { label: 'BanCoppel Pymes', link: '#' },
   ];
 
   // const subMenus = []
@@ -140,8 +140,8 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenus, setSubMenus] = useState([]);
   const [nameLabel, setNameLabel] = useState('Crédito');
-  const [menuSelectPeople, setMenuSelectPeople] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
-  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pyme' });
+  const [menuSelectPeople, setMenuSelectPeople] = useState({ category: 'Empresas', option: 'BanCoppel Pymes' });
+  const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pymes' });
   const [pageSelect, setPageSelect] = useState();
   const [toggleSearchBox, setToggleSearchBox] = useState();
   const [openModal, setOpenModal] = useState(false);
@@ -283,7 +283,7 @@ const Header = () => {
               {category === 'Empresas' ? (
                 <ul className={`${styles['ul-border']}`}>
                   {menuOptions2.map(({ label, link }) => (
-                    <li key={link} className={label === 'BanCoppel Pyme' ? styles['option-selected'] : ''}>
+                    <li key={link} className={label === 'BanCoppel Pymes' ? styles['option-selected'] : ''}>
                       <a
                         className="col-3"
                         target="_blank"
