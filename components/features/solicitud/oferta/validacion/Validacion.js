@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { campoRequerido, longitudMaxima, longitudMinima, rfcInvalido } from '../../../../../constants/errors';
-import { regexRFCFisica, regexRFCMoral } from '../../../../../constants/regex';
+import { campoRequerido, longitudMinima, rfcInvalido } from '../../../../../constants/errors';
+import { regexClabeOCuenta, regexRFCFisica, regexRFCMoral } from '../../../../../constants/regex';
 import Modal from '../../../../shared/modal/Modal';
 import SvgSesionValidacion from '../../../../svgs/oferta/SvgSesionValidacion';
 
@@ -26,8 +26,7 @@ const Validacion = () => {
     },
     validationSchema: Yup.object().shape({
       clabe: Yup.string()
-        .min(11, longitudMinima)
-        .max(18, longitudMaxima)
+        .matches(regexClabeOCuenta, 'CLABE o número de cuenta inválido')
         .required(campoRequerido),
       titular: Yup.string()
         .required(campoRequerido),
@@ -53,7 +52,7 @@ const Validacion = () => {
           <div className="row justify-content-center mx-0 ">
             <SvgSesionValidacion />
           </div>
-          <div className="row justify-content-center mx-0 ">
+          <div className="row justify-content-center mx-0 mt-3">
             <div className="px-3 col-md-12 col-xs-12">
               <h4 className="color-blue-storm">¡Cuenta validada exitosamente!</h4>
             </div>
@@ -61,7 +60,7 @@ const Validacion = () => {
           <div className="row justify-content-center mx-0 ">
             <div className="px-0 col-md-12 col-xs-12 mt-4">
               <p style={{width: '425px'}}>
-                Alejandra, tu cuenta de cheques BanCoppel 123456789876543210 ha sido vinculada con éxito.
+                Alejandra, tu cuenta BanCoppel 123456789876543210 ha sido vinculada con éxito.
                 Aquí recibirás tu dinero cuando el proceso haya concluído.
               </p>
             </div>
@@ -81,7 +80,7 @@ const Validacion = () => {
             <h2 className="color-blue-storm">Para continuar</h2>
             {conCuenta ?
               <p className="color-dark-gray body2">
-                Compártenos los datos de la cuenta bancaria BanCoppel, aquí depositaremos el dinero cuando termine el proceso.
+                Compártenos los datos de tu cuenta bancaria BanCoppel, aquí te depositaremos tu dinero cuando termine el proceso.
               </p>
               :
               <>
@@ -102,16 +101,16 @@ const Validacion = () => {
 
             <div className="row no-gutters">
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <p className="input color-gray">La cuenta es</p>
+                <p className="input color-gray">Mi cuenta es</p>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
                   name="clabe"
-                  format="alphanumeric"
+                  format="number"
                   formulario={formulario}
                   type="text"
                   size="big"
-                  maxlength={120}
+                  maxlength={18}
                   label="CLABE o cuenta BanCoppel"
                 />
               </div>
@@ -156,13 +155,20 @@ const Validacion = () => {
             <div className="flex-column-center-config">
               <button
                 type="button" className="btn-medium my-3 mx-3"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={!(formulario.isValid)}
                 onClick={() => setOpenModal(true)}
               >
                 Valida tu cuenta
               </button>
             </div>
           </form>
+        </div>
+        <div className="pt-5 mt-5">
+          <p className="overline">
+            Si aún no tienes una cuenta bancaria BanCoppel, te invitamos acudir a una sucursal para
+            aperturarla y podamos hacer el desembolso tu crédito cuando termine el proceso.&nbsp;
+            <a href="https://www.bancoppel.com/empresas/index.html" target="_blank" rel="noreferrer">Conoce más</a>.
+          </p>
         </div>
       </div>
     </div>

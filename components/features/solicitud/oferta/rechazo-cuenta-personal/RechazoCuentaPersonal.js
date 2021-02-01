@@ -15,12 +15,12 @@ const RechazoCuentaPersona = () => (
         <div className="row">
           <div className="col-sm-9 col-xs-12">
             <div className="row">
-              <div className="col-12 pb-3">
+              <div className="col-12 pb-3 text-center">
                 <h2 className="color-blue-storm">Tu solicitud fue rechazada…</h2>
               </div>
             </div>
             <div className="row">
-              <div className="col-sm-9 col-xs-12">
+              <div className="col-sm-9 col-xs-12 text-center text-sm-left">
                 <p className="body2">
                   Alejandra, después de analizar tu solicitud, no podremos otorgarte un crédito por el momento.
                 </p>
