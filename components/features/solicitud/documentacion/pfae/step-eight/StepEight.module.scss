@@ -1,0 +1,49 @@
+@import '../../../../../../styles/scss/modules/mixins';
+@import '../../../../../styles/scss/modules/var';
+
+.line {
+  background-color: $gray-light;
+  height: 1px;
+}
+
+.contedor-solicitud-step-8 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 60px auto;
+  min-height: calc(100% - (60px * 2));
+  width: 8200px;
+  @include media('md') {
+    margin: 16px auto;
+    min-height: calc(100% - (16px * 2));
+    width: 290px;
+  }
+}
+
+.th {
+  color: $gray;
+  font-size: 14px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.td {
+  justify-content: center;
+}
+
+.table-container {
+  overflow: auto;
+  width: 100%;
+}
+
+.table-container::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: rgba(34, 90, 167, 0.2);
+  border-radius: 10px;
+}
