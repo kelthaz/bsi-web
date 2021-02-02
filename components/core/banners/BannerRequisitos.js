@@ -29,7 +29,7 @@ const BannerRequisitos = () => {
   );
 
   return (
-    <Banner backgroundImage="/background-requisitos.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+    <Banner backgroundImage="/background-requisitos.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
   );
 };
 
