@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
-import { campoRequerido, longitudMinima, rfcInvalido } from '../../../../../constants/errors';
+import { campoRequerido, clabeNumeroCuentaInvalido, longitudMinima, rfcInvalido } from '../../../../../constants/errors';
 import { regexClabeOCuenta, regexRFCFisica, regexRFCMoral } from '../../../../../constants/regex';
 import Modal from '../../../../shared/modal/Modal';
 import SvgSesionValidacion from '../../../../svgs/oferta/SvgSesionValidacion';
@@ -26,7 +26,7 @@ const Validacion = () => {
     },
     validationSchema: Yup.object().shape({
       clabe: Yup.string()
-        .matches(regexClabeOCuenta, 'CLABE o número de cuenta inválido')
+        .matches(regexClabeOCuenta, clabeNumeroCuentaInvalido)
         .required(campoRequerido),
       titular: Yup.string()
         .required(campoRequerido),
