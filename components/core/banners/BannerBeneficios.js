@@ -27,15 +27,17 @@ const BannerBeneficios = () => {
 
   const bannerImageBlock = (
     <div>
-      <div className={styles['banner-image-texture-2']}>
-        <img src="/BENEFICIOS_1 2.svg" alt="Textura del banner" />
+      <div className={styles['banner-image-texture']}>
+        <img src="/BC_PYMES_1 2.svg" alt="Textura del banner" />
       </div>
-      <div className={styles['banner-image-man']}>
-        <img src="/BENEFICIOS_1 1.png" alt="Hombre" />
+      <div className={styles['banner-image-chica-beneficios']}>
+        <img src="/chica-beneficios.png" alt="Hombre" />
       </div>
     </div>
   );
-  return <Banner backgroundImage="/restaurant.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return (
+    <Banner backgroundImage="/background-beneficios.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+  );
 };
 
 export default BannerBeneficios;

@@ -177,7 +177,7 @@ export const Home = ({ catalogo }) => {
                 <div className={`${styles.circle8} ${styles.circle}`}>
                   <span className="button color-white">Sin tanto papeleo</span>
                 </div>
-                <img className={styles['img-position']} src="/chica2Inicio.png" alt="women" />
+                <img className={styles['img-position']} src="/chica-Inicio.png" alt="women" />
               </div>
             </div>
           </div>
