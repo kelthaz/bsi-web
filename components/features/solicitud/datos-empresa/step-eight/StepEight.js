@@ -3,22 +3,32 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import Modal from '../../../../shared/modal/Modal';
 import TextField from '../../../../shared/text-field/TextField';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-
-import styles from './StepEight.module.scss';
 import SvgPrivacidad from '../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
-
-import { longitudMaxima, campoRequerido, longitudMinima, aceptarTerminos } from '../../../../../constants/errors';
+import {
+  longitudMaxima,
+  campoRequerido,
+  longitudMinima,
+  aceptarTerminos,
+  ciecInvalida,
+} from '../../../../../constants/errors';
+import ModalAutorizacionCiec from '../../../../core/modals/solicitud/modal-autorizacion-ciec/ModalAutorizacionCiec';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
+import useCookie from '../../../../../hooks/useCookie';
 
 const StepEight = () => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
-  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
-  const router = useRouter();
+  const { currentStep, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const dispatch = useDispatch();
+
+  const [rfc] = useCookie('RFC', '');
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -37,45 +47,48 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '8' },
+          currentStep: validate ? { tab: 'datos-personales', step: '8' } : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
           },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/9');
     },
   });
 
+  const validateCiec = async () => {
+    let valid = true;
+
+    if (!formulario.errors.ciec) {
+      valid = await CiecRepositorio.pathValidarCiec({
+        ciec: datosEmpresa.ciec,
+        rfc,
+      })
+        .then(() => true)
+        .catch(() => {
+          formulario.setFieldError('ciec', ciecInvalida);
+          return false;
+        });
+    }
+    return valid;
+  };
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-empresa/9',
+    currentStep,
+    validateCiec
+  );
+
   return (
     <>
-      <Modal openModal={openWhyCiec} setOpenModal={setOpenWhyCiec}>
-        <div className={`container px-xs-0 px-md-0 ${styles['modal-container']}`}>
-          <h4 className="color-blue-storm">¿Qué es la CIEC y por qué solicitamos esto?</h4>
-          <p className="dark-gray body2">
-            Tu historial crediticio nos ayuda a diseñar tu oferta en segundos, por lo que requerimos tus credenciales
-            del SAT para que firmes la autorización y poder consultarlo.
-          </p>
-          <p className="sub color-gray">
-            <SvgPrivacidad /> Tus datos estarán protegidos.
-          </p>
-          <iframe
-            className={` ${styles['modal-video']}`}
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/r7HHOYZQb4M"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="¿Qué es la CIEC y por qué solicitamos esto?"
-          />
-        </div>
-      </Modal>
+      <ModalAutorizacionCiec openModal={openWhyCiec} setOpenModal={setOpenWhyCiec} />
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud">
           <div className="container p-0">
-            <form onSubmit={formulario.handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub ">
                 {datosPersonales.tipoPersona.value === 'MORAL'
                   ? 'Primero necesitamos que nos autorices acceso de lectura con la clave CIEC de la empresa. '
@@ -102,41 +115,40 @@ const StepEight = () => {
                   />
                 </div>
               </div>
-              <div className="row no-gutters">
-                <div className="card-simple">
-                  <div className="row">
+              <div className="card-simple">
+                <div className="row no-gutters">
+                  <div className="col-1">
                     <SvgPrivacidad />
-                    <p className="col-11 body2">
-                      Tus datos estarán protegidos.
-                      <br />
-                      Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
-                      <a
-                        className="sub link"
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://aplicaciones.sat.gob.mx/PTSC/ADC/resources/pages/operaciones/generarContrasena/ingresarRfc.xhtml"
-                      >
-                        clic aquí
-                      </a>
-                      .
-                    </p>
                   </div>
+                  <p className="col-11 body2">
+                    Tus datos estarán protegidos.
+                    <br />
+                    Cualquier duda te invitamos a conocer más sobre tu CIEC en la página oficial del SAT haciendo{' '}
+                    <a
+                      className="sub link"
+                      target="_blank"
+                      rel="noreferrer"
+                      href="https://aplicaciones.sat.gob.mx/PTSC/ADC/resources/pages/operaciones/generarContrasena/ingresarRfc.xhtml"
+                    >
+                      clic aquí
+                    </a>
+                    .
+                  </p>
                 </div>
-
+              </div>
+              <div className="row no-gutters">
                 <div className="card-simple-gray">
-                  <div className="row">
-                    <CheckTextBox name="autorizoTerminosCiec" formulario={formulario}>
-                      <p className=" color-gray mb-0">
-                        {'Acepto '}
-                        <a className="sub link" target="_blank" rel="noreferrer">
-                          términos y condiciones
-                        </a>
-                        {datosPersonales.tipoPersona.value === 'MORAL'
-                          ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
-                          : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
-                      </p>
-                    </CheckTextBox>
-                  </div>
+                  <CheckTextBox name="autorizoTerminosCiec" formulario={formulario}>
+                    <p className=" color-gray mb-0">
+                      {'Acepto '}
+                      <a className="sub link" target="_blank" rel="noreferrer">
+                        términos y condiciones
+                      </a>
+                      {datosPersonales.tipoPersona.value === 'MORAL'
+                        ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
+                        : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
+                    </p>
+                  </CheckTextBox>
                 </div>
               </div>
               <div className="flex-column-center-config">
@@ -144,7 +156,7 @@ const StepEight = () => {
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={!(formulario.isValid && formulario.dirty)}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                 />
               </div>
             </form>

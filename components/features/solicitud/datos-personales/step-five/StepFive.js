@@ -76,7 +76,7 @@ const StepFive = () => {
           })
         );
       } else {
-        dispatch(resetDatosPersonales());
+        // dispatch(resetDatosPersonales());
       }
     },
   });
@@ -97,12 +97,12 @@ const StepFive = () => {
     const valid = await LoginRepositorio.postRegistro(data)
       .then(() => true)
       .catch(() => false);
-
     return valid;
   };
 
   const [handleSubmit] = useOnChangePage(
     formulario,
+    '/solicitud/[tab]/[step]',
     '/solicitud/datos-personales/agradecimiento',
     currentStep,
     validateSaveInfo

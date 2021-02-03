@@ -22,6 +22,7 @@ const useOnChangePage = (formulario, route, as, currentStep, validation = () => 
 
   const onHandleSubmit = async (event) => {
     event.preventDefault();
+    console.log(currentStep.step, query.step);
     if (currentStep.step === query.step) {
       const resultValidation = await validation();
       if (resultValidation) {

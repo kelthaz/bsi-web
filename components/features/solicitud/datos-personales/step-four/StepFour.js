@@ -37,9 +37,9 @@ const StepFour = () => {
 
   const validateEmail = async () => {
     if (!formulario.errors.correo) {
-      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo).then(
-        (resp) => resp.data.fraudRisk.split(' ')[0]
-      );
+      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo)
+        .then((resp) => resp.data.fraudRisk.split(' ')[0])
+        .catch(() => 801);
       if (emailScore >= 800) {
         formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
         return false;

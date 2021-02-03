@@ -1,5 +1,5 @@
-import { Modal } from 'bootstrap';
 import React from 'react';
+import Modal from '../../../../shared/modal/Modal';
 
 const ModalCargaDocumentos = ({ openModal, setOpenModal }) => (
   <Modal openModal={openModal} setOpenModal={setOpenModal}>

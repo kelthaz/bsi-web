@@ -11,6 +11,7 @@ export const apiEndpointAcordion = (landing) => `/interna/publico/v1/administrad
 export const apiEndpointCodigoPostal = '/interna/publico/v1/solicitud/catalogo/localizaciones';
 
 export const apiEndpointEmailage = '/externas/admin/v1/emailage/querying-email';
+export const apiEndpointValidarCiec = '/interna/publico/v1/empresas/validar/ciec';
 
 export const apiEndpointRegistro = '/interna/publico/v1/registro';
 export const apiEndpointLogin = '/login';
