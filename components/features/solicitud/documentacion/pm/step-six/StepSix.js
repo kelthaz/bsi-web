@@ -73,7 +73,7 @@ const StepSix = () => {
           <div className="container pl-md-3 pl-xs-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <div className="row pl-3 pb-md-3 pb-xs-1">
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <p className="color-dark-gray sub">Ahora necesitamos que nos compartas los siguientes documentos:</p>
                 ) : (
                   <p className="color-dark-gray sub">
@@ -81,7 +81,7 @@ const StepSix = () => {
                   </p>
                 )}
               </div>
-              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona.value === 'MORAL' ? (
                 <div className="row px-md-3 px-xs-0">
                   <div className="col-md-12 pb-md-4">
                     <FileInput formulario={formulario} name="actaConstitutiva" text="Acta constitutiva" />
@@ -129,7 +129,7 @@ const StepSix = () => {
                   </div>
                 </div>
               )}
-              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona.value === 'MORAL' ? (
                 <div className="row ">
                   <p className="color-dark-gray sub">
                     Haz{' '}

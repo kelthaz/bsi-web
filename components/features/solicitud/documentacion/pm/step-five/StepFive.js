@@ -49,7 +49,7 @@ const StepFive = () => {
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
       ejerceControlFisica: `${
-        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
+        datosPersonales.tipoPersona.value === 'MORAL' ? Yup.string().required(campoRequerido) : ''
       }`,
       controladosFisica: Yup.array().of(subformValidationSchema),
     }),
@@ -101,7 +101,7 @@ const StepFive = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <SvgPersonaMoral />
                 Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
@@ -235,7 +235,7 @@ const StepFive = () => {
                 </div>
               </section>
             ))}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <img src="/requisitos/PM.svg" alt="Persona moral" />
                 Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
@@ -243,12 +243,12 @@ const StepFive = () => {
             ) : (
               ''
             )}{' '}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
             ) : (
               ''
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <div className="d-flex">
                 <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>

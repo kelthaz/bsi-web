@@ -42,7 +42,7 @@ const StepThree = () => {
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
       ejerceControlFisica: `${
-        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
+        datosPersonales.tipoPersona.value === 'MORAL' ? Yup.string().required(campoRequerido) : ''
       }`,
       controladosMoral: Yup.array().of(subformValidationSchema),
     }),
@@ -91,7 +91,7 @@ const StepThree = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="body2">
                 Ahora vamos a realizarte unas preguntas que nos deberás contestar como Persona Moral (
                 {datosPersonales.nombreEmpresa}) y como Persona Física ({datosPersonales.primerNombre})
@@ -99,7 +99,7 @@ const StepThree = () => {
             ) : (
               <p className="body2">Vamos a realizarte unas preguntas más.</p>
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <img src="/requisitos/PM.svg" alt="Persona moral" />
                 Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
@@ -108,7 +108,7 @@ const StepThree = () => {
               ''
             )}
 
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-dark-gray">
                 ¿Existe una persona moral sobre la que tú ejerces control?
                 <Tooltip message="..." />
@@ -215,7 +215,7 @@ const StepThree = () => {
                 </div>
               </div>
             ))}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <img src="/requisitos/PM.svg" alt="Persona moral" />
                 Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
@@ -223,12 +223,12 @@ const StepThree = () => {
             ) : (
               ''
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
             ) : (
               ''
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <div className="d-flex">
                 <RadioButton name="m" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>

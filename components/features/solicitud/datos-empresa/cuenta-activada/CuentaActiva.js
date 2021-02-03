@@ -84,7 +84,7 @@ const CuentaActiva = () => {
                     Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
                     <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
                   </li>
-                  {datosPersonales.tipoPersona === 'Persona Moral' && <li>Cuenta bancaria BanCoppel</li>}
+                  {datosPersonales.tipoPersona.value === 'MORAL' && <li>Cuenta bancaria BanCoppel</li>}
                 </ul>
               </div>
             </div>

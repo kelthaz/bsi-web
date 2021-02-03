@@ -77,7 +77,7 @@ const StepEight = () => {
           <div className="container p-0">
             <form onSubmit={formulario.handleSubmit} noValidate>
               <p className="color-dark-gray sub ">
-                {datosPersonales.tipoPersona === 'Persona Moral'
+                {datosPersonales.tipoPersona.value === 'MORAL'
                   ? 'Primero necesitamos que nos autorices acceso de lectura con la clave CIEC de la empresa. '
                   : 'Primero necesitamos que nos autorices acceso con tu clave CIEC. '}
 
@@ -131,7 +131,7 @@ const StepEight = () => {
                         <a className="sub link" target="_blank" rel="noreferrer">
                           términos y condiciones
                         </a>
-                        {datosPersonales.tipoPersona === 'Persona Moral'
+                        {datosPersonales.tipoPersona.value === 'MORAL'
                           ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
                           : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
                       </p>

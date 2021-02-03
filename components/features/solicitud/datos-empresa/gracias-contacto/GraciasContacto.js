@@ -12,7 +12,7 @@ const GraciasContacto = () => {
           <div className="row ">
             <div className="col-md-12 col-xs-12 ">
               <h2 className="text-md-left color-blue-storm">¡Gracias por contarnos sobre ti!</h2>
-              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona.value === 'MORAL' ? (
                 <p className="body2 text-md-left color-dark-gray sub mt-4">
                   Ahora necesitamos tu autorización para la Consulta de Buró de Crédito, por lo que deberás tener a la
                   mano la clave CIEC y e.firma <strong>de la empresa</strong>.

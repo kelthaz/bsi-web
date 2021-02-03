@@ -44,8 +44,8 @@ const StepFive = () => {
     },
     validationSchema: Yup.object().shape({
       rfc: Yup.string()
-        .matches(datosPersonales.tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
-        .min(datosPersonales.tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
+        .matches(datosPersonales.tipoPersona.value === 'MORAL' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
+        .min(datosPersonales.tipoPersona.value === 'MORAL' ? 12 : 13, longitudMinima)
         .required(campoRequerido),
       contrasena: Yup.string()
         .max(20, longitudMaxima)
@@ -114,7 +114,7 @@ const StepFive = () => {
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Sólo falta crear tu cuenta!</h2>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="color-dark-gray sub">
                 Tu usuario será el RFC con el que factura tu empresa y crearás una contraseña. Con tu cuenta podrás
                 retomar el proceso en cualquier momento.
@@ -128,14 +128,14 @@ const StepFive = () => {
 
             <div className="row no-gutters">
               <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12 ">
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <p className="input color-gray">El RFC es</p>
                 ) : (
                   <p className="input color-gray">Mi RFC es</p>
                 )}
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <TextField
                     name="rfc"
                     format="rfcformatter"

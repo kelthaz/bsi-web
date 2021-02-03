@@ -17,7 +17,7 @@ const StepFour = () => {
   const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } =
-    datosPersonales.tipoPersona === 'Persona Moral'
+    datosPersonales.tipoPersona.value === 'MORAL'
       ? {
           initialValues: {
             telefonoEmpresa: datosEmpresa.telefonoEmpresa,

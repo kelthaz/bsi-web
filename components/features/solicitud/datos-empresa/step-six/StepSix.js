@@ -50,7 +50,7 @@ const StepSix = () => {
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub position-relative">
-              {datosPersonales.tipoPersona === 'Persona Moral'
+              {datosPersonales.tipoPersona.value === 'MORAL'
                 ? 'Ahora dinos, ¿cuál es el CURP del Representante Legal'
                 : 'Ahora dinos, ¿Cuál es tu CURP?'}
               <Tooltip message="Es la Clave Única de Registro de Población (CURP) que consta de 18 caracteres. " />

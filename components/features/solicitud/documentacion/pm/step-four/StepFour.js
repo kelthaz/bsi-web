@@ -20,7 +20,7 @@ const StepFour = () => {
     validationSchema: Yup.object().shape({
       ejerceControlMoral: Yup.string().required(campoRequerido),
       ejerceControlFisica: `${
-        datosPersonales.tipoPersona === 'Persona Moral' ? Yup.string().required(campoRequerido) : ''
+        datosPersonales.tipoPersona.value === 'MORAL' ? Yup.string().required(campoRequerido) : ''
       }`,
     }),
   };
@@ -47,7 +47,7 @@ const StepFour = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <SvgPM />
                 Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
@@ -71,7 +71,7 @@ const StepFour = () => {
                 </RadioButton>
               </div>
             </div>
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-blue-storm">
                 <SvgPM />
                 Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
@@ -79,12 +79,12 @@ const StepFour = () => {
             ) : (
               ''
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <p className="sub color-dark-gray">¿Existe una persona moral que ejerce control sobre ti?</p>
             ) : (
               ''
             )}
-            {datosPersonales.tipoPersona === 'Persona Moral' ? (
+            {datosPersonales.tipoPersona.value === 'MORAL' ? (
               <div className="d-flex">
                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <RadioButton name="ejerceControlFisica" formulario={formulario} value="si">

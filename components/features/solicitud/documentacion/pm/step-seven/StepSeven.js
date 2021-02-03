@@ -74,12 +74,12 @@ const StepSeven = () => {
           <div className="container pl-md-3 pl-xs-0">
             <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
               <div className="row px-md-3 px-xs-0">
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <h2 className="color-blue-storm">Ahora, sobre tu cuenta...</h2>
                 ) : (
                   ''
                 )}
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <p>
                     Necesitamos que respondas algunas cosas referente a cómo usarás la cuenta BanCoppel que te
                     aperturaremos:
@@ -87,7 +87,7 @@ const StepSeven = () => {
                 ) : (
                   ''
                 )}
-                {datosPersonales.tipoPersona === 'Persona Moral' ? (
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
                   <p className="color-dark-gray sub">
                     ¿Cuál será el uso que le darás a la cuenta? (Puedes elegir más de una opción)
                   </p>
@@ -97,7 +97,7 @@ const StepSeven = () => {
                   </p>
                 )}
               </div>
-              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona.value === 'MORAL' ? (
                 <div className="row px-md-3 px-xs-0">
                   <div className="pt-3 col-md-6 px-0">
                     <CheckTextBox isGrayColor notBackground={false} name="concentracion" formulario={formulario}>
@@ -216,7 +216,7 @@ const StepSeven = () => {
                   )}
                 </div>
               )}
-              {datosPersonales.tipoPersona === 'Persona Moral' ? (
+              {datosPersonales.tipoPersona.value === 'MORAL' ? (
                 ''
               ) : (
                 <div className="row ">
