@@ -70,6 +70,37 @@
   }
 }
 
+.banner-image-chica-beneficios {
+  left: 70px;
+  position: relative;
+  top: -40px;
+
+  img {
+    height: 500px;
+  }
+
+  @include media('lg') {
+    top: -25px;
+  }
+
+  @include media('md') {
+    left: 110px;
+    top: -20px;
+
+    img {
+      height: 230px;
+    }
+  }
+
+  @include media('sm') {
+    right: -60px;
+
+    img {
+      height: 220px;
+    }
+  }
+}
+
 .banner-image-man-requisitos {
   left: 120px;
   position: relative;
