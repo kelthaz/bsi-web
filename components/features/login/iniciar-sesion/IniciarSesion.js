@@ -2,6 +2,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Tab from '../../../shared/tab/Tab';
 import TabItem from '../../../shared/tab/TabItem';
 import { regexRFCFisicaMoral } from '../../../../constants/regex';
@@ -12,6 +13,7 @@ import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
 
 const IniciarSesion = () => {
+  const { push } = useRouter();
   const formulario = useFormik({
     initialValues: {
       rfc: '',
@@ -30,13 +32,13 @@ const IniciarSesion = () => {
         username: values.rfc,
         password: values.contrasena,
       })
-        .then((data) => {
-          const token = data.headers.authorization;
-          console.log(data.headers);
-          console.log(JSON.parse(atob(token.split('.')[1])));
-          return true;
-        })
+        .then(() => true)
         .catch(() => false);
+      if (valid) {
+        push('/inicio');
+      } else {
+        formulario.setFieldError('contrasena', 'RFC y/o contraseña incorrectos');
+      }
     },
   });
 

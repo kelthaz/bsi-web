@@ -6,11 +6,13 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, numeroInvalido } from '../../../../../constants/errors';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepThree = () => {
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -35,19 +37,25 @@ const StepThree = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '4' },
+          currentStep: validate ? { tab: 'datos-empresa', step: '4' } : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/4');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-empresa/4',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud ">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub">
               Por favor compártenos el nombre de una persona que pudiera recibir tu Token BanCoppel en caso de que tú no
               estuvieras en el domicilio que nos diste.
@@ -120,7 +128,7 @@ const StepThree = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

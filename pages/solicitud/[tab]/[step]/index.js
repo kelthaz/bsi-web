@@ -88,6 +88,7 @@ const Solicitud = ({ index, data }) => {
 };
 
 export async function getServerSideProps(context) {
+  console.log(context.req.headers.cookie);
   const data = {};
   const { tab, step } = context.params;
   const index = solicitudRoutes.findIndex((route) => route.tab === tab && route.step === step);

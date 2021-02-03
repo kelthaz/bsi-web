@@ -13,10 +13,10 @@ const useFindCodigoPostal = (
   const [colonias, setColonias] = useState([]);
 
   useEffect(() => {
-    if (formulario.values[nameCodigoPostal].length === 5) {
+    if (formulario.getFieldMeta(nameCodigoPostal).value.length === 5) {
       const fetchData = async () => {
         const { municipio, asentamientos, ciudad } = await LocalizacionRepositorio.getLocalizacion(
-          formulario.values[nameCodigoPostal]
+          formulario.getFieldMeta(nameCodigoPostal).value
         )
           .then((resp) => resp.data)
           .catch(() => {
@@ -35,7 +35,7 @@ const useFindCodigoPostal = (
       };
       fetchData();
     }
-  }, [formulario.values[nameCodigoPostal]]);
+  }, [formulario.getFieldMeta(nameCodigoPostal).value]);
 
   return [colonias];
 };

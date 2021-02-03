@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onChangePage, onShowModal, resetChangePage } from '../redux/actions/formulario';
 
-const useOnChangePage = (formulario, route, currentStep, validation = () => true) => {
+const useOnChangePage = (formulario, route, as, currentStep, validation = () => true) => {
   const { push, query, beforePopState, asPath } = useRouter();
   const dispatch = useDispatch();
   const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
@@ -13,7 +13,7 @@ const useOnChangePage = (formulario, route, currentStep, validation = () => true
       const resultValidation = await validation();
       dispatch(onShowModal(true, resultValidation && formulario.isValid, newRoute));
     } else {
-      push('/solicitud/[tab]/[step]', newRoute);
+      push(route, newRoute);
       if (reset) {
         dispatch(resetChangePage());
       }
@@ -26,10 +26,10 @@ const useOnChangePage = (formulario, route, currentStep, validation = () => true
       const resultValidation = await validation();
       if (resultValidation) {
         formulario.handleSubmit();
-        push('/solicitud/[tab]/[step]', route);
+        push(route, as);
       }
     } else {
-      changeRoute(route, false);
+      changeRoute(as, false);
     }
   };
 
@@ -45,15 +45,15 @@ const useOnChangePage = (formulario, route, currentStep, validation = () => true
     }
   }, [handleSubmit]);
 
-  useEffect(() => {
-    beforePopState(({ as }) => {
-      if (as !== asPath) {
-        window.history.forward();
-        dispatch(onChangePage(true, as));
-      }
-      return false;
-    });
-  }, []);
+  // useEffect(() => {
+  //   beforePopState(({ as }) => {
+  //     if (as !== asPath) {
+  //       window.history.forward();
+  //       dispatch(onChangePage(true, as));
+  //     }
+  //     return false;
+  //   });
+  // }, []);
 
   return [onHandleSubmit];
 };

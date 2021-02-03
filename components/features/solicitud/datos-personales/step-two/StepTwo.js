@@ -52,7 +52,12 @@ const StepTwo = () => {
     }
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/3', currentStep);
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-personales/3',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">

@@ -38,9 +38,8 @@ const initialState = {
       municipioAlcaldia: '',
       ciudad: '',
       estado: '',
-      esDomilicioComercial: null,
     },
-
+    esDomilicioComercial: null,
     domicilioComercial: {
       calle: '',
       numExterior: '',
@@ -50,9 +49,8 @@ const initialState = {
       municipioAlcaldia: '',
       ciudad: '',
       estado: '',
-      domicilioEntrega: null,
     },
-
+    domicilioEntrega: null,
     primerNombreRecibe: '',
     segundoNombreRecibe: '',
     primerApellidoRecibe: '',
@@ -71,7 +69,7 @@ const initialState = {
   oferta: {
     conCuenta: false,
     tipoPersona: 'Persona Moral',
-    clabe: null
+    clabe: null,
   },
   documentacion: {
     concentracion: null,

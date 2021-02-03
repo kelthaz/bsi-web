@@ -8,11 +8,13 @@ import TextField from '../../../../shared/text-field/TextField';
 import { numeroInvalido, campoRequerido, ingreseOpcion } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepFour = () => {
-  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } =
     datosPersonales.tipoPersona === 'Persona Moral'
@@ -59,15 +61,21 @@ const StepFour = () => {
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/5');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-empresa/5',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud ">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub position-relative">
               ¿Cuál es el teléfono de tu empresa?
               <Tooltip message="Favor de compartir el teléfono fijo de tu negocio." />
@@ -100,7 +108,7 @@ const StepFour = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

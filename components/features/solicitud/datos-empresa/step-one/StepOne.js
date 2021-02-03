@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextArea from '../../../../shared/text-area/TextArea';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
@@ -13,9 +14,10 @@ const StepOne = () => {
   const capitalTrabajo = { value: '1', label: 'Capital de trabajo' };
   const adquisicionActivacion = { value: '2', label: 'Adquisición de activos' };
 
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -35,31 +37,37 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '2' },
+          currentStep: validate ? { tab: 'datos-empresa', step: '2' } : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
           },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/2');
     },
   });
 
   const { values, setFieldTouched, setFieldValue, touched } = formulario;
 
-  const handleUsoCredito = (usoCredito) => {
+  const handleUsoCredito = async (usoCredito) => {
     if (!touched.usoCredito) {
-      setFieldTouched('usoCredito', true);
+      await setFieldTouched('usoCredito', true);
     }
-    setFieldValue('usoCredito', usoCredito);
+    await setFieldValue('usoCredito', usoCredito);
   };
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-empresa/2',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">Platícanos...</h2>
             <p className="color-dark-gray sub position-relative">
               ¿Para qué usarás tu crédito?
@@ -100,7 +108,7 @@ const StepOne = () => {
                 </button>
               </div>
             </div>
-            <div className="row">
+            <div className="row no-gutters">
               <TextArea
                 name="descripcionCredito"
                 maxlength={180}
@@ -114,7 +122,7 @@ const StepOne = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

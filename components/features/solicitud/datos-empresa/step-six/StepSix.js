@@ -7,11 +7,13 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepSix = () => {
-  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
+  const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -28,20 +30,25 @@ const StepSix = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '7' },
+          currentStep: validate ? { tab: 'datos-empresa', step: '7' } : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/7');
     },
-    validateOnMount: true,
   });
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-empresa/7',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud ">
         <div className="container p-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub position-relative">
               {datosPersonales.tipoPersona === 'Persona Moral'
                 ? 'Ahora dinos, ¿cuál es el CURP del Representante Legal'
@@ -70,7 +77,7 @@ const StepSix = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

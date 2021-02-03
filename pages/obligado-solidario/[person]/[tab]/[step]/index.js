@@ -62,7 +62,7 @@ const ObligadoSolidario = ({ index, data }) => {
       {/* <Head>
         <title>{`BanCoppel | Pymes - Paso: ${currentStep}`}</title>
       </Head> */}
-      <ModalActualizar />
+      <ModalActualizar as="/obligado-solidario/[person]/[tab]/[step]" />
       {showComponent && (
         <TabInformativo
           show={!!stepNumber}

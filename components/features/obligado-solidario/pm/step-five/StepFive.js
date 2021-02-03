@@ -8,12 +8,13 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../constants/errors';
 import SvgPM from '../../../../svgs/carga-documentos/SvgPM';
 import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const StepFive = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const { pm } = useSelector((state) => state.obligado);
+  const { pm, currentStep } = useSelector((state) => state.obligado);
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -31,19 +32,23 @@ const StepFive = () => {
           pm: { ...pm, ...values },
         })
       );
-      if (formulario.values.ejercenControlMoral === 'no' && formulario.values.ejercenControlFisico === 'no') {
-        router.push('/obligado-solidario/[person]/[tab]/[step]', '/obligado-solidario/pm/preguntas/6');
-      } else {
-        router.push('/obligado-solidario/[person]/[tab]/[step]', '/obligado-solidario/pm/preguntas/agradecimiento');
-      }
     },
   });
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/obligado-solidario/[person]/[tab]/[step]',
+    formulario.values.ejercenControlMoral === 'no' && formulario.values.ejercenControlFisico === 'no'
+      ? '/obligado-solidario/pm/preguntas/6'
+      : '/obligado-solidario/pm/preguntas/agradecimiento',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <p className="sub color-blue-storm">
               <SvgPM />
               Respondiendo como: {pm.nombreEmpresa} (Persona Moral)
@@ -88,7 +93,7 @@ const StepFive = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!(formulario.isValid && formulario.dirty)}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>

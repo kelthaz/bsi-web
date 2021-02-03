@@ -48,7 +48,13 @@ const StepFour = () => {
     return true;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/5', currentStep, validateEmail);
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-personales/5',
+    currentStep,
+    validateEmail
+  );
 
   return (
     <div className="contedor-fixed-tab">

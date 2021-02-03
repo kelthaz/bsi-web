@@ -19,6 +19,7 @@ const StepThree = ({ sectores }) => {
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
   const { query } = useRouter();
   const validate = currentStep.step === query.step;
+
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
     { value: 20, label: 'S.A. DE C.V.' },
@@ -85,7 +86,12 @@ const StepThree = ({ sectores }) => {
   });
 
   const [itemsGiro] = useFindGiroBySector(formulario, 'sector', 'giro');
-  const [handleSubmit] = useOnChangePage(formulario, '/solicitud/datos-personales/4', currentStep);
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    '/solicitud/[tab]/[step]',
+    '/solicitud/datos-personales/4',
+    currentStep
+  );
 
   return (
     <div className="contedor-fixed-tab">
