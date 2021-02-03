@@ -6,9 +6,7 @@ import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import FileInput from '../../../../../shared/file-input/FileInput';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
-import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import Modal from '../../../../../shared/modal/Modal';
-import { campoRequerido } from '../../../../../../constants/errors';
 
 const StepSix = () => {
   const { documentacion } = useSelector((state) => state.solicitud);
@@ -50,7 +48,7 @@ const StepSix = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className={`container px-xs-0 px-md-0 ${styles['modal-container-video']}`}>
+        <div className="container px-xs-0 px-md-0 modal-container-video">
           <div>
             <h4 className="color-blue-storm">Recomendaciones para tus documentos</h4>
             <p className="dark-gray body2">

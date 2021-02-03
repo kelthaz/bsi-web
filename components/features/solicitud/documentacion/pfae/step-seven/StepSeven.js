@@ -6,7 +6,6 @@ import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicit
 import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
 import FileInput from '../../../../../shared/file-input/FileInput';
 import Modal from '../../../../../shared/modal/Modal';
-import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import TextField from '../../../../../shared/text-field/TextField';
 
 const StepSeven = () => {
@@ -50,7 +49,7 @@ const StepSeven = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className={`container px-xs-0 px-md-0 ${styles['modal-container-video']}`}>
+        <div className="container px-xs-0 px-md-0 modal-container-video">
           <div>
             <h4 className="color-blue-storm">Recomendaciones para tus documentos</h4>
             <p className="dark-gray body2">

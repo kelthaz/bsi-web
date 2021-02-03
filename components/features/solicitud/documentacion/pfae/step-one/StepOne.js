@@ -7,7 +7,6 @@ import { seleccionOpcion } from '../../../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../../svgs/SvgPersonaFisica';
 import SvgPersonaMoralBlue from '../../../../../svgs/SvgPersonaMoralBlue';
-import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import Modal from '../../../../../shared/modal/Modal';
 
 const StepOne = () => {
@@ -71,7 +70,7 @@ const StepOne = () => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className={`container px-xs-0 px-md-0 ${styles['modal-container-video']}`}>
+        <div className="container px-xs-0 px-md-0 modal-container-video">
           <div>
             <h4 className="color-blue-storm">¿Quién es un Obligado Solidario y por qué solicitamos uno?</h4>
             <p className="dark-gray body2">
@@ -80,7 +79,7 @@ const StepOne = () => {
             </p>
           </div>
           <iframe
-            className={styles['modal-video']}
+            className="modal-video"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/r7HHOYZQb4M"

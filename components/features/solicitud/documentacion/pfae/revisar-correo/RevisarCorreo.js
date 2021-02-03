@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import SvgBuro from '../../../../../svgs/SvgBuro';
 import SvgCargaDocumento from '../../../../../svgs/SvgCargaDocumento';
 import SvgEmpresa from '../../../../../svgs/SvgEmpresa';
@@ -51,7 +50,7 @@ const RevisarCorreo = () => {
 
           <div className="d-sm-none d-xs-none	d-md-block d-lg-block container justify-content-between">
             <div className="row">
-              <div className={`text-md-center ${styles['icon-card']} `}>
+              <div className="text-md-center icon-card">
                 <div>
                   <img src="/buro.png" alt="Buro de crédito" />
                 </div>
@@ -60,7 +59,7 @@ const RevisarCorreo = () => {
                   <p className="color-gray body3">Requerirá responder unas preguntas de sus créditos</p>
                 </div>
               </div>
-              <div className={`mt-2 text-md-center ${styles['icon-card']}`}>
+              <div className="mt-2 text-md-center icon-card">
                 <div className="container-svg-card">
                   <SvgCargaDocumento />
                 </div>
@@ -71,7 +70,7 @@ const RevisarCorreo = () => {
                   <p className="color-gray body3">Requerirá documentos</p>
                 </div>
               </div>
-              <div className={`text-md-center ${styles['icon-card']}`}>
+              <div className="text-md-center icon-card">
                 <div className="container-svg-card">
                   <SvgEmpresa />
                 </div>

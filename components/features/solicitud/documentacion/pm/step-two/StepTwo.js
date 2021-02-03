@@ -6,7 +6,6 @@ import Link from 'next/link';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import Modal from '../../../../../shared/modal/Modal';
-import styles from '../datos-empresa/step-nine/StepNine.module.scss';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import TextField from '../../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, numeroInvalido, correoInvalido } from '../../../../../../constants/errors';
