@@ -76,7 +76,7 @@ const StepFive = () => {
           })
         );
       } else {
-        // dispatch(resetDatosPersonales());
+        dispatch(resetDatosPersonales());
       }
     },
   });
