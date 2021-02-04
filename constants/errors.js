@@ -18,4 +18,4 @@ export const codigoPostalInvalido = () => 'Código postal inválido';
 export const numeroMinimo = ({ min }) => `El número debe ser mayor o igual a ${min}`;
 export const numeroMaximo = ({ max }) => `El número debe ser menor o igual a ${max}`;
 export const clabeNumeroCuentaInvalido = () => 'CLABE o número de cuenta inválido';
-export const ciecInvalida = () => 'Ciec inválido';
+export const ciecInvalida = () => 'CIEC inválida';

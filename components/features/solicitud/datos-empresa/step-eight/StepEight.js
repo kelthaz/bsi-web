@@ -67,7 +67,7 @@ const StepEight = () => {
       })
         .then(() => true)
         .catch(() => {
-          formulario.setFieldError('ciec', ciecInvalida);
+          formulario.setFieldError('ciec', ciecInvalida());
           return false;
         });
     }

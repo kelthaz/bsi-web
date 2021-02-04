@@ -199,7 +199,7 @@ const Header = () => {
   };
 
   return (
-    !pathname.includes('login') && (
+    !(pathname.includes('login') || pathname.includes('portal-privado')) && (
       <header className={styles['relative-header']}>
         <Modal openModal={openModal} setOpenModal={setOpenModal}>
           <div className={styles['modal-container']}>

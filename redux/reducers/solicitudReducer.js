@@ -11,7 +11,7 @@ const initialState = {
     segundoNombre: '',
     primerApellido: '',
     segundoApellido: '',
-    tipoPersona: null,
+    tipoPersona: { value: 'FISICA', label: 'Persona Física con Actividad Empresarial' },
     razonSocial: '',
     tipoSociedad: null,
     nombreEmpresa: '',

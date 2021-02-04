@@ -85,6 +85,7 @@ const StepFive = () => {
     const data = {
       ...datosPersonales,
       tipoPersona: datosPersonales.tipoPersona.value,
+      tipoSociedad: datosPersonales.tipoSociedad?.label,
       sector: datosPersonales.sector.value,
       giro: datosPersonales.giro.value,
       rfc: formulario.values.rfc,
