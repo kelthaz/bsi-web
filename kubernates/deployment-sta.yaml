@@ -97,10 +97,10 @@ objects:
       postCommit: {}
       resources:
         limits:
-          cpu: 800m
+          cpu: 1200m
           memory: 2Gi
         requests:
-          cpu: 500m
+          cpu: 1000m
           memory: 1Gi
       source:
         contextDir: /
