@@ -1,4 +1,5 @@
 @import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
 
 .canvas {
   bottom: 0;
@@ -44,10 +45,17 @@
   background-repeat: no-repeat;
   background-size: 70px 70px;
   bottom: 40px;
-  left: 85px;
+  left: 120px;
   position: absolute;
-  right: 85px;
+  right: 120px;
   top: 40px;
+
+  @include media('mobile') {
+    bottom: 30px;
+    left: 85px;
+    right: 85px;
+    top: 30px;
+  }
 }
 
 .overlay-success {
@@ -62,10 +70,17 @@
   background-repeat: no-repeat;
   background-size: 70px 70px;
   bottom: 40px;
-  left: 85px;
+  left: 120px;
   position: absolute;
-  right: 85px;
+  right: 120px;
   top: 40px;
+
+  @include media('mobile') {
+    bottom: 30px;
+    left: 85px;
+    right: 85px;
+    top: 30px;
+  }
 }
 
 .video {
@@ -73,6 +88,8 @@
   object-fit: fill;
   position: absolute;
   // -webkit-filter: brightness(1.2);
+  transform: scaleX(-1);
+  // -webkit-transform: scaleX(-1);
 }
 
 .wrapper {
