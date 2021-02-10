@@ -12,6 +12,7 @@ import StepNine from './step-nine/StepNine';
 import StepTen from './step-ten/StepTen';
 import StepEleven from './step-eleven/StepEleven';
 import Agradecimiento from './agradecimiento/Agradecimiento';
+import pruebasComponentes from './prueba-componentes/pruebaComponentes';
 
 const pfaeRoutes = [
   {
@@ -124,6 +125,14 @@ const pfaeRoutes = [
     path: '/obligado-solidario/pfae/autorizacion/agradecimiento',
     stepNumber: null,
     component: Agradecimiento,
+    services: [],
+  },
+  {
+    tab: 'preguntas',
+    step: 'pruebasComponentes',
+    path: '/obligado-solidario/pfae/preguntas/pruebasComponentes',
+    stepNumber: null,
+    component: pruebasComponentes,
     services: [],
   },
 ];
