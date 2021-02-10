@@ -68,34 +68,44 @@ const StepTen = () => {
                 {pfae.bienesSeparados !== 'no' ? (
                   <div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput formulario={formulario} name="comprobanteDomicilio" text="Comprobante de domicilio" />
+                      <FileInput
+                        formulario={formulario}
+                        name="comprobanteDomicilio"
+                        text="Comprobante de domicilio"
+                        grayText="(No mayor a tres meses)"
+                      />
                     </div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput text="Acta de matrimonio" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="por el frente" />
+                      <FileInput text="Tu INE" subText="Por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="por el reverso" />
+                      <FileInput text="Tu INE" subText="Por el reverso" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" subText="por el frente" />
+                      <FileInput text="INE de tu pareja" subText="Por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" subText="por el reverso" />
+                      <FileInput text="INE de tu pareja" subText="Por el reverso" />
                     </div>
                   </div>
                 ) : (
                   <div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput formulario={formulario} name="comprobanteDomicilio" text="Comprobante de domicilio" />
+                      <FileInput
+                        formulario={formulario}
+                        name="comprobanteDomicilio"
+                        text="Comprobante de domicilio"
+                        grayText="(No mayor a tres meses)"
+                      />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="por el frente" />
+                      <FileInput text="Tu INE" subText="Por el frente" />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="Tu INE" subText="por el reverso" />
+                      <FileInput text="Tu INE" subText="Por el reverso" />
                     </div>
                   </div>
                 )}

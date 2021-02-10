@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
@@ -24,6 +25,7 @@ import { regexRFCFisica } from '../../../../../constants/regex';
 const StepFive = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [disabled, setDisabled] = useState(false);
 
   const { pfae } = useSelector((state) => state.obligado);
 
@@ -38,30 +40,24 @@ const StepFive = () => {
     { value: 5, label: 'Lote Comercial' },
   ];
 
-  const subformValidationSchema = Yup.object().shape({
-    razonSocial: Yup.string().trim().max(120, longitudMaxima).required(campoRequerido),
-    tipoSociedad: Yup.object()
-      .shape({
-        value: Yup.string(),
-        label: Yup.string(),
-      })
-      .nullable()
-      .required(seleccionOpcion),
-    rfc: Yup.string().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
-    invierto: Yup.string().required(campoRequerido),
-  });
-
   const { initialValues, validationSchema } = {
     initialValues: {
       inmuebleInfo: [],
       colonia: pfae.domicilioFiscal.colonia,
       codigoPostal: pfae.domicilioFiscal.codigoPostal,
-      inmueblesPropios: null,
+      inmueblesPropios: '',
       cantInmuebles: null,
+      numFolio: pfae.numFolio,
+      numEscritura: pfae.numEscritura,
+      datosGravamen: pfae.datosGravamen,
+      invierto: pfae.invierto,
     },
     validationSchema: Yup.object().shape({
       inmueblesPropios: Yup.string().required(campoRequerido),
-      inmuebleInfo: Yup.array().of(subformValidationSchema),
+      numFolio: Yup.string().max(50, longitudMaxima).required(campoRequerido),
+      numEscritura: Yup.string().max(300, longitudMaxima).required(campoRequerido),
+      datosGravamen: Yup.string().max(180, longitudMaxima).required(campoRequerido),
+      invierto: Yup.string().required(campoRequerido),
     }),
   };
 
@@ -71,6 +67,11 @@ const StepFive = () => {
     { label: '3', value: 3 },
     { label: '4', value: 4 },
     { label: '5', value: 5 },
+    { label: '6', value: 6 },
+    { label: '7', value: 7 },
+    { label: '8', value: 8 },
+    { label: '9', value: 9 },
+    { label: '10', value: 10 },
   ];
 
   const formulario = useFormik({
@@ -119,13 +120,18 @@ const StepFive = () => {
     'cantInmuebles'
   );
 
+  useEffect(() => {
+    if (formulario.values.inmueblesPropios === 'no') {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  });
+
   const formControlados = (nameControlador) =>
     formulario.values[nameControlador].map((value, index) => (
       <div key={value}>
         <div className="row ">
-          <p className="col-12 color-gray-light sub">
-            Datos inmueble <hr className={`col-8 ${styles.line}`} />
-          </p>
           <p className="col-12 color-dark-gray sub">¿Qué tipo de inmueble es?</p>
           <div className="col-md-6 col-xs-12">
             <Select
@@ -175,7 +181,7 @@ const StepFive = () => {
               </div>
               <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
                 <TextField
-                  name={`${nameControlador}[${index}].codigoPostal`}
+                  name="codigoPostal"
                   maxlength={5}
                   formulario={formulario}
                   type="text"
@@ -186,7 +192,7 @@ const StepFive = () => {
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <Select
-                  name={`${nameControlador}[${index}].colonia`}
+                  name="colonia"
                   maxlength={120}
                   formulario={formulario}
                   type="text"
@@ -198,7 +204,7 @@ const StepFive = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  name={`${nameControlador}[${index}].municipioAlcaldia`}
+                  name="municipioAlcaldia"
                   maxlength={50}
                   formulario={formulario}
                   type="text"
@@ -209,7 +215,7 @@ const StepFive = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TextField
-                  name={`${nameControlador}[${index}].ciudad`}
+                  name="ciudad"
                   maxlength={50}
                   formulario={formulario}
                   type="text"
@@ -220,7 +226,7 @@ const StepFive = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TextField
-                  name={`${nameControlador}[${index}].estado`}
+                  name="estado"
                   maxlength={50}
                   formulario={formulario}
                   type="text"
@@ -232,29 +238,29 @@ const StepFive = () => {
               <p className="col-12 color-dark-gray sub">Escribe los datos de la escritura</p>
               <div className="col-12">
                 <TextArea
-                  name={`${nameControlador}[${index}].numEscritura`}
+                  name="numEscritura"
                   formulario={formulario}
                   label="Utiliza este espacio para platicarnos sobre el número de escritura pública, el nombre
                             y número del Notario Público que lo registró, la fecha de registro y el nombre del vendedor."
-                  maxlength={180}
+                  maxlength={300}
                   format="textArea"
                 />
               </div>
               <p className="col-12 color-dark-gray sub">Escribe el número de folio mercantil</p>
               <div className="col-12">
                 <TextArea
-                  name={`${nameControlador}[${index}].numFolio`}
+                  name="numFolio"
                   formulario={formulario}
                   label="Utiliza este espacio para escribir el número de folio mercantil (libro, secciones y fojas)."
-                  maxlength={180}
+                  maxlength={50}
                   format="textArea"
                 />
               </div>
               <p className="col-12 color-dark-gray sub">Escribe el valor aproximado </p>
               <div className="col-md-5 col-xs-12">
                 <TextField
-                  maxlength={60}
-                  name={`inmuebleInfo[${index}].invierto`}
+                  maxlength={11}
+                  name="invierto"
                   formulario={formulario}
                   type="text"
                   size="big"
@@ -265,7 +271,7 @@ const StepFive = () => {
               <p className="col-12 color-dark-gray sub">Escribe los datos del gravamen (si aplica)</p>
               <div className="col-12">
                 <TextArea
-                  name={`${nameControlador}[${index}].datosGravamen`}
+                  name="datosGravamen"
                   formulario={formulario}
                   label="Utiliza este espacio si aplica para escribir el banco y el monto del gravamen"
                   maxlength={180}
@@ -284,7 +290,7 @@ const StepFive = () => {
         <div className="container px-xs-0 px-md-3">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="sub color-dark-gray">
-              ¿Cuentas con inmuebles propios? <Tooltip message="..." />
+              ¿Cuentas con inmuebles propios libres de gravamen? <Tooltip message="..." />
             </p>
             <div className="d-flex">
               <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1 pr-md-0">
@@ -312,14 +318,22 @@ const StepFive = () => {
               </div>
             </div>
             {formControlados('inmuebleInfo')}
-            <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
-              <button
-                type="submit"
-                className="cicle-button-blue my-3"
-                aria-label="Avanzar"
-                disabled={!formulario.isValid}
-              />
-            </div>
+            {formulario.values.inmueblesPropios !== 'no' ? (
+              <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+                <button
+                  type="submit"
+                  className="cicle-button-blue my-3"
+                  aria-label="Avanzar"
+                  disabled={!formulario.isValid}
+                />
+              </div>
+            ) : (
+              <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">
+                <Link href="/obligado-solidario/pfae/[tab]/[step]" as="/obligado-solidario/pfae/preguntas/6" replace>
+                  <button type="submit" className="cicle-button-blue my-3" aria-label="Avanzar2" disabled={disabled} />
+                </Link>
+              </div>
+            )}
           </form>
         </div>
       </div>

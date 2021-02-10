@@ -36,7 +36,7 @@ const StepNine = () => {
             <form onSubmit={formulario.handleSubmit} noValidate>
               <div className="row pl-3 pb-xs-1">
                 <p className="color-dark-gray sub">
-                  Para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada(o)?
+                  Ahora, para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada (o)?
                 </p>
               </div>
               <div className="row">
