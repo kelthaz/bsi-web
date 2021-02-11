@@ -70,25 +70,25 @@ const Test = () => {
             <div className="row">
               <div className="col-lg-6 col-md-12">
                 <h4 className="color-blue-storm">Datepicker</h4>
-                <div className="col-9">
+                <div className="col-lg-9">
                   <DatePickerInput />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
                 <h4 className="color-blue-storm">Datepicker con fines de semana bloqueados</h4>
-                <div className="col-9">
+                <div className="col-lg-9">
                   <DatePickerInput disableWeekends />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
                 <h4 className="color-blue-storm">Datepicker con días previos bloqueados</h4>
-                <div className="col-9">
+                <div className="col-lg-9">
                   <DatePickerInput disablePreviousDays />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
                 <h4 className="color-blue-storm">Datepicker algunos días bloqueados</h4>
-                <div className="col-9">
+                <div className="col-lg-9">
                   <DatePickerInput
                     disabledDays={[
                       new Date(),
