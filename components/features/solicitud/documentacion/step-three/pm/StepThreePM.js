@@ -2,27 +2,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-import RadioButton from '../../../../shared/radio-button/RadioButton';
-import Select from '../../../../shared/select/Select';
-import Tooltip from '../../../../shared/tooltip/Tooltip';
-import TextField from '../../../../shared/text-field/TextField';
+import RadioButton from '../../../../../shared/radio-button/RadioButton';
+import Select from '../../../../../shared/select/Select';
+import Tooltip from '../../../../../shared/tooltip/Tooltip';
+import TextField from '../../../../../shared/text-field/TextField';
 import {
   campoRequerido,
   longitudMaxima,
   longitudMinima,
   rfcInvalido,
   seleccionOpcion,
-} from '../../../../../constants/errors';
-import { regexRFCFisica } from '../../../../../constants/regex';
-import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
-import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
-import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
+} from '../../../../../../constants/errors';
+import { regexMultipleSpaces, regexRFCFisica } from '../../../../../../constants/regex';
+import SvgPersonaMoral from '../../../../../svgs/SvgPersonaMoral';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import useCreateFormArray from '../../../../../../hooks/useCreateFormArray';
 
-const StepSix = () => {
+const StepThreePM = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { documentacion, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+  const nombrePersonaFisica = `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
+    regexMultipleSpaces,
+    ' '
+  );
+  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad.label}`;
 
   const subformValidationSchema = Yup.object().shape({
     primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -43,12 +47,12 @@ const StepSix = () => {
 
   const formulario = useFormik({
     initialValues: {
-      controladosFisicosComoMoral: [],
-      tieneControladosFisicosComoMoral: null,
-      cantidadControladosFisicosComoMoral: null,
-      controladosFisicosComoFisico: [],
-      tieneControladosFisicosComoFisico: null,
-      cantidadControladosFisicosComoFisico: null,
+      controladosFisicosComoMoral: documentacion.controladosFisicosComoMoral,
+      tieneControladosFisicosComoMoral: documentacion.tieneControladosFisicosComoMoral,
+      cantidadControladosFisicosComoMoral: documentacion.cantidadControladosFisicosComoMoral,
+      controladosFisicosComoFisico: documentacion.controladosFisicosComoFisico,
+      tieneControladosFisicosComoFisico: documentacion.tieneControladosFisicosComoFisico,
+      cantidadControladosFisicosComoFisico: documentacion.cantidadControladosFisicosComoFisico,
     },
     validationSchema: Yup.object().shape({
       controladosFisicosComoMoral: Yup.array().of(subformValidationSchema),
@@ -206,7 +210,7 @@ const StepSix = () => {
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="sub color-blue-storm">
               <SvgPersonaMoral />
-              Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
+              Respondiendo como: {nombrePersonaMoral} (Persona Moral)
             </p>
             <p className="sub color-dark-gray">
               ¿Existe una persona física relacionada? <Tooltip message="..." />
@@ -241,7 +245,7 @@ const StepSix = () => {
 
             <p className="sub color-blue-storm">
               <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
+              Respondiendo como: {nombrePersonaFisica} (Persona Física)
             </p>
             <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
 
@@ -288,4 +292,4 @@ const StepSix = () => {
   );
 };
 
-export default StepSix;
+export default StepThreePM;

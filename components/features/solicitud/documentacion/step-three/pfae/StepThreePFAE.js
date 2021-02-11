@@ -2,27 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-import RadioButton from '../../../../shared/radio-button/RadioButton';
-import Select from '../../../../shared/select/Select';
-import Tooltip from '../../../../shared/tooltip/Tooltip';
-import TextField from '../../../../shared/text-field/TextField';
+import RadioButton from '../../../../../shared/radio-button/RadioButton';
+import Select from '../../../../../shared/select/Select';
+import TextField from '../../../../../shared/text-field/TextField';
 import {
   campoRequerido,
   longitudMaxima,
   longitudMinima,
   rfcInvalido,
   seleccionOpcion,
-} from '../../../../../constants/errors';
-import { regexRFCFisica } from '../../../../../constants/regex';
-import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
-import { nextStepObligadoSolidario } from '../../../../../redux/actions/obligado';
-import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
+} from '../../../../../../constants/errors';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import useCreateFormArray from '../../../../../../hooks/useCreateFormArray';
+import { regexRFCFisica } from '../../../../../../constants/regex';
 
-const StepSix = () => {
+const StepThreePFAE = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const { datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { documentacion, datosEmpresa } = useSelector((state) => state.solicitud);
 
   const subformValidationSchema = Yup.object().shape({
     primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -43,16 +40,11 @@ const StepSix = () => {
 
   const formulario = useFormik({
     initialValues: {
-      controladosFisicosComoMoral: [],
-      tieneControladosFisicosComoMoral: null,
-      cantidadControladosFisicosComoMoral: null,
-      controladosFisicosComoFisico: [],
-      tieneControladosFisicosComoFisico: null,
-      cantidadControladosFisicosComoFisico: null,
+      controladosFisicosComoFisico: documentacion.controladosFisicosComoFisico,
+      tieneControladosFisicosComoFisico: documentacion.tieneControladosFisicosComoFisico,
+      cantidadControladosFisicosComoFisico: documentacion.cantidadControladosFisicosComoFisico,
     },
     validationSchema: Yup.object().shape({
-      controladosFisicosComoMoral: Yup.array().of(subformValidationSchema),
-      tieneControladosFisicosComoMoral: Yup.string().required(campoRequerido),
       controladosFisicosComoFisico: Yup.array().of(subformValidationSchema),
       tieneControladosFisicosComoFisico: Yup.string().required(campoRequerido),
     }),
@@ -66,22 +58,6 @@ const StepSix = () => {
       router.push('/obligado-solidario/[person]/[tab]/[step]', '/obligado-solidario/pm/carga-documentos/7');
     },
   });
-
-  useCreateFormArray(
-    formulario,
-    formulario.values.tieneControladosFisicosComoMoral === 'si',
-    [formulario.values.tieneControladosFisicosComoMoral, formulario.values.cantidadControladosFisicosComoMoral],
-    {
-      primerNombre: '',
-      segundoNombre: '',
-      primerApellido: '',
-      segundoApellido: '',
-      rfc: '',
-      parentesco: null,
-    },
-    'controladosFisicosComoMoral',
-    'cantidadControladosFisicosComoMoral'
-  );
 
   useCreateFormArray(
     formulario,
@@ -204,45 +180,6 @@ const StepSix = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={formulario.handleSubmit} noValidate>
-            <p className="sub color-blue-storm">
-              <SvgPersonaMoral />
-              Respondiendo como: {datosPersonales.nombreEmpresa} (Persona Moral)
-            </p>
-            <p className="sub color-dark-gray">
-              ¿Existe una persona física relacionada? <Tooltip message="..." />
-            </p>
-            <div className="row">
-              <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
-                <RadioButton name="tieneControladosFisicosComoMoral" formulario={formulario} value="si">
-                  <div className="row">
-                    <div className="input color-gray col-5">Sí, son</div>
-                    <div className="col-6 ">
-                      <Select
-                        name="cantidadControladosFisicosComoMoral"
-                        formulario={formulario}
-                        size="big"
-                        items={items}
-                        defaultValue={0}
-                        disabled={formulario.values.tieneControladosFisicosComoMoral !== 'si'}
-                        label=""
-                      />
-                    </div>
-                  </div>
-                </RadioButton>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <RadioButton name="tieneControladosFisicosComoMoral" formulario={formulario} value="no">
-                  <span className="input color-gray">No</span>
-                </RadioButton>
-              </div>
-            </div>
-
-            {formControlados('controladosFisicosComoMoral')}
-
-            <p className="sub color-blue-storm">
-              <img src="/requisitos/PM.svg" alt="Persona moral" />
-              Respondiendo como: {datosPersonales.primerNombre} (Persona Física)
-            </p>
             <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
 
             <div className="row">
@@ -288,4 +225,4 @@ const StepSix = () => {
   );
 };
 
-export default StepSix;
+export default StepThreePFAE;

@@ -8,19 +8,11 @@ import { useStore } from '../redux/store';
 import '../styles/styles.scss';
 import '../styles/scss/chatbot.scss';
 import Loader from '../components/shared/loader/Loader';
-import useCookie from '../hooks/useCookie';
-import { useEffect } from 'react';
 import useAxiosToken from '../hooks/useAxiosToken';
 
 const App = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);
   useAxiosToken();
-  // const [cookie, updateCookie] = useCookie('userju', 'BrandonBaars');
-
-  // useEffect(() => {
-  //   updateCookie('jesus david gomez', 6, null);
-  //   console.log(document.cookie);
-  // }, []);
 
   return (
     <Provider store={store}>

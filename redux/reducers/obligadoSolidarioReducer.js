@@ -46,6 +46,12 @@ const initialState = {
     controladosFisicos: [],
     ejerceControlFisico: null,
     cantidadEjerceControlFisico: null,
+    controladosFisicosComoMoral: [],
+    tieneControladosFisicosComoMoral: null,
+    cantidadControladosFisicosComoMoral: null,
+    controladosFisicosComoFisico: [],
+    tieneControladosFisicosComoFisico: null,
+    cantidadControladosFisicosComoFisico: null,
   },
   pfae: {
     primerNombre: 'José',

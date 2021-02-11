@@ -1,0 +1,12 @@
+export const cuentaActiva = '/solicitud/datos-empresa/cuenta-activa';
+export const stepOne = '/solicitud/datos-empresa/1';
+export const stepTwo = '/solicitud/datos-empresa/2';
+export const stepThree = '/solicitud/datos-empresa/3';
+export const stepFour = '/solicitud/datos-empresa/4';
+export const stepFive = '/solicitud/datos-empresa/5';
+export const stepSix = '/solicitud/datos-empresa/6';
+export const stepSeven = '/solicitud/datos-empresa/7';
+export const graciasPorContarnos = '/solicitud/datos-empresa/gracias-contacto';
+export const stepEight = '/solicitud/datos-empresa/8';
+export const contrato = '/solicitud/datos-empresa/contrato';
+export const agradecimiento = '/solicitud/datos-empresa/agradecimiento';

@@ -7,6 +7,7 @@ import SvgHidenPassword from '../../svgs/SvgHidenPassword';
 import SvgShowPassword from '../../svgs/SvgShowPassword';
 import styles from './text-field.module.scss';
 import useFormatter from '../../../hooks/useFormatter';
+import { regexMultipleSpaces } from '../../../constants/regex';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];
@@ -66,7 +67,7 @@ const TextField = ({
 
   const onHandleChange = async (event) => {
     const { selectionStart, value: valueTarget } = event.target;
-    const formattedValue = formatter(valueTarget.trimStart().replace(/\s+/g, ' '));
+    const formattedValue = formatter(valueTarget.trimStart().replace(regexMultipleSpaces, ' '));
 
     if (!touched && formattedValue !== value) {
       await setFieldTouched(name, true);

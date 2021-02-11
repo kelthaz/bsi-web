@@ -104,6 +104,16 @@ const initialState = {
     ineReverso: null,
     comprobanteComercial: null,
   },
+  obligadoSolidario: {
+    primerNombre: '',
+    segundoNombre: '',
+    primerApellido: '',
+    segundoApellido: '',
+    tipoPersona: null,
+    correo: '',
+    celular: '',
+    rfc: '',
+  },
 };
 
 const solicitudReducer = (state = initialState, { type, payload }) => {
