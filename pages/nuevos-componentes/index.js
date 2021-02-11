@@ -62,7 +62,6 @@ const Test = () => {
         </div>
       </Modal>
       <article>
-        {/* Apoyo constante */}
         <Section>
           <div className="col-lg-12 col-md-12">
             <div className="mb-md-4">

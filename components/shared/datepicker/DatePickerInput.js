@@ -15,7 +15,7 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) =
 
   const datepickerRef = useRef();
 
-  const { _, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const MONTHS = [
     'Enero',
@@ -68,14 +68,9 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) =
   };
 
   const Navbar = ({
-    /* eslint-disable no-unused-vars */
-    nextMonth,
-    previousMonth,
     onPreviousClick,
     onNextClick,
-    className,
-    localeUtils
-    /* eslint-enable no-unused-vars */
+    className
   }) => (
       <div className={className}>
         <span
@@ -107,21 +102,15 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) =
     );
 
   Navbar.propTypes = {
-    nextMonth: PropTypes.instanceOf(Date),
-    previousMonth: PropTypes.instanceOf(Date),
     onPreviousClick: PropTypes.func,
     onNextClick: PropTypes.func,
-    className: PropTypes.string,
-    localeUtils: PropTypes.any
+    className: PropTypes.string
   };
 
   Navbar.defaultProps = {
-    nextMonth: null,
-    previousMonth: null,
     onPreviousClick: null,
     onNextClick: null,
-    className: null,
-    localeUtils: null
+    className: null
   };
 
   useOnClickOutsideRef(datepickerRef, toggle, handleToggle);
