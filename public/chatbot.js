@@ -61,7 +61,7 @@ const configuracion = {
       yes: 'Si',
       no: 'No',
       'generic-error-message': 'Por favor intente con otra pregunta',
-      'enter-question': 'Pregunta aquí',
+      'enter-question': 'Pregunta aquí.',
       'interface-title': '',
       'guest-name': 'Tu',
       'help-question': '¿Cómo te puedo ayudar?',
