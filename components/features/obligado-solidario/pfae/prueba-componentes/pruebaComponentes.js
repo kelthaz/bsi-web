@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import IndividualVideo from '../../../../shared/back-office-video/BackOfficeVideo';
+import SideBar from '../../../../shared/sidebar/SideBar';
 
 const pruebaComponentes = () => {
   const formulario = useFormik({});
@@ -19,6 +20,9 @@ const pruebaComponentes = () => {
               </div>
               <div className="col-md-4 col-xs-12">
                 <IndividualVideo width={210} idVideo={3} src="https://www.youtube.com/embed/VayHlVwGmGs" />
+              </div>
+              <div className="col-md-4 col-xs-12">
+                <SideBar value="50" />
               </div>
             </div>
           </form>
