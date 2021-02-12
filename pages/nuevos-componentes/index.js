@@ -6,7 +6,6 @@ import DatePickerInput from '../../components/shared/datepicker/DatePickerInput'
 import Select from '../../components/shared/select/Select';
 import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
-import Calendar from '../../components/shared/calendar/Calendar';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
 
 const Test = () => {
