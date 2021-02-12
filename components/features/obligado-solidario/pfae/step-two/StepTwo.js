@@ -58,7 +58,7 @@ const StepTwo = () => {
                     label="Ej. TLF280693H17"
                   />
                 </div>
-                <div className="col-lg-3  col-md-3 col-sm-12 col-xs-12 ">
+                <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                   <p className="input color-gray">Mi CURP es </p>
                 </div>
                 <div className="col-lg-8 col-md-7 col-xs-12 pr-md-2 pb-xs-3 pb-md-0">

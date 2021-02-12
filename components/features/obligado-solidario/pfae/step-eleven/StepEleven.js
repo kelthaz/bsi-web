@@ -23,7 +23,7 @@ const StepEleven = () => {
       aceptar: pfae.aceptar,
     },
     validationSchema: Yup.object().shape({
-      tienePrestamo: Yup.string().required(campoRequerido),
+      tienePrestamo: Yup.string().nullable().required(campoRequerido),
       tieneCredito: Yup.string().required(campoRequerido),
       eresTitular: Yup.string().required(campoRequerido),
       aceptar: Yup.boolean().oneOf([true], declararTerminos),
@@ -80,14 +80,15 @@ const StepEleven = () => {
             </div>
             <p className="mt-md-4 mt-xs-4 sub color-dark-gray">¿Eres titular de una tarjeta de crédito?</p>
             <div className="d-flex">
-              <div className="col-md-8 col-xs-8">
+              <div className="col-md-8 col-xs-4">
                 <div className="row">
                   <div className="col-md-8 pr-0">
                     <RadioButton name="eresTitular" formulario={formulario} value="si">
-                      <span className="input color-gray">Sí, terminación</span>
+                      <span className="d-none d-sm-block input color-gray">Sí, terminación</span>
+                      <span className="d-block d-sm-none input color-gray">Sí</span>
                     </RadioButton>
                   </div>
-                  <div className="col-md-3 col-xs-12 px-md-0">
+                  <div className="d-none d-sm-block col-md-3 col-xs-12 px-md-0">
                     <TextField
                       maxlength={4}
                       name="terminacion"
@@ -97,12 +98,24 @@ const StepEleven = () => {
                       label="1234"
                     />
                   </div>
+                  <div className="col-md-1 col-xs-4 px-md-0">
+                    <RadioButton name="eresTitular" formulario={formulario} value="no">
+                      <span className="input color-gray">No</span>
+                    </RadioButton>
+                  </div>
                 </div>
               </div>
-              <div className="col-md-3 col-xs-4">
-                <RadioButton name="eresTitular" formulario={formulario} value="no">
-                  <span className="input color-gray">No</span>
-                </RadioButton>
+            </div>
+            <div className="row">
+              <div className="d-block d-sm-none col-xs-12 px-md-0 mt-3">
+                <TextField
+                  maxlength={4}
+                  name="terminacion"
+                  formulario={formulario}
+                  type="text"
+                  size="small"
+                  label="Terminación"
+                />
               </div>
             </div>
             <div className="card-simple-blue-light list-onboarding">

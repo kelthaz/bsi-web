@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 import SvgOk from '../../../../svgs/SvgOk';
 
 const gracias = () => {
@@ -23,13 +24,13 @@ const gracias = () => {
                 </p>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="text-xs-center text-md-left pt-1">
+                <p className="body2 text-xs-center text-md-left pt-1">
                   Le enviaremos un correo electrónico a Alejandra para indicarle que has terminado y hacerle saber los
                   próximos pasos.
                 </p>
               </div>
               <div className="col-md-12 px-xs-0 px-md-2">
-                <p className="text-xs-center text-md-left pt-1"> ¡En BanCoppel agradecemos tu confianza!</p>
+                <p className="body2 text-xs-center text-md-left pt-1"> ¡En BanCoppel agradecemos tu confianza!</p>
               </div>
             </div>
 
@@ -37,9 +38,11 @@ const gracias = () => {
               <SvgOk />
             </div>
           </div>
-          <button type="submit" className="btn-medium offset-md-4 offset-xs-3">
-            Terminar
-          </button>
+          <Link href="/simulador" replace>
+            <button type="submit" className="btn-medium offset-md-4 offset-xs-3">
+              Terminar
+            </button>
+          </Link>
         </div>
       </div>
     </div>

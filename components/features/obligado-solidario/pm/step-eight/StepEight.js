@@ -26,7 +26,7 @@ const StepEight = () => {
       autorizoTerminosCiec: pm.autorizoTerminosCiec,
     },
     validationSchema: Yup.object({
-      ciec: Yup.string().max(8, longitudMaxima).min(8, longitudMinima).required(campoRequerido),
+      ciec: Yup.string().required(campoRequerido),
       autorizoTerminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
     onSubmit: (values) => {
@@ -86,7 +86,7 @@ const StepEight = () => {
                   <TextField
                     name="ciec"
                     format="passwordspace"
-                    maxlength={8}
+                    // maxlength={8}
                     formulario={formulario}
                     type="password"
                     size="big"

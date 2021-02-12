@@ -112,7 +112,7 @@ const StepNine = () => {
             <div className="col-xs-8">
               <h4 className="color-blue-storm sub">Firma segura con Legalex GS</h4>
               <p className="color-gray body3">
-                Puedes firmar de forma segura con tu e.firm
+                Puedes firmar de forma segura con tu e.firma
                 <br />
                 <a className="link">¿Por qué te pedimos esto?</a>
               </p>
