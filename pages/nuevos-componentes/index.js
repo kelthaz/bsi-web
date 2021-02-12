@@ -6,6 +6,8 @@ import DatePickerInput from '../../components/shared/datepicker/DatePickerInput'
 import Select from '../../components/shared/select/Select';
 import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
+import Calendar from '../../components/shared/calendar/Calendar';
+import ResultSimulador from '../../components/core/simulador/ResultSimulador';
 
 const Test = () => {
 
@@ -75,19 +77,19 @@ const Test = () => {
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
-                <h4 className="color-blue-storm">Datepicker con fines de semana bloqueados</h4>
+                <h4 className="color-blue-storm">Fines de semana bloqueados</h4>
                 <div className="col-lg-9">
                   <DatePickerInput disableWeekends />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
-                <h4 className="color-blue-storm">Datepicker con días previos bloqueados</h4>
+                <h4 className="color-blue-storm">Días previos bloqueados</h4>
                 <div className="col-lg-9">
                   <DatePickerInput disablePreviousDays />
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
-                <h4 className="color-blue-storm">Datepicker algunos días bloqueados</h4>
+                <h4 className="color-blue-storm">Algunos días bloqueados</h4>
                 <div className="col-lg-9">
                   <DatePickerInput
                     disabledDays={[
@@ -104,6 +106,32 @@ const Test = () => {
             <div className="row text-center mt-4">
               <div className="col-12">
                 <button className="btn-medium" type="button" onClick={() => setOpenModal(true)}>Preview</button>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
+
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="03" linea1="Resultado del simulador" />
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <div className="card-simple-blue-light">
+                  <div className="line-bottom">
+                    <h4 className="color-blue-storm">Características del crédito</h4>
+                  </div>
+                  <div className="mt-4">
+                    <ResultSimulador
+                      dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestral  '} }}
+                      resultSimulador={{ tasaOrdinaria: '25%', comisionApertura: '5%', cat: '3%', pago: '$31,250', tasaMoratoria: '63%' }}
+                      color="night"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
