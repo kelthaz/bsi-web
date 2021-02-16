@@ -18,6 +18,7 @@ import ModalAutorizacionCiec from '../../../../core/modals/solicitud/modal-autor
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
 import useCookie from '../../../../../hooks/useCookie';
+import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const StepEight = () => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
@@ -47,7 +48,7 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-personales', step: '8' } : { ...currentStep },
+          currentStep: validate ? { tab: 'datos-personales', step: '9' } : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
@@ -74,13 +75,7 @@ const StepEight = () => {
     return valid;
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/9',
-    currentStep,
-    validateCiec
-  );
+  const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE, currentStep, validateCiec);
 
   return (
     <>

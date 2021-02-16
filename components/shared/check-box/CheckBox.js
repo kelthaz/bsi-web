@@ -4,7 +4,6 @@ import styles from './check-box.module.scss';
 
 const CheckBox = ({ name, formulario, children, value }) => {
   const { handleChange } = formulario;
-
   return (
     <>
       <div className={`${styles['container-check-text']}`}>
@@ -15,6 +14,11 @@ const CheckBox = ({ name, formulario, children, value }) => {
             type="checkbox"
             value={value}
             onChange={handleChange}
+            checked={
+              Array.isArray(formulario.values[name])
+                ? formulario.values[name].indexOf(value) !== -1
+                : formulario.values[name]
+            }
           />
         </div>
         <div className={`${styles['container-content']}`}>{children}</div>

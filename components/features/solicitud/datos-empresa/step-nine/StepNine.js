@@ -258,7 +258,7 @@ const StepNine = () => {
                           formulario={formulario}
                           type="text"
                           size="small"
-                          label="No. Ext."
+                          label="No. Exterior"
                           disabled
                         />
                       </div>
@@ -269,7 +269,7 @@ const StepNine = () => {
                           formulario={formulario}
                           type="text"
                           size="small"
-                          label="No. Int."
+                          label="No. Interior"
                           disabled
                         />
                       </div>

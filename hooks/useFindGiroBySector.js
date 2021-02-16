@@ -6,13 +6,16 @@ const useFindGiroBySector = (formulario, nameSector, nameGiro) => {
   const [itemsGiro, setItemsGiro] = useState([]);
 
   useEffect(() => {
-    if (formulario.values[nameSector] && formulario.dirty) {
+    if (formulario.values[nameSector]) {
       const fetchData = async () => {
-        const giros = await SectoresRepositorio.getGiroPorSector(formulario.values[nameSector].value).then(
-          (resp) => resp.data
+        const giros = await SectoresRepositorio.getGiroPorSector(formulario.values[nameSector].value).then((resp) =>
+          changeSelectModel('id', 'nombre', resp.data)
         );
-        formulario.setFieldValue(nameGiro, null);
-        setItemsGiro(changeSelectModel('id', 'nombre', giros));
+        setItemsGiro(giros);
+        const giroActual = giros.find(
+          (giro) => formulario.values[nameGiro] && formulario.values[nameGiro].value === giro.value
+        );
+        formulario.setFieldValue(nameGiro, giroActual || null);
       };
       fetchData();
     }

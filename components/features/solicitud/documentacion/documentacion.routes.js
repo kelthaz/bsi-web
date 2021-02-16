@@ -1,30 +1,30 @@
-import StepOne from './step-one/StepOne';
-import StepTwo from './step-two/StepTwo';
-import StepThree from './step-three/StepThree';
+import PasoUnoDocumentacion from './paso-uno/PasoUnoDocumentacion';
+import PasoDosDocumentacion from './paso-dos/PasoDosDocumentacion';
+import PasoTresDocumentacion from './paso-tres/PasoTresDocumentacion';
 import UltimaEtapa from './ultima-etapa/UltimaEtapa';
-import StepFour from './step-four/StepFour';
-import StepFive from './step-five/StepFive';
-import StepSix from './step-six/StepSix';
-import StepSeven from './step-seven/StepSeven';
-import StepEight from './step-eight/StepEight';
+import PasoCuatroDocumentacion from './paso-cuatro/PasoCuatroDocumentacion';
+import PasoCincoDocumentacion from './paso-cinco/PasoCincoDocumentacion';
+import PasoSeisDocumentacion from './paso-seis/PasoSeisDocumentacion';
+import PasoSieteDocumentacion from './paso-siete/PasoSieteDocumentacion';
+import PasoOchoDocumentacion from './paso-ocho/PasoOchoDocumentacion';
 import RevisarCorreo from './revisar-correo/RevisarCorreo';
 import {
-  ULTIMA_ETAPA_ROUTE,
-  STEP_ONE_ROUTE,
-  STEP_TWO_ROUTE,
-  STEP_THREE_ROUTE,
-  STEP_FOUR_ROUTE,
-  STEP_FIVE_ROUTE,
-  STEP_SIX_ROUTE,
-  STEP_SEVEN_ROUTE,
-  STEP_EIGHT_ROUTE,
+  ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
+  PASO_UNO_DOCUMENTACION_ROUTE,
+  PASO_DOS_DOCUMENTACION_ROUTE,
+  PASO_TRES_DOCUMENTACION_ROUTE,
+  PASO_CUATRO_DOCUMENTACION_ROUTE,
+  PASO_CINCO_DOCUMENTACION_ROUTE,
+  PASO_SEIS_DOCUMENTACION_ROUTE,
+  PASO_SIETE_DOCUMENTACION_ROUTE,
+  PASO_OCHO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
 
 const documentacionRoutes = [
   {
     tab: 'documentacion',
     step: 'ultima-etapa',
-    path: ULTIMA_ETAPA_ROUTE,
+    path: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
     stepNumber: null,
     component: UltimaEtapa,
     services: [],
@@ -32,33 +32,33 @@ const documentacionRoutes = [
   {
     tab: 'documentacion',
     step: '1',
-    path: STEP_ONE_ROUTE,
+    path: PASO_UNO_DOCUMENTACION_ROUTE,
     stepNumber: 1,
-    component: StepOne,
+    component: PasoUnoDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '2',
-    path: STEP_TWO_ROUTE,
+    path: PASO_DOS_DOCUMENTACION_ROUTE,
     stepNumber: 2,
-    component: StepTwo,
+    component: PasoDosDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '3',
-    path: STEP_THREE_ROUTE,
+    path: PASO_TRES_DOCUMENTACION_ROUTE,
     stepNumber: 3,
-    component: StepThree,
+    component: PasoTresDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '4',
-    path: STEP_FOUR_ROUTE,
+    path: PASO_CUATRO_DOCUMENTACION_ROUTE,
     stepNumber: 4,
-    component: StepFour,
+    component: PasoCuatroDocumentacion,
     services: [],
   },
   // {
@@ -72,33 +72,33 @@ const documentacionRoutes = [
   {
     tab: 'documentacion',
     step: '5',
-    path: STEP_FIVE_ROUTE,
+    path: PASO_CINCO_DOCUMENTACION_ROUTE,
     stepNumber: 5,
-    component: StepFive,
+    component: PasoCincoDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '6',
-    path: STEP_SIX_ROUTE,
+    path: PASO_SEIS_DOCUMENTACION_ROUTE,
     stepNumber: 6,
-    component: StepSix,
+    component: PasoSeisDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '7',
-    path: STEP_SEVEN_ROUTE,
+    path: PASO_SIETE_DOCUMENTACION_ROUTE,
     stepNumber: 7,
-    component: StepSeven,
+    component: PasoSieteDocumentacion,
     services: [],
   },
   {
     tab: 'documentacion',
     step: '8',
-    path: STEP_EIGHT_ROUTE,
+    path: PASO_OCHO_DOCUMENTACION_ROUTE,
     stepNumber: 8,
-    component: StepEight,
+    component: PasoOchoDocumentacion,
     services: [],
   },
   {

@@ -158,7 +158,7 @@ const StepFive = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
-                  label="#"
+                  label="No. Exterior"
                   format="alphanumeric"
                 />
               </div>
@@ -169,7 +169,7 @@ const StepFive = () => {
                   formulario={formulario}
                   type="text"
                   size="big"
-                  label="Int."
+                  label="No. Interior"
                   format="alphanumeric"
                 />
               </div>

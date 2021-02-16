@@ -60,7 +60,9 @@ const UltimaEtapa = () => {
                   <li className="position-relative">
                     Comprobante de domicilio fiscal <span className="ml-xs-1 color-gray">(No mayor a tres meses)</span>
                   </li>
-                  <li className="position-relative">INE del representante legal</li>
+                  <li className="position-relative">
+                    INE del representante legal <span className="ml-xs-1 color-gray">(Frente y reverso)</span>
+                  </li>
                 </ul>
               ) : (
                 <ul>
@@ -72,12 +74,14 @@ const UltimaEtapa = () => {
                     Comprobante de domicilio fiscal
                     <span className="color-gray"> (No mayor a tres meses) </span>
                   </li>
-                  <li className="position-relative">Tu INE</li>
+                  <li className="position-relative">
+                    Tu INE <span className="ml-xs-1 color-gray">(Frente y reverso)</span>
+                  </li>
                   <li className="position-relative">
                     Acta de matrimonio <span className="color-gray">(Si estás casado)</span>
                   </li>
                   <li className="position-relative">
-                    INE de tu pareja <span className="color-gray">(Si estás casado)</span>
+                    INE de tu pareja <span className="color-gray">(Si estás casado, frente y reverso)</span>
                   </li>
                 </ul>
               )}

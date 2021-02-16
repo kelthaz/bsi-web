@@ -37,7 +37,6 @@ const StepFive = () => {
 
   const [handleSubmit] = useOnChangePage(
     formulario,
-    '/obligado-solidario/[person]/[tab]/[step]',
     formulario.values.ejercenControlMoral === 'no' && formulario.values.ejercenControlFisico === 'no'
       ? '/obligado-solidario/pm/preguntas/6'
       : '/obligado-solidario/pm/preguntas/agradecimiento',

@@ -11,6 +11,7 @@ import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../
 import changeSelectModel from '../../../../../helpers/changeSelectModel';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import useFindGiroBySector from '../../../../../hooks/useFindGiroBySector';
+import { PASO_CUATRO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
 const StepThree = ({ sectores }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -31,33 +32,13 @@ const StepThree = ({ sectores }) => {
   ];
 
   const { initialValues, validationSchema } = {
-    initialValues: {},
-    validationSchema: {},
-  };
-
-  if (datosPersonales.tipoPersona.value === 'MORAL') {
-    initialValues.razonSocial = datosPersonales.nombreEmpresa;
-    initialValues.tipoSociedad = datosPersonales.tipoSociedad;
-    validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
-    validationSchema.tipoSociedad = Yup.object()
-      .shape({
-        value: Yup.string(),
-        label: Yup.string(),
-      })
-      .nullable()
-      .required(seleccionOpcion);
-  }
-
-  const formulario = useFormik({
     initialValues: {
-      ...initialValues,
       nombreEmpresa: datosPersonales.nombreEmpresa,
       sector: datosPersonales.sector,
       giro: datosPersonales.giro,
       descripcionEmpresa: datosPersonales.descripcionEmpresa,
     },
-    validationSchema: Yup.object().shape({
-      ...validationSchema,
+    validationSchema: {
       nombreEmpresa: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
       sector: Yup.object()
         .shape({
@@ -74,6 +55,28 @@ const StepThree = ({ sectores }) => {
         .nullable()
         .required(seleccionOpcion),
       descripcionEmpresa: Yup.string().trim().max(180, longitudMaxima).required(campoRequerido),
+    },
+  };
+
+  if (datosPersonales.tipoPersona.value === 'MORAL') {
+    initialValues.razonSocial = datosPersonales.razonSocial;
+    initialValues.tipoSociedad = datosPersonales.tipoSociedad;
+    validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
+    validationSchema.tipoSociedad = Yup.object()
+      .shape({
+        value: Yup.string(),
+        label: Yup.string(),
+      })
+      .nullable()
+      .required(seleccionOpcion);
+  }
+
+  const formulario = useFormik({
+    initialValues: {
+      ...initialValues,
+    },
+    validationSchema: Yup.object().shape({
+      ...validationSchema,
     }),
     onSubmit: (values) => {
       dispatch(
@@ -86,12 +89,7 @@ const StepThree = ({ sectores }) => {
   });
 
   const [itemsGiro] = useFindGiroBySector(formulario, 'sector', 'giro');
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-personales/4',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_DATOS_PERSONA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

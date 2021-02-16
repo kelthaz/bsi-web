@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,6 +6,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_DOS_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
 const StepOne = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -37,12 +37,7 @@ const StepOne = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-personales/2',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_PERSONA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

@@ -28,7 +28,19 @@ const seleccionaEstilo = (size, inverted) => {
 
 const Select = (props) => {
   const [toggle, setToggle] = useState(false);
-  const { name, formulario, size, items, inverted, optional, label, disabled, defaultValue, blue } = props;
+  const {
+    name,
+    formulario,
+    size,
+    items,
+    inverted,
+    optional,
+    label,
+    disabled,
+    defaultValue,
+    blue,
+    showAlwaysErrors,
+  } = props;
   const [
     arrrowStyle,
     selectStyle,
@@ -106,7 +118,8 @@ const Select = (props) => {
         ))}
       </ul>
       <span className={touched && error ? styles['help-text-error'] : helpTextStyle}>
-        {touched && error && items.length > 0 ? error : optional && 'Opcional'}&nbsp;
+        {touched && error && items.length > 0 ? error : optional && 'Opcional'}
+        {showAlwaysErrors && <span>&nbsp;</span>}
       </span>
     </div>
   );
@@ -123,6 +136,7 @@ Select.propTypes = {
   defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
   blue: PropTypes.bool,
+  showAlwaysErrors: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -131,6 +145,7 @@ Select.defaultProps = {
   defaultValue: null,
   disabled: false,
   blue: false,
+  showAlwaysErrors: true,
 };
 
 export default Select;

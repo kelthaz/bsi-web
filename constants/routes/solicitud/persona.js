@@ -1,8 +1,8 @@
-export const bienvenida = '/solicitud/datos-personales/bienvenida';
-export const granSalto = '/solicitud/datos-personales/gran-salto';
-export const stepOne = '/solicitud/datos-personales/1';
-export const stepTwo = '/solicitud/datos-personales/2';
-export const stepThree = '/solicitud/datos-personales/3';
-export const stepFour = '/solicitud/datos-personales/4';
-export const stepFive = '/solicitud/datos-personales/5';
-export const agradecimiento = '/solicitud/datos-personales/agradecimiento';
+export const BIENVENIDA_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/bienvenida';
+export const GRAN_SALTO_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/gran-salto';
+export const PASO_UNO_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/1';
+export const PASO_DOS_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/2';
+export const PASO_TRES_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/3';
+export const PASO_CUATRO_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/4';
+export const PASO_CINCO_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/5';
+export const AGRADECIMIENTO_DATOS_PERSONA_ROUTE = '/solicitud/datos-personales/agradecimiento';

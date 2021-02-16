@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { campoRequerido, codigoPostalInvalido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
+import { PASO_TRES_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import useFindCodigoPostal from '../../../../../hooks/useFindCodigoPostal';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
@@ -99,12 +100,7 @@ const StepTwo = () => {
     'domicilioComercial.estado'
   );
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/3',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_EMPRESA_ROUTE, currentStep);
 
   const formDomicilio = (domicilio, colonias) => (
     <div className="row no-gutters">
@@ -126,7 +122,7 @@ const StepTwo = () => {
           formulario={formulario}
           type="text"
           size="big"
-          label="#"
+          label="No. Exterior"
           format="alphanumeric"
         />
       </div>
@@ -137,7 +133,7 @@ const StepTwo = () => {
           formulario={formulario}
           type="text"
           size="big"
-          label="Int."
+          label="No. Interior"
           format="alphanumeric"
         />
       </div>
