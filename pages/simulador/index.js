@@ -232,7 +232,9 @@ export const PageSimulador = ({ catalogo }) => {
                 </div>
               </div>
               <div className="px-lg-5">
-                <ResultSimulador dataSimulador={dataSimulador} resultSimulador={resultSimulador} />
+                <div className="card-simple-border-blue-storm">
+                  <ResultSimulador dataSimulador={dataSimulador} resultSimulador={resultSimulador} />
+                </div>
               </div>
 
               <div className="row justify-content-center mx-0  mt-4">

@@ -8,7 +8,7 @@ import SvgChevron from '../../svgs/SvgChevron';
 import useOnClickOutsideRef from '../../../hooks/useOnClickOutsideRef';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
-const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) => {
+const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, onChange}) => {
 
   const [toggle, setToggle] = useState(false);
   const [selectedDay, setSelectedDay] = useState();
@@ -61,6 +61,7 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) =
       return;
     }
     setSelectedDay(selected ? undefined : day);
+    onChange(selected);
   };
 
   const handleToggle = () => {
@@ -155,13 +156,15 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays}) =
 DatePickerInput.propTypes = {
   disableWeekends: PropTypes.bool,
   disablePreviousDays: PropTypes.bool,
-  disabledDays: PropTypes.arrayOf(Date)
+  disabledDays: PropTypes.arrayOf(Date),
+  onChange: PropTypes.func
 };
 
 DatePickerInput.defaultProps = {
   disableWeekends: false,
   disablePreviousDays: false,
-  disabledDays: []
+  disabledDays: [],
+  onChange: () => { }
 };
 
 export default DatePickerInput;
