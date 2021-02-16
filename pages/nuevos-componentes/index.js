@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
+import { Form, Formik, useFormik } from 'formik';
 
 import Modal from '../../components/shared/modal/Modal';
 import DatePickerInput from '../../components/shared/datepicker/DatePickerInput';
 import Select from '../../components/shared/select/Select';
 import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
+import Calendar from '../../components/shared/calendar/Calendar';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
 
 const Test = () => {
@@ -23,8 +24,8 @@ const Test = () => {
         </div>
         <div style={{maxWidth: '540px'}}>
           <p className="body2">
-            Alejandra, añade dos fechas en las que tu obligado solidario pueda recibir a
-            uno de nuestros ejecutivos para conocerlo y a su negocio.
+            Alejandra, selecciona dos fechas en las que tu obligado solidario pueda recibir a
+            uno de nuestros ejecutivos para conocerlo.
           </p>
           <p className="body2">
             Al concluir exitosamente la visita, podrás agendar tu propia visita de ejecutivo.
@@ -34,6 +35,7 @@ const Test = () => {
               <DatePickerInput
                 disablePreviousDays
                 disableWeekends
+                name="fecha"
               />
             </div>
             <div className="col-lg-6">
@@ -43,8 +45,6 @@ const Test = () => {
                 formulario={formulario}
                 size="smallb"
                 items={[
-                  { label: '07:00', value: '07:00' },
-                  { label: '08:00', value: '08:00' },
                   { label: '09:00', value: '09:00' },
                   { label: '10:00', value: '10:00' },
                   { label: '11:00', value: '11:00' },
@@ -110,7 +110,20 @@ const Test = () => {
           </div>
         </Section>
       </article>
-
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="02" linea1="(WIP) Calendario" />
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <Calendar />
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
       <article>
         <Section>
           <div className="col-lg-12 col-md-12">
