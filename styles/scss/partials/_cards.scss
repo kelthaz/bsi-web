@@ -152,6 +152,11 @@
   }
 }
 
+.line-bottom {
+  border: 0;
+  border-bottom: 1px solid $blue-shadow;
+}
+
 @mixin config-card-transparent-only-row($color) {
   align-items: flex-start;
   background-color: $color;

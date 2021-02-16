@@ -14,6 +14,7 @@ import styles from './Bienvenido.module.scss';
 
 const Bienvenido = () => {
   const { pfae } = useSelector((state) => state.obligado);
+  const { datosPersonales } = useSelector((state) => state.solicitud);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -100,7 +101,7 @@ const Bienvenido = () => {
             <div className="card-simple-blue-light list-onboarding">
               <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
                 <p className="body3 ml-1 ">
-                  Acepto: (1) los{' '}
+                  {/* Acepto: (1) los{' '}
                   <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
                     Términos y Condiciones
                   </a>
@@ -109,9 +110,14 @@ const Bienvenido = () => {
                     <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
                       Aviso de Privacidad
                     </a>
-                  </Link>
-                  , y que (3) los productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o
-                  modificados a través de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología.
+                  </Link> */}
+                  {/* , y que (3) los productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o
+                  modificados a través de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología. */}
+                  Yo <strong>{`${datosPersonales.primerNombre} ${datosPersonales.segundoNombre}`}</strong> declaro bajo
+                  protesta de decir vedad y conozco las penas y multas en que incurren los que con el ánimo de obtener
+                  un financiamiento proporcionen información y/o documentación falsa de conformidad con lo establecido
+                  en el artículo 112 de la Ley de Instituciones de Crédito y en los artículos 339 y 342 del Código Penal
+                  para el Distrito Federal y demás correlativos del Código Penal Federal, en la parte que corresponda.
                 </p>
               </CheckTextBox>
             </div>

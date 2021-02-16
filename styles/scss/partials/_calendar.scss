@@ -1,0 +1,39 @@
+.DayPicker {
+  width: 100%;
+}
+
+.DayPicker-wrapper {
+  // width: 100%;
+}
+
+.DayPicker-Caption {
+  color: $gray;
+  font-family: $futura-heavy;
+  font-size: 16px;
+  text-align: center !important;
+  @include media('mobile') {
+    font-size: 14px;
+  }
+}
+
+.DayPicker-Months {
+  position: relative;
+  top: -42px;
+  width: 100%;
+}
+
+.DayPicker-WeekdaysRow {
+  border-bottom: 1px solid $blue-shadow;
+}
+
+.DayPicker-Weekday {
+  color: $blue-light;
+  font-family: $futura-book;
+  font-size: 12px;
+}
+
+.DayPicker-Day {
+  color: $gray;
+  font-family: $futura-book;
+  font-size: 12px;
+}

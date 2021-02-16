@@ -20,7 +20,9 @@ const Bienvenida = () => {
             características:
           </p>
           <div className="py-3">
-            <ResultSimulador dataSimulador={dataSimulador} resultSimulador={resultSimulador} />
+            <div className="card-simple-border-blue-storm">
+              <ResultSimulador dataSimulador={dataSimulador} resultSimulador={resultSimulador} />
+            </div>
           </div>
           <p className="body2 color-gray-dark">
             Si quieres cambiar el monto o las características de tu crédito da clic en “Cambia tu crédito”. Te

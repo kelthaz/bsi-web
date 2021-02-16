@@ -44,10 +44,18 @@ const StepEight = () => {
       controladosFisica: [],
       existePersonaFIsica: null,
       cantidadEjerceControl: null,
+      parentesco: null,
     },
     validationSchema: Yup.object().shape({
       existePersonaFIsica: Yup.string().required(campoRequerido),
       controladosFisica: Yup.array().of(subformValidationSchema),
+      parentesco: Yup.object()
+        .shape({
+          value: Yup.string(),
+          label: Yup.string(),
+        })
+        .nullable()
+        .required(seleccionOpcion),
     }),
   };
 
@@ -57,6 +65,24 @@ const StepEight = () => {
     { label: '3', value: 3 },
     { label: '4', value: 4 },
     { label: '5', value: 5 },
+    { label: '6', value: 6 },
+    { label: '7', value: 7 },
+    { label: '8', value: 8 },
+    { label: '9', value: 9 },
+    { label: '10', value: 10 },
+  ];
+
+  const parentescoItems = [
+    { label: 'Cónyuges', value: 1 },
+    { label: 'Concubinos', value: 2 },
+    { label: 'Hijos', value: 3 },
+    { label: 'Padres', value: 4 },
+    { label: 'Suegros', value: 5 },
+    { label: 'Hijos de cónyuge', value: 6 },
+    { label: 'Hermanos', value: 7 },
+    { label: 'Abuelos', value: 8 },
+    { label: 'Nietos', value: 9 },
+    { label: 'Cuñados', value: 10 },
   ];
 
   const formulario = useFormik({
@@ -117,7 +143,8 @@ const StepEight = () => {
               formulario={formulario}
               type="text"
               size="big"
-              label="2º Nombre"
+              label="Nombre"
+              optional
             />
           </div>
         </div>
@@ -166,24 +193,7 @@ const StepEight = () => {
             <p className="input color-gray">Parentesco</p>
           </div>
           <div className="col-md-6 col-xs-12 pr-lg-2 pr-md-2">
-            <Select
-              name={`${nameControlador}[${index}].parentesco`}
-              formulario={formulario}
-              size="big"
-              items={[
-                { label: 'Cónyuges', value: 'Cónyuges' },
-                { label: 'Concubinos', value: 'oncubinos' },
-                { label: 'Hijos', value: 'Hijos' },
-                { label: 'Padres', value: 'Padres' },
-                { label: 'Suegros', value: 'Suegros' },
-                { label: 'Hijos de cónyuge', value: 'Hijos de cónyuge' },
-                { label: 'Hermanos', value: 'Hermanos' },
-                { label: 'Abuelos', value: 'Abuelos' },
-                { label: 'Nietos', value: 'Nietos' },
-                { label: 'Cuñados', value: 'Cuñados' },
-              ]}
-              label="Parentesco"
-            />
+            <Select name="parentesco" formulario={formulario} size="big" items={parentescoItems} label="Parentesco" />
           </div>
         </div>
       </div>

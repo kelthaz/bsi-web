@@ -13,7 +13,7 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'user' },
 };
 
-const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
+const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) => {
   const canvasRef = useRef();
   const videoRef = useRef();
 
@@ -67,8 +67,8 @@ const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
 
     context.drawImage(
       videoRef.current,
-      offsets.x,
-      offsets.y,
+      (container.width - 100) / 2,
+      (container.height - 100) / 2,
       container.width,
       container.height,
       0,
@@ -76,7 +76,7 @@ const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
       container.width,
       container.height
     );
-    const rawImgData = canvasRef.current.toDataURL('image/jpeg', 0.5);
+    const rawImgData = canvasRef.current.toDataURL('image/jpeg', 1);
     const timestamp = Date.now();
 
       // onCapture(rawImgData);
@@ -103,6 +103,14 @@ const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
       resumeCamera();
     }
   }, [isCaptureComplete]);
+
+  useEffect(() => {
+    if (pauseImage) {
+      pauseCamera();
+    } else {
+      resumeCamera();
+    }
+  }, [pauseImage]);
 
   if (!mediaStream) {
     return null;
@@ -140,8 +148,8 @@ const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
             <canvas
               className={styles.canvas}
               ref={canvasRef}
-              width={480 / 2}
-              height={640 / 2}
+              width={240}
+              height={320}
             />
           </div>
         </div>
@@ -152,10 +160,12 @@ const Camera = forwardRef(({ isCaptureComplete, facingMode }, ref) => {
 
 Camera.propTypes = {
   isCaptureComplete: PropTypes.bool.isRequired,
+  pauseImage: PropTypes.bool,
   facingMode: PropTypes.string
 };
 
 Camera.defaultProps = {
+  pauseImage: false,
   facingMode: 'user',
 };
 

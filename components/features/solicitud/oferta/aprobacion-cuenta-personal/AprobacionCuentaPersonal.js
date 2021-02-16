@@ -82,9 +82,12 @@ const AprobacionCuentaPersona = () => {
             </div>
           }
           <div className="row mx-xs-1 my-3">
-            <ResultSimulador
-              dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestral  '} }}
-              resultSimulador={{ tasaOrdinaria: '25%', comisionApertura: '2%', cat: '29.1%', pago: '$31,250' }} />
+            <div className="card-simple-border-blue-storm">
+              <ResultSimulador
+                dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestral  '} }}
+                resultSimulador={{ tasaOrdinaria: '25%', comisionApertura: '2%', cat: '29.1%', pago: '$31,250' }}
+              />
+            </div>
           </div>
           <div className="row">
             <div className="col-12">

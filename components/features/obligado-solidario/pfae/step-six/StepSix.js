@@ -101,7 +101,7 @@ const StepSix = () => {
         </div>
         <div className="row no-gutters">
           <div className="col-lg-2 col-md-4 col-sm-12 col-xs-12 ">
-            <p className="input color-gray">RFC</p>
+            <p className="input color-gray">Su RFC</p>
           </div>
           <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
             <TextField
@@ -121,7 +121,7 @@ const StepSix = () => {
           </div>
         </div>
         <div className="row no-gutters">
-          <div className="col-lg-2 col-md-4 col-sm-6 col-xs-3 ">
+          <div className="col-lg-2 col-md-3 col-sm-6 col-xs-3 mt-2">
             <p className="input color-gray">Directo</p>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-6 col-xs-3  pr-lg-2 pr-md-2">
@@ -135,7 +135,7 @@ const StepSix = () => {
               label="%"
             />
           </div>
-          <div className="col-lg-3 col-md-4 col-sm-6 col-xs-3">
+          <div className="col-lg-3 col-md-3 col-sm-6 col-xs-3 mt-2">
             <p className="input color-gray">Indirecto</p>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-6 col-xs-3 pr-lg-2 pr-md-2">

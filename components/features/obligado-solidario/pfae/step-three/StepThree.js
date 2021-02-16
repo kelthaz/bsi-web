@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -9,10 +9,10 @@ import TextField from '../../../../shared/text-field/TextField';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { campoRequerido } from '../../../../../constants/errors';
+import useCreateFormArray from '../../../../../hooks/useCreateFormArray';
 
 const StepThree = () => {
   const { pfae } = useSelector((state) => state.obligado);
-  const [cantCuentas, setCantCuentas] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -25,8 +25,10 @@ const StepThree = () => {
       cuentasLiquidas: pfae.cuentasLiquidas,
       cuentasArray: [],
       cuentas: pfae.cuentas,
+      cantAcciones: 1,
     },
     validationSchema: Yup.object().shape({
+      cuentasLiquidas: Yup.string().required(campoRequerido),
       cuentasArray: Yup.array().of(subformValidationSchema),
     }),
   };
@@ -47,13 +49,36 @@ const StepThree = () => {
     },
   });
 
-  useEffect(() => {
-    if (formulario.values.cuentasLiquidas === 'si') {
-      setCantCuentas(true);
-    } else if (formulario.values.cuentasLiquidas === 'no') {
-      setCantCuentas(false);
-    }
-  }, [formulario.values.cuentasLiquidas]);
+  useCreateFormArray(
+    formulario,
+    formulario.values.cuentasLiquidas === 'si',
+    [formulario.values.cuentasLiquidas, formulario.values.cantAcciones],
+    {
+      cuentas: '',
+    },
+    'cuentasArray',
+    'cantAcciones'
+  );
+
+  const formControlados = (nameControlador) =>
+    formulario.values[nameControlador].map((value, index) => (
+      <div key={value}>
+        <div className="row no-gutters mt-3">
+          <p className="color-dark-gray sub">¿Tienes cuentas con depósitos e inversiones líquidas?</p>
+          <div className="col-md-7 col-xs-12">
+            <TextField
+              name={`${nameControlador}[${index}].cuentas`}
+              maxlength={11}
+              formulario={formulario}
+              type="text"
+              size="big"
+              label="$.00"
+              format="money"
+            />
+          </div>
+        </div>
+      </div>
+    ));
   return (
     <>
       <div className="contedor-fixed-tab">
@@ -75,30 +100,13 @@ const StepThree = () => {
                   </RadioButton>
                 </div>
               </div>
-              {cantCuentas ? (
-                <div className="row no-gutters mt-3">
-                  <p className="color-dark-gray sub">¿Tienes cuentas con depósitos e inversiones líquidas?</p>
-                  <div className="col-md-7 col-xs-12">
-                    <TextField
-                      name="cuentas"
-                      maxlength={60}
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="$.00"
-                      format="money"
-                    />
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
+              {formControlados('cuentasArray')}
               <div className="flex-column-center-config">
                 <button
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={!formulario.dirty}
+                  disabled={!formulario.isValid}
                 />
               </div>
             </form>

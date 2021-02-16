@@ -19,6 +19,10 @@ const CapturaRostro = () => {
   const [analysisMessage, setAnalysisMessage] = useState([]);
   const [isCaptureComplete, setCaptureComplete] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [takePhotoStatus, setTakePhotoStatus] = useState('Tomar foto');
+  const [isTakingPicture, setTakingPicture] = useState(false);
+  const [pauseImage, setPauseImage] = useState(false);
+
 
   const { initialValues, validationSchema } = {
     initialValues: {},
@@ -75,11 +79,6 @@ const CapturaRostro = () => {
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       // credentials: 'same-origin', // include, *same-origin, omit
       headers: {
-        'Access-Control-Allow-Origin': '192.168.5.4:3000',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Expose-Headers': '*',
         'Content-Type': 'text/plain; charset=utf-8'
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -111,11 +110,6 @@ const CapturaRostro = () => {
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       // credentials: 'same-origin', // include, *same-origin, omit
       headers: {
-        'Access-Control-Allow-Origin': '192.168.5.4:3000',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Expose-Headers': '*',
         'Content-Type': 'text/plain; charset=utf-8'
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -167,27 +161,46 @@ const CapturaRostro = () => {
     try {
       const response = await getResponseAnalyze(frames);
       if (response.video.liveness_result.score === 100) {
+        setPauseImage(true);
         setCaptureComplete(true);
       } else {
         setAnalysisMessage(['Por favor, inténtelo de nuevo']);
+        setPauseImage(false);
+        setCaptureComplete(false);
       }
     } catch (error) {
       setAnalysisMessage(['Por favor, inténtelo de nuevo']);
+      setPauseImage(false);
+      setCaptureComplete(false);
     }
   };
 
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const onCapture = async () => {
-    const frame1 = cameraRef.current.onCapture();
-    const frame2 = cameraRef.current.onCapture();
-    const frame3 = cameraRef.current.onCapture();
-    const autoCaptureRes = await analyzeAutoCapture(frame1);
+    const frames = [];
+    setTakingPicture(true);
+    /* eslint-disable no-await-in-loop */
+    for (let index = 3; index > 0; index--) {
+      setTakePhotoStatus(index);
+      frames.push(cameraRef.current.onCapture());
+      await sleep(500);
+    }
+    /* eslint-enable no-await-in-loop */
+    setPauseImage(true);
+    setTakePhotoStatus('Tomar foto');
+    setTakingPicture(false);
+    const autoCaptureRes = await analyzeAutoCapture(frames[2]);
     if (autoCaptureRes) {
-      checkForLiveness([frame1, frame2, frame3]);
+      checkForLiveness(frames);
+    } else {
+      setPauseImage(false);
     }
   };
 
   const onClear = () => {
     cameraRef.current.onClear();
+    setPauseImage(false);
     setCaptureComplete(false);
   };
 
@@ -217,7 +230,8 @@ const CapturaRostro = () => {
           {isCameraOpen &&
             <Camera
               ref={cameraRef}
-              isCaptureComplete={isCaptureComplete}
+            isCaptureComplete={isCaptureComplete}
+            pauseImage={pauseImage}
             />
           }
         </div>
@@ -273,8 +287,8 @@ const CapturaRostro = () => {
           </div>
           <div className="row">
             <div className="col-12 text-center mt-3">
-              <button type="submit" className="btn-medium" onClick={() => onCapture()}>
-                Tomar foto
+              <button type="submit" className="btn-medium" onClick={() => onCapture()} disabled={isTakingPicture}>
+                { takePhotoStatus }
               </button>
             </div>
           </div>

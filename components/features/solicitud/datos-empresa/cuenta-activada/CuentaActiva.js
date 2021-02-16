@@ -78,14 +78,24 @@ const CuentaActiva = () => {
             <div className="row flex-column-start-config">
               <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
               <div className="card-simple-blue-light list-onboarding">
+                {datosPersonales.tipoPersona.value === 'MORAL' ?
+                <ul>
+                  <li>La CURP del representante legal</li>
+                  <li className="position-relative">
+                    La clave CIEC de la empresa y la e.firma* <span className="color-gray">(.key y .cer)</span>
+                    <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
+                  </li>
+                </ul>
+                :
                 <ul>
                   <li>Tu CURP</li>
                   <li className="position-relative">
                     Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
                     <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
                   </li>
-                  {datosPersonales.tipoPersona.value === 'MORAL' && <li>Cuenta bancaria BanCoppel</li>}
+                  <li>Cuenta bancaria BanCoppel</li>
                 </ul>
+                }
               </div>
             </div>
             <div className="row">
