@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styles from './select.module.scss';
 import useOnClick from '../../../hooks/useOnClick';
 import SvgChevron from '../../svgs/SvgChevron';
-// import SvgCross from '../../svgs/SvgCross';
 
 const seleccionaEstilo = (size, inverted) => {
   const finalStyles = [];

@@ -1,0 +1,124 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+@mixin config-datepicker-config($color, $size) {
+  background-color: transparent;
+  color: $blue-storm;
+  cursor: pointer;
+  font-family: $futura-book;
+  font-size: $size;
+  height: 50px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+
+  @if $size == 32px {
+    padding: 0 24px 0 12px;
+  } @else {
+    padding: 8px 24px 8px 12px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    background-color: $blue-light;
+    border-bottom: 1.5px solid $gray-light;
+    cursor: not-allowed;
+  }
+}
+
+.datepicker-select {
+  @include scroll-config(6px);
+  position: relative;
+  width: 100%;
+}
+
+.arrow {
+  transform: rotate(90deg);
+  transition: transform 0.3s linear;
+
+  svg {
+    path {
+      stroke: $gray;
+    }
+  }
+
+  &:disabled {
+    svg {
+      path {
+        stroke: $gray-light;
+      }
+    }
+  }
+}
+
+.arrow-active {
+  transform: rotate(270deg);
+  transition: transform 0.3s linear;
+}
+
+.select-small-blue {
+  @include config-datepicker-config($blue-storm, 24px);
+  @include media('md') {
+    font-size: 16px;
+  }
+}
+
+@mixin indicador-config($color) {
+  border: 0;
+  border-bottom: 1.5px solid $color;
+}
+
+.indicador {
+  @include indicador-config($gray);
+}
+
+.indicador-activo {
+  @include indicador-config($blue-sky);
+}
+
+.indicador-error {
+  @include indicador-config($red);
+}
+
+.placeholder-color {
+  color: $gray-light !important;
+}
+
+.dropdowm-calendar {
+  @include scroll-config-firefox;
+  background-color: $white;
+  border: 1px solid $blue-shadow;
+  border-radius: 0 0 16px 16px;
+  border-top: 0;
+  left: 0;
+  list-style-type: none;
+  margin: 0;
+  max-height: 300px;
+  overflow: auto;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  transition: max-height 0.3s ease-in;
+  visibility: visible;
+  // width: 700px;
+  @include media('md') {
+    width: 100%;
+  }
+  width: 200%;
+  z-index: 99;
+}
+
+.dropdowm-calendar-hide {
+  border: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  transition: max-height 0.3s ease-out;
+  transition: border 0.3s;
+}
