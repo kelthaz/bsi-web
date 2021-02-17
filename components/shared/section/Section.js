@@ -1,6 +1,6 @@
 // import styles from './section.module.scss';
 
-export const Section = (props) => {
+const Section = (props) => {
   const { className, children } = props;
 
   return (

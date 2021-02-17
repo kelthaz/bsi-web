@@ -107,7 +107,7 @@
   transition: max-height 0.3s ease-in;
   visibility: visible;
   // width: 700px;
-  @include media('lg') {
+  @include media('md') {
     width: 100%;
   }
   width: 200%;
