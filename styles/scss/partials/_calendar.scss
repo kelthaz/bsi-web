@@ -37,3 +37,7 @@
   font-family: $futura-book;
   font-size: 12px;
 }
+
+.DayPicker-Day--selected {
+  background-color: $blue-storm !important;
+}

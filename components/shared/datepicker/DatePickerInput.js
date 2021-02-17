@@ -48,7 +48,7 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, on
     const daysOff = [];
     daysOff.push(...disabledDays);
     if (disableWeekends) {
-      daysOff.push({ daysOfWeek: [0, 6] });
+      daysOff.push({ daysOfWeek: [0] });
     }
     if (disablePreviousDays) {
       daysOff.push({ before: new Date() });
@@ -133,7 +133,7 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, on
         onClick={() => handleToggle()}
         tabIndex="0"
       >
-        { selectedDay ? selectedDay.toLocaleDateString() : 'Fecha' }
+        { selectedDay ? selectedDay.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Fecha' }
       </button>
       <div className={`${styles['dropdowm-calendar']} ${toggle ? '' : styles['dropdowm-calendar-hide']}`}>
         <DayPicker
