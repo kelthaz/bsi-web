@@ -1,22 +1,33 @@
+import PropTypes from 'prop-types';
 import useFindCodigoPostal from '../../../../../hooks/useFindCodigoPostal';
 import Select from '../../../../shared/select/Select';
 import TextField from '../../../../shared/text-field/TextField';
 
-const Domicilio = ({ domicilio, colonias, formulario }) => {
-  const [coloniasDomicilioFiscal] = useFindCodigoPostal(
+const Domicilio = ({
+  formulario,
+  nameFieldCalle,
+  nameFieldNumExterior,
+  nameFieldNumInterior,
+  nameFieldCodigoPostal,
+  nameFieldColonia,
+  nameFieldMunicipioAlcaldia,
+  nameFieldCiudad,
+  nameFieldEstado,
+}) => {
+  const [colonias] = useFindCodigoPostal(
     formulario,
-    'domicilioFiscal.codigoPostal',
-    'domicilioFiscal.colonia',
-    'domicilioFiscal.municipioAlcaldia',
-    'domicilioFiscal.ciudad',
-    'domicilioFiscal.estado'
+    nameFieldCodigoPostal,
+    nameFieldColonia,
+    nameFieldMunicipioAlcaldia,
+    nameFieldCiudad,
+    nameFieldEstado
   );
 
   return (
     <div className="row no-gutters">
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
         <TextField
-          name={`${domicilio}.calle`}
+          name={nameFieldCalle}
           maxlength={60}
           formulario={formulario}
           type="text"
@@ -27,7 +38,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
       </div>
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
         <TextField
-          name={`${domicilio}.numExterior`}
+          name={nameFieldNumExterior}
           maxlength={6}
           formulario={formulario}
           type="text"
@@ -38,7 +49,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
       </div>
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
         <TextField
-          name={`${domicilio}.numInterior`}
+          name={nameFieldNumInterior}
           maxlength={6}
           formulario={formulario}
           type="text"
@@ -50,7 +61,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
 
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
         <TextField
-          name={`${domicilio}.codigoPostal`}
+          name={nameFieldCodigoPostal}
           maxlength={5}
           formulario={formulario}
           type="text"
@@ -61,7 +72,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
       </div>
       <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <Select
-          name={`${domicilio}.colonia`}
+          name={nameFieldColonia}
           maxlength={120}
           formulario={formulario}
           type="text"
@@ -74,7 +85,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
 
       <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
         <TextField
-          name={`${domicilio}.municipioAlcaldia`}
+          name={nameFieldMunicipioAlcaldia}
           maxlength={50}
           formulario={formulario}
           type="text"
@@ -85,7 +96,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
       </div>
       <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <TextField
-          name={`${domicilio}.ciudad`}
+          name={nameFieldCiudad}
           maxlength={50}
           formulario={formulario}
           type="text"
@@ -97,7 +108,7 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
 
       <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <TextField
-          name={`${domicilio}.estado`}
+          name={nameFieldEstado}
           maxlength={50}
           formulario={formulario}
           type="text"
@@ -108,6 +119,18 @@ const Domicilio = ({ domicilio, colonias, formulario }) => {
       </div>
     </div>
   );
+};
+
+Domicilio.propTypes = {
+  formulario: PropTypes.any.isRequired,
+  nameFieldCalle: PropTypes.string.isRequired,
+  nameFieldNumExterior: PropTypes.string.isRequired,
+  nameFieldNumInterior: PropTypes.string.isRequired,
+  nameFieldCodigoPostal: PropTypes.string.isRequired,
+  nameFieldColonia: PropTypes.string.isRequired,
+  nameFieldMunicipioAlcaldia: PropTypes.string.isRequired,
+  nameFieldCiudad: PropTypes.string.isRequired,
+  nameFieldEstado: PropTypes.string.isRequired,
 };
 
 export default Domicilio;

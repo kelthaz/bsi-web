@@ -2,26 +2,31 @@ import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { campoRequerido, codigoPostalInvalido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
-import { PASO_TRES_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
-import useOnChangePage from '../../../../../hooks/useOnChangePage';
-import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import RadioButton from '../../../../shared/radio-button/RadioButton';
-import Tooltip from '../../../../shared/tooltip/Tooltip';
-import Domicilio from '../../shared/domicilio/Domicilio';
+import {
+  campoRequerido,
+  codigoPostalInvalido,
+  longitudMaxima,
+  seleccionOpcion,
+} from '../../../../../../constants/errors';
+import { PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import RadioButton from '../../../../../shared/radio-button/RadioButton';
+import Tooltip from '../../../../../shared/tooltip/Tooltip';
+import Domicilio from '../../../shared/domicilio/Domicilio';
 
-const StepTwo = () => {
-  const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
+const PasoDosObligadoSolidarioPM = () => {
+  const { pm, currentStep } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
   const { query } = useRouter();
   const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
-      domicilioFiscal: { ...datosEmpresa.domicilioFiscal },
-      domicilioComercial: { ...datosEmpresa.domicilioComercial },
-      esDomilicioComercial: datosEmpresa.esDomilicioComercial,
-      domicilioEntrega: datosEmpresa.domicilioEntrega,
+      domicilioFiscal: { ...pm.domicilioFiscal },
+      domicilioComercial: { ...pm.domicilioComercial },
+      esDomilicioComercial: pm.esDomilicioComercial,
+      domicilioEntrega: pm.domicilioEntrega,
     },
     validationSchema: Yup.object().shape({
       domicilioFiscal: Yup.object().shape({
@@ -69,10 +74,10 @@ const StepTwo = () => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepDatosPersonales({
+        nextStepObligadoSolidario({
           currentStep: validate ? { tab: 'datos-empresa', step: '3' } : { ...currentStep },
-          datosEmpresa: {
-            ...datosEmpresa,
+          pm: {
+            ...pm,
             ...values,
           },
         })
@@ -80,7 +85,7 @@ const StepTwo = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">
@@ -169,4 +174,4 @@ const StepTwo = () => {
   );
 };
 
-export default StepTwo;
+export default PasoDosObligadoSolidarioPM;
