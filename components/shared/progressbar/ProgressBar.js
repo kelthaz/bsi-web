@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
-import styles from './side-bar.module.scss';
+import styles from './progress-bar.module.scss';
 
-const SideBar = ({ value }) => (
+const ProgressBar = ({ value }) => (
   <div>
     <progress className={`${styles.progress}`} value={value} max="100" />
   </div>
 );
 
-SideBar.propTypes = {
+ProgressBar.propTypes = {
   value: PropTypes.string,
 };
 
-SideBar.defaultProps = {
+ProgressBar.defaultProps = {
   value: null,
 };
 
-export default SideBar;
+export default ProgressBar;

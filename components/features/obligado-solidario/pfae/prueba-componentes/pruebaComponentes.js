@@ -1,7 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import IndividualVideo from '../../../../shared/back-office-video/BackOfficeVideo';
-import SideBar from '../../../../shared/sidebar/SideBar';
+import ProgressBar from '../../../../shared/progressbar/ProgressBar';
+import NextStepsTable from '../../../../shared/next-steps-table/NextStepsTable';
 
 const pruebaComponentes = () => {
   const formulario = useFormik({});
@@ -22,7 +23,10 @@ const pruebaComponentes = () => {
                 <IndividualVideo width={210} idVideo={3} src="https://www.youtube.com/embed/VayHlVwGmGs" />
               </div>
               <div className="col-md-4 col-xs-12">
-                <SideBar value="50" />
+                <ProgressBar value="50" />
+              </div>
+              <div className="mt-4 col-md-12 col-xs-12">
+                <NextStepsTable />
               </div>
             </div>
           </form>
