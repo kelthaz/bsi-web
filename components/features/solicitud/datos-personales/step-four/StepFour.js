@@ -9,6 +9,7 @@ import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import EmailageRepositorio from '../../../../../services/solicitud/emailage.repositorio';
+import { PASO_CINCO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
 const StepFour = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -48,13 +49,7 @@ const StepFour = () => {
     return true;
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-personales/5',
-    currentStep,
-    validateEmail
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, currentStep, validateEmail);
 
   return (
     <div className="contedor-fixed-tab">

@@ -61,3 +61,27 @@
     }
   }
 }
+
+.table-documentacion {
+  overflow: auto;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(34, 90, 167, 0.2);
+    border-radius: 10px;
+  }
+
+  th {
+    color: $gray;
+    text-align: center;
+  }
+
+  td {
+    justify-content: center;
+  }
+}

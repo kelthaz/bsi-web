@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
+import { PASO_DOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextArea from '../../../../shared/text-area/TextArea';
@@ -56,12 +57,7 @@ const StepOne = () => {
     await setFieldValue('usoCredito', usoCredito);
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/2',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

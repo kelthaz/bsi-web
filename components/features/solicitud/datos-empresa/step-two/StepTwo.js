@@ -3,13 +3,12 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { campoRequerido, codigoPostalInvalido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
-import useFindCodigoPostal from '../../../../../hooks/useFindCodigoPostal';
+import { PASO_TRES_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
-import Select from '../../../../shared/select/Select';
-import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
+import Domicilio from '../../shared/domicilio/Domicilio';
 
 const StepTwo = () => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
@@ -81,127 +80,7 @@ const StepTwo = () => {
     },
   });
 
-  const [coloniasDomicilioFiscal] = useFindCodigoPostal(
-    formulario,
-    'domicilioFiscal.codigoPostal',
-    'domicilioFiscal.colonia',
-    'domicilioFiscal.municipioAlcaldia',
-    'domicilioFiscal.ciudad',
-    'domicilioFiscal.estado'
-  );
-
-  const [coloniasDomicilioComercial] = useFindCodigoPostal(
-    formulario,
-    'domicilioComercial.codigoPostal',
-    'domicilioComercial.colonia',
-    'domicilioComercial.municipioAlcaldia',
-    'domicilioComercial.ciudad',
-    'domicilioComercial.estado'
-  );
-
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/3',
-    currentStep
-  );
-
-  const formDomicilio = (domicilio, colonias) => (
-    <div className="row no-gutters">
-      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-        <TextField
-          name={`${domicilio}.calle`}
-          maxlength={60}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="Calle"
-          format="alphanumeric"
-        />
-      </div>
-      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-        <TextField
-          name={`${domicilio}.numExterior`}
-          maxlength={6}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="#"
-          format="alphanumeric"
-        />
-      </div>
-      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-        <TextField
-          name={`${domicilio}.numInterior`}
-          maxlength={6}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="Int."
-          format="alphanumeric"
-        />
-      </div>
-
-      <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-        <TextField
-          name={`${domicilio}.codigoPostal`}
-          maxlength={5}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="C.P"
-          format="number"
-        />
-      </div>
-      <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <Select
-          name={`${domicilio}.colonia`}
-          maxlength={120}
-          formulario={formulario}
-          type="text"
-          size="big"
-          items={colonias}
-          label="Colonia"
-          disabled={colonias.length === 0}
-        />
-      </div>
-
-      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-        <TextField
-          name={`${domicilio}.municipioAlcaldia`}
-          maxlength={50}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="Municipio/Alcaldía"
-          readonly
-        />
-      </div>
-      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <TextField
-          name={`${domicilio}.ciudad`}
-          maxlength={50}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="Ciudad"
-          readonly
-        />
-      </div>
-
-      <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <TextField
-          name={`${domicilio}.estado`}
-          maxlength={50}
-          formulario={formulario}
-          type="text"
-          size="big"
-          label="Estado"
-          readonly
-        />
-      </div>
-    </div>
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">
@@ -212,7 +91,17 @@ const StepTwo = () => {
               Por favor compártenos tu domicilio fiscal.
               <Tooltip message="Es el domicilio con el que tu negocio está registrado ante el SAT." />
             </p>
-            {formDomicilio('domicilioFiscal', coloniasDomicilioFiscal)}
+            <Domicilio
+              formulario={formulario}
+              nameFieldCalle="domicilioFiscal.calle"
+              nameFieldNumExterior="domicilioFiscal.numExterior"
+              nameFieldNumInterior="domicilioFiscal.numInterior"
+              nameFieldCodigoPostal="domicilioFiscal.codigoPostal"
+              nameFieldColonia="domicilioFiscal.colonia"
+              nameFieldMunicipioAlcaldia="domicilioFiscal.municipioAlcaldia"
+              nameFieldCiudad="domicilioFiscal.ciudad"
+              nameFieldEstado="domicilioFiscal.estado"
+            />
             <p className="color-gray-dark body2">¿Éste es también tu domicilio comercial?</p>
             <div className="row no-gutters py-3">
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
@@ -233,7 +122,18 @@ const StepTwo = () => {
                   Compártenos tu domicilio comercial..
                   <Tooltip message="Es el domicilio en el que realizas la operación día a día de tu negocio." />
                 </p>
-                {formDomicilio('domicilioComercial', coloniasDomicilioComercial)}
+
+                <Domicilio
+                  formulario={formulario}
+                  nameFieldCalle="domicilioComercial.calle"
+                  nameFieldNumExterior="domicilioComercial.numExterior"
+                  nameFieldNumInterior="domicilioComercial.numInterior"
+                  nameFieldCodigoPostal="domicilioComercial.codigoPostal"
+                  nameFieldColonia="domicilioComercial.colonia"
+                  nameFieldMunicipioAlcaldia="domicilioComercial.municipioAlcaldia"
+                  nameFieldCiudad="domicilioComercial.ciudad"
+                  nameFieldEstado="domicilioComercial.estado"
+                />
 
                 <div className="row no-gutters card-simple-blue-light">
                   <div className="col-lg-12 pb-2">

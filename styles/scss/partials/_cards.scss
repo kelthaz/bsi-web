@@ -1,3 +1,8 @@
+.line {
+  background-color: $gray-light;
+  height: 1px;
+}
+
 .card-login-1 {
   background-color: $white;
   border-radius: 16px;
@@ -135,6 +140,10 @@
 
 .card-blue-night {
   @include config-card-sombra($blue-night);
+}
+
+.card-simple-white-shadow {
+  @include config-card-sombra($white);
 }
 
 .line-card {

@@ -8,6 +8,7 @@ import { campoRequerido } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const StepSeven = () => {
   const { datosPersonales, datosEmpresa, currentStep } = useSelector((state) => state.solicitud);
@@ -38,12 +39,7 @@ const StepSeven = () => {
     validateOnMount: true,
   });
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/gracias-contacto',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

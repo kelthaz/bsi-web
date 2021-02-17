@@ -2,24 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './check-text-box.module.scss';
 
-const CheckTextBox = ({ name, formulario, children, notBackground = true, isGrayColor }) => {
+const CheckTextBox = ({ name, formulario, children }) => {
   const { values, setFieldValue, errors } = formulario;
-
-  const labelClasses = [styles.label];
-
-  if (isGrayColor) {
-    labelClasses.push(styles['gray-label']);
-  }
 
   return (
     <>
-      <div
-        className={
-          notBackground
-            ? `card-simple-blue-light ${styles['container-check-text']}`
-            : `${styles['container-check-text']}`
-        }
-      >
+      <div className={`card-simple-blue-light ${styles['container-check-text']}`}>
         <div className={`${styles['container-check']}`}>
           <input
             id={name}
@@ -29,17 +17,13 @@ const CheckTextBox = ({ name, formulario, children, notBackground = true, isGray
             onChange={() => setFieldValue(name, !values[name])}
             checked={!!values[name]}
           />
-          <label htmlFor={name} className={labelClasses.join(' ')}>
+          <label htmlFor={name} className={`${styles.label}`}>
             {' '}
           </label>
         </div>
         <div>{children}</div>
       </div>
-      {notBackground ? (
-        <span className="color-red">{errors[name] && values[name] !== null ? errors[name] : ''}&nbsp;</span>
-      ) : (
-        ''
-      )}
+      <span className="color-red">{errors[name] && values[name] !== null ? errors[name] : ''}&nbsp;</span>
     </>
   );
 };

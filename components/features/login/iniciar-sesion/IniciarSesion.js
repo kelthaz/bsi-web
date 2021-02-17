@@ -9,8 +9,8 @@ import { regexRFCFisicaMoral } from '../../../../constants/regex';
 import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
-import CheckTextBox from '../../../shared/check-text-box/CheckTextBox';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
+import CheckBox from '../../../shared/check-box/CheckBox';
 
 const IniciarSesion = () => {
   const { push } = useRouter();
@@ -19,13 +19,13 @@ const IniciarSesion = () => {
       rfc: '',
       contrasena: '',
       check: '',
-      mantenerSesion: '',
+      mantenerSesion: false,
     },
     validationSchema: Yup.object({
       rfc: Yup.string().matches(regexRFCFisicaMoral, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
       contrasena: Yup.string().max(20, longitudMaxima).min(8, longitudMinima).required(campoRequerido),
       check: Yup.string().required(captcha),
-      mantenerSesion: Yup.string(),
+      mantenerSesion: Yup.boolean(),
     }),
     onSubmit: async (values) => {
       const valid = await LoginRepositorio.postLogin({
@@ -79,9 +79,9 @@ const IniciarSesion = () => {
           label="Contraseña"
         />
         <div className="py-3">
-          <CheckTextBox notBackground={false} name="mantenerSesion" formulario={formulario}>
-            <p className="ml-1 body3">Mantener sesión iniciada</p>
-          </CheckTextBox>
+          <CheckBox name="mantenerSesion" formulario={formulario}>
+            <p className="m-0 body3">Mantener sesión iniciada</p>
+          </CheckBox>
         </div>
         <Captcha name="check" formulario={formulario} />
         <div className="row d-flex justify-content-center py-3">

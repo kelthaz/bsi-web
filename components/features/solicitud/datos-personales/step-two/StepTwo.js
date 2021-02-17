@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { seleccionOpcion } from '../../../../../constants/errors';
+import { PASO_TRES_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
@@ -52,12 +53,7 @@ const StepTwo = () => {
     }
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-personales/3',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_PERSONA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

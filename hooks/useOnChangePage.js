@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onChangePage, onShowModal, resetChangePage } from '../redux/actions/formulario';
 
-const useOnChangePage = (formulario, route, as, currentStep, validation = () => true) => {
+const useOnChangePage = (formulario, route, currentStep, validation = () => true) => {
   const { push, query, beforePopState, asPath } = useRouter();
   const dispatch = useDispatch();
   const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
@@ -13,7 +13,7 @@ const useOnChangePage = (formulario, route, as, currentStep, validation = () => 
       const resultValidation = await validation();
       dispatch(onShowModal(true, resultValidation && formulario.isValid, newRoute));
     } else {
-      push(route, newRoute);
+      push(newRoute);
       if (reset) {
         dispatch(resetChangePage());
       }
@@ -27,10 +27,10 @@ const useOnChangePage = (formulario, route, as, currentStep, validation = () => 
       const resultValidation = await validation();
       if (resultValidation) {
         formulario.handleSubmit();
-        push(route, as);
+        push(route);
       }
     } else {
-      changeRoute(as, false);
+      changeRoute(route, false);
     }
   };
 

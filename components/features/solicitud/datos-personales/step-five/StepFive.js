@@ -26,6 +26,7 @@ import {
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import LoginRepositorio from '../../../../../services/login/login.repositorio';
+import { AGRADECIMIENTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
 const StepFive = () => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -35,7 +36,7 @@ const StepFive = () => {
   } = useSelector((state) => state.simulador);
   const dispatch = useDispatch();
 
-  const { initialValues, validationSchema } = {
+  const formulario = useFormik({
     initialValues: {
       rfc: datosPersonales.rfc,
       contrasena: datosPersonales.contrasena,
@@ -62,11 +63,6 @@ const StepFive = () => {
 
       aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos),
     }),
-  };
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
     onSubmit: async (values) => {
       if (changePage) {
         dispatch(
@@ -101,13 +97,7 @@ const StepFive = () => {
     return valid;
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-personales/agradecimiento',
-    currentStep,
-    validateSaveInfo
-  );
+  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_DATOS_PERSONA_ROUTE, currentStep, validateSaveInfo);
 
   return (
     <div className="contedor-fixed-tab">

@@ -8,6 +8,7 @@ import Select from '../../../../shared/select/Select';
 import { seleccionOpcion } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_SEIS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const StepFive = () => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
@@ -44,12 +45,7 @@ const StepFive = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/6',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

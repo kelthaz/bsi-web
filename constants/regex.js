@@ -5,6 +5,7 @@ export const regexEmail = /[^A-Za-z1234567890@.]+/g;
 export const regexNumber = /[^1234567890]+/g;
 export const regexRFC = /[^A-Za-z1234567890]+/g;
 export const regexDiacritics = /([^\u0300-\u036fn]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi;
+export const regexMultipleSpaces = /\s+/g;
 
 export const regexUpperAndLowerCase = /^(?=.*[a-z])(?=.*[A-Z])/;
 export const regexNoConsecutives = /^(?!.*?\d{2}).+$/;

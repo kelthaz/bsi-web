@@ -1,0 +1,12 @@
+export const CUENTA_ACTIVA_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/cuenta-activa';
+export const PASO_UNO_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/1';
+export const PASO_DOS_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/2';
+export const PASO_TRES_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/3';
+export const PASO_CUATRO_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/4';
+export const PASO_CINCO_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/5';
+export const PASO_SEIS_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/6';
+export const PASO_SIETE_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/7';
+export const GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/gracias-por-contarnos';
+export const PASO_OCHO_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/8';
+export const CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/contrato-legalex';
+export const AGRADECIMIENTO_DATOS_EMPRESA_ROUTE = '/solicitud/datos-empresa/agradecimiento';

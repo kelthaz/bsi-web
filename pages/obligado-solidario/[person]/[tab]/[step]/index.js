@@ -2,13 +2,12 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
 import TabInformativo from '../../../../../components/shared/tab-informativo/TabInformativo';
 import Step from '../../../../../components/shared/step/Step';
 import SvgPatronesSolicitud from '../../../../../components/svgs/SvgPatronesSolicitud';
 import usePreventWindowUnload from '../../../../../hooks/usePreventWindowUnload';
 import ModalActualizar from '../../../../../components/core/modals/solicitud/modal-actualizar/ModalActualizar';
-import obligadoSolidarioRoutes from '../../../../../components/features/obligado-solidario/obligado-solidario.routes';
+import obligadoSolidarioRoutes from '../../../../../components/features/solicitud/obligado-solidario/obligado-solidario.routes';
 
 const ObligadoSolidario = ({ index, data }) => {
   usePreventWindowUnload();

@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './radio-button.module.scss';
 
 const RadioButton = ({ name, formulario, children, value }) => {
-  const { setFieldTouched, touched, setFieldValue, values } = formulario;
-
-  const handleOnChange = (event) => {
-    if (!touched[name]) {
-      setFieldTouched(name, true);
-    }
-
-    setFieldValue(name, event.target.value);
-  };
+  const { values, handleChange } = formulario;
 
   return (
     <>
@@ -23,7 +15,7 @@ const RadioButton = ({ name, formulario, children, value }) => {
             className={` ${styles['my-check']}`}
             type="radio"
             value={value}
-            onChange={handleOnChange}
+            onChange={handleChange}
             checked={value === values[name]}
           />
         </div>
@@ -33,11 +25,15 @@ const RadioButton = ({ name, formulario, children, value }) => {
   );
 };
 
+RadioButton.defaultProps = {
+  children: <></>,
+};
+
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   formulario: PropTypes.any.isRequired,
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any,
 };
 
 export default RadioButton;

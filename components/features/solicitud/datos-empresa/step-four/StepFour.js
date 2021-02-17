@@ -9,6 +9,7 @@ import { numeroInvalido, campoRequerido, ingreseOpcion } from '../../../../../co
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_CINCO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const StepFour = () => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
@@ -64,12 +65,7 @@ const StepFour = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/5',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">

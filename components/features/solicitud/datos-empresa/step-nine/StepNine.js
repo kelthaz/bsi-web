@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import SvgLegalex from '../../../../svgs/SvgLegalex';
 import styles from './StepNine.module.scss';
 import SvgNoGuardamosNada from '../../../../svgs/icons-cards/SvgNoGuardamosNada';
-import SvgFirmaElectronica from '../../../../svgs/icons-cards/SvgFirmaElectronica';
 import Modal from '../../../../shared/modal/Modal';
 import SvgCheckText from '../../../../svgs/SvgCheckText';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
@@ -258,7 +257,7 @@ const StepNine = () => {
                           formulario={formulario}
                           type="text"
                           size="small"
-                          label="No. Ext."
+                          label="No. Exterior"
                           disabled
                         />
                       </div>
@@ -269,7 +268,7 @@ const StepNine = () => {
                           formulario={formulario}
                           type="text"
                           size="small"
-                          label="No. Int."
+                          label="No. Interior"
                           disabled
                         />
                       </div>

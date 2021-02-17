@@ -8,6 +8,7 @@ import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_SIETE_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const StepSix = () => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
@@ -37,12 +38,7 @@ const StepSix = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    '/solicitud/[tab]/[step]',
-    '/solicitud/datos-empresa/7',
-    currentStep
-  );
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SIETE_DATOS_EMPRESA_ROUTE, currentStep);
 
   return (
     <div className="contedor-fixed-tab">
