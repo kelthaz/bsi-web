@@ -69,7 +69,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'datos-personales', step: '2' } : { ...currentStep },
+          currentStep: validate ? { tab: 'preguntas', step: '2' } : { ...currentStep },
           pm: { ...pm, ...values },
         })
       );

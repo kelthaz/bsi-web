@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import Link from 'next/link';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { declararTerminos } from '../../../../../../constants/errors';
 import SvgCargaDocumento from '../../../../../svgs/SvgCargaDocumento';
 import SvgEmpresa from '../../../../../svgs/SvgEmpresa';
 import SvgBuro from '../../../../../svgs/SvgBuro';
 import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
+import { PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
 const Bienvenido = () => {
   const { pfae } = useSelector((state) => state.obligado);
@@ -36,7 +36,7 @@ const Bienvenido = () => {
           pfae: { ...pfae, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/1');
+      router.push(PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE);
     },
   });
   return (
@@ -96,7 +96,7 @@ const Bienvenido = () => {
             <p className="body2 mt-xs-3 mt-md-2 mb-md-4 color-gray-dark">
               Te tomará aproximadamente 10 minutos, te sugerimos no salir antes de concluirlo.
             </p>
-            <div className="card-simple-blue-light list-onboarding">
+            <div className="row">
               <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
                 <p className="body3 ml-1 ">
                   {/* Acepto: (1) los{' '}
@@ -121,15 +121,13 @@ const Bienvenido = () => {
             </div>
           </div>
           <div className="flex-column-start-config">
-            <Link href="/obligado-solidario/pfae/[tab]/[step]" as="/obligado-solidario/pfae/preguntas/1">
-              <button
-                disabled={!(formulario.dirty && formulario.isValid)}
-                type="submit"
-                className="btn-medium flex-align-self-center my-3"
-              >
-                ¡Comencemos!
-              </button>
-            </Link>
+            <button
+              disabled={!(formulario.dirty && formulario.isValid)}
+              type="submit"
+              className="btn-medium flex-align-self-center my-3"
+            >
+              ¡Comencemos!
+            </button>
           </div>
         </div>
       </div>

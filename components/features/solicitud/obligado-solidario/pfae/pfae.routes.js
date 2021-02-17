@@ -13,14 +13,29 @@ import StepTen from './step-ten/StepTen';
 import StepEleven from './step-eleven/StepEleven';
 import Agradecimiento from './agradecimiento/Agradecimiento';
 import pruebasComponentes from './prueba-componentes/pruebaComponentes';
+import {
+  BIENVENIDA_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_SIETE_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
+} from '../../../../../constants/routes/solicitud/obligado';
+import BienvenidoObligadoSolidario from '../pm/bienvenido/BienvenidoObligadoSolidario';
 
 const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: 'bienvenido',
-    path: '/obligado-solidario/pfae/preguntas/bienvenido',
+    path: BIENVENIDA_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: null,
-    component: Bienvenido,
+    component: BienvenidoObligadoSolidario,
     services: [],
   },
   {
@@ -34,7 +49,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '1',
-    path: '/obligado-solidario/pfae/preguntas/1',
+    path: PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 1,
     component: StepOne,
     services: [],
@@ -42,7 +57,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '2',
-    path: '/obligado-solidario/pfae/preguntas/2',
+    path: PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 2,
     component: StepTwo,
     services: [],
@@ -50,7 +65,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '3',
-    path: '/obligado-solidario/pfae/preguntas/3',
+    path: PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 3,
     component: StepThree,
     services: [],
@@ -58,7 +73,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '4',
-    path: '/obligado-solidario/pfae/preguntas/4',
+    path: PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 4,
     component: StepFour,
     services: [],
@@ -66,7 +81,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '5',
-    path: '/obligado-solidario/pfae/preguntas/5',
+    path: PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 5,
     component: StepFive,
     services: [],
@@ -74,7 +89,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '6',
-    path: '/obligado-solidario/pfae/preguntas/6',
+    path: PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 6,
     component: StepSix,
     services: [],
@@ -82,7 +97,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '7',
-    path: '/obligado-solidario/pfae/preguntas/7',
+    path: PASO_SIETE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 7,
     component: StepSeven,
     services: [],
@@ -90,7 +105,7 @@ const pfaeRoutes = [
   {
     tab: 'preguntas',
     step: '8',
-    path: '/obligado-solidario/pfae/preguntas/8',
+    path: PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 8,
     component: StepEight,
     services: [],
@@ -98,7 +113,7 @@ const pfaeRoutes = [
   {
     tab: 'carga-documentos',
     step: '9',
-    path: '/obligado-solidario/pfae/carga-documentos/9',
+    path: PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 9,
     component: StepNine,
     services: [],
@@ -106,7 +121,7 @@ const pfaeRoutes = [
   {
     tab: 'carga-documentos',
     step: '10',
-    path: '/obligado-solidario/pfae/carga-documentos/10',
+    path: PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 10,
     component: StepTen,
     services: [],
@@ -114,7 +129,7 @@ const pfaeRoutes = [
   {
     tab: 'autorizacion',
     step: '11',
-    path: '/obligado-solidario/pfae/autorizacion/11',
+    path: PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 11,
     component: StepEleven,
     services: [],
