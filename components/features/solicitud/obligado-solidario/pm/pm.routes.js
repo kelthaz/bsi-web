@@ -16,10 +16,10 @@ import SectoresRepositorio from '../../../../../services/simulador/sectores.repo
 import AgredecimientoFinal from './agradecimiento-final/AgredecimientoFinal';
 import AgradecimientoIncompleto from './agradecimiento-incompleto/AgradecimientoIncompleto';
 import BienvenidoObligadoSolidario from './bienvenido/BienvenidoObligadoSolidario';
-import StepEight from './step-eight/StepEight';
+import StepEight from './paso-ocho/PasoOchoObligadoSolidarioPm';
 import PasoCincoObligadoSolidarioPM from './paso-cinco/PasoCincoObligadoSolidarioPM';
 import PasoCuatroObligadoSolidarioPM from './paso-cuatro/PasoCuatroObligadoSolidarioPM';
-import StepNine from './step-nine/StepNine';
+import StepNine from './contrato-legalex/ContratoLegalexObligadoSolidarioPM';
 import PasoUnoObligadoSolidarioPM from './paso-uno/PasoUnoObligadoSolidarioPM';
 import PasoSieteObligadoSolidarioPM from './paso-siete/PasoSieteObligadoSolidarioPM';
 import PasoSeisObligadoSolidarioPM from './paso-seis/PasoSeisObligadoSolidarioPM';
