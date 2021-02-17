@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import TextField from '../../../../../shared/text-field/TextField';
 import { regexRFCFisica } from '../../../../../../constants/regex';
 import { campoRequerido, longitudMinima, longitudMaxima, rfcInvalido } from '../../../../../../constants/errors';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
-const StepTwo = () => {
-  const { pfae } = useSelector((state) => state.obligado);
+const PasoDosObligadoSolidarioPFAE = () => {
+  const { pfae, currentStep } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -24,24 +27,25 @@ const StepTwo = () => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '3' },
+        nextStepObligadoSolidario({
+          currentStep: validate ? { tab: 'datos-empresa', step: '3' } : { ...currentStep },
           pfae: {
             ...pfae,
             ...values,
           },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/preguntas/3');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
 
   return (
     <>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud ">
           <div className="container p-0">
-            <form onSubmit={formulario.handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub">Ahora dinos, ¿cuál es tu RFC y tu CURP?</p>
               <div className="row no-gutters">
                 <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
@@ -78,7 +82,7 @@ const StepTwo = () => {
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={!(formulario.isValid && formulario.dirty)}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                 />
               </div>
             </form>
@@ -88,4 +92,4 @@ const StepTwo = () => {
     </>
   );
 };
-export default StepTwo;
+export default PasoDosObligadoSolidarioPFAE;

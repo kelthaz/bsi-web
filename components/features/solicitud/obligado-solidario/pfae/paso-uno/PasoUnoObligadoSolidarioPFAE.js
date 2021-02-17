@@ -13,7 +13,7 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 
-const StepOne = () => {
+const PasoUnoObligadoSolidarioPFAE = () => {
   const { currentStep, pfae } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
   const { query } = useRouter();
@@ -91,4 +91,4 @@ const StepOne = () => {
     </>
   );
 };
-export default StepOne;
+export default PasoUnoObligadoSolidarioPFAE;

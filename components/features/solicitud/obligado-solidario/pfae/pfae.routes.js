@@ -1,8 +1,8 @@
 import Bienvenido from './bienvenido/Bienvenido';
 import Gracias from './gracias/Gracias';
-import StepOne from './step-one/StepOne';
-import StepTwo from './step-two/StepTwo';
-import StepThree from './step-three/StepThree';
+import PasoUnoObligadoSolidarioPFAE from './paso-uno/PasoUnoObligadoSolidarioPFAE';
+import PasoDosObligadoSolidarioPFAE from './paso-dos/PasoDosObligadoSolidarioPFAE';
+import PasoTresObligadoSolidarioPFAE from './paso-tres/PasoTresObligadoSolidarioPFAE';
 import StepFour from './step-four/StepFour';
 import StepFive from './step-five/StepFive';
 import StepSix from './step-six/StepSix';
@@ -51,7 +51,7 @@ const pfaeRoutes = [
     step: '1',
     path: PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 1,
-    component: StepOne,
+    component: PasoUnoObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -59,7 +59,7 @@ const pfaeRoutes = [
     step: '2',
     path: PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 2,
-    component: StepTwo,
+    component: PasoDosObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -67,7 +67,7 @@ const pfaeRoutes = [
     step: '3',
     path: PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 3,
-    component: StepThree,
+    component: PasoTresObligadoSolidarioPFAE,
     services: [],
   },
   {

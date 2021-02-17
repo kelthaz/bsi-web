@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
-import { Section } from '../../components/shared/section/Section';
+import Section from '../../components/shared/section/Section';
 import styles from './beneficios.module.scss';
 import BannerBeneficios from '../../components/core/banners/BannerBeneficios';
 
