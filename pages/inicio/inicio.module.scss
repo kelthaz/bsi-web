@@ -120,10 +120,10 @@
 }
 
 .img-position {
-  height: 379px;
+  height: 370px;
   left: 27%;
   position: relative;
-  width: 242px;
+  width: 255px;
 
   @include media('lg') {
     left: 10%;
@@ -216,7 +216,7 @@
 
 .circle6 {
   background: $blue-morning;
-  left: 78%;
+  left: 82%;
   top: 32%;
 
   @include media('lg') {
@@ -230,9 +230,9 @@
 
 .circle7 {
   background: $blue-storm;
-  left: 80%;
+  left: 83%;
   padding: 10px;
-  top: 57%;
+  top: 58%;
 
   @include media('lg') {
     left: 84%;
@@ -246,7 +246,7 @@
 .circle8 {
   background: $blue-sky;
   left: 75%;
-  top: 82%;
+  top: 83%;
 
   @include media('lg') {
     left: 75%;
