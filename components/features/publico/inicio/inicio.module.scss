@@ -1,0 +1,295 @@
+@import '../../styles/scss/modules/mixins';
+@import '../../styles/scss/modules/var';
+
+.color-blue-morning {
+  color: $blue-morning;
+  font-family: Futura;
+  line-height: 48px;
+}
+
+.color-white-text {
+  color: $white;
+}
+
+.color-white-title {
+  color: $white;
+}
+
+.color-white {
+  color: $white;
+  font-family: Futura;
+  line-height: 48px;
+}
+
+.title-top {
+  color: $blue-storm;
+  font-size: 24px !important;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.title-value-simulator {
+  color: $gray;
+  font-size: 25px !important;
+}
+
+.title-benefits {
+  line-height: 30px;
+  top: 78px;
+}
+
+.value-side {
+  font-size: 25px !important;
+}
+
+.title-input {
+  color: $blue-storm;
+  font-size: 17px !important;
+}
+
+.input-text {
+  color: $gray;
+  font-size: 14px !important;
+  top: 15px;
+}
+
+.simulator-content {
+  background: $white;
+  position: relative;
+}
+
+.image-home {
+  border-radius: 200px;
+  left: 50px;
+}
+
+.image-home:not(:root:root) {
+  height: 400px;
+}
+
+.textura {
+  bottom: -158px;
+}
+
+.center-content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  @include media('md') {
+    align-items: center;
+  }
+}
+
+.circle-container {
+  position: relative;
+}
+
+.circle {
+  align-items: center;
+  border: 0;
+  border-radius: 100%;
+  display: flex;
+  height: 90px;
+  position: absolute;
+  text-align: center;
+  width: 90px;
+  z-index: 1;
+
+  @include media('md') {
+    padding: 8px 0;
+    flex-direction: column;
+    border-radius: none;
+    height: 100%;
+    position: static;
+    width: 100%;
+  }
+}
+
+.circlebig {
+  height: 100px;
+  width: 100px;
+  @include media('md') {
+    border-radius: none;
+    height: 100%;
+    position: static;
+    width: 100%;
+  }
+}
+
+.img-position {
+  height: 370px;
+  left: 27%;
+  position: relative;
+  width: 255px;
+
+  @include media('lg') {
+    left: 10%;
+  }
+
+  @include media('md') {
+    height: 350px;
+    left: 25%;
+    width: 180px;
+  }
+
+  @include media('sm') {
+    left: 15%;
+  }
+}
+
+.container-info-img {
+  position: relative;
+}
+
+.circle1 {
+  background: $blue-storm;
+  left: 20%;
+  top: 5%;
+
+  @include media('lg') {
+    left: 10%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle2 {
+  background: $blue-sky;
+  left: 8%;
+  top: 28%;
+
+  @include media('lg') {
+    left: -2%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle3 {
+  background: $blue-storm;
+  left: 3%;
+  top: 55%;
+
+  @include media('lg') {
+    left: -7%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle4 {
+  background: $blue-morning;
+  left: 14%;
+  top: 82%;
+
+  @include media('lg') {
+    left: 4%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle5 {
+  background: $blue-sky;
+  left: 70%;
+  top: 5%;
+
+  @include media('lg') {
+    left: 78%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle6 {
+  background: $blue-morning;
+  left: 82%;
+  top: 32%;
+
+  @include media('lg') {
+    left: 84%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle7 {
+  background: $blue-storm;
+  left: 83%;
+  padding: 10px;
+  top: 58%;
+
+  @include media('lg') {
+    left: 84%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.circle8 {
+  background: $blue-sky;
+  left: 75%;
+  top: 83%;
+
+  @include media('lg') {
+    left: 75%;
+  }
+
+  @include media('md') {
+    background-color: transparent;
+  }
+}
+
+.text-radius {
+  color: $white;
+  font-size: 13px;
+  width: 100%;
+}
+
+.text-links {
+  font-family: Futura;
+}
+
+.simulator-info {
+  border-radius: 0 0 25px 25px;
+  bottom: 30px;
+  box-shadow: 1px 15px 22px #efeeee;
+  position: relative;
+}
+
+.chunk-box {
+  background: $white;
+  border-radius: 25px 25px 0 0;
+  bottom: 515px;
+  display: block;
+  height: 35px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
+.subtitle {
+  font-size: 36px;
+}
+
+.simulador-container {
+  position: relative;
+}
