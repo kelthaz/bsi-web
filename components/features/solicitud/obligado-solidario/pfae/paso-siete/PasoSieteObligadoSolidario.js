@@ -6,34 +6,31 @@ import * as Yup from 'yup';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../../constants/errors';
-import SvgPM from '../../../../../svgs/carga-documentos/SvgPM';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
-import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import {
   AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
-  PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE,
+  PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
 } from '../../../../../../constants/routes/solicitud/obligado';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 
-const PasoCincoObligadoSolidarioPM = () => {
+const PasoSieteObligadoSolidario = () => {
   const dispatch = useDispatch();
-  const { pm, currentStep } = useSelector((state) => state.obligado);
+  const { pfae, currentStep } = useSelector((state) => state.obligado);
   const { query } = useRouter();
   const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
-      meEjercenControlMoralComoMoral: pm.meEjercenControlMoralComoMoral,
-      meEjercenControlMoralComoFisico: pm.meEjercenControlMoralComoFisico,
+      meEjercenControlMoralComoFisico: pfae.meEjercenControlMoralComoFisico,
     },
     validationSchema: Yup.object().shape({
-      meEjercenControlMoralComoMoral: Yup.string().required(campoRequerido),
       meEjercenControlMoralComoFisico: Yup.string().required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'preguntas', step: '6' } : { ...currentStep },
-          pm: { ...pm, ...values },
+          currentStep: validate ? { tab: 'autorizacion', step: '8' } : { ...currentStep },
+          pfae: { ...pfae, ...values },
         })
       );
     },
@@ -41,9 +38,8 @@ const PasoCincoObligadoSolidarioPM = () => {
 
   const [handleSubmit] = useOnChangePage(
     formulario,
-    formulario.values.meEjercenControlMoralComoMoral === 'no' &&
-      formulario.values.meEjercenControlMoralComoFisico === 'no'
-      ? PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE
+    formulario.values.meEjercenControlMoralComoFisico === 'no'
+      ? PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE
       : AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
     currentStep
   );
@@ -51,33 +47,12 @@ const PasoCincoObligadoSolidarioPM = () => {
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
-        <div className="container">
+        <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
-            <p className="sub color-blue-storm">
-              <SvgPM />
-              Respondiendo como: {pm.nombreEmpresa} (Persona Moral)
-            </p>
             <p className="sub color-dark-gray position-relative">
               ¿Existe una persona moral que ejerce control sobre ti?
               <Tooltip message="..." />
             </p>
-            <div className="row">
-              <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                <RadioButton name="meEjercenControlMoralComoMoral" formulario={formulario} value="si">
-                  <span className="input color-gray">Sí</span>
-                </RadioButton>
-              </div>
-              <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                <RadioButton name="meEjercenControlMoralComoMoral" formulario={formulario} value="no">
-                  <span className="input color-gray">No</span>
-                </RadioButton>
-              </div>
-            </div>
-            <p className="sub color-blue-storm">
-              <SvgPM />
-              Respondiendo como: {pm.primerNombre} (Persona Física)
-            </p>
-            <p className="sub color-dark-gray">¿Existe una persona moral que ejerce control sobre ti?</p>
 
             <div className="row">
               <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">
@@ -107,4 +82,4 @@ const PasoCincoObligadoSolidarioPM = () => {
   );
 };
 
-export default PasoCincoObligadoSolidarioPM;
+export default PasoSieteObligadoSolidario;

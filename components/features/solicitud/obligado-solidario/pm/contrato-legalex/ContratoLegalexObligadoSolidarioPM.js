@@ -12,7 +12,7 @@ import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { aceptarTerminos } from '../../../../../../constants/errors';
 import ContratoLegalex from '../../../shared/contrato-legalex/ContratoLegalex';
-import { AGRADECIMIENTO_COMPLETO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
+import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
 const StepNine = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -56,7 +56,7 @@ const StepNine = () => {
           },
         })
       );
-      router.push(AGRADECIMIENTO_COMPLETO_SOLIDARIO_ROUTE);
+      router.push(AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE);
     },
   });
 

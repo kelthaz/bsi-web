@@ -2,38 +2,44 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
+import * as Yup from 'yup';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
+import { campoRequerido } from '../../../../../../constants/errors';
+import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 
-const StepNine = () => {
-  const { pfae } = useSelector((state) => state.obligado);
+const PasoNueveObligadoSolidarioPFAE = () => {
+  const { pfae, currentStep } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
-  const { initialValues } = {
+  const formulario = useFormik({
     initialValues: {
       bienesSeparados: pfae.bienesSeparados,
     },
-  };
-
-  const formulario = useFormik({
-    initialValues,
+    validationSchema: Yup.object({
+      bienesSeparados: Yup.string().required(campoRequerido),
+    }),
     onSubmit: (values) => {
       dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'carga-documentos', step: '10' },
+        nextStepObligadoSolidario({
+          currentStep: validate ? { tab: 'preguntas', step: '9' } : { ...currentStep },
           pfae: { ...pfae, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/carga-documentos/10');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+
   return (
     <>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud mt-xs-0 mt-md-5">
           <div className="container pl-md-3 pl-xs-0">
-            <form onSubmit={formulario.handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate>
               <div className="row pl-3 pb-xs-1">
                 <p className="color-dark-gray sub">
                   Ahora, para saber qué documentos solicitarte, necesitamos que nos respondas. ¿Eres casada (o)?
@@ -58,7 +64,7 @@ const StepNine = () => {
               </div>
               <div className="flex-column-center-config">
                 <button
-                  disabled={!formulario.dirty}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
@@ -71,4 +77,4 @@ const StepNine = () => {
     </>
   );
 };
-export default StepNine;
+export default PasoNueveObligadoSolidarioPFAE;
