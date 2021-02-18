@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import SvgLegalex from '../../../../svgs/SvgLegalex';
@@ -97,7 +98,7 @@ const StepNine = () => {
           <span className="sub color-blue-storm ">Proceso de autorización</span>
           <div className="row mt-3 card-white text-md-center ">
             <div className="col-xs-4">
-              <img src="/buro.png" alt="Buro de crédito" />
+              <Image src="/Buro2.jpg" alt="" width="90" height="90" />
             </div>
             <div className="mt-2 col-xs-8">
               <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
@@ -136,7 +137,7 @@ const StepNine = () => {
               <div className="row justify-content-between">
                 <div className={` d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
                   <div className="container-svg-card">
-                    <img src="/buro.png" alt="Buro de crédito" />
+                    <Image src="/Buro2.jpg" alt="" width="90" height="90" />
                   </div>
                   <div>
                     <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
