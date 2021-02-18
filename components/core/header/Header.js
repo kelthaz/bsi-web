@@ -135,8 +135,6 @@ const Header = () => {
     { label: 'BanCoppel Pymes', link: '#' },
   ];
 
-  // const subMenus = []
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenus, setSubMenus] = useState([]);
   const [nameLabel, setNameLabel] = useState('Crédito');

@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './select.module.scss';
@@ -81,13 +80,6 @@ const Select = (props) => {
       >
         <SvgChevron />
       </button>
-      {/* {values[name] && <button
-        type="button"
-        className={`svg-button-input-small ${styles['deselect-item']}`}
-        onClick={() => setFieldValue(name, null)}
-      >
-        <SvgCross />
-      </button>} */}
       <button
         type="button"
         className={`${!toggle && !value ? placeholderStyle : ''} ${blue ? styles['select-small-blue'] : selectStyle} ${
@@ -96,8 +88,6 @@ const Select = (props) => {
         onClick={() => !toggle && handleToggle()}
         disabled={disabled}
         tabIndex="0"
-        // onFocus={() => !toggle && handleToggle()}
-        // onBlur={() => handleToggle()}
       >
         {value ? value.label : label}
       </button>
