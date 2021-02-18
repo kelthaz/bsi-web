@@ -8,31 +8,34 @@ import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import TextField from '../../../../../shared/text-field/TextField';
 import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
 import { campoRequerido, declararTerminos } from '../../../../../../constants/errors';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const StepEleven = () => {
+const PasoOnceObligadoSolidarioPFAE = () => {
+  const { pfae, currentStep } = useSelector((state) => state.obligado);
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const { pfae } = useSelector((state) => state.obligado);
-
-  const { initialValues, validationSchema } = {
-    initialValues: {
-      tienePrestamo: pfae.tienePrestamo,
-      tieneCredito: pfae.tieneCredito,
-      eresTitular: pfae.eresTitular,
-      aceptar: pfae.aceptar,
-    },
-    validationSchema: Yup.object().shape({
-      tienePrestamo: Yup.string().nullable().required(campoRequerido),
-      tieneCredito: Yup.string().required(campoRequerido),
-      eresTitular: Yup.string().required(campoRequerido),
-      aceptar: Yup.boolean().oneOf([true], declararTerminos),
-    }),
-  };
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
-    initialValues,
-    validationSchema,
+    initialValues: {
+      tienePrestamoHipotecario: pfae.tienePrestamoHipotecario,
+      tieneCreditoAutomotriz: pfae.tieneCreditoAutomotriz,
+      eresTitularTarjetaCredito: pfae.eresTitularTarjetaCredito,
+      tarjetaCreditoTerminacion: pfae.tarjetaCreditoTerminacion,
+      autorizacionConsultar: pfae.autorizacionConsultar,
+    },
+    validationSchema: Yup.object().shape({
+      tienePrestamoHipotecario: Yup.string().nullable().required(campoRequerido),
+      tieneCreditoAutomotriz: Yup.string().required(campoRequerido),
+      eresTitularTarjetaCredito: Yup.string().required(campoRequerido),
+      tarjetaCreditoTerminacion: Yup.string().when('eresTitularTarjetaCredito', {
+        is: 'si',
+        then: Yup.string().required(campoRequerido),
+        otherwise: Yup.string().notRequired(),
+      }),
+      autorizacionConsultar: Yup.boolean().oneOf([true], declararTerminos),
+    }),
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
@@ -40,77 +43,75 @@ const StepEleven = () => {
           pfae: { ...pfae, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/autorizacion/agradecimiento');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+
   return (
     <div className="contedor-fixed-tab">
       <div className="contedor-solicitud">
         <div className="container px-md-3 px-xs-0">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <p className="sub color-dark-gray pb-md-3">
               Finalmente, requerimos conocer un poco de tu Buró de Crédito por lo que necesitamos tu autorización para
               consultarlo con tres preguntas:
             </p>
             <p className="sub color-dark-gray">¿Tienes un préstamo hipotecario?</p>
-            <div className="d-flex">
+            <div className="row no-gutters">
               <div className="col-md-2 col-xs-4">
-                <RadioButton name="tienePrestamo" formulario={formulario} value="si">
+                <RadioButton name="tienePrestamoHipotecario" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
               <div className="col-md-6 col-xs-4">
-                <RadioButton name="tienePrestamo" formulario={formulario} value="no">
+                <RadioButton name="tienePrestamoHipotecario" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
             </div>
             <p className="mt-md-4 mt-xs-4 sub color-dark-gray">¿Tienes un crédito automotriz?</p>
-            <div className="d-flex">
+            <div className="row no-gutters">
               <div className="col-md-2 col-xs-4">
-                <RadioButton name="tieneCredito" formulario={formulario} value="si">
+                <RadioButton name="tieneCreditoAutomotriz" formulario={formulario} value="si">
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
               <div className="col-md-6 col-xs-4">
-                <RadioButton name="tieneCredito" formulario={formulario} value="no">
+                <RadioButton name="tieneCreditoAutomotriz" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
             </div>
             <p className="mt-md-4 mt-xs-4 sub color-dark-gray">¿Eres titular de una tarjeta de crédito?</p>
-            <div className="d-flex">
-              <div className="col-md-8 col-xs-4">
-                <div className="row">
-                  <div className="col-md-8 pr-0">
-                    <RadioButton name="eresTitular" formulario={formulario} value="si">
-                      <span className="d-none d-sm-block input color-gray">Sí, terminación</span>
-                      <span className="d-block d-sm-none input color-gray">Sí</span>
-                    </RadioButton>
-                  </div>
-                  <div className="d-none d-sm-block col-md-3 col-xs-12 px-md-0">
-                    <TextField
-                      maxlength={4}
-                      name="terminacion"
-                      formulario={formulario}
-                      type="text"
-                      size="big"
-                      label="1234"
-                    />
-                  </div>
-                  <div className="col-md-1 col-xs-4 px-md-0">
-                    <RadioButton name="eresTitular" formulario={formulario} value="no">
-                      <span className="input color-gray">No</span>
-                    </RadioButton>
-                  </div>
-                </div>
+
+            <div className="row no-gutters">
+              <div className="col-md-5 pr-0">
+                <RadioButton name="eresTitularTarjetaCredito" formulario={formulario} value="si">
+                  <span className="input color-gray">Sí, terminación</span>
+                </RadioButton>
+              </div>
+              <div className="d-none d-sm-block col-md-3 col-xs-12 px-md-0">
+                <TextField
+                  maxlength={4}
+                  name="tarjetaCreditoTerminacion"
+                  formulario={formulario}
+                  type="text"
+                  size="big"
+                  label="1234"
+                />
+              </div>
+              <div className="col-md-2 col-xs-4 pl-3">
+                <RadioButton name="eresTitularTarjetaCredito" formulario={formulario} value="no">
+                  <span className="input color-gray">No</span>
+                </RadioButton>
               </div>
             </div>
             <div className="row">
               <div className="d-block d-sm-none col-xs-12 px-md-0 mt-3">
                 <TextField
                   maxlength={4}
-                  name="terminacion"
+                  name="tarjetaCreditoTerminacion"
                   formulario={formulario}
                   type="text"
                   size="small"
@@ -118,8 +119,8 @@ const StepEleven = () => {
                 />
               </div>
             </div>
-            <div className="card-simple-blue-light list-onboarding">
-              <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
+            <div className="row no-gutters">
+              <CheckTextBox isGrayColor notBackground={false} name="autorizacionConsultar" formulario={formulario}>
                 <p className="body3 ml-1">
                   Autorizo a partir de este momento a BanCoppel, S.A., Institución de Banca Múltiple a consultar por
                   única ocasión mis antecedentes crediticios ante las Sociedades de Información Crediticia que estime
@@ -134,7 +135,7 @@ const StepEleven = () => {
                 type="submit"
                 className="cicle-button-blue my-3"
                 aria-label="Avanzar"
-                disabled={!formulario.isValid}
+                disabled={validate && !(formulario.isValid && formulario.dirty)}
               />
             </div>
           </form>
@@ -144,4 +145,4 @@ const StepEleven = () => {
   );
 };
 
-export default StepEleven;
+export default PasoOnceObligadoSolidarioPFAE;

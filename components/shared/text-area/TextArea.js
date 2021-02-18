@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './text-area.module.scss';
 import useFormatter from '../../../hooks/useFormatter';
+import { regexMultipleSpaces } from '../../../constants/regex';
 
 const TextArea = (props) => {
   const { name, formulario, label, optional, maxlength, format } = props;
-  const { handleChange, values, handleBlur, errors, touched, setFieldTouched, setFieldValue } = formulario;
-
+  const { setFieldTouched, setFieldValue, getFieldMeta } = formulario;
+  const { error, touched, value } = getFieldMeta(name);
   const [formatter, changeSelection] = useFormatter(format);
 
   const beforeInput = (event) => {
@@ -15,26 +16,24 @@ const TextArea = (props) => {
     }
   };
 
-  const onHandleChange = (event) => {
+  const onHandleChange = async (event) => {
     const { selectionStart, value: valueTarget } = event.target;
-    const formattedValue = formatter(valueTarget.trimStart().replace(/\s+/g, ' '));
+    const formattedValue = formatter(valueTarget.trimStart().replace(regexMultipleSpaces, ' '));
 
-    if (!touched[name] && formattedValue !== values[name]) {
-      setFieldTouched(name, true);
+    if (!touched && formattedValue !== value) {
+      await setFieldTouched(name, true);
     }
 
-    event.target.value = formattedValue;
-    handleChange(event);
-
+    await setFieldValue(name, formattedValue);
     changeSelection('', '', valueTarget, formattedValue, selectionStart, event.target);
   };
 
-  const onHandleBlur = (event) => {
-    setFieldValue(name, values[name].trimEnd());
-    handleBlur(event);
+  const onHandleBlur = () => {
+    setFieldValue(name, value.trimEnd());
+    setFieldTouched(name, true);
   };
 
-  const hasError = () => touched[name] && errors[name];
+  const hasError = () => touched && error;
 
   return (
     <div className={styles['text-area-container']}>
@@ -45,20 +44,19 @@ const TextArea = (props) => {
           className={styles['text-area']}
           onChange={onHandleChange}
           onBlur={onHandleBlur}
-          value={values[name]}
+          value={value}
           maxLength={maxlength}
           autoComplete="off"
           placeholder={label}
           tabIndex="0"
           onBeforeInput={beforeInput}
-        >
-          {values[name]}
-        </textarea>
+        />
+
         <div className={styles['resize-text-area']} />
       </div>
 
       <span className={hasError() ? styles['help-text-error'] : styles['help-text']}>
-        {hasError() ? errors[name] : optional && 'Opcional'}&nbsp;
+        {hasError() ? error : optional && 'Opcional'}&nbsp;
       </span>
     </div>
   );

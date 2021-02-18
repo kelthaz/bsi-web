@@ -52,6 +52,8 @@ const initialState = {
     controladosFisicosComoFisico: [],
     tieneControladosFisicosComoFisico: null,
     cantidadControladosFisicosComoFisico: null,
+    meEjercenControlMoralComoMoral: '',
+    meEjercenControlMoralComoFisico: '',
     actaConstitutiva: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
     poderesNotarial: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
     escriturasConReformas: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
@@ -76,6 +78,7 @@ const initialState = {
     sector: null,
     giro: null,
     descripcionEmpresa: '',
+
     domicilioFiscal: {
       calle: '',
       numExterior: '',
@@ -85,41 +88,47 @@ const initialState = {
       municipioAlcaldia: '',
       ciudad: '',
       estado: '',
-      esDomilicioComercial: null,
     },
     rfc: '',
     curp: '',
     tieneDepositosEInversiones: '',
     sumaDepositosEInversiones: '',
-    // domicilioComercial: {
-    //   calle: '',
-    //   numExterior: '',
-    //   numInterior: '',
-    //   codigoPostal: '',
-    //   colonia: null,
-    //   municipioAlcaldia: '',
-    //   ciudad: '',
-    //   estado: '',
-    //   domicilioEntrega: null,
-    // },
-    controladosMorales: [],
-    ejerceControlMoral: null,
-    cantidadEjerceControlMoral: null,
-    controladosFisicos: [],
-    ejerceControlFisico: null,
-    cantidadEjerceControlFisico: null,
-    invierto: '',
-    numEscritura: '',
-    numFolio: '',
-    datosGravamen: '',
 
-    cuentasLiquidas: null,
-    cuentas: null,
-    parentesco: null,
+    empresas: [],
+    tieneAccionesEnOtrasEmpresas: '',
+    cantidadEmpresas: null,
+
+    inmueblesPropiosSinGravamen: [],
+    tieneInmueblesPropiosSinGravamen: '',
+    cantidadInmueblesPropiosSinGravamen: null,
+
+    controladosMoralesComoFisico: [],
+    tieneControladosMoralesComoFisico: null,
+    cantidadControladosMoralesComoFisico: null,
+
+    meEjercenControlMoralComoFisico: '',
+
+    controladosFisicosComoFisico: [],
+    tieneControladosFisicosComoFisico: null,
+    cantidadControladosFisicosComoFisico: null,
+
     bienesSeparados: '',
-    tienePrestamo: '',
-    tieneCredito: null,
-    eresTitular: null,
+
+    comprobanteDomicilioFiscal:
+      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+    ineRepresentanteLegal: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+    ineReversoRepresentanteLegal:
+      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+
+    actaMatrimonio: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+    inePareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+    ineReversoPareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
+
+    tienePrestamoHipotecario: '',
+    tieneCreditoAutomotriz: '',
+    eresTitularTarjetaCredito: '',
+    tarjetaCreditoTerminacion: '',
+    autorizacionConsultar: false,
   },
 };
 

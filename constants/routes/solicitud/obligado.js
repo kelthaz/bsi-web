@@ -12,4 +12,5 @@ export const PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE = '/obligado-solidario/pm/autori
 export const PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE = '/obligado-solidario/pm/autorizacion/11';
 export const CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE = '/obligado-solidario/pm/autorizacion/contrato';
 export const AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE = '/obligado-solidario/pm/preguntas/agradecimiento';
-export const AGRADECIMIENTO_COMPLETO_SOLIDARIO_ROUTE = '/obligado-solidario/pm/autorizacion/agradecimiento-final';
+export const AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE =
+  '/obligado-solidario/pm/autorizacion/agradecimiento-final';

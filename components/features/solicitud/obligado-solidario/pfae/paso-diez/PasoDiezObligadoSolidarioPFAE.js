@@ -2,33 +2,58 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
+import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import FileInput from '../../../../../shared/file-input/FileInput';
 import Modal from '../../../../../shared/modal/Modal';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
+import { campoRequerido } from '../../../../../../constants/errors';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const StepTen = () => {
-  const { pfae } = useSelector((state) => state.obligado);
+const PasoDiezObligadoSolidarioPFAE = () => {
+  const { pfae, currentStep } = useSelector((state) => state.obligado);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
-  const { initialValues } = {
-    initialValues: {},
+  const { initialValues, validationSchema } = {
+    initialValues: {
+      comprobanteDomicilioFiscal: pfae.comprobanteDomicilioFiscal,
+      actaMatrimonio: pfae.actaMatrimonio,
+      ineRepresentanteLegal: pfae.ineRepresentanteLegal,
+      ineReversoRepresentanteLegal: pfae.ineReversoRepresentanteLegal,
+    },
+    validationSchema: {
+      comprobanteDomicilioFiscal: Yup.string().url().required(campoRequerido),
+      ineRepresentanteLegal: Yup.string().url().required(campoRequerido),
+      ineReversoRepresentanteLegal: Yup.string().url().required(campoRequerido),
+    },
   };
+
+  if (pfae.bienesSeparados !== 'no') {
+    initialValues.actaMatrimonio = pfae.actaMatrimonio;
+    initialValues.inePareja = pfae.inePareja;
+    initialValues.ineReversoPareja = pfae.ineReversoPareja;
+    validationSchema.actaMatrimonio = Yup.string().url().required(campoRequerido);
+    validationSchema.inePareja = Yup.string().url().required(campoRequerido);
+    validationSchema.ineReversoPareja = Yup.string().url().required(campoRequerido);
+  }
 
   const formulario = useFormik({
     initialValues,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'autorización', step: '11' },
+          currentStep: validate ? { tab: 'preguntas', step: '11' } : { ...currentStep },
           pfae: { ...pfae, ...values },
         })
       );
-      router.push('/obligado-solidario/pfae/[tab]/[step]', '/obligado-solidario/pfae/autorizacion/11');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
 
   return (
     <>
@@ -56,7 +81,7 @@ const StepTen = () => {
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud">
           <div className="container pl-md-3 pl-xs-0">
-            <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
+            <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={handleSubmit} noValidate>
               <div className="row px-md-3 px-xs-0">
                 <p className="color-dark-gray sub">
                   Con base en tu respuesta, necesitamos que nos proporciones los siguientes documentos:
@@ -134,4 +159,4 @@ const StepTen = () => {
     </>
   );
 };
-export default StepTen;
+export default PasoDiezObligadoSolidarioPFAE;

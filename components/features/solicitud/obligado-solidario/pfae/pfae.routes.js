@@ -1,16 +1,15 @@
-import Bienvenido from './bienvenido/Bienvenido';
 import Gracias from './gracias/Gracias';
 import PasoUnoObligadoSolidarioPFAE from './paso-uno/PasoUnoObligadoSolidarioPFAE';
 import PasoDosObligadoSolidarioPFAE from './paso-dos/PasoDosObligadoSolidarioPFAE';
 import PasoTresObligadoSolidarioPFAE from './paso-tres/PasoTresObligadoSolidarioPFAE';
-import StepFour from './step-four/StepFour';
-import StepFive from './step-five/StepFive';
-import StepSix from './step-six/StepSix';
-import StepSeven from './step-seven/StepSeven';
-import StepEight from './step-eight/StepEight';
-import StepNine from './step-nine/StepNine';
-import StepTen from './step-ten/StepTen';
-import StepEleven from './step-eleven/StepEleven';
+import StepFour from './paso-cuatro/PasoCuatroObligadoSolidarioPFAE';
+import PasoCincoObligadoSolidarioPFAE from './paso-cinco/PasoCincoObligadoSolidarioPFAE';
+import PasoSeisObligadoSolidarioPFAE from './paso-seis/PasoSeisObligadoSolidarioPFAE';
+import PasoSieteObligadoSolidario from './paso-siete/PasoSieteObligadoSolidario';
+import PasoOchoObligadoSolidarioPFAE from './paso-ocho/PasoOchoObligadoSolidarioPFAE';
+import PasoNueveObligadoSolidarioPFAE from './paso-nueve/PasoNueveObligadoSolidarioPFAE';
+import PasoDiezObligadoSolidarioPFAE from './paso-diez/PasoDiezObligadoSolidarioPFAE';
+import PasoOnceObligadoSolidarioPFAE from './paso-once/PasoOnceObligadoSolidarioPFAE';
 import Agradecimiento from './agradecimiento/Agradecimiento';
 import pruebasComponentes from './prueba-componentes/pruebaComponentes';
 import {
@@ -26,6 +25,7 @@ import {
   PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE,
   PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
   PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
+  AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
 } from '../../../../../constants/routes/solicitud/obligado';
 import BienvenidoObligadoSolidario from '../pm/bienvenido/BienvenidoObligadoSolidario';
 
@@ -83,7 +83,7 @@ const pfaeRoutes = [
     step: '5',
     path: PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 5,
-    component: StepFive,
+    component: PasoCincoObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -91,7 +91,7 @@ const pfaeRoutes = [
     step: '6',
     path: PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 6,
-    component: StepSix,
+    component: PasoSeisObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -99,7 +99,7 @@ const pfaeRoutes = [
     step: '7',
     path: PASO_SIETE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 7,
-    component: StepSeven,
+    component: PasoSieteObligadoSolidario,
     services: [],
   },
   {
@@ -107,7 +107,7 @@ const pfaeRoutes = [
     step: '8',
     path: PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 8,
-    component: StepEight,
+    component: PasoOchoObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -115,7 +115,7 @@ const pfaeRoutes = [
     step: '9',
     path: PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 9,
-    component: StepNine,
+    component: PasoNueveObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -123,7 +123,7 @@ const pfaeRoutes = [
     step: '10',
     path: PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 10,
-    component: StepTen,
+    component: PasoDiezObligadoSolidarioPFAE,
     services: [],
   },
   {
@@ -131,13 +131,13 @@ const pfaeRoutes = [
     step: '11',
     path: PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: 11,
-    component: StepEleven,
+    component: PasoOnceObligadoSolidarioPFAE,
     services: [],
   },
   {
     tab: 'autorizacion',
     step: 'Agradecimiento',
-    path: '/obligado-solidario/pfae/autorizacion/agradecimiento',
+    path: AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: null,
     component: Agradecimiento,
     services: [],

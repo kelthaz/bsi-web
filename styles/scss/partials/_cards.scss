@@ -142,9 +142,9 @@
   @include config-card-sombra($blue-night);
 }
 
-.card-simple-white-shadow {
-  @include config-card-sombra($white);
-}
+// .card-simple-white-shadow {
+//   @include config-card-sombra($white);
+// }
 
 .line-card {
   border: 0;

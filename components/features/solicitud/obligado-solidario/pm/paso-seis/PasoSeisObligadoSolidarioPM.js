@@ -44,7 +44,7 @@ const PasoSeisObligadoSolidarioPM = () => {
       .required(seleccionOpcion),
   });
 
-  const { initialValues, validationSchema } = {
+  const formulario = useFormik({
     initialValues: {
       controladosFisicosComoMoral: pm.controladosFisicosComoMoral,
       tieneControladosFisicosComoMoral: pm.tieneControladosFisicosComoMoral,
@@ -53,20 +53,11 @@ const PasoSeisObligadoSolidarioPM = () => {
       tieneControladosFisicosComoFisico: pm.tieneControladosFisicosComoFisico,
       cantidadControladosFisicosComoFisico: pm.cantidadControladosFisicosComoFisico,
     },
-    validationSchema: {
+    validationSchema: Yup.object().shape({
       controladosFisicosComoMoral: Yup.array().of(subformValidationSchema),
       tieneControladosFisicosComoMoral: Yup.string().required(campoRequerido),
       controladosFisicosComoFisico: Yup.array().of(subformValidationSchema),
       tieneControladosFisicosComoFisico: Yup.string().required(campoRequerido),
-    },
-  };
-
-  const formulario = useFormik({
-    initialValues: {
-      ...initialValues,
-    },
-    validationSchema: Yup.object().shape({
-      ...validationSchema,
     }),
     onSubmit: (values) => {
       dispatch(

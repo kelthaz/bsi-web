@@ -36,7 +36,7 @@ const PasoCuatroObligadoSolidarioPM = () => {
     porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
   });
 
-  const { initialValues, validationSchema } = {
+  const formulario = useFormik({
     initialValues: {
       controladosMoralesComoMoral: pm.controladosMoralesComoMoral,
       tieneControladosMoralesComoMoral: pm.tieneControladosMoralesComoMoral,
@@ -45,20 +45,11 @@ const PasoCuatroObligadoSolidarioPM = () => {
       tieneControladosMoralesComoFisico: pm.tieneControladosMoralesComoFisico,
       cantidadControladosMoralesComoFisico: pm.cantidadControladosMoralesComoFisico,
     },
-    validationSchema: {
+    validationSchema: Yup.object().shape({
       controladosMoralesComoFisico: Yup.array().of(subformValidationSchema),
       tieneControladosMoralesComoFisico: Yup.string().required(campoRequerido),
       controladosMoralesComoMoral: Yup.array().of(subformValidationSchema),
       tieneControladosMoralesComoMoral: Yup.string().required(campoRequerido),
-    },
-  };
-
-  const formulario = useFormik({
-    initialValues: {
-      ...initialValues,
-    },
-    validationSchema: Yup.object().shape({
-      ...validationSchema,
     }),
     onSubmit: (values) => {
       dispatch(
