@@ -137,7 +137,7 @@ const StepNine = () => {
               <div className="row justify-content-between">
                 <div className={` d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
                   <div className="container-svg-card">
-                    <Image src="/Buro2.jpg" alt="" width="90" height="90" />
+                    <Image src="/Buro2.jpg" alt="" width="75" height="75" />
                   </div>
                   <div>
                     <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
