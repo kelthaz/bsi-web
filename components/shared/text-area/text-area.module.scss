@@ -86,6 +86,7 @@
 }
 
 .help-text {
+  @include help-text-config($gray);
   display: inline-block;
 }
 
@@ -101,10 +102,6 @@
   @include body-3;
   color: $color;
   display: inline-block;
-}
-
-.help-text {
-  @include help-text-config($gray);
 }
 
 .help-text-error {
