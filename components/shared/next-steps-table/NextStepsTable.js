@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import styles from './next-steps-table.module.scss';
 import Tooltip from '../tooltip/Tooltip';
+import SvgCompletada from '../../svgs/SvgCompletada';
+import SvgEnProceso from '../../svgs/SvgEnProceso';
+import SvgEspera from '../../svgs/SvgEspera';
 
 const NextStepsTable = ({ value }) => (
   <div className={`${styles['t-container']}`}>
@@ -12,7 +15,9 @@ const NextStepsTable = ({ value }) => (
     <table>
       <tr>
         <td className={`body2 ${styles.td}`}>Validar documentos de Obligado Solidario</td>
-        <td className={`body2 ${styles.td2}`}>En proceso</td>
+        <td className={`body2 ${styles.td2}`}>
+          <SvgCompletada /> Completada
+        </td>
         <td className={`body2 ${styles.td3}`}>22/09/2020 | 10:30</td>
         <button disabled type="button" className="btn-mini">
           Agendar
@@ -20,15 +25,19 @@ const NextStepsTable = ({ value }) => (
       </tr>
       <tr>
         <td className={`body2 ${styles.td}`}>Agendar visita de un ejecutivo a mi obligado solidario</td>
-        <td className={`body2 ${styles.td2}`}>En espera</td>
+        <td className={`body2 ${styles.td2}`}>
+          <SvgEnProceso /> En proceso
+        </td>
         <td className={`body2 ${styles.td3}`}>22/09/2020 | 10:30</td>
-        <button disabled type="button" className="btn-mini">
-          Agendar
+        <button type="button" className="btn-mini">
+          Cancelar
         </button>
       </tr>
       <tr>
         <td className={`body2 ${styles.td}`}>Agendar visita de un ejecutivo a mi domicilio </td>
-        <td className={`body2 ${styles.td2}`}>En espera</td>
+        <td className={`body2 ${styles.td2}`}>
+          <SvgEspera /> En espera
+        </td>
         <td className={`body2 ${styles.td3}`}>22/09/2020 | 10:30</td>
         <button disabled type="button" className="btn-mini">
           Agendar
@@ -36,7 +45,9 @@ const NextStepsTable = ({ value }) => (
       </tr>
       <tr>
         <td className={`body2 ${styles.td}`}>Firma de contrato digital</td>
-        <td className={`body2 ${styles.td2}`}>En espera</td>
+        <td className={`body2 ${styles.td2}`}>
+          <SvgEspera /> En espera
+        </td>
         <td className={`body2 ${styles.td3}`}>22/09/2020 | 10:30</td>
         <button disabled type="button" className="btn-mini">
           Firmar
@@ -47,7 +58,9 @@ const NextStepsTable = ({ value }) => (
           Activar tu token y tu EmpresaNet
           <Tooltip message="..." />
         </td>
-        <td className={`body2 ${styles.td2}`}>En espera</td>
+        <td className={`body2 ${styles.td2}`}>
+          <SvgEspera disabled /> En espera
+        </td>
         <td className={`body2 ${styles.td3}`}>22/09/2020 | 10:30</td>
         <button disabled type="button" className="btn-mini">
           Ver
