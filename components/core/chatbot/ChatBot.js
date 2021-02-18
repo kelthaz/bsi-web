@@ -42,7 +42,7 @@ const ChatBot = () => {
             </div>
           </div>
           <div className={styles.content}>
-            <img className={`${styles['img-chatbot']}`} src="/FernandaChat-0.jpg" alt="Fernanda" />
+            <img className={`${styles['img-chatbot']}`} src="/chat-icon.png" alt="Fernanda" />
             <p className="body2 pt-2">
               <span className={styles['tc-storm']}>Hola, soy Fernanda</span>
               <br />
