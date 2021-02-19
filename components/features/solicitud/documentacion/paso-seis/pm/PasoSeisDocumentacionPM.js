@@ -44,7 +44,7 @@ const PasoSeisDocumentacionPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '7' },
+          currentStep: validate ? { tab: 'documentacion', step: '7' } : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );

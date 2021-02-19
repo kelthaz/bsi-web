@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import SvgOk from '../../../../svgs/SvgOk';
 
-const RevisarCorreo = () => (
+const RevisarCorreoDocumentacion = () => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud ">
       <div className="container px-md-2 px-xs-0">
@@ -48,4 +48,4 @@ const RevisarCorreo = () => (
   </div>
 );
 
-export default RevisarCorreo;
+export default RevisarCorreoDocumentacion;

@@ -9,6 +9,7 @@ export const PASO_SIETE_DOCUMENTACION_ROUTE = '/solicitud/documentacion/7';
 export const PASO_OCHO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/8';
 export const AGRADECIMIENTO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/agradecimiento';
 export const GRACIAS_DOCUMENTACION_ROUTE = '/solicitud/documentacion/gracias';
+export const REVISAR_CORREO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/revisar-correo';
 
 export const PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-1';
 export const PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-2';

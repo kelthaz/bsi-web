@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import BannerInicio from '../../../core/banners/BannerInicio';
 import styles from './inicio.module.scss';
 import VideoSelector from '../../../shared/video-selector/VideoSelector';
-import Simulador from '../../../core/simulador/Simulador';
-import SimuladorRepositorio from '../../../../services/simulador/simulador.repositorio';
+import SelectorSimulador from '../../../core/simulador/SelectorSimulador';
 import SvgPantallaPersonaTexto from '../../../svgs/SvgPantallaPersonaTexto';
 import SvgEdificioTexto from '../../../svgs/SvgEdificioTexto';
 import SvgDineroTarjeta from '../../../svgs/SvgDineroTarjeta';
@@ -128,7 +127,7 @@ const Inicio = ({ catalogo }) => {
         </div>
       </section>
       <section className="pb-5">
-        <Simulador handleSimular={handleSimular} catalogo={catalogo} />
+        <SelectorSimulador handleSimular={handleSimular} catalogo={catalogo} />
       </section>
       <section className="section-blue-night">
         <div className="container py-lg-5 py-md-3 py-sm-4 py-xs-4 px-lg-0">
@@ -204,15 +203,5 @@ const Inicio = ({ catalogo }) => {
 Inicio.propTypes = {
   catalogo: PropTypes.any.isRequired,
 };
-
-// export const getStaticProps = async () => {
-//   const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
-
-//   return {
-//     props: {
-//       catalogo,
-//     },
-//   };
-// };
 
 export default Inicio;

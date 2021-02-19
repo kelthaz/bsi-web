@@ -15,7 +15,7 @@ import {
   rfcInvalido,
   seleccionOpcion,
 } from '../../../../../../constants/errors';
-import { regexRFCFisica } from '../../../../../../constants/regex';
+import { regexRFCFisica, regexRFCMoral } from '../../../../../../constants/regex';
 import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 import { PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
@@ -45,7 +45,7 @@ const StepFour = () => {
       })
       .nullable()
       .required(seleccionOpcion),
-    rfc: Yup.string().matches(regexRFCFisica, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
+    rfc: Yup.string().matches(regexRFCMoral, rfcInvalido).min(12, longitudMinima).required(campoRequerido),
     invierto: Yup.string().required(campoRequerido),
   });
 

@@ -10,46 +10,64 @@ import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicit
 import TextField from '../../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, numeroInvalido, correoInvalido } from '../../../../../../constants/errors';
 import SvgEnviado from '../../../../../svgs/SvgEnviado';
+import EmailageRepositorio from '../../../../../../services/solicitud/emailage.repositorio';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
 const StepTwoObligado = () => {
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
-  const router = useRouter();
-
-  const { initialValues, validationSchema } = {
-    initialValues: {
-      primerNombreDoc: datosEmpresa.primerNombreRecibe,
-      segundoNombreDoc: datosEmpresa.segundoNombreRecibe,
-      primerApellidoDoc: datosEmpresa.primerApellidoRecibe,
-      segundoApellidoDoc: datosEmpresa.segundoApellidoRecibe,
-      correoDoc: datosEmpresa.correoDoc,
-      celularDoc: datosEmpresa.celularRecibe,
-    },
-    validationSchema: Yup.object().shape({
-      primerNombreDoc: Yup.string().max(60, longitudMaxima).required(campoRequerido),
-      segundoNombreDoc: Yup.string().max(60, longitudMaxima),
-      primerApellidoDoc: Yup.string().max(60, longitudMaxima).required(campoRequerido),
-      segundoApellidoDoc: Yup.string().max(60, longitudMaxima),
-      correoDoc: Yup.string().trim().email(correoInvalido).required(campoRequerido),
-      celularDoc: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
-    }),
-  };
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
-    initialValues,
-    validationSchema,
+    initialValues: {
+      primerNombre: obligadoSolidario.primerNombre,
+      segundoNombre: obligadoSolidario.segundoNombre,
+      primerApellido: obligadoSolidario.primerApellido,
+      segundoApellido: obligadoSolidario.segundoApellido,
+      correo: obligadoSolidario.correo,
+      celular: obligadoSolidario.celular,
+    },
+    validationSchema: Yup.object().shape({
+      primerNombre: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+      segundoNombre: Yup.string().max(60, longitudMaxima),
+      primerApellido: Yup.string().max(60, longitudMaxima).required(campoRequerido),
+      segundoApellido: Yup.string().max(60, longitudMaxima),
+      correo: Yup.string().email(correoInvalido).required(campoRequerido),
+      celular: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
+    }),
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '2' },
-          datosEmpresa: { ...datosEmpresa, ...values },
+          currentStep: validate ? { tab: 'documentacion', step: 'agradecimiento-obligado' } : { ...currentStep },
+          obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/revisar-correo');
     },
-    validateOnMount: true,
   });
+
+  const validateEmail = async () => {
+    if (!formulario.errors.correo) {
+      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo)
+        .then((resp) => resp.data.fraudRisk.split(' ')[0])
+        .catch(() => 801);
+      if (emailScore >= 800) {
+        formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
+        return false;
+      }
+      // setOpenConfirmation(true);
+    }
+    return true;
+  };
+
+  const [handleSubmit] = useOnChangePage(
+    formulario,
+    AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
+    currentStep,
+    validateEmail
+  );
 
   return (
     <>
@@ -63,11 +81,11 @@ const StepTwoObligado = () => {
             <p className="dark-gray body2">
               Hemos enviado un correo a tu obligado solidario
               <br />
-              {datosEmpresa.primerNombreRecibe}.
+              {obligadoSolidario.primerNombreRecibe}.
             </p>
           </div>
           <div className="d-flex justify-content-center">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/revisar-correo">
+            <Link href={AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE}>
               <button className="btn-medium" type="submit" aria-label="Avanzar">
                 <span>Continuemos</span>
               </button>
@@ -77,8 +95,8 @@ const StepTwoObligado = () => {
       </Modal>
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud ">
-          <div className="container p-0 mt-5">
-            <form className="mt-xs-5 mt-md-0 mt-lg-0" onSubmit={formulario.handleSubmit} noValidate>
+          <div className="container p-0">
+            <form onSubmit={handleSubmit} noValidate>
               <h2 className="color-blue-storm">¡Anotado!</h2>
               <p className="color-dark-gray sub">
                 También requerimos que tu Obligado Solidario realice un proceso similar al tuyo, por lo que te pedimos
@@ -89,9 +107,9 @@ const StepTwoObligado = () => {
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                   <p className="input color-gray">Mi nombre es</p>
                 </div>
-                <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
-                    name="primerNombreDoc"
+                    name="primerNombre"
                     format="uppercase"
                     maxlength={12}
                     formulario={formulario}
@@ -100,9 +118,9 @@ const StepTwoObligado = () => {
                     label="Nombre"
                   />
                 </div>
-                <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
-                    name="segundoNombreDoc"
+                    name="segundoNombre"
                     format="uppercase"
                     maxlength={60}
                     formulario={formulario}
@@ -112,9 +130,9 @@ const StepTwoObligado = () => {
                     optional
                   />
                 </div>
-                <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
-                    name="primerApellidoDoc"
+                    name="primerApellido"
                     format="uppercase"
                     maxlength={20}
                     formulario={formulario}
@@ -123,9 +141,9 @@ const StepTwoObligado = () => {
                     label="Apellido paterno"
                   />
                 </div>
-                <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
+                <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
-                    name="segundoApellidoDoc"
+                    name="segundoApellido"
                     format="uppercase"
                     formulario={formulario}
                     maxlength={20}
@@ -137,9 +155,9 @@ const StepTwoObligado = () => {
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                   <p className="input color-gray">Su correo es</p>
                 </div>
-                <div className="col-lg-6 col-md-6 col-xs-12 pb-sm-3 pb-xs-3">
+                <div className="col-lg-6 col-md-6 col-xs-12 ">
                   <TextField
-                    name="correoDoc"
+                    name="correo"
                     formulario={formulario}
                     size="big"
                     label="correo@mail.com"
@@ -150,9 +168,9 @@ const StepTwoObligado = () => {
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                   <p className="input color-gray">Su teléfono es</p>
                 </div>
-                <div className="col-lg-6 col-md-6 col-xs-12 pb-sm-3 pb-xs-3">
+                <div className="col-lg-6 col-md-6 col-xs-12 ">
                   <TextField
-                    name="celularDoc"
+                    name="celular"
                     formulario={formulario}
                     type="tel"
                     size="big"
@@ -164,10 +182,9 @@ const StepTwoObligado = () => {
               </div>
               <div className="flex-column-center-config">
                 <button
-                  type="button"
+                  type="submit"
                   className="btn-big flex-align-self-center my-3"
-                  disabled={!(formulario.isValid && formulario.dirty)}
-                  onClick={() => setOpenConfirmation(true)}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                 >
                   Notificar al obligado
                 </button>

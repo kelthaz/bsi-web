@@ -1,23 +1,68 @@
-import { INICIO_ROUTE } from '../../../constants/routes/publico/publico';
+import {
+  AYUDA_ROUTE,
+  CREDITO_ROUTE,
+  INICIO_ROUTE,
+  REQUISITOS_ROUTE,
+  SIMULADOR_ROUTE,
+} from '../../../constants/routes/publico/publico';
+import SelectorSimulador from './simulador/Simulador';
+import Ayuda from './ayuda/Ayuda';
 import Credito from './credito/Credito';
 import Inicio from './inicio/Inicio';
+import Requisitos from './requisitos/Requisitos';
+import SimuladorRepositorio from '../../../services/simulador/simulador.repositorio';
+import AccordionRepositorio from '../../../services/simulador/acordeon.repositorio';
 
 const publicoRoutes = [
   {
     route: INICIO_ROUTE,
     component: Inicio,
-    services: [],
+    services: [{ name: 'catalogo', service: SimuladorRepositorio.getSimuladorCatalogo, params: '' }],
     roles: [],
     feature: 'publico',
-    data: {},
+    data: {
+      tab: 'inicio',
+    },
   },
   {
-    route: INICIO_ROUTE,
+    route: CREDITO_ROUTE,
     component: Credito,
+    services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'credito-pyme' }],
+    roles: [],
+    feature: 'publico',
+    data: {
+      tab: 'credito',
+    },
+  },
+  {
+    route: REQUISITOS_ROUTE,
+    component: Requisitos,
+    services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'requisitos' }],
+    roles: [],
+    feature: 'publico',
+    data: {
+      tab: 'requisitos',
+    },
+  },
+  {
+    route: SIMULADOR_ROUTE,
+    component: SelectorSimulador,
+    services: [{ name: 'catalogo', service: SimuladorRepositorio.getSimuladorCatalogo, params: '' }],
+    roles: [],
+    feature: 'publico',
+    data: {
+      tab: 'simulador',
+    },
+  },
+  {
+    route: AYUDA_ROUTE,
+    component: Ayuda,
     services: [],
     roles: [],
     feature: 'publico',
-    data: {},
+    data: {
+      tab: 'ayuda',
+    },
   },
 ];
 

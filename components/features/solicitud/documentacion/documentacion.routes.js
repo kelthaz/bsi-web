@@ -7,7 +7,7 @@ import PasoCincoDocumentacion from './paso-cinco/PasoCincoDocumentacion';
 import PasoSeisDocumentacion from './paso-seis/PasoSeisDocumentacion';
 import PasoSieteDocumentacion from './paso-siete/PasoSieteDocumentacion';
 import PasoOchoDocumentacion from './paso-ocho/PasoOchoDocumentacion';
-import RevisarCorreo from './revisar-correo/RevisarCorreo';
+import RevisarCorreoDocumentacion from './revisar-correo/RevisarCorreoDocumentacion';
 import {
   ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
   PASO_UNO_DOCUMENTACION_ROUTE,
@@ -18,9 +18,26 @@ import {
   PASO_SEIS_DOCUMENTACION_ROUTE,
   PASO_SIETE_DOCUMENTACION_ROUTE,
   PASO_OCHO_DOCUMENTACION_ROUTE,
+  PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
+  PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
+  AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
+  GRACIAS_DOCUMENTACION_ROUTE,
+  REVISAR_CORREO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
+import StepOneObligado from './obligado-solidario/step-one-obligado/StepOneObligado';
+import StepTwoObligado from './obligado-solidario/step-two-obligado/StepTwoObligado';
+import RevisarCorreoObligadoSolidario from './obligado-solidario/revisar-correo/RevisarCorreoObligadoSolidario';
+import Gracias from './gracias/Gracias';
 
 const documentacionRoutes = [
+  {
+    tab: 'documentacion',
+    step: 'gracias',
+    path: GRACIAS_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: Gracias,
+    services: [],
+  },
   {
     tab: 'documentacion',
     step: 'ultima-etapa',
@@ -61,14 +78,7 @@ const documentacionRoutes = [
     component: PasoCuatroDocumentacion,
     services: [],
   },
-  // {
-  //   tab: 'documentacion',
-  //   step: 'gracias',
-  //   path: '/solicitud/pm/documentacion/gracias',
-  //   stepNumber: null,
-  //   component: Gracias,
-  //   services: [],
-  // },
+
   {
     tab: 'documentacion',
     step: '5',
@@ -104,9 +114,34 @@ const documentacionRoutes = [
   {
     tab: 'documentacion',
     step: 'revisar-correo',
-    path: '/solicitud/pm/documentacion/revisar-correo',
+    path: REVISAR_CORREO_DOCUMENTACION_ROUTE,
     stepNumber: null,
-    component: RevisarCorreo,
+    component: RevisarCorreoDocumentacion,
+    services: [],
+  },
+
+  {
+    tab: 'documentacion',
+    step: 'obligado-1',
+    path: PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: StepOneObligado,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'obligado-2',
+    path: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: StepTwoObligado,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'agradecimiento-obligado',
+    path: AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: RevisarCorreoObligadoSolidario,
     services: [],
   },
   // {

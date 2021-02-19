@@ -21,7 +21,7 @@ const StepSeven = () => {
   } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const { query, push } = useRouter();
-  const validate = currentStep.step === query.ste;
+  const validate = currentStep.step === query.step;
 
   const opcionesProcedenciaPagoCredito = [
     { value: 'Ahorros', label: 'Ahorros' },
