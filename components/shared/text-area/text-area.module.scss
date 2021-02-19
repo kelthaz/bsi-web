@@ -85,9 +85,19 @@
   }
 }
 
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: inline-block;
+}
+
 .help-text {
   @include help-text-config($gray);
   display: inline-block;
+}
+
+.help-text-error {
+  @include help-text-config($red);
 }
 
 .indicador-error {
@@ -96,14 +106,4 @@
   &:focus-within {
     border: 1.5px solid $red;
   }
-}
-
-@mixin help-text-config($color) {
-  @include body-3;
-  color: $color;
-  display: inline-block;
-}
-
-.help-text-error {
-  @include help-text-config($red);
 }
