@@ -1,4 +1,4 @@
-// import styles from './section.module.scss';
+import PropTypes from 'prop-types';
 
 const Section = (props) => {
   const { className, children } = props;
@@ -10,6 +10,15 @@ const Section = (props) => {
       </div>
     </section>
   );
+};
+
+Section.defaultProps = {
+  className: '',
+};
+
+Section.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any.isRequired
 };
 
 export default Section;
