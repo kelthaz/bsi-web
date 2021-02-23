@@ -7,12 +7,12 @@ const initialState = {
     lastStep: false,
   },
   datosPersonales: {
-    primerNombre: 'jesus',
+    primerNombre: 'JESUS',
     segundoNombre: '',
-    primerApellido: 'gomez',
+    primerApellido: 'GOMEZ',
     segundoApellido: '',
     tipoPersona: { value: 'MORAL', label: 'Persona Física con Actividad Empresarial' },
-    razonSocial: 'paletas',
+    razonSocial: 'Paletas',
     tipoSociedad: { value: 10, label: 'S.A.' },
     nombreEmpresa: '',
     sector: null,
@@ -122,7 +122,6 @@ const initialState = {
     tipoPersona: null,
     correo: '',
     celular: '',
-    rfc: '',
   },
 };
 

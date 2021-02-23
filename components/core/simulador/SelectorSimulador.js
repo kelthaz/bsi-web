@@ -14,7 +14,7 @@ import SvgSegundaTextura from '../../svgs/texturas/SvgSegundaTextura';
 import changeSelectModel from '../../../helpers/changeSelectModel';
 import offsetTop from '../../../helpers/offsetTop';
 
-const Simulador = ({ handleSimular, catalogo }) => {
+const SelectorSimulador = ({ handleSimular, catalogo }) => {
   const dispatch = useDispatch();
   const {
     showResult,
@@ -218,13 +218,13 @@ const Simulador = ({ handleSimular, catalogo }) => {
   );
 };
 
-Simulador.propTypes = {
+SelectorSimulador.propTypes = {
   handleSimular: PropTypes.func,
   catalogo: PropTypes.any.isRequired,
 };
 
-Simulador.defaultProps = {
+SelectorSimulador.defaultProps = {
   handleSimular: () => window.scrollTo(0, offsetTop('result-simulador')),
 };
 
-export default Simulador;
+export default SelectorSimulador;

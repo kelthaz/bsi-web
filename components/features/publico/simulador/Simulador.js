@@ -2,18 +2,18 @@ import { useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import SimpleBanner from '../../components/shared/banners/simple-banner/SimpleBanner';
+import SimpleBanner from '../../../shared/banners/simple-banner/SimpleBanner';
 import styles from './simulador.module.scss';
-import Modal from '../../components/shared/modal/Modal';
-import Simulador from '../../components/core/simulador/Simulador';
-import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
-import downloadFile from '../../helpers/downloadFile';
-import dateFormatter from '../../helpers/dateFormatter';
-import ResultSimulador from '../../components/core/simulador/ResultSimulador';
-import SvgLoginCheck from '../../components/svgs/icons-cards/SvgLoginCheck';
-import SvgDocumentoCheck from '../../components/svgs/icons-cards/SvgDocumentoCheck';
+import Modal from '../../../shared/modal/Modal';
+import SelectorSimulador from '../../../core/simulador/SelectorSimulador';
+import SimuladorRepositorio from '../../../../services/simulador/simulador.repositorio';
+import downloadFile from '../../../../helpers/downloadFile';
+import dateFormatter from '../../../../helpers/dateFormatter';
+import ResultSimulador from '../../../core/simulador/ResultSimulador';
+import SvgLoginCheck from '../../../svgs/icons-cards/SvgLoginCheck';
+import SvgDocumentoCheck from '../../../svgs/icons-cards/SvgDocumentoCheck';
 
-export const PageSimulador = ({ catalogo }) => {
+const Simulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
 
@@ -211,7 +211,7 @@ export const PageSimulador = ({ catalogo }) => {
 
       <section className="section-white-relative">
         <div className={styles['simulador-container']}>
-          <Simulador catalogo={catalogo} />
+          <SelectorSimulador catalogo={catalogo} />
         </div>
       </section>
       <div id="result-simulador">
@@ -292,18 +292,18 @@ export const PageSimulador = ({ catalogo }) => {
   );
 };
 
-PageSimulador.propTypes = {
+Simulador.propTypes = {
   catalogo: PropTypes.any.isRequired,
 };
 
-export const getStaticProps = async () => {
-  const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
+// export const getStaticProps = async () => {
+//   const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
 
-  return {
-    props: {
-      catalogo,
-    },
-  };
-};
+//   return {
+//     props: {
+//       catalogo,
+//     },
+//   };
+// };
 
-export default PageSimulador;
+export default Simulador;

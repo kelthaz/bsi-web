@@ -8,34 +8,30 @@ import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicit
 import SvgPersonaFisicaActividadFisica from '../../../../../svgs/SvgPersonaFisica';
 import SvgPersonaMoralBlue from '../../../../../svgs/SvgPersonaMoralBlue';
 import Modal from '../../../../../shared/modal/Modal';
+import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import { PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
 const StepOneObligado = () => {
-  const capitalTrabajo = {
-    value: '1',
+  const personaFisica = {
+    value: 'FISICA',
     label: 'Persona Física',
-    subLabel: 'Sugerimos que sea un familiar con relación con la empresa',
   };
-  const capitalTrabajoMobile = {
-    value: '1',
-    label: 'Persona Física',
-    subLabel: 'Debe ser el princial accionista o un ejecutivo de la empresa',
-  };
-  const adquisicionActivacion = {
-    value: '2',
+  const personaMoral = {
+    value: 'MORAL',
     label: 'Persona Moral',
-    subLabel: 'Deberá ser una empresa que responderá con su patrimonio',
   };
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { documentacion, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { query } = useRouter();
+  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
-      usoCredito: documentacion.usoCredito,
+      tipoPersona: obligadoSolidario.tipoPersona,
     },
     validationSchema: Yup.object({
-      usoCredito: Yup.object()
+      tipoPersona: Yup.object()
         .shape({
           value: Yup.string(),
           label: Yup.string(),
@@ -46,26 +42,23 @@ const StepOneObligado = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '1' },
-          datosEmpresa: {
-            ...datosEmpresa,
-            ...values,
-          },
+          currentStep: validate ? { tab: 'documentacion', step: 'obligado-2' } : { ...currentStep },
+          obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/documentacion/2');
     },
-    validateOnMount: true,
   });
 
   const { values, setFieldTouched, setFieldValue, touched } = formulario;
 
-  const handleUsoCredito = (usoCredito) => {
-    if (!touched.usoCredito) {
-      setFieldTouched('usoCredito', true);
+  const handletipoPersona = async (tipoPersona) => {
+    if (!touched.tipoPersona) {
+      await setFieldTouched('tipoPersona', true);
     }
-    setFieldValue('usoCredito', usoCredito);
+    await setFieldValue('tipoPersona', tipoPersona);
   };
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE, currentStep);
 
   return (
     <>
@@ -93,7 +86,7 @@ const StepOneObligado = () => {
       <div className="contedor-fixed-tab">
         <div className="contedor-solicitud">
           <div className="container p-0">
-            <form onSubmit={formulario.handleSubmit} noValidate>
+            <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub position-relative">
                 Vamos a platicar un poco sobre la persona que te gustaría designar como tu Obligado Solidario.{' '}
                 <span onClick={() => setOpenConfirmation(true)} className="link" role="button" tabIndex={0}>
@@ -106,42 +99,18 @@ const StepOneObligado = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-lg-5 pl-md-5  mb-sm-2 mb-xs-2 px-xs-0 px-md-2">
                   <button
                     type="button"
-                    className={`d-sm-none d-xs-none	d-md-block d-lg-block card-simple-white-svg card-button ${
-                      values.usoCredito && values.usoCredito.value === capitalTrabajo.value && 'card-selected-blue-sky'
+                    className={`card-simple-white-svg card-button ${
+                      values.tipoPersona && values.tipoPersona.value === personaFisica.value && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handleUsoCredito(capitalTrabajo)}
+                    onClick={() => handletipoPersona(personaFisica)}
                   >
                     <div className="row">
                       <div className="col-12">
                         <SvgPersonaFisicaActividadFisica />
                       </div>
                       <div className="col-8 offset-2">
-                        <p className="mb-1">{capitalTrabajo.label}</p>
-                        <span className="color-gray">{capitalTrabajo.subLabel}</span>
-                      </div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`d-none d-sm-block d-xs-block d-md-none card-simple-white-svg-simple card-button ${
-                      values.usoCredito && values.usoCredito.value === capitalTrabajo.value && 'card-selected-blue-sky'
-                    }`}
-                    onClick={() => handleUsoCredito(capitalTrabajo)}
-                  >
-                    <div className="row">
-                      <div className="col-2 pl-1">
-                        <SvgPersonaFisicaActividadFisica />
-                      </div>
-                      <div className="col-10 px-0 mr-0">
-                        <div className="row justify-content-center mx-0 mr-0">
-                          <div className="col-12 pl-3 px-0">
-                            <p>{capitalTrabajoMobile.label}</p>
-                          </div>
-                          <div className="col-12 pr-1 text-left">
-                            <span className="color-gray">{capitalTrabajoMobile.subLabel}</span>
-                          </div>
-                        </div>
+                        <p className="mb-1">{personaFisica.label}</p>
+                        <span className="color-gray">Sugerimos que sea un familiar con relación con la empresa</span>
                       </div>
                     </div>
                   </button>
@@ -149,46 +118,18 @@ const StepOneObligado = () => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5 mb-sm-2 mb-xs-2 px-xs-0 px-md-2">
                   <button
                     type="button"
-                    className={`d-sm-none d-xs-none	d-md-block d-lg-block card-simple-white-svg card-button ${
-                      values.usoCredito &&
-                      values.usoCredito.value === adquisicionActivacion.value &&
-                      'card-selected-blue-sky'
+                    className={`card-simple-white-svg card-button ${
+                      values.tipoPersona && values.tipoPersona.value === personaMoral.value && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handleUsoCredito(adquisicionActivacion)}
+                    onClick={() => handletipoPersona(personaMoral)}
                   >
                     <div className="row">
                       <div className="col-12 ml-2">
                         <SvgPersonaMoralBlue />
                       </div>
                       <div className="col-9 offset-2">
-                        <p className="">{adquisicionActivacion.label}</p>
-                        <span className="color-gray">{adquisicionActivacion.subLabel}</span>
-                      </div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`d-none d-sm-block d-xs-block d-md-none card-simple-white-svg-simple card-button ${
-                      values.usoCredito &&
-                      values.usoCredito.value === adquisicionActivacion.value &&
-                      'card-selected-blue-sky'
-                    }`}
-                    onClick={() => handleUsoCredito(adquisicionActivacion)}
-                  >
-                    <div className="row">
-                      <div className="col-2 pl-1">
-                        <SvgPersonaMoralBlue />
-                      </div>
-                      <div className="col-10 px-0 mr-0">
-                        <div className="row justify-content-center mx-0 mr-0">
-                          <div className="col-12 pl-3 px-0">
-                            <p>{adquisicionActivacion.label}</p>
-                          </div>
-                          <div className="col-12 pr-1 text-left">
-                            <span className="color-gray">{adquisicionActivacion.subLabel}</span>
-                          </div>
-                        </div>
+                        <p className="">{personaMoral.label}</p>
+                        <span className="color-gray">Deberá ser una empresa que responderá con su patrimonio</span>
                       </div>
                     </div>
                   </button>
@@ -196,7 +137,7 @@ const StepOneObligado = () => {
               </div>
               <div className="flex-column-center-config">
                 <button
-                  disabled={!(formulario.isValid && formulario.dirty)}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"

@@ -78,10 +78,6 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
     );
     const rawImgData = canvasRef.current.toDataURL('image/jpeg', 1);
     const timestamp = Date.now();
-
-      // onCapture(rawImgData);
-
-      // canvasRef.current.toBlob((blob) => onCapture(blob), 'image/jpeg', 1);
       handleClear();
       resumeCamera();
     return {

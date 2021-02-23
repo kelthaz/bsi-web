@@ -1,21 +1,20 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import BannerInicio from '../../components/core/banners/BannerInicio';
+import BannerInicio from '../../../core/banners/BannerInicio';
 import styles from './inicio.module.scss';
-import VideoSelector from '../../components/shared/video-selector/VideoSelector';
-import Simulador from '../../components/core/simulador/Simulador';
-import SimuladorRepositorio from '../../services/simulador/simulador.repositorio';
-import SvgPantallaPersonaTexto from '../../components/svgs/SvgPantallaPersonaTexto';
-import SvgEdificioTexto from '../../components/svgs/SvgEdificioTexto';
-import SvgDineroTarjeta from '../../components/svgs/SvgDineroTarjeta';
-import SvgCarpetaDocumento from '../../components/svgs/SvgCarpetaDocumento';
-import SvgDocumentoImagen from '../../components/svgs/SvgDocumentoImagen';
-import SvgPantallaRFC from '../../components/svgs/SvgPantallaRFC';
-import SvgTerceraTextura from '../../components/svgs/texturas/SvgTerceraTextura';
-import offsetTop from '../../helpers/offsetTop';
+import VideoSelector from '../../../shared/video-selector/VideoSelector';
+import SelectorSimulador from '../../../core/simulador/SelectorSimulador';
+import SvgPantallaPersonaTexto from '../../../svgs/SvgPantallaPersonaTexto';
+import SvgEdificioTexto from '../../../svgs/SvgEdificioTexto';
+import SvgDineroTarjeta from '../../../svgs/SvgDineroTarjeta';
+import SvgCarpetaDocumento from '../../../svgs/SvgCarpetaDocumento';
+import SvgDocumentoImagen from '../../../svgs/SvgDocumentoImagen';
+import SvgPantallaRFC from '../../../svgs/SvgPantallaRFC';
+import SvgTerceraTextura from '../../../svgs/texturas/SvgTerceraTextura';
+import offsetTop from '../../../../helpers/offsetTop';
 
-export const Home = ({ catalogo }) => {
+const Inicio = ({ catalogo }) => {
   const router = useRouter();
   const handleSimular = () => router.push('/simulador').then(() => window.scrollTo(0, offsetTop('result-simulador')));
 
@@ -128,7 +127,7 @@ export const Home = ({ catalogo }) => {
         </div>
       </section>
       <section className="pb-5">
-        <Simulador handleSimular={handleSimular} catalogo={catalogo} />
+        <SelectorSimulador handleSimular={handleSimular} catalogo={catalogo} />
       </section>
       <section className="section-blue-night">
         <div className="container py-lg-5 py-md-3 py-sm-4 py-xs-4 px-lg-0">
@@ -201,18 +200,8 @@ export const Home = ({ catalogo }) => {
   );
 };
 
-Home.propTypes = {
+Inicio.propTypes = {
   catalogo: PropTypes.any.isRequired,
 };
 
-export const getStaticProps = async () => {
-  const catalogo = await SimuladorRepositorio.getSimuladorCatalogo().then((res) => res.data);
-
-  return {
-    props: {
-      catalogo,
-    },
-  };
-};
-
-export default Home;
+export default Inicio;

@@ -1,21 +1,20 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import BannerCreditoPyme from '../../components/core/banners/BannerCreditoPyme';
-import Accordion from '../../components/shared/accordion/Accordion';
-import TitleSection from '../../components/shared/titles/title-section/TitleSection';
-import SvgCargaTusDocumentos from '../../components/svgs/credito-pyme/SvgCargaTusDocumentos';
-import SvgConoceTuOferta from '../../components/svgs/credito-pyme/SvgConoceTuOferta';
-import SvgDatosEmpresa from '../../components/svgs/credito-pyme/SvgDatosEmpresa';
-import SvgDatosPersonales from '../../components/svgs/credito-pyme/SvgDatosPersonales';
-import SvgCalendario from '../../components/svgs/icons-cards/SvgCalendario';
-import SvgCargarDocumentos from '../../components/svgs/icons-cards/SvgCargarDocumentos';
-import SvgTarjetaCredito from '../../components/svgs/icons-cards/SvgTarjetaCredito';
-import SvgPrimeraTextura from '../../components/svgs/texturas/SvgPrimeraTextura';
-import SvgSextaTextura from '../../components/svgs/texturas/SvgSextaTextura';
-import AccordionRepositorio from '../../services/simulador/acordeon.repositorio';
+import BannerCreditoPyme from '../../../core/banners/BannerCreditoPyme';
+import Accordion from '../../../shared/accordion/Accordion';
+import TitleSection from '../../../shared/titles/title-section/TitleSection';
+import SvgCargaTusDocumentos from '../../../svgs/credito-pyme/SvgCargaTusDocumentos';
+import SvgConoceTuOferta from '../../../svgs/credito-pyme/SvgConoceTuOferta';
+import SvgDatosEmpresa from '../../../svgs/credito-pyme/SvgDatosEmpresa';
+import SvgDatosPersonales from '../../../svgs/credito-pyme/SvgDatosPersonales';
+import SvgCalendario from '../../../svgs/icons-cards/SvgCalendario';
+import SvgCargarDocumentos from '../../../svgs/icons-cards/SvgCargarDocumentos';
+import SvgTarjetaCredito from '../../../svgs/icons-cards/SvgTarjetaCredito';
+import SvgPrimeraTextura from '../../../svgs/texturas/SvgPrimeraTextura';
+import SvgSextaTextura from '../../../svgs/texturas/SvgSextaTextura';
 import styles from './credito-pyme.module.scss';
 
-const CreditoPyme = ({ accordionItems }) => (
+const Credito = ({ accordionItems }) => (
   <>
     <BannerCreditoPyme />
     <section className="section-blue-storm-relative">
@@ -215,18 +214,8 @@ const CreditoPyme = ({ accordionItems }) => (
   </>
 );
 
-CreditoPyme.propTypes = {
+Credito.propTypes = {
   accordionItems: PropTypes.any.isRequired,
 };
 
-export const getStaticProps = async () => {
-  const accordionItems = await AccordionRepositorio.getAccordionPorSector('credito-pyme').then((res) => res.data);
-
-  return {
-    props: {
-      accordionItems,
-    },
-  };
-};
-
-export default CreditoPyme;
+export default Credito;

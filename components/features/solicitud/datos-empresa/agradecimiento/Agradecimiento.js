@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import SvgOffer from '../../../../svgs/SvgOffer';
 
 const Agradecimientos = () => {
-  const { datosEmpresa } = useSelector((state) => state.solicitud);
+  const { datosPersona } = useSelector((state) => state.solicitud);
 
   return (
     <div className="contedor-fixed">
@@ -15,7 +15,7 @@ const Agradecimientos = () => {
                 <SvgOffer />
               </div>
               <h2 className="text-xs-center text-md-left color-blue-storm mt-5">
-                ¡Gracias, {datosEmpresa.primerNombreRecibe}!
+                ¡Gracias, {datosPersona.primerNombre}!
               </h2>
               <p className="body2 text-xs-center text-md-left color-dark-gray sub">
                 ¡Estamos analizando tu solicitud y en breve nos comunicaremos contigo por correo electrónico para que

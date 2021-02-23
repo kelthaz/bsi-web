@@ -26,8 +26,10 @@ import {
   PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
   PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
   AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
+  AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
 } from '../../../../../constants/routes/solicitud/obligado';
-import BienvenidoObligadoSolidario from '../pm/bienvenido/BienvenidoObligadoSolidario';
+import Bienvenido from './bienvenido/Bienvenido';
+import AgradecimientoIncompleto from '../pm/agradecimiento-incompleto/AgradecimientoIncompleto';
 
 const pfaeRoutes = [
   {
@@ -35,7 +37,7 @@ const pfaeRoutes = [
     step: 'bienvenido',
     path: BIENVENIDA_OBLIGADO_SOLIDARIO_ROUTE,
     stepNumber: null,
-    component: BienvenidoObligadoSolidario,
+    component: Bienvenido,
     services: [],
   },
   {
@@ -148,6 +150,14 @@ const pfaeRoutes = [
     path: '/obligado-solidario/pfae/preguntas/pruebasComponentes',
     stepNumber: null,
     component: pruebasComponentes,
+    services: [],
+  },
+  {
+    tab: 'preguntas',
+    step: 'agradecimiento',
+    path: AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
+    stepNumber: null,
+    component: AgradecimientoIncompleto,
     services: [],
   },
 ];

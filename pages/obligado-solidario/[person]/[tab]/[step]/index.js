@@ -86,6 +86,8 @@ const ObligadoSolidario = ({ index, data }) => {
 };
 
 export async function getServerSideProps(context) {
+  console.log(context);
+  console.log('------------------------------------------------');
   const data = {};
   const index = obligadoSolidarioRoutes.findIndex((route) => context.resolvedUrl.includes(route.path));
   const { services } = obligadoSolidarioRoutes[index];

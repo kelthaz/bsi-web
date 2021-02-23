@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import Camera from '../../../../shared/camera/Camera';
 import Modal from '../../../../shared/modal/Modal';
+import KnomiRepositorio from '../../../../../services/solicitud/knomi.repositorio';
 
 const CapturaRostro = () => {
   const dispatch = useDispatch();
@@ -73,19 +74,7 @@ const CapturaRostro = () => {
         }
       }
     };
-    const response = await fetch('https://mobileauth.aware-demos.com/knomi/autocapture', {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      // credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(payload) // body data type must match "Content-Type" header
-    });
-    return response.json();
+    return KnomiRepositorio.postAutoCapture(payload).data;
   };
 
   const getResponseAnalyze = async (frames) => {
@@ -103,20 +92,7 @@ const CapturaRostro = () => {
         }
       }
     };
-
-    const response = await fetch('https://mobileauth.aware-demos.com/knomi/analyze', {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      // credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(payload) // body data type must match "Content-Type" header
-    });
-    return response.json();
+    return KnomiRepositorio.postAnalyze(payload).data;
   };
 
   const processMessage = (feedback) => {

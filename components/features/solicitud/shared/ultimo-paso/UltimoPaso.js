@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { REVISAR_CORREO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 
 const UltimoPaso = () => (
   <div className="contedor-fixed-tab">
@@ -19,7 +20,7 @@ const UltimoPaso = () => (
           </div>
         </div>
         <div className="flex-column-center-config mt-2">
-          <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/agradecimiento">
+          <Link href={REVISAR_CORREO_DOCUMENTACION_ROUTE}>
             <button type="submit" className="btn-big">
               Enviar instrucciones
             </button>

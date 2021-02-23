@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import styles from './requisitos.module.scss';
-import Accordion from '../../components/shared/accordion/Accordion';
-import Tab from '../../components/shared/tab/Tab';
-import TabItem from '../../components/shared/tab/TabItem';
-import Title from '../../components/shared/titles/title/Title';
-import VideoSelector from '../../components/shared/video-selector/VideoSelector';
-import Modal from '../../components/shared/modal/Modal';
-import BannerRequisitos from '../../components/core/banners/BannerRequisitos';
-import Tooltip from '../../components/shared/tooltip/Tooltip';
-import AccordionRepositorio from '../../services/simulador/acordeon.repositorio';
+import Accordion from '../../../shared/accordion/Accordion';
+import Tab from '../../../shared/tab/Tab';
+import TabItem from '../../../shared/tab/TabItem';
+import Title from '../../../shared/titles/title/Title';
+import VideoSelector from '../../../shared/video-selector/VideoSelector';
+import Modal from '../../../shared/modal/Modal';
+import BannerRequisitos from '../../../core/banners/BannerRequisitos';
+import Tooltip from '../../../shared/tooltip/Tooltip';
 
 const Check = () => <img src="/check.svg" alt="Check" />;
 
-export const Requisitos = ({ accordionItems }) => {
+const Requisitos = ({ accordionItems }) => {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
 
@@ -572,14 +571,14 @@ Requisitos.propTypes = {
   accordionItems: PropTypes.any.isRequired,
 };
 
-export const getStaticProps = async () => {
-  const accordionItems = await AccordionRepositorio.getAccordionPorSector('requisitos').then((res) => res.data);
+// export const getStaticProps = async () => {
+//   const accordionItems = await AccordionRepositorio.getAccordionPorSector('requisitos').then((res) => res.data);
 
-  return {
-    props: {
-      accordionItems,
-    },
-  };
-};
+//   return {
+//     props: {
+//       accordionItems,
+//     },
+//   };
+// };
 
 export default Requisitos;

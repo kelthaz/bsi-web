@@ -23,9 +23,9 @@ const App = ({ Component, pageProps }) => {
         <script src="https://sdk.inbenta.io/chatbot/1.39.0/inbenta-chatbot-sdk.js" />
         <script src="/chatbot.js" />
       </Head>
-      <Header />
+      {/* <Header /> */}
       <Component {...pageProps} />
-      <Footer />
+      {/* <Footer /> */}
       <ChatBot />
       <Loader />
     </Provider>
