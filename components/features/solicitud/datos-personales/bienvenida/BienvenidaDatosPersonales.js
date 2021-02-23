@@ -1,10 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import ResultSimulador from '../../../../core/simulador/ResultSimulador';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { GRAN_SALTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
-const Bienvenida = () => {
+const BienvenidaDatosPersonales = () => {
   const { dataSimulador, resultSimulador } = useSelector((state) => state.simulador);
+  const { currentStep } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+  const { push } = useRouter();
+
+  const handleComienza = async () => {
+    dispatch(
+      nextStepDatosPersonales({
+        currentStep: { ...currentStep, paso: 1 },
+      })
+    );
+    await push(GRAN_SALTO_DATOS_PERSONA_ROUTE);
+  };
 
   return (
     <div className="contedor-fixed">
@@ -40,11 +55,9 @@ const Bienvenida = () => {
             </div>
             <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
               <div className="center-second-button">
-                <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/gran-salto" replace>
-                  <button type="submit" className="btn-big">
-                    Comienza tu solicitud
-                  </button>
-                </Link>
+                <button type="submit" className="btn-big" onClick={handleComienza}>
+                  Comienza tu solicitud
+                </button>
               </div>
             </div>
           </div>
@@ -54,5 +67,4 @@ const Bienvenida = () => {
   );
 };
 
-Bienvenida.getContentTypeIdentifier = () => 'bienvenido';
-export default Bienvenida;
+export default BienvenidaDatosPersonales;

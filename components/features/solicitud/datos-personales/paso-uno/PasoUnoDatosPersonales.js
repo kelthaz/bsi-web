@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { longitudMaxima, campoRequerido } from '../../../../../constants/errors';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_DOS_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
-const StepOne = () => {
+const PasoUnoDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -30,14 +28,16 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-personales', step: '2' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_PERSONA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_PERSONA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -116,4 +116,9 @@ const StepOne = () => {
     </div>
   );
 };
-export default StepOne;
+
+PasoUnoDatosPersonales.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoUnoDatosPersonales;

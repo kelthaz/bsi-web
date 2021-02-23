@@ -1,8 +1,7 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { seleccionOpcion } from '../../../../../constants/errors';
 import { PASO_TRES_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
@@ -10,13 +9,11 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
-const StepTwo = () => {
+const PasoDosDatosPersonales = ({ validate }) => {
   const personaFisica = { value: 'FISICA', label: 'Persona Física con Actividad Empresarial' };
   const personaMoral = { value: 'MORAL', label: 'Persona Moral' };
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -34,7 +31,9 @@ const StepTwo = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-personales', step: '3' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosPersonales: {
             ...datosPersonales,
             ...values,
@@ -53,7 +52,7 @@ const StepTwo = () => {
     }
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_PERSONA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_PERSONA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -120,4 +119,8 @@ const StepTwo = () => {
   );
 };
 
-export default StepTwo;
+PasoDosDatosPersonales.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoDosDatosPersonales;

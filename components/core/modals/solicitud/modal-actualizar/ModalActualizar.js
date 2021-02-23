@@ -4,22 +4,22 @@ import { useEffect, useState } from 'react';
 import Modal from '../../../../shared/modal/Modal';
 import { resetChangePage, onHandleSubmit } from '../../../../../redux/actions/formulario';
 
-const ModalActualizar = ({ as = '/solicitud/[tab]/[step]' }) => {
+const ModalActualizar = () => {
   const { push } = useRouter();
   const dispatch = useDispatch();
   const { routePage, showModal, isValid } = useSelector((state) => state.formulario);
   const [openModal, setOpenModal] = useState(false);
 
-  const handleModalFirstOption = () => {
+  const handleModalFirstOption = async () => {
     if (isValid) {
       dispatch(onHandleSubmit(true));
-      push(as, routePage);
+      await push(routePage);
     }
     setOpenModal(false);
   };
 
-  const handleModalSecondOption = () => {
-    push(as, routePage);
+  const handleModalSecondOption = async () => {
+    await push(routePage);
     setOpenModal(false);
   };
 

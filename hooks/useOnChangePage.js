@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { onChangePage, onShowModal, resetChangePage } from '../redux/actions/formulario';
+import { onShowModal, resetChangePage } from '../redux/actions/formulario';
 
-const useOnChangePage = (formulario, route, currentStep, validation = () => true) => {
-  const { push, query, beforePopState, asPath } = useRouter();
+const useOnChangePage = (formulario, route, validacion, validation = () => true) => {
+  const { push, beforePopState, asPath } = useRouter();
   const dispatch = useDispatch();
   const { changePage, routePage, handleSubmit } = useSelector((state) => state.formulario);
 
@@ -22,8 +22,7 @@ const useOnChangePage = (formulario, route, currentStep, validation = () => true
 
   const onHandleSubmit = async (event) => {
     event.preventDefault();
-    console.log(currentStep.step, query.step);
-    if (currentStep.step === query.step) {
+    if (validacion) {
       const resultValidation = await validation();
       if (resultValidation) {
         formulario.handleSubmit();

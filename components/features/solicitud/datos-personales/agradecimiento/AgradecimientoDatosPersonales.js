@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SvgOk from '../../../../svgs/SvgOk';
 
-const Agradecimientos = () => {
+const AgradecimientoDatosPersonales = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
 
   return (
@@ -36,4 +36,4 @@ const Agradecimientos = () => {
     </div>
   );
 };
-export default Agradecimientos;
+export default AgradecimientoDatosPersonales;

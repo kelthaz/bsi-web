@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { numeroInvalido, correoInvalido, campoRequerido } from '../../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
@@ -11,11 +11,9 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import EmailageRepositorio from '../../../../../services/solicitud/emailage.repositorio';
 import { PASO_CINCO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
-const StepFour = () => {
+const PasoCuatroDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -29,7 +27,9 @@ const StepFour = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { ...currentStep, step: '5' },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
@@ -49,7 +49,7 @@ const StepFour = () => {
     return true;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, currentStep, validateEmail);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, validate, validateEmail);
 
   return (
     <div className="contedor-fixed-tab">
@@ -118,4 +118,8 @@ const StepFour = () => {
   );
 };
 
-export default StepFour;
+PasoCuatroDatosPersonales.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoCuatroDatosPersonales;

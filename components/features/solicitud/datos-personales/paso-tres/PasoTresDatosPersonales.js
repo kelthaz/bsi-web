@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import TextArea from '../../../../shared/text-area/TextArea';
@@ -13,13 +12,10 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import useFindGiroBySector from '../../../../../hooks/useFindGiroBySector';
 import { PASO_CUATRO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
-const StepThree = ({ sectores }) => {
+const PasoTresDatosPersonales = ({ sectores, validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
@@ -81,7 +77,9 @@ const StepThree = ({ sectores }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-personales', step: '4' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosPersonales: { ...datosPersonales, ...values },
         })
       );
@@ -89,7 +87,7 @@ const StepThree = ({ sectores }) => {
   });
 
   const [itemsGiro] = useFindGiroBySector(formulario, 'sector', 'giro');
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_DATOS_PERSONA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_DATOS_PERSONA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -201,8 +199,9 @@ const StepThree = ({ sectores }) => {
   );
 };
 
-StepThree.propTypes = {
+PasoTresDatosPersonales.propTypes = {
   sectores: PropTypes.any.isRequired,
+  validate: PropTypes.bool.isRequired,
 };
 
-export default StepThree;
+export default PasoTresDatosPersonales;

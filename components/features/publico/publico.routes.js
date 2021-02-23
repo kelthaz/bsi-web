@@ -1,5 +1,7 @@
 import {
+  AVISO_ROUTE,
   AYUDA_ROUTE,
+  BENEFICIOS_ROUTE,
   CREDITO_ROUTE,
   INICIO_ROUTE,
   REQUISITOS_ROUTE,
@@ -12,6 +14,9 @@ import Inicio from './inicio/Inicio';
 import Requisitos from './requisitos/Requisitos';
 import SimuladorRepositorio from '../../../services/simulador/simulador.repositorio';
 import AccordionRepositorio from '../../../services/simulador/acordeon.repositorio';
+import Beneficios from './beneficios/Beneficios';
+import AvisoPrivacidad from './aviso/AvisoPrivacidad';
+import AvisoRepositorio from '../../../services/publico/aviso.repositorio';
 
 const publicoRoutes = [
   {
@@ -55,15 +60,35 @@ const publicoRoutes = [
     },
   },
   {
+    route: BENEFICIOS_ROUTE,
+    component: Beneficios,
+    services: [],
+    roles: [],
+    feature: 'publico',
+    data: {
+      tab: 'beneficios',
+    },
+  },
+  {
     route: AYUDA_ROUTE,
     component: Ayuda,
-    services: [],
+    services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'ayuda' }],
     roles: [],
     feature: 'publico',
     data: {
       tab: 'ayuda',
     },
   },
-];
+  {
+    route: AVISO_ROUTE,
+    component: AvisoPrivacidad,
+    services: [{ name: 'avisoItems', service: AvisoRepositorio.getAviso, params: '' }],
+    roles: [],
+    feature: 'publico',
+    data: {
+      tab: 'ayuda',
+    },
+  },
+].map((route) => ({ ...route, feature: 'publico' }));
 
 export default publicoRoutes;

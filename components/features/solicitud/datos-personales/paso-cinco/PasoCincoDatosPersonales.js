@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { nextStepDatosPersonales, resetDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
@@ -28,7 +29,7 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import LoginRepositorio from '../../../../../services/login/login.repositorio';
 import { AGRADECIMIENTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 
-const StepFive = () => {
+const PasoCincoDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const { changePage } = useSelector((state) => state.formulario);
   const {
@@ -78,26 +79,29 @@ const StepFive = () => {
   });
 
   const validateSaveInfo = async () => {
-    const data = {
-      ...datosPersonales,
-      tipoPersona: datosPersonales.tipoPersona.value,
-      tipoSociedad: datosPersonales.tipoSociedad?.label,
-      sector: datosPersonales.sector.value,
-      giro: datosPersonales.giro.value,
-      rfc: formulario.values.rfc,
-      password: formulario.values.contrasena,
-      simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
-    };
-    delete data.aceptoTerminos;
-    delete data.contrasena;
-    delete data.confirmarContrasena;
-    const valid = await LoginRepositorio.postRegistro(data)
-      .then(() => true)
-      .catch(() => false);
-    return valid;
+    if (!changePage) {
+      const data = {
+        ...datosPersonales,
+        tipoPersona: datosPersonales.tipoPersona.value,
+        tipoSociedad: datosPersonales.tipoSociedad?.label,
+        sector: datosPersonales.sector.value,
+        giro: datosPersonales.giro.value,
+        rfc: formulario.values.rfc,
+        password: formulario.values.contrasena,
+        simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
+      };
+      delete data.aceptoTerminos;
+      delete data.contrasena;
+      delete data.confirmarContrasena;
+      const valid = await LoginRepositorio.postRegistro(data)
+        .then(() => true)
+        .catch(() => false);
+      return valid;
+    }
+    return true;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_DATOS_PERSONA_ROUTE, currentStep, validateSaveInfo);
+  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_DATOS_PERSONA_ROUTE, validate, validateSaveInfo);
 
   return (
     <div className="contedor-fixed-tab">
@@ -220,4 +224,9 @@ const StepFive = () => {
     </div>
   );
 };
-export default StepFive;
+
+PasoCincoDatosPersonales.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoCincoDatosPersonales;
