@@ -127,7 +127,6 @@ const initialState = {
     },
   },
   obligadoSolidario: {
-    primerNombre: 'Jhon Alvarez Jimenez',
     aceptar: false,
     razonSocial: '',
     tipoSociedad: null,
