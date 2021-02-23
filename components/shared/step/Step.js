@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import styles from './step.module.scss';
 import { onChangePage } from '../../../redux/actions/formulario';
 
-const Step = ({ show, currentStep, valipStep, steps }) => {
+const Step = ({ currentStep, valipStep, steps }) => {
   const dispatch = useDispatch();
   const numStep = steps.length;
 
@@ -15,33 +15,30 @@ const Step = ({ show, currentStep, valipStep, steps }) => {
   };
 
   return (
-    show && (
-      <div className={styles['container-step']}>
-        <p className="button">
-          <span className="color-blue-storm">{`${currentStep}/`}</span>
-          <span className="color-gray-light">{numStep}</span>
-        </p>
-        <div className={styles['container-buttons']}>
-          {steps.map(({ step, action }) => (
-            <button
-              type="button"
-              key={step}
-              className={`${styles.step} ${currentStep === step ? styles['step-active'] : ''}`}
-              aria-label="Save"
-              onClick={() => {
-                handleStep(step, action);
-              }}
-              disabled={step > valipStep}
-            />
-          ))}
-        </div>
+    <div className={styles['container-step']}>
+      <p className="button">
+        <span className="color-blue-storm">{`${currentStep}/`}</span>
+        <span className="color-gray-light">{numStep}</span>
+      </p>
+      <div className={styles['container-buttons']}>
+        {steps.map(({ step, action }) => (
+          <button
+            type="button"
+            key={step}
+            className={`${styles.step} ${currentStep === step ? styles['step-active'] : ''}`}
+            aria-label="Save"
+            onClick={() => {
+              handleStep(step, action);
+            }}
+            disabled={step > valipStep}
+          />
+        ))}
       </div>
-    )
+    </div>
   );
 };
 
 Step.propTypes = {
-  show: PropTypes.bool.isRequired,
   currentStep: PropTypes.number.isRequired,
   valipStep: PropTypes.number.isRequired,
   steps: PropTypes.array.isRequired,

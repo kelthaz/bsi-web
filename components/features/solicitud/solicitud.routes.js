@@ -6,10 +6,10 @@ import ofertaRoutes from './oferta/oferta.routes';
 
 const solicitudRoutes = [
   ...datosPersonalesRoutes,
-  ...datosEmpresaRoutes,
-  ...documentacionRoutes,
-  ...cargaDocumentosRoutes,
-  ...ofertaRoutes
-];
+  // ...datosEmpresaRoutes,
+  // ...documentacionRoutes,
+  // ...cargaDocumentosRoutes,
+  // ...ofertaRoutes
+].map((route) => ({ ...route, feature: 'solicitud' }));
 
 export default solicitudRoutes;

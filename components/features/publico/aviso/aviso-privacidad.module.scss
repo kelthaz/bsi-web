@@ -1,5 +1,5 @@
-@import '../../styles/scss/modules/var';
-@import '../../styles/scss/modules/mixins';
+@import '../../../../styles/scss/modules/var';
+@import '../../../../styles/scss/modules/mixins';
 
 .banner-title {
   padding-bottom: 40px;
@@ -54,11 +54,11 @@
 }
 
 .terms-title {
-  width: 100%;
   border-bottom: 2px solid $blue-shadow;
   color: $blue-storm;
   margin-bottom: 32px;
   padding-bottom: 24px;
+  width: 100%;
 
   @include media('mobile') {
     text-align: center;

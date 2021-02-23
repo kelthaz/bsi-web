@@ -1,13 +1,22 @@
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React from 'react';
 import PublicoContainer from '../../components/core/containers/publico/PublicoContainer';
+import SolicitudContainer from '../../components/core/containers/solicitud/SolicitudContainer';
 import featureRoute from '../../components/features/feature.routes';
 
 const App = ({ index, data }) => {
-  const router = useRouter();
+  const { feature } = featureRoute[index];
 
-  return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
+  switch (feature) {
+    case 'publico':
+      return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
+
+    case 'solicitud':
+      return <SolicitudContainer servicesData={data} pageComponent={featureRoute[index]} />;
+
+    default:
+      return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
+  }
 };
 
 export async function getServerSideProps(context) {

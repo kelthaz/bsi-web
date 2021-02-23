@@ -1,7 +1,8 @@
 import { useState, Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import SimpleBanner from '../../../shared/banners/simple-banner/SimpleBanner';
 import styles from './simulador.module.scss';
 import Modal from '../../../shared/modal/Modal';
@@ -12,10 +13,14 @@ import dateFormatter from '../../../../helpers/dateFormatter';
 import ResultSimulador from '../../../core/simulador/ResultSimulador';
 import SvgLoginCheck from '../../../svgs/icons-cards/SvgLoginCheck';
 import SvgDocumentoCheck from '../../../svgs/icons-cards/SvgDocumentoCheck';
+import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
+import { BIENVENIDA_DATOS_PERSONA_ROUTE } from '../../../../constants/routes/solicitud/persona';
 
 const Simulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalZona, setOpenModalZona] = useState(false);
+  const dispatch = useDispatch();
+  const { push } = useRouter();
 
   const zonas = [
     { estado: 'Aguascalientes', municipios: ['Aguascalientes'] },
@@ -100,6 +105,15 @@ const Simulador = ({ catalogo }) => {
       periodicidad: periodicidad.value,
     }).then((resp) => resp);
     downloadFile(tablaPdf.data, `Tabla_de_Amortización_${dateFormatter(new Date())}`, 'pdf');
+  };
+
+  const handleComienzaSolicitud = async () => {
+    dispatch(
+      nextStepDatosPersonales({
+        sincronizado: true,
+      })
+    );
+    await push(BIENVENIDA_DATOS_PERSONA_ROUTE);
   };
 
   return (
@@ -268,11 +282,9 @@ const Simulador = ({ catalogo }) => {
                       </div>
                     </div>
                     <div className="w-100 d-flex justify-content-md-start justify-content-xs-center">
-                      <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
-                        <button className="btn-big" type="button">
-                          Comienza tu solicitud
-                        </button>
-                      </Link>
+                      <button className="btn-big" type="button" onClick={handleComienzaSolicitud}>
+                        Comienza tu solicitud
+                      </button>
                     </div>
                   </div>
                 </div>
