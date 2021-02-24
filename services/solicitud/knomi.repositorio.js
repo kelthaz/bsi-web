@@ -9,7 +9,7 @@ const postRequest = async (url, body) => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(body)
   });
-  return {data: response.json()};
+  return {data: await response.json()};
 };
 
 const KnomiRepositorio = {
