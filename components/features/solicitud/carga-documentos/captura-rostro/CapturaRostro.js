@@ -15,6 +15,7 @@ const CapturaRostro = () => {
   const router = useRouter();
 
   const cameraRef = useRef();
+  const canvasRef = useRef();
 
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [analysisMessage, setAnalysisMessage] = useState([]);
@@ -74,7 +75,7 @@ const CapturaRostro = () => {
         }
       }
     };
-    return KnomiRepositorio.postAutoCapture(payload).data;
+    return KnomiRepositorio.postAutoCapture(payload);
   };
 
   const getResponseAnalyze = async (frames) => {
@@ -92,7 +93,7 @@ const CapturaRostro = () => {
         }
       }
     };
-    return KnomiRepositorio.postAnalyze(payload).data;
+    return KnomiRepositorio.postAnalyze(payload);
   };
 
   const processMessage = (feedback) => {
@@ -114,12 +115,12 @@ const CapturaRostro = () => {
 
     try {
       const response = await getResponseAutoCapture(frame);
-      if ('error' in response.preface) {
-        throw response.preface.error;
+      if ('error' in response.data.preface) {
+        throw response.data.preface.error;
       }
-      const feedback = processMessage(response.preface.frameResults[0].feedback);
+      const feedback = processMessage(response.data.preface.frameResults[0].feedback);
       setAnalysisMessage(feedback);
-      if (response.preface.results.captured) {
+      if (response.data.preface.results.captured) {
         return true;
       }
     } catch (error) {
@@ -136,7 +137,7 @@ const CapturaRostro = () => {
     }));
     try {
       const response = await getResponseAnalyze(frames);
-      if (response.video.liveness_result.score === 100) {
+      if (response.data.video.liveness_result.score === 100) {
         setPauseImage(true);
         setCaptureComplete(true);
       } else {
@@ -153,13 +154,15 @@ const CapturaRostro = () => {
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+
   const onCapture = async () => {
     const frames = [];
     setTakingPicture(true);
     /* eslint-disable no-await-in-loop */
     for (let index = 3; index > 0; index--) {
       setTakePhotoStatus(index);
-      frames.push(cameraRef.current.onCapture());
+      const pic = cameraRef.current.onCapture();
+      frames.push(pic);
       await sleep(500);
     }
     /* eslint-enable no-await-in-loop */
@@ -266,6 +269,15 @@ const CapturaRostro = () => {
               <button type="submit" className="btn-medium" onClick={() => onCapture()} disabled={isTakingPicture}>
                 { takePhotoStatus }
               </button>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 text-center mt-3">
+              <canvas
+                ref={canvasRef}
+                width={240}
+                height={320}
+              />
             </div>
           </div>
         </>

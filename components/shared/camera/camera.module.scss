@@ -44,11 +44,7 @@
     linear-gradient(to top, $blue-morning 4px, transparent 4px) 100% 100%;
   background-repeat: no-repeat;
   background-size: 70px 70px;
-  bottom: 40px;
-  left: 120px;
   position: absolute;
-  right: 120px;
-  top: 40px;
 
   @include media('mobile') {
     bottom: 30px;
@@ -69,11 +65,7 @@
     linear-gradient(to top, $yellow-summer 4px, transparent 4px) 100% 100%;
   background-repeat: no-repeat;
   background-size: 70px 70px;
-  bottom: 40px;
-  left: 120px;
   position: absolute;
-  right: 120px;
-  top: 40px;
 
   @include media('mobile') {
     bottom: 30px;
@@ -88,7 +80,7 @@
   object-fit: fill;
   position: absolute;
   // -webkit-filter: brightness(1.2);
-  transform: scaleX(-1);
+  // transform: scaleX(-1);
   // -webkit-transform: scaleX(-1);
 }
 
