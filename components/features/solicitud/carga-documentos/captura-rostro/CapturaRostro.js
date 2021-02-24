@@ -15,7 +15,6 @@ const CapturaRostro = () => {
   const router = useRouter();
 
   const cameraRef = useRef();
-  const canvasRef = useRef();
 
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [analysisMessage, setAnalysisMessage] = useState([]);
@@ -161,8 +160,7 @@ const CapturaRostro = () => {
     /* eslint-disable no-await-in-loop */
     for (let index = 3; index > 0; index--) {
       setTakePhotoStatus(index);
-      const pic = cameraRef.current.onCapture();
-      frames.push(pic);
+      frames.push(cameraRef.current.onCapture());
       await sleep(500);
     }
     /* eslint-enable no-await-in-loop */
@@ -269,15 +267,6 @@ const CapturaRostro = () => {
               <button type="submit" className="btn-medium" onClick={() => onCapture()} disabled={isTakingPicture}>
                 { takePhotoStatus }
               </button>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 text-center mt-3">
-              <canvas
-                ref={canvasRef}
-                width={240}
-                height={320}
-              />
             </div>
           </div>
         </>

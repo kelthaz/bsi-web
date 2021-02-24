@@ -94,9 +94,7 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
 
   useImperativeHandle(ref, () => ({
     onCapture: handleCapture,
-    onClear: handleClear,
-    height: videoRef.current && videoRef.current.videoHeight,
-    width: videoRef.current && videoRef.current.videoWidth
+    onClear: handleClear
   }));
 
   useEffect(() => {
