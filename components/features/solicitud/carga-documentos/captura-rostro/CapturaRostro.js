@@ -74,7 +74,7 @@ const CapturaRostro = () => {
         }
       }
     };
-    return KnomiRepositorio.postAutoCapture(payload).data;
+    return KnomiRepositorio.postAutoCapture(payload);
   };
 
   const getResponseAnalyze = async (frames) => {
@@ -92,7 +92,7 @@ const CapturaRostro = () => {
         }
       }
     };
-    return KnomiRepositorio.postAnalyze(payload).data;
+    return KnomiRepositorio.postAnalyze(payload);
   };
 
   const processMessage = (feedback) => {
@@ -114,12 +114,12 @@ const CapturaRostro = () => {
 
     try {
       const response = await getResponseAutoCapture(frame);
-      if ('error' in response.preface) {
-        throw response.preface.error;
+      if ('error' in response.data.preface) {
+        throw response.data.preface.error;
       }
-      const feedback = processMessage(response.preface.frameResults[0].feedback);
+      const feedback = processMessage(response.data.preface.frameResults[0].feedback);
       setAnalysisMessage(feedback);
-      if (response.preface.results.captured) {
+      if (response.data.preface.results.captured) {
         return true;
       }
     } catch (error) {
@@ -136,7 +136,7 @@ const CapturaRostro = () => {
     }));
     try {
       const response = await getResponseAnalyze(frames);
-      if (response.video.liveness_result.score === 100) {
+      if (response.data.video.liveness_result.score === 100) {
         setPauseImage(true);
         setCaptureComplete(true);
       } else {
@@ -152,6 +152,7 @@ const CapturaRostro = () => {
   };
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 
   const onCapture = async () => {
     const frames = [];

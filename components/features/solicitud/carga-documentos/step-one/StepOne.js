@@ -5,7 +5,7 @@ import SvgINE from '../../../../svgs/carga-documentos/SvgINE';
 
 import styles from '../carga-documentos.module.scss';
 
-const Test = () => (
+const StepOne = () => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud">
       <div className="container p-0">
@@ -42,4 +42,4 @@ const Test = () => (
   </div>
 );
 
-export default Test;
+export default StepOne;
