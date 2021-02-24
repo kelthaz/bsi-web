@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
-
 import { regexMultipleSpaces, regexRFCMoral } from '../../../../../../constants/regex';
 import {
   longitudMaxima,
@@ -18,11 +17,9 @@ import EjerceControlSobreMoral from '../../../shared/ejerce-control-sobre-moral/
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const PasoCuatroObligadoSolidarioPM = () => {
+const PasoCuatroObligadoSolidarioPM = ({ validate }) => {
   const { obligadoSolidario, currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
   const nombrePersonaFisica = `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
     regexMultipleSpaces,
     ' '
@@ -54,7 +51,9 @@ const PasoCuatroObligadoSolidarioPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'pm', step: '5' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -124,6 +123,10 @@ const PasoCuatroObligadoSolidarioPM = () => {
       </div>
     </div>
   );
+};
+
+PasoCuatroObligadoSolidarioPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoCuatroObligadoSolidarioPM;

@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ import Modal from '../../../../../shared/modal/Modal';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-const StepOneObligado = () => {
+const StepOneObligado = ({ validate }) => {
   const personaFisica = {
     value: 'FISICA',
     label: 'Persona Física',
@@ -23,8 +23,6 @@ const StepOneObligado = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -42,7 +40,9 @@ const StepOneObligado = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: 'obligado-2' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -149,6 +149,10 @@ const StepOneObligado = () => {
       </div>
     </>
   );
+};
+
+StepOneObligado.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default StepOneObligado;

@@ -13,13 +13,11 @@ import { nextStepObligadoSolidario } from '../../../../../../redux/actions/oblig
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
-const PasoUnoObligadoSolidarioPM = ({ sectores }) => {
+const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
 
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
@@ -69,7 +67,9 @@ const PasoUnoObligadoSolidarioPM = ({ sectores }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'preguntas', step: '2' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -188,6 +188,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores }) => {
 
 PasoUnoObligadoSolidarioPM.propTypes = {
   sectores: PropTypes.any.isRequired,
+  validate: PropTypes.any.isRequired,
 };
 
 export default PasoUnoObligadoSolidarioPM;

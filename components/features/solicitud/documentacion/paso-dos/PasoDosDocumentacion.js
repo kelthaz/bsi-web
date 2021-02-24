@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
@@ -15,11 +15,9 @@ import {
 } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 
-const PasoDosDocumentacionPM = () => {
+const PasoDosDocumentacionPM = ({ validate }) => {
   const dispatch = useDispatch();
   const { documentacion, currentStep, datosPersonales } = useSelector((state) => state.solicitud);
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const nombrePersonaFisica = `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
     regexMultipleSpaces,
@@ -51,7 +49,9 @@ const PasoDosDocumentacionPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '3' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );
@@ -129,6 +129,10 @@ const PasoDosDocumentacionPM = () => {
       </div>
     </div>
   );
+};
+
+PasoDosDocumentacionPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoDosDocumentacionPM;

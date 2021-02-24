@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import {
   campoRequerido,
   longitudMaxima,
@@ -13,11 +13,9 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 
-const PasoUnoObligadoSolidarioPFAE = () => {
+const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
   const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -44,7 +42,9 @@ const PasoUnoObligadoSolidarioPFAE = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'preguntas', step: '2' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -91,4 +91,9 @@ const PasoUnoObligadoSolidarioPFAE = () => {
     </>
   );
 };
+
+PasoUnoObligadoSolidarioPFAE.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
 export default PasoUnoObligadoSolidarioPFAE;

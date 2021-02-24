@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import { regexRFCMoral } from '../../../../../../constants/regex';
@@ -17,11 +17,9 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 import { PASO_SIETE_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const PasoSeisObligadoSolidarioPFAE = () => {
+const PasoSeisObligadoSolidarioPFAE = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -43,7 +41,9 @@ const PasoSeisObligadoSolidarioPFAE = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'preguntas', step: '7' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -83,6 +83,10 @@ const PasoSeisObligadoSolidarioPFAE = () => {
       </div>
     </div>
   );
+};
+
+PasoSeisObligadoSolidarioPFAE.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoSeisObligadoSolidarioPFAE;

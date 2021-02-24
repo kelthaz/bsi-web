@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import FileInput from '../../../../../shared/file-input/FileInput';
 import Modal from '../../../../../shared/modal/Modal';
@@ -10,12 +10,10 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_CINCO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 import { campoRequerido } from '../../../../../../constants/errors';
 
-const PasoCuatroDocumentacionPM = () => {
+const PasoCuatroDocumentacionPM = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -39,7 +37,9 @@ const PasoCuatroDocumentacionPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '5' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );
@@ -130,5 +130,9 @@ const PasoCuatroDocumentacionPM = () => {
       </div>
     </>
   );
+};
+
+PasoCuatroDocumentacionPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 export default PasoCuatroDocumentacionPM;

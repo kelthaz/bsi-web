@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
@@ -13,15 +13,13 @@ import {
   ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
 } from '../../../../../constants/routes/solicitud/documentacion';
 
-const StepSeven = () => {
+const StepSeven = ({ validate }) => {
   const {
     datosPersonales: { tipoPersona },
     documentacion,
     currentStep,
   } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query, push } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const opcionesProcedenciaPagoCredito = [
     { value: 'Ahorros', label: 'Ahorros' },
@@ -54,7 +52,9 @@ const StepSeven = () => {
       );
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '8' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values.recursoPago, procedenciaPagoCreditoSeleccionados },
         })
       );
@@ -122,4 +122,9 @@ const StepSeven = () => {
     </>
   );
 };
+
+StepSeven.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
 export default StepSeven;

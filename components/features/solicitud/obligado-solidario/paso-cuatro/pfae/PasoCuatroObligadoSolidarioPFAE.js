@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import Select from '../../../../../shared/select/Select';
@@ -20,11 +20,9 @@ import { nextStepObligadoSolidario } from '../../../../../../redux/actions/oblig
 import { PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
-const StepFour = () => {
+const StepFour = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const itemsTipoEmpresa = [
     { value: 10, label: 'S.A.' },
@@ -64,7 +62,9 @@ const StepFour = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'pm', step: '5' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -194,6 +194,10 @@ const StepFour = () => {
       </div>
     </div>
   );
+};
+
+StepFour.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default StepFour;

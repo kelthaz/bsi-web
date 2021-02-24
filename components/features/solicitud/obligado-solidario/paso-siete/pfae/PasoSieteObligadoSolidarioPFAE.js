@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
@@ -13,11 +13,9 @@ import {
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
 
-const PasoSieteObligadoSolidario = () => {
+const PasoSieteObligadoSolidario = ({ validate }) => {
   const dispatch = useDispatch();
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -29,7 +27,9 @@ const PasoSieteObligadoSolidario = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'autorizacion', step: '8' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -80,6 +80,10 @@ const PasoSieteObligadoSolidario = () => {
       </div>
     </div>
   );
+};
+
+PasoSieteObligadoSolidario.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoSieteObligadoSolidario;

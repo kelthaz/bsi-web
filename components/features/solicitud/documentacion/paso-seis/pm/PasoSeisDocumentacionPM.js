@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
@@ -8,11 +8,9 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_SIETE_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 import { campoRequerido } from '../../../../../../constants/errors';
 
-const PasoSeisDocumentacionPM = () => {
+const PasoSeisDocumentacionPM = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const columnaImporteEsperado = [
     'Menos de 50,000',
@@ -44,7 +42,9 @@ const PasoSeisDocumentacionPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '7' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );
@@ -184,4 +184,9 @@ const PasoSeisDocumentacionPM = () => {
     </>
   );
 };
+
+PasoSeisDocumentacionPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
 export default PasoSeisDocumentacionPM;

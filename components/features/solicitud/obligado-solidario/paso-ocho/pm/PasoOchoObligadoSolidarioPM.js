@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
@@ -14,11 +14,9 @@ import ModalAutorizacionCiec from '../../../../../core/modals/solicitud/modal-au
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const StepEight = () => {
+const StepEight = ({ validate }) => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
   const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const dispatch = useDispatch();
 
@@ -34,7 +32,9 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'preguntas', step: '9' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: {
             ...obligadoSolidario,
             ...values,
@@ -126,6 +126,10 @@ const StepEight = () => {
       </div>
     </>
   );
+};
+
+StepEight.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default StepEight;

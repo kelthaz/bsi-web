@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
@@ -11,11 +11,9 @@ import { campoRequerido, declararTerminos } from '../../../../../constants/error
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../constants/routes/solicitud/obligado';
 
-const PasoOnceObligadoSolidarioPFAE = () => {
+const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -39,7 +37,9 @@ const PasoOnceObligadoSolidarioPFAE = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'autorizacion', step: 'agradecimiento' },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -143,6 +143,10 @@ const PasoOnceObligadoSolidarioPFAE = () => {
       </div>
     </div>
   );
+};
+
+PasoOnceObligadoSolidarioPFAE.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoOnceObligadoSolidarioPFAE;

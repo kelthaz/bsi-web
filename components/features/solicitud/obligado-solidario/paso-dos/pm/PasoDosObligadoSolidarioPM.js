@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import {
@@ -15,11 +15,9 @@ import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import Domicilio from '../../../shared/domicilio/Domicilio';
 
-const PasoDosObligadoSolidarioPM = () => {
+const PasoDosObligadoSolidarioPM = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -75,7 +73,9 @@ const PasoDosObligadoSolidarioPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'datos-empresa', step: '3' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: {
             ...obligadoSolidario,
             ...values,
@@ -172,6 +172,10 @@ const PasoDosObligadoSolidarioPM = () => {
       </div>
     </div>
   );
+};
+
+PasoDosObligadoSolidarioPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoDosObligadoSolidarioPM;

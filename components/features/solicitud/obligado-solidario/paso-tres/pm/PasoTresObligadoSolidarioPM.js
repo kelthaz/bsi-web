@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import TextField from '../../../../../shared/text-field/TextField';
 import { regexRFCMoral } from '../../../../../../constants/regex';
 import { campoRequerido, longitudMinima, longitudMaxima, rfcInvalido } from '../../../../../../constants/errors';
@@ -10,11 +10,9 @@ import { nextStepObligadoSolidario } from '../../../../../../redux/actions/oblig
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const PasoTresObligadoSolidarioPM = () => {
+const PasoTresObligadoSolidarioPM = ({ validate }) => {
   const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -28,7 +26,9 @@ const PasoTresObligadoSolidarioPM = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepObligadoSolidario({
-          currentStep: validate ? { tab: 'preguntas', step: '4' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -88,6 +88,10 @@ const PasoTresObligadoSolidarioPM = () => {
       </div>
     </div>
   );
+};
+
+PasoTresObligadoSolidarioPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoTresObligadoSolidarioPM;
