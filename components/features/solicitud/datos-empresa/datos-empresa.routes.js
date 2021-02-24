@@ -18,6 +18,7 @@ import {
   PASO_CINCO_DATOS_EMPRESA_ROUTE,
   PASO_CUATRO_DATOS_EMPRESA_ROUTE,
   PASO_DOS_DATOS_EMPRESA_ROUTE,
+  PASO_OCHO_DATOS_EMPRESA_ROUTE,
   PASO_SEIS_DATOS_EMPRESA_ROUTE,
   PASO_SIETE_DATOS_EMPRESA_ROUTE,
   PASO_TRES_DATOS_EMPRESA_ROUTE,
@@ -37,7 +38,7 @@ const datosEmpresaRoutes = [
       paso: 0,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
   {
@@ -51,7 +52,7 @@ const datosEmpresaRoutes = [
       paso: 1,
       tipoPersona: '',
       step: 1,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -65,7 +66,7 @@ const datosEmpresaRoutes = [
       paso: 2,
       tipoPersona: '',
       step: 2,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -79,7 +80,7 @@ const datosEmpresaRoutes = [
       paso: 3,
       tipoPersona: '',
       step: 3,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -93,7 +94,7 @@ const datosEmpresaRoutes = [
       paso: 4,
       tipoPersona: '',
       step: 4,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -107,7 +108,7 @@ const datosEmpresaRoutes = [
       paso: 5,
       tipoPersona: '',
       step: 5,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -121,7 +122,7 @@ const datosEmpresaRoutes = [
       paso: 6,
       tipoPersona: '',
       step: 6,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -135,7 +136,7 @@ const datosEmpresaRoutes = [
       paso: 7,
       tipoPersona: '',
       step: 7,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -149,11 +150,11 @@ const datosEmpresaRoutes = [
       paso: 8,
       tipoPersona: '',
       step: null,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
-    route: GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE,
+    route: PASO_OCHO_DATOS_EMPRESA_ROUTE,
     component: [PasoOchoDatosEmpresa],
     services: [],
     roles: [],
@@ -163,7 +164,7 @@ const datosEmpresaRoutes = [
       paso: 9,
       tipoPersona: '',
       step: 8,
-      tab: 'datos-empresa',
+      tab: ['datos-empresa'],
     },
   },
   {
@@ -177,7 +178,7 @@ const datosEmpresaRoutes = [
       paso: 10,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
   {
@@ -191,7 +192,7 @@ const datosEmpresaRoutes = [
       paso: 11,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
 ];

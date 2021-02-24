@@ -17,7 +17,7 @@ const TabInformativo = ({ tabs, currentTab, currentStep, valipStep, steps }) => 
     <div className="container-fluid py-3">
       <div className="row">
         <div className="col-2 flex-row-start-config pr-0">
-          {currentStep > 1 && (
+          {currentStep > 0 && (
             <button className={styles['buttons-arrow']} onClick={() => handleButton(previus.action)} type="button">
               <SvgChevron className="rotate-180" />
               <span className="only-lg-inline">Volver</span>

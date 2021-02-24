@@ -2,8 +2,9 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { DATO_PERSONA } from '../../../../constants/formularios';
+import { DATO_PERSONA, OBLIGADO_SOLIDARIO } from '../../../../constants/formularios';
 import { SIMULADOR_ROUTE } from '../../../../constants/routes/publico/publico';
+import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
 import solicitudRoutes from '../../../features/solicitud/solicitud.routes';
 import Step from '../../../shared/step/Step';
 import TabInformativo from '../../../shared/tab-informativo/TabInformativo';
@@ -14,16 +15,21 @@ import ModalActualizar from '../../modals/solicitud/modal-actualizar/ModalActual
 const SolicitudContainer = ({ pageComponent, servicesData }) => {
   const { component, data } = pageComponent;
   const [componentPFAE, componentPM] = component;
-  const { formulario, paso, step, tab, tipoPersona } = data;
+  const { formulario, paso, step, tab: tabComponent, tipoPersona } = data;
+  const [tabPFAE, tabPM] = tabComponent;
   const { sincronizado, currentStep, tipoPersonaRedux } = useSelector((state) => state.solicitud);
   const { replace } = useRouter();
+  usePreventWindowUnload();
 
-  let Component = <></>;
+  let Component = componentPFAE;
+  let tab = tabPFAE;
 
-  if (tipoPersona === '' && componentPM) {
-    Component = tipoPersonaRedux === 'MORAL' ? componentPM : componentPFAE;
-  } else {
-    Component = componentPFAE;
+  if (tipoPersona === '' && componentPM && tipoPersonaRedux === 'MORAL') {
+    Component = componentPM;
+  }
+
+  if (tipoPersona === '' && tabPM && tipoPersonaRedux === 'MORAL') {
+    tab = tabPM;
   }
 
   const componentsFormulario = solicitudRoutes
@@ -41,11 +47,17 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
       (dataComponent.tipoPersona === '' || dataComponent.tipoPersona === tipoPersonaRedux)
   );
 
-  const tabs = [
+  const tabsSolicitante = [
     { path: 'datos-personales', label: 'Datos personales' },
     { path: 'datos-empresa', label: 'Datos de tu empresa' },
     { path: 'oferta', label: 'Oferta' },
     { path: 'documentacion', label: 'Documentación' },
+  ];
+
+  const tabsObligado = [
+    { path: 'preguntas', label: 'Preguntas' },
+    { path: 'carga-documentos', label: 'Carga de documentos' },
+    { path: 'autorizacion', label: 'Autorización' },
   ];
 
   useEffect(() => {
@@ -61,7 +73,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
 
       {!!tab && (
         <TabInformativo
-          tabs={tabs}
+          tabs={formulario === OBLIGADO_SOLIDARIO ? tabsObligado : tabsSolicitante}
           currentTab={tab}
           currentStep={paso}
           valipStep={currentStep.paso}

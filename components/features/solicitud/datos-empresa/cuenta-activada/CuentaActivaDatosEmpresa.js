@@ -12,11 +12,16 @@ import SvgOferta from '../../../../svgs/SvgOferta';
 import SvgPersona from '../../../../svgs/SvgPersona';
 import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
-import { PASO_DOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { PASO_UNO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { regexMultipleSpaces } from '../../../../../constants/regex';
 
 const CuentaActivaDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
+  const nombrePersonaFisica = `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
+    regexMultipleSpaces,
+    ' '
+  );
 
   const formulario = useFormik({
     initialValues: {
@@ -38,7 +43,7 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_EMPRESA_ROUTE, validate);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_UNO_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed">
@@ -47,7 +52,7 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
           <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Cuenta activada!</h2>
             <p className="body2 color-gray-dark">
-              {`${datosPersonales.primerNombre}, ahora vamos a comenzar el segundo bloque de datos de tu empresa para
+              {`${nombrePersonaFisica}, ahora vamos a comenzar el segundo bloque de datos de tu empresa para
               conocerla un poco mejor, ¿Te parece?`}
             </p>
 
@@ -103,11 +108,11 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
             <div className="row">
               <CheckTextBox name="aceptoTerminosMultas" formulario={formulario}>
                 <p className="m-0">
-                  Yo <strong>{`${datosPersonales.primerNombre} ${datosPersonales.segundoNombre}`}</strong> declaro bajo
-                  protesta de decir vedad y conozco las penas y multas en que incurren los que con el ánimo de obtener
-                  un financiamiento proporcionen información y/o documentación falsa de conformidad con lo establecido
-                  en el artículo 112 de la Ley de Instituciones de Crédito y en los artículos 339 y 342 del Código Penal
-                  para el Distrito Federal y demás correlativos del Código Penal Federal, en la parte que corresponda.
+                  Yo <strong>{nombrePersonaFisica}</strong> declaro bajo protesta de decir vedad y conozco las penas y
+                  multas en que incurren los que con el ánimo de obtener un financiamiento proporcionen información y/o
+                  documentación falsa de conformidad con lo establecido en el artículo 112 de la Ley de Instituciones de
+                  Crédito y en los artículos 339 y 342 del Código Penal para el Distrito Federal y demás correlativos
+                  del Código Penal Federal, en la parte que corresponda.
                 </p>
               </CheckTextBox>
             </div>

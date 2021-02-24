@@ -6,7 +6,7 @@ import ofertaRoutes from './oferta/oferta.routes';
 
 const solicitudRoutes = [
   ...datosPersonalesRoutes,
-  // ...datosEmpresaRoutes,
+  ...datosEmpresaRoutes,
   // ...documentacionRoutes,
   // ...cargaDocumentosRoutes,
   // ...ofertaRoutes

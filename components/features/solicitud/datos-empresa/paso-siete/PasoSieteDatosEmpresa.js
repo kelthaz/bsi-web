@@ -29,7 +29,7 @@ const PasoSieteDatosEmpresa = ({ validate }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-empresa', step: '8' } : { ...currentStep },
+          currentStep: validate ? { ...currentStep, paso: currentStep.paso + 1 } : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
