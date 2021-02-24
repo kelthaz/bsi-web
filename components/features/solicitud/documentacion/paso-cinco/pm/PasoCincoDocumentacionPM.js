@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import CheckBox from '../../../../../shared/check-box/CheckBox';
@@ -9,11 +9,9 @@ import { campoRequerido } from '../../../../../../constants/errors';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_SEIS_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-const PasoCincoDocumentacionPM = () => {
+const PasoCincoDocumentacionPM = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -38,7 +36,9 @@ const PasoCincoDocumentacionPM = () => {
       );
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '6' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values, usosCuentaSeleccionados },
         })
       );
@@ -115,5 +115,9 @@ const PasoCincoDocumentacionPM = () => {
       </div>
     </div>
   );
+};
+
+PasoCincoDocumentacionPM.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 export default PasoCincoDocumentacionPM;

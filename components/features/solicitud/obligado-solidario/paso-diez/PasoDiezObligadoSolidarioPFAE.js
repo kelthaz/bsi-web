@@ -3,58 +3,57 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
-import FileInput from '../../../../../shared/file-input/FileInput';
-import Modal from '../../../../../shared/modal/Modal';
-import useOnChangePage from '../../../../../../hooks/useOnChangePage';
-import { PASO_SEIS_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
-import { campoRequerido } from '../../../../../../constants/errors';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import FileInput from '../../../../shared/file-input/FileInput';
+import Modal from '../../../../shared/modal/Modal';
+import Tooltip from '../../../../shared/tooltip/Tooltip';
+import { campoRequerido } from '../../../../../constants/errors';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../constants/routes/solicitud/obligado';
 
-const PasoCincoDocumentacionPFAE = ({ validate }) => {
-  const { currentStep, documentacion } = useSelector((state) => state.solicitud);
+const PasoDiezObligadoSolidarioPFAE = ({ validate }) => {
+  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
 
   const { initialValues, validationSchema } = {
     initialValues: {
-      comprobanteDomicilioComercial: documentacion.comprobanteDomicilioComercial,
-      comprobanteDomicilioFiscal: documentacion.comprobanteDomicilioFiscal,
-      actaMatrimonio: documentacion.actaMatrimonio,
-      ineRepresentanteLegal: documentacion.ineRepresentanteLegal,
-      ineReversoRepresentanteLegal: documentacion.ineReversoRepresentanteLegal,
+      comprobanteDomicilioFiscal: obligadoSolidario.comprobanteDomicilioFiscal,
+      actaMatrimonio: obligadoSolidario.actaMatrimonio,
+      ineRepresentanteLegal: obligadoSolidario.ineRepresentanteLegal,
+      ineReversoRepresentanteLegal: obligadoSolidario.ineReversoRepresentanteLegal,
     },
     validationSchema: {
-      comprobanteDomicilioComercial: Yup.string().url().required(campoRequerido),
       comprobanteDomicilioFiscal: Yup.string().url().required(campoRequerido),
-      actaMatrimonio: Yup.string().url().required(campoRequerido),
       ineRepresentanteLegal: Yup.string().url().required(campoRequerido),
       ineReversoRepresentanteLegal: Yup.string().url().required(campoRequerido),
     },
   };
 
-  if (documentacion.bienesSeparados !== 'no') {
-    initialValues.inePareja = documentacion.inePareja;
-    initialValues.ineReversoPareja = documentacion.ineReversoPareja;
+  if (obligadoSolidario.bienesSeparados !== 'no') {
+    initialValues.actaMatrimonio = obligadoSolidario.actaMatrimonio;
+    initialValues.inePareja = obligadoSolidario.inePareja;
+    initialValues.ineReversoPareja = obligadoSolidario.ineReversoPareja;
+    validationSchema.actaMatrimonio = Yup.string().url().required(campoRequerido);
     validationSchema.inePareja = Yup.string().url().required(campoRequerido);
     validationSchema.ineReversoPareja = Yup.string().url().required(campoRequerido);
   }
 
   const formulario = useFormik({
-    initialValues: { ...initialValues },
-    validationSchema: Yup.object().shape({ ...validationSchema }),
+    initialValues,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
-          documentacion: { ...documentacion, ...values },
+          obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
 
   return (
     <>
@@ -73,7 +72,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
             </p>
           </div>
           <div className="flex-column-center-config mt-2">
-            <button type="submit" className="btn-big">
+            <button onClick={() => setOpenConfirmation(false)} type="submit" className="btn-big">
               Continuar
             </button>
           </div>
@@ -86,36 +85,51 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
               <div className="row px-md-3 px-xs-0">
                 <p className="color-dark-gray sub">
                   Con base en tu respuesta, necesitamos que nos proporciones los siguientes documentos:
+                  <Tooltip message="Puedes cargar documentos en formato PNG, JPG o PDF, con un peso máximo de 5 MB" />
                 </p>
               </div>
-
               <div className="row px-md-3 px-xs-0">
-                <div className="col-md-12 pb-md-4">
-                  <FileInput
-                    formulario={formulario}
-                    name="comprobanteComercial"
-                    text="Comprobante de domicilio comercial"
-                  />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Comprobante de domicilio fiscal" />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Acta de matrimonio" />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Tu INE" grayText="(por el frente)" />
-                </div>
-                <div className="col-md-12 pb-md-4">
-                  <FileInput text="Tu INE" grayText="(por el reverso)" />
-                </div>
-                {documentacion.bienesSeparados !== 'no' && (
+                {obligadoSolidario.bienesSeparados !== 'no' ? (
                   <div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" grayText="(por el frente)" />
+                      <FileInput
+                        formulario={formulario}
+                        name="comprobanteDomicilio"
+                        text="Comprobante de domicilio"
+                        grayText="(No mayor a tres meses)"
+                      />
                     </div>
                     <div className="col-md-12 pb-md-4">
-                      <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
+                      <FileInput text="Acta de matrimonio" />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="Tu INE" subText="Por el frente" />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="Tu INE" subText="Por el reverso" />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="INE de tu pareja" subText="Por el frente" />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="INE de tu pareja" subText="Por el reverso" />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput
+                        formulario={formulario}
+                        name="comprobanteDomicilio"
+                        text="Comprobante de domicilio"
+                        grayText="(No mayor a tres meses)"
+                      />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="Tu INE" subText="Por el frente" />
+                    </div>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="Tu INE" subText="Por el reverso" />
                     </div>
                   </div>
                 )}
@@ -133,7 +147,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
               <div className="flex-column-center-config">
                 <button
                   type="submit"
-                  disabled={validate && !formulario.isValid}
+                  //   disabled={!(formulario.dirty && formulario.isValid)}
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
                 />
@@ -146,8 +160,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
   );
 };
 
-PasoCincoDocumentacionPFAE.propTypes = {
+PasoDiezObligadoSolidarioPFAE.propTypes = {
   validate: PropTypes.bool.isRequired,
 };
-
-export default PasoCincoDocumentacionPFAE;
+export default PasoDiezObligadoSolidarioPFAE;

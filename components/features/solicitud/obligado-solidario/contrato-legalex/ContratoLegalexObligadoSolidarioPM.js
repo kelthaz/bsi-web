@@ -5,15 +5,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import SvgLegalex from '../../../../../svgs/SvgLegalex';
-import SvgNoGuardamosNada from '../../../../../svgs/icons-cards/SvgNoGuardamosNada';
-import Modal from '../../../../../shared/modal/Modal';
-import SvgCheckText from '../../../../../svgs/SvgCheckText';
-import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
-import { aceptarTerminos } from '../../../../../../constants/errors';
-import ContratoLegalex from '../../../shared/contrato-legalex/ContratoLegalex';
-import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
+import SvgLegalex from '../../../../svgs/SvgLegalex';
+import SvgNoGuardamosNada from '../../../../svgs/icons-cards/SvgNoGuardamosNada';
+import Modal from '../../../../shared/modal/Modal';
+import SvgCheckText from '../../../../svgs/SvgCheckText';
+import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { aceptarTerminos } from '../../../../../constants/errors';
+import ContratoLegalex from '../../shared/contrato-legalex/ContratoLegalex';
+import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../constants/routes/solicitud/obligado';
 
 const ContratoLegalexObligadoSolidarioPM = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);

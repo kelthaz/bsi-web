@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../../constants/errors';
 import { PASO_CINCO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
-const PasoCuatroDocumentacionPFAE = () => {
+const PasoCuatroDocumentacionPFAE = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -24,7 +22,9 @@ const PasoCuatroDocumentacionPFAE = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '5' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );
@@ -73,5 +73,9 @@ const PasoCuatroDocumentacionPFAE = () => {
       </div>
     </div>
   );
+};
+
+PasoCuatroDocumentacionPFAE.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 export default PasoCuatroDocumentacionPFAE;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import Modal from '../../../../../shared/modal/Modal';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import TextField from '../../../../../shared/text-field/TextField';
@@ -14,12 +14,10 @@ import EmailageRepositorio from '../../../../../../services/solicitud/emailage.r
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-const StepTwoObligado = () => {
+const StepTwoObligado = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -41,7 +39,9 @@ const StepTwoObligado = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: 'agradecimiento-obligado' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
@@ -196,4 +196,9 @@ const StepTwoObligado = () => {
     </>
   );
 };
+
+StepTwoObligado.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
 export default StepTwoObligado;
