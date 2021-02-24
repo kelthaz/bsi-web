@@ -23,7 +23,6 @@ import {
   PASO_OCHO_DOCUMENTACION_ROUTE,
   PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
   PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
-  AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
   GRACIAS_DOCUMENTACION_ROUTE,
   REVISAR_CORREO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
@@ -46,7 +45,7 @@ const documentacionRoutes = [
       paso: 0,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -60,7 +59,7 @@ const documentacionRoutes = [
       paso: 2,
       tipoPersona: 'FISICO',
       step: 1,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -74,7 +73,7 @@ const documentacionRoutes = [
       paso: 3,
       tipoPersona: 'FISICO',
       step: 2,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -88,7 +87,7 @@ const documentacionRoutes = [
       paso: 4,
       tipoPersona: 'FISICO',
       step: 3,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -102,7 +101,7 @@ const documentacionRoutes = [
       paso: 5,
       tipoPersona: '',
       step: 4,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -116,7 +115,7 @@ const documentacionRoutes = [
       paso: 6,
       tipoPersona: '',
       step: 5,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -130,7 +129,7 @@ const documentacionRoutes = [
       paso: 7,
       tipoPersona: '',
       step: 6,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -144,7 +143,7 @@ const documentacionRoutes = [
       paso: 8,
       tipoPersona: 'FISICO',
       step: 7,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -158,7 +157,7 @@ const documentacionRoutes = [
       paso: 9,
       tipoPersona: 'FISICO',
       step: 8,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -172,7 +171,7 @@ const documentacionRoutes = [
       paso: 10,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -186,7 +185,7 @@ const documentacionRoutes = [
       paso: 11,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -200,7 +199,7 @@ const documentacionRoutes = [
       paso: 12,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -214,7 +213,7 @@ const documentacionRoutes = [
       paso: 13,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
   {
@@ -228,7 +227,7 @@ const documentacionRoutes = [
       paso: 14,
       tipoPersona: '',
       step: null,
-      tab: 'documentacion',
+      tab: ['documentacion'],
     },
   },
 ];
