@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
 import { PASO_DOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
@@ -11,14 +11,12 @@ import TextArea from '../../../../shared/text-area/TextArea';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 
-const StepOne = () => {
+const PasoUnoDatosEmpresa = ({ validate }) => {
   const capitalTrabajo = { value: '1', label: 'Capital de trabajo' };
   const adquisicionActivacion = { value: '2', label: 'Adquisición de activos' };
 
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -38,11 +36,10 @@ const StepOne = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-empresa', step: '2' } : { ...currentStep },
-          datosEmpresa: {
-            ...datosEmpresa,
-            ...values,
-          },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
+          datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
     },
@@ -57,7 +54,7 @@ const StepOne = () => {
     await setFieldValue('usoCredito', usoCredito);
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -128,4 +125,8 @@ const StepOne = () => {
   );
 };
 
-export default StepOne;
+PasoUnoDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoUnoDatosEmpresa;

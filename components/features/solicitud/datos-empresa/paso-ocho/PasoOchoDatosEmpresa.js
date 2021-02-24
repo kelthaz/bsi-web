@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
@@ -7,25 +7,16 @@ import TextField from '../../../../shared/text-field/TextField';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPrivacidad from '../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
-import {
-  longitudMaxima,
-  campoRequerido,
-  longitudMinima,
-  aceptarTerminos,
-  ciecInvalida,
-} from '../../../../../constants/errors';
+import { campoRequerido, aceptarTerminos, ciecInvalida } from '../../../../../constants/errors';
 import ModalAutorizacionCiec from '../../../../core/modals/solicitud/modal-autorizacion-ciec/ModalAutorizacionCiec';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
 import useCookie from '../../../../../hooks/useCookie';
 import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const StepEight = () => {
+const PasoOchoDatosEmpresa = ({ validate }) => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
   const { currentStep, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
-
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const dispatch = useDispatch();
 
@@ -48,7 +39,9 @@ const StepEight = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-personales', step: '9' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
@@ -75,7 +68,7 @@ const StepEight = () => {
     return valid;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE, currentStep, validateCiec);
+  const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE, validate, validateCiec);
 
   return (
     <>
@@ -162,4 +155,8 @@ const StepEight = () => {
   );
 };
 
-export default StepEight;
+PasoOchoDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoOchoDatosEmpresa;

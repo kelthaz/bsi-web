@@ -16,7 +16,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { aceptarTerminos } from '../../../../../constants/errors';
 
-const StepNine = () => {
+const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openModalMobile, setOpenModalMobile] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
@@ -397,4 +397,4 @@ const StepNine = () => {
   );
 };
 
-export default StepNine;
+export default ContratoLegalexDatosEmpresa;

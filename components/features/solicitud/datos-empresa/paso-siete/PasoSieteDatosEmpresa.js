@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { campoRequerido } from '../../../../../constants/errors';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
@@ -10,11 +10,9 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const StepSeven = () => {
+const PasoSieteDatosEmpresa = ({ validate }) => {
   const { datosPersonales, datosEmpresa, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -36,10 +34,9 @@ const StepSeven = () => {
         })
       );
     },
-    validateOnMount: true,
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -83,4 +80,9 @@ const StepSeven = () => {
     </div>
   );
 };
-export default StepSeven;
+
+PasoSieteDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoSieteDatosEmpresa;
