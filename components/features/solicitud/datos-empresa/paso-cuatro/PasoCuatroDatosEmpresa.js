@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { numeroInvalido, campoRequerido, ingreseOpcion } from '../../../../../constants/errors';
@@ -11,11 +11,9 @@ import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_CINCO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const StepFour = () => {
+const PasoCuatroDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } =
     datosPersonales.tipoPersona.value === 'MORAL'
@@ -58,14 +56,16 @@ const StepFour = () => {
       values.telefonoEmpresa = values.noTengoTelefonoEmpresa ? '' : values.telefonoEmpresa;
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '5' },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -113,4 +113,9 @@ const StepFour = () => {
     </div>
   );
 };
-export default StepFour;
+
+PasoCuatroDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoCuatroDatosEmpresa;

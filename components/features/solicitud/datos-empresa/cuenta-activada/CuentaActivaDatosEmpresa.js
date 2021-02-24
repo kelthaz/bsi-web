@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { declararTerminos } from '../../../../../constants/errors';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
@@ -11,11 +11,12 @@ import SvgDocumentos from '../../../../svgs/SvgDocumentos';
 import SvgOferta from '../../../../svgs/SvgOferta';
 import SvgPersona from '../../../../svgs/SvgPersona';
 import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_DOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const CuentaActiva = () => {
-  const { datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
+const CuentaActivaDatosEmpresa = ({ validate }) => {
+  const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const formulario = useFormik({
     initialValues: {
@@ -27,22 +28,23 @@ const CuentaActiva = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '1' },
+          currentStep: validate ? { ...currentStep, paso: 1, valipStep: 1 } : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
           },
         })
       );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/1');
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud">
         <div className="container">
-          <form onSubmit={formulario.handleSubmit} noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Cuenta activada!</h2>
             <p className="body2 color-gray-dark">
               {`${datosPersonales.primerNombre}, ahora vamos a comenzar el segundo bloque de datos de tu empresa para
@@ -78,24 +80,24 @@ const CuentaActiva = () => {
             <div className="row flex-column-start-config">
               <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
               <div className="card-simple-blue-light list-onboarding">
-                {datosPersonales.tipoPersona.value === 'MORAL' ?
-                <ul>
-                  <li>La CURP del representante legal</li>
-                  <li className="position-relative">
-                    La clave CIEC de la empresa y la e.firma* <span className="color-gray">(.key y .cer)</span>
-                    <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
-                  </li>
-                </ul>
-                :
-                <ul>
-                  <li>Tu CURP</li>
-                  <li className="position-relative">
-                    Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
-                    <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
-                  </li>
-                  <li>Cuenta bancaria BanCoppel</li>
-                </ul>
-                }
+                {datosPersonales.tipoPersona.value === 'MORAL' ? (
+                  <ul>
+                    <li>La CURP del representante legal</li>
+                    <li className="position-relative">
+                      La clave CIEC de la empresa y la e.firma* <span className="color-gray">(.key y .cer)</span>
+                      <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
+                    </li>
+                  </ul>
+                ) : (
+                  <ul>
+                    <li>Tu CURP</li>
+                    <li className="position-relative">
+                      Tu clave CIEC y tu e.firma* <span className="color-gray">(.key y .cer)</span>
+                      <Tooltip message="Esta información nos servirá únicamente para autorización y consulta de la actividad de tu negocio. No resguardaremos ninguna de estas contraseñas." />
+                    </li>
+                    <li>Cuenta bancaria BanCoppel</li>
+                  </ul>
+                )}
               </div>
             </div>
             <div className="row">
@@ -125,4 +127,8 @@ const CuentaActiva = () => {
   );
 };
 
-export default CuentaActiva;
+CuentaActivaDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default CuentaActivaDatosEmpresa;

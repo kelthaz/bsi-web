@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import Select from '../../../../shared/select/Select';
 import { seleccionOpcion } from '../../../../../constants/errors';
@@ -10,11 +10,9 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_SEIS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const StepFive = () => {
+const PasoCincoDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const items = [
     { value: 1, label: '0 a 40' },
@@ -38,14 +36,16 @@ const StepFive = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-empresa', step: '6' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -78,4 +78,9 @@ const StepFive = () => {
     </div>
   );
 };
-export default StepFive;
+
+PasoCincoDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoCincoDatosEmpresa;

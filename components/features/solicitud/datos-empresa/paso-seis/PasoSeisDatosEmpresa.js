@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../constants/errors';
@@ -10,11 +10,9 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_SIETE_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
-const StepSix = () => {
+const PasoSeisDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -31,14 +29,16 @@ const StepSix = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-empresa', step: '7' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SIETE_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SIETE_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -82,4 +82,9 @@ const StepSix = () => {
     </div>
   );
 };
-export default StepSix;
+
+PasoSeisDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoSeisDatosEmpresa;

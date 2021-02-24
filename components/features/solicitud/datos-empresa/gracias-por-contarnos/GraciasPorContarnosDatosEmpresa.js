@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const GraciasContacto = () => {
+const GraciasPorContarnosDatosEmpresa = () => {
   const { datosPersonales } = useSelector((state) => state.solicitud);
 
   return (
@@ -37,4 +37,4 @@ const GraciasContacto = () => {
     </div>
   );
 };
-export default GraciasContacto;
+export default GraciasPorContarnosDatosEmpresa;

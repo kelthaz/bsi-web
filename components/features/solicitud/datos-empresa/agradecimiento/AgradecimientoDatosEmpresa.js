@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SvgOffer from '../../../../svgs/SvgOffer';
 
-const Agradecimientos = () => {
+const AgradecimientoDatosEmpresa = () => {
   const { datosPersona } = useSelector((state) => state.solicitud);
 
   return (
@@ -36,4 +36,4 @@ const Agradecimientos = () => {
     </div>
   );
 };
-export default Agradecimientos;
+export default AgradecimientoDatosEmpresa;

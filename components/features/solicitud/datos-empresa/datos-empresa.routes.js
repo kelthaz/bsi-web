@@ -1,112 +1,198 @@
-import Agradecimiento from './agradecimiento/Agradecimiento';
-import CuentaActiva from './cuenta-activada/CuentaActiva';
-import StepOne from './step-one/StepOne';
-import StepTwo from './step-two/StepTwo';
-import StepThree from './step-three/StepThree';
-import StepFour from './step-four/StepFour';
-import StepFive from './step-five/StepFive';
-import StepSix from './step-six/StepSix';
-import StepSeven from './step-seven/StepSeven';
-import StepEight from './step-eight/StepEight';
-import StepNine from './step-nine/StepNine';
-import GraciasContacto from './gracias-contacto/GraciasContacto';
+import Agradecimiento from './agradecimiento/AgradecimientoDatosEmpresa';
+import CuentaActivaDatosEmpresa from './cuenta-activada/CuentaActivaDatosEmpresa';
+import PasoUnoDatosEmpresa from './paso-uno/PasoUnoDatosEmpresa';
+import PasoDosDatosEmpresa from './paso-dos/PasoDosDatosEmpresa';
+import PasoTresDatosEmpresa from './paso-tres/PasoTresDatosEmpresa';
+import PasoCuatroDatosEmpresa from './paso-cuatro/PasoCuatroDatosEmpresa';
+import PasoCincoDatosEmpresa from './paso-cinco/PasoCincoDatosEmpresa';
+import PasoSeisDatosEmpresa from './paso-seis/PasoSeisDatosEmpresa';
+import PasoSieteDatosEmpresa from './paso-siete/PasoSieteDatosEmpresa';
+import PasoOchoDatosEmpresa from './paso-ocho/PasoOchoDatosEmpresa';
+import ContratoLegalexDatosEmpresa from './contrato-legalex/ContratoLegalexDatosEmpresa';
+import GraciasPorContarnosDatosEmpresa from './gracias-por-contarnos/GraciasPorContarnosDatosEmpresa';
+import {
+  AGRADECIMIENTO_DATOS_EMPRESA_ROUTE,
+  CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE,
+  CUENTA_ACTIVA_DATOS_EMPRESA_ROUTE,
+  GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE,
+  PASO_CINCO_DATOS_EMPRESA_ROUTE,
+  PASO_CUATRO_DATOS_EMPRESA_ROUTE,
+  PASO_DOS_DATOS_EMPRESA_ROUTE,
+  PASO_SEIS_DATOS_EMPRESA_ROUTE,
+  PASO_SIETE_DATOS_EMPRESA_ROUTE,
+  PASO_TRES_DATOS_EMPRESA_ROUTE,
+  PASO_UNO_DATOS_EMPRESA_ROUTE,
+} from '../../../../constants/routes/solicitud/empresa';
+import { DATOS_EMPRESA_LEGALEX, DATO_EMPRESA } from '../../../../constants/formularios';
 
 const datosEmpresaRoutes = [
   {
-    tab: 'datos-empresa',
-    step: 'cuenta-activa',
-    path: '/solicitud/datos-empresa/cuenta-activa',
-    stepNumber: null,
-    component: CuentaActiva,
+    route: CUENTA_ACTIVA_DATOS_EMPRESA_ROUTE,
+    component: [CuentaActivaDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Cuenta activa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 0,
+      tipoPersona: '',
+      step: null,
+      tab: '',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '1',
-    path: '/solicitud/datos-empresa/1',
-    stepNumber: 1,
-    component: StepOne,
+    route: PASO_UNO_DATOS_EMPRESA_ROUTE,
+    component: [PasoUnoDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 1 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 1,
+      tipoPersona: '',
+      step: 1,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '2',
-    path: '/solicitud/datos-empresa/2',
-    stepNumber: 2,
-    component: StepTwo,
+    route: PASO_DOS_DATOS_EMPRESA_ROUTE,
+    component: [PasoDosDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 2 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 2,
+      tipoPersona: '',
+      step: 2,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '3',
-    path: '/solicitud/datos-empresa/3',
-    stepNumber: 3,
-    component: StepThree,
+    route: PASO_TRES_DATOS_EMPRESA_ROUTE,
+    component: [PasoTresDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 3 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 3,
+      tipoPersona: '',
+      step: 3,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '4',
-    path: '/solicitud/datos-empresa/4',
-    stepNumber: 4,
-    component: StepFour,
+    route: PASO_CUATRO_DATOS_EMPRESA_ROUTE,
+    component: [PasoCuatroDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 4 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 4,
+      tipoPersona: '',
+      step: 4,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '5',
-    path: '/solicitud/datos-empresa/5',
-    stepNumber: 5,
-    component: StepFive,
+    route: PASO_CINCO_DATOS_EMPRESA_ROUTE,
+    component: [PasoCincoDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 5 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 5,
+      tipoPersona: '',
+      step: 5,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '6',
-    path: '/solicitud/datos-empresa/6',
-    stepNumber: 6,
-    component: StepSix,
+    route: PASO_SEIS_DATOS_EMPRESA_ROUTE,
+    component: [PasoSeisDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 6 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 6,
+      tipoPersona: '',
+      step: 6,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '7',
-    path: '/solicitud/datos-empresa/7',
-    stepNumber: 7,
-    component: StepSeven,
+    route: PASO_SIETE_DATOS_EMPRESA_ROUTE,
+    component: [PasoSieteDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 7 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 7,
+      tipoPersona: '',
+      step: 7,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: 'gracias-contacto',
-    path: '/solicitud/datos-empresa/gracias-contacto',
-    stepNumber: null,
-    component: GraciasContacto,
+    route: GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE,
+    component: [GraciasPorContarnosDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Gracias por contarnos',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 8,
+      tipoPersona: '',
+      step: null,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '8',
-    path: '/solicitud/datos-empresa/8',
-    stepNumber: 8,
-    component: StepEight,
+    route: GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE,
+    component: [PasoOchoDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Paso 7 de datos empresa',
+    data: {
+      formulario: DATO_EMPRESA,
+      paso: 9,
+      tipoPersona: '',
+      step: 8,
+      tab: 'datos-empresa',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: '9',
-    path: '/solicitud/datos-empresa/9',
-    stepNumber: null,
-    component: StepNine,
+    route: CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE,
+    component: [ContratoLegalexDatosEmpresa],
     services: [],
+    roles: [],
+    label: 'Solicitud: Contrato legalex',
+    data: {
+      formulario: DATOS_EMPRESA_LEGALEX,
+      paso: 10,
+      tipoPersona: '',
+      step: null,
+      tab: '',
+    },
   },
   {
-    tab: 'datos-empresa',
-    step: 'agradecimiento',
-    path: '/solicitud/datos-empresa/agradecimiento',
-    stepNumber: null,
-    component: Agradecimiento,
+    route: AGRADECIMIENTO_DATOS_EMPRESA_ROUTE,
+    component: [Agradecimiento],
     services: [],
+    roles: [],
+    label: 'Solicitud: Gracias',
+    data: {
+      formulario: DATOS_EMPRESA_LEGALEX,
+      paso: 11,
+      tipoPersona: '',
+      step: null,
+      tab: '',
+    },
   },
 ];
 

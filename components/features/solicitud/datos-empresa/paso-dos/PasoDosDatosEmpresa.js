@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { campoRequerido, codigoPostalInvalido, longitudMaxima, seleccionOpcion } from '../../../../../constants/errors';
 import { PASO_TRES_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
@@ -10,11 +10,9 @@ import RadioButton from '../../../../shared/radio-button/RadioButton';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import Domicilio from '../../shared/domicilio/Domicilio';
 
-const StepTwo = () => {
+const PasoDosDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const formulario = useFormik({
     initialValues: {
@@ -70,7 +68,9 @@ const StepTwo = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'datos-empresa', step: '3' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           datosEmpresa: {
             ...datosEmpresa,
             ...values,
@@ -80,7 +80,7 @@ const StepTwo = () => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_EMPRESA_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_DATOS_EMPRESA_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -169,4 +169,8 @@ const StepTwo = () => {
   );
 };
 
-export default StepTwo;
+PasoDosDatosEmpresa.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default PasoDosDatosEmpresa;
