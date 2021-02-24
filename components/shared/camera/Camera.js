@@ -72,8 +72,8 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
 
     context.drawImage(
       videoRef.current,
-      (container.width / 2) - (AIO_WIDTH / 2),
-      (container.height / 2) - (AIO_HEIGHT / 2),
+      ((videoRef.current ? videoRef.current.videoWidth : container.width) / 2) - (AIO_WIDTH / 2),
+      ((videoRef.current ? videoRef.current.videoHeight : container.height) / 2) - (AIO_HEIGHT / 2),
       AIO_WIDTH,
       AIO_HEIGHT,
       0,

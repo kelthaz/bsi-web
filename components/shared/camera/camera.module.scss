@@ -45,13 +45,6 @@
   background-repeat: no-repeat;
   background-size: 70px 70px;
   position: absolute;
-
-  @include media('mobile') {
-    bottom: 30px;
-    left: 85px;
-    right: 85px;
-    top: 30px;
-  }
 }
 
 .overlay-success {
@@ -66,13 +59,6 @@
   background-repeat: no-repeat;
   background-size: 70px 70px;
   position: absolute;
-
-  @include media('mobile') {
-    bottom: 30px;
-    left: 85px;
-    right: 85px;
-    top: 30px;
-  }
 }
 
 .video {
@@ -80,8 +66,11 @@
   object-fit: fill;
   position: absolute;
   // -webkit-filter: brightness(1.2);
-  // transform: scaleX(-1);
+  transform: scaleX(-1);
   // -webkit-transform: scaleX(-1);
+  @include media('mobile') {
+    top: 0 !important;
+  }
 }
 
 .wrapper {
