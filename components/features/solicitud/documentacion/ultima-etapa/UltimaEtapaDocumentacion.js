@@ -1,13 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import SvgDocumento from '../../../../svgs/SvgDocumento';
 import SvgOferta from '../../../../svgs/SvgOferta';
 import SvgPersona from '../../../../svgs/SvgPersona';
 import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
+import { PASO_UNO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 
-const UltimaEtapa = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+const UltimaEtapaDocumentacion = ({ validate }) => {
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+  const { push } = useRouter();
+
+  const handleContinuar = async () => {
+    dispatch(
+      nextStepDatosPersonales({
+        currentStep: validate ? { ...currentStep, paso: currentStep.paso + 1 } : { ...currentStep },
+      })
+    );
+    await push(PASO_UNO_DOCUMENTACION_ROUTE);
+  };
 
   return (
     <div className="contedor-fixed">
@@ -47,7 +61,7 @@ const UltimaEtapa = () => {
           <div className="row flex-column-start-config">
             <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
-              {datosPersonales.tipoPersona.value === 'MORAL' ? (
+              {datosPersonales.tipoPersona === 'MORAL' ? (
                 <ul>
                   <li>Acta constitutiva </li>
                   <li className="position-relative">Poderes notariales</li>
@@ -88,11 +102,9 @@ const UltimaEtapa = () => {
             </div>
           </div>
           <div className="flex-column-start-config">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/1">
-              <button type="submit" className="btn-medium flex-align-self-center my-3">
-                Continuar
-              </button>
-            </Link>
+            <button type="submit" className="btn-medium flex-align-self-center my-3" onClick={handleContinuar}>
+              Continuar
+            </button>
           </div>
         </div>
       </div>
@@ -100,4 +112,8 @@ const UltimaEtapa = () => {
   );
 };
 
-export default UltimaEtapa;
+UltimaEtapaDocumentacion.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
+
+export default UltimaEtapaDocumentacion;

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { REVISAR_CORREO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 
-const UltimoPaso = () => (
+const UltimoPasoDocumentacion = () => (
   <div className="contedor-fixed-tab">
     <div className="contedor-solicitud">
       <div className="container">
@@ -31,4 +31,4 @@ const UltimoPaso = () => (
   </div>
 );
 
-export default UltimoPaso;
+export default UltimoPasoDocumentacion;

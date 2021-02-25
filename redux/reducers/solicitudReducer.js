@@ -13,7 +13,7 @@ const initialState = {
     segundoNombre: '',
     primerApellido: 'DAVID',
     segundoApellido: '',
-    tipoPersona: { value: 'FISICA', label: 'Persona Física con Actividad Empresarial' },
+    tipoPersona: 'FISICO',
     razonSocial: 'Paletas',
     tipoSociedad: { value: 10, label: 'S.A.' },
     nombreEmpresa: '',

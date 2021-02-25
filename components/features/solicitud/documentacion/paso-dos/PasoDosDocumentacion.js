@@ -34,7 +34,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona.value === 'MORAL') {
+  if (datosPersonales.tipoPersona === 'MORAL') {
     initialValues.meEjercenControlMoralComoMoral = documentacion.meEjercenControlMoralComoMoral;
     validationSchema.meEjercenControlMoralComoMoral = Yup.string().required(campoRequerido);
   }
@@ -72,7 +72,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona.value === 'MORAL' && (
+            {datosPersonales.tipoPersona === 'MORAL' && (
               <>
                 <p className="sub color-blue-storm">
                   <SvgPM />

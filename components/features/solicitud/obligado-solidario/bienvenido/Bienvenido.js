@@ -77,7 +77,7 @@ const Bienvenido = () => {
           <div className="row flex-column-start-config">
             <p className="body2 mt-xs-3 mt-md-2 color-gray-dark">Qué documentos deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
-              {datosPersonales.tipoPersona.value === 'MORAL' ? (
+              {datosPersonales.tipoPersona === 'MORAL' ? (
                 <ul>
                   <li>
                     Identificación oficial <span className="color-gray"> (vigente) </span>

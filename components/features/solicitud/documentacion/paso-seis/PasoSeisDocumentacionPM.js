@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
-import RadioButton from '../../../../../shared/radio-button/RadioButton';
-import useOnChangePage from '../../../../../../hooks/useOnChangePage';
-import { PASO_SIETE_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
-import { campoRequerido } from '../../../../../../constants/errors';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import RadioButton from '../../../../shared/radio-button/RadioButton';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
+import { PASO_SIETE_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
+import { campoRequerido } from '../../../../../constants/errors';
 
 const PasoSeisDocumentacionPM = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);

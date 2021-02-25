@@ -78,7 +78,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
           <div className="container p-0">
             <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub ">
-                {datosPersonales.tipoPersona.value === 'MORAL'
+                {datosPersonales.tipoPersona === 'MORAL'
                   ? 'Primero necesitamos que nos autorices acceso de lectura con la clave CIEC de la empresa. '
                   : 'Primero necesitamos que nos autorices acceso con tu clave CIEC. '}
 
@@ -132,7 +132,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
                       <a className="sub link" target="_blank" rel="noreferrer">
                         términos y condiciones
                       </a>
-                      {datosPersonales.tipoPersona.value === 'MORAL'
+                      {datosPersonales.tipoPersona === 'MORAL'
                         ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
                         : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
                     </p>

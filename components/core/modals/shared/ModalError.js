@@ -12,8 +12,6 @@ const ModalError = () => {
     }
   }, [errors]);
 
-  console.log(errors);
-
   return (
     <Modal openModal={openModal} setOpenModal={setOpenModal} onClose={() => removeError()}>
       <div className="modal-alerta-container">

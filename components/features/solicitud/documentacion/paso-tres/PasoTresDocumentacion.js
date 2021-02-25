@@ -54,7 +54,7 @@ const PasoTresDocumentacion = ({ validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona.value === 'MORAL') {
+  if (datosPersonales.tipoPersona === 'MORAL') {
     initialValues.controladosFisicosComoMoral = documentacion.controladosFisicosComoMoral;
     initialValues.tieneControladosFisicosComoMoral = documentacion.tieneControladosFisicosComoMoral;
     initialValues.cantidadControladosFisicosComoMoral = documentacion.cantidadControladosFisicosComoMoral;
@@ -89,7 +89,7 @@ const PasoTresDocumentacion = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona.value === 'MORAL' && (
+            {datosPersonales.tipoPersona === 'MORAL' && (
               <>
                 <p className="sub color-blue-storm">
                   <SvgPersonaMoral />

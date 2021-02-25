@@ -2,23 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { useEffect } from 'react';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import CheckBox from '../../../../shared/check-box/CheckBox';
 import TextField from '../../../../shared/text-field/TextField';
 import { campoRequerido } from '../../../../../constants/errors';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
-import {
-  PASO_OCHO_DOCUMENTACION_ROUTE,
-  ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
-} from '../../../../../constants/routes/solicitud/documentacion';
+import { PASO_OCHO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 
-const StepSeven = ({ validate }) => {
-  const {
-    datosPersonales: { tipoPersona },
-    documentacion,
-    currentStep,
-  } = useSelector((state) => state.solicitud);
+const PasoSieteDocumentacionPM = ({ validate }) => {
+  const { documentacion, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
   const opcionesProcedenciaPagoCredito = [
@@ -61,13 +53,7 @@ const StepSeven = ({ validate }) => {
     },
   });
 
-  useEffect(() => {
-    if (tipoPersona.value !== 'MORAL') {
-      push(ULTIMA_ETAPA_DOCUMENTACION_ROUTE);
-    }
-  }, []);
-
-  const [handleSubmit] = useOnChangePage(formulario, PASO_OCHO_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_OCHO_DOCUMENTACION_ROUTE, validate);
 
   return (
     <>
@@ -123,8 +109,8 @@ const StepSeven = ({ validate }) => {
   );
 };
 
-StepSeven.propTypes = {
+PasoSieteDocumentacionPM.propTypes = {
   validate: PropTypes.bool.isRequired,
 };
 
-export default StepSeven;
+export default PasoSieteDocumentacionPM;

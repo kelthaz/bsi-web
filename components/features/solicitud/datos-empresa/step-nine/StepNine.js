@@ -28,7 +28,7 @@ const StepNine = () => {
   const { initialValues, validationSchema } = {
     initialValues: {
       nombreSolicitante: `${
-        datosPersonales.tipoPersona.value === 'MORAL'
+        datosPersonales.tipoPersona === 'MORAL'
           ? `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad}`
           : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`
       }`,
@@ -77,7 +77,7 @@ const StepNine = () => {
 
           <h4 className="color-blue-storm">¡Gracias {datosPersonales.primerNombre}!</h4>
           <p className="dark-gray body2">
-            {datosPersonales.tipoPersona.value === 'MORAL'
+            {datosPersonales.tipoPersona === 'MORAL'
               ? 'La revisión del Buró de Crédito, y la firma del Kit de Apertura y la Solicitud de EmpresaNet han sido realizadas con éxito.'
               : 'La revisión del Buró de Crédito ha sido realizada con éxito.'}
             <br />

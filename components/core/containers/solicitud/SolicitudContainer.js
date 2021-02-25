@@ -13,22 +13,22 @@ import HeaderSolicitud from '../../header/solicitud/HeaderSolicitud';
 import ModalActualizar from '../../modals/solicitud/modal-actualizar/ModalActualizar';
 
 const SolicitudContainer = ({ pageComponent, servicesData }) => {
+  usePreventWindowUnload();
   const { component, data } = pageComponent;
   const [componentPFAE, componentPM] = component;
   const { formulario, paso, step, tab: tabComponent, tipoPersona } = data;
   const [tabPFAE, tabPM] = tabComponent;
-  const { sincronizado, currentStep, tipoPersonaRedux } = useSelector((state) => state.solicitud);
+  const { sincronizado, currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const { replace } = useRouter();
-  usePreventWindowUnload();
 
   let Component = componentPFAE;
   let tab = tabPFAE;
 
-  if (tipoPersona === '' && componentPM && tipoPersonaRedux === 'MORAL') {
+  if (tipoPersona === '' && componentPM && datosPersonales.tipoPersona === 'MORAL') {
     Component = componentPM;
   }
 
-  if (tipoPersona === '' && tabPM && tipoPersonaRedux === 'MORAL') {
+  if (tipoPersona === '' && tabPM && datosPersonales.tipoPersona === 'MORAL') {
     tab = tabPM;
   }
 
@@ -44,7 +44,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
   const steps = componentsFormulario.filter(
     (dataComponent) =>
       Number.isInteger(dataComponent.step) &&
-      (dataComponent.tipoPersona === '' || dataComponent.tipoPersona === tipoPersonaRedux)
+      (dataComponent.tipoPersona === '' || dataComponent.tipoPersona === datosPersonales.tipoPersona)
   );
 
   const tabsSolicitante = [

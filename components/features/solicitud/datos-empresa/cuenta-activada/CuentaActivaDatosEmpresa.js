@@ -33,11 +33,8 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { ...currentStep, paso: 1, valipStep: 1 } : { ...currentStep },
-          datosEmpresa: {
-            ...datosEmpresa,
-            ...values,
-          },
+          currentStep: validate ? { ...currentStep, paso: currentStep.paso + 1 } : { ...currentStep },
+          datosEmpresa: { ...datosEmpresa, ...values },
         })
       );
     },
@@ -85,7 +82,7 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
             <div className="row flex-column-start-config">
               <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
               <div className="card-simple-blue-light list-onboarding">
-                {datosPersonales.tipoPersona.value === 'MORAL' ? (
+                {datosPersonales.tipoPersona === 'MORAL' ? (
                   <ul>
                     <li>La CURP del representante legal</li>
                     <li className="position-relative">
