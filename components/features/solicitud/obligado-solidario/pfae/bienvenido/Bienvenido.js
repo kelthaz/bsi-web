@@ -125,6 +125,7 @@ const Bienvenido = () => {
               disabled={!(formulario.dirty && formulario.isValid)}
               type="submit"
               className="btn-medium flex-align-self-center my-3"
+              onClick={formulario.handleSubmit}
             >
               ¡Comencemos!
             </button>

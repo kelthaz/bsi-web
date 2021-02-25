@@ -138,7 +138,7 @@ const Test = () => {
                   </div>
                   <div className="mt-4">
                     <ResultSimulador
-                      dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestral  '} }}
+                      dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestrales'} }}
                       resultSimulador={{ tasaOrdinaria: '25%', comisionApertura: '5%', cat: '3%', pago: '$31,250', tasaMoratoria: '63%' }}
                       color="night"
                     />

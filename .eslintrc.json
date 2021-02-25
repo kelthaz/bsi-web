@@ -133,7 +133,7 @@
         ],
         "complexity": [
             "warn",
-            10
+            15
         ],
         "constructor-super": 2,
         "one-var": [

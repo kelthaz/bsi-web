@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import {
@@ -16,12 +16,11 @@ import EjerceControlSobreFisico from '../../shared/ejerce-control-sobre-fisico/E
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_CUATRO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { MORAL } from '../../../../../constants/persona';
 
-const PasoTresDocumentacion = () => {
+const PasoTresDocumentacion = ({ validate }) => {
   const { currentStep, documentacion, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-  const { query } = useRouter();
-  const validate = currentStep.step === query.step;
 
   const nombrePersonaFisica = `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
     regexMultipleSpaces,
@@ -56,7 +55,7 @@ const PasoTresDocumentacion = () => {
     },
   };
 
-  if (datosPersonales.tipoPersona.value === 'MORAL') {
+  if (datosPersonales.tipoPersona === MORAL) {
     initialValues.controladosFisicosComoMoral = documentacion.controladosFisicosComoMoral;
     initialValues.tieneControladosFisicosComoMoral = documentacion.tieneControladosFisicosComoMoral;
     initialValues.cantidadControladosFisicosComoMoral = documentacion.cantidadControladosFisicosComoMoral;
@@ -75,7 +74,9 @@ const PasoTresDocumentacion = () => {
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: validate ? { tab: 'documentacion', step: '4' } : { ...currentStep },
+          currentStep: validate
+            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+            : { ...currentStep },
           documentacion: { ...documentacion, ...values },
         })
       );
@@ -89,7 +90,7 @@ const PasoTresDocumentacion = () => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona.value === 'MORAL' && (
+            {datosPersonales.tipoPersona === MORAL && (
               <>
                 <p className="sub color-blue-storm">
                   <SvgPersonaMoral />
@@ -135,6 +136,10 @@ const PasoTresDocumentacion = () => {
       </div>
     </div>
   );
+};
+
+PasoTresDocumentacion.propTypes = {
+  validate: PropTypes.bool.isRequired,
 };
 
 export default PasoTresDocumentacion;

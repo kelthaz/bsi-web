@@ -1,0 +1,175 @@
+@import '../../../../styles/scss/modules/mixins';
+@import '../../../../styles/scss/modules/var';
+
+.title-line-left {
+  align-items: flex-start;
+  border-bottom: 2px solid $blue-sky;
+  border-bottom-left-radius: 10px;
+  border-left: 2px solid $blue-sky;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 0 20px;
+  width: 100%;
+
+  @include media('md') {
+    border: 0;
+    padding: 0;
+
+    h2 {
+      font-size: 28px !important;
+      text-align: center !important;
+    }
+
+    p {
+      font-size: 14px !important;
+      text-align: center;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+
+    span:first-child {
+      color: $blue-storm;
+    }
+
+    span:last-child {
+      color: $blue-sky;
+    }
+  }
+
+  p {
+    @include body-2;
+    color: $gray-dark;
+  }
+
+  &::before {
+    background-color: $white;
+    border: $blue-sky solid 2px;
+    border-radius: 50%;
+    content: '';
+    float: left;
+    height: 10px;
+    left: -26px;
+    position: relative;
+    width: 10px;
+  }
+}
+
+.section-1 {
+  max-width: 470px;
+  padding-bottom: 9rem;
+  width: 100%;
+
+  @include media('mobile') {
+    padding: 0 20px 6rem;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+
+  h2 {
+    line-height: 140%;
+  }
+
+  span {
+    color: $blue-morning;
+  }
+}
+
+@mixin note {
+  border-radius: 16px;
+  padding: 24px;
+  width: 90% !important;
+}
+
+.note-light {
+  @include note;
+  background: $blue-light;
+  color: $gray;
+
+  a {
+    color: $blue-sky;
+    text-decoration: underline;
+  }
+}
+
+.note-storm {
+  @include note;
+  background: $blue-storm;
+  color: $white;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+.table {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  max-width: 960px;
+  top: -110px;
+
+  @include media('mobile') {
+    padding: 0 !important;
+    top: -70px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  tr {
+    border-bottom: 1.5px solid $blue-shadow;
+  }
+
+  tr:last-child {
+    border-bottom: 0;
+  }
+}
+
+.w-800 {
+  max-width: 800px;
+  width: 100%;
+}
+
+.w-490 {
+  max-width: 490px;
+}
+
+.requirement-list {
+  list-style: none;
+  padding: 0;
+
+  > li {
+    border-bottom: 1.5px solid $blue-shadow;
+    padding: 10px 0;
+  }
+
+  > li:last-child {
+    border-bottom: 0;
+  }
+}
+
+.text-info {
+  color: $blue-storm;
+  display: block;
+  font-family: $futura-book;
+  font-size: 14px;
+  line-height: 130%;
+}

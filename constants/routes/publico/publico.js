@@ -1,7 +1,7 @@
-export const inicio = '/inicio';
-export const credito = '/credito-pyme';
-export const requisitos = '/requisitos';
-export const simulador = '/simulador';
-export const beneficios = '/beneficios';
-export const ayuda = '/ayuda';
-export const aviso = '/aviso-privacidad';
+export const INICIO_ROUTE = '/inicio';
+export const CREDITO_ROUTE = '/credito-pyme';
+export const REQUISITOS_ROUTE = '/requisitos';
+export const SIMULADOR_ROUTE = '/simulador';
+export const BENEFICIOS_ROUTE = '/beneficios';
+export const AYUDA_ROUTE = '/ayuda';
+export const AVISO_ROUTE = '/aviso-privacidad';

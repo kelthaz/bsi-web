@@ -13,6 +13,9 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'user' },
 };
 
+const AIO_WIDTH = 240;
+const AIO_HEIGHT = 320;
+
 const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) => {
   const canvasRef = useRef();
   const videoRef = useRef();
@@ -64,24 +67,22 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
   function handleCapture() {
     pauseCamera();
     const context = canvasRef.current.getContext('2d');
+    canvasRef.current.width = AIO_WIDTH;
+    canvasRef.current.height = AIO_HEIGHT;
 
     context.drawImage(
       videoRef.current,
-      (container.width - 100) / 2,
-      (container.height - 100) / 2,
-      container.width,
-      container.height,
+      ((videoRef.current ? videoRef.current.videoWidth : container.width) / 2) - (AIO_WIDTH / 2),
+      ((videoRef.current ? videoRef.current.videoHeight : container.height) / 2) - (AIO_HEIGHT / 2),
+      AIO_WIDTH,
+      AIO_HEIGHT,
       0,
       0,
-      container.width,
-      container.height
+      AIO_WIDTH,
+      AIO_HEIGHT
     );
     const rawImgData = canvasRef.current.toDataURL('image/jpeg', 1);
     const timestamp = Date.now();
-
-      // onCapture(rawImgData);
-
-      // canvasRef.current.toBlob((blob) => onCapture(blob), 'image/jpeg', 1);
       handleClear();
       resumeCamera();
     return {
@@ -124,9 +125,9 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
             className={styles.container}
             ref={measureRef}
             style={{
-              maxWidth: `${videoRef.current && videoRef.current.videoHeight}px`,
-              maxHeight: `${videoRef.current && videoRef.current.videoWidth}px`,
-              height: `${container.height}px`,
+              maxWidth: `${videoRef.current && videoRef.current.videoWidth}px`,
+              maxHeight: `${videoRef.current && videoRef.current.videoHeight}px`,
+              height: `${videoRef.current && videoRef.current.videoHeight}px`,
             }}
           >
             <video
@@ -143,13 +144,22 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
               }}
             />
 
-            <div className={isCaptureComplete ? styles['overlay-success'] : styles.overlay} hidden={!isVideoPlaying} />
+            <div
+              className={isCaptureComplete ? styles['overlay-success'] : styles.overlay}
+              hidden={!isVideoPlaying}
+              style={{
+                bottom: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (AIO_HEIGHT / 2)}px`,
+                left: `${(container.width / 2) - (AIO_WIDTH / 2)}px`,
+                right: `${(container.width / 2) - (AIO_WIDTH / 2)}px`,
+                top: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (AIO_HEIGHT / 2)}px`
+              }}
+            />
 
             <canvas
               className={styles.canvas}
               ref={canvasRef}
-              width={240}
-              height={320}
+              width={AIO_WIDTH}
+              height={AIO_HEIGHT}
             />
           </div>
         </div>

@@ -1,6 +1,14 @@
 import * as types from '../types/types';
 
 const initialState = {
+  datosPersonales: {
+    primerNombre: 'José',
+    segundoNombre: '',
+    primerApellido: 'Álvarez',
+    segundoApellido: 'Ruiz',
+    aceptar: false,
+    tipoPersona: '',
+  },
   currentStep: {
     tab: 'preguntas',
     step: '1',
@@ -43,17 +51,22 @@ const initialState = {
     controladosMoralesComoMoral: [],
     tieneControladosMoralesComoMoral: null,
     cantidadControladosMoralesComoMoral: null,
+
     controladosMoralesComoFisico: [],
     tieneControladosMoralesComoFisico: null,
     cantidadControladosMoralesComoFisico: null,
+
     controladosFisicosComoMoral: [],
     tieneControladosFisicosComoMoral: null,
     cantidadControladosFisicosComoMoral: null,
+
     controladosFisicosComoFisico: [],
     tieneControladosFisicosComoFisico: null,
     cantidadControladosFisicosComoFisico: null,
+
     meEjercenControlMoralComoMoral: '',
     meEjercenControlMoralComoFisico: '',
+
     actaConstitutiva: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
     poderesNotarial: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
     escriturasConReformas: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',

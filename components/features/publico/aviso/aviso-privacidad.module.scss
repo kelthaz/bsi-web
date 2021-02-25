@@ -1,0 +1,66 @@
+@import '../../../../styles/scss/modules/var';
+@import '../../../../styles/scss/modules/mixins';
+
+.banner-title {
+  padding-bottom: 40px;
+  padding-top: 100px;
+  text-transform: uppercase;
+}
+
+.banner-title-1 {
+  color: $white;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+.banner-title-2 {
+  color: $blue-morning;
+}
+
+.aviso-privacidad-fechas {
+  margin-bottom: 150px;
+
+  h4 {
+    span:first-child {
+      color: $blue-morning;
+    }
+
+    span:last-child {
+      color: $white;
+    }
+  }
+}
+
+// .box {
+//   background-color: #e5e5e5;
+// }
+
+.terms-box {
+  background: $white;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  padding: 40px 82px;
+  position: relative;
+  top: -100px;
+  width: 100%;
+
+  @include media('mobile') {
+    padding: 40px 10px;
+  }
+
+  p {
+    font-family: $futura-book;
+  }
+}
+
+.terms-title {
+  border-bottom: 2px solid $blue-shadow;
+  color: $blue-storm;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  width: 100%;
+
+  @include media('mobile') {
+    text-align: center;
+  }
+}

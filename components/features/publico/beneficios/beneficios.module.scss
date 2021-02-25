@@ -1,0 +1,128 @@
+@import '../../../../styles/scss/modules/mixins';
+@import '../../../../styles/scss/modules/var';
+
+.container-img {
+  &::after {
+    background-image: url('/beneficios/crecer-negocio-texture.svg');
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    background-size: 300px 260px;
+    content: '';
+    float: left;
+    height: 300px;
+    left: 120px;
+    position: relative;
+    top: -200px;
+    width: 260px;
+
+    @include media('mobile') {
+      content: none;
+    }
+  }
+}
+
+.text-box {
+  background: $blue-light;
+  border-radius: 16px;
+  max-width: 390px;
+  padding: 24px;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+
+  @include media('mobile') {
+    margin-bottom: 30px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.bg-white {
+  background: $white;
+}
+
+.section {
+  max-height: 500px;
+
+  @include media('mobile') {
+    height: auto;
+  }
+}
+
+.section-content {
+  @include media('mobile') {
+    margin-top: 27px;
+  }
+}
+
+.section-storm {
+  background-color: $blue-storm;
+}
+
+.section-last {
+  background-color: $blue-light;
+  height: 260px;
+
+  @include media('mobile') {
+    height: auto;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+}
+
+.section-texture {
+  left: -100px;
+  position: absolute;
+  top: 90px;
+  z-index: 0;
+}
+
+.section-texture-r {
+  left: 100px;
+  opacity: 0.4;
+  position: absolute;
+  top: 120px;
+  z-index: 0;
+}
+
+.ellipse {
+  background-color: $blue-light;
+  border-radius: 50%;
+  height: 250px;
+  left: 120px;
+  opacity: 0.5;
+  position: absolute;
+  top: 100px;
+  width: 250px;
+  z-index: 0;
+}
+
+.online-bank-left-phone {
+  left: 75px;
+  position: absolute;
+  top: 70px;
+  z-index: 2;
+}
+
+.online-bank-right-phone {
+  left: 186px;
+  position: absolute;
+  top: 114px;
+  z-index: 1;
+}
+
+.text {
+  height: 100%;
+  max-height: 85px;
+  text-transform: uppercase;
+
+  @include media('mobile') {
+    justify-content: center;
+    max-width: 290px;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}

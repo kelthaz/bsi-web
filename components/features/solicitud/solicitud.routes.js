@@ -8,8 +8,8 @@ const solicitudRoutes = [
   ...datosPersonalesRoutes,
   ...datosEmpresaRoutes,
   ...documentacionRoutes,
-  ...cargaDocumentosRoutes,
-  ...ofertaRoutes
-];
+  // ...cargaDocumentosRoutes,
+  // ...ofertaRoutes
+].map((route) => ({ ...route, feature: 'solicitud' }));
 
 export default solicitudRoutes;

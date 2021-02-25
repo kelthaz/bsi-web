@@ -6,7 +6,6 @@ import SvgLogoBanCoppelInverted from '../../svgs/logos/SvgLogoBanCoppelInverted'
 import SvgLogoYoutube from '../../svgs/logos/SvgLogoYoutube';
 import SvgLogoFacebook from '../../svgs/logos/SvgLogoFacebook';
 import SvgLogoLinkedLink from '../../svgs/logos/SvgLogoLinkedLink';
-// import img from '../../../public/ipab.svg';
 
 const Footer = () => {
   const { pathname } = useRouter();
@@ -25,6 +24,14 @@ const Footer = () => {
     { about: 'Tips de seguridad', link: 'https://www.bancoppel.com/acerca_bancoppel/tips.html' },
   ];
 
+  const renderLinks = (data) => (
+      <li key={data.about}>
+        <a target="_blank" rel="noreferrer" href={data.link}>
+          {data.about}
+        </a>
+      </li>
+    );
+
   return (
     !(
       pathname.includes('solicitud') ||
@@ -41,13 +48,7 @@ const Footer = () => {
               <h5>Acerca de BanCoppel</h5>
               <div>
                 <ul>
-                  {datos.slice(0, 6).map((data) => (
-                    <li key={data.about}>
-                      <a target="_blank" rel="noreferrer" href={data.link}>
-                        {data.about}
-                      </a>
-                    </li>
-                  ))}
+                  {datos.slice(0, 6).map(renderLinks)}
                 </ul>
 
                 <ul>
@@ -83,13 +84,7 @@ const Footer = () => {
             <Accordion title="Acerca de BanCoppel" expanded={false} color="white" icon="arrow">
               <div className={styles['accordeon-ul']}>
                 <ul>
-                  {datos.map((data) => (
-                    <li key={data.about}>
-                      <a target="_blank" rel="noreferrer" href={data.link}>
-                        {data.about}
-                      </a>
-                    </li>
-                  ))}
+                  {datos.map(renderLinks)}
                 </ul>
               </div>
             </Accordion>

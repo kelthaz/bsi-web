@@ -1,0 +1,129 @@
+@import '../../../../styles/scss/modules/var';
+@import '../../../../styles/scss/modules/mixins';
+
+.border-contact {
+  > div:first-child {
+    border-right: 1.5px solid $blue-morning;
+  }
+}
+
+@include media('md') {
+  .border-contact {
+    > div:first-child {
+      border-right: 0;
+    }
+
+    > div:first-child::after {
+      border-bottom: 1.5px solid $blue-shadow;
+      content: '';
+      display: block;
+      padding-top: 20px;
+      width: 95%;
+    }
+
+    > div {
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  }
+
+  .title {
+    padding-bottom: 24px;
+    padding-top: 60px;
+  }
+}
+
+.text-area-container textarea {
+  max-height: 80px;
+}
+
+.img-call-center {
+  height: 90px;
+  width: 90px;
+}
+
+.card {
+  align-items: center;
+  border: 1.5px solid transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  > div {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 16px;
+
+    div:first-child {
+      color: $gray;
+    }
+  }
+
+  img {
+    padding-left: 16px;
+  }
+}
+
+.title {
+  padding-bottom: 40px;
+  padding-top: 100px;
+}
+
+.selected-tittle {
+  color: $blue-sky !important;
+}
+
+.about-pyme-box {
+  background: $white;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  margin: 20px 0;
+  outline: none;
+  padding: 10px;
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-num {
+  text-decoration: underline #338cbf;
+}
+
+.captcha {
+  background: $white;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  color: $gray;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.container-accordion {
+  background-color: $blue-light;
+  border-radius: 16px;
+  padding: 0 20px;
+}
+
+.active {
+  border: 1.5px solid $blue-sky;
+}
+
+.title {
+  color: $blue-light;
+}
+
+.bt1 {
+  color: $blue-light;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.textarea-questions {
+  height: 65px;
+  position: relative;
+}
