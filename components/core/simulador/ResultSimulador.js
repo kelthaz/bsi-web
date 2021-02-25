@@ -5,7 +5,7 @@ import mexicanWeightFormatter from '../../../helpers/mexicanWeightFormatter';
 
 const ResultSimulador = ({ dataSimulador, resultSimulador, color }) => {
   const { monto, plazo, periodicidad } = dataSimulador;
-  const { tasaOrdinaria, comisionApertura, cat, pago, tasaMoratoria } = resultSimulador;
+  const { tasaOrdinaria, comisionApertura, cat, pago } = resultSimulador;
 
   return (
     <div className="row">
@@ -20,13 +20,6 @@ const ResultSimulador = ({ dataSimulador, resultSimulador, color }) => {
         <h4 className={`color-blue-${color}`}>{tasaOrdinaria} anual</h4>
         <p className="body3 color-gray">Tasa ordinaria</p>
       </div>
-
-      { tasaMoratoria &&
-        <div className="text-left order-md-3 col-xs-6 col-sm-6 col-md-4 col-lg-3">
-          <h4 className={`color-blue-${color}`}>{tasaMoratoria} anual</h4>
-          <p className="body3 color-gray">Tasa moratoria</p>
-        </div>
-      }
 
       <div className="text-left order-md-4 col-xs-6 col-sm-6 col-md-4 col-lg-3">
         <h4 className={`color-blue-${color}`}>{plazo.label}</h4>
