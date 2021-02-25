@@ -1,11 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgINE from '../../../../svgs/carga-documentos/SvgINE';
+import styles from '../biometricos.module.scss';
+import SvgINE from '../../../../../svgs/carga-documentos/SvgINE';
 
-import styles from '../carga-documentos.module.scss';
-
-const Test = () => (
+const PasoUnoBiometricosDocumentacion = () => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud">
       <div className="container p-0">
@@ -42,4 +41,4 @@ const Test = () => (
   </div>
 );
 
-export default Test;
+export default PasoUnoBiometricosDocumentacion;
