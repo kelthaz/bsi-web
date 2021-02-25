@@ -23,11 +23,23 @@ import {
   AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
   GRACIAS_DOCUMENTACION_ROUTE,
   REVISAR_CORREO_DOCUMENTACION_ROUTE,
+  BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE,
+  PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE,
+  CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE,
+  PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE,
+  LISTO_BIOMETRICO_DOCUMENTACION_ROUTE,
+  FELICIDADES_BIOMETRICO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
 import StepOneObligado from './obligado-solidario/step-one-obligado/StepOneObligado';
 import StepTwoObligado from './obligado-solidario/step-two-obligado/StepTwoObligado';
 import RevisarCorreoObligadoSolidario from './obligado-solidario/revisar-correo/RevisarCorreoObligadoSolidario';
 import Gracias from './gracias/Gracias';
+import BienvenidaBiometricosDocumentacion from './biometricos/bienvenida/BienvenidaBiometricosDocumentacion';
+import PasoDosBiometricosDocumentacion from './biometricos/paso-dos/PasoDosBiometricosDocumentacion';
+import CapturaRostroBiometricosDocumentacion from './biometricos/captura-rostro/CapturaRostroBiometricosDocumentacion';
+import PasoTresBiometricosDocumentacion from './biometricos/paso-tres/PasoTresBiometricosDocumentacion';
+import ListoBiometricosDocumentacion from './biometricos/listo/ListoBiometricosDocumentacion';
+import FelicidadesBiometricosDocumentacion from './biometricos/felicidades/FelicidadesBiometricosDocumentacion';
 
 const documentacionRoutes = [
   {
@@ -152,6 +164,56 @@ const documentacionRoutes = [
   //   component: Agradecimiento,
   //   services: [],
   // },
+
+  // BIOMETRICOS
+  {
+    tab: 'documentacion',
+    step: 'biometrico-bienvenido',
+    path: BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: BienvenidaBiometricosDocumentacion,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'biometrico-1',
+    path: PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: 1,
+    component: PasoDosBiometricosDocumentacion,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'biometrico-captura',
+    path: CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: CapturaRostroBiometricosDocumentacion,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'biometrico-2',
+    path: PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: 2,
+    component: PasoTresBiometricosDocumentacion,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'biometrico-listo',
+    path: LISTO_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: ListoBiometricosDocumentacion,
+    services: [],
+  },
+  {
+    tab: 'documentacion',
+    step: 'biometrico-felicidades',
+    path: FELICIDADES_BIOMETRICO_DOCUMENTACION_ROUTE,
+    stepNumber: null,
+    component: FelicidadesBiometricosDocumentacion,
+    services: [],
+  },
 ];
 
 export default documentacionRoutes;

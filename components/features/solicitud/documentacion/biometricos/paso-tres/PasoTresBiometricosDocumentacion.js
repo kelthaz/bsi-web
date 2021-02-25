@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 
-import SvgVideo from '../../../../svgs/SvgVideo';
+import styles from '../biometricos.module.scss';
+import SvgVideo from '../../../../../svgs/SvgVideo';
+import { LISTO_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-import styles from '../carga-documentos.module.scss';
-
-const StepThree = () => (
+const PasoTresBiometricosDocumentacion = () => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud">
       <div className="container p-0">
@@ -24,7 +24,7 @@ const StepThree = () => (
         </div>
         <div className="col-xs-12 col-sm-12 my-4">
           <div className="text-center">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/todo-listo" replace>
+            <Link href="/solicitud/[tab]/[step]" as={LISTO_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>
@@ -36,4 +36,4 @@ const StepThree = () => (
   </div>
 );
 
-export default StepThree;
+export default PasoTresBiometricosDocumentacion;
