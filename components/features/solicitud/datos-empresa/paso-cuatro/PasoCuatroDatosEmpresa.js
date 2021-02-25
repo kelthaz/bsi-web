@@ -16,7 +16,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
   const dispatch = useDispatch();
 
   const { initialValues, validationSchema } =
-    datosPersonales.tipoPersona.value === 'MORAL'
+    datosPersonales.tipoPersona === 'MORAL'
       ? {
           initialValues: {
             telefonoEmpresa: datosEmpresa.telefonoEmpresa,

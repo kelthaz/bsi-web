@@ -17,7 +17,6 @@ const useAxiosToken = () => {
 
         if (token) {
           const { exp, sub } = JSON.parse(atob(token.split('.')[1]));
-          console.log(exp, sub);
           updateCookie(token, null, exp);
           updateCookieRFC(sub, null, exp);
         }

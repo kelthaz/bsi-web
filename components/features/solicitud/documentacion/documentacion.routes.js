@@ -1,12 +1,13 @@
 import PasoUnoDocumentacion from './paso-uno/PasoUnoDocumentacion';
 import PasoDosDocumentacion from './paso-dos/PasoDosDocumentacion';
 import PasoTresDocumentacion from './paso-tres/PasoTresDocumentacion';
-import UltimaEtapa from './ultima-etapa/UltimaEtapa';
-import PasoCuatroDocumentacion from './paso-cuatro/PasoCuatroDocumentacion';
-import PasoCincoDocumentacion from './paso-cinco/PasoCincoDocumentacion';
-import PasoSeisDocumentacion from './paso-seis/PasoSeisDocumentacion';
-import PasoSieteDocumentacion from './paso-siete/PasoSieteDocumentacion';
-import PasoOchoDocumentacion from './paso-ocho/PasoOchoDocumentacion';
+import UltimaEtapaDocumentacion from './ultima-etapa/UltimaEtapaDocumentacion';
+import PasoCuatroPfaeDocumentacion from './paso-cuatro/pfae/PasoCuatroDocumentacionPFAE';
+import PasoCuatroPmDocumentacion from './paso-cuatro/pm/PasoCuatroDocumentacionPM';
+import PasoCincoPfaeDocumentacion from './paso-cinco/pfae/PasoCincoDocumentacionPFAE';
+import PasoCincoPmDocumentacion from './paso-cinco/pm/PasoCincoDocumentacionPM';
+import PasoSeisPmDocumentacion from './paso-seis/PasoSeisDocumentacionPM';
+import PasoSieteDocumentacionPM from './paso-siete/PasoSieteDocumentacionPM';
 import RevisarCorreoDocumentacion from './revisar-correo/RevisarCorreoDocumentacion';
 import {
   ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
@@ -18,9 +19,6 @@ import {
   PASO_SEIS_DOCUMENTACION_ROUTE,
   PASO_SIETE_DOCUMENTACION_ROUTE,
   PASO_OCHO_DOCUMENTACION_ROUTE,
-  PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
-  PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
-  AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
   GRACIAS_DOCUMENTACION_ROUTE,
   REVISAR_CORREO_DOCUMENTACION_ROUTE,
   BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE,
@@ -30,10 +28,7 @@ import {
   LISTO_BIOMETRICO_DOCUMENTACION_ROUTE,
   FELICIDADES_BIOMETRICO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
-import StepOneObligado from './obligado-solidario/step-one-obligado/StepOneObligado';
-import StepTwoObligado from './obligado-solidario/step-two-obligado/StepTwoObligado';
-import RevisarCorreoObligadoSolidario from './obligado-solidario/revisar-correo/RevisarCorreoObligadoSolidario';
-import Gracias from './gracias/Gracias';
+// Biometricos
 import BienvenidaBiometricosDocumentacion from './biometricos/bienvenida/BienvenidaBiometricosDocumentacion';
 import PasoDosBiometricosDocumentacion from './biometricos/paso-dos/PasoDosBiometricosDocumentacion';
 import CapturaRostroBiometricosDocumentacion from './biometricos/captura-rostro/CapturaRostroBiometricosDocumentacion';
@@ -41,128 +36,208 @@ import PasoTresBiometricosDocumentacion from './biometricos/paso-tres/PasoTresBi
 import ListoBiometricosDocumentacion from './biometricos/listo/ListoBiometricosDocumentacion';
 import FelicidadesBiometricosDocumentacion from './biometricos/felicidades/FelicidadesBiometricosDocumentacion';
 
+import GraciasIncompletaDocumentacion from './gracias/GraciasIncompletaDocumentacion';
+import { DOCUMENTACION, DOCUMENTACION_INCOMPLETO } from '../../../../constants/formularios';
+import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
+
 const documentacionRoutes = [
   {
-    tab: 'documentacion',
-    step: 'gracias',
-    path: GRACIAS_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: Gracias,
+    route: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
+    component: [UltimaEtapaDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Ultima etapa',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 0,
+      tipoPersona: '',
+      step: null,
+      tab: [''],
+    },
   },
   {
-    tab: 'documentacion',
-    step: 'ultima-etapa',
-    path: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: UltimaEtapa,
+    route: PASO_UNO_DOCUMENTACION_ROUTE,
+    component: [PasoUnoDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Paso 1 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 1,
+      tipoPersona: '',
+      step: 1,
+      tab: ['documentacion'],
+    },
   },
   {
-    tab: 'documentacion',
-    step: '1',
-    path: PASO_UNO_DOCUMENTACION_ROUTE,
-    stepNumber: 1,
-    component: PasoUnoDocumentacion,
+    route: PASO_DOS_DOCUMENTACION_ROUTE,
+    component: [PasoDosDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Paso 2 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 2,
+      tipoPersona: '',
+      step: 2,
+      tab: ['documentacion'],
+    },
   },
   {
-    tab: 'documentacion',
-    step: '2',
-    path: PASO_DOS_DOCUMENTACION_ROUTE,
-    stepNumber: 2,
-    component: PasoDosDocumentacion,
+    route: PASO_TRES_DOCUMENTACION_ROUTE,
+    component: [PasoTresDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Paso 3 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 3,
+      tipoPersona: '',
+      step: 3,
+      tab: ['documentacion'],
+    },
   },
   {
-    tab: 'documentacion',
-    step: '3',
-    path: PASO_TRES_DOCUMENTACION_ROUTE,
-    stepNumber: 3,
-    component: PasoTresDocumentacion,
+    route: PASO_CUATRO_DOCUMENTACION_ROUTE,
+    component: [PasoCuatroPfaeDocumentacion, PasoCuatroPmDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Paso 4 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 4,
+      tipoPersona: '',
+      step: 4,
+      tab: ['documentacion'],
+    },
   },
   {
-    tab: 'documentacion',
-    step: '4',
-    path: PASO_CUATRO_DOCUMENTACION_ROUTE,
-    stepNumber: 4,
-    component: PasoCuatroDocumentacion,
+    route: PASO_CINCO_DOCUMENTACION_ROUTE,
+    component: [PasoCincoPfaeDocumentacion, PasoCincoPmDocumentacion],
     services: [],
+    roles: [],
+    label: 'Documentacion: Paso 5 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 5,
+      tipoPersona: '',
+      step: 5,
+      tab: ['documentacion'],
+    },
+  },
+  {
+    route: PASO_SEIS_DOCUMENTACION_ROUTE,
+    component: [UltimoPasoDocumentacion, PasoSeisPmDocumentacion],
+    services: [],
+    roles: [],
+    label: 'Documentacion: Paso 6 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 6,
+      tipoPersona: '',
+      step: 6,
+      tab: ['documentacion'],
+    },
+  },
+  {
+    route: PASO_SIETE_DOCUMENTACION_ROUTE,
+    component: [PasoSieteDocumentacionPM],
+    services: [],
+    roles: [],
+    label: 'Documentacion: Paso 7 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 7,
+      tipoPersona: 'MORAL',
+      step: 7,
+      tab: ['documentacion'],
+    },
+  },
+  {
+    route: PASO_OCHO_DOCUMENTACION_ROUTE,
+    component: [UltimoPasoDocumentacion],
+    services: [],
+    roles: [],
+    label: 'Documentacion: Paso 8 de documentacion',
+    data: {
+      formulario: DOCUMENTACION,
+      paso: 8,
+      tipoPersona: 'MORAL',
+      step: 8,
+      tab: ['documentacion'],
+    },
+  },
+  {
+    route: GRACIAS_DOCUMENTACION_ROUTE,
+    component: [GraciasIncompletaDocumentacion],
+    services: [],
+    roles: [],
+    label: 'Documentacion: Agradecimiento',
+    data: {
+      formulario: DOCUMENTACION_INCOMPLETO,
+      paso: 0,
+      tipoPersona: '',
+      step: null,
+      tab: [''],
+    },
   },
 
-  {
-    tab: 'documentacion',
-    step: '5',
-    path: PASO_CINCO_DOCUMENTACION_ROUTE,
-    stepNumber: 5,
-    component: PasoCincoDocumentacion,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: '6',
-    path: PASO_SEIS_DOCUMENTACION_ROUTE,
-    stepNumber: 6,
-    component: PasoSeisDocumentacion,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: '7',
-    path: PASO_SIETE_DOCUMENTACION_ROUTE,
-    stepNumber: 7,
-    component: PasoSieteDocumentacion,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: '8',
-    path: PASO_OCHO_DOCUMENTACION_ROUTE,
-    stepNumber: 8,
-    component: PasoOchoDocumentacion,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: 'revisar-correo',
-    path: REVISAR_CORREO_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: RevisarCorreoDocumentacion,
-    services: [],
-  },
-
-  {
-    tab: 'documentacion',
-    step: 'obligado-1',
-    path: PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: StepOneObligado,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: 'obligado-2',
-    path: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: StepTwoObligado,
-    services: [],
-  },
-  {
-    tab: 'documentacion',
-    step: 'agradecimiento-obligado',
-    path: AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
-    stepNumber: null,
-    component: RevisarCorreoObligadoSolidario,
-    services: [],
-  },
   // {
-  //   tab: 'documentacion',
-  //   step: 'agradecimiento',
-  //   path: '/solicitud/pm/documentacion/agradecimiento',
-  //   stepNumber: null,
-  //   component: Agradecimiento,
+  //   route: REVISAR_CORREO_DOCUMENTACION_ROUTE,
+  //   component: [RevisarCorreoDocumentacion],
   //   services: [],
+  //   roles: [],
+  //   label: 'Documentacion: Revisar correo',
+  //   data: {
+  //     formulario: DOCUMENTACION_BIOMETRICOS,
+  //     paso: 0,
+  //     tipoPersona: '',
+  //     step: null,
+  //     tab: ['documentacion'],
+  //   },
+  // },
+
+  // {
+  //   route: PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
+  //   component: [StepOneObligado],
+  //   services: [],
+  //   roles: [],
+  //   label: 'Documentacion: obligado solidario paso 1',
+  //   data: {
+  //     formulario: DOCUMENTACION,
+  //     paso: 12,
+  //     tipoPersona: '',
+  //     step: null,
+  //     tab: ['documentacion'],
+  //   },
+  // },
+  // {
+  //   route: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
+  //   component: [StepTwoObligado],
+  //   services: [],
+  //   roles: [],
+  //   label: 'Documentacion: obligado solidario paso 2',
+  //   data: {
+  //     formulario: DOCUMENTACION,
+  //     paso: 13,
+  //     tipoPersona: '',
+  //     step: null,
+  //     tab: ['documentacion'],
+  //   },
+  // },
+  // {
+  //   route: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
+  //   component: [RevisarCorreoObligadoSolidario],
+  //   services: [],
+  //   roles: [],
+  //   label: 'Documentacion: Revisar correo obligado solidario',
+  //   data: {
+  //     formulario: DOCUMENTACION,
+  //     paso: 14,
+  //     tipoPersona: '',
+  //     step: null,
+  //     tab: ['documentacion'],
+  //   },
   // },
 
   // BIOMETRICOS

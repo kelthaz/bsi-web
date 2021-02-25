@@ -15,7 +15,7 @@ import { aceptarTerminos } from '../../../../../../constants/errors';
 import ContratoLegalex from '../../../shared/contrato-legalex/ContratoLegalex';
 import { AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
-const StepNine = () => {
+const ContratoLegalexObligadoSolidarioPM = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const [openModalMobile, setOpenModalMobile] = useState(false);
   const { pm } = useSelector((state) => state.obligado);
@@ -182,4 +182,4 @@ const StepNine = () => {
   );
 };
 
-export default StepNine;
+export default ContratoLegalexObligadoSolidarioPM;

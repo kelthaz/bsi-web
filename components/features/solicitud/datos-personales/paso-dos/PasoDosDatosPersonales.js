@@ -10,8 +10,6 @@ import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaAc
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
 const PasoDosDatosPersonales = ({ validate }) => {
-  const personaFisica = { value: 'FISICA', label: 'Persona Física con Actividad Empresarial' };
-  const personaMoral = { value: 'MORAL', label: 'Persona Moral' };
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
@@ -20,13 +18,7 @@ const PasoDosDatosPersonales = ({ validate }) => {
       tipoPersona: datosPersonales.tipoPersona,
     },
     validationSchema: Yup.object().shape({
-      tipoPersona: Yup.object()
-        .shape({
-          value: Yup.string(),
-          label: Yup.string(),
-        })
-        .nullable()
-        .required(seleccionOpcion),
+      tipoPersona: Yup.string().required(seleccionOpcion),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -67,29 +59,29 @@ const PasoDosDatosPersonales = ({ validate }) => {
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    values.tipoPersona && values.tipoPersona.value === personaFisica.value && 'card-selected-blue-sky'
+                    values.tipoPersona === 'FISICA' && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => handleTipoPersona(personaFisica)}
+                  onClick={() => handleTipoPersona('FISICA')}
                 >
                   <div>
                     <SvgPersonaFisicaActividadFisica />
                   </div>
-                  <p className="px-md-5 px-lg-5">{personaFisica.label}</p>
+                  <p className="px-md-5 px-lg-5">Persona Física con Actividad Empresarial</p>
                 </button>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5">
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    values.tipoPersona && values.tipoPersona.value === personaMoral.value && 'card-selected-blue-sky'
+                    values.tipoPersona === 'MORAL' && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => handleTipoPersona(personaMoral)}
+                  onClick={() => handleTipoPersona('MORAL')}
                 >
                   <div>
                     <SvgPersonaMoral />
                   </div>
 
-                  <p>{personaMoral.label}</p>
+                  <p>Persona Moral</p>
                 </button>
               </div>
             </div>

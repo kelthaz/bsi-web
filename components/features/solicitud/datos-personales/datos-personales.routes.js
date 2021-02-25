@@ -31,7 +31,7 @@ const datosPersonalesRoutes = [
       paso: 0,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
   {
@@ -45,7 +45,7 @@ const datosPersonalesRoutes = [
       paso: 1,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
   {
@@ -129,7 +129,7 @@ const datosPersonalesRoutes = [
       paso: 7,
       tipoPersona: '',
       step: null,
-      tab: '',
+      tab: [''],
     },
   },
 ];

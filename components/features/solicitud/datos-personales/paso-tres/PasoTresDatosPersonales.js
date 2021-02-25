@@ -54,7 +54,7 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona.value === 'MORAL') {
+  if (datosPersonales.tipoPersona === 'MORAL') {
     initialValues.razonSocial = datosPersonales.razonSocial;
     initialValues.tipoSociedad = datosPersonales.tipoSociedad;
     validationSchema.razonSocial = Yup.string().trim().max(120, longitudMaxima).required(campoRequerido);
@@ -96,14 +96,14 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
           <form onSubmit={handleSubmit} noValidate>
             <h2 className="color-blue-storm">¡Anotado!</h2>
             <p className="color-dark-gray sub">
-              {datosPersonales.tipoPersona.value === 'MORAL' ? (
+              {datosPersonales.tipoPersona === 'MORAL' ? (
                 <span>¿Cuál es la razón social, nombre comercial, sector y giro de tu negocio?</span>
               ) : (
                 <span>¿Cuál es el nombre comercial, sector y giro de tu negocio?</span>
               )}
             </p>
 
-            {datosPersonales.tipoPersona.value === 'MORAL' && (
+            {datosPersonales.tipoPersona === 'MORAL' && (
               <div className="row no-gutters">
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                   <p className="input color-gray">La razón social es</p>
