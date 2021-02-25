@@ -11,8 +11,12 @@ export const AGRADECIMIENTO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/agra
 export const GRACIAS_DOCUMENTACION_ROUTE = '/solicitud/documentacion/gracias';
 export const REVISAR_CORREO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/revisar-correo';
 
+export const BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-bienvenido';
 export const PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-1';
+export const CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-captura';
 export const PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-2';
+export const LISTO_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-listo';
+export const FELICIDADES_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-felicidades';
 
 export const PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado/1';
 export const PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado/2';

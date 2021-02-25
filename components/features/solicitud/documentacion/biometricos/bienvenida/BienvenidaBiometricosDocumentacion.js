@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import SvgCargaDocumento from '../../../../svgs/SvgCargaDocumento';
-import styles from '../carga-documentos.module.scss';
-import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 
-const BienvenidaDocumentacionBiometrico = () => {
+import styles from '../biometricos.module.scss';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
+import SvgCargaDocumento from '../../../../../svgs/SvgCargaDocumento';
+import { PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
+
+const BienvenidaBiometricosDocumentacion = () => {
   const dispatch = useDispatch();
   const { documentacion } = useSelector((state) => state.solicitud);
 
   const dispatchBiometricos = () => {
     dispatch(
       nextStepDatosPersonales({
-        currentStep: { tab: 'carga-documentos', step: 'bienvenida' },
+        currentStep: { tab: 'documentacion', step: 'biometrico-bienvenido' },
         datosEmpresa: {
           ...documentacion,
         },
@@ -43,7 +45,7 @@ const BienvenidaDocumentacionBiometrico = () => {
           <div className="row">
             <div className="col-xs-12 col-sm-12 my-3">
               <div className="text-center">
-                <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/1" replace>
+                <Link href="/solicitud/[tab]/[step]" as={PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
                   <button type="submit" className="btn-medium" onClick={dispatchBiometricos}>
                     Comenzar
                   </button>
@@ -57,4 +59,4 @@ const BienvenidaDocumentacionBiometrico = () => {
   );
 };
 
-export default BienvenidaDocumentacionBiometrico;
+export default BienvenidaBiometricosDocumentacion;

@@ -22,14 +22,16 @@ import {
   GRACIAS_DOCUMENTACION_ROUTE,
   REVISAR_CORREO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
-import GraciasIncompletaDocumentacion from './gracias/GraciasIncompletaDocumentacion';
 
+import GraciasIncompletaDocumentacion from './gracias/GraciasIncompletaDocumentacion';
 import { DOCUMENTACION, DOCUMENTACION_INCOMPLETO } from '../../../../constants/formularios';
 import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
 import obligadoSolidarioDocumentacionRoutes from './obligado-solidario/obligado-solidario-documentacion.routes';
+import biometricosDocumentacionRoutes from './biometricos/biometricos-documentacion.routes';
 
 const documentacionRoutes = [
   ...obligadoSolidarioDocumentacionRoutes,
+  ...biometricosDocumentacionRoutes,
   {
     route: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
     component: [UltimaEtapaDocumentacion],
