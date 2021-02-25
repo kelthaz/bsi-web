@@ -10,7 +10,7 @@ import SvgPersonaMoralBlue from '../../../../../svgs/SvgPersonaMoralBlue';
 import Modal from '../../../../../shared/modal/Modal';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
-import { FISICA } from '../../../../../../constants/persona';
+import { FISICA, MORAL } from '../../../../../../constants/persona';
 
 const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
