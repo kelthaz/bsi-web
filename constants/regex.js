@@ -9,6 +9,7 @@ export const regexMultipleSpaces = /\s+/g;
 
 export const regexUpperAndLowerCase = /^(?=.*[a-z])(?=.*[A-Z])/;
 export const regexNoConsecutives = /^(?!.*?\d{2}).+$/;
+export const regexWordBancoppel = /^(?!.*(?:Bancoppel))/;
 export const regexMinOneNumber = /\d{1,}/;
 export const regexRFCMoral = /^([A-ZÑ&]{3})(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01]))([A-Z\d]{2})([A\d])$/;
 export const regexRFCFisica = /^([A-ZÑ&]{4})(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01]))([A-Z\d]{2})([A\d])$/;

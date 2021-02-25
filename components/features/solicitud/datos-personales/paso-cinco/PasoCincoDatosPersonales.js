@@ -13,6 +13,7 @@ import {
   regexMinOneNumber,
   regexRFCFisica,
   regexRFCMoral,
+  regexWordBancoppel,
 } from '../../../../../constants/regex';
 import {
   longitudMaxima,
@@ -23,6 +24,7 @@ import {
   minOneNumber,
   aceptarTerminos,
   rfcInvalido,
+  noPalabraBancoppel,
 } from '../../../../../constants/errors';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
@@ -55,6 +57,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
         .min(8, longitudMinima)
         .matches(regexUpperAndLowerCase, lowerUpperCase)
         .matches(regexNoConsecutives, noConsecutives)
+        .matches(regexWordBancoppel, noPalabraBancoppel)
         .matches(regexMinOneNumber, minOneNumber)
         .required(campoRequerido),
 

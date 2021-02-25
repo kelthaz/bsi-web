@@ -19,3 +19,4 @@ export const numeroMinimo = ({ min }) => `El número debe ser mayor o igual a ${
 export const numeroMaximo = ({ max }) => `El número debe ser menor o igual a ${max}`;
 export const clabeNumeroCuentaInvalido = () => 'CLABE o número de cuenta inválido';
 export const ciecInvalida = () => 'CIEC inválida';
+export const noPalabraBancoppel = () => 'La contraseña no puede ser la palabra “Bancoppel” y sus derivados';
