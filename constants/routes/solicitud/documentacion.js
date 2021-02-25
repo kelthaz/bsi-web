@@ -14,6 +14,6 @@ export const REVISAR_CORREO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/revi
 export const PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-1';
 export const PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/biometrico-2';
 
-export const PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado-1';
-export const PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado-2';
-export const AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/agradecimiento-obligado';
+export const PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado/1';
+export const PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado/2';
+export const AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE = '/solicitud/documentacion/obligado/agradecimiento';

@@ -82,7 +82,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
     if (!changePage) {
       const data = {
         ...datosPersonales,
-        tipoPersona: datosPersonales.tipoPersona.value,
+        tipoPersona: datosPersonales.tipoPersona,
         tipoSociedad: datosPersonales.tipoSociedad?.label,
         sector: datosPersonales.sector.value,
         giro: datosPersonales.giro.value,

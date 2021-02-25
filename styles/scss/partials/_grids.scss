@@ -15,6 +15,10 @@
   background-color: $blue-storm;
 }
 
+.contedor-fixed-error {
+  @include contenedor-flex-config(0);
+}
+
 .contedor-fixed-privado {
   @include contenedor-flex-config(0);
   background-color: $blue-light;

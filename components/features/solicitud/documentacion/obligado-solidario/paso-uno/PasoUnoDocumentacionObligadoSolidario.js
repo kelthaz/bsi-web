@@ -11,31 +11,17 @@ import Modal from '../../../../../shared/modal/Modal';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-const StepOneObligado = ({ validate }) => {
-  const personaFisica = {
-    value: 'FISICA',
-    label: 'Persona Física',
-  };
-  const personaMoral = {
-    value: 'MORAL',
-    label: 'Persona Moral',
-  };
+const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
+  const { documentacion, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
   const formulario = useFormik({
     initialValues: {
-      tipoPersona: obligadoSolidario.tipoPersona,
+      tipoPersona: documentacion.obligadoSolidario.tipoPersona,
     },
     validationSchema: Yup.object({
-      tipoPersona: Yup.object()
-        .shape({
-          value: Yup.string(),
-          label: Yup.string(),
-        })
-        .nullable()
-        .required(seleccionOpcion),
+      tipoPersona: Yup.string().required(seleccionOpcion),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -43,7 +29,7 @@ const StepOneObligado = ({ validate }) => {
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
-          obligadoSolidario: { ...obligadoSolidario, ...values },
+          documentacion: { ...documentacion, obligadoSolidario: { ...documentacion.obligadoSolidario, ...values } },
         })
       );
     },
@@ -100,16 +86,16 @@ const StepOneObligado = ({ validate }) => {
                   <button
                     type="button"
                     className={`card-simple-white-svg card-button ${
-                      values.tipoPersona && values.tipoPersona.value === personaFisica.value && 'card-selected-blue-sky'
+                      values.tipoPersona === 'FISICA' && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handletipoPersona(personaFisica)}
+                    onClick={() => handletipoPersona('FISICA')}
                   >
                     <div className="row">
                       <div className="col-12">
                         <SvgPersonaFisicaActividadFisica />
                       </div>
                       <div className="col-8 offset-2">
-                        <p className="mb-1">{personaFisica.label}</p>
+                        <p className="mb-1">Persona Física</p>
                         <span className="color-gray">Sugerimos que sea un familiar con relación con la empresa</span>
                       </div>
                     </div>
@@ -119,16 +105,16 @@ const StepOneObligado = ({ validate }) => {
                   <button
                     type="button"
                     className={`card-simple-white-svg card-button ${
-                      values.tipoPersona && values.tipoPersona.value === personaMoral.value && 'card-selected-blue-sky'
+                      values.tipoPersona === 'MORAL' && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handletipoPersona(personaMoral)}
+                    onClick={() => handletipoPersona('MORAL')}
                   >
                     <div className="row">
                       <div className="col-12 ml-2">
                         <SvgPersonaMoralBlue />
                       </div>
                       <div className="col-9 offset-2">
-                        <p className="">{personaMoral.label}</p>
+                        <p>Persona Moral</p>
                         <span className="color-gray">Deberá ser una empresa que responderá con su patrimonio</span>
                       </div>
                     </div>
@@ -151,8 +137,8 @@ const StepOneObligado = ({ validate }) => {
   );
 };
 
-StepOneObligado.propTypes = {
+PasoUnoDocumentacionObligadoSolidario.propTypes = {
   validate: PropTypes.bool.isRequired,
 };
 
-export default StepOneObligado;
+export default PasoUnoDocumentacionObligadoSolidario;

@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Link from 'next/link';
 import SvgCargaDocumento from '../../../../../svgs/SvgCargaDocumento';
 import SvgEmpresa from '../../../../../svgs/SvgEmpresa';
 
-const RevisarCorreoObligadoSolidario = () => {
-  const { datosPersonales, obligadoSolidario } = useSelector((state) => state.solicitud);
+const RevisarCorreoDocumentacionObligadoSolidario = () => {
+  const { datosPersonales, documentacion } = useSelector((state) => state.solicitud);
 
   return (
     <div className="contedor-fixed-tab">
@@ -13,8 +12,8 @@ const RevisarCorreoObligadoSolidario = () => {
         <div className="container px-xs-0 px-md-3">
           <h2 className="color-blue-storm">¡Gracias, {datosPersonales.primerNombre}!</h2>
           <p className="body2 color-gray-dark">
-            {obligadoSolidario.primerNombre} deberá revisar su correo electrónico para acceder a la plataforma donde
-            podrá responder un formulario similar al tuyo:
+            {documentacion.obligadoSolidario.primerNombre} deberá revisar su correo electrónico para acceder a la
+            plataforma donde podrá responder un formulario similar al tuyo:
           </p>
 
           <div className="justify-content-between">
@@ -52,17 +51,15 @@ const RevisarCorreoObligadoSolidario = () => {
           </div>
           <div className="row flex-column-start-config ml-xs-1 ml-md-0 ">
             <p className="body2 color-gray-dark">
-              Te enviaremos un correo cuando {obligadoSolidario.primerNombre} termine su proceso. De igual manera te
-              notificaremos en caso de que tu obligado solidario no haya realizado el proceso en un periodo de tres
-              días.
+              Te enviaremos un correo cuando {documentacion.obligadoSolidario.primerNombre} termine su proceso. De igual
+              manera te notificaremos en caso de que tu obligado solidario no haya realizado el proceso en un periodo de
+              tres días.
             </p>
           </div>
           <div className="flex-column-start-config">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/documentacion/3">
-              <button type="submit" className="btn-medium flex-align-self-center my-3">
-                Continuar
-              </button>
-            </Link>
+            <button type="submit" className="btn-medium flex-align-self-center my-3">
+              Continuar
+            </button>
           </div>
         </div>
       </div>
@@ -70,4 +67,4 @@ const RevisarCorreoObligadoSolidario = () => {
   );
 };
 
-export default RevisarCorreoObligadoSolidario;
+export default RevisarCorreoDocumentacionObligadoSolidario;

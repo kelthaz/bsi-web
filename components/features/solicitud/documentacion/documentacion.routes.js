@@ -26,8 +26,10 @@ import GraciasIncompletaDocumentacion from './gracias/GraciasIncompletaDocumenta
 
 import { DOCUMENTACION, DOCUMENTACION_INCOMPLETO } from '../../../../constants/formularios';
 import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
+import obligadoSolidarioDocumentacionRoutes from './obligado-solidario/obligado-solidario-documentacion.routes';
 
 const documentacionRoutes = [
+  ...obligadoSolidarioDocumentacionRoutes,
   {
     route: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
     component: [UltimaEtapaDocumentacion],
@@ -178,49 +180,6 @@ const documentacionRoutes = [
   //   data: {
   //     formulario: DOCUMENTACION_BIOMETRICOS,
   //     paso: 0,
-  //     tipoPersona: '',
-  //     step: null,
-  //     tab: ['documentacion'],
-  //   },
-  // },
-
-  // {
-  //   route: PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
-  //   component: [StepOneObligado],
-  //   services: [],
-  //   roles: [],
-  //   label: 'Documentacion: obligado solidario paso 1',
-  //   data: {
-  //     formulario: DOCUMENTACION,
-  //     paso: 12,
-  //     tipoPersona: '',
-  //     step: null,
-  //     tab: ['documentacion'],
-  //   },
-  // },
-  // {
-  //   route: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
-  //   component: [StepTwoObligado],
-  //   services: [],
-  //   roles: [],
-  //   label: 'Documentacion: obligado solidario paso 2',
-  //   data: {
-  //     formulario: DOCUMENTACION,
-  //     paso: 13,
-  //     tipoPersona: '',
-  //     step: null,
-  //     tab: ['documentacion'],
-  //   },
-  // },
-  // {
-  //   route: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
-  //   component: [RevisarCorreoObligadoSolidario],
-  //   services: [],
-  //   roles: [],
-  //   label: 'Documentacion: Revisar correo obligado solidario',
-  //   data: {
-  //     formulario: DOCUMENTACION,
-  //     paso: 14,
   //     tipoPersona: '',
   //     step: null,
   //     tab: ['documentacion'],

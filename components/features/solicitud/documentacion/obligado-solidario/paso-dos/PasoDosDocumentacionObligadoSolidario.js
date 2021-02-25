@@ -14,19 +14,19 @@ import EmailageRepositorio from '../../../../../../services/solicitud/emailage.r
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
-const StepTwoObligado = ({ validate }) => {
-  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
+const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
+  const { documentacion, currentStep } = useSelector((state) => state.solicitud);
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const dispatch = useDispatch();
 
   const formulario = useFormik({
     initialValues: {
-      primerNombre: obligadoSolidario.primerNombre,
-      segundoNombre: obligadoSolidario.segundoNombre,
-      primerApellido: obligadoSolidario.primerApellido,
-      segundoApellido: obligadoSolidario.segundoApellido,
-      correo: obligadoSolidario.correo,
-      celular: obligadoSolidario.celular,
+      primerNombre: documentacion.obligadoSolidario.primerNombre,
+      segundoNombre: documentacion.obligadoSolidario.segundoNombre,
+      primerApellido: documentacion.obligadoSolidario.primerApellido,
+      segundoApellido: documentacion.obligadoSolidario.segundoApellido,
+      correo: documentacion.obligadoSolidario.correo,
+      celular: documentacion.obligadoSolidario.celular,
     },
     validationSchema: Yup.object().shape({
       primerNombre: Yup.string().max(60, longitudMaxima).required(campoRequerido),
@@ -42,7 +42,7 @@ const StepTwoObligado = ({ validate }) => {
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
-          obligadoSolidario: { ...obligadoSolidario, ...values },
+          documentacion: { ...documentacion, obligadoSolidario: { ...documentacion.obligadoSolidario, ...values } },
         })
       );
     },
@@ -81,7 +81,7 @@ const StepTwoObligado = ({ validate }) => {
             <p className="dark-gray body2">
               Hemos enviado un correo a tu obligado solidario
               <br />
-              {obligadoSolidario.primerNombreRecibe}.
+              {formulario.values.primerNombre}.
             </p>
           </div>
           <div className="d-flex justify-content-center">
@@ -197,8 +197,8 @@ const StepTwoObligado = ({ validate }) => {
   );
 };
 
-StepTwoObligado.propTypes = {
+PasoDosDocumentacionObligadoSolidario.propTypes = {
   validate: PropTypes.bool.isRequired,
 };
 
-export default StepTwoObligado;
+export default PasoDosDocumentacionObligadoSolidario;

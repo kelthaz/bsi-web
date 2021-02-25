@@ -9,6 +9,7 @@ import solicitudRoutes from '../../../features/solicitud/solicitud.routes';
 import Step from '../../../shared/step/Step';
 import TabInformativo from '../../../shared/tab-informativo/TabInformativo';
 import SvgPatronesSolicitud from '../../../svgs/SvgPatronesSolicitud';
+import Error404 from '../../error404/Error404';
 import HeaderSolicitud from '../../header/solicitud/HeaderSolicitud';
 import ModalActualizar from '../../modals/solicitud/modal-actualizar/ModalActualizar';
 
@@ -21,7 +22,9 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
   const { sincronizado, currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const { replace } = useRouter();
 
-  let Component = componentPFAE;
+  const invalidComponent = tipoPersona !== '' && datosPersonales.tipoPersona !== tipoPersona;
+
+  let Component = invalidComponent ? Error404 : componentPFAE;
   let tab = tabPFAE;
 
   if (tipoPersona === '' && componentPM && datosPersonales.tipoPersona === 'MORAL') {
@@ -71,7 +74,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
       <HeaderSolicitud />
       <ModalActualizar />
 
-      {!!tab && (
+      {!invalidComponent && !!tab && (
         <TabInformativo
           tabs={formulario === OBLIGADO_SOLIDARIO ? tabsObligado : tabsSolicitante}
           currentTab={tab}
@@ -81,7 +84,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
         />
       )}
 
-      {!!step && <Step currentStep={step} valipStep={currentStep.valipStep} steps={steps} />}
+      {!invalidComponent && !!step && <Step currentStep={step} valipStep={currentStep.valipStep} steps={steps} />}
       <Component {...servicesData} validate={currentStep.paso === paso} />
       <SvgPatronesSolicitud className="fixed-left-bottom" />
     </>
