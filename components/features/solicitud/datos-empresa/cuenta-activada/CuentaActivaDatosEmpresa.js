@@ -14,6 +14,7 @@ import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_UNO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import { regexMultipleSpaces } from '../../../../../constants/regex';
+import { MORAL } from '../../../../../constants/persona';
 
 const CuentaActivaDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
@@ -82,7 +83,7 @@ const CuentaActivaDatosEmpresa = ({ validate }) => {
             <div className="row flex-column-start-config">
               <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
               <div className="card-simple-blue-light list-onboarding">
-                {datosPersonales.tipoPersona === 'MORAL' ? (
+                {datosPersonales.tipoPersona === MORAL ? (
                   <ul>
                     <li>La CURP del representante legal</li>
                     <li className="position-relative">

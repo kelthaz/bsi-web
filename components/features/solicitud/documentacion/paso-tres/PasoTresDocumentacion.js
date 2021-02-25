@@ -16,6 +16,7 @@ import EjerceControlSobreFisico from '../../shared/ejerce-control-sobre-fisico/E
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_CUATRO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoTresDocumentacion = ({ validate }) => {
   const { currentStep, documentacion, datosPersonales } = useSelector((state) => state.solicitud);
@@ -54,7 +55,7 @@ const PasoTresDocumentacion = ({ validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona === 'MORAL') {
+  if (datosPersonales.tipoPersona === MORAL) {
     initialValues.controladosFisicosComoMoral = documentacion.controladosFisicosComoMoral;
     initialValues.tieneControladosFisicosComoMoral = documentacion.tieneControladosFisicosComoMoral;
     initialValues.cantidadControladosFisicosComoMoral = documentacion.cantidadControladosFisicosComoMoral;
@@ -89,7 +90,7 @@ const PasoTresDocumentacion = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'MORAL' && (
+            {datosPersonales.tipoPersona === MORAL && (
               <>
                 <p className="sub color-blue-storm">
                   <SvgPersonaMoral />

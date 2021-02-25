@@ -10,6 +10,7 @@ import SvgEmpresa from '../../../../svgs/SvgEmpresa';
 import SvgBuro from '../../../../svgs/SvgBuro';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import { PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../constants/routes/solicitud/obligado';
+import { MORAL } from '../../../../../constants/persona';
 
 const Bienvenido = () => {
   const { obligadoSolidario } = useSelector((state) => state.solicitud);
@@ -77,7 +78,7 @@ const Bienvenido = () => {
           <div className="row flex-column-start-config">
             <p className="body2 mt-xs-3 mt-md-2 color-gray-dark">Qué documentos deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
-              {datosPersonales.tipoPersona === 'MORAL' ? (
+              {datosPersonales.tipoPersona === MORAL ? (
                 <ul>
                   <li>
                     Identificación oficial <span className="color-gray"> (vigente) </span>

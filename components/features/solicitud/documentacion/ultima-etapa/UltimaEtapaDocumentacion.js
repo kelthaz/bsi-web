@@ -8,6 +8,7 @@ import SvgPersona from '../../../../svgs/SvgPersona';
 import SvgPersonaMoralColor from '../../../../svgs/SvgPersonaMoralColor';
 import { PASO_UNO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { MORAL } from '../../../../../constants/persona';
 
 const UltimaEtapaDocumentacion = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -61,7 +62,7 @@ const UltimaEtapaDocumentacion = ({ validate }) => {
           <div className="row flex-column-start-config">
             <p className="body2 color-gray-dark">Deberás tener a la mano:</p>
             <div className="card-simple-blue-light list-onboarding">
-              {datosPersonales.tipoPersona === 'MORAL' ? (
+              {datosPersonales.tipoPersona === MORAL ? (
                 <ul>
                   <li>Acta constitutiva </li>
                   <li className="position-relative">Poderes notariales</li>

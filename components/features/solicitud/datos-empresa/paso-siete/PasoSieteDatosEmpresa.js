@@ -9,6 +9,7 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoSieteDatosEmpresa = ({ validate }) => {
   const { datosPersonales, datosEmpresa, currentStep } = useSelector((state) => state.solicitud);
@@ -43,7 +44,7 @@ const PasoSieteDatosEmpresa = ({ validate }) => {
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'MORAL' ? (
+            {datosPersonales.tipoPersona === MORAL ? (
               <p className="color-dark-gray sub position-relative">
                 ¿La empresa ya tiene una cuenta bancaria en BanCoppel?
                 <Tooltip message="De ser así, necesitamos validar tu número de cuenta bancaria BanCoppel (11 dígitos) o tu CLABE (18 dígitos) en la que se te depositaría el crédito en caso de ser aprobado, de lo contrario se te creará una nueva cuenta bancaria." />

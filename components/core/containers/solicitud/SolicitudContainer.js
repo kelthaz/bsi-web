@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { DATO_PERSONA, OBLIGADO_SOLIDARIO } from '../../../../constants/formularios';
+import { MORAL } from '../../../../constants/persona';
 import { SIMULADOR_ROUTE } from '../../../../constants/routes/publico/publico';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
 import solicitudRoutes from '../../../features/solicitud/solicitud.routes';
@@ -27,11 +28,11 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
   let Component = invalidComponent ? Error404 : componentPFAE;
   let tab = tabPFAE;
 
-  if (tipoPersona === '' && componentPM && datosPersonales.tipoPersona === 'MORAL') {
+  if (tipoPersona === '' && componentPM && datosPersonales.tipoPersona === MORAL) {
     Component = componentPM;
   }
 
-  if (tipoPersona === '' && tabPM && datosPersonales.tipoPersona === 'MORAL') {
+  if (tipoPersona === '' && tabPM && datosPersonales.tipoPersona === MORAL) {
     tab = tabPM;
   }
 

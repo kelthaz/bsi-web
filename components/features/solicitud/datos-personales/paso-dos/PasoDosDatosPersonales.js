@@ -8,6 +8,7 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
+import { FISICA, MORAL } from '../../../../../constants/persona';
 
 const PasoDosDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -59,9 +60,9 @@ const PasoDosDatosPersonales = ({ validate }) => {
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    values.tipoPersona === 'FISICA' && 'card-selected-blue-sky'
+                    values.tipoPersona === FISICA && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => handleTipoPersona('FISICA')}
+                  onClick={() => handleTipoPersona(FISICA)}
                 >
                   <div>
                     <SvgPersonaFisicaActividadFisica />
@@ -73,9 +74,9 @@ const PasoDosDatosPersonales = ({ validate }) => {
                 <button
                   type="button"
                   className={`card-simple-white-svg card-button ${
-                    values.tipoPersona === 'MORAL' && 'card-selected-blue-sky'
+                    values.tipoPersona === MORAL && 'card-selected-blue-sky'
                   }`}
-                  onClick={() => handleTipoPersona('MORAL')}
+                  onClick={() => handleTipoPersona(MORAL)}
                 >
                   <div>
                     <SvgPersonaMoral />

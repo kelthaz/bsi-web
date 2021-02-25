@@ -28,6 +28,7 @@ import { DOCUMENTACION, DOCUMENTACION_INCOMPLETO } from '../../../../constants/f
 import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
 import obligadoSolidarioDocumentacionRoutes from './obligado-solidario/obligado-solidario-documentacion.routes';
 import biometricosDocumentacionRoutes from './biometricos/biometricos-documentacion.routes';
+import { MORAL } from '../../../../constants/persona';
 
 const documentacionRoutes = [
   ...obligadoSolidarioDocumentacionRoutes,
@@ -139,7 +140,7 @@ const documentacionRoutes = [
     data: {
       formulario: DOCUMENTACION,
       paso: 7,
-      tipoPersona: 'MORAL',
+      tipoPersona: MORAL,
       step: 7,
       tab: ['documentacion'],
     },
@@ -153,7 +154,7 @@ const documentacionRoutes = [
     data: {
       formulario: DOCUMENTACION,
       paso: 8,
-      tipoPersona: 'MORAL',
+      tipoPersona: MORAL,
       step: 8,
       tab: ['documentacion'],
     },

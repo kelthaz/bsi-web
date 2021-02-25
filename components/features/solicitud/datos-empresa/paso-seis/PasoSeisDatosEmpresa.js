@@ -9,6 +9,7 @@ import { campoRequerido, longitudMaxima, longitudMinima } from '../../../../../c
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_SIETE_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoSeisDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
@@ -46,7 +47,7 @@ const PasoSeisDatosEmpresa = ({ validate }) => {
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub position-relative">
-              {datosPersonales.tipoPersona === 'MORAL'
+              {datosPersonales.tipoPersona === MORAL
                 ? 'Ahora dinos, ¿cuál es el CURP del Representante Legal'
                 : 'Ahora dinos, ¿Cuál es tu CURP?'}
               <Tooltip message="Es la Clave Única de Registro de Población (CURP) que consta de 18 caracteres. " />

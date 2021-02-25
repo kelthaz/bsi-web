@@ -14,6 +14,7 @@ import {
   GRACIAS_DOCUMENTACION_ROUTE,
 } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoDosDocumentacionPM = ({ validate }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona === 'MORAL') {
+  if (datosPersonales.tipoPersona === MORAL) {
     initialValues.meEjercenControlMoralComoMoral = documentacion.meEjercenControlMoralComoMoral;
     validationSchema.meEjercenControlMoralComoMoral = Yup.string().required(campoRequerido);
   }
@@ -72,7 +73,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'MORAL' && (
+            {datosPersonales.tipoPersona === MORAL && (
               <>
                 <p className="sub color-blue-storm">
                   <SvgPM />

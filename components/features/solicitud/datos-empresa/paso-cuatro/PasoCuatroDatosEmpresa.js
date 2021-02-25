@@ -10,13 +10,14 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_CINCO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoCuatroDatosEmpresa = ({ validate }) => {
   const { currentStep, datosEmpresa, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
   const { initialValues, validationSchema } =
-    datosPersonales.tipoPersona === 'MORAL'
+    datosPersonales.tipoPersona === MORAL
       ? {
           initialValues: {
             telefonoEmpresa: datosEmpresa.telefonoEmpresa,

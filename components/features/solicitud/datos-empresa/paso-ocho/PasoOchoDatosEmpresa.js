@@ -13,6 +13,7 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
 import useCookie from '../../../../../hooks/useCookie';
 import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoOchoDatosEmpresa = ({ validate }) => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
@@ -78,7 +79,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
           <div className="container p-0">
             <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub ">
-                {datosPersonales.tipoPersona === 'MORAL'
+                {datosPersonales.tipoPersona === MORAL
                   ? 'Primero necesitamos que nos autorices acceso de lectura con la clave CIEC de la empresa. '
                   : 'Primero necesitamos que nos autorices acceso con tu clave CIEC. '}
 
@@ -132,7 +133,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
                       <a className="sub link" target="_blank" rel="noreferrer">
                         términos y condiciones
                       </a>
-                      {datosPersonales.tipoPersona === 'MORAL'
+                      {datosPersonales.tipoPersona === MORAL
                         ? ' de BanCoppel, en específico el uso de la CIEC de mi empresa para manifestar mi voluntad por medios electrónicos.'
                         : ' de BanCoppel, en específico el uso de mi CIEC para manifestar mi voluntad por medios electrónicos.'}
                     </p>

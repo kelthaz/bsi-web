@@ -48,6 +48,7 @@ import {
   PRUEBA_COMPONENTES_OBLIGADO_SOLIDARIO_ROUTE,
 } from '../../../../constants/routes/solicitud/obligado';
 import { OBLIGADO_SOLIDARIO } from '../../../../constants/formularios';
+import { FISICA } from '../../../../constants/persona';
 
 const obligadoSolidarioRoutes = [
   {
@@ -185,7 +186,7 @@ const obligadoSolidarioRoutes = [
     data: {
       formulario: OBLIGADO_SOLIDARIO,
       paso: 9,
-      tipoPersona: 'FISICO',
+      tipoPersona: FISICA,
       step: 9,
       tab: ['carga-documentos'],
     },
@@ -199,7 +200,7 @@ const obligadoSolidarioRoutes = [
     data: {
       formulario: OBLIGADO_SOLIDARIO,
       paso: 10,
-      tipoPersona: 'FISICO',
+      tipoPersona: FISICA,
       step: 10,
       tab: ['carga-documentos'],
     },
@@ -213,7 +214,7 @@ const obligadoSolidarioRoutes = [
     data: {
       formulario: OBLIGADO_SOLIDARIO,
       paso: 11,
-      tipoPersona: 'FISICO',
+      tipoPersona: FISICA,
       step: 11,
       tab: ['autorizacion'],
     },
@@ -241,7 +242,7 @@ const obligadoSolidarioRoutes = [
     data: {
       formulario: OBLIGADO_SOLIDARIO,
       paso: 13,
-      tipoPersona: 'FISICO',
+      tipoPersona: FISICA,
       step: null,
       tab: [''],
     },
@@ -255,7 +256,7 @@ const obligadoSolidarioRoutes = [
     data: {
       formulario: OBLIGADO_SOLIDARIO,
       paso: 14,
-      tipoPersona: 'FISICO',
+      tipoPersona: FISICA,
       step: null,
       tab: [''],
     },

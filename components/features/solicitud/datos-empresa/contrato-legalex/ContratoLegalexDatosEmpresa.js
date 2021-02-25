@@ -15,6 +15,7 @@ import TextField from '../../../../shared/text-field/TextField';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { aceptarTerminos } from '../../../../../constants/errors';
+import { MORAL } from '../../../../../constants/persona';
 
 const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -28,7 +29,7 @@ const ContratoLegalexDatosEmpresa = () => {
   const { initialValues, validationSchema } = {
     initialValues: {
       nombreSolicitante: `${
-        datosPersonales.tipoPersona === 'MORAL'
+        datosPersonales.tipoPersona === MORAL
           ? `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad}`
           : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`
       }`,
@@ -77,7 +78,7 @@ const ContratoLegalexDatosEmpresa = () => {
 
           <h4 className="color-blue-storm">¡Gracias {datosPersonales.primerNombre}!</h4>
           <p className="dark-gray body2">
-            {datosPersonales.tipoPersona === 'MORAL'
+            {datosPersonales.tipoPersona === MORAL
               ? 'La revisión del Buró de Crédito, y la firma del Kit de Apertura y la Solicitud de EmpresaNet han sido realizadas con éxito.'
               : 'La revisión del Buró de Crédito ha sido realizada con éxito.'}
             <br />

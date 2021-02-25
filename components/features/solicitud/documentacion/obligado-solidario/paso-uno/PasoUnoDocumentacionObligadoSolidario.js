@@ -10,6 +10,7 @@ import SvgPersonaMoralBlue from '../../../../../svgs/SvgPersonaMoralBlue';
 import Modal from '../../../../../shared/modal/Modal';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
+import { FISICA } from '../../../../../../constants/persona';
 
 const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -86,9 +87,9 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
                   <button
                     type="button"
                     className={`card-simple-white-svg card-button ${
-                      values.tipoPersona === 'FISICA' && 'card-selected-blue-sky'
+                      values.tipoPersona === FISICA && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handletipoPersona('FISICA')}
+                    onClick={() => handletipoPersona(FISICA)}
                   >
                     <div className="row">
                       <div className="col-12">
@@ -105,9 +106,9 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
                   <button
                     type="button"
                     className={`card-simple-white-svg card-button ${
-                      values.tipoPersona === 'MORAL' && 'card-selected-blue-sky'
+                      values.tipoPersona === MORAL && 'card-selected-blue-sky'
                     }`}
-                    onClick={() => handletipoPersona('MORAL')}
+                    onClick={() => handletipoPersona(MORAL)}
                   >
                     <div className="row">
                       <div className="col-12 ml-2">

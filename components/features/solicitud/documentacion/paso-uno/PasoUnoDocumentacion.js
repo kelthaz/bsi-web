@@ -17,6 +17,7 @@ import {
 import EjerceControlSobreMoral from '../../shared/ejerce-control-sobre-moral/EjerceControlSobreMoral';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_DOS_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
+import { MORAL } from '../../../../../constants/persona';
 
 const PasoUnoDocumentacionPM = ({ validate }) => {
   const { currentStep, datosPersonales, documentacion } = useSelector((state) => state.solicitud);
@@ -46,7 +47,7 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
     },
   };
 
-  if (datosPersonales.tipoPersona === 'MORAL') {
+  if (datosPersonales.tipoPersona === MORAL) {
     initialValues.controladosMoralesComoMoral = documentacion.controladosMoralesComoMoral;
     initialValues.tieneControladosMoralesComoMoral = documentacion.tieneControladosMoralesComoMoral;
     initialValues.cantidadControladosMoralesComoMoral = documentacion.cantidadControladosMoralesComoMoral;
@@ -81,7 +82,7 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === 'MORAL' ? (
+            {datosPersonales.tipoPersona === MORAL ? (
               <>
                 <p className="body2">
                   Ahora vamos a realizarte unas preguntas que nos deberás contestar como Persona Moral (
