@@ -21,7 +21,7 @@ const App = ({ index, data }) => {
 
 export async function getServerSideProps(context) {
   const data = {};
-  const index = featureRoute.findIndex(({ route }) => context.resolvedUrl.includes(route));
+  const index = featureRoute.findIndex(({ route }) => context.resolvedUrl.split('?')[0] === route);
 
   if (index !== -1) {
     const { services } = featureRoute[index];

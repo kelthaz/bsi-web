@@ -13,7 +13,7 @@ import {
 import EjerceControlSobreFisico from '../../../shared/ejerce-control-sobre-fisico/EjerceControlSobreFisico';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 
 const PasoOchoObligadoSolidarioPFAE = ({ validate }) => {
   const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
@@ -46,7 +46,7 @@ const PasoOchoObligadoSolidarioPFAE = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -56,7 +56,7 @@ const PasoOchoObligadoSolidarioPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

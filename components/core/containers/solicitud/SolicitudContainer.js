@@ -16,7 +16,7 @@ import ModalActualizar from '../../modals/solicitud/modal-actualizar/ModalActual
 
 const SolicitudContainer = ({ pageComponent, servicesData }) => {
   usePreventWindowUnload();
-  const { component, data } = pageComponent;
+  const { component, data, label } = pageComponent;
   const [componentPFAE, componentPM] = component;
   const { formulario, paso, step, tab: tabComponent, tipoPersona } = data;
   const [tabPFAE, tabPM] = tabComponent;

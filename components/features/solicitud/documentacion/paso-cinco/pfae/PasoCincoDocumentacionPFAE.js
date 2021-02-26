@@ -54,7 +54,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DOCUMENTACION_ROUTE, validate);
 
   return (
     <>

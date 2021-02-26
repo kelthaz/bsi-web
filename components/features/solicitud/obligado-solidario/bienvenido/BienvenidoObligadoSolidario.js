@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { declararTerminos } from '../../../../../constants/errors';
@@ -11,35 +12,31 @@ import SvgBuro from '../../../../svgs/SvgBuro';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import { PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../constants/routes/solicitud/obligado';
 import { MORAL } from '../../../../../constants/persona';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
-const Bienvenido = () => {
-  const { obligadoSolidario } = useSelector((state) => state.solicitud);
-  const { datosPersonales } = useSelector((state) => state.solicitud);
-  const router = useRouter();
+const BienvenidoObligadoSolidario = ({ validate }) => {
+  const { currentStep, datosPersonales, obligadoSolidario } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
-  const { initialValues, validationSchema } = {
+  const formulario = useFormik({
     initialValues: {
       aceptar: obligadoSolidario.aceptar,
     },
     validationSchema: Yup.object({
       aceptar: Yup.boolean().oneOf([true], declararTerminos),
     }),
-  };
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
-          currentStep: { tab: 'preguntas', step: '1' },
+          currentStep: validate ? { ...currentStep, paso: currentStep.paso + 1 } : { ...currentStep },
           obligadoSolidario: { ...obligadoSolidario, ...values },
         })
       );
-      router.push(PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE);
     },
   });
+
+  const [handleSubmit] = useOnChangePage(formulario, PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE, validate);
+
   return (
     <div className="contedor-fixed">
       <div className="contedor-solicitud">
@@ -117,18 +114,6 @@ const Bienvenido = () => {
             <div className="row">
               <CheckTextBox isGrayColor notBackground={false} name="aceptar" formulario={formulario}>
                 <p className="body3 ml-1 ">
-                  {/* Acepto: (1) los{' '}
-                  <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
-                    Términos y Condiciones
-                  </a>
-                  , (2) el{' '}
-                  <Link href="/aviso-privacidad">
-                    <a className={`${styles.terminos}`} target="_blank" rel="noreferrer">
-                      Aviso de Privacidad
-                    </a>
-                  </Link> */}
-                  {/* , y que (3) los productos y/o servicios que ofrece BanCoppel serán promocionados, aceptados y/o
-                  modificados a través de medios electrónicos, telefónicos, digitales y/o cualquier otra tecnología. */}
                   Yo <strong>{`${datosPersonales.primerNombre} ${datosPersonales.segundoNombre}`}</strong> declaro bajo
                   protesta de decir vedad y conozco las penas y multas en que incurren los que con el ánimo de obtener
                   un financiamiento proporcionen información y/o documentación falsa de conformidad con lo establecido
@@ -140,10 +125,10 @@ const Bienvenido = () => {
           </div>
           <div className="flex-column-start-config">
             <button
-              disabled={!(formulario.dirty && formulario.isValid)}
+              disabled={validate && !(formulario.isValid && formulario.dirty)}
               type="submit"
               className="btn-medium flex-align-self-center my-3"
-              onClick={formulario.handleSubmit}
+              onClick={handleSubmit}
             >
               ¡Comencemos!
             </button>
@@ -154,4 +139,8 @@ const Bienvenido = () => {
   );
 };
 
-export default Bienvenido;
+BienvenidoObligadoSolidario.propTypes = {
+  validate: PropTypes.any.isRequired,
+};
+
+export default BienvenidoObligadoSolidario;

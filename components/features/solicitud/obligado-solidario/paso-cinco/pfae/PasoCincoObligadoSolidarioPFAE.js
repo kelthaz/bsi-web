@@ -15,7 +15,7 @@ import {
   seleccionOpcion,
 } from '../../../../../../constants/errors';
 import Domicilio from '../../../shared/domicilio/Domicilio';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
@@ -74,7 +74,7 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -108,7 +108,7 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
     'cantidadInmueblesPropiosSinGravamen'
   );
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

@@ -11,7 +11,7 @@ import {
   PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
 } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 
 const PasoSieteObligadoSolidario = ({ validate }) => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const PasoSieteObligadoSolidario = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import TextField from '../../../../../shared/text-field/TextField';
 import { regexRFCMoral } from '../../../../../../constants/regex';
 import { campoRequerido, longitudMinima, longitudMaxima, rfcInvalido } from '../../../../../../constants/errors';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 
@@ -25,7 +25,7 @@ const PasoTresObligadoSolidarioPM = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -35,7 +35,7 @@ const PasoTresObligadoSolidarioPM = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

@@ -11,7 +11,7 @@ import {
 import Domicilio from '../../../shared/domicilio/Domicilio';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 
 const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
   const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
@@ -41,7 +41,7 @@ const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -51,7 +51,7 @@ const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <>
