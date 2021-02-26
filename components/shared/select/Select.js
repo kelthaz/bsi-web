@@ -52,7 +52,7 @@ const Select = (props) => {
 
   useEffect(() => {
     if (!value && defaultValue !== null) {
-      formulario.initialValues[name] = items[defaultValue];
+      setFieldValue(name, items[defaultValue], true);
     }
   }, []);
 

@@ -40,7 +40,6 @@ const EjerceControlSobreMoral = ({
                   formulario={formulario}
                   size="big"
                   items={items}
-                  defaultValue={0}
                   disabled={formulario.values[nameTieneControlados] !== 'si'}
                   label=""
                   showAlwaysErrors={false}

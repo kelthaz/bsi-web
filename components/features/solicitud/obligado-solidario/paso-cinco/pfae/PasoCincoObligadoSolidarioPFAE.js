@@ -129,7 +129,6 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                         formulario={formulario}
                         size="big"
                         items={items}
-                        defaultValue={0}
                         disabled={formulario.values.tieneInmueblesPropiosSinGravamen !== 'si'}
                         label=""
                         showAlwaysErrors={false}
@@ -156,7 +155,6 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                       size="big"
                       label="Seleccione"
                       items={itemsTipoTerreno}
-                      defaultValue={0}
                     />
                   </div>
                 </div>

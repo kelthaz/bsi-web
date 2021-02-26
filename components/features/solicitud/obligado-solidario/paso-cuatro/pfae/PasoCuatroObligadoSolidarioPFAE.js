@@ -106,7 +106,6 @@ const StepFour = ({ validate }) => {
                         formulario={formulario}
                         size="big"
                         items={items}
-                        defaultValue={0}
                         disabled={formulario.values.tieneAccionesEnOtrasEmpresas !== 'si'}
                         label=""
                         showAlwaysErrors={false}

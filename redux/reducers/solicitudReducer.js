@@ -76,16 +76,16 @@ const initialState = {
   documentacion: {
     controladosMoralesComoMoral: [],
     tieneControladosMoralesComoMoral: '',
-    cantidadControladosMoralesComoMoral: null,
+    cantidadControladosMoralesComoMoral: { value: 1, label: '1' },
     controladosMoralesComoFisico: [],
     tieneControladosMoralesComoFisico: '',
-    cantidadControladosMoralesComoFisico: null,
+    cantidadControladosMoralesComoFisico: { value: 1, label: '1' },
     controladosFisicosComoMoral: [],
     tieneControladosFisicosComoMoral: '',
-    cantidadControladosFisicosComoMoral: null,
+    cantidadControladosFisicosComoMoral: { value: 1, label: '1' },
     controladosFisicosComoFisico: [],
     tieneControladosFisicosComoFisico: '',
-    cantidadControladosFisicosComoFisico: null,
+    cantidadControladosFisicosComoFisico: { value: 1, label: '1' },
 
     meEjercenControlMoralComoMoral: '',
     meEjercenControlMoralComoFisico: '',
@@ -154,21 +154,21 @@ const initialState = {
 
     empresas: [],
     tieneAccionesEnOtrasEmpresas: '',
-    cantidadEmpresas: null,
+    cantidadEmpresas: { value: 1, label: '1' },
 
     inmueblesPropiosSinGravamen: [],
     tieneInmueblesPropiosSinGravamen: '',
-    cantidadInmueblesPropiosSinGravamen: null,
+    cantidadInmueblesPropiosSinGravamen: { value: 1, label: '1' },
 
     controladosMoralesComoFisico: [],
     tieneControladosMoralesComoFisico: null,
-    cantidadControladosMoralesComoFisico: null,
+    cantidadControladosMoralesComoFisico: { value: 1, label: '1' },
 
     meEjercenControlMoralComoFisico: '',
 
     controladosFisicosComoFisico: [],
     tieneControladosFisicosComoFisico: null,
-    cantidadControladosFisicosComoFisico: null,
+    cantidadControladosFisicosComoFisico: { value: 1, label: '1' },
 
     bienesSeparados: '',
 
@@ -201,11 +201,11 @@ const initialState = {
     },
     controladosMoralesComoMoral: [],
     tieneControladosMoralesComoMoral: null,
-    cantidadControladosMoralesComoMoral: null,
+    cantidadControladosMoralesComoMoral: { value: 1, label: '1' },
 
     controladosFisicosComoMoral: [],
     tieneControladosFisicosComoMoral: null,
-    cantidadControladosFisicosComoMoral: null,
+    cantidadControladosFisicosComoMoral: { value: 1, label: '1' },
 
     meEjercenControlMoralComoMoral: '',
 
