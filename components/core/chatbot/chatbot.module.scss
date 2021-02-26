@@ -2,7 +2,7 @@
 
 .launcher {
   align-items: center;
-  background-color: #ffbe12;
+  background-color: $white;
   border-radius: 50%;
   bottom: 30px !important;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 12px 0 rgba(0, 0, 0, 0.08);
@@ -28,7 +28,7 @@
 }
 
 .launcher-image {
-  background-image: url('/chatbot.svg');
+  background-image: url('/chat-icon.png');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
