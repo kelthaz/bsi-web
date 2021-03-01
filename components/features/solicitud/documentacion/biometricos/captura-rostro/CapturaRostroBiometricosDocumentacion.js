@@ -1,19 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
-import * as Yup from 'yup';
 
-import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import KnomiRepositorio from '../../../../../../services/solicitud/knomi.repositorio';
 import Modal from '../../../../../shared/modal/Modal';
 import Camera from '../../../../../shared/camera/Camera';
 import { PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 
 const CapturaRostroBiometricosDocumentacion = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
 
   const cameraRef = useRef();
 
@@ -24,12 +17,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
   const [takePhotoStatus, setTakePhotoStatus] = useState('Tomar foto');
   const [isTakingPicture, setTakingPicture] = useState(false);
   const [pauseImage, setPauseImage] = useState(false);
-
-
-  const { initialValues, validationSchema } = {
-    initialValues: {},
-    validationSchema: Yup.object().shape({}),
-  };
 
   const knomiFeedbackMessages = {
     'NO_FACE_DETECTED': 'No se detecta un rostro',
@@ -42,20 +29,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
     'INVALID_POSE': 'Pose inválida',
     'FACE_TOO_FAR':  'Rostro muy lejos'
   };
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '3' },
-          datosEmpresa: { ...datosEmpresa, ...values },
-        })
-      );
-      router.push('/solicitud/[tab]/[step]', PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE);
-    },
-  });
 
   const getResponseAutoCapture = async (frame) => {
     const payload = {
@@ -195,7 +168,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
             Tus biométricos fueron capturados.
           </p>
           <div className="flex-row-center-config">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/carga-documentos/3" replace>
+            <Link href="/solicitud/[tab]/[step]" as={PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>
