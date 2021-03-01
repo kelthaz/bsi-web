@@ -11,17 +11,13 @@ import { campoRequerido, aceptarTerminos, ciecInvalida } from '../../../../../co
 import ModalAutorizacionCiec from '../../../../core/modals/solicitud/modal-autorizacion-ciec/ModalAutorizacionCiec';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
-import useCookie from '../../../../../hooks/useCookie';
 import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import { MORAL } from '../../../../../constants/persona';
 
 const PasoOchoDatosEmpresa = ({ validate }) => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
   const { currentStep, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
-
   const dispatch = useDispatch();
-
-  const [rfc] = useCookie('RFC', '');
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -58,7 +54,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
     if (!formulario.errors.ciec) {
       valid = await CiecRepositorio.pathValidarCiec({
         ciec: datosEmpresa.ciec,
-        rfc,
+        rfc: datosPersonales.rfc,
       })
         .then(() => true)
         .catch(() => {

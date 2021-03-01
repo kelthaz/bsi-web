@@ -1,4 +1,5 @@
 import { DOCUMENTACION_BIOMETRICOS } from '../../../../../constants/formularios';
+import { CLIENTE } from '../../../../../constants/roles';
 import {
   BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE,
   CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE,
@@ -19,7 +20,7 @@ const biometricosDocumentacionRoutes = [
     route: BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [BienvenidaBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,
@@ -33,7 +34,7 @@ const biometricosDocumentacionRoutes = [
     route: PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [PasoDosBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,
@@ -47,7 +48,7 @@ const biometricosDocumentacionRoutes = [
     route: CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [CapturaRostroBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,
@@ -61,7 +62,7 @@ const biometricosDocumentacionRoutes = [
     route: PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [PasoTresBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,
@@ -75,7 +76,7 @@ const biometricosDocumentacionRoutes = [
     route: LISTO_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [ListoBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,
@@ -89,7 +90,7 @@ const biometricosDocumentacionRoutes = [
     route: FELICIDADES_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [FelicidadesBiometricosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,

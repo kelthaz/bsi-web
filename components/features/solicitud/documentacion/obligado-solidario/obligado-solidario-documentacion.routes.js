@@ -7,13 +7,14 @@ import {
 import PasoUnoDocumentacionObligadoSolidario from './paso-uno/PasoUnoDocumentacionObligadoSolidario';
 import PasoDosDocumentacionObligadoSolidario from './paso-dos/PasoDosDocumentacionObligadoSolidario';
 import RevisarCorreoDocumentacionObligadoSolidario from './revisar-correo/RevisarCorreoDocumentacionObligadoSolidario';
+import { CLIENTE } from '../../../../../constants/roles';
 
 const obligadoSolidarioDocumentacionRoutes = [
   {
     route: PASO_UNO_OBLIGADO_DOCUMENTACION_ROUTE,
     component: [PasoUnoDocumentacionObligadoSolidario],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Obligado solidario paso 1',
     data: {
       formulario: DOCUMENTACION_OBLIGADO_SOLIDARIO,
@@ -27,7 +28,7 @@ const obligadoSolidarioDocumentacionRoutes = [
     route: PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE,
     component: [PasoDosDocumentacionObligadoSolidario],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Obligado solidario paso 2',
     data: {
       formulario: DOCUMENTACION_OBLIGADO_SOLIDARIO,
@@ -41,7 +42,7 @@ const obligadoSolidarioDocumentacionRoutes = [
     route: AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
     component: [RevisarCorreoDocumentacionObligadoSolidario],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Revisar correo',
     data: {
       formulario: DOCUMENTACION_OBLIGADO_SOLIDARIO,
