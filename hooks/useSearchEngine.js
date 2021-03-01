@@ -9,6 +9,7 @@ const originalData = [
   { redirect: '/beneficios', text: 'Beneficios' },
   { redirect: '/ayuda', text: 'Centro de ayuda' },
   { redirect: '/aviso-privacidad', text: 'Aviso de privacidad' },
+  { redirect: '/nuevos-componentes', text: 'Nuevos componentes' },
   { redirect: 'https://www.bancoppel.com/acerca_bancoppel/faq.html', text: 'Preguntas frecuentes', newTab: true },
   { redirect: 'https://www.bancoppel.com/acerca_bancoppel/faq.html', text: 'FAQ', newTab: true },
   { redirect: 'https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html', text: 'Cuenta efectiva', newTab: true },
