@@ -19,41 +19,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
   const [isTakingPicture, setTakingPicture] = useState(false);
   const [pauseImage, setPauseImage] = useState(false);
 
-<<<<<<< HEAD
-  const knomiFeedbackMessages = {
-    'NO_FACE_DETECTED': 'No se detecta un rostro',
-    'FACE_ON_LEFT': 'Rostro a la izquierda',
-    'FACE_ON_RIGHT': 'Rostro a la derecha',
-    'FACE_TOO_HIGH': 'Rostro muy alto',
-    'FACE_TOO_LOW': 'Rostro muy bajo',
-    'RIGHT_EYE_CLOSED': 'Ojo derecho cerrado',
-    'LEFT_EYE_CLOSED': 'Ojo izquierdo cerrado',
-    'INVALID_POSE': 'Pose inválida',
-    'FACE_TOO_FAR':  'Rostro muy lejos'
-  };
-
-=======
-
-  const { initialValues, validationSchema } = {
-    initialValues: {},
-    validationSchema: Yup.object().shape({}),
-  };
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: (values) => {
-      dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'documentacion', step: '3' },
-          datosEmpresa: { ...datosEmpresa, ...values },
-        })
-      );
-      router.push('/solicitud/[tab]/[step]', PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE);
-    },
-  });
-
->>>>>>> 0e2342e1276041747d23bba5118800e50cc0226b
   const getResponseAutoCapture = async (frame) => {
     const payload = {
       'preface': {
