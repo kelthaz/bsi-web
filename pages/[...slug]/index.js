@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import PublicoContainer from '../../components/core/containers/publico/PublicoContainer';
 import SolicitudContainer from '../../components/core/containers/solicitud/SolicitudContainer';
 import featureRoute from '../../components/features/feature.routes';
+import { INICIAR_SESION } from '../../constants/routes/login/login';
 
-const App = ({ index, data }) => {
+const App = ({ index, data, userData }) => {
   const { feature } = featureRoute[index];
 
   switch (feature) {
@@ -12,7 +12,7 @@ const App = ({ index, data }) => {
       return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
 
     case 'solicitud':
-      return <SolicitudContainer servicesData={data} pageComponent={featureRoute[index]} />;
+      return <SolicitudContainer servicesData={data} pageComponent={featureRoute[index]} userData={userData} />;
 
     default:
       return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
@@ -21,9 +21,30 @@ const App = ({ index, data }) => {
 
 export async function getServerSideProps(context) {
   const data = {};
+  const { cookie } = context.req.headers;
+
   const index = featureRoute.findIndex(({ route }) => context.resolvedUrl.split('?')[0] === route);
 
+  if (!cookie && featureRoute[index].roles.length > 0) {
+    return {
+      redirect: {
+        destination: INICIAR_SESION,
+        permanent: false,
+      },
+    };
+  }
+
   if (index !== -1) {
+    const token = cookie.split('; ').reduce((total, currentCookie) => {
+      const item = currentCookie.split('=');
+      const storedKey = item[0];
+      const storedValue = item[1];
+
+      return storedKey === 'token' ? decodeURIComponent(storedValue) : total;
+    }, '');
+
+    const userData = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+
     const { services } = featureRoute[index];
 
     const respData = await Promise.all(services.map(({ service, params }) => service(params))).then((respArr) =>
@@ -35,9 +56,10 @@ export async function getServerSideProps(context) {
     });
 
     return {
-      props: { index, data },
+      props: { index, data, userData },
     };
   }
+
   return {
     notFound: true,
   };
@@ -46,6 +68,7 @@ export async function getServerSideProps(context) {
 App.propTypes = {
   index: PropTypes.number.isRequired,
   data: PropTypes.object.isRequired,
+  userData: PropTypes.object.isRequired,
 };
 
 export default App;

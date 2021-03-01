@@ -29,6 +29,7 @@ import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
 import obligadoSolidarioDocumentacionRoutes from './obligado-solidario/obligado-solidario-documentacion.routes';
 import biometricosDocumentacionRoutes from './biometricos/biometricos-documentacion.routes';
 import { MORAL } from '../../../../constants/persona';
+import { CLIENTE } from '../../../../constants/roles';
 
 const documentacionRoutes = [
   ...obligadoSolidarioDocumentacionRoutes,
@@ -37,7 +38,7 @@ const documentacionRoutes = [
     route: ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
     component: [UltimaEtapaDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION,
@@ -51,7 +52,7 @@ const documentacionRoutes = [
     route: PASO_UNO_DOCUMENTACION_ROUTE,
     component: [PasoUnoDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 1 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -65,7 +66,7 @@ const documentacionRoutes = [
     route: PASO_DOS_DOCUMENTACION_ROUTE,
     component: [PasoDosDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 2 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -79,7 +80,7 @@ const documentacionRoutes = [
     route: PASO_TRES_DOCUMENTACION_ROUTE,
     component: [PasoTresDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 3 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -93,7 +94,7 @@ const documentacionRoutes = [
     route: PASO_CUATRO_DOCUMENTACION_ROUTE,
     component: [PasoCuatroPfaeDocumentacion, PasoCuatroPmDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 4 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -107,7 +108,7 @@ const documentacionRoutes = [
     route: PASO_CINCO_DOCUMENTACION_ROUTE,
     component: [PasoCincoPfaeDocumentacion, PasoCincoPmDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 5 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -121,7 +122,7 @@ const documentacionRoutes = [
     route: PASO_SEIS_DOCUMENTACION_ROUTE,
     component: [UltimoPasoDocumentacion, PasoSeisPmDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 6 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -135,7 +136,7 @@ const documentacionRoutes = [
     route: PASO_SIETE_DOCUMENTACION_ROUTE,
     component: [PasoSieteDocumentacionPM],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 7 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -149,7 +150,7 @@ const documentacionRoutes = [
     route: PASO_OCHO_DOCUMENTACION_ROUTE,
     component: [UltimoPasoDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Paso 8 de documentacion',
     data: {
       formulario: DOCUMENTACION,
@@ -163,7 +164,7 @@ const documentacionRoutes = [
     route: GRACIAS_DOCUMENTACION_ROUTE,
     component: [GraciasIncompletaDocumentacion],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Documentacion: Agradecimiento',
     data: {
       formulario: DOCUMENTACION_INCOMPLETO,
@@ -178,7 +179,7 @@ const documentacionRoutes = [
   //   route: REVISAR_CORREO_DOCUMENTACION_ROUTE,
   //   component: [RevisarCorreoDocumentacion],
   //   services: [],
-  //   roles: [],
+  //   roles: [CLIENTE],
   //   label: 'Documentacion: Revisar correo',
   //   data: {
   //     formulario: DOCUMENTACION_BIOMETRICOS,

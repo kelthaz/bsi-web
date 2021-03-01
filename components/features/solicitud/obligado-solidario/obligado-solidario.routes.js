@@ -43,13 +43,14 @@ import {
 import { OBLIGADO_SOLIDARIO, OBLIGADO_SOLIDARIO_LEGALEX } from '../../../../constants/formularios';
 import { FISICA } from '../../../../constants/persona';
 import SectoresRepositorio from '../../../../services/simulador/sectores.repositorio';
+import { OBLIGADO } from '../../../../constants/roles';
 
 const obligadoSolidarioRoutes = [
   {
     route: BIENVENIDA_OBLIGADO_SOLIDARIO_ROUTE,
     component: [BienvenidoObligadoSolidario],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Bienvenida',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -63,7 +64,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_UNO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoUnoObligadoSolidarioPfae, PasoUnoObligadoSolidarioPm],
     services: [{ name: 'sectores', service: SectoresRepositorio.getSectores }],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 1 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -77,7 +78,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoDosObligadoSolidarioPfae, PasoDosObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 2 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -91,7 +92,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoTresObligadoSolidarioPfae, PasoTresObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 3 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -105,7 +106,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_CUATRO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoCuatroObligadoSolidarioPfae, PasoCuatroObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 4 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -119,7 +120,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoCincoObligadoSolidarioPfae, PasoCincoObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 5 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -133,7 +134,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_SEIS_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoSeisObligadoSolidarioPfae, PasoSeisObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 6 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -147,7 +148,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_SIETE_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoSieteObligadoSolidarioPfae, PasoSieteObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 7 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -161,7 +162,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoOchoObligadoSolidarioPfae, PasoOchoObligadoSolidarioPm],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 8 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -175,7 +176,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_NUEVE_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoNueveObligadoSolidarioPfae],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 9 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -189,7 +190,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_DIEZ_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoDiezObligadoSolidarioPfae],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 10 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -203,7 +204,7 @@ const obligadoSolidarioRoutes = [
     route: PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PasoOnceObligadoSolidarioPfae],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso 11 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -218,7 +219,7 @@ const obligadoSolidarioRoutes = [
     route: AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [AgradecimientoIncompleto],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso agradecimiento incompleto de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -233,7 +234,7 @@ const obligadoSolidarioRoutes = [
     route: AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
     component: [AgradecimientoFinal],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Paso agradecimiento completo de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO,
@@ -248,7 +249,7 @@ const obligadoSolidarioRoutes = [
     route: CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE,
     component: [ContratoLegalexObligadoSolidarioPM],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Contrato: Paso 9 de obligado solidario',
     data: {
       formulario: OBLIGADO_SOLIDARIO_LEGALEX,
@@ -263,7 +264,7 @@ const obligadoSolidarioRoutes = [
     route: PRUEBA_COMPONENTES_OBLIGADO_SOLIDARIO_ROUTE,
     component: [PruebaComponentes],
     services: [],
-    roles: [],
+    roles: [OBLIGADO],
     label: 'Autorización: Prueba componentes',
     data: {
       formulario: OBLIGADO_SOLIDARIO_LEGALEX,

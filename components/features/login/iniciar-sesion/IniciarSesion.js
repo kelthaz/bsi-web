@@ -22,7 +22,7 @@ const IniciarSesion = () => {
       mantenerSesion: false,
     },
     validationSchema: Yup.object({
-      rfc: Yup.string().matches(regexRFCFisicaMoral, rfcInvalido).min(13, longitudMinima).required(campoRequerido),
+      rfc: Yup.string().required(campoRequerido),
       contrasena: Yup.string().max(20, longitudMaxima).min(8, longitudMinima).required(campoRequerido),
       check: Yup.string().required(captcha),
       mantenerSesion: Yup.boolean(),
@@ -34,6 +34,7 @@ const IniciarSesion = () => {
       })
         .then(() => true)
         .catch(() => false);
+      console.log(true);
       if (valid) {
         push('/inicio');
       } else {
@@ -56,17 +57,19 @@ const IniciarSesion = () => {
       <form onSubmit={formulario.handleSubmit} noValidate className="px-xs-3 px-md-0">
         <h2 className="color-blue-storm text-center pt-3">¡Bienvenido!</h2>
         <p className="body2 color-gray-dark text-center">
-          Ingresa tu RFC y contraseña para ingresar a la plataforma o retomar tu solicitud.
+          Ingresa tu usuario{' '}
+          <span className="color-blue-storm">(RFC en caso de ser cliente o correo en caso de ser obligado)</span> y
+          contraseña para ingresar a la plataforma o retomar tu solicitud.
         </p>
 
         <TextField
           name="rfc"
-          format="rfcformatter"
-          maxlength={13}
+          format="email"
+          maxlength={50}
           formulario={formulario}
           type="text"
           size="small"
-          label="RFC"
+          label="Usuario"
         />
         <TextField
           name="contrasena"

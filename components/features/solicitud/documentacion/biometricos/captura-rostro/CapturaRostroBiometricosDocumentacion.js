@@ -5,6 +5,7 @@ import KnomiRepositorio from '../../../../../../services/solicitud/knomi.reposit
 import Modal from '../../../../../shared/modal/Modal';
 import Camera from '../../../../../shared/camera/Camera';
 import { PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
+import knomiFeedbackMessages from '../../../../../../constants/knomi-feedback.json';
 
 const CapturaRostroBiometricosDocumentacion = () => {
 
@@ -18,6 +19,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
   const [isTakingPicture, setTakingPicture] = useState(false);
   const [pauseImage, setPauseImage] = useState(false);
 
+<<<<<<< HEAD
   const knomiFeedbackMessages = {
     'NO_FACE_DETECTED': 'No se detecta un rostro',
     'FACE_ON_LEFT': 'Rostro a la izquierda',
@@ -30,6 +32,28 @@ const CapturaRostroBiometricosDocumentacion = () => {
     'FACE_TOO_FAR':  'Rostro muy lejos'
   };
 
+=======
+
+  const { initialValues, validationSchema } = {
+    initialValues: {},
+    validationSchema: Yup.object().shape({}),
+  };
+
+  const formulario = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: (values) => {
+      dispatch(
+        nextStepDatosPersonales({
+          currentStep: { tab: 'documentacion', step: '3' },
+          datosEmpresa: { ...datosEmpresa, ...values },
+        })
+      );
+      router.push('/solicitud/[tab]/[step]', PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE);
+    },
+  });
+
+>>>>>>> 0e2342e1276041747d23bba5118800e50cc0226b
   const getResponseAutoCapture = async (frame) => {
     const payload = {
       'preface': {
@@ -181,8 +205,8 @@ const CapturaRostroBiometricosDocumentacion = () => {
           {isCameraOpen &&
             <Camera
               ref={cameraRef}
-            isCaptureComplete={isCaptureComplete}
-            pauseImage={pauseImage}
+              isCaptureComplete={isCaptureComplete}
+              pauseImage={pauseImage}
             />
           }
         </div>
