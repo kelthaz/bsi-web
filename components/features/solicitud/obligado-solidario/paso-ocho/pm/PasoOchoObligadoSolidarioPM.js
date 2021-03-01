@@ -44,7 +44,7 @@ const StepEight = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <>
@@ -117,7 +117,7 @@ const StepEight = ({ validate }) => {
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={!(formulario.isValid && formulario.dirty)}
+                  disabled={validate && !(formulario.isValid && formulario.dirty)}
                 />
               </div>
             </form>

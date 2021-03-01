@@ -114,7 +114,13 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
   }, [pauseImage]);
 
   if (!mediaStream) {
-    return null;
+    return (
+      <div className="text-center">
+        <p className="body2">
+          Se requiere el uso de la cámara para continuar con el proceso.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -142,7 +148,9 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
                 top: `-${offsets.y}px`,
                 left: `-${offsets.x}px`,
               }}
-            />
+            >
+              Se requiere el uso de la cámara para continuar con el proceso
+            </video>
 
             <div
               className={isCaptureComplete ? styles['overlay-success'] : styles.overlay}

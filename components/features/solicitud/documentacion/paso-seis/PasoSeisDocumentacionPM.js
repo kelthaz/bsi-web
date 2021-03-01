@@ -51,7 +51,7 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_SIETE_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_SIETE_DOCUMENTACION_ROUTE, validate);
 
   return (
     <>

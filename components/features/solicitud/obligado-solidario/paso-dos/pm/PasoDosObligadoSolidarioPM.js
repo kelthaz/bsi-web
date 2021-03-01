@@ -10,7 +10,7 @@ import {
 } from '../../../../../../constants/errors';
 import { PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import Domicilio from '../../../shared/domicilio/Domicilio';
@@ -72,7 +72,7 @@ const PasoDosObligadoSolidarioPM = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -85,7 +85,7 @@ const PasoDosObligadoSolidarioPM = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_TRES_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

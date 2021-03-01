@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DATO_PERSONA, OBLIGADO_SOLIDARIO } from '../../../../constants/formularios';
 import { MORAL } from '../../../../constants/persona';
 import { SIMULADOR_ROUTE } from '../../../../constants/routes/publico/publico';
 import usePreventWindowUnload from '../../../../hooks/usePreventWindowUnload';
+import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import solicitudRoutes from '../../../features/solicitud/solicitud.routes';
 import Step from '../../../shared/step/Step';
 import TabInformativo from '../../../shared/tab-informativo/TabInformativo';
@@ -14,7 +15,7 @@ import Error404 from '../../error404/Error404';
 import HeaderSolicitud from '../../header/solicitud/HeaderSolicitud';
 import ModalActualizar from '../../modals/solicitud/modal-actualizar/ModalActualizar';
 
-const SolicitudContainer = ({ pageComponent, servicesData }) => {
+const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
   usePreventWindowUnload();
   const { component, data } = pageComponent;
   const [componentPFAE, componentPM] = component;
@@ -22,6 +23,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
   const [tabPFAE, tabPM] = tabComponent;
   const { sincronizado, currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const { replace } = useRouter();
+  const dispatch = useDispatch();
 
   const invalidComponent = tipoPersona !== '' && datosPersonales.tipoPersona !== tipoPersona;
 
@@ -65,14 +67,27 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
   ];
 
   useEffect(() => {
-    if (!sincronizado && formulario === DATO_PERSONA) {
-      replace(SIMULADOR_ROUTE);
+    if (!sincronizado) {
+      if (formulario === DATO_PERSONA) {
+        replace(SIMULADOR_ROUTE);
+      } else {
+        dispatch(
+          nextStepDatosPersonales({
+            sincronizado: true,
+            datosPersonales: {
+              ...datosPersonales,
+              tipoPersona: userData.sub.length === 12 ? 'MORAL' : 'FISICO',
+              rfc: userData.sub,
+            },
+          })
+        );
+      }
     }
   }, []);
 
   return (
     <>
-      <HeaderSolicitud />
+      <HeaderSolicitud formulario={formulario} />
       <ModalActualizar />
 
       {!invalidComponent && !!tab && (
@@ -95,6 +110,7 @@ const SolicitudContainer = ({ pageComponent, servicesData }) => {
 SolicitudContainer.propTypes = {
   pageComponent: PropTypes.any.isRequired,
   servicesData: PropTypes.any.isRequired,
+  userData: PropTypes.any.isRequired,
 };
 
 export default SolicitudContainer;

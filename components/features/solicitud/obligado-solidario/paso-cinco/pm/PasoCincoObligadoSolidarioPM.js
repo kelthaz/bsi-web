@@ -7,7 +7,7 @@ import Tooltip from '../../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../../constants/errors';
 import SvgPM from '../../../../../svgs/carga-documentos/SvgPM';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import {
   AGRADECIMIENTO_INCOMPLETO_OBLIGADO_SOLIDARIO_ROUTE,
@@ -29,7 +29,7 @@ const PasoCincoObligadoSolidarioPM = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },

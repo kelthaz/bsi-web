@@ -31,7 +31,7 @@ const PasoCuatroDocumentacionPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DOCUMENTACION_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

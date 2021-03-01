@@ -45,7 +45,7 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
     await setFieldValue('tipoPersona', tipoPersona);
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_DOCUMENTACION_ROUTE, validate);
 
   return (
     <>

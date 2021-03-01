@@ -46,7 +46,7 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_COMPLETO_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
