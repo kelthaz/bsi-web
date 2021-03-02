@@ -157,7 +157,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
             Tus biométricos fueron capturados.
           </p>
           <div className="flex-row-center-config">
-            <Link href="/solicitud/[tab]/[step]" as={PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
+            <Link href={PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE}>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>
