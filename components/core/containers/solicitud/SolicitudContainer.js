@@ -67,6 +67,7 @@ const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
   ];
 
   useEffect(() => {
+    console.log(userData);
     if (!sincronizado) {
       if (formulario === DATO_PERSONA) {
         replace(SIMULADOR_ROUTE);

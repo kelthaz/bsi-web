@@ -34,7 +34,6 @@ const IniciarSesion = () => {
       })
         .then(() => true)
         .catch(() => false);
-      console.log(true);
       if (valid) {
         push('/inicio');
       } else {

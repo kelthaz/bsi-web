@@ -21,32 +21,33 @@ const App = ({ index, data, userData }) => {
 
 export async function getServerSideProps(context) {
   const data = {};
-  const { cookie } = context.req.headers;
+  let userData = {};
 
   const index = featureRoute.findIndex(({ route }) => context.resolvedUrl.split('?')[0] === route);
 
-  if (!cookie && featureRoute[index].roles.length > 0) {
-    return {
-      redirect: {
-        destination: INICIAR_SESION,
-        permanent: false,
-      },
-    };
+  if (featureRoute[index].roles.length > 0) {
+    const { cookie } = context.req.headers;
+
+    if (cookie) {
+      const token = cookie.split('; ').reduce((total, currentCookie) => {
+        const [storedKey, storedValue] = currentCookie.split('=');
+        return storedKey === 'token' ? decodeURIComponent(storedValue) : total;
+      }, '');
+      userData = token && JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+    }
+
+    if (!cookie && Object.keys(userData).length === 0) {
+      return {
+        redirect: {
+          destination: INICIAR_SESION,
+          permanent: false,
+        },
+      };
+    }
   }
 
   if (index !== -1) {
-    const token = cookie.split('; ').reduce((total, currentCookie) => {
-      const item = currentCookie.split('=');
-      const storedKey = item[0];
-      const storedValue = item[1];
-
-      return storedKey === 'token' ? decodeURIComponent(storedValue) : total;
-    }, '');
-
-    const userData = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-
     const { services } = featureRoute[index];
-
     const respData = await Promise.all(services.map(({ service, params }) => service(params))).then((respArr) =>
       respArr.map((resp) => resp.data)
     );
