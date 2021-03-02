@@ -1,4 +1,3 @@
-// eslint-disable-next-line filenames/match-regex
 import React from 'react';
 import { shallow } from 'enzyme';
 import Accordion from './Accordion';
