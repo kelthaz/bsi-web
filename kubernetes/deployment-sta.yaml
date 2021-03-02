@@ -20,16 +20,6 @@ parameters:
     description: "The OpenShift Namespace where the ImageStream resides."
     required: true
     value: "bsi-cr-pyme-web-stg"
-  - name: MEMORY_LIMIT
-    displayName: "Memory Limit"
-    description: "Maximum amount of memory the container can use."
-    required: true
-    value: "1024Mi"
-  - name: MEMORY_REQUEST
-    displayName: "Memory Limit"
-    description: "Maximum amount of memory the container can use."
-    required: true
-    value: "1024Mi"
   - name: SOURCE_REPOSITORY_URL
     description: The source URL for the application
     displayName: Source URL
@@ -40,40 +30,15 @@ parameters:
     displayName: Source Branch
     value: staging
     required: true
-  - name: SOURCE_REPOSITORY_DIR
-    description: The location within the source repo of the application
-    displayName: Source Directory
-    value: .
-    required: true
   - name: SOURCE_SECRET
     description: The source secret name 
     displayName: Source secret
     value: "gitlab-bancoppel"
-  - name: OUTPUT_DIR
-    description: The location of the compiled static files from your web apps builder
-    displayName: Output Directory
-    value: build
-    required: false
-  - name: YARN_ENABLED
-    description: A flag to enable the use of the Yarn package manager
-    displayName: Yarn Enabled
-    value: "true"
   - name: GIT_SSL_NO_VERIFY
     description: A flag to enable
     displayName: SSL
     value: "true"
     required: false
-  - name: GITHUB_WEBHOOK_SECRET
-    description: A secret string used to configure the GitHub webhook.
-    displayName: GitHub Webhook Secret
-    required: true
-    from: '[a-zA-Z0-9]{40}'
-    generate: expression
-  - name: NODEJS_VERSION
-    description: Version of NodeJS image to be used (10, 12, or latest).
-    displayName: Version of NodeJS Image
-    value: "12"
-    required: true
 objects:
   - apiVersion: v1
     kind: ImageStream
@@ -120,9 +85,6 @@ objects:
             name: "ubi8/nodejs-14"
           type: Source
       triggers:
-        - github:
-            secret: '${GITHUB_WEBHOOK_SECRET}'
-          type: GitHub
         - type: ConfigChange
         - imageChange: {}
           type: ImageChange
@@ -194,3 +156,5 @@ objects:
         name: ${NAME}
         weight: 100
       wildcardPolicy: None
+      tls:
+        termination: edge
