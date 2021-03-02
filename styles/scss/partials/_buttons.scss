@@ -38,17 +38,13 @@ button {
 }
 
 @mixin button-background($color: $white) {
-  // background-color: transparent;
-  // border: 2px solid $blue-storm;
   box-sizing: border-box;
-  // color: $blue-storm;
   overflow: hidden;
   position: relative;
   transition: 0.5s all ease;
   z-index: 1;
 
   &::before {
-    // background-color: $blue-storm;
     bottom: 0;
     content: '';
     left: 50%;
@@ -275,6 +271,12 @@ button {
   padding: 0;
   position: fixed;
   right: 5%;
+}
+
+.circle-button-transparent {
+  @include button-config(40px, 40px, 50%);
+  background-color: transparent;
+  border: 1.5px solid $blue-storm;
 }
 
 .cicle-button-blue {

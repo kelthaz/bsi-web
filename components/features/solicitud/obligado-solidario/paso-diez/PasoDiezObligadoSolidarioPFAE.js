@@ -53,7 +53,7 @@ const PasoDiezObligadoSolidarioPFAE = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_ONCE_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <>

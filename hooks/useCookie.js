@@ -9,14 +9,9 @@ const getItem = (key) =>
     return key === storedKey ? decodeURIComponent(storedValue) : total;
   }, '');
 
-const setItem = (key, value, numberOfDays, dateExpired) => {
-  const now = new Date();
-
-  now.setTime(dateExpired || now.getTime() + numberOfDays * 60 * 60 * 24 * 1000);
-
-  document.cookie = !(numberOfDays && dateExpired)
-    ? `${key}=${value}; `
-    : `${key}=${value}; expires=${now.toUTCString()}; path=/`;
+const setItem = (key, value, dateExpired) => {
+  const now = new Date(dateExpired);
+  document.cookie = dateExpired ? `${key}=${value}; expires=${now.toUTCString()}; path=/;` : `${key}=${value}; `;
 };
 
 const useCookie = (key, defaultValue) => {
@@ -24,9 +19,9 @@ const useCookie = (key, defaultValue) => {
     typeof window === 'undefined' ? defaultValue : () => getItem(key) || defaultValue
   );
 
-  const updateCookie = (value, numberOfDays, dateExpired) => {
+  const updateCookie = (value, dateExpired) => {
     setCookie(value);
-    setItem(key, value, numberOfDays, dateExpired);
+    setItem(key, value, dateExpired);
   };
 
   return [cookie, updateCookie];

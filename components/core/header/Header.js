@@ -1,15 +1,12 @@
+/* eslint-disable complexity */
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import { resetDatosPersonales } from '../../../redux/actions/solicitud';
 import styles from './header.module.scss';
 import SearchBox from '../search-box/SearchBox';
-import Modal from '../../shared/modal/Modal';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const { pathname, push } = useRouter();
+  const { pathname } = useRouter();
   const pages = [
     { label: 'Inicio', link: 'inicio' },
     { label: 'Crédito Digital Pymes', link: 'credito-pyme' },
@@ -141,14 +138,12 @@ const Header = () => {
   const [menuSelect, setMenuSelect] = useState({ category: 'Empresas', option: 'BanCoppel Pymes' });
   const [pageSelect, setPageSelect] = useState();
   const [toggleSearchBox, setToggleSearchBox] = useState();
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     setPageSelect(pathname.slice(1));
   }, [pathname]);
 
   const { category } = menuSelect;
-
 
   const handleCategory = ({ target }) => {
     setMenuSelect({ ...menuSelect, category: target.innerHTML });
@@ -189,38 +184,14 @@ const Header = () => {
     setMenuOpen(false);
   };
 
-  const handleModal = () => {
-    dispatch(resetDatosPersonales());
-    setOpenModal(false);
-    push('/simulador');
-  };
-
-  const routerIncludes = (pathname1, pathname2) => (pathname.includes(pathname1) || pathname.includes(pathname2));
+  const routerIncludes = (pathname1, pathname2) => pathname.includes(pathname1) || pathname.includes(pathname2);
 
   return (
-    !(routerIncludes('login', 'portal-privado')) && (
+    !routerIncludes('login', 'portal-privado') && (
       <header className={styles['relative-header']}>
-        <Modal openModal={openModal} setOpenModal={setOpenModal}>
-          <div className={styles['modal-container']}>
-            <h4 className="color-blue-storm">Estas por salir del proceso...</h4>
-            <p className="dark-gray body2">
-              En este punto tu información no se guardará y deberás comenzar desde el principio si decides retomar tu
-              solicitud. ¿Estás seguro de querer salirte?
-            </p>
-            <div className="flex-row-center-config">
-              <button type="button" className="btn-medium-secondary mr-2" onClick={handleModal}>
-                Sí, salir
-              </button>
-
-              <button type="button" className="btn-medium ml-2" onClick={() => setOpenModal(false)}>
-                No, continuar
-              </button>
-            </div>
-          </div>
-        </Modal>
         <div className={`${styles['header-top']} ${menuOpen ? styles['menu-active'] : styles['menu-inactive']}`}>
           <div>
-            {!(routerIncludes('solicitud', 'obligado-solidario')) && (
+            {!routerIncludes('solicitud', 'obligado-solidario') && (
               <button type="button" onClick={handleMenu}>
                 {}
               </button>
@@ -228,32 +199,27 @@ const Header = () => {
             <img src={menuOpen ? '/bancoppel-pymes-blanco.svg' : '/bancoppel-pymes.svg'} className="logo" alt="" />
           </div>
           <div>
-            {routerIncludes('solicitud', 'obligado-solidario') ? (
-              <img src="/circle-cross.svg" alt="" onClick={() => setOpenModal(true)} />
-            ) : (
-              <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
-            )}
-            {!(routerIncludes('solicitud', 'obligado-solidario')) && (
+            <img src={menuOpen ? '/search.svg' : '/search-blue.svg'} alt="" onClick={handletToggleSearchBox} />
+
+            {!routerIncludes('solicitud', 'obligado-solidario') && (
               <Link href="/login/[option]" as="/login/iniciar-sesion">
                 <button type="button" className={menuOpen ? 'btn-medium-secondary-inverted' : 'btn-medium-secondary'}>
                   Inicia sesión
                 </button>
               </Link>
             )}
-            {!(routerIncludes('solicitud', 'obligado-solidario')) && (
+            {!routerIncludes('solicitud', 'obligado-solidario') && (
               <Link href="simulador">
                 <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
                   Solicita tu crédito
                 </button>
               </Link>
             )}
-            {!(routerIncludes('solicitud', 'obligado-solidario')) && (
-              <button type="button">{}</button>
-            )}
+            {!routerIncludes('solicitud', 'obligado-solidario') && <button type="button">{}</button>}
           </div>
         </div>
         {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}
-        {!menuOpen && !(routerIncludes('solicitud', 'obligado-solidario')) && (
+        {!menuOpen && !routerIncludes('solicitud', 'obligado-solidario') && (
           <nav className={styles['header-bottom']}>
             <ul>
               {pages.map(({ label, link }) => (

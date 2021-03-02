@@ -19,7 +19,12 @@ const useAxiosErrors = () => {
       response: (response) => response,
       error: (error) => {
         const { message } = error.response.data;
-        addError(message || ['Error no definido.']);
+        if (Array.isArray(message)) {
+          addError(message);
+        } else {
+          addError(['Error no definido.']);
+        }
+
         return Promise.reject(error);
       },
     }),

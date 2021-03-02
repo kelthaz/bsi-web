@@ -16,7 +16,7 @@ import {
   seleccionOpcion,
 } from '../../../../../../constants/errors';
 import { regexRFCMoral } from '../../../../../../constants/regex';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
@@ -61,7 +61,7 @@ const StepFour = ({ validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -85,7 +85,7 @@ const StepFour = ({ validate }) => {
     'cantidadEmpresas'
   );
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">
@@ -95,18 +95,17 @@ const StepFour = ({ validate }) => {
             <p className="sub color-dark-gray">
               ¿Tienes acciones en otras empresas? <Tooltip message="..." />
             </p>
-            <div className="d-flex">
-              <div className="col-md-6 col-xs-8 pl-xs-0 pl-md-1 pr-md-0">
+            <div className="row no-gutters">
+              <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
                 <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="si">
-                  <div className="d-flex">
-                    <div className="input mt-xs-4 mt-md-2 color-gray col-5 px-xs-0 pr-md-3">Sí, son</div>
-                    <div className="col-md-4 col-xs-6 px-xs-0 px-md-0">
+                  <div className="row">
+                    <div className="input color-gray col-5">Sí, son</div>
+                    <div className="col-6 ">
                       <Select
                         name="cantidadEmpresas"
                         formulario={formulario}
                         size="big"
                         items={items}
-                        defaultValue={0}
                         disabled={formulario.values.tieneAccionesEnOtrasEmpresas !== 'si'}
                         label=""
                         showAlwaysErrors={false}
@@ -115,7 +114,7 @@ const StepFour = ({ validate }) => {
                   </div>
                 </RadioButton>
               </div>
-              <div className="col-md-4 col-xs-4 mt-xs-4 mt-md-2 pl-0">
+              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                 <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="no">
                   <span className="input color-gray">No</span>
                 </RadioButton>

@@ -25,13 +25,14 @@ import {
   PASO_UNO_DATOS_EMPRESA_ROUTE,
 } from '../../../../constants/routes/solicitud/empresa';
 import { DATOS_EMPRESA_LEGALEX, DATO_EMPRESA } from '../../../../constants/formularios';
+import { CLIENTE } from '../../../../constants/roles';
 
 const datosEmpresaRoutes = [
   {
     route: CUENTA_ACTIVA_DATOS_EMPRESA_ROUTE,
     component: [CuentaActivaDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Cuenta activa',
     data: {
       formulario: DATO_EMPRESA,
@@ -45,7 +46,7 @@ const datosEmpresaRoutes = [
     route: PASO_UNO_DATOS_EMPRESA_ROUTE,
     component: [PasoUnoDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 1 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -59,7 +60,7 @@ const datosEmpresaRoutes = [
     route: PASO_DOS_DATOS_EMPRESA_ROUTE,
     component: [PasoDosDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 2 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -73,7 +74,7 @@ const datosEmpresaRoutes = [
     route: PASO_TRES_DATOS_EMPRESA_ROUTE,
     component: [PasoTresDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 3 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -87,7 +88,7 @@ const datosEmpresaRoutes = [
     route: PASO_CUATRO_DATOS_EMPRESA_ROUTE,
     component: [PasoCuatroDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 4 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -101,7 +102,7 @@ const datosEmpresaRoutes = [
     route: PASO_CINCO_DATOS_EMPRESA_ROUTE,
     component: [PasoCincoDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 5 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -115,7 +116,7 @@ const datosEmpresaRoutes = [
     route: PASO_SEIS_DATOS_EMPRESA_ROUTE,
     component: [PasoSeisDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 6 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -129,7 +130,7 @@ const datosEmpresaRoutes = [
     route: PASO_SIETE_DATOS_EMPRESA_ROUTE,
     component: [PasoSieteDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 7 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -143,7 +144,7 @@ const datosEmpresaRoutes = [
     route: GRACIAS_POR_CONTARNOS_DATOS_EMPRESA_ROUTE,
     component: [GraciasPorContarnosDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Gracias por contarnos',
     data: {
       formulario: DATO_EMPRESA,
@@ -157,7 +158,7 @@ const datosEmpresaRoutes = [
     route: PASO_OCHO_DATOS_EMPRESA_ROUTE,
     component: [PasoOchoDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Paso 7 de datos empresa',
     data: {
       formulario: DATO_EMPRESA,
@@ -171,7 +172,7 @@ const datosEmpresaRoutes = [
     route: CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE,
     component: [ContratoLegalexDatosEmpresa],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Contrato legalex',
     data: {
       formulario: DATOS_EMPRESA_LEGALEX,
@@ -185,7 +186,7 @@ const datosEmpresaRoutes = [
     route: AGRADECIMIENTO_DATOS_EMPRESA_ROUTE,
     component: [Agradecimiento],
     services: [],
-    roles: [],
+    roles: [CLIENTE],
     label: 'Solicitud: Gracias',
     data: {
       formulario: DATOS_EMPRESA_LEGALEX,

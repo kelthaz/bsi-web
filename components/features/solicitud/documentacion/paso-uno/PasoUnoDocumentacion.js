@@ -75,7 +75,7 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_DOCUMENTACION_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

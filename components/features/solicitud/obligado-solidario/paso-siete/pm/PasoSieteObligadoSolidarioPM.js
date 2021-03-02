@@ -51,7 +51,7 @@ const PasoSieteObligadoSolidarioPM = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_OCHO_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <>

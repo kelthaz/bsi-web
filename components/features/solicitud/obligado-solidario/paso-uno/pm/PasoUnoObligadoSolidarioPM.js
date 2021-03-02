@@ -2,14 +2,13 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 import TextField from '../../../../../shared/text-field/TextField';
 import TextArea from '../../../../../shared/text-area/TextArea';
 import Select from '../../../../../shared/select/Select';
 import { campoRequerido, longitudMaxima, seleccionOpcion } from '../../../../../../constants/errors';
 import changeSelectModel from '../../../../../../helpers/changeSelectModel';
 import useFindGiroBySector from '../../../../../../hooks/useFindGiroBySector';
-import { nextStepObligadoSolidario } from '../../../../../../redux/actions/obligado';
+import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 
@@ -66,7 +65,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
     }),
     onSubmit: (values) => {
       dispatch(
-        nextStepObligadoSolidario({
+        nextStepDatosPersonales({
           currentStep: validate
             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
             : { ...currentStep },
@@ -77,7 +76,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
   });
 
   const [itemsGiro] = useFindGiroBySector(formulario, 'sector', 'giro');
-  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

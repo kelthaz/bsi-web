@@ -83,7 +83,7 @@ const PasoTresDocumentacion = ({ validate }) => {
     },
   });
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_DOCUMENTACION_ROUTE, currentStep);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CUATRO_DOCUMENTACION_ROUTE, validate);
 
   return (
     <div className="contedor-fixed-tab">

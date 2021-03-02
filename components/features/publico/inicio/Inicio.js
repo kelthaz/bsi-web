@@ -18,6 +18,68 @@ const Inicio = ({ catalogo }) => {
   const router = useRouter();
   const handleSimular = () => router.push('/simulador').then(() => window.scrollTo(0, offsetTop('result-simulador')));
 
+  const sliderOptions = [
+    {
+      id: 1,
+      active: true,
+      src: 'https://www.youtube.com/embed/mJZYMWDL_0o',
+      title: 'Ismael García López ',
+      company: 'Nuevo Grupo Visual SA de CV',
+      subtitle: 'Atención cálida para asegurar tu futuro | BanCoppel Pymes',
+      parragraph:
+        'En BanCoppel procuramos atenderte de una manera cálida y humana para que tu empresa tenga la estabilidad económica que necesita a través de un proceso ágil y personalizado asegurando así, el flujo de capital necesario para avanzar hacia el futuro. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para tí.',
+    },
+    {
+      id: 2,
+      active: false,
+      src: 'https://www.youtube.com/embed/VayHlVwGmGs',
+      title: 'Óscar Vélez González',
+      company: 'PIZZETA SA de CV',
+      subtitle: 'Somos el aliado que tu empresa necesita | BanCoppel Pymes',
+      parragraph:
+        'Nos aseguramos de que tengas una verdadera buena experiencia con nosotros para que puedas crecer como tu empresa lo merece. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para tí.',
+    },
+    {
+      id: 3,
+      active: false,
+      src: 'https://www.youtube.com/embed/7DOtcx4pnuo',
+      title: 'Sandra Quintana',
+      company: 'Compupartes y Accesorios SA de CV',
+      subtitle: 'No dejes ir ningún proyecto por falta de liquidez | BanCoppel Pymes',
+      parragraph:
+        'Queremos ser los artífices de tu futuro, por lo que te ofrecemos un crédito ajustado a tus necesidades. ¿Necesitas escalar tus operaciones? Ponte en contacto con nosotros ingresando a www.bancoppel.com/empresas y te ayudaremos a hacer tus sueños realidad.',
+    },
+    {
+      id: 4,
+      active: false,
+      src: 'https://www.youtube.com/embed/ELgjL7oe8AY',
+      title: 'Alberto Kichik Sidauy',
+      company: 'CAMISAS IMPALA SA de CV',
+      subtitle: 'Estamos ahí para tu crecimiento | BanCoppel Pymes',
+      parragraph:
+        'En BanCoppel estamos ahí para tu crecimiento, y procuraremos que, con empatía y humanidad, ser los propulsores de tu éxito. Ponte en contacto con nosotros en www.bancoppel.com/empresas.',
+    },
+    {
+      id: 5,
+      active: false,
+      src: 'https://www.youtube.com/embed/ppIJmaa9ue8',
+      title: 'Antonio Barón',
+      company: 'TECNOSOCKS SA de CV',
+      subtitle: 'Sabemos escucharte | BanCoppel Pymes',
+      parragraph:
+        'En BanCoppel, estamos dispuestos a escucharte y brindarte la atención que necesitas. Si quieres que tu pyme alcance el éxito, no dudes en ponerte en contacto con nosotros. www.bancoppel.com/empresas.',
+    },
+    {
+      id: 6,
+      active: false,
+      src: 'https://www.youtube.com/embed/PMP6zcY6Fcc',
+      title: 'Rubén Fresan',
+      company: 'BEER- LINMEX SA de CV',
+      subtitle: 'Te ofrecemos un trato cálido, cercano y entendemos tus necesidades',
+      parragraph:
+        'En BanCoppel, no solo las condiciones crediticias son importantes, también te ofrecemos un trato cálido y cercano para no te sientas solo en tu camino al éxito. No dudes en ponerte con nosotros: www.bancoppel.com/empresas.',
+    },
+  ];
   return (
     <>
       <BannerInicio />
@@ -188,7 +250,7 @@ const Inicio = ({ catalogo }) => {
           <p className="body1 color-gray-dark text-center">Confían en nosotros, conoce sus historias.</p>
           <div className="row justify-content-center mt-3 mb-5">
             <div className="text-xs-center z-indez-1  text-md-left col-lg-10 col-xs-12 mt-5 mb-5  px-xs-0 px-md-3 ">
-              <VideoSelector color="blue-light" />
+              <VideoSelector sliderOptions={sliderOptions} color="blue-light" />
             </div>
           </div>
         </div>

@@ -3,8 +3,7 @@ import axiosIntance from '../config/AxiosConfig';
 import useCookie from './useCookie';
 
 const useAxiosToken = () => {
-  const [cookie, updateCookie] = useCookie('token', '');
-  const [, updateCookieRFC] = useCookie('RFC', '');
+  const [cookie, updateCookie] = useCookie('token', 'oli');
 
   const interceptors = useMemo(
     () => ({
@@ -16,9 +15,8 @@ const useAxiosToken = () => {
         const token = response.headers.authorization;
 
         if (token) {
-          const { exp, sub } = JSON.parse(atob(token.split('.')[1]));
-          updateCookie(token, null, exp);
-          updateCookieRFC(sub, null, exp);
+          const { exp } = JSON.parse(atob(token.split('.')[1]));
+          updateCookie(token, exp * 1000);
         }
 
         return response;

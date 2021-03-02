@@ -10,6 +10,7 @@ import KnomiRepositorio from '../../../../../../services/solicitud/knomi.reposit
 import Modal from '../../../../../shared/modal/Modal';
 import Camera from '../../../../../shared/camera/Camera';
 import { PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
+import knomiFeedbackMessages from '../../../../../../constants/knomi-feedback.json';
 
 const CapturaRostroBiometricosDocumentacion = () => {
   const dispatch = useDispatch();
@@ -29,18 +30,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
   const { initialValues, validationSchema } = {
     initialValues: {},
     validationSchema: Yup.object().shape({}),
-  };
-
-  const knomiFeedbackMessages = {
-    'NO_FACE_DETECTED': 'No se detecta un rostro',
-    'FACE_ON_LEFT': 'Rostro a la izquierda',
-    'FACE_ON_RIGHT': 'Rostro a la derecha',
-    'FACE_TOO_HIGH': 'Rostro muy alto',
-    'FACE_TOO_LOW': 'Rostro muy bajo',
-    'RIGHT_EYE_CLOSED': 'Ojo derecho cerrado',
-    'LEFT_EYE_CLOSED': 'Ojo izquierdo cerrado',
-    'INVALID_POSE': 'Pose inválida',
-    'FACE_TOO_FAR':  'Rostro muy lejos'
   };
 
   const formulario = useFormik({
@@ -208,8 +197,8 @@ const CapturaRostroBiometricosDocumentacion = () => {
           {isCameraOpen &&
             <Camera
               ref={cameraRef}
-            isCaptureComplete={isCaptureComplete}
-            pauseImage={pauseImage}
+              isCaptureComplete={isCaptureComplete}
+              pauseImage={pauseImage}
             />
           }
         </div>
