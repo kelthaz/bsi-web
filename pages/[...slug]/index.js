@@ -27,17 +27,13 @@ export async function getServerSideProps(context) {
 
   if (featureRoute[index].roles.length > 0) {
     const { cookie } = context.req.headers;
-    console.log('cookies ', cookie);
 
     if (cookie) {
       const token = cookie.split('; ').reduce((total, currentCookie) => {
         const [storedKey, storedValue] = currentCookie.split('=');
         return storedKey === 'token' ? decodeURIComponent(storedValue) : total;
       }, '');
-      console.log('token', token);
-
       userData = token && JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-      console.log('userdata', userData);
     }
 
     if (!cookie && Object.keys(userData).length === 0) {

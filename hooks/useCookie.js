@@ -11,8 +11,6 @@ const getItem = (key) =>
 
 const setItem = (key, value, dateExpired) => {
   const now = new Date(dateExpired);
-  console.log(now, dateExpired);
-  console.log(dateExpired ? `${key}=${value}; expires=${now.toUTCString()}; path=/;` : `${key}=${value}; `);
   document.cookie = dateExpired ? `${key}=${value}; expires=${now.toUTCString()}; path=/;` : `${key}=${value}; `;
 };
 
