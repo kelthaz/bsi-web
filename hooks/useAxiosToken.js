@@ -3,7 +3,7 @@ import axiosIntance from '../config/AxiosConfig';
 import useCookie from './useCookie';
 
 const useAxiosToken = () => {
-  const [cookie, updateCookie] = useCookie('token', '');
+  const [cookie, updateCookie] = useCookie('token', 'oli');
 
   const interceptors = useMemo(
     () => ({
@@ -16,7 +16,7 @@ const useAxiosToken = () => {
 
         if (token) {
           const { exp } = JSON.parse(atob(token.split('.')[1]));
-          updateCookie(token, null, exp);
+          updateCookie(token, exp * 1000);
         }
 
         return response;
