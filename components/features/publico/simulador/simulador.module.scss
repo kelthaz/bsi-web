@@ -9,7 +9,7 @@
 .th {
   background-color: $white;
   color: #636363;
-  font-family: Futura;
+  font-family: $futura-book;
   font-size: 14px;
   padding-bottom: 4px;
   padding-right: 25px;
@@ -52,7 +52,7 @@
 
 .text-container {
   color: #282828;
-  font-family: Futura;
+  font-family: $futura-book;
   font-size: 16px;
 }
 
@@ -216,7 +216,7 @@
 
   .text-container {
     color: #282828;
-    font-family: Futura;
+    font-family: $futura-book;
     font-size: 14px;
   }
 }
