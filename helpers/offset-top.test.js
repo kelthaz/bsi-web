@@ -4,7 +4,6 @@ import offsetTop from './offsetTop';
 describe('Pruebas en el helper offsetTop', () => {
 
   beforeEach(() => {
-    // Avoid `attachTo: document.body` Warning
     const div = document.createElement('div');
     div.setAttribute('id', 'container');
     document.body.appendChild(div);
