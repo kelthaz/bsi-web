@@ -47,14 +47,13 @@ describe('Pruebas en el componente DatePickerInput', () => {
 
   it('Debe seleccionar un día desactivado', () => {
     // arrange
-    const onChange = (date) => {
-      expect(date).toBeUndefined();
-    };
+    const onChange = jest.fn();
     const wrap = mount(<DatePickerInput disablePreviousDays disableWeekends onChange={onChange} />);
     // act
     wrap.find('button.svg-button-input-small').simulate('click');
     wrap.find('.DayPicker-Day--disabled').first().simulate('click');
     // assert
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('Debe seleccionar un mes anterior y un mes siguiente', () => {
