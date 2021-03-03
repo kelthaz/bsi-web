@@ -59,7 +59,7 @@ const datosPersonalesRoutes = [
       paso: 2,
       tipoPersona: '',
       step: 1,
-      tab: 'datos-personales',
+      tab: ['datos-personales'],
     },
   },
   {
@@ -73,7 +73,7 @@ const datosPersonalesRoutes = [
       paso: 3,
       tipoPersona: '',
       step: 2,
-      tab: 'datos-personales',
+      tab: ['datos-personales'],
     },
   },
   {
@@ -87,7 +87,7 @@ const datosPersonalesRoutes = [
       paso: 4,
       tipoPersona: '',
       step: 3,
-      tab: 'datos-personales',
+      tab: ['datos-personales'],
     },
   },
   {
@@ -101,7 +101,7 @@ const datosPersonalesRoutes = [
       paso: 5,
       tipoPersona: '',
       step: 4,
-      tab: 'datos-personales',
+      tab: ['datos-personales'],
     },
   },
   {
@@ -115,7 +115,7 @@ const datosPersonalesRoutes = [
       paso: 6,
       tipoPersona: '',
       step: 5,
-      tab: 'datos-personales',
+      tab: ['datos-personales'],
     },
   },
   {
