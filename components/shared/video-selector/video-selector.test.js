@@ -27,7 +27,7 @@ const sliderOptions = [
 ];
 
 describe('Pruebas en el componente del video de selector', () => {
-  it('Debe mostrar array dentro del componente', () => {
+  test('Debe mostrar array dentro del componente de video', () => {
     // arrange
     const wrap = shallow(<VideoSelector sliderOptions={sliderOptions} color="blue" />);
 
