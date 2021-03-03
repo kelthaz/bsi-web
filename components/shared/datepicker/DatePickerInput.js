@@ -61,7 +61,7 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, on
       return;
     }
     setSelectedDay(selected ? undefined : day);
-    onChange(selected);
+    onChange(day);
   };
 
   const handleToggle = () => {
@@ -74,7 +74,8 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, on
     className
   }) => (
       <div className={className}>
-        <span
+      <span
+          id="previousMonth"
           style={{
             float:'left',
             transform: 'rotate(180deg)',
@@ -87,7 +88,8 @@ const DatePickerInput = ({disableWeekends, disablePreviousDays, disabledDays, on
         >
           <SvgChevron />
         </span>
-        <span
+      <span
+          id="nextMonth"
           style={{
             float:'right',
             marginRight: '16px',
