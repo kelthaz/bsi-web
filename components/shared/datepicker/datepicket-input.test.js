@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line filenames/match-regex
 import React from 'react';
 import { mount } from 'enzyme';
 import DatePickerInput from './DatePickerInput';
