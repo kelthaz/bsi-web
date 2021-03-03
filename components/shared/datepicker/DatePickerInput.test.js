@@ -61,7 +61,7 @@ describe('Pruebas en el componente DatePickerInput', () => {
     // arrange
     const wrap = mount(<DatePickerInput />);
     // act
-    wrap.find('button.svg-button-input-small').simulate('click');
+    wrap.find('button').at(1).simulate('click');
     wrap.find('#previousMonth').simulate('click');
     wrap.find('#nextMonth').simulate('click');
     // assert
