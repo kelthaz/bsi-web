@@ -30,7 +30,7 @@ const ModalError = () => {
         <div className="card-simple-blue-light list-onboarding">
           <ul>
             {errors[0]?.map((msg) => (
-              <li>{msg}</li>
+              <li key={msg}>{msg}</li>
             ))}
           </ul>
         </div>

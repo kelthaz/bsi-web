@@ -11,11 +11,11 @@ const ModalActualizar = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleModalFirstOption = async () => {
+    setOpenModal(false);
     if (isValid) {
       dispatch(onHandleSubmit(true));
       await push(routePage);
     }
-    setOpenModal(false);
   };
 
   const handleModalSecondOption = async () => {

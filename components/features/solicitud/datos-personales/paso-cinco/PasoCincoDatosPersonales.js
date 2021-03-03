@@ -68,7 +68,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
 
       aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos),
     }),
-    onSubmit: async (values) => {
+    onSubmit: (values) => {
       if (changePage) {
         dispatch(
           nextStepDatosPersonales({
@@ -86,7 +86,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
     if (!changePage) {
       const data = {
         ...datosPersonales,
-        tipoPersona: datosPersonales.tipoPersona,
+        celular: datosPersonales.celular.replaceAll('-', ''),
         tipoSociedad: datosPersonales.tipoSociedad?.label,
         sector: datosPersonales.sector.value,
         giro: datosPersonales.giro.value,
@@ -97,6 +97,12 @@ const PasoCincoDatosPersonales = ({ validate }) => {
       delete data.aceptoTerminos;
       delete data.contrasena;
       delete data.confirmarContrasena;
+
+      if (datosPersonales.tipoPersona !== MORAL) {
+        delete data.tipoSociedad;
+        delete data.razonSocial;
+      }
+
       const valid = await LoginRepositorio.postRegistro(data)
         .then(() => true)
         .catch(() => false);
