@@ -6,7 +6,7 @@ describe('Pruebas en el componente Particle', () => {
   it('Debe mostrar el svg del confetti', () => {
     // arrange
     const wrap = mount(<Particle />);
-    // act
+    // assert
     expect(wrap.find('svg').exists()).toBeTruthy();
   });
 });
