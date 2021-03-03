@@ -28,7 +28,7 @@ parameters:
   - name: SOURCE_REPOSITORY_REF
     description: The branch name for the application
     displayName: Source Branch
-    value: staging
+    value: feature/devops-deploy-openshift
     required: true
   - name: SOURCE_SECRET
     description: The source secret name 
@@ -82,7 +82,7 @@ objects:
               value: ${GIT_SSL_NO_VERIFY}
           from:
             kind: DockerImage
-            name: "ubi8/nodejs-14"
+            name: "ubi8/nodejs-12"
           type: Source
       triggers:
         - type: ConfigChange
@@ -110,6 +110,11 @@ objects:
                   name: http
                   protocol: TCP
               resources: {}
+              envFrom:
+                - configMapRef:
+                    name: ${NAME}
+                - secretRef:
+                    name: sc-bsi-cred-pyme-web
         metadata:
           labels:
             app: '${NAME}'
@@ -158,3 +163,35 @@ objects:
       wildcardPolicy: None
       tls:
         termination: edge
+
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      labels:
+        app: ${NAME}
+      name: ${NAME}
+    data:
+      NEXT_PUBLIC_API_BANCOPPEL_PYME_HOSTNAME: bsi-cred-pyme-service-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com
+      NEXT_PUBLIC_API_BANCOPPEL_PYME_HOST: https://$NEXT_PUBLIC_API_BANCOPPEL_PYME_HOSTNAME/api
+      NEXT_PUBLIC_PYME_HOSTNAME: http://bsi-cred-pyme-web-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com/api/proxy
+
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      labels:
+        app: bsi-cred-pyme-web
+      name: sc-bsi-cred-pyme-web
+    type: Opaque
+    data:
+      NEXT_PUBLIC_CLAVE_SITIO: NkxmdlZpc2FBQUFBQURGWTRPanktMUgtOFlnVGRKYW1ERl8xamNGeQ==
+
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      labels:
+        app: bsi-cred-pyme-web
+      name: gitlab-bancoppel
+    type: kubernetes.io/basic-auth
+    data:
+      password: WWVBdWk5bk0qb28=
+      username: ZW5yaXF1ZWh2YXJnYXM=

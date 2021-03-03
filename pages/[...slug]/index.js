@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
 
   const index = featureRoute.findIndex(({ route }) => context.resolvedUrl.split('?')[0] === route);
 
-  if (featureRoute[index].roles.length > 0) {
+  if (index !== -1 && featureRoute[index].roles.length > 0) {
     const { cookie } = context.req.headers;
 
     if (cookie) {
