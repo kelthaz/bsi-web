@@ -65,5 +65,6 @@ describe('Pruebas en el componente DatePickerInput', () => {
     wrap.find('#previousMonth').simulate('click');
     wrap.find('#nextMonth').simulate('click');
     // assert
+    expect(wrap.find('.DayPicker').exists()).toBeTruthy();
   });
 });
