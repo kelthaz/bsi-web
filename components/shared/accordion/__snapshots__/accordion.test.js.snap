@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Accordion Debe crear la prueba instantanea 1`] = `
+<div
+  className=""
+>
+  <button
+    className="accordion-white arrow-icon-white "
+    onClick={[Function]}
+    type="button"
+  >
+    Acerca de BanCoppel
+  </button>
+  <div
+    className="panel "
+  >
+    <h1>
+      Welcome to Next.js!
+    </h1>
+  </div>
+</div>
+`;
