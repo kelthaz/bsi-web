@@ -59,10 +59,7 @@ describe('Pruebas en el componente DatePickerInput', () => {
 
   it('Debe seleccionar un mes anterior y un mes siguiente', () => {
     // arrange
-    const onChange = (date) => {
-      expect(date).toBeUndefined();
-    };
-    const wrap = mount(<DatePickerInput disablePreviousDays disableWeekends onChange={onChange} />);
+    const wrap = mount(<DatePickerInput />);
     // act
     wrap.find('button.svg-button-input-small').simulate('click');
     wrap.find('#previousMonth').simulate('click');
