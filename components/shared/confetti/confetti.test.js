@@ -5,7 +5,7 @@ import Confetti from './Confetti';
 const ID_CONFETTI = 1;
 
 describe('Pruebas en el componente Confetti', () => {
-  it('Debe mostrar dos líneas y un orden dentro del componente', () => {
+  it('Debe mostrar confetti', () => {
     // arrange
     let particles = [];
     let id = ID_CONFETTI;
