@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import styles from './slider.module.scss';
 
-const Slider = (props) => {
-  const { name, formulario, min, max, step } = props;
-  const { setFieldValue, values, setFieldTouched } = formulario;
+const Slider = ({ name, formulario, min, max, step }) => {
+  const { setFieldValue, values } = formulario;
   const hundredPercent = max - min;
-
-  useEffect(() => {
-    setFieldTouched(name, true);
-  }, []);
 
   const handleValue = (event) => {
     setFieldValue(name, event.target.value);
