@@ -5,8 +5,8 @@ const useOnClickOutTarget = (id, toggle, setToggle, closeable) => {
     if (!closeable) return () => {};
 
     const setFromEvent = ({ target: targetEvent }) => {
-      if (document.getElementById(id)) {
-        setToggle(document.getElementById(id).contains(targetEvent));
+      if (document.getElementById(id) && !document.getElementById(id).contains(targetEvent)) {
+        setToggle();
       }
     };
 
