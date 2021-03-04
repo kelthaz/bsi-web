@@ -1,6 +1,6 @@
 // eslint-disable-next-line filenames/match-regex
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import VideoSelector from './VideoSelector';
 
 const sliderOptions = [
@@ -30,11 +30,57 @@ describe('Pruebas en el componente del video de selector', () => {
   test('Debe mostrar array dentro del componente de video', () => {
     // arrange
     const wrap = shallow(<VideoSelector sliderOptions={sliderOptions} color="blue" />);
-
     // act
     const claseVideo = wrap.find('div.video-preview').exists();
-
     // assert
     expect(claseVideo).toBe(true);
   });
+
+  it('Debe cambiar a next', () => {
+    // arrange
+    const onChange = (button) => {
+      const next = 'next';
+      expect(button).toStrictEqual(next);
+    };
+    // act
+    const wrap = mount(<VideoSelector onChange={onChange} />);
+    // assert
+    wrap.find('button.mr-2').simulate('click');
+  });
+
+  it('Debe cambiar a prev', () => {
+    // arrange
+    const onChange = (button) => {
+      const prev = 'prev';
+      expect(button).toStrictEqual(prev);
+    };
+    // act
+    const wrap = mount(<VideoSelector onChange={onChange} />);
+    // assert
+    wrap.find('button.mr-3').simulate('click');
+  });
+
+  it('Debe hacer el update', () => {
+    // arrange
+    const onChange = (direction) => {
+      const prev = 'prev';
+      expect(direction).toStrictEqual(prev);
+    };
+    // act
+    const wrap = mount(<VideoSelector onChange={onChange} />);
+    // assert
+    wrap.find('button.mr-3').simulate('click');
+  });
+
+  // it('Debe hacer el 22222222', () => {
+  //   // arrange
+  //   const onChange = (direction) => {
+  //     const prev = 1;
+  //     expect(direction).toStrictEqual(prev);
+  //   };
+  //   // act
+  //   const wrap = mount(<VideoSelector onChange={onChange} />);
+  //   // assert
+  //   wrap.find('button.mr-3').simulate('click');
+  // });
 });
