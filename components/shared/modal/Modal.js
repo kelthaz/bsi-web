@@ -1,23 +1,17 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
 import SvgCross from '../../svgs/SvgCross';
 import useOnClickOutTarget from '../../../hooks/useOnClickOutTarget';
 import styles from './modal.module.scss';
 
 const Modal = (props) => {
   const { children, openModal, setOpenModal, closeable, onClose } = props;
-  const isFirstRun = useRef(true);
-  useOnClickOutTarget('modal', openModal, setOpenModal, closeable);
 
-  useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
-    if (!openModal) {
-      onClose();
-    }
-  }, [openModal]);
+  const handleClose = () => {
+    setOpenModal(false);
+    onClose();
+  };
+
+  useOnClickOutTarget('modal', openModal, handleClose, closeable);
 
   return (
     openModal && (
@@ -25,7 +19,7 @@ const Modal = (props) => {
         <div id="modal" className={styles['modal-centered']}>
           <div className={styles['modal-content']}>
             {closeable && (
-              <button type="button" className={styles.close} onClick={() => setOpenModal(false)}>
+              <button type="button" className={styles.close} onClick={() => handleClose()}>
                 <SvgCross />
               </button>
             )}

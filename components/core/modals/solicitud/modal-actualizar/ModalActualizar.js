@@ -10,17 +10,19 @@ const ModalActualizar = () => {
   const { routePage, showModal, isValid } = useSelector((state) => state.formulario);
   const [openModal, setOpenModal] = useState(false);
 
-  const handleModalFirstOption = async () => {
+  const handleModalFirstOption = () => {
     setOpenModal(false);
     if (isValid) {
       dispatch(onHandleSubmit(true));
-      await push(routePage);
+    } else {
+      dispatch(resetChangePage());
     }
   };
 
   const handleModalSecondOption = async () => {
-    await push(routePage);
     setOpenModal(false);
+    dispatch(resetChangePage());
+    await push(routePage);
   };
 
   useEffect(() => {

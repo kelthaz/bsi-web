@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="slide-container"
+>
+  <input
+    className="slider"
+    max={10}
+    min={0}
+    name="monto"
+    onChange={[Function]}
+    step={1}
+    style={
+      Object {
+        "background": "linear-gradient(to right, #81c1ea 10% , #338cbf 20%, #225aa7 30%, #dae0e9 30%",
+      }
+    }
+    type="range"
+    value={3}
+  />
+</div>
+`;
