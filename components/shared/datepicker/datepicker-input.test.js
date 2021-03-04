@@ -14,15 +14,15 @@ describe('Pruebas en el componente DatePickerInput', () => {
 
   it('Debe cambiar la fecha seleccionada a la de hoy', () => {
     // arrange
-    const onChange = (date) => {
-      const today = new Date(new Date().setHours(12, 0, 0, 0));
-      expect(date).toStrictEqual(today);
-    };
+    const today = new Date(new Date().setHours(12, 0, 0, 0));
+    const onChange = jest.fn();
     const wrap = mount(<DatePickerInput onChange={onChange} />);
     // act
     wrap.find('button.svg-button-input-small').simulate('click');
     wrap.find('.DayPicker-Day--today').simulate('click');
     // assert
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(today);
   });
 
   it('Debe desactivar los fines de semana', () => {
