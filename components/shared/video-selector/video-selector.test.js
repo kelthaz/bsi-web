@@ -44,7 +44,6 @@ describe('Pruebas en el componente del video de selector', () => {
     };
     // act
     const wrap = mount(<VideoSelector onChange={onChange} />);
-    // assert
     wrap.find('button.mr-2').simulate('click');
   });
 
@@ -56,7 +55,6 @@ describe('Pruebas en el componente del video de selector', () => {
     };
     // act
     const wrap = mount(<VideoSelector onChange={onChange} />);
-    // assert
     wrap.find('button.mr-3').simulate('click');
   });
 
@@ -68,19 +66,6 @@ describe('Pruebas en el componente del video de selector', () => {
     };
     // act
     const wrap = mount(<VideoSelector onChange={onChange} />);
-    // assert
     wrap.find('button.mr-3').simulate('click');
   });
-
-  // it('Debe hacer el 22222222', () => {
-  //   // arrange
-  //   const onChange = (direction) => {
-  //     const prev = 1;
-  //     expect(direction).toStrictEqual(prev);
-  //   };
-  //   // act
-  //   const wrap = mount(<VideoSelector onChange={onChange} />);
-  //   // assert
-  //   wrap.find('button.mr-3').simulate('click');
-  // });
 });
