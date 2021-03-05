@@ -3,7 +3,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 
 // Create proxy instance outside of request handler function to avoid unnecessary re-creation
 const apiProxy = createProxyMiddleware({
-  target: 'https://bsi-cred-pyme-service-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com/api',
+  target: process.env.NEXT_PUBLIC_API_BANCOPPEL_PYME_HOST,
   changeOrigin: true,
   pathRewrite: { '^/api': '' },
   secure: false,
