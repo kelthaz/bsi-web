@@ -38,6 +38,3 @@ oc.exe
 
 #IntelliJ
 .idea
-
-# Jest
-/__snapshots__
