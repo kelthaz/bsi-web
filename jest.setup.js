@@ -3,3 +3,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
+
+const spyScrollTo = jest.fn();
+Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });

@@ -35,7 +35,7 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
       plazo,
       periodicidad,
       aniosEmpresa,
-      ventasAnio,
+      ventasAnio: ventasAnio || itemsSalesYear[1],
     },
     validationSchema: Yup.object({
       monto: Yup.number(),
@@ -184,7 +184,6 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                       formulario={formulario}
                       size="small"
                       items={itemsSalesYear}
-                      defaultValue={1}
                       blue
                     />
                   </div>

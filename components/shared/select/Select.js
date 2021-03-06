@@ -24,21 +24,8 @@ const seleccionaEstilo = (size, inverted) => {
   return finalStyles;
 };
 
-const Select = (props) => {
+const Select = ({ name, formulario, size, items, inverted, optional, label, disabled, blue, showAlwaysErrors }) => {
   const [toggle, setToggle] = useState(false);
-  const {
-    name,
-    formulario,
-    size,
-    items,
-    inverted,
-    optional,
-    label,
-    disabled,
-    defaultValue,
-    blue,
-    showAlwaysErrors,
-  } = props;
   const [
     arrrowStyle,
     selectStyle,
@@ -49,12 +36,6 @@ const Select = (props) => {
   ] = seleccionaEstilo(size, inverted);
   const { setFieldValue, setFieldTouched, getFieldMeta } = formulario;
   const { error, touched, value } = getFieldMeta(name);
-
-  useEffect(() => {
-    if (!value && defaultValue !== null) {
-      setFieldValue(name, items[defaultValue], true);
-    }
-  }, []);
 
   const handleToggle = () => {
     if (!touched && toggle) {
@@ -122,7 +103,6 @@ Select.propTypes = {
   optional: PropTypes.bool,
   items: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
-  defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
   blue: PropTypes.bool,
   showAlwaysErrors: PropTypes.bool,
@@ -131,7 +111,6 @@ Select.propTypes = {
 Select.defaultProps = {
   inverted: false,
   optional: false,
-  defaultValue: null,
   disabled: false,
   blue: false,
   showAlwaysErrors: true,

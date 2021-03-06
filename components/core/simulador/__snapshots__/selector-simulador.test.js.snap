@@ -1,0 +1,1199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <SelectorSimulador
+    catalogo={
+      Array [
+        Object {
+          "categoria": "monto",
+          "id": 1,
+          "parametrosCatalogo": Array [
+            Object {
+              "descripcion": "min",
+              "valor": 300000,
+            },
+            Object {
+              "descripcion": "max",
+              "valor": 12000000,
+            },
+            Object {
+              "descripcion": "step",
+              "valor": 100000,
+            },
+          ],
+        },
+        Object {
+          "categoria": "plazo",
+          "id": 2,
+          "parametrosCatalogo": Array [
+            Object {
+              "descripcion": "12 meses",
+              "valor": 12,
+            },
+            Object {
+              "descripcion": "18 meses",
+              "valor": 18,
+            },
+            Object {
+              "descripcion": "24 meses",
+              "valor": 24,
+            },
+            Object {
+              "descripcion": "30 meses",
+              "valor": 30,
+            },
+            Object {
+              "descripcion": "36 meses",
+              "valor": 36,
+            },
+          ],
+        },
+        Object {
+          "categoria": "periodicidad",
+          "id": 3,
+          "parametrosCatalogo": Array [
+            Object {
+              "descripcion": "Mensuales",
+              "valor": 1,
+            },
+            Object {
+              "descripcion": "Bimestrales",
+              "valor": 2,
+            },
+          ],
+        },
+        Object {
+          "categoria": "antiguedad",
+          "id": 4,
+          "parametrosCatalogo": Array [
+            Object {
+              "descripcion": "Menos de 2 años",
+              "valor": 1,
+            },
+            Object {
+              "descripcion": "Más de 2 años",
+              "valor": 2,
+            },
+          ],
+        },
+        Object {
+          "categoria": "venta",
+          "id": 5,
+          "parametrosCatalogo": Array [
+            Object {
+              "descripcion": "Menos de $2 MDP",
+              "valor": 1,
+            },
+            Object {
+              "descripcion": "Más de $2 MDP",
+              "valor": 2,
+            },
+          ],
+        },
+      ]
+    }
+    handleSimular={[Function]}
+  >
+    <div
+      className="simulador-container"
+    >
+      <div
+        className="svg-textura-left-bottom"
+      >
+        <SvgPrimeraTextura>
+          <svg
+            fill="none"
+            height={239}
+            viewBox="0 0 181 239"
+            width={181}
+          >
+            <path
+              d="M45 85l-31 31"
+              stroke="#338CBF"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M63 67L35 95"
+              stroke="#FFBE12"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M157.745 107l-53.501 54.101"
+              stroke="#81C1EA"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M123.042 142.092L84 181.571"
+              stroke="#FFBE12"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M3 216.981l58.786-59.414"
+              stroke="#225AA7"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M39.176 180.418L82.136 137M178 3l-62 63M159 165l-51.5 51.5"
+              stroke="#81C1EA"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M121 61L92 90"
+              stroke="#002A61"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M125 199l-37 37"
+              stroke="#DAE0E9"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+          </svg>
+        </SvgPrimeraTextura>
+      </div>
+      <div
+        className="container p-0"
+      >
+        <div
+          className="card-simple-white-shadow p-lg-5 p-md-4 p-sm-2 p-xs-2"
+        >
+          <form
+            noValidate={true}
+            onSubmit={[Function]}
+          >
+            <div
+              className="flex-column-center-config"
+            >
+              <h3
+                className="color-blue-storm"
+              >
+                ¿Cuánto dinero necesitas?
+              </h3>
+              <p>
+                <span
+                  className="input2 color-gray only-lg-inline"
+                >
+                  Necesito 
+                </span>
+                <span
+                  className="input2 color-blue-night border-bottom-gray"
+                >
+                  $6,200,000
+                </span>
+              </p>
+            </div>
+            <div
+              className="pb-4"
+            >
+              <Slider
+                formulario={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "aniosEmpresa": null,
+                      "monto": "6200000",
+                      "periodicidad": null,
+                      "plazo": null,
+                      "ventasAnio": Object {
+                        "label": "Más de $2 MDP",
+                        "value": 2,
+                      },
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "aniosEmpresa": null,
+                      "monto": "6200000",
+                      "periodicidad": null,
+                      "plazo": null,
+                      "ventasAnio": Object {
+                        "label": "Más de $2 MDP",
+                        "value": 2,
+                      },
+                    },
+                  }
+                }
+                max={12000000}
+                min={300000}
+                name="monto"
+                step={100000}
+              >
+                <div
+                  className="slide-container"
+                >
+                  <input
+                    className="slider"
+                    max={12000000}
+                    min={300000}
+                    name="monto"
+                    onChange={[Function]}
+                    step={100000}
+                    style={
+                      Object {
+                        "background": "linear-gradient(to right, #81c1ea 16.80911680911681% , #338cbf 33.61823361823362%, #225aa7 50.427350427350426%, #dae0e9 50.427350427350426%",
+                      }
+                    }
+                    type="range"
+                    value="6200000"
+                  />
+                </div>
+              </Slider>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12"
+              >
+                <p
+                  className="sub color-blue-storm text-left"
+                >
+                  ¿En cuántos meses quieres pagarlo?
+                </p>
+                <div
+                  className="row no-gutters "
+                >
+                  <div
+                    className="col-lg-6 col-md-8 d-none d-md-block pt-2"
+                  >
+                    <span
+                      className="input2 color-gray"
+                    >
+                      Quiero pagarlo en
+                    </span>
+                  </div>
+                  <div
+                    className="col-lg-6 col-md-4 col-xs-12 col-sm-12"
+                  >
+                    <Select
+                      blue={true}
+                      disabled={false}
+                      formulario={
+                        Object {
+                          "dirty": false,
+                          "errors": Object {},
+                          "getFieldHelpers": [Function],
+                          "getFieldMeta": [Function],
+                          "getFieldProps": [Function],
+                          "handleBlur": [Function],
+                          "handleChange": [Function],
+                          "handleReset": [Function],
+                          "handleSubmit": [Function],
+                          "initialErrors": Object {},
+                          "initialStatus": undefined,
+                          "initialTouched": Object {},
+                          "initialValues": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                          "isSubmitting": false,
+                          "isValid": true,
+                          "isValidating": false,
+                          "registerField": [Function],
+                          "resetForm": [Function],
+                          "setErrors": [Function],
+                          "setFieldError": [Function],
+                          "setFieldTouched": [Function],
+                          "setFieldValue": [Function],
+                          "setFormikState": [Function],
+                          "setStatus": [Function],
+                          "setSubmitting": [Function],
+                          "setTouched": [Function],
+                          "setValues": [Function],
+                          "status": undefined,
+                          "submitCount": 0,
+                          "submitForm": [Function],
+                          "touched": Object {},
+                          "unregisterField": [Function],
+                          "validateField": [Function],
+                          "validateForm": [Function],
+                          "validateOnBlur": true,
+                          "validateOnChange": true,
+                          "validateOnMount": false,
+                          "values": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                        }
+                      }
+                      inverted={false}
+                      items={
+                        Array [
+                          Object {
+                            "label": "12 meses",
+                            "value": 12,
+                          },
+                          Object {
+                            "label": "18 meses",
+                            "value": 18,
+                          },
+                          Object {
+                            "label": "24 meses",
+                            "value": 24,
+                          },
+                          Object {
+                            "label": "30 meses",
+                            "value": 30,
+                          },
+                          Object {
+                            "label": "36 meses",
+                            "value": 36,
+                          },
+                        ]
+                      }
+                      label="Seleccione..."
+                      name="plazo"
+                      optional={false}
+                      showAlwaysErrors={true}
+                      size="smallb"
+                    >
+                      <div
+                        className="custom-select"
+                      >
+                        <button
+                          className="svg-button-input-small arrow "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          <SvgChevron>
+                            <svg
+                              fill="none"
+                              height={22}
+                              viewBox="0 0 12 22"
+                              width={12}
+                            >
+                              <path
+                                d="M1.667 1.667L11 11l-9.333 9.333"
+                                stroke="#225AA7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                              />
+                            </svg>
+                          </SvgChevron>
+                        </button>
+                        <button
+                          className="placeholder-color select-small-blue indicador "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="0"
+                          type="button"
+                        >
+                          Seleccione...
+                        </button>
+                        <ul
+                          className="select-items select-hide"
+                          role="menu"
+                        >
+                          <li
+                            key="12"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              12 meses
+                            </button>
+                          </li>
+                          <li
+                            key="18"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              18 meses
+                            </button>
+                          </li>
+                          <li
+                            key="24"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              24 meses
+                            </button>
+                          </li>
+                          <li
+                            key="30"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              30 meses
+                            </button>
+                          </li>
+                          <li
+                            key="36"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              36 meses
+                            </button>
+                          </li>
+                        </ul>
+                        <span
+                          className="help-text"
+                        >
+                          <span>
+                             
+                          </span>
+                        </span>
+                      </div>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12"
+              >
+                <p
+                  className="sub color-blue-storm text-left"
+                >
+                  ¿Cómo quieres los plazos de tu pago?
+                </p>
+                <div
+                  className="row no-gutters "
+                >
+                  <div
+                    className="col-lg-5 col-md-6 d-none d-md-block pt-2"
+                  >
+                    <span
+                      className="input2 color-gray"
+                    >
+                      Quiero plazos
+                    </span>
+                  </div>
+                  <div
+                    className="col-lg-7 col-md-6 col-xs-12 col-sm-12"
+                  >
+                    <Select
+                      blue={true}
+                      disabled={false}
+                      formulario={
+                        Object {
+                          "dirty": false,
+                          "errors": Object {},
+                          "getFieldHelpers": [Function],
+                          "getFieldMeta": [Function],
+                          "getFieldProps": [Function],
+                          "handleBlur": [Function],
+                          "handleChange": [Function],
+                          "handleReset": [Function],
+                          "handleSubmit": [Function],
+                          "initialErrors": Object {},
+                          "initialStatus": undefined,
+                          "initialTouched": Object {},
+                          "initialValues": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                          "isSubmitting": false,
+                          "isValid": true,
+                          "isValidating": false,
+                          "registerField": [Function],
+                          "resetForm": [Function],
+                          "setErrors": [Function],
+                          "setFieldError": [Function],
+                          "setFieldTouched": [Function],
+                          "setFieldValue": [Function],
+                          "setFormikState": [Function],
+                          "setStatus": [Function],
+                          "setSubmitting": [Function],
+                          "setTouched": [Function],
+                          "setValues": [Function],
+                          "status": undefined,
+                          "submitCount": 0,
+                          "submitForm": [Function],
+                          "touched": Object {},
+                          "unregisterField": [Function],
+                          "validateField": [Function],
+                          "validateForm": [Function],
+                          "validateOnBlur": true,
+                          "validateOnChange": true,
+                          "validateOnMount": false,
+                          "values": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                        }
+                      }
+                      inverted={false}
+                      items={
+                        Array [
+                          Object {
+                            "label": "Mensuales",
+                            "value": 1,
+                          },
+                          Object {
+                            "label": "Bimestrales",
+                            "value": 2,
+                          },
+                        ]
+                      }
+                      label="Seleccione..."
+                      name="periodicidad"
+                      optional={false}
+                      showAlwaysErrors={true}
+                      size="small"
+                    >
+                      <div
+                        className="custom-select"
+                      >
+                        <button
+                          className="svg-button-input-small arrow "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          <SvgChevron>
+                            <svg
+                              fill="none"
+                              height={22}
+                              viewBox="0 0 12 22"
+                              width={12}
+                            >
+                              <path
+                                d="M1.667 1.667L11 11l-9.333 9.333"
+                                stroke="#225AA7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                              />
+                            </svg>
+                          </SvgChevron>
+                        </button>
+                        <button
+                          className="placeholder-color select-small-blue indicador "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="0"
+                          type="button"
+                        >
+                          Seleccione...
+                        </button>
+                        <ul
+                          className="select-items select-hide"
+                          role="menu"
+                        >
+                          <li
+                            key="1"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Mensuales
+                            </button>
+                          </li>
+                          <li
+                            key="2"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Bimestrales
+                            </button>
+                          </li>
+                        </ul>
+                        <span
+                          className="help-text"
+                        >
+                          <span>
+                             
+                          </span>
+                        </span>
+                      </div>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12"
+              >
+                <p
+                  className="sub color-blue-storm text-left"
+                >
+                  ¿Cuál es la antigüedad de tu empresa?
+                </p>
+                <div
+                  className="row no-gutters "
+                >
+                  <div
+                    className="col-lg-6 col-md-7 d-none d-md-block pt-2"
+                  >
+                    <span
+                      className="input2 color-gray"
+                    >
+                      Mi empresa tiene
+                    </span>
+                  </div>
+                  <div
+                    className="col-lg-6 col-md-5 col-xs-12 col-sm-12"
+                  >
+                    <Select
+                      blue={true}
+                      disabled={false}
+                      formulario={
+                        Object {
+                          "dirty": false,
+                          "errors": Object {},
+                          "getFieldHelpers": [Function],
+                          "getFieldMeta": [Function],
+                          "getFieldProps": [Function],
+                          "handleBlur": [Function],
+                          "handleChange": [Function],
+                          "handleReset": [Function],
+                          "handleSubmit": [Function],
+                          "initialErrors": Object {},
+                          "initialStatus": undefined,
+                          "initialTouched": Object {},
+                          "initialValues": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                          "isSubmitting": false,
+                          "isValid": true,
+                          "isValidating": false,
+                          "registerField": [Function],
+                          "resetForm": [Function],
+                          "setErrors": [Function],
+                          "setFieldError": [Function],
+                          "setFieldTouched": [Function],
+                          "setFieldValue": [Function],
+                          "setFormikState": [Function],
+                          "setStatus": [Function],
+                          "setSubmitting": [Function],
+                          "setTouched": [Function],
+                          "setValues": [Function],
+                          "status": undefined,
+                          "submitCount": 0,
+                          "submitForm": [Function],
+                          "touched": Object {},
+                          "unregisterField": [Function],
+                          "validateField": [Function],
+                          "validateForm": [Function],
+                          "validateOnBlur": true,
+                          "validateOnChange": true,
+                          "validateOnMount": false,
+                          "values": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                        }
+                      }
+                      inverted={false}
+                      items={
+                        Array [
+                          Object {
+                            "label": "Menos de 2 años",
+                            "value": 1,
+                          },
+                          Object {
+                            "label": "Más de 2 años",
+                            "value": 2,
+                          },
+                        ]
+                      }
+                      label="Seleccione..."
+                      name="aniosEmpresa"
+                      optional={false}
+                      showAlwaysErrors={true}
+                      size="small"
+                    >
+                      <div
+                        className="custom-select"
+                      >
+                        <button
+                          className="svg-button-input-small arrow "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          <SvgChevron>
+                            <svg
+                              fill="none"
+                              height={22}
+                              viewBox="0 0 12 22"
+                              width={12}
+                            >
+                              <path
+                                d="M1.667 1.667L11 11l-9.333 9.333"
+                                stroke="#225AA7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                              />
+                            </svg>
+                          </SvgChevron>
+                        </button>
+                        <button
+                          className="placeholder-color select-small-blue indicador "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="0"
+                          type="button"
+                        >
+                          Seleccione...
+                        </button>
+                        <ul
+                          className="select-items select-hide"
+                          role="menu"
+                        >
+                          <li
+                            key="1"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Menos de 2 años
+                            </button>
+                          </li>
+                          <li
+                            key="2"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Más de 2 años
+                            </button>
+                          </li>
+                        </ul>
+                        <span
+                          className="help-text"
+                        >
+                          <span>
+                             
+                          </span>
+                        </span>
+                      </div>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12"
+              >
+                <p
+                  className="sub color-blue-storm text-left"
+                >
+                  ¿Cuánto vendes anualmente?
+                </p>
+                <div
+                  className="row no-gutters "
+                >
+                  <div
+                    className="col-lg-5 col-md-6 d-none d-md-block pt-2"
+                  >
+                    <span
+                      className="input2 color-gray"
+                    >
+                      Al año vendo
+                    </span>
+                  </div>
+                  <div
+                    className="col-lg-7 col-md-6 col-xs-12 col-sm-12"
+                  >
+                    <Select
+                      blue={true}
+                      disabled={false}
+                      formulario={
+                        Object {
+                          "dirty": false,
+                          "errors": Object {},
+                          "getFieldHelpers": [Function],
+                          "getFieldMeta": [Function],
+                          "getFieldProps": [Function],
+                          "handleBlur": [Function],
+                          "handleChange": [Function],
+                          "handleReset": [Function],
+                          "handleSubmit": [Function],
+                          "initialErrors": Object {},
+                          "initialStatus": undefined,
+                          "initialTouched": Object {},
+                          "initialValues": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                          "isSubmitting": false,
+                          "isValid": true,
+                          "isValidating": false,
+                          "registerField": [Function],
+                          "resetForm": [Function],
+                          "setErrors": [Function],
+                          "setFieldError": [Function],
+                          "setFieldTouched": [Function],
+                          "setFieldValue": [Function],
+                          "setFormikState": [Function],
+                          "setStatus": [Function],
+                          "setSubmitting": [Function],
+                          "setTouched": [Function],
+                          "setValues": [Function],
+                          "status": undefined,
+                          "submitCount": 0,
+                          "submitForm": [Function],
+                          "touched": Object {},
+                          "unregisterField": [Function],
+                          "validateField": [Function],
+                          "validateForm": [Function],
+                          "validateOnBlur": true,
+                          "validateOnChange": true,
+                          "validateOnMount": false,
+                          "values": Object {
+                            "aniosEmpresa": null,
+                            "monto": "6200000",
+                            "periodicidad": null,
+                            "plazo": null,
+                            "ventasAnio": Object {
+                              "label": "Más de $2 MDP",
+                              "value": 2,
+                            },
+                          },
+                        }
+                      }
+                      inverted={false}
+                      items={
+                        Array [
+                          Object {
+                            "label": "Menos de $2 MDP",
+                            "value": 1,
+                          },
+                          Object {
+                            "label": "Más de $2 MDP",
+                            "value": 2,
+                          },
+                        ]
+                      }
+                      label="Seleccione..."
+                      name="ventasAnio"
+                      optional={false}
+                      showAlwaysErrors={true}
+                      size="small"
+                    >
+                      <div
+                        className="custom-select"
+                      >
+                        <button
+                          className="svg-button-input-small arrow "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          <SvgChevron>
+                            <svg
+                              fill="none"
+                              height={22}
+                              viewBox="0 0 12 22"
+                              width={12}
+                            >
+                              <path
+                                d="M1.667 1.667L11 11l-9.333 9.333"
+                                stroke="#225AA7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                              />
+                            </svg>
+                          </SvgChevron>
+                        </button>
+                        <button
+                          className=" select-small-blue indicador "
+                          disabled={false}
+                          onClick={[Function]}
+                          tabIndex="0"
+                          type="button"
+                        >
+                          Más de $2 MDP
+                        </button>
+                        <ul
+                          className="select-items select-hide"
+                          role="menu"
+                        >
+                          <li
+                            key="1"
+                            role="none"
+                          >
+                            <button
+                              className="item "
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Menos de $2 MDP
+                            </button>
+                          </li>
+                          <li
+                            key="2"
+                            role="none"
+                          >
+                            <button
+                              className="item item-selected"
+                              onClick={[Function]}
+                              role="menuitem"
+                              tabIndex="-1"
+                              type="button"
+                            >
+                              Más de $2 MDP
+                            </button>
+                          </li>
+                        </ul>
+                        <span
+                          className="help-text"
+                        >
+                          <span>
+                             
+                          </span>
+                        </span>
+                      </div>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3"
+              >
+                <div
+                  className="center-first-button"
+                >
+                  <button
+                    className="btn-medium-secondary"
+                    type="button"
+                  >
+                    Retoma tu proceso
+                  </button>
+                </div>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3"
+              >
+                <div
+                  className="center-second-button"
+                >
+                  <button
+                    className="btn-medium"
+                    disabled={false}
+                    type="submit"
+                  >
+                    Simula tu crédito
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        className="svg-textura-right-top"
+      >
+        <SvgSegundaTextura>
+          <svg
+            fill="none"
+            height={225}
+            viewBox="0 0 190 225"
+            width={190}
+          >
+            <path
+              d="M145 140l31-31"
+              stroke="#338CBF"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M127 158l28-28"
+              stroke="#FFBE12"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M32.255 118l53.501-54.1"
+              stroke="#81C1EA"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M66.958 82.908L106 43.428"
+              stroke="#FFBE12"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M187 8.019l-58.786 59.414"
+              stroke="#225AA7"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M150.824 44.582L107.865 88M12 222l62-63M3 74l51.5-51.5"
+              stroke="#81C1EA"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M69 164l29-29"
+              stroke="#002A61"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+            <path
+              d="M37 40L74 3"
+              stroke="#DAE0E9"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+          </svg>
+        </SvgSegundaTextura>
+      </div>
+    </div>
+  </SelectorSimulador>
+</Provider>
+`;
