@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-
 import styles from './video-selector.module.scss';
 
 const VideoSelector = ({ color, sliderOptions }) => {
@@ -75,7 +74,7 @@ const VideoSelector = ({ color, sliderOptions }) => {
           </button>
           <button
             type="button"
-            className={`${styles.a} ${styles.next} ${styles.round} ${
+            className={`mr-2 ${styles.a} ${styles.next} ${styles.round} ${
               color === 'blue-storm' && styles['btn-blue-morning']
             }`}
             onClick={() => slideHandler('next')}
