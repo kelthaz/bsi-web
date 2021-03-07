@@ -6,3 +6,7 @@ configure({ adapter: new Adapter() });
 
 const spyScrollTo = jest.fn();
 Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
