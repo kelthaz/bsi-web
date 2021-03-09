@@ -21,7 +21,7 @@ spec:
     contextDir: /
     git:
       uri: '$https://10.26.168.19:20443/gms2/bsi-cr-pyme/front-web/bsi-cred-pyme-web.git'
-      ref: 'feature/devops-deploy-openshift'
+      ref: 'staging'
     sourceSecret: 
       name: 'gitlab-bancoppel'
     type: Git
