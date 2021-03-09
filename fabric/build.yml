@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: 'bsi-cred-pyme-web'
+  labels:
+    app: 'bsi-cred-pyme-web'
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'bsi-cred-pyme-web:latest'
+  postCommit: {}
+  resources:
+    limits:
+      cpu: 1200m
+      memory: 2Gi
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+  source:
+    contextDir: /
+    git:
+      uri: '$https://10.26.168.19:20443/gms2/bsi-cr-pyme/front-web/bsi-cred-pyme-web.git'
+      ref: 'staging'
+    sourceSecret: 
+      name: 'gitlab-bancoppel'
+    type: Git
+  strategy:
+    sourceStrategy:
+      env:
+        - name: GIT_SSL_NO_VERIFY
+          value: "true"
+        - name: NEXT_PUBLIC_API_BANCOPPEL_PYME_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: NEXT_PUBLIC_API_BANCOPPEL_PYME_HOST
+              name: cm-bsi-cred-pyme-web
+        - name: NEXT_PUBLIC_PYME_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: NEXT_PUBLIC_PYME_HOSTNAME
+              name: cm-bsi-cred-pyme-web
+        - name: NEXT_PUBLIC_CLAVE_SITIO
+          valueFrom:
+            secretKeyRef:
+              key: NEXT_PUBLIC_CLAVE_SITIO
+              name: sc-bsi-cred-pyme-web
+      from:
+        kind: DockerImage
+        name: "ubi8/nodejs-12"
+      type: Source
+  triggers:
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+status:
+  lastVersion: 0

@@ -15,7 +15,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
   const [analysisMessage, setAnalysisMessage] = useState([]);
   const [isCaptureComplete, setCaptureComplete] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [takePhotoStatus, setTakePhotoStatus] = useState('Tomar foto');
   const [isTakingPicture, setTakingPicture] = useState(false);
   const [pauseImage, setPauseImage] = useState(false);
 
@@ -116,24 +115,43 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-
-  const onCapture = async () => {
+  const captureFramesLoop = async () => {
     const frames = [];
-    setTakingPicture(true);
+    const pushFrame = (frame) => {
+      frames.push(frame);
+      if (frames.length > 3) {
+        frames.shift();
+      }
+    };
+    let takingPicture = true;
+    let countTimeout = 0;
     /* eslint-disable no-await-in-loop */
-    for (let index = 3; index > 0; index--) {
-      setTakePhotoStatus(index);
-      frames.push(cameraRef.current.onCapture());
+    while (takingPicture) {
+      const frame = cameraRef.current.onCapture();
+      pushFrame(frame);
+      const autoCaptureRes = await analyzeAutoCapture(frame);
       await sleep(500);
+      if (autoCaptureRes && frames.length === 3) {
+        return { autoCaptureRes, frames };
+      }
+      countTimeout += 1;
+      if (countTimeout === 15) {
+        takingPicture = false;
+      }
     }
     /* eslint-enable no-await-in-loop */
-    setPauseImage(true);
-    setTakePhotoStatus('Tomar foto');
+    return { autoCaptureRes: false };
+  };
+
+  const onCapture = async () => {
+
+    setTakingPicture(true);
+    const { autoCaptureRes, frames } = await captureFramesLoop();
     setTakingPicture(false);
-    const autoCaptureRes = await analyzeAutoCapture(frames[2]);
     if (autoCaptureRes) {
       checkForLiveness(frames);
     } else {
+      setAnalysisMessage(['Por favor, inténtelo de nuevo']);
       setPauseImage(false);
     }
   };
@@ -228,7 +246,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
           <div className="row">
             <div className="col-12 text-center mt-3">
               <button type="submit" className="btn-medium" onClick={() => onCapture()} disabled={isTakingPicture}>
-                { takePhotoStatus }
+                Tomar foto
               </button>
             </div>
           </div>
