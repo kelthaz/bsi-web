@@ -28,7 +28,7 @@ parameters:
   - name: SOURCE_REPOSITORY_REF
     description: The branch name for the application
     displayName: Source Branch
-    value: staging
+    value: "feature/devops-deploy-openshift"
     required: true
   - name: SOURCE_SECRET
     description: The source secret name 
