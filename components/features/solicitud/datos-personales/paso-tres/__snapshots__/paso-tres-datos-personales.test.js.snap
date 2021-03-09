@@ -1,0 +1,826 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <PasoTresDatosPersonales
+    sectores={
+      Array [
+        Object {
+          "id": 1,
+          "nombre": "SERVICIOS PROFESIONALES Y TÉCNICO",
+        },
+        Object {
+          "id": 2,
+          "nombre": "COMERCIO",
+        },
+        Object {
+          "id": 3,
+          "nombre": "SERVICIOS FINANCIEROS",
+        },
+        Object {
+          "id": 4,
+          "nombre": "CONSTRUCIÓN",
+        },
+        Object {
+          "id": 5,
+          "nombre": "RESTO INDUSTRIA",
+        },
+        Object {
+          "id": 6,
+          "nombre": "COMUNICACIONES Y TELECOMUNICACIONES",
+        },
+        Object {
+          "id": 7,
+          "nombre": "TRANSPORTE",
+        },
+        Object {
+          "id": 8,
+          "nombre": "HOTELES Y RESTAURANTES",
+        },
+        Object {
+          "id": 9,
+          "nombre": "INDUSTRIA AUTOMOTRIZ",
+        },
+        Object {
+          "id": 10,
+          "nombre": "INDUSTRIA QUIMICA Y FARMACÉUTICA",
+        },
+        Object {
+          "id": 11,
+          "nombre": "INDUSTRIA MATERIALES DE CONSTRUCCIÓN",
+        },
+        Object {
+          "id": 12,
+          "nombre": "INDUSTRIA TEXTIL Y DE CALZADO",
+        },
+        Object {
+          "id": 13,
+          "nombre": "SALUD",
+        },
+      ]
+    }
+    validate={true}
+  >
+    <div
+      className="contedor-fixed-tab"
+    >
+      <div
+        className="contedor-solicitud"
+      >
+        <div
+          className="container p-0"
+        >
+          <form
+            noValidate={true}
+            onSubmit={[Function]}
+          >
+            <h2
+              className="color-blue-storm"
+            >
+              ¡Anotado!
+            </h2>
+            <p
+              className="color-dark-gray sub"
+            >
+              <span>
+                ¿Cuál es el nombre comercial, sector y giro de tu negocio?
+              </span>
+            </p>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              >
+                <p
+                  className="input color-gray"
+                >
+                  El nombre comercial es
+                </p>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="uppercase"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="Nombre del negocio"
+                  maxlength={120}
+                  name="nombreEmpresa"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="text"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="nombreEmpresa"
+                      maxLength={120}
+                      name="nombreEmpresa"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="Nombre del negocio"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              >
+                <p
+                  className="input color-gray"
+                >
+                  el sector es de
+                </p>
+              </div>
+              <div
+                className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <Select
+                  blue={false}
+                  disabled={false}
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                    }
+                  }
+                  inverted={false}
+                  items={
+                    Array [
+                      Object {
+                        "label": "SERVICIOS PROFESIONALES Y TÉCNICO",
+                        "value": 1,
+                      },
+                      Object {
+                        "label": "COMERCIO",
+                        "value": 2,
+                      },
+                      Object {
+                        "label": "SERVICIOS FINANCIEROS",
+                        "value": 3,
+                      },
+                      Object {
+                        "label": "CONSTRUCIÓN",
+                        "value": 4,
+                      },
+                      Object {
+                        "label": "RESTO INDUSTRIA",
+                        "value": 5,
+                      },
+                      Object {
+                        "label": "COMUNICACIONES Y TELECOMUNICACIONES",
+                        "value": 6,
+                      },
+                      Object {
+                        "label": "TRANSPORTE",
+                        "value": 7,
+                      },
+                      Object {
+                        "label": "HOTELES Y RESTAURANTES",
+                        "value": 8,
+                      },
+                      Object {
+                        "label": "INDUSTRIA AUTOMOTRIZ",
+                        "value": 9,
+                      },
+                      Object {
+                        "label": "INDUSTRIA QUIMICA Y FARMACÉUTICA",
+                        "value": 10,
+                      },
+                      Object {
+                        "label": "INDUSTRIA MATERIALES DE CONSTRUCCIÓN",
+                        "value": 11,
+                      },
+                      Object {
+                        "label": "INDUSTRIA TEXTIL Y DE CALZADO",
+                        "value": 12,
+                      },
+                      Object {
+                        "label": "SALUD",
+                        "value": 13,
+                      },
+                    ]
+                  }
+                  label="Sector"
+                  name="sector"
+                  optional={false}
+                  showAlwaysErrors={true}
+                  size="big"
+                >
+                  <div
+                    className="custom-select"
+                  >
+                    <button
+                      className="svg-button-input-small arrow "
+                      disabled={false}
+                      onClick={[Function]}
+                      tabIndex="-1"
+                      type="button"
+                    >
+                      <SvgChevron>
+                        <svg
+                          fill="none"
+                          height={22}
+                          viewBox="0 0 12 22"
+                          width={12}
+                        >
+                          <path
+                            d="M1.667 1.667L11 11l-9.333 9.333"
+                            stroke="#225AA7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                          />
+                        </svg>
+                      </SvgChevron>
+                    </button>
+                    <button
+                      className="placeholder-color select-big indicador "
+                      disabled={false}
+                      onClick={[Function]}
+                      tabIndex="0"
+                      type="button"
+                    >
+                      Sector
+                    </button>
+                    <ul
+                      className="select-items select-hide"
+                      role="menu"
+                    >
+                      <li
+                        key="1"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          SERVICIOS PROFESIONALES Y TÉCNICO
+                        </button>
+                      </li>
+                      <li
+                        key="2"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          COMERCIO
+                        </button>
+                      </li>
+                      <li
+                        key="3"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          SERVICIOS FINANCIEROS
+                        </button>
+                      </li>
+                      <li
+                        key="4"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          CONSTRUCIÓN
+                        </button>
+                      </li>
+                      <li
+                        key="5"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          RESTO INDUSTRIA
+                        </button>
+                      </li>
+                      <li
+                        key="6"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          COMUNICACIONES Y TELECOMUNICACIONES
+                        </button>
+                      </li>
+                      <li
+                        key="7"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          TRANSPORTE
+                        </button>
+                      </li>
+                      <li
+                        key="8"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          HOTELES Y RESTAURANTES
+                        </button>
+                      </li>
+                      <li
+                        key="9"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          INDUSTRIA AUTOMOTRIZ
+                        </button>
+                      </li>
+                      <li
+                        key="10"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          INDUSTRIA QUIMICA Y FARMACÉUTICA
+                        </button>
+                      </li>
+                      <li
+                        key="11"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          INDUSTRIA MATERIALES DE CONSTRUCCIÓN
+                        </button>
+                      </li>
+                      <li
+                        key="12"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          INDUSTRIA TEXTIL Y DE CALZADO
+                        </button>
+                      </li>
+                      <li
+                        key="13"
+                        role="none"
+                      >
+                        <button
+                          className="item "
+                          onClick={[Function]}
+                          role="menuitem"
+                          tabIndex="-1"
+                          type="button"
+                        >
+                          SALUD
+                        </button>
+                      </li>
+                    </ul>
+                    <span
+                      className="help-text"
+                    >
+                      <span>
+                         
+                      </span>
+                    </span>
+                  </div>
+                </Select>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              >
+                <p
+                  className="input color-gray"
+                >
+                  y el giro es de
+                </p>
+              </div>
+              <div
+                className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <Select
+                  blue={false}
+                  disabled={true}
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "descripcionEmpresa": "",
+                        "giro": null,
+                        "nombreEmpresa": "",
+                        "sector": null,
+                      },
+                    }
+                  }
+                  inverted={false}
+                  items={Array []}
+                  label="Giro"
+                  name="giro"
+                  optional={false}
+                  showAlwaysErrors={true}
+                  size="big"
+                >
+                  <div
+                    className="custom-select"
+                  >
+                    <button
+                      className="svg-button-input-small arrow "
+                      disabled={true}
+                      onClick={[Function]}
+                      tabIndex="-1"
+                      type="button"
+                    >
+                      <SvgChevron>
+                        <svg
+                          fill="none"
+                          height={22}
+                          viewBox="0 0 12 22"
+                          width={12}
+                        >
+                          <path
+                            d="M1.667 1.667L11 11l-9.333 9.333"
+                            stroke="#225AA7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                          />
+                        </svg>
+                      </SvgChevron>
+                    </button>
+                    <button
+                      className="placeholder-color select-big indicador "
+                      disabled={true}
+                      onClick={[Function]}
+                      tabIndex="0"
+                      type="button"
+                    >
+                      Giro
+                    </button>
+                    <ul
+                      className="select-items select-hide"
+                      role="menu"
+                    />
+                    <span
+                      className="help-text"
+                    >
+                      <span>
+                         
+                      </span>
+                    </span>
+                  </div>
+                </Select>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <TextArea
+                format="textArea"
+                formulario={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "descripcionEmpresa": "",
+                      "giro": null,
+                      "nombreEmpresa": "",
+                      "sector": null,
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "descripcionEmpresa": "",
+                      "giro": null,
+                      "nombreEmpresa": "",
+                      "sector": null,
+                    },
+                  }
+                }
+                label="Platícanos un poco a qué se dedica tu negocio..."
+                maxlength={180}
+                name="descripcionEmpresa"
+                optional={false}
+              >
+                <div
+                  className="text-area-container"
+                >
+                  <div
+                    className="border-text-area false"
+                  >
+                    <textarea
+                      autoComplete="off"
+                      className="text-area"
+                      id="descripcionEmpresa"
+                      maxLength={180}
+                      name="descripcionEmpresa"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="Platícanos un poco a qué se dedica tu negocio..."
+                      tabIndex="0"
+                      value=""
+                    />
+                    <div
+                      className="resize-text-area"
+                    />
+                  </div>
+                  <span
+                    className="help-text"
+                  >
+                     
+                  </span>
+                </div>
+              </TextArea>
+            </div>
+            <div
+              className="flex-column-center-config"
+            >
+              <button
+                aria-label="Avanzar"
+                className="cicle-button-blue my-3"
+                disabled={true}
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </PasoTresDatosPersonales>
+  <ModalActualizar>
+    <Modal
+      closeable={true}
+      onClose={[Function]}
+      openModal={false}
+      setOpenModal={[Function]}
+    />
+  </ModalActualizar>
+</Provider>
+`;

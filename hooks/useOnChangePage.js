@@ -35,6 +35,7 @@ const useOnChangePage = (formulario, route, validacion, validation = () => true)
 
   useEffect(() => {
     if (changePage) {
+      console.log('chamge route', routePage);
       changeRoute(routePage, true);
     }
   }, [changePage]);

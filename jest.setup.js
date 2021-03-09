@@ -10,3 +10,5 @@ Object.defineProperty(global.window, 'scrollTo', { value: spyScrollTo });
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }));
+
+jest.mock('next/link', () => ({ children: Link }) => Link);

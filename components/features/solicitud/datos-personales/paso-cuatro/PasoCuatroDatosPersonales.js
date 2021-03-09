@@ -37,15 +37,18 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
   });
 
   const validateEmail = async () => {
-    if (!formulario.errors.correo) {
-      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo)
-        .then((resp) => resp.data.fraudRisk.split(' ')[0])
-        .catch(() => 801);
-      if (emailScore >= 800) {
-        formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
-        return false;
-      }
+    const emailExist = await EmailageRepositorio.postEmailScore(formulario.values.correo)
+      .then((resp) => {
+        const { fraudRisk, emailExists, domainExists } = resp.data;
+        const score = fraudRisk.split(' ')[0];
+        return !(score > 800 || emailExists === 'No' || domainExists === 'No');
+      })
+      .catch(() => false);
+    if (!emailExist) {
+      formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
+      return false;
     }
+
     return true;
   };
 

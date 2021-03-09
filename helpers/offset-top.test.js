@@ -2,7 +2,6 @@ import { mount } from 'enzyme';
 import offsetTop from './offsetTop';
 
 describe('Pruebas en el helper offsetTop', () => {
-
   beforeEach(() => {
     const div = document.createElement('div');
     div.setAttribute('id', 'container');

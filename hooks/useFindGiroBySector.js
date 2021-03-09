@@ -4,7 +4,6 @@ import SectoresRepositorio from '../services/simulador/sectores.repositorio';
 
 const useFindGiroBySector = (formulario, nameSector, nameGiro) => {
   const [itemsGiro, setItemsGiro] = useState([]);
-
   useEffect(() => {
     if (formulario.values[nameSector]) {
       const fetchData = async () => {
