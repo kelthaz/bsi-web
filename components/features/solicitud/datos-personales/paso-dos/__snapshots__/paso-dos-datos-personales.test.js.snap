@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente PasoDosDatosPersonales Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <PasoDosDatosPersonales
+    validate={false}
+  >
+    <div
+      className="contedor-fixed-tab"
+    >
+      <div
+        className="contedor-solicitud"
+      >
+        <div
+          className="container p-0"
+        >
+          <form
+            noValidate={true}
+            onSubmit={[Function]}
+          >
+            <h2
+              className="color-blue-storm text-overflow"
+            >
+              ¡Hola, 
+              JESUS
+              !
+            </h2>
+            <p
+              className="color-dark-gray sub"
+            >
+              Conozcámonos un poco más, ¿Qué tipo de persona eres?
+            </p>
+            <div
+              className="row my-3"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 pl-lg-5 pl-md-5 col-xs-12 mb-sm-2 mb-xs-2"
+              >
+                <button
+                  className="card-simple-white-svg card-button false"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <div>
+                    <SvgPersonaFisicaActividadFisica>
+                      <svg
+                        fill="none"
+                        height={48}
+                        viewBox="0 0 48 48"
+                        width={48}
+                      >
+                        <path
+                          d="M24.188 7.578a8.552 8.552 0 011.283 4.536c0 4.483-3.363 8.116-7.511 8.116-2.939 0-5.484-1.825-6.717-4.48"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                        <path
+                          d="M11.243 15.75a8.611 8.611 0 01-.795-3.635C10.448 7.632 13.811 4 17.96 4c2.594 0 4.88 1.419 6.228 3.58"
+                          stroke="#81C1EA"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                        <path
+                          d="M27.386 27.142a23.424 23.424 0 00-17.697 0c-3.45 1.416-6.622 3.708-6.752 7.36 0 0-1.626 6.745 16.728 3.506"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                        <path
+                          d="M32.384 31.257V27.94h6.946v3.316"
+                          stroke="#81C1EA"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                        <path
+                          d="M35.658 40.488c-.81 0-1.471-.662-1.471-1.472v-1.75c0-.809.662-1.47 1.471-1.47.81 0 1.472.661 1.472 1.47v1.75c0 .81-.662 1.472-1.472 1.472z"
+                          fill="#81C1EA"
+                        />
+                        <path
+                          d="M27.236 36.911h17.797"
+                          stroke="#81C1EA"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                        <path
+                          d="M42.746 44.682H28.971c-1.26 0-2.289-1.03-2.289-2.287v-8.13c0-1.258 1.03-2.29 2.29-2.29h13.774c1.258 0 2.29 1.03 2.29 2.29v8.127a2.298 2.298 0 01-2.29 2.29z"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.5}
+                        />
+                      </svg>
+                    </SvgPersonaFisicaActividadFisica>
+                  </div>
+                  <p
+                    className="px-md-5 px-lg-5"
+                  >
+                    Persona Física con Actividad Empresarial
+                  </p>
+                </button>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-5 pr-md-5"
+              >
+                <button
+                  className="card-simple-white-svg card-button false"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <div>
+                    <SvgPersonaMoral>
+                      <svg
+                        fill="none"
+                        height={48}
+                        viewBox="0 0 48 48"
+                        width={48}
+                      >
+                        <path
+                          d="M4 26.295V42.88c0 1.683 1.185 3.05 2.646 3.05h12.327"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.8}
+                        />
+                        <path
+                          d="M23.893 26.192V6.052C23.893 4.367 22.708 3 21.247 3H6.646C5.185 3 4 4.367 4 6.052v20.243"
+                          stroke="#81C1EA"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.8}
+                        />
+                        <path
+                          d="M43.357 36.347v6.533c0 1.685-1.185 3.052-2.646 3.052H19.48c-1.461-.003-2.646-1.37-2.646-3.055v-7.45"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.8}
+                        />
+                        <path
+                          d="M16.834 35.429v-6.185c0-1.686 1.185-3.052 2.646-3.052h21.234c1.46 0 2.645 1.366 2.645 3.052v7.103M7.85 10.155h5.134M7.85 15.582h5.134M7.85 21.01h5.134M7.85 26.439h5.134"
+                          stroke="#81C1EA"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.8}
+                        />
+                        <path
+                          d="M32.48 36.8h-3.916c-.926 0-1.679.866-1.679 1.937v7.192h7.272v-7.192c.003-1.07-.748-1.937-1.676-1.937z"
+                          stroke="#225AA7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeMiterlimit={10}
+                          strokeWidth={2.8}
+                        />
+                      </svg>
+                    </SvgPersonaMoral>
+                  </div>
+                  <p>
+                    Persona Moral
+                  </p>
+                </button>
+              </div>
+            </div>
+            <p
+              className="color-gray-dark sub"
+            >
+              <span>
+                ¿Eres persona física? ¡Adquiere tu crédito en 
+              </span>
+              <a
+                className="link"
+                href="https://www.bancoppel.com/ahorro_bcopp/cuenta_efectiva.html"
+                rel="noreferrer"
+                target="_blank"
+              >
+                BanCoppel Personas!
+              </a>
+            </p>
+            <div
+              className="flex-column-center-config"
+            >
+              <button
+                aria-label="Avanzar"
+                className="cicle-button-blue my-3"
+                disabled={false}
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </PasoDosDatosPersonales>
+  <ModalActualizar>
+    <Modal
+      closeable={true}
+      onClose={[Function]}
+      openModal={false}
+      setOpenModal={[Function]}
+    />
+  </ModalActualizar>
+</Provider>
+`;

@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <PasoCuatroDatosPersonales
+    validate={true}
+  >
+    <div
+      className="contedor-fixed-tab"
+    >
+      <div
+        className="contedor-solicitud"
+      >
+        <div
+          className="container p-0"
+        >
+          <form
+            noValidate={true}
+            onSubmit={[Function]}
+          >
+            <h2
+              className="color-blue-storm"
+            >
+              ¡Perfecto, 
+              JESUS
+              !
+            </h2>
+            <p
+              className="color-dark-gray sub position-relative"
+            >
+              <span>
+                Ahora, ¿cuál es tu número de teléfono celular y correo electrónico?
+              </span>
+              <Tooltip
+                message="Nos servirá para llamarte o enviarte mensajes de texto para dar seguimiento a tu solicitud del crédito."
+                position="bottom"
+              >
+                <span
+                  className="tooltip"
+                >
+                   
+                  <SvgInformation>
+                    <svg
+                      fill="none"
+                      height={18}
+                      viewBox="0 0 18 18"
+                      width={18}
+                    >
+                      <path
+                        d="M11.75 13.813a.687.687 0 00-.688-.688h-.687v-4.64a.86.86 0 00-.86-.86h-1.89a.687.687 0 100 1.375h.688v4.125h-.688a.687.687 0 100 1.375h3.438c.38 0 .687-.308.687-.688zM10.375 4.875a1.375 1.375 0 11-2.75 0 1.375 1.375 0 012.75 0z"
+                        fill="#338CBF"
+                      />
+                      <path
+                        clipRule="evenodd"
+                        d="M.75 9a8.25 8.25 0 1116.5 0A8.25 8.25 0 01.75 9zM9 2.125a6.875 6.875 0 100 13.75 6.875 6.875 0 000-13.75z"
+                        fill="#338CBF"
+                        fillRule="evenodd"
+                      />
+                    </svg>
+                  </SvgInformation>
+                </span>
+                <span
+                  className="tooltiptext position-bottom"
+                >
+                  Nos servirá para llamarte o enviarte mensajes de texto para dar seguimiento a tu solicitud del crédito.
+                </span>
+              </Tooltip>
+            </p>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              >
+                <p
+                  className="input color-gray"
+                >
+                  <span>
+                    Mi número es
+                  </span>
+                </p>
+              </div>
+              <div
+                className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="phone"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "celular": "",
+                        "correo": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "celular": "",
+                        "correo": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="55-9999-9999"
+                  maxlength={12}
+                  name="celular"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="tel"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="celular"
+                      maxLength={12}
+                      name="celular"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="55-9999-9999"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="tel"
+                      value=""
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-12"
+              >
+                <p
+                  className="input color-gray"
+                >
+                  y mi correo electrónico es
+                </p>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-12"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="email"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "celular": "",
+                        "correo": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "celular": "",
+                        "correo": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="ejemplo@mail.com"
+                  maxlength={100}
+                  name="correo"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="email"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="correo"
+                      maxLength={100}
+                      name="correo"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="ejemplo@mail.com"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="email"
+                      value=""
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+            </div>
+            <div
+              className="flex-column-center-config"
+            >
+              <button
+                aria-label="Avanzar"
+                className="cicle-button-blue my-3"
+                disabled={true}
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </PasoCuatroDatosPersonales>
+  <ModalActualizar>
+    <Modal
+      closeable={true}
+      onClose={[Function]}
+      openModal={false}
+      setOpenModal={[Function]}
+    />
+  </ModalActualizar>
+</Provider>
+`;

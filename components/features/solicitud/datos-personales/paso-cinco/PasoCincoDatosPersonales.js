@@ -14,6 +14,7 @@ import {
   regexRFCFisica,
   regexRFCMoral,
   regexWordBancoppel,
+  regexHyphen,
 } from '../../../../../constants/regex';
 import {
   longitudMaxima,
@@ -31,6 +32,7 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import LoginRepositorio from '../../../../../services/login/login.repositorio';
 import { AGRADECIMIENTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 import { MORAL } from '../../../../../constants/persona';
+import { AVISO_ROUTE } from '../../../../../constants/routes/publico/publico';
 
 const PasoCincoDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -66,7 +68,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
         .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
         .required(campoRequerido),
 
-      aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos),
+      aceptoTerminos: Yup.boolean().oneOf([true], aceptarTerminos).nullable(),
     }),
     onSubmit: (values) => {
       if (changePage) {
@@ -86,7 +88,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
     if (!changePage) {
       const data = {
         ...datosPersonales,
-        celular: datosPersonales.celular.replaceAll('-', ''),
+        celular: datosPersonales.celular.replace(regexHyphen, ''),
         tipoSociedad: datosPersonales.tipoSociedad?.label,
         sector: datosPersonales.sector.value,
         giro: datosPersonales.giro.value,
@@ -207,7 +209,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
                     Términos y Condiciones
                   </a>
                   <span>, (2) el </span>
-                  <Link href="/aviso-privacidad">
+                  <Link href={AVISO_ROUTE}>
                     <a className="link">Aviso de Privacidad</a>
                   </Link>
                   <span>

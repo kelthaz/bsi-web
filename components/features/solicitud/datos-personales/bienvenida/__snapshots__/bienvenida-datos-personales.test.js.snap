@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente BienvenidaDatosPersonales Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <BienvenidaDatosPersonales>
+    <div
+      className="contedor-fixed"
+    >
+      <div
+        className="contedor-solicitud"
+      >
+        <div
+          className="container p-0"
+        >
+          <h2
+            className="color-blue-storm"
+          >
+            ¡Te damos la bienvenida!
+          </h2>
+          <p
+            className="body2 color-gray-dark"
+          >
+            Nos da mucho gusto que inicies tu solicitud, no podemos esperar a escuchar qué grandes planes tienes para tu crédito.
+          </p>
+          <p
+            className="body2 color-gray-dark"
+          >
+            Antes de comenzar te confirmamos que la solicitud que estás por iniciar es por un crédito con las siguientes características:
+          </p>
+          <div
+            className="py-3"
+          >
+            <div
+              className="card-simple-border-blue-storm"
+            >
+              <ResultSimulador
+                color="storm"
+                dataSimulador={
+                  Object {
+                    "aniosEmpresa": Object {
+                      "label": "Menos de 2 años",
+                    },
+                    "monto": "6200000",
+                    "periodicidad": Object {
+                      "label": "Mensuales",
+                    },
+                    "plazo": Object {
+                      "label": "12 meses",
+                    },
+                    "ventasAnio": Object {
+                      "label": "Menos de $2 MDP",
+                    },
+                  }
+                }
+                resultSimulador={
+                  Object {
+                    "cat": "",
+                    "comisionApertura": "",
+                    "pago": "",
+                    "tasaMoratoria": "",
+                    "tasaOrdinaria": "",
+                  }
+                }
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="text-left order-md-1 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    >
+                      $6,200,000.00
+                    </h4>
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Monto solicitado
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-md-2 col-xs-6 col-sm-6 col-md-4 col-lg-3 "
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    >
+                       anual
+                    </h4>
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Tasa ordinaria
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-md-4 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    >
+                      12 meses
+                    </h4>
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Plazo del crédito
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-md-5  order-5 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    />
+                    <p
+                      className="body3 color-gray"
+                    >
+                      CAT
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-md-6 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    />
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Comisión por apertura
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-xs-4 order-md-7 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    >
+                      Mensual
+                    </h4>
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Esquema de pago
+                    </p>
+                  </div>
+                  <div
+                    className="text-left order-md-8 col-xs-6 col-sm-6 col-md-4 col-lg-3"
+                  >
+                    <h4
+                      className="color-blue-storm"
+                    />
+                    <p
+                      className="body3 color-gray"
+                    >
+                      Pagos 
+                      mensuales
+                    </p>
+                  </div>
+                </div>
+              </ResultSimulador>
+            </div>
+          </div>
+          <p
+            className="body2 color-gray-dark"
+          >
+            Si quieres cambiar el monto o las características de tu crédito da clic en “Cambia tu crédito”. Te recordamos que esta será la única ocasión en que podrás modificar el monto.
+          </p>
+          <div
+            className="row"
+          >
+            <div
+              className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3"
+            >
+              <div
+                className="center-first-button"
+              >
+                <button
+                  className="btn-big-inverted-secondary"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Cambia tu crédito
+                </button>
+              </div>
+            </div>
+            <div
+              className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3"
+            >
+              <div
+                className="center-second-button"
+              >
+                <button
+                  className="btn-big"
+                  onClick={[Function]}
+                  type="submit"
+                >
+                  Comienza tu solicitud
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </BienvenidaDatosPersonales>
+</Provider>
+`;

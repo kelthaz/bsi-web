@@ -1,0 +1,493 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse correctamente el componente 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <PasoUnoDatosPersonales
+    validate={false}
+  >
+    <div
+      className="contedor-fixed-tab"
+    >
+      <div
+        className="contedor-solicitud"
+      >
+        <div
+          className="container p-0"
+        >
+          <form
+            noValidate={true}
+            onSubmit={[Function]}
+          >
+            <h2
+              className="color-blue-storm"
+            >
+              Para comenzar
+            </h2>
+            <p
+              className="color-dark-gray sub"
+            >
+              Cuéntanos, ¿Cómo te llamas?
+            </p>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12 "
+              >
+                <p
+                  className="input color-gray"
+                >
+                  Mi nombre es
+                </p>
+              </div>
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="uppercase"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="Nombre"
+                  maxlength={60}
+                  name="primerNombre"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="text"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="primerNombre"
+                      maxLength={60}
+                      name="primerNombre"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="Nombre"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="text"
+                      value="JESUS"
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+              <div
+                className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="uppercase"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="Nombre"
+                  maxlength={60}
+                  name="segundoNombre"
+                  optional={true}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="text"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="segundoNombre"
+                      maxLength={60}
+                      name="segundoNombre"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="Nombre"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+            </div>
+            <div
+              className="row no-gutters"
+            >
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="uppercase"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="Apellido paterno"
+                  maxlength={60}
+                  name="primerApellido"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="text"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="primerApellido"
+                      maxLength={60}
+                      name="primerApellido"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="Apellido paterno"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="text"
+                      value="DAVID"
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+              <div
+                className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+              >
+                <TextField
+                  afterBlur={[Function]}
+                  capitalize={false}
+                  disabled={false}
+                  format="uppercase"
+                  formulario={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "getFieldHelpers": [Function],
+                      "getFieldMeta": [Function],
+                      "getFieldProps": [Function],
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialErrors": Object {},
+                      "initialStatus": undefined,
+                      "initialTouched": Object {},
+                      "initialValues": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": true,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validateOnMount": false,
+                      "values": Object {
+                        "primerApellido": "DAVID",
+                        "primerNombre": "JESUS",
+                        "segundoApellido": "",
+                        "segundoNombre": "",
+                      },
+                    }
+                  }
+                  inverted={false}
+                  label="Apellido materno"
+                  maxlength={60}
+                  name="segundoApellido"
+                  optional={false}
+                  paste={true}
+                  readonly={false}
+                  size="big"
+                  type="text"
+                  validation={false}
+                >
+                  <div
+                    className="group"
+                  >
+                    <input
+                      autoComplete="off"
+                      className="input-big  false "
+                      disabled={false}
+                      id="segundoApellido"
+                      maxLength={60}
+                      name="segundoApellido"
+                      onBeforeInput={[Function]}
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onPaste={[Function]}
+                      placeholder="Apellido materno"
+                      readOnly={false}
+                      tabIndex="0"
+                      type="text"
+                      value=""
+                    />
+                    <span
+                      className="help-text"
+                    >
+                       
+                    </span>
+                  </div>
+                </TextField>
+              </div>
+            </div>
+            <div
+              className="row no-gutters card-simple-blue-light text-md-center "
+            >
+              <p>
+                Favor de llenar los campos con los nombres y apellidos presentados en tu Identificación oficial INE
+              </p>
+            </div>
+            <div
+              className="flex-column-center-config"
+            >
+              <button
+                aria-label="Avanzar"
+                className="cicle-button-blue my-3"
+                disabled={false}
+                type="submit"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </PasoUnoDatosPersonales>
+  <ModalActualizar>
+    <Modal
+      closeable={true}
+      onClose={[Function]}
+      openModal={false}
+      setOpenModal={[Function]}
+    />
+  </ModalActualizar>
+</Provider>
+`;

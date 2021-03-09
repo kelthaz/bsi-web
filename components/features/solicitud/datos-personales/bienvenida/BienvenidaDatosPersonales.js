@@ -1,10 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import ResultSimulador from '../../../../core/simulador/ResultSimulador';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { GRAN_SALTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
+import { SIMULADOR_ROUTE } from '../../../../../constants/routes/publico/publico';
 
 const BienvenidaDatosPersonales = () => {
   const { dataSimulador, resultSimulador } = useSelector((state) => state.simulador);
@@ -46,11 +46,9 @@ const BienvenidaDatosPersonales = () => {
           <div className="row">
             <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3">
               <div className="center-first-button">
-                <Link href="/simulador">
-                  <button type="button" className="btn-big-inverted-secondary">
-                    Cambia tu crédito
-                  </button>
-                </Link>
+                <button type="button" className="btn-big-inverted-secondary" onClick={() => push(SIMULADOR_ROUTE)}>
+                  Cambia tu crédito
+                </button>
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
