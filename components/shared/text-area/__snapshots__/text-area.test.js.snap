@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente TextArea Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="text-area-container"
+>
+  <div
+    className="border-text-area false"
+  >
+    <textarea
+      autoComplete="off"
+      className="text-area"
+      id="tellUs"
+      maxLength={180}
+      name="tellUs"
+      onBeforeInput={[Function]}
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Cuéntanos tus dudas..."
+      tabIndex="0"
+      value=""
+    />
+    <div
+      className="resize-text-area"
+    />
+  </div>
+  <span
+    className="help-text"
+  >
+     
+  </span>
+</div>
+`;

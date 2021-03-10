@@ -105,9 +105,10 @@ const PasoUnoDatosEmpresa = ({ validate }) => {
               <TextArea
                 name="descripcionCredito"
                 maxlength={180}
-                formulario={formulario}
                 label="Platícanos un poco más sobre qué harás con este crédito..."
                 format="textArea"
+                {...formulario.getFieldMeta('descripcionCredito')}
+                {...formulario.getFieldHelpers('descripcionCredito')}
               />
             </div>
             <div className="flex-column-center-config">

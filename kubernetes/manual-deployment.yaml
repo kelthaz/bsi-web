@@ -62,17 +62,6 @@ objects:
       NEXT_PUBLIC_CLAVE_SITIO: NkxmdlZpc2FBQUFBQURGWTRPanktMUgtOFlnVGRKYW1ERl8xamNGeQ==
 
   - apiVersion: v1
-    kind: Secret
-    metadata:
-      labels:
-        app: bsi-cred-pyme-web
-      name: gitlab-bancoppel
-    type: kubernetes.io/basic-auth
-    data:
-      password: WWVBdWk5bk0qb28=
-      username: ZW5yaXF1ZWh2YXJnYXM=
-
-  - apiVersion: v1
     kind: ImageStream
     metadata:
       name: '${NAME}'

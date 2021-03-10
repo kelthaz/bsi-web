@@ -170,10 +170,11 @@ const Ayuda = ({ accordionItems }) => {
               <div className={`col-12 ${styles['textarea-questions']}`}>
                 <TextArea
                   name="tellUs"
-                  formulario={formulario}
                   label="Cuéntanos tus dudas..."
                   maxlength={180}
                   format="textArea"
+                  {...formulario.getFieldMeta('tellUs')}
+                  {...formulario.getFieldHelpers('tellUs')}
                 />
               </div>
             </div>
