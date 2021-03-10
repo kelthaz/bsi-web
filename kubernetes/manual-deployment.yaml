@@ -147,10 +147,10 @@ objects:
                   protocol: TCP
               resources: 
                 limits:
-                  cpu: 1200m
+                  cpu: 1000m
                   memory: 2Gi
                 requests:
-                  cpu: 1000m
+                  cpu: 500m
                   memory: 1Gi
         metadata:
           labels:
