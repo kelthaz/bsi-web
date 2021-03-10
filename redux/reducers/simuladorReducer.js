@@ -3,7 +3,7 @@ import * as types from '../types/types';
 const initialState = {
   showResult: false,
   dataSimulador: {
-    monto: '6200000',
+    monto: 6200000,
     plazo: null,
     periodicidad: null,
     aniosEmpresa: null,

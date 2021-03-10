@@ -50,7 +50,7 @@ exports[`Pruebas en el componente BienvenidaDatosPersonales Debe de mostrarse co
                     "aniosEmpresa": Object {
                       "label": "Menos de 2 años",
                     },
-                    "monto": "6200000",
+                    "monto": 6200000,
                     "periodicidad": Object {
                       "label": "Mensuales",
                     },

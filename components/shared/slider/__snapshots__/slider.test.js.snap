@@ -9,15 +9,16 @@ exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el c
     max={10}
     min={0}
     name="monto"
-    onChange={[Function]}
+    onBlur={[MockFunction]}
+    onChange={[MockFunction]}
     step={1}
     style={
       Object {
-        "background": "linear-gradient(to right, #81c1ea 10% , #338cbf 20%, #225aa7 30%, #dae0e9 30%",
+        "background": "linear-gradient(to right, #81c1ea 2166666.6666666665% , #338cbf 4333333.333333333%, #225aa7 6500000%, #dae0e9 6500000%",
       }
     }
     type="range"
-    value={3}
+    value={650000}
   />
 </div>
 `;
