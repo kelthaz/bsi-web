@@ -179,9 +179,10 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
               <TextArea
                 name="descripcionEmpresa"
                 maxlength={180}
-                formulario={formulario}
                 label="Platícanos un poco a qué se dedica tu negocio..."
                 format="textArea"
+                {...formulario.getFieldMeta('descripcionEmpresa')}
+                {...formulario.getFieldHelpers('descripcionEmpresa')}
               />
             </div>
 

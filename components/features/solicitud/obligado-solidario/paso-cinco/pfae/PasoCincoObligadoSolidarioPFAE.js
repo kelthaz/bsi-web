@@ -176,21 +176,23 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                 <div className="row no-gutters">
                   <TextArea
                     name={`inmueblesPropiosSinGravamen[${index}].datosEscritura`}
-                    formulario={formulario}
                     label="Utiliza este espacio para platicarnos sobre el número de escritura pública, el nombre
                             y número del Notario Público que lo registró, la fecha de registro y el nombre del vendedor."
                     maxlength={300}
                     format="textArea"
+                    {...formulario.getFieldMeta(`inmueblesPropiosSinGravamen[${index}].datosEscritura`)}
+                    {...formulario.getFieldHelpers(`inmueblesPropiosSinGravamen[${index}].datosEscritura`)}
                   />
                 </div>
                 <p className="color-dark-gray sub">Escribe el número de folio mercantil</p>
                 <div className="row no-gutters">
                   <TextArea
                     name={`inmueblesPropiosSinGravamen[${index}].numeroFolioMercantil`}
-                    formulario={formulario}
                     label="Utiliza este espacio para escribir el número de folio mercantil (libro, secciones y fojas)."
                     maxlength={50}
                     format="textArea"
+                    {...formulario.getFieldMeta(`inmueblesPropiosSinGravamen[${index}].numeroFolioMercantil`)}
+                    {...formulario.getFieldHelpers(`inmueblesPropiosSinGravamen[${index}].numeroFolioMercantil`)}
                   />
                 </div>
                 <p className="color-dark-gray sub">Escribe el valor aproximado </p>

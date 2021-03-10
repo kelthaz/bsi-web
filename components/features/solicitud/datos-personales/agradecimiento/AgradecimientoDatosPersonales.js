@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SvgOk from '../../../../svgs/SvgOk';
@@ -25,11 +24,6 @@ const AgradecimientoDatosPersonales = () => {
             <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center mt-4">
               <SvgOk />
             </div>
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-empresa/cuenta-activa">
-              <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>avanzar temporal</span>
-              </button>
-            </Link>
           </div>
         </div>
       </div>
