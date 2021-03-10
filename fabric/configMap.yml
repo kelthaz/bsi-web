@@ -11,6 +11,3 @@ data:
     # ===================================================================
     # Puerto por defecto donde escucha el servidor
     # server.port=8081
-  NEXT_PUBLIC_API_BANCOPPEL_PYME_HOSTNAME: bsi-cred-pyme-service-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com
-  NEXT_PUBLIC_API_BANCOPPEL_PYME_HOST: https://bsi-cred-pyme-service-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com/api
-  NEXT_PUBLIC_PYME_HOSTNAME: http://bsi-cred-pyme-web-bsi-cr-pyme-web-stg.obe8.bancoppel-dev.openshiftapps.com/api/proxy
