@@ -399,3 +399,21 @@
     filter: grayscale(100%);
   }
 }
+
+.card-simple-blue-sky {
+  background-color: $blue-sky;
+  border-radius: 16px;
+  color: $white;
+  height: 100px;
+  position: relative;
+  width: 400px;
+}
+
+.card-simple-blue-morning {
+  background-color: $blue-morning;
+  border-radius: 16px;
+  color: $white;
+  height: 100px;
+  position: relative;
+  width: 400px;
+}

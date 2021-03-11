@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import IndividualVideo from '../../../../shared/back-office-video/BackOfficeVideo';
 import ProgressBar from '../../../../shared/progressbar/ProgressBar';
 import NextStepsTable from '../../../../shared/next-steps-table/NextStepsTable';
+import CardBackOffices from '../../../../shared/back-office-card/BackOfficeCard';
 
 const pruebaComponentes = () => {
   const formulario = useFormik({});
@@ -27,6 +28,18 @@ const pruebaComponentes = () => {
               </div>
               <div className="mt-4 col-md-12 col-xs-12">
                 <NextStepsTable />
+              </div>
+
+              <div className="ml-5">
+                <CardBackOffices title="Validación de expediente" subTitle="Siguiente paso" />
+              </div>
+              <div className="ml-5">
+                <CardBackOffices
+                  title="$1,500,000.00"
+                  subTitle="Monto autorizado"
+                  haveButton={false}
+                  iconoAgendar={false}
+                />
               </div>
             </div>
           </form>
