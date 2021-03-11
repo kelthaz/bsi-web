@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import PropTypes from 'prop-types';
 import SvgAgendarCita from '../../svgs/SvgAgendarCita';
 import SvgListCheckBackOffice from '../../svgs/SvgListCheckBackOffice';
 import styles from './back-office-card.module.scss';
 
 const BackOfficeCard = ({ iconoAgendar, title, subTitle, haveButton }) => (
-  <div className={`row ${iconoAgendar === true ? styles.card : styles.card2}`}>
+  <div className={`row ${iconoAgendar === true ? 'card-simple-blue-sky' : 'card-simple-blue-morning'}`}>
     <div className="col-2 mt-4">{iconoAgendar === true ? <SvgAgendarCita /> : <SvgListCheckBackOffice />}</div>
     <div className="col-7 mt-4 pr-0 pl-1">
       <h4 className="body1">{title}</h4>
