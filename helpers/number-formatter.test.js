@@ -1,9 +1,9 @@
 import numberFormatter from './numberFormatter';
 
-describe('Pruebas para el helper de numberFormatter', () => {
-  it('Debe de mostrar el number formatter', () => {
+describe('Pruebas en el helper de numberFormatter', () => {
+  test('Debe de mostrar el number formatter', () => {
     // arrange
-    const numero = '123';
+    const numero = '123abc';
     const numeroEsperado = '123';
     // act
     const actual = numberFormatter(numero);

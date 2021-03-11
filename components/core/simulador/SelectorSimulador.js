@@ -103,13 +103,19 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
               <p>
                 <span className="input2 color-gray only-lg-inline">Necesito </span>
                 <span className={`input2 color-blue-night ${styles['border-bottom-gray']}`}>
-                  {mexicanWeightFormatter(formulario.values.monto)}
+                  {mexicanWeightFormatter(formulario.values.monto.toString())}
                 </span>
               </p>
             </div>
 
             <div className="pb-4">
-              <Slider name="monto" formulario={formulario} min={min.valor} max={max.valor} step={step.valor} />
+              <Slider
+                name="monto"
+                min={min.valor}
+                max={max.valor}
+                step={step.valor}
+                {...formulario.getFieldProps('monto')}
+              />
             </div>
 
             <div className="row">
