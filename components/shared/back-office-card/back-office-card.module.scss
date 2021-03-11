@@ -1,0 +1,26 @@
+@import '../../../styles/scss/modules/var';
+@import '../../../styles/scss/modules/mixins';
+
+.card {
+  background-color: $blue-sky;
+  border-radius: 16px;
+  color: $white;
+  height: 100px;
+  position: relative;
+  width: 400px;
+}
+
+.card2 {
+  background-color: $blue-morning;
+  border-radius: 16px;
+  color: $white;
+  height: 100px;
+  position: relative;
+  width: 400px;
+}
+
+.button {
+  position: absolute;
+  right: 45px;
+  top: 10px;
+}
