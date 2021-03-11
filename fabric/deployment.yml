@@ -23,9 +23,13 @@ spec:
             requests:
               cpu: 1000m
               memory: 1Gi
-    metadata:
-      labels:
-        app: 'bsi-cred-pyme-web'
+          volumeMounts:
+          - name: bsi-cred-pyme-web-config
+            mountPath: /deployments/config
+        volumes:
+        - name: bsi-cred-pyme-web-config
+          configMap:
+            name: bsi-cred-pyme-web
   replicas: 1
   selector:
     app: 'bsi-cred-pyme-web'
