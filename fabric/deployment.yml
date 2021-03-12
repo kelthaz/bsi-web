@@ -29,10 +29,10 @@ spec:
           volumeMounts:
           - name: bsi-cred-pyme-web-config
             mountPath: /deployments/config
-        volumes:
-        - name: bsi-cred-pyme-web-config
-          configMap:
-            name: bsi-cred-pyme-web
+      volumes:
+      - name: bsi-cred-pyme-web-config
+        configMap:
+          name: bsi-cred-pyme-web
   replicas: 1
   selector:
     app: 'bsi-cred-pyme-web'
