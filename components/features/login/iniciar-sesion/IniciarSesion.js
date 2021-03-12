@@ -65,20 +65,22 @@ const IniciarSesion = () => {
           name="rfc"
           format="email"
           maxlength={50}
-          formulario={formulario}
           type="text"
           size="small"
           label="Usuario"
+          {...formulario.getFieldMeta('rfc')}
+          {...formulario.getFieldHelpers('rfc')}
         />
         <TextField
           name="contrasena"
           paste={false}
           format="passwordspace"
           maxlength={20}
-          formulario={formulario}
           type="password"
           size="small"
           label="Contraseña"
+          {...formulario.getFieldMeta('contrasena')}
+          {...formulario.getFieldHelpers('contrasena')}
         />
         <div className="py-3">
           <CheckBox name="mantenerSesion" formulario={formulario}>

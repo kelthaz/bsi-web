@@ -142,27 +142,16 @@ const PasoCincoDatosPersonales = ({ validate }) => {
                 )}
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                {datosPersonales.tipoPersona === MORAL ? (
-                  <TextField
-                    name="rfc"
-                    format="rfcformatter"
-                    maxlength={12}
-                    formulario={formulario}
-                    type="text"
-                    size="big"
-                    label="TLMF160693H17"
-                  />
-                ) : (
-                  <TextField
-                    name="rfc"
-                    format="rfcformatter"
-                    maxlength={13}
-                    formulario={formulario}
-                    type="text"
-                    size="big"
-                    label="TLMF160693H17"
-                  />
-                )}
+                <TextField
+                  name="rfc"
+                  format="rfcformatter"
+                  maxlength={datosPersonales.tipoPersona === MORAL ? 12 : 13}
+                  type="text"
+                  size="big"
+                  label="TLMF160693H17"
+                  {...formulario.getFieldMeta('rfc')}
+                  {...formulario.getFieldHelpers('rfc')}
+                />
               </div>
               <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 ">
                 <p className="input color-gray">Mi contraseña será</p>
@@ -173,10 +162,11 @@ const PasoCincoDatosPersonales = ({ validate }) => {
                   paste={false}
                   format="passwordspace"
                   maxlength={20}
-                  formulario={formulario}
                   type="password"
                   size="big"
                   label="Contraseña"
+                  {...formulario.getFieldMeta('contrasena')}
+                  {...formulario.getFieldHelpers('contrasena')}
                 />
               </div>
 
@@ -192,11 +182,12 @@ const PasoCincoDatosPersonales = ({ validate }) => {
                   name="confirmarContrasena"
                   format="passwordspace"
                   paste={false}
-                  formulario={formulario}
                   maxlength={20}
                   type="password"
                   size="big"
                   label="Contraseña"
+                  {...formulario.getFieldMeta('confirmarContrasena')}
+                  {...formulario.getFieldHelpers('confirmarContrasena')}
                 />
               </div>
             </div>

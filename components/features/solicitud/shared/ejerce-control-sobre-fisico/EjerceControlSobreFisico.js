@@ -69,10 +69,11 @@ const EjerceControlSobreFisico = ({
                 format="uppercase"
                 name={`${nameControlados}[${index}].primerNombre`}
                 maxlength={60}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Nombre"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].primerNombre`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].primerNombre`)}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -80,10 +81,11 @@ const EjerceControlSobreFisico = ({
                 format="uppercase"
                 maxlength={60}
                 name={`${nameControlados}[${index}].segundoNombre`}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="2º Nombre"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].segundoNombre`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].segundoNombre`)}
               />
             </div>
           </div>
@@ -93,21 +95,23 @@ const EjerceControlSobreFisico = ({
                 format="uppercase"
                 name={`${nameControlados}[${index}].primerApellido`}
                 maxlength={60}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Apellido paterno"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].primerApellido`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].primerApellido`)}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <TextField
+                name={`${nameControlados}[${index}].segundoApellido`}
                 format="uppercase"
                 maxlength={60}
-                name={`${nameControlados}[${index}].segundoApellido`}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Apellido materno"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].segundoApellido`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].segundoApellido`)}
               />
             </div>
           </div>
@@ -117,13 +121,14 @@ const EjerceControlSobreFisico = ({
             </div>
             <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
               <TextField
-                format="rfcformatter"
                 name={`${nameControlados}[${index}].rfc`}
+                format="rfcformatter"
                 maxlength={60}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Ej. TLF280693H17"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].rfc`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].rfc`)}
               />
             </div>
           </div>

@@ -129,37 +129,40 @@ const Ayuda = ({ accordionItems }) => {
                 <TextField
                   name="name"
                   format="uppercase"
-                  formulario={formulario}
                   size="small"
                   capitalize
                   label="Nombre"
                   type="text"
                   maxlength={60}
                   inverted
+                  {...formulario.getFieldMeta('name')}
+                  {...formulario.getFieldHelpers('name')}
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">
                 <TextField
                   name="email"
-                  formulario={formulario}
                   size="small"
                   label="Correo electrónico"
                   type="email"
                   format="email"
                   maxlength={60}
                   inverted
+                  {...formulario.getFieldMeta('email')}
+                  {...formulario.getFieldHelpers('email')}
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">
                 <TextField
                   name="phone"
                   format="phone"
-                  formulario={formulario}
                   size="small"
                   label="Número de teléfono"
                   type="tel"
                   inverted
                   maxlength={12}
+                  {...formulario.getFieldMeta('phone')}
+                  {...formulario.getFieldHelpers('phone')}
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">

@@ -94,58 +94,12 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                 className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="phone"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="55-9999-9999"
                   maxlength={12}
@@ -153,16 +107,20 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="tel"
-                  validation={false}
+                  value=""
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="celular"
                       maxLength={12}
@@ -170,7 +128,6 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="55-9999-9999"
@@ -179,9 +136,7 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                       type="tel"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>
@@ -208,58 +163,12 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                 className="col-12"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="email"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="ejemplo@mail.com"
                   maxlength={100}
@@ -267,16 +176,20 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="email"
-                  validation={false}
+                  value=""
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="correo"
                       maxLength={100}
@@ -284,7 +197,6 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="ejemplo@mail.com"
@@ -293,9 +205,7 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                       type="email"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>

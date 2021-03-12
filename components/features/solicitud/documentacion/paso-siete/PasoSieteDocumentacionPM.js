@@ -84,11 +84,12 @@ const PasoSieteDocumentacionPM = ({ validate }) => {
                 <div className="col-md-9 pl-3">
                   <TextField
                     name="recursoPago"
-                    formulario={formulario}
                     type="text"
                     size="small"
                     label="Recurso de pago"
                     maxlength={50}
+                    {...formulario.getFieldMeta('recursoPago')}
+                    {...formulario.getFieldHelpers('recursoPago')}
                   />
                 </div>
               </div>

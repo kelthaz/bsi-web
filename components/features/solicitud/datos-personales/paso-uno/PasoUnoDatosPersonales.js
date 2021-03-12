@@ -53,13 +53,14 @@ const PasoUnoDatosPersonales = ({ validate }) => {
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  format="uppercase"
                   name="primerNombre"
+                  format="uppercase"
                   maxlength={60}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Nombre"
+                  {...formulario.getFieldMeta('primerNombre')}
+                  {...formulario.getFieldHelpers('primerNombre')}
                 />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -67,35 +68,38 @@ const PasoUnoDatosPersonales = ({ validate }) => {
                   name="segundoNombre"
                   format="uppercase"
                   maxlength={60}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Nombre"
                   optional
+                  {...formulario.getFieldMeta('segundoNombre')}
+                  {...formulario.getFieldHelpers('segundoNombre')}
                 />
               </div>
             </div>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  format="uppercase"
                   name="primerApellido"
+                  format="uppercase"
                   maxlength={60}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Apellido paterno"
+                  {...formulario.getFieldMeta('primerApellido')}
+                  {...formulario.getFieldHelpers('primerApellido')}
                 />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <TextField
+                  name="segundoApellido"
                   format="uppercase"
                   maxlength={60}
-                  name="segundoApellido"
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Apellido materno"
+                  {...formulario.getFieldMeta('segundoApellido')}
+                  {...formulario.getFieldHelpers('segundoApellido')}
                 />
               </div>
             </div>

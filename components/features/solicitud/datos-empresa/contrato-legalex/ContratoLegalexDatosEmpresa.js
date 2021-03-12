@@ -212,120 +212,131 @@ const ContratoLegalexDatosEmpresa = () => {
                         <TextField
                           name="nombreSolicitante"
                           maxlength={18}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
                           disabled
+                          {...formulario.getFieldMeta('nombreSolicitante')}
+                          {...formulario.getFieldHelpers('nombreSolicitante')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="rfc"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="RFC"
                           disabled
+                          {...formulario.getFieldMeta('rfc')}
+                          {...formulario.getFieldHelpers('rfc')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="fechaNacimiento"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Fecha de Nacimiento/Constitución:"
                           disabled
+                          {...formulario.getFieldMeta('fechaNacimiento')}
+                          {...formulario.getFieldHelpers('fechaNacimiento')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="domicilio"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Domicilio"
                           disabled
+                          {...formulario.getFieldMeta('domicilio')}
+                          {...formulario.getFieldHelpers('domicilio')}
                         />
                       </div>
                       <div className="col-md-3 col-xs-12">
                         <TextField
                           name="numeroExterior"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="No. Exterior"
                           disabled
+                          {...formulario.getFieldMeta('numeroExterior')}
+                          {...formulario.getFieldHelpers('numeroExterior')}
                         />
                       </div>
                       <div className="col-md-3 col-xs-12">
                         <TextField
                           name="numeroInterior"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="No. Interior"
                           disabled
+                          {...formulario.getFieldMeta('numeroInterior')}
+                          {...formulario.getFieldHelpers('numeroInterior')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="colonia"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Colonia"
                           disabled
+                          {...formulario.getFieldMeta('colonia')}
+                          {...formulario.getFieldHelpers('colonia')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="alcaldia"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Alcaldía/Municipio"
                           disabled
+                          {...formulario.getFieldMeta('alcaldia')}
+                          {...formulario.getFieldHelpers('alcaldia')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="codigoPostal"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Código Postal"
                           disabled
+                          {...formulario.getFieldMeta('codigoPostal')}
+                          {...formulario.getFieldHelpers('codigoPostal')}
                         />
                       </div>
                       <div className="col-md-6 col-xs-12">
                         <TextField
                           name="estado"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Estado"
                           disabled
+                          {...formulario.getFieldMeta('estado')}
+                          {...formulario.getFieldHelpers('estado')}
                         />
                       </div>
                       <div className="col-md-12 col-xs-12">
                         <TextField
                           name="telefono"
-                          formulario={formulario}
                           type="tel"
                           size="small"
                           label="Teléfono"
                           format="phone"
+                          {...formulario.getFieldMeta('telefono')}
+                          {...formulario.getFieldHelpers('telefono')}
                           maxlength={12}
                           disabled
                         />
@@ -334,22 +345,24 @@ const ContratoLegalexDatosEmpresa = () => {
                         <TextField
                           name="representanteLegal"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Representante legal (solo Persona Moral):"
                           disabled
+                          {...formulario.getFieldMeta('representanteLegal')}
+                          {...formulario.getFieldHelpers('representanteLegal')}
                         />
                       </div>
                       <div className="col-md-12 col-xs-12">
                         <TextField
                           name="fechaAutorizacion"
                           maxlength={12}
-                          formulario={formulario}
                           type="text"
                           size="small"
                           label="Fecha en que se autoriza la consulta:"
                           disabled
+                          {...formulario.getFieldMeta('fechaAutorizacion')}
+                          {...formulario.getFieldHelpers('fechaAutorizacion')}
                         />
                       </div>
                     </div>

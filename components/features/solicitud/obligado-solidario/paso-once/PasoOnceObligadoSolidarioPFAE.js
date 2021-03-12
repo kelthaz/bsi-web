@@ -93,12 +93,13 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
               </div>
               <div className="d-none d-sm-block col-md-3 col-xs-12 px-md-0">
                 <TextField
-                  maxlength={4}
                   name="tarjetaCreditoTerminacion"
-                  formulario={formulario}
+                  maxlength={4}
                   type="text"
                   size="big"
                   label="1234"
+                  {...formulario.getFieldMeta('tarjetaCreditoTerminacion')}
+                  {...formulario.getFieldHelpers('tarjetaCreditoTerminacion')}
                 />
               </div>
               <div className="col-md-2 col-xs-4 pl-3">
@@ -110,12 +111,13 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
             <div className="row">
               <div className="d-block d-sm-none col-xs-12 px-md-0 mt-3">
                 <TextField
-                  maxlength={4}
                   name="tarjetaCreditoTerminacion"
-                  formulario={formulario}
+                  maxlength={4}
                   type="text"
                   size="small"
                   label="Terminación"
+                  {...formulario.getFieldMeta('tarjetaCreditoTerminacion')}
+                  {...formulario.getFieldHelpers('tarjetaCreditoTerminacion')}
                 />
               </div>
             </div>

@@ -56,10 +56,11 @@ const PasoDosObligadoSolidarioPFAE = ({ validate }) => {
                     name="rfc"
                     format="rfcformatter"
                     maxlength={13}
-                    formulario={formulario}
                     type="text"
                     size="big"
                     label="Ej. TLF280693H17"
+                    {...formulario.getFieldMeta('rfc')}
+                    {...formulario.getFieldHelpers('rfc')}
                   />
                 </div>
                 <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
@@ -70,10 +71,11 @@ const PasoDosObligadoSolidarioPFAE = ({ validate }) => {
                     name="curp"
                     format="rfcformatter"
                     maxlength={18}
-                    formulario={formulario}
                     type="text"
                     size="big"
                     label="Ej. TLF280693HVZJNR03"
+                    {...formulario.getFieldMeta('curp')}
+                    {...formulario.getFieldHelpers('curp')}
                   />
                 </div>
               </div>

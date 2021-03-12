@@ -76,12 +76,13 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
                   name="celular"
-                  formulario={formulario}
                   type="tel"
                   size="big"
                   label="55-9999-9999"
                   format="phone"
                   maxlength={12}
+                  {...formulario.getFieldMeta('celular')}
+                  {...formulario.getFieldHelpers('celular')}
                 />
               </div>
             </div>
@@ -97,11 +98,12 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
                 <TextField
                   maxlength={100}
                   name="correo"
-                  formulario={formulario}
                   type="email"
                   size="big"
                   label="ejemplo@mail.com"
                   format="email"
+                  {...formulario.getFieldMeta('correo')}
+                  {...formulario.getFieldHelpers('correo')}
                 />
               </div>
             </div>

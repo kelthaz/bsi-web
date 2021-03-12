@@ -112,10 +112,11 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                     name="primerNombre"
                     format="uppercase"
                     maxlength={12}
-                    formulario={formulario}
                     type="text"
                     size="big"
                     label="Nombre"
+                    {...formulario.getFieldMeta('primerNombre')}
+                    {...formulario.getFieldHelpers('primerNombre')}
                   />
                 </div>
                 <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 ">
@@ -123,11 +124,12 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                     name="segundoNombre"
                     format="uppercase"
                     maxlength={60}
-                    formulario={formulario}
                     type="text"
                     size="big"
                     label="Nombre"
                     optional
+                    {...formulario.getFieldMeta('segundoNombre')}
+                    {...formulario.getFieldHelpers('segundoNombre')}
                   />
                 </div>
                 <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 ">
@@ -135,21 +137,23 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                     name="primerApellido"
                     format="uppercase"
                     maxlength={20}
-                    formulario={formulario}
                     type="text"
                     size="big"
                     label="Apellido paterno"
+                    {...formulario.getFieldMeta('primerApellido')}
+                    {...formulario.getFieldHelpers('primerApellido')}
                   />
                 </div>
                 <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
                     name="segundoApellido"
                     format="uppercase"
-                    formulario={formulario}
                     maxlength={20}
                     type="text"
                     size="big"
                     label="Apellido materno"
+                    {...formulario.getFieldMeta('segundoApellido')}
+                    {...formulario.getFieldHelpers('segundoApellido')}
                   />
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
@@ -158,11 +162,13 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                 <div className="col-lg-6 col-md-6 col-xs-12 ">
                   <TextField
                     name="correo"
-                    formulario={formulario}
                     size="big"
                     label="correo@mail.com"
+                    maxlength={60}
                     type="email"
                     format="email"
+                    {...formulario.getFieldMeta('correo')}
+                    {...formulario.getFieldHelpers('correo')}
                   />
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
@@ -171,12 +177,13 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                 <div className="col-lg-6 col-md-6 col-xs-12 ">
                   <TextField
                     name="celular"
-                    formulario={formulario}
                     type="tel"
                     size="big"
                     label="55-9999-9999"
                     format="phone"
                     maxlength={12}
+                    {...formulario.getFieldMeta('celular')}
+                    {...formulario.getFieldHelpers('celular')}
                   />
                 </div>
               </div>
