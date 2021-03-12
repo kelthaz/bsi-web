@@ -12,6 +12,9 @@ spec:
           name: 'bsi-cred-pyme-web'
           securityContext:
             privileged: false
+          envFrom:
+          - secretRef:
+              name: bsi-cred-pyme-web
           ports:
             - containerPort: 3000
               name: http
