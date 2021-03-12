@@ -3,11 +3,12 @@ kind: ConfigMap
 metadata:
   labels:
     app: bsi-cred-pyme-web
-  name: cm-bsi-cred-pyme-web
+  name: bsi-cred-pyme-web
 data:
   application.properties: |
     # ===================================================================
     # Propiedades generales de la aplicación
     # ===================================================================
     # Puerto por defecto donde escucha el servidor
-    # server.port=8081
+    server.port=3000
+  
