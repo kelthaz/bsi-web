@@ -56,59 +56,10 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                 <TextField
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="rfcformatter"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="TLMF160693H17"
                   maxlength={13}
@@ -116,8 +67,13 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
+                  value=""
                 >
                   <div
                     className="group"
@@ -161,59 +117,10 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                 <TextField
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="passwordspace"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="Contraseña"
                   maxlength={20}
@@ -221,8 +128,13 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                   optional={false}
                   paste={false}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="password"
+                  value=""
                 >
                   <div
                     className="group"
@@ -350,59 +262,10 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                 <TextField
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="passwordspace"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "aceptoTerminos": null,
-                        "confirmarContrasena": "",
-                        "contrasena": "",
-                        "rfc": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="Contraseña"
                   maxlength={20}
@@ -410,8 +273,13 @@ exports[`Pruebas en el componente PasoCincoDatosPersonales Debe de mostrarse cor
                   optional={false}
                   paste={false}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="password"
+                  value=""
                 >
                   <div
                     className="group"

@@ -29,10 +29,6 @@ const TextField = ({
   const classInput = `input-${size}${typeInput === 'password' ? '-password' : ''}${inverted ? '-inverted' : ''}`;
   const inputStyle = styles[classInput];
   const inputErrorStyle = styles[`${classInput}-error`];
-  // const { getFieldMeta, getFieldHelpers } = formulario;
-
-  // const { error, touched, value } = getFieldMeta(name);
-  // const { setValue, setTouched } = getFieldHelpers(name);
 
   const [type, setType] = useState(typeInput);
   const [formatter, changeSelection] = useFormatter(format);

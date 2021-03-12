@@ -96,55 +96,10 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                 <TextField
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="phone"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="55-9999-9999"
                   maxlength={12}
@@ -152,8 +107,13 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="tel"
+                  value=""
                 >
                   <div
                     className="group"
@@ -205,55 +165,10 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                 <TextField
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="email"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "celular": "",
-                        "correo": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="ejemplo@mail.com"
                   maxlength={100}
@@ -261,8 +176,13 @@ exports[`Pruebas en el componente PasoCuatroDatosPersonales Debe de mostrarse co
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="email"
+                  value=""
                 >
                   <div
                     className="group"
