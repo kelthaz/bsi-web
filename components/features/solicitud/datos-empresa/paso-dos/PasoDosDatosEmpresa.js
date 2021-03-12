@@ -103,7 +103,7 @@ const PasoDosDatosEmpresa = ({ validate }) => {
               nameFieldEstado="domicilioFiscal.estado"
             />
             <p className="color-gray-dark body2">¿Éste es también tu domicilio comercial?</p>
-            <div className="row no-gutters py-3">
+            <div className="row no-gutters">
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
                 <RadioButton name="esDomilicioComercial" formulario={formulario} value="si">
                   <p className="input color-gray m-0">Sí</p>

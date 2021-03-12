@@ -199,13 +199,14 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                 <div className="row no-gutters">
                   <div className="col-md-5 col-xs-12">
                     <TextField
-                      maxlength={11}
                       name={`inmueblesPropiosSinGravamen[${index}].valorAproximado`}
-                      formulario={formulario}
+                      maxlength={11}
                       type="phone"
                       size="big"
                       label="$0.00"
                       format="money"
+                      {...formulario.getFieldMeta(`inmueblesPropiosSinGravamen[${index}].valorAproximado`)}
+                      {...formulario.getFieldHelpers(`inmueblesPropiosSinGravamen[${index}].valorAproximado`)}
                     />
                   </div>
                 </div>

@@ -98,13 +98,14 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
 
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <TextField
-                  format="uppercase"
                   name="razonSocial"
+                  format="uppercase"
                   maxlength={120}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Razón social"
+                  {...formulario.getFieldMeta('razonSocial')}
+                  {...formulario.getFieldHelpers('razonSocial')}
                 />
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -126,11 +127,12 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
                 <TextField
                   name="nombreEmpresa"
                   format="uppercase"
-                  formulario={formulario}
                   type="text"
                   size="big"
                   maxlength={120}
                   label="Nombre del negocio"
+                  {...formulario.getFieldMeta('nombreEmpresa')}
+                  {...formulario.getFieldHelpers('nombreEmpresa')}
                 />
               </div>
             </div>

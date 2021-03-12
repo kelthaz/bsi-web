@@ -63,10 +63,11 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                   name="primerNombreRecibe"
                   format="uppercase"
                   maxlength={12}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Nombre"
+                  {...formulario.getFieldMeta('primerNombreRecibe')}
+                  {...formulario.getFieldHelpers('primerNombreRecibe')}
                 />
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
@@ -74,11 +75,12 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                   name="segundoNombreRecibe"
                   format="uppercase"
                   maxlength={60}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Nombre"
                   optional
+                  {...formulario.getFieldMeta('segundoNombreRecibe')}
+                  {...formulario.getFieldHelpers('segundoNombreRecibe')}
                 />
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
@@ -86,21 +88,23 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                   name="primerApellidoRecibe"
                   format="uppercase"
                   maxlength={20}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="Apellido paterno"
+                  {...formulario.getFieldMeta('primerApellidoRecibe')}
+                  {...formulario.getFieldHelpers('primerApellidoRecibe')}
                 />
               </div>
               <div className="col-lg-6 col-md-6  col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="segundoApellidoRecibe"
                   format="uppercase"
-                  formulario={formulario}
                   maxlength={20}
                   type="text"
                   size="big"
                   label="Apellido materno"
+                  {...formulario.getFieldMeta('segundoApellidoRecibe')}
+                  {...formulario.getFieldHelpers('segundoApellidoRecibe')}
                 />
               </div>
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
@@ -110,12 +114,13 @@ const PasoTresDatosEmpresa = ({ validate }) => {
               <div className="col-lg-5 col-md-5 col-xs-12 pb-sm-3 pb-xs-3">
                 <TextField
                   name="celularRecibe"
-                  formulario={formulario}
                   type="tel"
                   size="big"
                   label="55-9999-9999"
                   format="phone"
                   maxlength={12}
+                  {...formulario.getFieldMeta('celularRecibe')}
+                  {...formulario.getFieldHelpers('celularRecibe')}
                 />
               </div>
             </div>

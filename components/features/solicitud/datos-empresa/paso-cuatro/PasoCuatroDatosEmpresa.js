@@ -84,12 +84,13 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
               <div className="col-lg-5 col-md-5 col-xs-12 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
                 <TextField
                   name="telefonoEmpresa"
-                  formulario={formulario}
                   type="tel"
                   size="big"
                   label="55-9999-9999"
                   format="phone"
                   maxlength={12}
+                  {...formulario.getFieldMeta('telefonoEmpresa')}
+                  {...formulario.getFieldHelpers('telefonoEmpresa')}
                 />
               </div>
             </div>

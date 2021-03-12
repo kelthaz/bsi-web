@@ -69,10 +69,11 @@ const StepEight = ({ validate }) => {
                     name="ciec"
                     format="passwordspace"
                     maxlength={80}
-                    formulario={formulario}
                     type="password"
                     size="big"
                     label="**********"
+                    {...formulario.getFieldMeta('ciec')}
+                    {...formulario.getFieldHelpers('ciec')}
                   />
                 </div>
               </div>

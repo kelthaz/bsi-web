@@ -71,11 +71,12 @@ const PasoTresObligadoSolidarioPFAE = ({ validate }) => {
                     <TextField
                       name="sumaDepositosEInversiones"
                       maxlength={11}
-                      formulario={formulario}
                       type="phone"
                       size="big"
                       label="$.00"
                       format="money"
+                      {...formulario.getFieldMeta('sumaDepositosEInversiones')}
+                      {...formulario.getFieldHelpers('sumaDepositosEInversiones')}
                     />
                   </div>
                 </div>

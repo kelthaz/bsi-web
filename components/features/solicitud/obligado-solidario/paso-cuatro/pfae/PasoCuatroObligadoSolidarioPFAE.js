@@ -130,13 +130,14 @@ const StepFour = ({ validate }) => {
                   </div>
                   <div className="col-md-4 col-xs-12 px-md-0 px-xs-3">
                     <TextField
-                      format="uppercase"
                       name={`empresas[${index}].razonSocial`}
+                      format="uppercase"
                       maxlength={120}
-                      formulario={formulario}
                       type="text"
                       size="big"
                       label="Razón social"
+                      {...formulario.getFieldMeta(`empresas[${index}].razonSocial`)}
+                      {...formulario.getFieldHelpers(`empresas[${index}].razonSocial`)}
                     />
                   </div>
                   <div className="col-md-3 col-xs-12 ">
@@ -156,10 +157,11 @@ const StepFour = ({ validate }) => {
                       name={`empresas[${index}].rfc`}
                       format="rfcformatter"
                       maxlength={13}
-                      formulario={formulario}
                       type="text"
                       size="big"
                       label="Ej. TLF280693HVZJNR03"
+                      {...formulario.getFieldMeta(`empresas[${index}].rfc`)}
+                      {...formulario.getFieldHelpers(`empresas[${index}].rfc`)}
                     />
                   </div>
                   <div className="col-md-3 col-xs-12 pr-md-0">
@@ -167,13 +169,14 @@ const StepFour = ({ validate }) => {
                   </div>
                   <div className="col-md-5 col-xs-12 pl-md-0">
                     <TextField
-                      maxlength={11}
                       name={`empresas[${index}].invierto`}
-                      formulario={formulario}
+                      maxlength={11}
                       type="text"
                       size="big"
                       label="$0.00"
                       format="money"
+                      {...formulario.getFieldMeta(`empresas[${index}].invierto`)}
+                      {...formulario.getFieldHelpers(`empresas[${index}].invierto`)}
                     />
                   </div>
                 </div>

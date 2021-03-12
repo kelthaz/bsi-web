@@ -112,7 +112,6 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                 className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
                   format="uppercase"
@@ -177,14 +176,13 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                   readonly={false}
                   size="big"
                   type="text"
-                  validation={false}
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="nombreEmpresa"
                       maxLength={120}
@@ -192,7 +190,6 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Nombre del negocio"
@@ -201,9 +198,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       type="text"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>

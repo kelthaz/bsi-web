@@ -84,144 +84,157 @@ const ContratoLegalex = ({
             <TextField
               name={nameFieldNombreSolicitante}
               maxlength={18}
-              formulario={formulario}
               type="text"
               size="small"
               label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
               disabled
+              {...formulario.getFieldMeta(nameFieldNombreSolicitante)}
+              {...formulario.getFieldHelpers(nameFieldNombreSolicitante)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldRFC}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="RFC"
               disabled
+              {...formulario.getFieldMeta(nameFieldRFC)}
+              {...formulario.getFieldHelpers(nameFieldRFC)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldFechaNacimiento}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Fecha de Nacimiento/Constitución:"
               disabled
+              {...formulario.getFieldMeta(nameFieldFechaNacimiento)}
+              {...formulario.getFieldHelpers(nameFieldFechaNacimiento)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldDomicilio}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Domicilio"
               disabled
+              {...formulario.getFieldMeta(nameFieldDomicilio)}
+              {...formulario.getFieldHelpers(nameFieldDomicilio)}
             />
           </div>
           <div className="col-md-3 col-xs-12">
             <TextField
               name={nameFieldNumeroExterior}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="No. Exterior"
               disabled
+              {...formulario.getFieldMeta(nameFieldNumeroExterior)}
+              {...formulario.getFieldHelpers(nameFieldNumeroExterior)}
             />
           </div>
           <div className="col-md-3 col-xs-12">
             <TextField
               name={nameFieldNumeroInterior}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="No. Interior"
               disabled
+              {...formulario.getFieldMeta(nameFieldNumeroInterior)}
+              {...formulario.getFieldHelpers(nameFieldNumeroInterior)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldColonia}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Colonia"
               disabled
+              {...formulario.getFieldMeta(nameFieldColonia)}
+              {...formulario.getFieldHelpers(nameFieldColonia)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldAlcaldia}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Alcaldía/Municipio"
               disabled
+              {...formulario.getFieldMeta(nameFieldAlcaldia)}
+              {...formulario.getFieldHelpers(nameFieldAlcaldia)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldCodigoPostal}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Código Postal"
               disabled
+              {...formulario.getFieldMeta(nameFieldCodigoPostal)}
+              {...formulario.getFieldHelpers(nameFieldCodigoPostal)}
             />
           </div>
           <div className="col-md-6 col-xs-12">
             <TextField
               name={nameFieldEstado}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Estado"
               disabled
+              {...formulario.getFieldMeta(nameFieldEstado)}
+              {...formulario.getFieldHelpers(nameFieldEstado)}
             />
           </div>
           <div className="col-md-12 col-xs-12">
             <TextField
               name={nameFieldTelefono}
-              formulario={formulario}
               type="tel"
               size="small"
               label="Teléfono"
               format="phone"
               maxlength={12}
               disabled
+              {...formulario.getFieldMeta(nameFieldTelefono)}
+              {...formulario.getFieldHelpers(nameFieldTelefono)}
             />
           </div>
           <div className="col-md-12 col-xs-12">
             <TextField
               name={nameFieldRepresentanteLegal}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Representante legal (solo Persona Moral):"
               disabled
+              {...formulario.getFieldMeta(nameFieldRepresentanteLegal)}
+              {...formulario.getFieldHelpers(nameFieldRepresentanteLegal)}
             />
           </div>
           <div className="col-md-12 col-xs-12">
             <TextField
               name={nameFieldFechaAutorizacion}
               maxlength={12}
-              formulario={formulario}
               type="text"
               size="small"
               label="Fecha en que se autoriza la consulta:"
               disabled
+              {...formulario.getFieldMeta(nameFieldFechaAutorizacion)}
+              {...formulario.getFieldHelpers(nameFieldFechaAutorizacion)}
             />
           </div>
         </div>

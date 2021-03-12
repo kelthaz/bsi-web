@@ -9,7 +9,11 @@ import { regexMultipleSpaces } from '../../../constants/regex';
 
 const TextField = ({
   name,
-  formulario,
+  error,
+  touched,
+  value,
+  setValue,
+  setTouched,
   maxlength,
   capitalize,
   label,
@@ -25,10 +29,10 @@ const TextField = ({
   const classInput = `input-${size}${typeInput === 'password' ? '-password' : ''}${inverted ? '-inverted' : ''}`;
   const inputStyle = styles[classInput];
   const inputErrorStyle = styles[`${classInput}-error`];
-  const { getFieldMeta, getFieldHelpers } = formulario;
+  // const { getFieldMeta, getFieldHelpers } = formulario;
 
-  const { error, touched, value } = getFieldMeta(name);
-  const { setValue, setTouched } = getFieldHelpers(name);
+  // const { error, touched, value } = getFieldMeta(name);
+  // const { setValue, setTouched } = getFieldHelpers(name);
 
   const [type, setType] = useState(typeInput);
   const [formatter, changeSelection] = useFormatter(format);
@@ -127,7 +131,11 @@ TextField.propTypes = {
   capitalize: PropTypes.bool,
   label: PropTypes.any.isRequired,
   name: PropTypes.string.isRequired,
-  formulario: PropTypes.any.isRequired,
+  error: PropTypes.string,
+  touched: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+  setValue: PropTypes.any.isRequired,
+  setTouched: PropTypes.any.isRequired,
   type: PropTypes.string.isRequired,
   size: PropTypes.string,
   inverted: PropTypes.bool,
@@ -140,6 +148,7 @@ TextField.propTypes = {
 };
 
 TextField.defaultProps = {
+  error: '',
   size: 'small',
   capitalize: false,
   inverted: false,
