@@ -12,6 +12,9 @@ spec:
           name: 'bsi-cred-pyme-web'
           securityContext:
             privileged: false
+          envFrom:
+          - secretRef:
+              name: bsi-cred-pyme-web
           ports:
             - containerPort: 3000
               name: http
@@ -22,10 +25,14 @@ spec:
               memory: 1Gi
             requests:
               cpu: 500m
-              memory: 1Gi
-    metadata:
-      labels:
-        app: 'bsi-cred-pyme-web'
+              memory: 512Mi
+          volumeMounts:
+          - name: bsi-cred-pyme-web-config
+            mountPath: /deployments/config
+        volumes:
+        - name: bsi-cred-pyme-web-config
+          configMap:
+            name: bsi-cred-pyme-web
   replicas: 1
   selector:
     app: 'bsi-cred-pyme-web'
