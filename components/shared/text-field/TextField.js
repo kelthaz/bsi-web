@@ -1,31 +1,11 @@
-/* eslint-disable complexity */
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import SvgCheckOk from '../../svgs/SvgCheckOk';
 import SvgCross from '../../svgs/SvgCross';
 import SvgHidenPassword from '../../svgs/SvgHidenPassword';
 import SvgShowPassword from '../../svgs/SvgShowPassword';
 import styles from './text-field.module.scss';
 import useFormatter from '../../../hooks/useFormatter';
 import { regexMultipleSpaces } from '../../../constants/regex';
-
-const seleccionaEstilo = (size, inverted) => {
-  const finalStyles = [];
-  if (inverted) {
-    finalStyles.push(size === 'big' ? styles['input-big-inverted'] : styles['input-small-inverted']);
-    finalStyles.push(styles['icon-check-inverted']);
-    finalStyles.push(styles['label-small-inverted']);
-    finalStyles.push(styles['indicador-activo-inverted']);
-    finalStyles.push(styles['help-text-inverted']);
-  } else {
-    finalStyles.push(size === 'big' ? styles['input-big'] : styles['input-small']);
-    finalStyles.push(styles['icon-check']);
-    finalStyles.push(styles['label-small']);
-    finalStyles.push(styles['indicador-activo']);
-    finalStyles.push(styles['help-text']);
-  }
-  return finalStyles;
-};
 
 const TextField = ({
   name,
@@ -37,51 +17,48 @@ const TextField = ({
   size,
   inverted,
   optional,
-  validation,
   format,
   paste,
   readonly,
   disabled,
-  afterBlur,
 }) => {
-  const [inputStyle, iconCheckStyle, labelStyle, indicadorStyle, helpTextStyle] = seleccionaEstilo(size, inverted);
-  const { setFieldTouched, setFieldValue, getFieldMeta } = formulario;
+  const classInput = `input-${size}${typeInput === 'password' ? '-password' : ''}${inverted ? '-inverted' : ''}`;
+  const inputStyle = styles[classInput];
+  const inputErrorStyle = styles[`${classInput}-error`];
+  const { getFieldMeta, getFieldHelpers } = formulario;
 
   const { error, touched, value } = getFieldMeta(name);
+  const { setValue, setTouched } = getFieldHelpers(name);
 
   const [type, setType] = useState(typeInput);
-
-  const iconError = <SvgCross className={styles['icon-error']} />;
-  const status = <SvgCheckOk className={iconCheckStyle} />;
-
   const [formatter, changeSelection] = useFormatter(format);
-  const [active, setActive] = useState(false);
 
   let keyPress = '';
 
-  const beforeInput = (event) => {
+  const onBeforeInput = (event) => {
     if (formatter(event.data) === '') {
       event.preventDefault();
     }
   };
 
-  const onHandleChange = async (event) => {
+  const onTouch = async () => {
+    if (!touched) {
+      await setTouched(true);
+    }
+  };
+
+  const onChange = async (event) => {
     const { selectionStart, value: valueTarget } = event.target;
     const formattedValue = formatter(valueTarget.trimStart().replace(regexMultipleSpaces, ' '));
-
-    if (!touched && formattedValue !== value) {
-      await setFieldTouched(name, true);
-    }
-    await setFieldValue(name, formattedValue);
+    await onTouch();
+    await setValue(formattedValue);
     changeSelection(keyPress, value, valueTarget, formattedValue, selectionStart, event.target);
     keyPress = '';
   };
 
-  const onHandleBlur = () => {
-    setFieldValue(name, value.trimEnd());
-    setFieldTouched(name, true);
-    setActive(false);
-    afterBlur();
+  const onBlur = async () => {
+    await setValue(value.trimEnd());
+    await onTouch();
   };
 
   const onPaste = (event) => {
@@ -90,28 +67,21 @@ const TextField = ({
     }
   };
 
-  const inputStylePassword = size === 'big' ? styles['input-big-password'] : styles['input-small-password'];
-  const indicadorError = type === 'password' ? styles['indicador-error-password'] : styles['indicador-error'];
-  const hasError = () => touched && error;
+  const hasError = !disabled && touched && error;
 
   return (
     <div className={`${styles.group}`}>
       <input
         id={name}
         name={name}
-        className={`${type === 'password' ? inputStylePassword : inputStyle} ${capitalize ? styles.capitalize : ''} ${
-          hasError() ? indicadorError : active && indicadorStyle
-        } `}
+        className={`${hasError ? inputErrorStyle : inputStyle} ${capitalize ? styles.capitalize : ''} `}
         type={type}
-        onChange={onHandleChange}
-        onBlur={onHandleBlur}
+        onChange={onChange}
+        onBlur={onBlur}
         value={value}
         maxLength={maxlength}
         autoComplete="off"
-        placeholder={size === 'big' ? label : ''}
-        onFocus={() => {
-          setActive(true);
-        }}
+        placeholder={size === 'big' ? label : ' '}
         onPaste={onPaste}
         onKeyDown={(event) => {
           keyPress = event.key;
@@ -119,23 +89,21 @@ const TextField = ({
         readOnly={readonly}
         tabIndex="0"
         disabled={disabled}
-        onBeforeInput={beforeInput}
+        onBeforeInput={onBeforeInput}
       />
 
       {size === 'small' && (
-        <label
-          htmlFor={name}
-          className={`text-overflow ${disabled ? styles['label-disabled'] : labelStyle} ${
-            hasError() ? styles['label-error'] : ''
-          } ${value !== '' || active ? styles['label-active'] : ''}`}
-        >
+        <label htmlFor={name} className="text-overflow">
           {label}
         </label>
       )}
 
-      <span className={hasError() ? styles['help-text-error'] : helpTextStyle}>
-        {hasError() ? error : active && optional && 'Opcional'}&nbsp;
-      </span>
+      {hasError ? (
+        <span className={styles['opacity-error']}>{error}</span>
+      ) : (
+        <span>{optional && 'Opcional'}&nbsp;</span>
+      )}
+
       {typeInput === 'password' && (
         <button
           className={styles['button-password-inverted']}
@@ -145,12 +113,11 @@ const TextField = ({
           {type === 'text' ? <SvgShowPassword /> : <SvgHidenPassword />}
         </button>
       )}
-      {hasError() ? (
+
+      {hasError && (
         <div className={typeInput === 'password' ? styles['status-icon-password'] : styles['status-icon']}>
-          {iconError}
+          <SvgCross className={styles['icon-error']} />
         </div>
-      ) : (
-        validation && <div className={styles['status-icon']}>{active && status}</div>
       )}
     </div>
   );
@@ -162,28 +129,25 @@ TextField.propTypes = {
   name: PropTypes.string.isRequired,
   formulario: PropTypes.any.isRequired,
   type: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
   inverted: PropTypes.bool,
   optional: PropTypes.bool,
-  validation: PropTypes.bool,
   paste: PropTypes.bool,
   maxlength: PropTypes.number.isRequired,
   format: PropTypes.string,
   readonly: PropTypes.bool,
   disabled: PropTypes.bool,
-  afterBlur: PropTypes.func,
 };
 
 TextField.defaultProps = {
+  size: 'small',
   capitalize: false,
   inverted: false,
   optional: false,
-  validation: false,
   paste: true,
   readonly: false,
   disabled: false,
   format: '',
-  afterBlur: () => {},
 };
 
 export default TextField;

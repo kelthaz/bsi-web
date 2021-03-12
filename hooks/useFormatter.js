@@ -40,7 +40,7 @@ const useFormatter = (format) => {
       return [alphanumericFormatter, () => {}];
 
     case 'textArea':
-      return [textAreaFormatter, changeSelectionMoneyFormatter];
+      return [textAreaFormatter, changeSelectionDefault];
 
     default:
       return [(value) => value, () => {}];
