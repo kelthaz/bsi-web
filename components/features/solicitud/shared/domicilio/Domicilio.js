@@ -29,33 +29,36 @@ const Domicilio = ({
         <TextField
           name={nameFieldCalle}
           maxlength={60}
-          formulario={formulario}
           type="text"
           size="big"
           label="Calle"
           format="alphanumeric"
+          {...formulario.getFieldMeta(nameFieldCalle)}
+          {...formulario.getFieldHelpers(nameFieldCalle)}
         />
       </div>
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
         <TextField
           name={nameFieldNumExterior}
           maxlength={6}
-          formulario={formulario}
           type="text"
           size="big"
           label="No. Exterior"
           format="alphanumeric"
+          {...formulario.getFieldMeta(nameFieldNumExterior)}
+          {...formulario.getFieldHelpers(nameFieldNumExterior)}
         />
       </div>
       <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
         <TextField
           name={nameFieldNumInterior}
           maxlength={6}
-          formulario={formulario}
           type="text"
           size="big"
           label="No. Interior"
           format="alphanumeric"
+          {...formulario.getFieldMeta(nameFieldNumInterior)}
+          {...formulario.getFieldHelpers(nameFieldNumInterior)}
         />
       </div>
 
@@ -63,23 +66,25 @@ const Domicilio = ({
         <TextField
           name={nameFieldCodigoPostal}
           maxlength={5}
-          formulario={formulario}
           type="text"
           size="big"
           label="C.P"
           format="number"
+          {...formulario.getFieldMeta(nameFieldCodigoPostal)}
+          {...formulario.getFieldHelpers(nameFieldCodigoPostal)}
         />
       </div>
       <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <Select
           name={nameFieldColonia}
           maxlength={120}
-          formulario={formulario}
           type="text"
           size="big"
           items={colonias}
           label="Colonia"
           disabled={colonias.length === 0}
+          {...formulario.getFieldMeta(nameFieldColonia)}
+          {...formulario.getFieldHelpers(nameFieldColonia)}
         />
       </div>
 
@@ -87,22 +92,24 @@ const Domicilio = ({
         <TextField
           name={nameFieldMunicipioAlcaldia}
           maxlength={50}
-          formulario={formulario}
           type="text"
           size="big"
           label="Municipio/Alcaldía"
           readonly
+          {...formulario.getFieldMeta(nameFieldMunicipioAlcaldia)}
+          {...formulario.getFieldHelpers(nameFieldMunicipioAlcaldia)}
         />
       </div>
       <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <TextField
           name={nameFieldCiudad}
           maxlength={50}
-          formulario={formulario}
           type="text"
           size="big"
           label="Ciudad"
           readonly
+          {...formulario.getFieldMeta(nameFieldCiudad)}
+          {...formulario.getFieldHelpers(nameFieldCiudad)}
         />
       </div>
 
@@ -110,11 +117,12 @@ const Domicilio = ({
         <TextField
           name={nameFieldEstado}
           maxlength={50}
-          formulario={formulario}
           type="text"
           size="big"
           label="Estado"
           readonly
+          {...formulario.getFieldMeta(nameFieldEstado)}
+          {...formulario.getFieldHelpers(nameFieldEstado)}
         />
       </div>
     </div>

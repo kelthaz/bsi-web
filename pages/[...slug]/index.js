@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import LoginContainer from '../../components/core/containers/login/LoginContainer';
+import PrivadoContainer from '../../components/core/containers/privado/PrivadoContainer';
 import PublicoContainer from '../../components/core/containers/publico/PublicoContainer';
 import SolicitudContainer from '../../components/core/containers/solicitud/SolicitudContainer';
 import featureRoute from '../../components/features/feature.routes';
@@ -8,11 +10,17 @@ const App = ({ index, data, userData }) => {
   const { feature } = featureRoute[index];
 
   switch (feature) {
+    case 'privado':
+      return <PrivadoContainer servicesData={data} pageComponent={featureRoute[index]} />;
+
     case 'publico':
       return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;
 
     case 'solicitud':
       return <SolicitudContainer servicesData={data} pageComponent={featureRoute[index]} userData={userData} />;
+
+    case 'login':
+      return <LoginContainer servicesData={data} pageComponent={featureRoute[index]} userData={userData} />;
 
     default:
       return <PublicoContainer servicesData={data} pageComponent={featureRoute[index]} />;

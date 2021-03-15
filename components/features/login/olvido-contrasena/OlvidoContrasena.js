@@ -64,10 +64,11 @@ const OlvidoContrasena = () => {
               name="correo"
               format="email"
               maxlength={100}
-              formulario={formulario}
               type="email"
               size="small"
               label="Correo"
+              {...formulario.getFieldMeta('correo')}
+              {...formulario.getFieldHelpers('correo')}
             />
           </div>
 

@@ -62,10 +62,11 @@ const PasoSeisDatosEmpresa = ({ validate }) => {
                   name="curp"
                   format="rfcformatter"
                   maxlength={18}
-                  formulario={formulario}
                   type="text"
                   size="big"
                   label="TLMF160693H17"
+                  {...formulario.getFieldMeta('curp')}
+                  {...formulario.getFieldHelpers('curp')}
                 />
               </div>
             </div>

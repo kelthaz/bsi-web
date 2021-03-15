@@ -54,62 +54,12 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                 className="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="uppercase"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue="JESUS"
                   inverted={false}
                   label="Nombre"
                   maxlength={60}
@@ -117,16 +67,20 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
-                  validation={false}
+                  value="JESUS"
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="primerNombre"
                       maxLength={60}
@@ -134,7 +88,6 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Nombre"
@@ -143,9 +96,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       type="text"
                       value="JESUS"
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>
@@ -155,62 +106,12 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                 className="col-lg-4 col-md-4 col-sm-12 col-xs-12"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="uppercase"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="Nombre"
                   maxlength={60}
@@ -218,16 +119,20 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   optional={true}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
-                  validation={false}
+                  value=""
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="segundoNombre"
                       maxLength={60}
@@ -235,7 +140,6 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Nombre"
@@ -244,9 +148,8 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       type="text"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
+                      Opcional
                        
                     </span>
                   </div>
@@ -260,62 +163,12 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                 className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="uppercase"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue="DAVID"
                   inverted={false}
                   label="Apellido paterno"
                   maxlength={60}
@@ -323,16 +176,20 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
-                  validation={false}
+                  value="DAVID"
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="primerApellido"
                       maxLength={60}
@@ -340,7 +197,6 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Apellido paterno"
@@ -349,9 +205,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       type="text"
                       value="DAVID"
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>
@@ -361,62 +215,12 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                 className="col-lg-6 col-md-6 col-sm-12 col-xs-12"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="uppercase"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "primerApellido": "DAVID",
-                        "primerNombre": "JESUS",
-                        "segundoApellido": "",
-                        "segundoNombre": "",
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="Apellido materno"
                   maxlength={60}
@@ -424,16 +228,20 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
-                  validation={false}
+                  value=""
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="segundoApellido"
                       maxLength={60}
@@ -441,7 +249,6 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Apellido materno"
@@ -450,9 +257,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       type="text"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>

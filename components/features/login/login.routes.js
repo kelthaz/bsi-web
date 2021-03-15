@@ -5,32 +5,35 @@ import RestablecerContrasena from './restablecer-contrasena/RestablecerContrasen
 
 const loginRoutes = [
   {
-    tab: '',
-    step: '',
-    path: INICIAR_SESION,
-    stepNumber: null,
-    option: 'iniciar-sesion',
+    route: INICIAR_SESION,
     component: IniciarSesion,
     services: [],
+    roles: [],
+    label: 'Iniciar sesion',
+    data: {
+      option: 'iniciar-sesion',
+    },
   },
   {
-    tab: '',
-    step: '',
-    path: OLVIDO_CONTRASENA,
-    stepNumber: null,
-    option: 'olvide-contrasena',
+    route: OLVIDO_CONTRASENA,
     component: OlvidoContrasena,
     services: [],
+    roles: [],
+    label: 'Olvide contraseña',
+    data: {
+      option: 'olvide-contrasena',
+    },
   },
   {
-    tab: '',
-    step: '',
-    path: RESTABLECER_CONTRASENA,
-    stepNumber: null,
-    option: 'restablecer-contrasena',
+    route: RESTABLECER_CONTRASENA,
     component: RestablecerContrasena,
     services: [],
+    roles: [],
+    label: 'Restablecer contraseña',
+    data: {
+      option: 'restablecer-contrasena',
+    },
   },
-];
+].map((route) => ({ ...route, feature: 'login' }));
 
 export default loginRoutes;

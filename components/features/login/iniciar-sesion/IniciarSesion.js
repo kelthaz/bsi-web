@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Tab from '../../../shared/tab/Tab';
 import TabItem from '../../../shared/tab/TabItem';
-import { regexRFCFisicaMoral } from '../../../../constants/regex';
-import { campoRequerido, captcha, longitudMaxima, longitudMinima, rfcInvalido } from '../../../../constants/errors';
+import { campoRequerido, captcha, longitudMaxima, longitudMinima } from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
 import CheckBox from '../../../shared/check-box/CheckBox';
+import { OLVIDO_CONTRASENA } from '../../../../constants/routes/login/login';
 
 const IniciarSesion = () => {
   const { push } = useRouter();
@@ -65,20 +65,22 @@ const IniciarSesion = () => {
           name="rfc"
           format="email"
           maxlength={50}
-          formulario={formulario}
           type="text"
           size="small"
           label="Usuario"
+          {...formulario.getFieldMeta('rfc')}
+          {...formulario.getFieldHelpers('rfc')}
         />
         <TextField
           name="contrasena"
           paste={false}
           format="passwordspace"
           maxlength={20}
-          formulario={formulario}
           type="password"
           size="small"
           label="Contraseña"
+          {...formulario.getFieldMeta('contrasena')}
+          {...formulario.getFieldHelpers('contrasena')}
         />
         <div className="py-3">
           <CheckBox name="mantenerSesion" formulario={formulario}>
@@ -92,7 +94,7 @@ const IniciarSesion = () => {
           </button>
         </div>
         <div className="row d-flex justify-content-center ">
-          <Link href="/login/[option]" as="/login/olvide-contrasena">
+          <Link href={OLVIDO_CONTRASENA}>
             <button type="button" className="btn-link">
               ¿Olvidaste tu contraseña?
             </button>
