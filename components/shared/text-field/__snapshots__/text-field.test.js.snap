@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente TextField Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="group"
+>
+  <input
+    autoComplete="off"
+    className="input-small-inverted capitalize "
+    disabled={false}
+    id="name"
+    maxLength={60}
+    name="name"
+    onBeforeInput={[Function]}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    placeholder=" "
+    readOnly={false}
+    tabIndex="0"
+    type="text"
+    value=""
+  />
+  <label
+    className="text-overflow"
+    htmlFor="name"
+  >
+    Nombre
+  </label>
+  <span>
+     
+  </span>
+</div>
+`;

@@ -92,11 +92,12 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
                   <TextField
                     name="ciec"
                     format="passwordspace"
-                    // maxlength={8}
-                    formulario={formulario}
+                    maxlength={80}
                     type="password"
                     size="big"
                     label="**********"
+                    {...formulario.getFieldMeta('ciec')}
+                    {...formulario.getFieldHelpers('ciec')}
                   />
                 </div>
               </div>

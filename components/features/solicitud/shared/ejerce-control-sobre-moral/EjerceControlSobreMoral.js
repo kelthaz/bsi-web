@@ -62,13 +62,14 @@ const EjerceControlSobreMoral = ({
             </div>
             <div className="col-lg-9 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
               <TextField
-                format="uppercase"
                 name={`${nameControlados}[${index}].nombreNegocio`}
+                format="uppercase"
                 maxlength={60}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Nombre del negocio"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].nombreNegocio`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].nombreNegocio`)}
               />
             </div>
           </div>
@@ -78,13 +79,14 @@ const EjerceControlSobreMoral = ({
             </div>
             <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
               <TextField
-                format="rfcformatter"
                 name={`${nameControlados}[${index}].rfc`}
+                format="rfcformatter"
                 maxlength={12}
-                formulario={formulario}
                 type="text"
                 size="big"
                 label="Ej. TLF280693H17"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].rfc`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].rfc`)}
               />
             </div>
           </div>
@@ -99,13 +101,14 @@ const EjerceControlSobreMoral = ({
             </div>
             <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
               <TextField
-                format="number"
                 name={`${nameControlados}[${index}].porcentajeDirecto`}
+                format="number"
                 maxlength={3}
-                formulario={formulario}
                 type="tel"
                 size="big"
                 label="%"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].porcentajeDirecto`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].porcentajeDirecto`)}
               />
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6 col-xs-6">
@@ -113,13 +116,14 @@ const EjerceControlSobreMoral = ({
             </div>
             <div className="col-lg-3 col-md-3 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
               <TextField
-                format="number"
                 name={`${nameControlados}[${index}].porcentajeIndirecto`}
+                format="number"
                 maxlength={3}
-                formulario={formulario}
                 type="tel"
                 size="big"
                 label="%"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].porcentajeIndirecto`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].porcentajeIndirecto`)}
               />
             </div>
           </div>

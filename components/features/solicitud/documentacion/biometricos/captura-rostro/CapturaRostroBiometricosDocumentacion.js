@@ -5,11 +5,10 @@ import KnomiRepositorio from '../../../../../../services/solicitud/knomi.reposit
 import Modal from '../../../../../shared/modal/Modal';
 import Camera from '../../../../../shared/camera/Camera';
 import { PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
-import knomiFeedbackMessages from '../../../../../../constants/knomi-feedback.json';
 import SvgCapturaExitosa from '../../../../../svgs/carga-documentos/SvgCapturaExitosa';
+import knomiFeedbackMessages from '../../../../../../constants/knomiFeedback';
 
 const CapturaRostroBiometricosDocumentacion = () => {
-
   const cameraRef = useRef();
 
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -21,39 +20,39 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const getResponseAutoCapture = async (frame) => {
     const payload = {
-      'preface': {
-        'profile': {
-          'name': 'knomi_charlie_server.xml'
+      preface: {
+        profile: {
+          name: 'knomi_charlie_server.xml',
         },
-        'rotation': 0,
-        'frames': [frame],
-        'resolutionPreview': {
-          'width': 480 / 2,
-          'height': 640 / 2
+        rotation: 0,
+        frames: [frame],
+        resolutionPreview: {
+          width: 480 / 2,
+          height: 640 / 2,
         },
-        'resolutionCapture': {
-          'width': 480,
-          'height': 640
-        }
-      }
+        resolutionCapture: {
+          width: 480,
+          height: 640,
+        },
+      },
     };
     return KnomiRepositorio.postAutoCapture(payload);
   };
 
   const getResponseAnalyze = async (frames) => {
     const payload = {
-      'video': {
-        'workflow_data': {
-          'workflow': 'charlie4',
-          'rotation': 0,
-          'frames': frames
+      video: {
+        workflow_data: {
+          workflow: 'charlie4',
+          rotation: 0,
+          frames: frames,
         },
-        'meta_data': {
-          'client_device_brand': navigator.platform === 'iPhone' ? 'Apple' : navigator.platform,
-          'username': 'teste',
-          'client_version': navigator.userAgent,
-        }
-      }
+        meta_data: {
+          client_device_brand: navigator.platform === 'iPhone' ? 'Apple' : navigator.platform,
+          username: 'teste',
+          client_version: navigator.userAgent,
+        },
+      },
     };
     return KnomiRepositorio.postAnalyze(payload);
   };
@@ -70,9 +69,9 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const analyzeAutoCapture = async (rawImgData) => {
     const frame = {
-      'data': rawImgData.image.replace('data:image/jpeg;base64,', ''),
-      'tags': [],
-      'timestamp': rawImgData.timestamp
+      data: rawImgData.image.replace('data:image/jpeg;base64,', ''),
+      tags: [],
+      timestamp: rawImgData.timestamp,
     };
 
     try {
@@ -93,9 +92,9 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const checkForLiveness = async (rawImgsData) => {
     const frames = rawImgsData.map((item) => ({
-      'data': item.image.replace('data:image/jpeg;base64,', ''),
-      'tags': [],
-      'timestamp': item.timestamp
+      data: item.image.replace('data:image/jpeg;base64,', ''),
+      tags: [],
+      timestamp: item.timestamp,
     }));
     try {
       const response = await getResponseAnalyze(frames);
@@ -147,7 +146,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
   };
 
   const onCapture = async () => {
-
     setTakingPicture(true);
     const { autoCaptureRes, frames } = await captureFramesLoop();
     setTakingPicture(false);
@@ -179,9 +177,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
             </div>
           </div>
           <h4 className="color-blue-storm">¡Captura exitosa!</h4>
-          <p className="dark-gray body2">
-            Tus biométricos fueron capturados.
-          </p>
+          <p className="dark-gray body2">Tus biométricos fueron capturados.</p>
           <div className="flex-row-center-config">
             <Link href={PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE}>
               <button type="submit" className="btn-medium">
@@ -193,16 +189,10 @@ const CapturaRostroBiometricosDocumentacion = () => {
       </Modal>
       <div className="row">
         <div className="col-12 p-0">
-          {isCameraOpen &&
-            <Camera
-              ref={cameraRef}
-              isCaptureComplete={isCaptureComplete}
-              pauseImage={pauseImage}
-            />
-          }
+          {isCameraOpen && <Camera ref={cameraRef} isCaptureComplete={isCaptureComplete} pauseImage={pauseImage} />}
         </div>
       </div>
-      {isCaptureComplete ?
+      {isCaptureComplete ? (
         <>
           <div className="row">
             <div className="col-12 text-center mt-3">
@@ -211,9 +201,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
           </div>
           <div className="row">
             <div className="col-12 text-center">
-              <p className="body2">
-                La fotografía debe ser clara y no movida.
-              </p>
+              <p className="body2">La fotografía debe ser clara y no movida.</p>
             </div>
           </div>
           <div className="row">
@@ -231,7 +219,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
             </div>
           </div>
         </>
-        :
+      ) : (
         <>
           <div className="row">
             <div className="col-12 text-center mt-3">
@@ -241,14 +229,14 @@ const CapturaRostroBiometricosDocumentacion = () => {
           <div className="row">
             <div className="col-12 text-center">
               <p className="body2">
-                Captura tu rostro dentro del espacio señalado.<br />
+                Captura tu rostro dentro del espacio señalado.
+                <br />
                 Por favor, procura que la imagen no esté borrosa ni cortada.
               </p>
               {analysisMessage &&
                 analysisMessage
                   .map((item) => item)
-                  .reduce((acc, _x) => acc === null ? [_x] : [acc, <br />, _x], null)
-              }
+                  .reduce((acc, _x) => (acc === null ? [_x] : [acc, <br />, _x]), null)}
             </div>
           </div>
           <div className="row">
@@ -259,7 +247,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
             </div>
           </div>
         </>
-      }
+      )}
     </div>
   );
 };

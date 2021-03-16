@@ -112,62 +112,12 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                 className="col-lg-6 col-md-6 col-sm-12 col-xs-12 pr-lg-2 pr-md-2"
               >
                 <TextField
-                  afterBlur={[Function]}
                   capitalize={false}
                   disabled={false}
+                  error=""
                   format="uppercase"
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                    }
-                  }
+                  initialTouched={false}
+                  initialValue=""
                   inverted={false}
                   label="Nombre del negocio"
                   maxlength={120}
@@ -175,16 +125,20 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                   optional={false}
                   paste={true}
                   readonly={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   size="big"
+                  touched={false}
                   type="text"
-                  validation={false}
+                  value=""
                 >
                   <div
                     className="group"
                   >
                     <input
                       autoComplete="off"
-                      className="input-big  false "
+                      className="input-big  "
                       disabled={false}
                       id="nombreEmpresa"
                       maxLength={120}
@@ -192,7 +146,6 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       onBeforeInput={[Function]}
                       onBlur={[Function]}
                       onChange={[Function]}
-                      onFocus={[Function]}
                       onKeyDown={[Function]}
                       onPaste={[Function]}
                       placeholder="Nombre del negocio"
@@ -201,9 +154,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       type="text"
                       value=""
                     />
-                    <span
-                      className="help-text"
-                    >
+                    <span>
                        
                     </span>
                   </div>

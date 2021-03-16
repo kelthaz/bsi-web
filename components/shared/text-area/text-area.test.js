@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { shallow } from 'enzyme';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import useFormatter from '../../../hooks/useFormatter';
 import TextArea from './TextArea';
 
@@ -34,7 +35,7 @@ describe('Pruebas en el componente TextArea', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('Debe de llamarse el setValue y el setTouched, con el valor nuevo', () => {
+  it('Debe de llamarse el setValue y el setTouched, con el valor nuevo', async () => {
     // arrange
     const valorEsperado = 'soy una empresa que vende empanadas';
     const props = {
@@ -49,9 +50,12 @@ describe('Pruebas en el componente TextArea', () => {
     };
     const wrapper = shallow(<TextArea {...props} />);
     // act
-    wrapper
-      .find('textarea')
-      .simulate('change', { target: { value: valorEsperado, selectionStart: 0, setSelectionRange: jest.fn() } });
+    await act(async () => {
+      wrapper
+        .find('textarea')
+        .simulate('change', { target: { value: valorEsperado, selectionStart: 0, setSelectionRange: jest.fn() } });
+    });
+
     // assert
     expect(setValue).toHaveBeenCalledTimes(1);
     expect(setValue).toHaveBeenCalledWith(valorEsperado);
@@ -59,7 +63,7 @@ describe('Pruebas en el componente TextArea', () => {
     expect(setTouched).toHaveBeenCalledWith(true);
   });
 
-  test('Debe de llamarse el setValue y no el setTouched, con el valor nuevo', () => {
+  test('Debe de llamarse el setValue y no el setTouched, con el valor nuevo', async () => {
     // arrange
     const valorEsperado = 'soy una empresa que vende empanadas en cali';
     const props = {
@@ -74,16 +78,18 @@ describe('Pruebas en el componente TextArea', () => {
     };
     const wrapper = shallow(<TextArea {...props} />);
     // act
-    wrapper
-      .find('textarea')
-      .simulate('change', { target: { value: valorEsperado, selectionStart: 0, setSelectionRange: jest.fn() } });
+    await act(async () => {
+      wrapper
+        .find('textarea')
+        .simulate('change', { target: { value: valorEsperado, selectionStart: 0, setSelectionRange: jest.fn() } });
+    });
     // assert
     expect(setValue).toHaveBeenCalledTimes(1);
     expect(setValue).toHaveBeenCalledWith(valorEsperado);
     expect(setTouched).toHaveBeenCalledTimes(0);
   });
 
-  test('Debe de llamarse el setValue y no el setTouched, con el espacio final eliminado', () => {
+  test('Debe de llamarse el setValue y no el setTouched, con el espacio final eliminado', async () => {
     // arrange
     const valorEsperado = 'soy una empresa que vende empanadas en cali ';
     const props = {
@@ -98,12 +104,13 @@ describe('Pruebas en el componente TextArea', () => {
     };
     const wrapper = shallow(<TextArea {...props} />);
     // act
-    wrapper.find('textarea').simulate('blur');
+    await act(async () => {
+      wrapper.find('textarea').simulate('blur');
+    });
     // assert
     expect(setValue).toHaveBeenCalledTimes(1);
     expect(setValue).toHaveBeenCalledWith(valorEsperado.trimEnd());
-    expect(setTouched).toHaveBeenCalledTimes(1);
-    expect(setTouched).toHaveBeenCalledWith(true);
+    expect(setTouched).toHaveBeenCalledTimes(0);
   });
 
   test('Debe de llamarse el preventDefault porque el valor ingresado no es valido', () => {

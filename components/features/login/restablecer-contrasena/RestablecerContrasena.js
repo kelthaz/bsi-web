@@ -82,10 +82,11 @@ const RestablecerContrasena = () => {
               paste={false}
               format="passwordspace"
               maxlength={20}
-              formulario={formulario}
               type="password"
               size="small"
               label="Contraseña"
+              {...formulario.getFieldMeta('contrasena')}
+              {...formulario.getFieldHelpers('contrasena')}
             />
 
             <div className="py-2">
@@ -96,11 +97,12 @@ const RestablecerContrasena = () => {
               name="confirmarContrasena"
               format="passwordspace"
               paste={false}
-              formulario={formulario}
               maxlength={20}
               type="password"
               size="small"
               label="Contraseña"
+              {...formulario.getFieldMeta('confirmarContrasena')}
+              {...formulario.getFieldHelpers('confirmarContrasena')}
             />
           </div>
 

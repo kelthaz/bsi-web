@@ -94,11 +94,12 @@ const PasoCincoDocumentacionPM = ({ validate }) => {
               <div className="col-md-8 pl-0">
                 <TextField
                   name="usoCuenta"
-                  formulario={formulario}
                   type="text"
                   size="small"
                   label="Uso de cuenta"
                   maxlength={60}
+                  {...formulario.getFieldMeta('usoCuenta')}
+                  {...formulario.getFieldHelpers('usoCuenta')}
                 />
               </div>
             </div>

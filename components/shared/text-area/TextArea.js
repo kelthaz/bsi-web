@@ -7,27 +7,29 @@ import { regexMultipleSpaces } from '../../../constants/regex';
 const TextArea = ({ name, error, touched, value, setValue, setTouched, label, optional, maxlength, format }) => {
   const [formatter, changeSelection] = useFormatter(format);
 
-  const beforeInput = (event) => {
+  const onBeforeInput = (event) => {
     if (formatter(event.data) === '') {
       event.preventDefault();
     }
   };
 
-  const onHandleChange = (event) => {
+  const onTouch = async () => {
+    if (!touched) {
+      await setTouched(true);
+    }
+  };
+
+  const onChange = async (event) => {
     const { selectionStart, value: valueTarget } = event.target;
     const formattedValue = formatter(valueTarget.trimStart().replace(regexMultipleSpaces, ' '));
-
-    if (!touched && formattedValue !== value) {
-      setTouched(true);
-    }
-
-    setValue(formattedValue);
+    await onTouch();
+    await setValue(formattedValue);
     changeSelection('', '', valueTarget, formattedValue, selectionStart, event.target);
   };
 
-  const onHandleBlur = () => {
-    setValue(value.trimEnd());
-    setTouched(true);
+  const onBlur = async () => {
+    await setValue(value.trimEnd());
+    await onTouch();
   };
 
   const hasError = touched && error;
@@ -39,14 +41,14 @@ const TextArea = ({ name, error, touched, value, setValue, setTouched, label, op
           id={name}
           name={name}
           className={styles['text-area']}
-          onChange={onHandleChange}
-          onBlur={onHandleBlur}
+          onChange={onChange}
+          onBlur={onBlur}
           value={value}
           maxLength={maxlength}
           autoComplete="off"
           placeholder={label}
           tabIndex="0"
-          onBeforeInput={beforeInput}
+          onBeforeInput={onBeforeInput}
         />
 
         <div className={styles['resize-text-area']} />

@@ -24,7 +24,6 @@ const publicoRoutes = [
     component: Inicio,
     services: [{ name: 'catalogo', service: SimuladorRepositorio.getSimuladorCatalogo, params: '' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'inicio',
     },
@@ -34,7 +33,6 @@ const publicoRoutes = [
     component: Credito,
     services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'credito-pyme' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'credito',
     },
@@ -44,7 +42,6 @@ const publicoRoutes = [
     component: Requisitos,
     services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'requisitos' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'requisitos',
     },
@@ -54,7 +51,6 @@ const publicoRoutes = [
     component: SelectorSimulador,
     services: [{ name: 'catalogo', service: SimuladorRepositorio.getSimuladorCatalogo, params: '' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'simulador',
     },
@@ -64,7 +60,6 @@ const publicoRoutes = [
     component: Beneficios,
     services: [],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'beneficios',
     },
@@ -74,7 +69,6 @@ const publicoRoutes = [
     component: Ayuda,
     services: [{ name: 'accordionItems', service: AccordionRepositorio.getAccordionPorSector, params: 'ayuda' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'ayuda',
     },
@@ -84,7 +78,6 @@ const publicoRoutes = [
     component: AvisoPrivacidad,
     services: [{ name: 'avisoItems', service: AvisoRepositorio.getAviso, params: '' }],
     roles: [],
-    feature: 'publico',
     data: {
       tab: 'ayuda',
     },

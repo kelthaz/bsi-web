@@ -10,7 +10,7 @@ const GraciasPorContarnosDatosEmpresa = ({ validate }) => {
   const dispatch = useDispatch();
 
   const formulario = {
-    handleSubmit: () => {
+    submitForm: () => {
       dispatch(
         nextStepDatosPersonales({
           currentStep: validate
@@ -25,7 +25,7 @@ const GraciasPorContarnosDatosEmpresa = ({ validate }) => {
   const [handleSubmit] = useOnChangePage(formulario, PASO_OCHO_DATOS_EMPRESA_ROUTE, validate);
 
   return (
-    <div className="contedor-fixed">
+    <div className="contedor-fixed-tab">
       <div className="contedor-solicitud ">
         <div className="container p-0">
           <div className="row ">

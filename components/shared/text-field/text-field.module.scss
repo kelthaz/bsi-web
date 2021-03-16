@@ -6,9 +6,28 @@
   width: 100%;
 }
 
-@mixin input-config($color, $size) {
+@mixin config-label($color) {
+  @include body-2;
+  color: $color;
+  left: 12px;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  transition: 0.2s ease all;
+}
+
+@mixin help-text-config($color) {
+  @include body-3;
+  color: $color;
+  display: inline-block;
+}
+
+@mixin input-config($color, $size, $border-color) {
   background-color: transparent;
   border: 0;
+  border-bottom: 1.5px solid $border-color;
   color: $color;
   display: block;
   font-family: $futura-book;
@@ -22,8 +41,56 @@
     padding: 24px 12px 8px;
   }
 
+  ~ label {
+    @if $color == $gray {
+      @include config-label($gray);
+    }
+
+    @if $color == $blue-shadow {
+      @include config-label($blue-shadow);
+    }
+
+    @if $border-color == $red {
+      @include config-label($red);
+    }
+  }
+
+  ~ span {
+    @if $color == $gray {
+      @include help-text-config($gray);
+    }
+
+    @if $color == $blue-shadow {
+      @include help-text-config($blue-shadow);
+    }
+
+    @if $border-color == $red {
+      @include help-text-config($red);
+    }
+    opacity: 0;
+  }
+
   &:focus {
     outline: none;
+
+    @if $color == $gray {
+      color: $gray-dark;
+    }
+
+    @if $color == $blue-shadow {
+      color: $white;
+    }
+
+    @if $border-color == $gray {
+      border-bottom: 1.5px solid $blue-sky;
+    }
+    @if $border-color == $blue-morning {
+      border-bottom: 1.5px solid $yellow-summer;
+    }
+
+    ~ span {
+      opacity: 1;
+    }
   }
 
   &[type='number'] {
@@ -34,11 +101,31 @@
     color: $gray-light;
   }
 
+  &:not(:placeholder-shown),
+  &:disabled:not(:placeholder-shown),
+  &:focus {
+    ~ label {
+      font-size: 12px;
+      top: 4px;
+    }
+  }
+
   &:disabled {
-    background-color: $blue-light;
+    @if $color == $gray {
+      background-color: $blue-light;
+    }
+
+    @if $color == $blue-shadow {
+      background-color: $blue-night;
+    }
+
     border-bottom: 1.5px solid $gray-light;
     color: $gray-light;
     cursor: not-allowed;
+
+    ~ label {
+      @include config-label($gray-light);
+    }
   }
 
   &::-ms-reveal,
@@ -55,127 +142,101 @@
   &::after {
     user-select: initial;
   }
+
+  @if $size == 32px {
+    @include media('md') {
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  }
 }
 
-.input-big {
-  @include input-config($gray, 32px);
-  border-bottom: 1.5px solid $gray;
-
-  @include media('md') {
-    font-size: 16px;
-    padding: 8px 12px;
+@mixin input-status-pr($doble: false) {
+  @if $doble {
+    padding-right: 44px;
+  } @else {
+    padding-right: 22px;
   }
 }
 
 .input-big-password {
-  @include input-config($gray, 32px);
-  border-bottom: 1.5px solid $gray;
-  padding-right: 22px;
-  user-select: none;
+  @include input-config($gray, 32px, $gray);
+  @include input-status-pr;
+}
 
-  @include media('md') {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
+.input-big-password-error {
+  @include input-config($red, 32px, $red);
+  @include input-status-pr(true);
+}
+
+.input-big-password-inverted {
+  @include input-config($blue-shadow, 32px, $blue-morning);
+  @include input-status-pr;
+}
+
+.input-big-password-inverted-error {
+  @include input-config($blue-shadow, 32px, $red);
+  @include input-status-pr(true);
 }
 
 .input-small-password {
-  @include input-config($gray, 16px);
-  border-bottom: 1.5px solid $gray;
-  padding-right: 22px;
-  user-select: none;
+  @include input-config($gray, 16px, $gray);
+  @include input-status-pr;
+}
+
+.input-small-password-error {
+  @include input-config($gray, 16px, $red);
+  @include input-status-pr(true);
+}
+
+.input-small-password-inverted {
+  @include input-config($blue-shadow, 16px, $blue-morning);
+  @include input-status-pr;
+}
+
+.input-small-password-inverted-error {
+  @include input-config($blue-shadow, 16px, $red);
+  @include input-status-pr(true);
+}
+
+.input-big {
+  @include input-config($gray, 32px, $gray);
+}
+
+.input-big-error {
+  @include input-config($gray, 32px, $red);
+  @include input-status-pr;
 }
 
 .input-big-inverted {
-  @include input-config($gray, 32px);
-  border-bottom: 1.5px solid $blue-morning;
+  @include input-config($blue-shadow, 32px, $blue-morning);
+}
 
-  @include media('md') {
-    font-size: 16px;
-    padding: 8px 12px;
-  }
+.input-big-inverted-error {
+  @include input-config($blue-shadow, 32px, $red);
+  @include input-status-pr;
 }
 
 .input-small {
-  @include input-config($gray-dark, 16px);
-  border-bottom: 1.5px solid $gray;
+  @include input-config($gray, 16px, $gray);
+}
+
+.input-small-error {
+  @include input-config($gray, 16px, $red);
+  @include input-status-pr;
 }
 
 .input-small-inverted {
-  @include input-config($white, 16px);
-  border-bottom: 1.5px solid $blue-morning;
+  @include input-config($blue-shadow, 16px, $blue-morning);
 }
 
-@mixin config-label($color) {
-  @include body-2;
-  color: $color;
-  left: 12px;
-  margin: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  transition: 0.2s ease all;
-}
-
-.label-small {
-  @include config-label($gray);
-}
-
-.label-small-inverted {
-  @include config-label($blue-shadow);
-}
-
-.label-error {
-  @include config-label($red);
-}
-
-.label-disabled {
-  @include config-label($gray-light);
-}
-
-.label-active {
-  font-size: 12px !important;
-  top: 4px;
+.input-small-inverted-error {
+  @include input-config($blue-shadow, 16px, $red);
+  @include input-status-pr;
 }
 
 .capitalize {
   text-transform: capitalize;
-}
-
-.indicador-activo {
-  border-bottom: 1.5px solid $blue-sky;
-}
-
-.indicador-activo-inverted {
-  border-bottom: 1.5px solid $yellow-summer;
-}
-
-.indicador-error {
-  border-bottom: 1.5px solid $red;
-}
-
-.indicador-error-password {
-  border-bottom: 1.5px solid $red;
-  padding-right: 44px;
-}
-
-@mixin help-text-config($color) {
-  @include body-3;
-  color: $color;
-  display: inline-block;
-}
-
-.help-text {
-  @include help-text-config($gray);
-}
-
-.help-text-inverted {
-  @include help-text-config($blue-shadow);
-}
-
-.help-text-error {
-  @include help-text-config($red);
 }
 
 @mixin icon-config($color) {
@@ -247,6 +308,10 @@
       fill: $color;
     }
   }
+}
+
+.opacity-error {
+  opacity: 1 !important;
 }
 
 .button-password-inverted {
