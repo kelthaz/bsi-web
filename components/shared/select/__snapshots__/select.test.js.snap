@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Select Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="custom-select"
+>
+  <button
+    className="svg-button-input-small arrow-inverted "
+    disabled={false}
+    onClick={[Function]}
+    tabIndex="-1"
+    type="button"
+  >
+    <SvgChevron />
+  </button>
+  <button
+    className=" select-small-blue indicador-inverted "
+    disabled={false}
+    name="plazo"
+    onClick={[Function]}
+    tabIndex="0"
+    type="button"
+  >
+    Cónyuges
+  </button>
+  <ul
+    className="select-items select-hide"
+    role="menu"
+  >
+    <li
+      key="Cónyuges"
+      role="none"
+    >
+      <button
+        className="item item-selected"
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Cónyuges
+      </button>
+    </li>
+    <li
+      key="oncubinos"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Concubinos
+      </button>
+    </li>
+    <li
+      key="Hijos"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Hijos
+      </button>
+    </li>
+    <li
+      key="Padres"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Padres
+      </button>
+    </li>
+    <li
+      key="Suegros"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Suegros
+      </button>
+    </li>
+    <li
+      key="Hijos de cónyuge"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Hijos de cónyuge
+      </button>
+    </li>
+    <li
+      key="Hermanos"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Hermanos
+      </button>
+    </li>
+    <li
+      key="Abuelos"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Abuelos
+      </button>
+    </li>
+    <li
+      key="Nietos"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Nietos
+      </button>
+    </li>
+    <li
+      key="Cuñados"
+      role="none"
+    >
+      <button
+        className="item "
+        onClick={[Function]}
+        role="menuitem"
+        tabIndex="-1"
+        type="button"
+      >
+        Cuñados
+      </button>
+    </li>
+  </ul>
+  <span
+    className="help-text-error"
+  />
+</div>
+`;

@@ -48,7 +48,7 @@ const Select = ({
   );
 
   const onToggle = async () => {
-    if (!touched && toggle) {
+    if (!touched) {
       await setTouched(true);
     }
     setToggle(!toggle);
