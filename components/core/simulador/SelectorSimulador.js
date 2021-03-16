@@ -127,12 +127,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-6 col-md-4 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="plazo"
-                      formulario={formulario}
-                      size="smallb"
+                      label="Seleccione..."
+                      size="small"
                       items={itemsPaymentMonths}
                       blue
+                      {...formulario.getFieldMeta('plazo')}
+                      {...formulario.getFieldHelpers('plazo')}
                     />
                   </div>
                 </div>
@@ -145,12 +146,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="periodicidad"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsPaymentTimes}
                       blue
+                      {...formulario.getFieldMeta('periodicidad')}
+                      {...formulario.getFieldHelpers('periodicidad')}
                     />
                   </div>
                 </div>
@@ -166,12 +168,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-6 col-md-5 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="aniosEmpresa"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsCompanyTime}
                       blue
+                      {...formulario.getFieldMeta('aniosEmpresa')}
+                      {...formulario.getFieldHelpers('aniosEmpresa')}
                     />
                   </div>
                 </div>
@@ -185,12 +188,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="ventasAnio"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsSalesYear}
                       blue
+                      {...formulario.getFieldMeta('ventasAnio')}
+                      {...formulario.getFieldHelpers('ventasAnio')}
                     />
                   </div>
                 </div>

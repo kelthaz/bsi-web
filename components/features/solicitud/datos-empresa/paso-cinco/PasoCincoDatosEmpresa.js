@@ -61,7 +61,14 @@ const PasoCincoDatosEmpresa = ({ validate }) => {
                 <p className="input color-gray">De</p>
               </div>
               <div className="col-lg-5 col-md-5  col-xs-11 pr-lg-2 pr-md-2 pb-sm-3 pb-xs-3">
-                <Select name="numeroEmpleados" label="40 a 60" formulario={formulario} size="big" items={items} />
+                <Select
+                  name="numeroEmpleados"
+                  label="40 a 60"
+                  size="big"
+                  items={items}
+                  {...formulario.getFieldMeta('numeroEmpleados')}
+                  {...formulario.getFieldHelpers('numeroEmpleados')}
+                />
               </div>
             </div>
             <div className="flex-column-center-config">

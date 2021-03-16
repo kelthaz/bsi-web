@@ -126,12 +126,13 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                     <div className="col-6 ">
                       <Select
                         name="cantidadInmueblesPropiosSinGravamen"
-                        formulario={formulario}
                         size="big"
                         items={items}
                         disabled={formulario.values.tieneInmueblesPropiosSinGravamen !== 'si'}
                         label=""
                         showAlwaysErrors={false}
+                        {...formulario.getFieldMeta('cantidadInmueblesPropiosSinGravamen')}
+                        {...formulario.getFieldHelpers('cantidadInmueblesPropiosSinGravamen')}
                       />
                     </div>
                   </div>
@@ -151,10 +152,11 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                   <div className="col-md-6 col-xs-12">
                     <Select
                       name={`inmueblesPropiosSinGravamen[${index}].tipoInmueble`}
-                      formulario={formulario}
                       size="big"
                       label="Seleccione"
                       items={itemsTipoTerreno}
+                      {...formulario.getFieldMeta(`inmueblesPropiosSinGravamen[${index}].tipoInmueble`)}
+                      {...formulario.getFieldHelpers(`inmueblesPropiosSinGravamen[${index}].tipoInmueble`)}
                     />
                   </div>
                 </div>

@@ -37,12 +37,13 @@ const EjerceControlSobreMoral = ({
               <div className="col-6 ">
                 <Select
                   name={nameCantidadControlados}
-                  formulario={formulario}
                   size="big"
                   items={items}
                   disabled={formulario.values[nameTieneControlados] !== 'si'}
                   label=""
                   showAlwaysErrors={false}
+                  {...formulario.getFieldMeta(nameCantidadControlados)}
+                  {...formulario.getFieldHelpers(nameCantidadControlados)}
                 />
               </div>
             </div>

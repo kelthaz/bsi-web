@@ -39,12 +39,13 @@ const EjerceControlSobreFisico = ({
               <div className="col-6 ">
                 <Select
                   name={nameCantidadControlados}
-                  formulario={formulario}
                   size="big"
                   items={items}
                   disabled={formulario.values[nameTieneControlados] !== 'si'}
                   label=""
                   showAlwaysErrors={false}
+                  {...formulario.getFieldMeta(nameCantidadControlados)}
+                  {...formulario.getFieldHelpers(nameCantidadControlados)}
                 />
               </div>
             </div>
@@ -139,7 +140,6 @@ const EjerceControlSobreFisico = ({
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
               <Select
                 name={`${nameControlados}[${index}].parentesco`}
-                formulario={formulario}
                 size="big"
                 items={[
                   { label: 'Cónyuges', value: 'Cónyuges' },
@@ -154,6 +154,8 @@ const EjerceControlSobreFisico = ({
                   { label: 'Cuñados', value: 'Cuñados' },
                 ]}
                 label="Parentesco"
+                {...formulario.getFieldMeta(`${nameControlados}[${index}].parentesco`)}
+                {...formulario.getFieldHelpers(`${nameControlados}[${index}].parentesco`)}
               />
             </div>
           </div>

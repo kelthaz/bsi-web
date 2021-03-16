@@ -103,12 +103,13 @@ const StepFour = ({ validate }) => {
                     <div className="col-6 ">
                       <Select
                         name="cantidadEmpresas"
-                        formulario={formulario}
                         size="big"
                         items={items}
                         disabled={formulario.values.tieneAccionesEnOtrasEmpresas !== 'si'}
                         label=""
                         showAlwaysErrors={false}
+                        {...formulario.getFieldMeta('cantidadEmpresas')}
+                        {...formulario.getFieldHelpers('cantidadEmpresas')}
                       />
                     </div>
                   </div>
@@ -143,10 +144,11 @@ const StepFour = ({ validate }) => {
                   <div className="col-md-3 col-xs-12 ">
                     <Select
                       name={`empresas[${index}].tipoSociedad`}
-                      formulario={formulario}
                       size="big"
                       items={itemsTipoEmpresa}
                       label="S.A"
+                      {...formulario.getFieldMeta(`empresas[${index}].tipoSociedad`)}
+                      {...formulario.getFieldHelpers(`empresas[${index}].tipoSociedad`)}
                     />
                   </div>
                   <div className="col-md-3 col-xs-12 ">
