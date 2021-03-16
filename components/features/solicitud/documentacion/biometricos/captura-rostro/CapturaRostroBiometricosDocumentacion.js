@@ -6,6 +6,7 @@ import Modal from '../../../../../shared/modal/Modal';
 import Camera from '../../../../../shared/camera/Camera';
 import { PASO_DOS_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 import knomiFeedbackMessages from '../../../../../../constants/knomi-feedback.json';
+import SvgCapturaExitosa from '../../../../../svgs/carga-documentos/SvgCapturaExitosa';
 
 const CapturaRostroBiometricosDocumentacion = () => {
 
@@ -126,6 +127,8 @@ const CapturaRostroBiometricosDocumentacion = () => {
     let takingPicture = true;
     let countTimeout = 0;
     /* eslint-disable no-await-in-loop */
+    // TODO: Reemplazar por setInterval
+    // https://stackoverflow.com/questions/16599878/can-clearinterval-be-called-inside-setinterval/16599921
     while (takingPicture) {
       const frame = cameraRef.current.onCapture();
       pushFrame(frame);
@@ -170,6 +173,11 @@ const CapturaRostroBiometricosDocumentacion = () => {
     <div className="container-fluid">
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
         <div>
+          <div className="col-xs-12 col-sm-12 my-3">
+            <div className="mx-auto">
+              <SvgCapturaExitosa />
+            </div>
+          </div>
           <h4 className="color-blue-storm">¡Captura exitosa!</h4>
           <p className="dark-gray body2">
             Tus biométricos fueron capturados.
