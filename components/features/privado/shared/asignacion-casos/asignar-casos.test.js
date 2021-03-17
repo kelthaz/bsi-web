@@ -5,6 +5,9 @@ import AsignarCasos from './AsignarCasos';
 describe('Pruebas en el componente AsignarCasos', () => {
   it('Debe actualizar el ejecutivo', () => {
     // arrange
+    jest.mock('../../../../../hooks/useSearchEngine', () => ({
+      useSearchEngine: () => [{text: 'Mateo Leal'}]
+    }));
     const wrap = mount(<AsignarCasos />);
     // act
     wrap.find('button.btn-medium-secondary').simulate('click');
