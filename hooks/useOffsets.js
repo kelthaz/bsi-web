@@ -9,10 +9,10 @@ const useOffsets = (vWidth, vHeight, cWidth, cHeight) => {
 
   useEffect(() => {
     if (vWidth && vHeight && cWidth && cHeight) {
-      const x = vWidth > cWidth ? Math.round((vWidth - cWidth) / 2) : 0;
-      const y = vHeight > cHeight ? Math.round((vHeight - cHeight) / 2) : 0;
+      const posX = vWidth > cWidth ? Math.round((vWidth - cWidth) / 2) : 0;
+      const posY = vHeight > cHeight ? Math.round((vHeight - cHeight) / 2) : 0;
 
-      setOffsets({ x, y });
+      setOffsets({ posX, posY });
     }
   }, [vWidth, vHeight, cWidth, cHeight]);
 
