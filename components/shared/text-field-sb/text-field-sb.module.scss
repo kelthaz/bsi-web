@@ -5,6 +5,18 @@
   position: relative;
 }
 
+.group.inverted {
+  .input {
+    border-bottom: 1.5px solid $gray;
+    color: $gray-light;
+  }
+
+  .label {
+    left: auto;
+    right: 5px;
+  }
+}
+
 .input {
   background-color: transparent;
   border: none;

@@ -8,6 +8,7 @@ import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
 import Calendar from '../../components/shared/calendar/Calendar';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
+import AsignarCasos from '../../components/features/privado/shared/asignacion-casos/AsignarCasos';
 
 const Test = () => {
 
@@ -144,6 +145,20 @@ const Test = () => {
                     />
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="06" linea1="Asignación de casos" />
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <AsignarCasos />
               </div>
             </div>
           </div>
