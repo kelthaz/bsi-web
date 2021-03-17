@@ -48,7 +48,7 @@ const Select = ({
   );
 
   const onToggle = async () => {
-    if (!touched) {
+    if (!touched && toggle) {
       await setTouched(true);
     }
     setToggle(!toggle);
@@ -58,6 +58,7 @@ const Select = ({
 
   const onChangeItem = async (itemMap) => {
     await setValue(itemMap);
+    await setTouched(true);
   };
 
   const hasError = !disabled && touched && error && items.length > 0;

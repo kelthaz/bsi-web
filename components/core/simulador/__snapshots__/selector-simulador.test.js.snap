@@ -851,12 +851,16 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                 <div
                   className="center-first-button"
                 >
-                  <button
-                    className="btn-medium-secondary"
-                    type="button"
+                  <Component
+                    href="/login/iniciar-sesion"
                   >
-                    Retoma tu proceso
-                  </button>
+                    <button
+                      className="btn-medium-secondary"
+                      type="button"
+                    >
+                      Retoma tu proceso
+                    </button>
+                  </Component>
                 </div>
               </div>
               <div

@@ -83,9 +83,8 @@ describe('Pruebas en el componente Select', () => {
     expect(setTouched).toHaveBeenCalledTimes(1);
     expect(setTouched).toHaveBeenCalledWith(true);
   });
-  it('Debe de llamarse el setValue 2 veces y el setTouched 0 veces, y por último cerrar el select ', async () => {
+  it('Debe de llamarse el setValue y el setTouched 1 vez, y por último cerrar el select ', async () => {
     // arrange
-    const primerItem = items[0];
     const segundoItem = items[1];
     const props = {
       name: 'plazo',
@@ -93,7 +92,7 @@ describe('Pruebas en el componente Select', () => {
       size: 'big',
       items,
       format: 'uppercase',
-      touched: true,
+      touched: false,
       value: null,
       setValue,
       setTouched,
@@ -104,15 +103,9 @@ describe('Pruebas en el componente Select', () => {
     await act(async () => {
       wrapper.find('button').at(0).simulate('click');
     });
+
     await act(async () => {
-      wrapper
-        .find('ul')
-        .find('button')
-        .at(0)
-        .simulate('click', { ...primerItem });
-    });
-    await act(async () => {
-      wrapper.find('button').at(1).simulate('click');
+      wrapper.find('button').at(0).simulate('click');
     });
     await act(async () => {
       wrapper
@@ -126,9 +119,9 @@ describe('Pruebas en el componente Select', () => {
     });
 
     // assert
-    expect(setValue).toHaveBeenCalledTimes(2);
+    expect(setValue).toHaveBeenCalledTimes(1);
     expect(setValue).toHaveBeenCalledWith(segundoItem);
-    expect(setTouched).toHaveBeenCalledTimes(0);
+    expect(setTouched).toHaveBeenCalledTimes(2);
   });
   it('Debe de no mostrarse el error debido a que no tiene items ', async () => {
     // arrange
@@ -154,7 +147,7 @@ describe('Pruebas en el componente Select', () => {
     const span = wrapper.find('span').at(0).text().trim();
     // assert
     expect(setValue).toHaveBeenCalledTimes(0);
-    expect(setTouched).toHaveBeenCalledTimes(1);
+    expect(setTouched).toHaveBeenCalledTimes(0);
     expect(span).toBe('');
   });
 
