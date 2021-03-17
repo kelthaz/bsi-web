@@ -105,12 +105,20 @@ const PasoDosDatosEmpresa = ({ validate }) => {
             <p className="color-gray-dark body2">¿Éste es también tu domicilio comercial?</p>
             <div className="row no-gutters">
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                <RadioButton name="esDomilicioComercial" formulario={formulario} value="si">
+                <RadioButton
+                  name="esDomilicioComercial"
+                  label="si"
+                  {...formulario.getFieldProps('esDomilicioComercial')}
+                >
                   <p className="input color-gray m-0">Sí</p>
                 </RadioButton>
               </div>
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <RadioButton name="esDomilicioComercial" formulario={formulario} value="no">
+                <RadioButton
+                  name="esDomilicioComercial"
+                  label="no"
+                  {...formulario.getFieldProps('esDomilicioComercial')}
+                >
                   <p className="input color-gray m-0">No</p>
                 </RadioButton>
               </div>
@@ -137,7 +145,11 @@ const PasoDosDatosEmpresa = ({ validate }) => {
 
                 <div className="row no-gutters card-simple-blue-light">
                   <div className="col-lg-12 pb-2">
-                    <RadioButton name="domicilioEntrega" formulario={formulario} value="domicilioComercial">
+                    <RadioButton
+                      name="domicilioEntrega"
+                      label="domicilioComercial"
+                      {...formulario.getFieldProps('domicilioEntrega')}
+                    >
                       <p className="input color-gray m-0 position-relative">
                         Utilizar mi domicilio comercial para recibir mi Token BanCoppel.
                         <Tooltip message="Necesitamos que nos confirmes tu dirección para recibír tu token físico." />
@@ -145,7 +157,11 @@ const PasoDosDatosEmpresa = ({ validate }) => {
                     </RadioButton>
                   </div>
                   <div className="col-lg-12">
-                    <RadioButton name="domicilioEntrega" formulario={formulario} value="domicilioFiscal">
+                    <RadioButton
+                      name="domicilioEntrega"
+                      label="domicilioFiscal"
+                      {...formulario.getFieldProps('domicilioEntrega')}
+                    >
                       <p className="input color-gray m-0">
                         Utilizar mi domicilio fiscal para recibir mi Token BanCoppel.
                       </p>

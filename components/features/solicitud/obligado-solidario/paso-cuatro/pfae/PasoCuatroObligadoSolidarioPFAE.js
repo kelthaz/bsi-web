@@ -97,7 +97,11 @@ const StepFour = ({ validate }) => {
             </p>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
-                <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="si">
+                <RadioButton
+                  name="tieneAccionesEnOtrasEmpresas"
+                  label="si"
+                  {...formulario.getFieldProps('tieneAccionesEnOtrasEmpresas')}
+                >
                   <div className="row">
                     <div className="input color-gray col-5">Sí, son</div>
                     <div className="col-6 ">
@@ -116,7 +120,11 @@ const StepFour = ({ validate }) => {
                 </RadioButton>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="no">
+                <RadioButton
+                  name="tieneAccionesEnOtrasEmpresas"
+                  label="no"
+                  {...formulario.getFieldProps('tieneAccionesEnOtrasEmpresas')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>

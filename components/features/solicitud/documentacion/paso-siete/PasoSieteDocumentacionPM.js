@@ -69,7 +69,11 @@ const PasoSieteDocumentacionPM = ({ validate }) => {
               <div className="row ">
                 {opcionesProcedenciaPagoCredito.map(({ value, label }) => (
                   <div key={label} className="pt-3 col-md-12 px-0">
-                    <CheckBox name="procedenciaPagoCreditoSeleccionados" formulario={formulario} value={value}>
+                    <CheckBox
+                      name="procedenciaPagoCreditoSeleccionados"
+                      label={value}
+                      {...formulario.getFieldProps('procedenciaPagoCreditoSeleccionados')}
+                    >
                       <p className="m-0">{label}</p>
                     </CheckBox>
                   </div>
@@ -77,7 +81,11 @@ const PasoSieteDocumentacionPM = ({ validate }) => {
               </div>
               <div className="row pt-3 ">
                 <div className="col-md-3 px-0 align-self-center">
-                  <CheckBox name="procedenciaPagoCreditoSeleccionados" formulario={formulario} value="Otros:">
+                  <CheckBox
+                    name="procedenciaPagoCreditoSeleccionados"
+                    label="Otros:"
+                    {...formulario.getFieldProps('procedenciaPagoCreditoSeleccionados')}
+                  >
                     <p className="m-0">Otros, especifique: </p>
                   </CheckBox>
                 </div>

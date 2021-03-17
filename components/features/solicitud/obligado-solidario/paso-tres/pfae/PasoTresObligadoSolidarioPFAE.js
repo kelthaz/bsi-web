@@ -54,12 +54,20 @@ const PasoTresObligadoSolidarioPFAE = ({ validate }) => {
               </p>
               <div className="row">
                 <div className="col-md-2 col-xs-4">
-                  <RadioButton name="tieneDepositosEInversiones" formulario={formulario} value="si">
+                  <RadioButton
+                    name="tieneDepositosEInversiones"
+                    label="si"
+                    {...formulario.getFieldProps('tieneDepositosEInversiones')}
+                  >
                     <span className="input color-gray">Sí</span>
                   </RadioButton>
                 </div>
                 <div className="col-md-6 col-xs-4">
-                  <RadioButton name="tieneDepositosEInversiones" formulario={formulario} value="no">
+                  <RadioButton
+                    name="tieneDepositosEInversiones"
+                    label="no"
+                    {...formulario.getFieldProps('tieneDepositosEInversiones')}
+                  >
                     <span className="input color-gray">No</span>
                   </RadioButton>
                 </div>
