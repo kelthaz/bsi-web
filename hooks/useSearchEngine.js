@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const useSearchEngine = (value, setData, keywordsList) => {
+const useSearchEngine = (value, keywordsList) => {
+
+  const [filteredList, setFilteredList] = useState(keywordsList);
+
   useEffect(() => {
     if (value.length >= 1) {
-      setData(
+      setFilteredList(
         keywordsList.filter(({ text }) => {
           const listData = text
             .normalize('NFD')
@@ -17,9 +20,11 @@ const useSearchEngine = (value, setData, keywordsList) => {
         })
       );
     } else {
-      setData([]);
+      setFilteredList([]);
     }
   }, [value]);
+
+  return [filteredList];
 };
 
 export default useSearchEngine;

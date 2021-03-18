@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import useSearchEngine from '../../../../../hooks/useSearchEngine';
 import Modal from '../../../../shared/modal/Modal';
-import TextFieldSB from '../../../../shared/text-field-sb/TextFieldSB';
+import DatalistInput from '../../../../shared/datalist-input/DatalistInput';
 
 import styles from './asignar-casos.module.scss';
 
@@ -10,21 +9,12 @@ import keywordsList from '../../../../../constants/listaEjecutivos';
 
 const AsignarCasos = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [value, setValue] = useState('');
-  const [data, setData] = useState([]);
   const [ejecutivo, setEjecutivo] = useState('');
-
-  const handler = (evt) => {
-    setValue(evt.target.value);
-  };
 
   const seleccionarEjecutivo = (item) => {
     setOpenModal(false);
-    setValue('');
     setEjecutivo(item.text);
   };
-
-  useSearchEngine(value, setData, keywordsList);
 
   return (
     <>
@@ -39,23 +29,12 @@ const AsignarCasos = () => {
           <p className="body2">
             Elige al ejecutivo al que quieres asignar este caso para su revisión de documentos.
           </p>
-          <TextFieldSB
-            value={value}
-            onChange={handler}
+          <DatalistInput
+            onChange={seleccionarEjecutivo}
             placeholder="Escribe el nombre de supervisor que quieres asignar"
+            keywordsList={keywordsList}
             inverted
           />
-          {data.length > 0 && (
-            <ul className={styles['select-items']}>
-              {data.map((item) => (
-                <li key={item.text}>
-                  <button disabled={item.disabled} className={styles.item} type="button" onClick={() => seleccionarEjecutivo(item)}>
-                    {item.text}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </Modal>
     </>
