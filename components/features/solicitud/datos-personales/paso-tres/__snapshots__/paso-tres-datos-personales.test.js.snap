@@ -179,58 +179,9 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                 <Select
                   blue={false}
                   disabled={false}
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                    }
-                  }
+                  error=""
+                  initialTouched={false}
+                  initialValue={null}
                   inverted={false}
                   items={
                     Array [
@@ -290,9 +241,13 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                   }
                   label="Sector"
                   name="sector"
-                  optional={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   showAlwaysErrors={true}
                   size="big"
+                  touched={false}
+                  value={null}
                 >
                   <div
                     className="custom-select"
@@ -324,6 +279,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                     <button
                       className="placeholder-color select-big indicador "
                       disabled={false}
+                      name="sector"
                       onClick={[Function]}
                       tabIndex="0"
                       type="button"
@@ -518,7 +474,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       </li>
                     </ul>
                     <span
-                      className="help-text"
+                      className="help-text-error"
                     >
                       <span>
                          
@@ -546,65 +502,20 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                 <Select
                   blue={false}
                   disabled={true}
-                  formulario={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "getFieldHelpers": [Function],
-                      "getFieldMeta": [Function],
-                      "getFieldProps": [Function],
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialErrors": Object {},
-                      "initialStatus": undefined,
-                      "initialTouched": Object {},
-                      "initialValues": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                      "isSubmitting": false,
-                      "isValid": true,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validateOnMount": false,
-                      "values": Object {
-                        "descripcionEmpresa": "",
-                        "giro": null,
-                        "nombreEmpresa": "",
-                        "sector": null,
-                      },
-                    }
-                  }
+                  error=""
+                  initialTouched={false}
+                  initialValue={null}
                   inverted={false}
                   items={Array []}
                   label="Giro"
                   name="giro"
-                  optional={false}
+                  setError={[Function]}
+                  setTouched={[Function]}
+                  setValue={[Function]}
                   showAlwaysErrors={true}
                   size="big"
+                  touched={false}
+                  value={null}
                 >
                   <div
                     className="custom-select"
@@ -636,6 +547,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                     <button
                       className="placeholder-color select-big indicador "
                       disabled={true}
+                      name="giro"
                       onClick={[Function]}
                       tabIndex="0"
                       type="button"
@@ -647,7 +559,7 @@ exports[`Pruebas en el componente PasoTresDatosPersonales Debe de mostrarse corr
                       role="menu"
                     />
                     <span
-                      className="help-text"
+                      className="help-text-error"
                     >
                       <span>
                          

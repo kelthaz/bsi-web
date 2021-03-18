@@ -125,10 +125,11 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
                 <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   <Select
                     name="tipoSociedad"
-                    formulario={formulario}
                     size="big"
                     items={itemsTipoEmpresa}
                     label="Tipo sociedad"
+                    {...formulario.getFieldMeta('tipoSociedad')}
+                    {...formulario.getFieldHelpers('tipoSociedad')}
                   />
                 </div>
               </div>
@@ -157,7 +158,14 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
                 <p className="input color-gray">el sector es de</p>
               </div>
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
-                <Select name="sector" formulario={formulario} size="big" items={itemsSector} label="Sector" />
+                <Select
+                  name="sector"
+                  size="big"
+                  items={itemsSector}
+                  label="Sector"
+                  {...formulario.getFieldMeta('sector')}
+                  {...formulario.getFieldHelpers('sector')}
+                />
               </div>
             </div>
 
@@ -168,11 +176,12 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
                 <Select
                   name="giro"
-                  formulario={formulario}
                   size="big"
                   items={itemsGiro}
                   label="Giro"
                   disabled={itemsGiro.length === 0}
+                  {...formulario.getFieldMeta('giro')}
+                  {...formulario.getFieldHelpers('giro')}
                 />
               </div>
             </div>

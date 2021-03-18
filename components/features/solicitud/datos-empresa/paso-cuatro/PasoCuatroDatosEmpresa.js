@@ -34,7 +34,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
           validationSchema: Yup.object().shape(
             {
               telefonoEmpresa: Yup.string().when('noTengoTelefonoEmpresa', {
-                is: false,
+                is: (noTengoTelefonoEmpresa) => !!noTengoTelefonoEmpresa === false,
                 then: Yup.string().min(12, numeroInvalido).max(12, numeroInvalido).required(campoRequerido),
                 otherwise: Yup.string().notRequired(),
               }),
@@ -42,7 +42,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
               noTengoTelefonoEmpresa: Yup.boolean().when('telefonoEmpresa', {
                 is: (phone) => !phone || phone.length === 0,
                 then: Yup.boolean().oneOf([true], ingreseOpcion),
-                otherwise: Yup.boolean().notRequired(),
+                otherwise: Yup.boolean().notRequired().nullable(),
               }),
             },
 
@@ -65,7 +65,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
       );
     },
   });
-
+  console.log(formulario.errors);
   const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_EMPRESA_ROUTE, validate);
 
   return (

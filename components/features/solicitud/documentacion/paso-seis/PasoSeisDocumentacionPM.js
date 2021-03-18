@@ -88,10 +88,18 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
                 </div>
 
                 <div className="pt-2 col-md-2 pl-xs-0 pl-md-0 pl-lg-4 col-xs-4 ml-xs-1 ml-md-0 ml-lg-3">
-                  <RadioButton name="retirosNumeroTransacciones" formulario={formulario} value="De 0 a 50" />
+                  <RadioButton
+                    name="retirosNumeroTransacciones"
+                    label="De 0 a 50"
+                    {...formulario.getFieldProps('retirosNumeroTransacciones')}
+                  />
                 </div>
                 <div className="pt-2 col-md-3 col-lg-7 pl-md-4 pl-xs-0 col-xs-1">
-                  <RadioButton name="retirosNumeroTransacciones" formulario={formulario} value="Más de 50" />
+                  <RadioButton
+                    name="retirosNumeroTransacciones"
+                    label="Más de 50"
+                    {...formulario.getFieldProps('retirosNumeroTransacciones')}
+                  />
                 </div>
 
                 <div className="pt-2 col-md-4 col-lg-2 col-xs-4 pr-md-0">
@@ -99,20 +107,36 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
                 </div>
 
                 <div className="pt-2 col-md-2 col-xs-4 ml-xs-3 ml-md-0 pl-md-0 pl-lg-4 ml-lg-3">
-                  <RadioButton name="depositosNumeroTransacciones" formulario={formulario} value="De 0 a 50" />
+                  <RadioButton
+                    name="depositosNumeroTransacciones"
+                    label="De 0 a 50"
+                    {...formulario.getFieldProps('depositosNumeroTransacciones')}
+                  />
                 </div>
                 <div className="pt-2 col-md-5 col-lg-7 col-xs-1 pl-md-4">
-                  <RadioButton name="depositosNumeroTransacciones" formulario={formulario} value="Más de 50" />
+                  <RadioButton
+                    name="depositosNumeroTransacciones"
+                    label="Más de 50"
+                    {...formulario.getFieldProps('depositosNumeroTransacciones')}
+                  />
                 </div>
 
                 <div className="pt-2 col-md-4 col-lg-2 col-xs-4 pr-md-0">
                   <p className="color-gray">Transferencias</p>
                 </div>
                 <div className="pt-2 col-md-2 col-xs-4 ml-xs-3 ml-md-0 pl-md-0 pl-lg-4 ml-lg-3">
-                  <RadioButton name="transaccionesNumeroTransacciones" formulario={formulario} value="De 0 a 50" />
+                  <RadioButton
+                    name="transaccionesNumeroTransacciones"
+                    label="De 0 a 50"
+                    {...formulario.getFieldProps('transaccionesNumeroTransacciones')}
+                  />
                 </div>
                 <div className="pt-2 col-md-2 col-xs-1 pl-md-4">
-                  <RadioButton name="transaccionesNumeroTransacciones" formulario={formulario} value="Más de 50" />
+                  <RadioButton
+                    name="transaccionesNumeroTransacciones"
+                    label="Más de 50"
+                    {...formulario.getFieldProps('transaccionesNumeroTransacciones')}
+                  />
                 </div>
               </div>
               <div className="row pl-xs-0  pl-md-2 pt-3">
@@ -137,7 +161,11 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
                       {columnaImporteEsperado.map((column) => (
                         <td key={column}>
                           <div className="ml-5 mt-3 ">
-                            <RadioButton name="retirosImporteEsperado" formulario={formulario} value={column} />
+                            <RadioButton
+                              name="retirosImporteEsperado"
+                              label={column}
+                              {...formulario.getFieldProps('retirosImporteEsperado')}
+                            />
                           </div>
                         </td>
                       ))}
@@ -149,7 +177,11 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
                       {columnaImporteEsperado.map((column) => (
                         <td key={column}>
                           <div className="ml-5 mt-3 ">
-                            <RadioButton name="depositosImporteEsperado" formulario={formulario} value={column} />
+                            <RadioButton
+                              name="depositosImporteEsperado"
+                              label={column}
+                              {...formulario.getFieldProps('depositosImporteEsperado')}
+                            />
                           </div>
                         </td>
                       ))}
@@ -161,7 +193,11 @@ const PasoSeisDocumentacionPM = ({ validate }) => {
                       {columnaImporteEsperado.map((column) => (
                         <td key={column}>
                           <div className="ml-5 mt-3 ">
-                            <RadioButton name="transaccionesImporteEsperado" formulario={formulario} value={column} />
+                            <RadioButton
+                              name="transaccionesImporteEsperado"
+                              label={column}
+                              {...formulario.getFieldProps('transaccionesImporteEsperado')}
+                            />
                           </div>
                         </td>
                       ))}

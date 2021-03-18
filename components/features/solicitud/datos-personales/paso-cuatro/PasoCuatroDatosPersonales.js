@@ -59,7 +59,7 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
-            <h2 className="color-blue-storm">¡Perfecto, {datosPersonales.primerNombre}!</h2>
+            <h2 className="color-blue-storm text-overflow">¡Perfecto, {datosPersonales.primerNombre}!</h2>
             <p className="color-dark-gray sub position-relative">
               <span>Ahora, ¿cuál es tu número de teléfono celular y correo electrónico?</span>
               <Tooltip

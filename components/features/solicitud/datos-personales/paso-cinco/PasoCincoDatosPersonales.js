@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -83,6 +83,12 @@ const PasoCincoDatosPersonales = ({ validate }) => {
       }
     },
   });
+
+  useEffect(async () => {
+    if (currentStep.lastStep) {
+      await formulario.setFieldTouched('rfc', true);
+    }
+  }, []);
 
   const validateSaveInfo = async () => {
     if (!changePage) {
@@ -216,7 +222,7 @@ const PasoCincoDatosPersonales = ({ validate }) => {
                 className="btn-medium"
                 type="submit"
                 aria-label="Avanzar"
-                disabled={!currentStep.lastStep && !(formulario.isValid && formulario.dirty)}
+                disabled={currentStep.lastStep ? !formulario.isValid : !(formulario.isValid && formulario.dirty)}
               >
                 <span>Crea tu contraseña</span>
               </button>

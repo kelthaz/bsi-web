@@ -57,12 +57,20 @@ const PasoSieteDatosEmpresa = ({ validate }) => {
             )}
             <div className="row no-gutters py-3">
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
-                <RadioButton name="tieneCuentaBancoppel" formulario={formulario} value="si">
+                <RadioButton
+                  name="tieneCuentaBancoppel"
+                  label="si"
+                  {...formulario.getFieldProps('tieneCuentaBancoppel')}
+                >
                   <p className="input color-gray m-0">Sí</p>
                 </RadioButton>
               </div>
               <div className="col-lg-2 col-md-2 col-sm-6 col-xs-6">
-                <RadioButton name="tieneCuentaBancoppel" formulario={formulario} value="no">
+                <RadioButton
+                  name="tieneCuentaBancoppel"
+                  label="no"
+                  {...formulario.getFieldProps('tieneCuentaBancoppel')}
+                >
                   <p className="input color-gray m-0">No</p>
                 </RadioButton>
               </div>

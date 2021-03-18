@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import { useRouter, prefetch } from 'next/router';
+import { useRouter } from 'next/router';
 import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoCincoDatosPersonales from './PasoCincoDatosPersonales';
@@ -17,6 +17,7 @@ import TabInformativo from '../../../../shared/tab-informativo/TabInformativo';
 import { regexHyphen } from '../../../../../constants/regex';
 import { MORAL } from '../../../../../constants/persona';
 import { AVISO_ROUTE } from '../../../../../constants/routes/publico/publico';
+import { rfcInvalido } from '../../../../../constants/errors';
 
 jest.mock('../../../../../services/login/login.repositorio');
 
@@ -409,6 +410,40 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     expect(store.getState().solicitud.currentStep.paso).toBe(currentStep.paso);
     expect(store.getState().solicitud.currentStep.valipStep).toBe(currentStep.valipStep);
     expect(push).toHaveBeenCalledTimes(0);
+    wrapper.unmount();
+  });
+
+  test('Debe aparecer error en el campo del rfc debido a que se cambio el tipo de persona', async () => {
+    // arrange
+    const store = storeTest();
+    const { solicitud } = store.getState();
+    solicitud.datosPersonales = {
+      rfc: 'CUPU800825569',
+      contrasena: 'aaaaaaA6',
+      confirmarContrasena: 'aaaaaaA6',
+      aceptoTerminos: true,
+      tipoPersona: MORAL,
+    };
+    solicitud.currentStep = {
+      ...solicitud.currentStep,
+      lastStep: true,
+    };
+
+    let wrapper;
+    await act(async () => {
+      wrapper = mount(
+        <Provider store={store}>
+          <PasoCincoDatosPersonales validate />
+          <ModalActualizar />
+        </Provider>
+      );
+    });
+
+    const rfc = wrapper.find('TextField').find({ name: 'rfc' });
+    // act
+    const error = rfc.find('span').text();
+    // assert
+    expect(error).toBe(rfcInvalido());
     wrapper.unmount();
   });
 });

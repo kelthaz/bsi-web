@@ -97,25 +97,34 @@ const StepFour = ({ validate }) => {
             </p>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
-                <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="si">
+                <RadioButton
+                  name="tieneAccionesEnOtrasEmpresas"
+                  label="si"
+                  {...formulario.getFieldProps('tieneAccionesEnOtrasEmpresas')}
+                >
                   <div className="row">
                     <div className="input color-gray col-5">Sí, son</div>
                     <div className="col-6 ">
                       <Select
                         name="cantidadEmpresas"
-                        formulario={formulario}
                         size="big"
                         items={items}
                         disabled={formulario.values.tieneAccionesEnOtrasEmpresas !== 'si'}
                         label=""
                         showAlwaysErrors={false}
+                        {...formulario.getFieldMeta('cantidadEmpresas')}
+                        {...formulario.getFieldHelpers('cantidadEmpresas')}
                       />
                     </div>
                   </div>
                 </RadioButton>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <RadioButton name="tieneAccionesEnOtrasEmpresas" formulario={formulario} value="no">
+                <RadioButton
+                  name="tieneAccionesEnOtrasEmpresas"
+                  label="no"
+                  {...formulario.getFieldProps('tieneAccionesEnOtrasEmpresas')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -143,10 +152,11 @@ const StepFour = ({ validate }) => {
                   <div className="col-md-3 col-xs-12 ">
                     <Select
                       name={`empresas[${index}].tipoSociedad`}
-                      formulario={formulario}
                       size="big"
                       items={itemsTipoEmpresa}
                       label="S.A"
+                      {...formulario.getFieldMeta(`empresas[${index}].tipoSociedad`)}
+                      {...formulario.getFieldHelpers(`empresas[${index}].tipoSociedad`)}
                     />
                   </div>
                   <div className="col-md-3 col-xs-12 ">

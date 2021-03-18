@@ -120,25 +120,34 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
             </p>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
-                <RadioButton name="tieneInmueblesPropiosSinGravamen" formulario={formulario} value="si">
+                <RadioButton
+                  name="tieneInmueblesPropiosSinGravamen"
+                  label="si"
+                  {...formulario.getFieldProps('tieneInmueblesPropiosSinGravamen')}
+                >
                   <div className="row">
                     <div className="input color-gray col-5">Sí, son</div>
                     <div className="col-6 ">
                       <Select
                         name="cantidadInmueblesPropiosSinGravamen"
-                        formulario={formulario}
                         size="big"
                         items={items}
                         disabled={formulario.values.tieneInmueblesPropiosSinGravamen !== 'si'}
                         label=""
                         showAlwaysErrors={false}
+                        {...formulario.getFieldMeta('cantidadInmueblesPropiosSinGravamen')}
+                        {...formulario.getFieldHelpers('cantidadInmueblesPropiosSinGravamen')}
                       />
                     </div>
                   </div>
                 </RadioButton>
               </div>
               <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <RadioButton name="tieneInmueblesPropiosSinGravamen" formulario={formulario} value="no">
+                <RadioButton
+                  name="tieneInmueblesPropiosSinGravamen"
+                  label="no"
+                  {...formulario.getFieldProps('tieneInmueblesPropiosSinGravamen')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -151,10 +160,11 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
                   <div className="col-md-6 col-xs-12">
                     <Select
                       name={`inmueblesPropiosSinGravamen[${index}].tipoInmueble`}
-                      formulario={formulario}
                       size="big"
                       label="Seleccione"
                       items={itemsTipoTerreno}
+                      {...formulario.getFieldMeta(`inmueblesPropiosSinGravamen[${index}].tipoInmueble`)}
+                      {...formulario.getFieldHelpers(`inmueblesPropiosSinGravamen[${index}].tipoInmueble`)}
                     />
                   </div>
                 </div>
