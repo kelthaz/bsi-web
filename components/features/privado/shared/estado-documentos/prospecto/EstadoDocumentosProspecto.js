@@ -29,6 +29,10 @@ const EstadoDocumentosProspecto = ({ documentos }) => {
     // TODO: Implementar función para subir archivo al servidor.
   };
 
+  const openFileHandler = (index) => {
+    document.getElementById(`inputFile-${index}`).click();
+  };
+
   const onChangeFileHandler = (event, index) => {
     if (!event.target.files[0]) {
       return;
@@ -48,11 +52,11 @@ const EstadoDocumentosProspecto = ({ documentos }) => {
           </div>
           {documento.estado === 2 &&
             <div className="col-3 my-auto">
-              <label htmlFor={`inputFile-${documento.nombre}`} className="btn-mini-secondary">Editar</label>
+              <button type="button" className="btn-mini-secondary" onClick={() => openFileHandler(index)}>Editar</button>
               <input
                 accept="image/png, image/jpg, application/pdf"
                 type="file"
-                id={`inputFile-${documento.nombre}`}
+                id={`inputFile-${index}`}
                 onChange={(event) => onChangeFileHandler(event, index)}
                 hidden
               />
