@@ -1,17 +1,17 @@
 import React from 'react';
 import ProgressBar from '../../../../shared/progressbar/ProgressBar';
 import SvgAgendarVerde from '../../../../svgs/SvgAgendarVerde';
-import Avatar from '../../../../svgs/sidebar/Avatar';
+import Avatar from '../../../../svgs/sidebar/SvgAvatar';
 
 const DashboardCliente = () => {
   const inicio = 'inicio';
   return (
-    <div className="container px-0">
+    <div className="container-fluid px-0">
       <div className="mt-4 mb-5">
         <h3 className="color-blue-storm">Mi perfil</h3>
       </div>
       <div className="row">
-        <div className="col-6">
+        <div className="col-5">
           <div className="card-simple-blue-light">
             <div className="row">
               <div className="col-2 pr-0">

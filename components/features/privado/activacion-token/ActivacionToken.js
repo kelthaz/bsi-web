@@ -4,12 +4,12 @@ import styles from './ActivacionToken.module.scss';
 const ActivacionToken = () => {
   const inicio = 'inicio';
   return (
-    <div className="container px-0">
+    <div className="container-fluid px-0">
       <div className="mt-4 mb-5">
         <h3 className="color-blue-storm">Activación de token</h3>
       </div>
       <div className="row">
-        <div className="col-6">
+        <div className="col-4">
           <div className="card-simple-blue-light">
             <div className="row">
               <div className="col-12">

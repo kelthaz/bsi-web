@@ -6,12 +6,12 @@ import TextField from '../../../shared/text-field/TextField';
 const FirmaContrato = () => {
   const inicio = 'inicio';
   return (
-    <div className="container px-0">
+    <div className="container-fluid px-0">
       <div className="mt-4 mb-5">
         <h3 className="color-blue-storm">Firmar contrato de Crédito Dital Pyme</h3>
       </div>
       <div className="row">
-        <div className="col-6">
+        <div className="col-5">
           <div className="card-simple-blue-light">
             <div className="row">
               <div className="col-12">
@@ -63,7 +63,7 @@ const FirmaContrato = () => {
             </div>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-7">
           <div className="card-simple-white-shadow">
             <div className="row">
               <div className="col-12">

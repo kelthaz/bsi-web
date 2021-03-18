@@ -9,16 +9,16 @@ import styles from './InicioCliente.module.scss';
 const InicioCliente = () => {
   const inicio = 'inicio';
   return (
-    <div className="container px-0">
+    <div className="container-fluid px-0">
       <div className="mt-4">
         <h3 className="color-blue-storm">¡Hola, Alejandra!</h3>
       </div>
       <div className="row">
-        <div className="col-6">
-          <div className="col-12 ml-3 pl-0">
+        <div className="col-4">
+          <div className="col-12 ml-3 pl-0 pb-2">
             <CardBackOffices title="Validación de expediente" subTitle="Siguiente paso" />
           </div>
-          <div className="col-12 mt-3 ml-3 pl-0">
+          <div className="col-12 mt-4 ml-3 pl-0">
             <CardBackOffices
               title="$1,500,000.00"
               subTitle="Monto autorizado"
@@ -27,8 +27,11 @@ const InicioCliente = () => {
             />
           </div>
         </div>
-        <div className="col-6">
-          <div className="card-simple-blue-light">
+        <div className="col-8">
+          <div className="card-simple-blue-light pb-0">
+            <div className="card-simple-blue-light pt-0 pb-1 px-0">
+              <h4 className={`pb-2 color-blue-storm ${styles['line-bot']}`}>Características del crédito</h4>
+            </div>
             <ResultSimulador
               dataSimulador={{ plazo: { label: '24 meses' }, periodicidad: { label: 'Bimestrales' } }}
               resultSimulador={{
@@ -44,27 +47,27 @@ const InicioCliente = () => {
         </div>
       </div>
       <div className="row mt-3">
-        <div className="col-12">
-          <h3 className={`color-blue-storm row ${styles['line-top']}`}>Próximos pasos</h3>
+        <div className="col-12 px-4">
+          <h3 className={`color-blue-storm row ${styles['line-bot']}`}>Próximos pasos</h3>
         </div>
-        <div className="mt-1 col-md-12 col-xs-12 px-0">
+        <div className="mt-1 col-md-12 col-xs-12 px-2">
           <NextStepsTable />
         </div>
       </div>
       <div className="row mt-3">
-        <div className="col-12">
+        <div className="col-12 px-4">
           <h3 className={`color-blue-storm row ${styles['line-top']}`}>Haz crecer tu empresa</h3>
         </div>
-        <div className="col-md-4 px-0 mt-2 mb-3">
-          <IndividualVideo width={300} idVideo={1} src="https://www.youtube.com/embed/PMP6zcY6Fcc" />
+        <div className="col-md-4 px-2 mt-2 mb-3">
+          <IndividualVideo width={330} idVideo={1} src="https://www.youtube.com/embed/PMP6zcY6Fcc" />
           <h4 className="color-blue-storm sub">Los mejores usos para un crédito</h4>
         </div>
         <div className="col-md-4 pl-1 mt-2 mb-3">
-          <IndividualVideo width={300} idVideo={2} src="https://www.youtube.com/embed/ppIJmaa9ue8" />
+          <IndividualVideo width={330} idVideo={2} src="https://www.youtube.com/embed/ppIJmaa9ue8" />
           <h4 className="color-blue-storm sub">Características de un buen líder</h4>
         </div>
         <div className="col-md-4 mt-2 mb-3">
-          <IndividualVideo width={300} idVideo={3} src="https://www.youtube.com/embed/VayHlVwGmGs" />
+          <IndividualVideo width={330} idVideo={3} src="https://www.youtube.com/embed/VayHlVwGmGs" />
           <h4 className="color-blue-storm sub">Herramientas gratuitas para administración</h4>
         </div>
       </div>

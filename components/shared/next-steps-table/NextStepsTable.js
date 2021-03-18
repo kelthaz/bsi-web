@@ -13,31 +13,12 @@ import Select from '../../../components/shared/select/Select';
 const NextStepsTable = ({ value }) => {
   const [openModal, setOpenModal] = useState(false);
   const [openModalCancelar, setOpenModalCancelar] = useState(false);
-  // const itemsHoras = [
-  //   { value: 1, label: '13:00' },
-  //   { value: 2, label: '14:00' },
-  //   { value: 3, label: '15:00' },
-  //   { value: 4, label: '16:00' },
-  // ];
-
-  // const formulario = useFormik({
-  //   initialValues: {
-  //     ...initialValues,
-  //   },
-  //   validationSchema: Yup.object().shape({
-  //     ...validationSchema,
-  //   }),
-  //   onSubmit: (values) => {
-  //     dispatch(
-  //       nextStepDatosPersonales({
-  //         currentStep: validate
-  //           ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
-  //           : { ...currentStep },
-  //         datosPersonales: { ...datosPersonales, ...values },
-  //       })
-  //     );
-  //   },
-  // });
+  const itemsHoras = [
+    { value: 1, label: '13:00' },
+    { value: 2, label: '14:00' },
+    { value: 3, label: '15:00' },
+    { value: 4, label: '16:00' },
+  ];
   return (
     <>
       <Modal openModal={openModal} setOpenModal={setOpenModal}>
@@ -56,8 +37,13 @@ const NextStepsTable = ({ value }) => {
                 <DatePickerInput />
               </div>
               <div className="col-md-6">
-                {/* <Select label="Seleccione..." name="plazo" size="smallb" items={itemsHoras} /> */}
-                <DatePickerInput />
+                <Select
+                  label="Hora"
+                  name="horaAgendamiento"
+                  showAlwaysErrors={false}
+                  size="smallb"
+                  items={itemsHoras}
+                />
               </div>
             </div>
           </div>
