@@ -60,12 +60,20 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
             <p className="sub color-dark-gray">¿Tienes un préstamo hipotecario?</p>
             <div className="row no-gutters">
               <div className="col-md-2 col-xs-4">
-                <RadioButton name="tienePrestamoHipotecario" formulario={formulario} value="si">
+                <RadioButton
+                  name="tienePrestamoHipotecario"
+                  label="si"
+                  {...formulario.getFieldProps('tienePrestamoHipotecario')}
+                >
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
               <div className="col-md-6 col-xs-4">
-                <RadioButton name="tienePrestamoHipotecario" formulario={formulario} value="no">
+                <RadioButton
+                  name="tienePrestamoHipotecario"
+                  label="no"
+                  {...formulario.getFieldProps('tienePrestamoHipotecario')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -73,12 +81,20 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
             <p className="mt-md-4 mt-xs-4 sub color-dark-gray">¿Tienes un crédito automotriz?</p>
             <div className="row no-gutters">
               <div className="col-md-2 col-xs-4">
-                <RadioButton name="tieneCreditoAutomotriz" formulario={formulario} value="si">
+                <RadioButton
+                  name="tieneCreditoAutomotriz"
+                  label="si"
+                  {...formulario.getFieldProps('tieneCreditoAutomotriz')}
+                >
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
               <div className="col-md-6 col-xs-4">
-                <RadioButton name="tieneCreditoAutomotriz" formulario={formulario} value="no">
+                <RadioButton
+                  name="tieneCreditoAutomotriz"
+                  label="no"
+                  {...formulario.getFieldProps('tieneCreditoAutomotriz')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -87,7 +103,11 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
 
             <div className="row no-gutters">
               <div className="col-md-5 pr-0">
-                <RadioButton name="eresTitularTarjetaCredito" formulario={formulario} value="si">
+                <RadioButton
+                  name="eresTitularTarjetaCredito"
+                  label="si"
+                  {...formulario.getFieldProps('eresTitularTarjetaCredito')}
+                >
                   <span className="input color-gray">Sí, terminación</span>
                 </RadioButton>
               </div>
@@ -103,7 +123,11 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
                 />
               </div>
               <div className="col-md-2 col-xs-4 pl-3">
-                <RadioButton name="eresTitularTarjetaCredito" formulario={formulario} value="no">
+                <RadioButton
+                  name="eresTitularTarjetaCredito"
+                  label="no"
+                  {...formulario.getFieldProps('eresTitularTarjetaCredito')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>
@@ -122,7 +146,7 @@ const PasoOnceObligadoSolidarioPFAE = ({ validate }) => {
               </div>
             </div>
             <div className="row no-gutters">
-              <CheckTextBox isGrayColor notBackground={false} name="autorizacionConsultar" formulario={formulario}>
+              <CheckTextBox name="autorizacionConsultar" formulario={formulario}>
                 <p className="body3 ml-1">
                   Autorizo a partir de este momento a BanCoppel, S.A., Institución de Banca Múltiple a consultar por
                   única ocasión mis antecedentes crediticios ante las Sociedades de Información Crediticia que estime

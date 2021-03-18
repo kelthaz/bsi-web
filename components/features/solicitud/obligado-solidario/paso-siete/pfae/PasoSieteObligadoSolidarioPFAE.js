@@ -56,12 +56,20 @@ const PasoSieteObligadoSolidario = ({ validate }) => {
 
             <div className="row">
               <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                <RadioButton name="meEjercenControlMoralComoFisico" formulario={formulario} value="si">
+                <RadioButton
+                  name="meEjercenControlMoralComoFisico"
+                  label="si"
+                  {...formulario.getFieldProps('meEjercenControlMoralComoFisico')}
+                >
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
               </div>
               <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                <RadioButton name="meEjercenControlMoralComoFisico" formulario={formulario} value="no">
+                <RadioButton
+                  name="meEjercenControlMoralComoFisico"
+                  label="no"
+                  {...formulario.getFieldProps('meEjercenControlMoralComoFisico')}
+                >
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>

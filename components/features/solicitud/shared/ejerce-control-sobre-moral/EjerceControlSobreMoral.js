@@ -31,25 +31,26 @@ const EjerceControlSobreMoral = ({
     <>
       <div className="row">
         <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
-          <RadioButton name={nameTieneControlados} formulario={formulario} value="si">
+          <RadioButton name={nameTieneControlados} {...formulario.getFieldProps(nameTieneControlados)} label="si">
             <div className="row ">
               <div className="input color-gray col-5">Sí, son</div>
               <div className="col-6 ">
                 <Select
                   name={nameCantidadControlados}
-                  formulario={formulario}
                   size="big"
                   items={items}
                   disabled={formulario.values[nameTieneControlados] !== 'si'}
                   label=""
                   showAlwaysErrors={false}
+                  {...formulario.getFieldMeta(nameCantidadControlados)}
+                  {...formulario.getFieldHelpers(nameCantidadControlados)}
                 />
               </div>
             </div>
           </RadioButton>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          <RadioButton name={nameTieneControlados} formulario={formulario} value="no">
+          <RadioButton name={nameTieneControlados} {...formulario.getFieldProps(nameTieneControlados)} label="no">
             <span className="input color-gray">No</span>
           </RadioButton>
         </div>

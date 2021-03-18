@@ -263,66 +263,9 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                     <Select
                       blue={true}
                       disabled={false}
-                      formulario={
-                        Object {
-                          "dirty": false,
-                          "errors": Object {},
-                          "getFieldHelpers": [Function],
-                          "getFieldMeta": [Function],
-                          "getFieldProps": [Function],
-                          "handleBlur": [Function],
-                          "handleChange": [Function],
-                          "handleReset": [Function],
-                          "handleSubmit": [Function],
-                          "initialErrors": Object {},
-                          "initialStatus": undefined,
-                          "initialTouched": Object {},
-                          "initialValues": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                          "isSubmitting": false,
-                          "isValid": true,
-                          "isValidating": false,
-                          "registerField": [Function],
-                          "resetForm": [Function],
-                          "setErrors": [Function],
-                          "setFieldError": [Function],
-                          "setFieldTouched": [Function],
-                          "setFieldValue": [Function],
-                          "setFormikState": [Function],
-                          "setStatus": [Function],
-                          "setSubmitting": [Function],
-                          "setTouched": [Function],
-                          "setValues": [Function],
-                          "status": undefined,
-                          "submitCount": 0,
-                          "submitForm": [Function],
-                          "touched": Object {},
-                          "unregisterField": [Function],
-                          "validateField": [Function],
-                          "validateForm": [Function],
-                          "validateOnBlur": true,
-                          "validateOnChange": true,
-                          "validateOnMount": false,
-                          "values": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                        }
-                      }
+                      error=""
+                      initialTouched={false}
+                      initialValue={null}
                       inverted={false}
                       items={
                         Array [
@@ -350,9 +293,13 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                       }
                       label="Seleccione..."
                       name="plazo"
-                      optional={false}
+                      setError={[Function]}
+                      setTouched={[Function]}
+                      setValue={[Function]}
                       showAlwaysErrors={true}
-                      size="smallb"
+                      size="small"
+                      touched={false}
+                      value={null}
                     >
                       <div
                         className="custom-select"
@@ -384,6 +331,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                         <button
                           className="placeholder-color select-small-blue indicador "
                           disabled={false}
+                          name="plazo"
                           onClick={[Function]}
                           tabIndex="0"
                           type="button"
@@ -466,7 +414,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                           </li>
                         </ul>
                         <span
-                          className="help-text"
+                          className="help-text-error"
                         >
                           <span>
                              
@@ -503,66 +451,9 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                     <Select
                       blue={true}
                       disabled={false}
-                      formulario={
-                        Object {
-                          "dirty": false,
-                          "errors": Object {},
-                          "getFieldHelpers": [Function],
-                          "getFieldMeta": [Function],
-                          "getFieldProps": [Function],
-                          "handleBlur": [Function],
-                          "handleChange": [Function],
-                          "handleReset": [Function],
-                          "handleSubmit": [Function],
-                          "initialErrors": Object {},
-                          "initialStatus": undefined,
-                          "initialTouched": Object {},
-                          "initialValues": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                          "isSubmitting": false,
-                          "isValid": true,
-                          "isValidating": false,
-                          "registerField": [Function],
-                          "resetForm": [Function],
-                          "setErrors": [Function],
-                          "setFieldError": [Function],
-                          "setFieldTouched": [Function],
-                          "setFieldValue": [Function],
-                          "setFormikState": [Function],
-                          "setStatus": [Function],
-                          "setSubmitting": [Function],
-                          "setTouched": [Function],
-                          "setValues": [Function],
-                          "status": undefined,
-                          "submitCount": 0,
-                          "submitForm": [Function],
-                          "touched": Object {},
-                          "unregisterField": [Function],
-                          "validateField": [Function],
-                          "validateForm": [Function],
-                          "validateOnBlur": true,
-                          "validateOnChange": true,
-                          "validateOnMount": false,
-                          "values": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                        }
-                      }
+                      error=""
+                      initialTouched={false}
+                      initialValue={null}
                       inverted={false}
                       items={
                         Array [
@@ -578,9 +469,13 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                       }
                       label="Seleccione..."
                       name="periodicidad"
-                      optional={false}
+                      setError={[Function]}
+                      setTouched={[Function]}
+                      setValue={[Function]}
                       showAlwaysErrors={true}
                       size="small"
+                      touched={false}
+                      value={null}
                     >
                       <div
                         className="custom-select"
@@ -612,6 +507,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                         <button
                           className="placeholder-color select-small-blue indicador "
                           disabled={false}
+                          name="periodicidad"
                           onClick={[Function]}
                           tabIndex="0"
                           type="button"
@@ -652,7 +548,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                           </li>
                         </ul>
                         <span
-                          className="help-text"
+                          className="help-text-error"
                         >
                           <span>
                              
@@ -693,66 +589,9 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                     <Select
                       blue={true}
                       disabled={false}
-                      formulario={
-                        Object {
-                          "dirty": false,
-                          "errors": Object {},
-                          "getFieldHelpers": [Function],
-                          "getFieldMeta": [Function],
-                          "getFieldProps": [Function],
-                          "handleBlur": [Function],
-                          "handleChange": [Function],
-                          "handleReset": [Function],
-                          "handleSubmit": [Function],
-                          "initialErrors": Object {},
-                          "initialStatus": undefined,
-                          "initialTouched": Object {},
-                          "initialValues": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                          "isSubmitting": false,
-                          "isValid": true,
-                          "isValidating": false,
-                          "registerField": [Function],
-                          "resetForm": [Function],
-                          "setErrors": [Function],
-                          "setFieldError": [Function],
-                          "setFieldTouched": [Function],
-                          "setFieldValue": [Function],
-                          "setFormikState": [Function],
-                          "setStatus": [Function],
-                          "setSubmitting": [Function],
-                          "setTouched": [Function],
-                          "setValues": [Function],
-                          "status": undefined,
-                          "submitCount": 0,
-                          "submitForm": [Function],
-                          "touched": Object {},
-                          "unregisterField": [Function],
-                          "validateField": [Function],
-                          "validateForm": [Function],
-                          "validateOnBlur": true,
-                          "validateOnChange": true,
-                          "validateOnMount": false,
-                          "values": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                        }
-                      }
+                      error=""
+                      initialTouched={false}
+                      initialValue={null}
                       inverted={false}
                       items={
                         Array [
@@ -768,9 +607,13 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                       }
                       label="Seleccione..."
                       name="aniosEmpresa"
-                      optional={false}
+                      setError={[Function]}
+                      setTouched={[Function]}
+                      setValue={[Function]}
                       showAlwaysErrors={true}
                       size="small"
+                      touched={false}
+                      value={null}
                     >
                       <div
                         className="custom-select"
@@ -802,6 +645,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                         <button
                           className="placeholder-color select-small-blue indicador "
                           disabled={false}
+                          name="aniosEmpresa"
                           onClick={[Function]}
                           tabIndex="0"
                           type="button"
@@ -842,7 +686,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                           </li>
                         </ul>
                         <span
-                          className="help-text"
+                          className="help-text-error"
                         >
                           <span>
                              
@@ -879,64 +723,12 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                     <Select
                       blue={true}
                       disabled={false}
-                      formulario={
+                      error=""
+                      initialTouched={false}
+                      initialValue={
                         Object {
-                          "dirty": false,
-                          "errors": Object {},
-                          "getFieldHelpers": [Function],
-                          "getFieldMeta": [Function],
-                          "getFieldProps": [Function],
-                          "handleBlur": [Function],
-                          "handleChange": [Function],
-                          "handleReset": [Function],
-                          "handleSubmit": [Function],
-                          "initialErrors": Object {},
-                          "initialStatus": undefined,
-                          "initialTouched": Object {},
-                          "initialValues": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
-                          "isSubmitting": false,
-                          "isValid": true,
-                          "isValidating": false,
-                          "registerField": [Function],
-                          "resetForm": [Function],
-                          "setErrors": [Function],
-                          "setFieldError": [Function],
-                          "setFieldTouched": [Function],
-                          "setFieldValue": [Function],
-                          "setFormikState": [Function],
-                          "setStatus": [Function],
-                          "setSubmitting": [Function],
-                          "setTouched": [Function],
-                          "setValues": [Function],
-                          "status": undefined,
-                          "submitCount": 0,
-                          "submitForm": [Function],
-                          "touched": Object {},
-                          "unregisterField": [Function],
-                          "validateField": [Function],
-                          "validateForm": [Function],
-                          "validateOnBlur": true,
-                          "validateOnChange": true,
-                          "validateOnMount": false,
-                          "values": Object {
-                            "aniosEmpresa": null,
-                            "monto": 6200000,
-                            "periodicidad": null,
-                            "plazo": null,
-                            "ventasAnio": Object {
-                              "label": "Más de $2 MDP",
-                              "value": 2,
-                            },
-                          },
+                          "label": "Más de $2 MDP",
+                          "value": 2,
                         }
                       }
                       inverted={false}
@@ -954,9 +746,18 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                       }
                       label="Seleccione..."
                       name="ventasAnio"
-                      optional={false}
+                      setError={[Function]}
+                      setTouched={[Function]}
+                      setValue={[Function]}
                       showAlwaysErrors={true}
                       size="small"
+                      touched={false}
+                      value={
+                        Object {
+                          "label": "Más de $2 MDP",
+                          "value": 2,
+                        }
+                      }
                     >
                       <div
                         className="custom-select"
@@ -988,6 +789,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                         <button
                           className=" select-small-blue indicador "
                           disabled={false}
+                          name="ventasAnio"
                           onClick={[Function]}
                           tabIndex="0"
                           type="button"
@@ -1028,7 +830,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                           </li>
                         </ul>
                         <span
-                          className="help-text"
+                          className="help-text-error"
                         >
                           <span>
                              
@@ -1049,12 +851,16 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                 <div
                   className="center-first-button"
                 >
-                  <button
-                    className="btn-medium-secondary"
-                    type="button"
+                  <Component
+                    href="/login/iniciar-sesion"
                   >
-                    Retoma tu proceso
-                  </button>
+                    <button
+                      className="btn-medium-secondary"
+                      type="button"
+                    >
+                      Retoma tu proceso
+                    </button>
+                  </Component>
                 </div>
               </div>
               <div

@@ -165,7 +165,7 @@
 }
 
 .input-big-password-error {
-  @include input-config($red, 32px, $red);
+  @include input-config($gray, 32px, $red);
   @include input-status-pr(true);
 }
 

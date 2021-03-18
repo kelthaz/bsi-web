@@ -45,17 +45,25 @@ const PasoCuatroDocumentacionPFAE = ({ validate }) => {
             </div>
             <div className="row">
               <div className="col-12">
-                <RadioButton name="bienesSeparados" formulario={formulario} value="siMancomunados">
+                <RadioButton
+                  name="bienesSeparados"
+                  label="siMancomunados"
+                  {...formulario.getFieldProps('bienesSeparados')}
+                >
                   <span className="input color-gray">Sí, por bienes mancomunados</span>
                 </RadioButton>
               </div>
               <div className="col-12 mt-3">
-                <RadioButton name="bienesSeparados" formulario={formulario} value="siSeparados">
+                <RadioButton
+                  name="bienesSeparados"
+                  label="siSeparados"
+                  {...formulario.getFieldProps('bienesSeparados')}
+                >
                   <span className="input color-gray">Sí, por bienes separados</span>
                 </RadioButton>
               </div>
               <div className="col-12 mt-3">
-                <RadioButton name="bienesSeparados" formulario={formulario} value="no">
+                <RadioButton name="bienesSeparados" label="no" {...formulario.getFieldProps('bienesSeparados')}>
                   <span className="input color-gray">No</span>
                 </RadioButton>
               </div>

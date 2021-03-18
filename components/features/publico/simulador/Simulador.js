@@ -15,6 +15,7 @@ import SvgLoginCheck from '../../../svgs/icons-cards/SvgLoginCheck';
 import SvgDocumentoCheck from '../../../svgs/icons-cards/SvgDocumentoCheck';
 import { nextStepDatosPersonales } from '../../../../redux/actions/solicitud';
 import { BIENVENIDA_DATOS_PERSONA_ROUTE } from '../../../../constants/routes/solicitud/persona';
+import { INICIAR_SESION } from '../../../../constants/routes/login/login';
 
 const Simulador = ({ catalogo }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -266,7 +267,7 @@ const Simulador = ({ catalogo }) => {
                       </div>
                     </div>
 
-                    <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-personales/bienvenida">
+                    <Link href={INICIAR_SESION}>
                       <button className="btn-link-arrow-right" type="button">
                         Retoma tu proceso
                       </button>

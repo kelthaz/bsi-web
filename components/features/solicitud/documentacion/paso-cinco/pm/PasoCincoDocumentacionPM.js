@@ -79,7 +79,11 @@ const PasoCincoDocumentacionPM = ({ validate }) => {
             <div className="row no-gutters">
               {opcionesUsoCuenta.map((value) => (
                 <div key={value} className="pt-3 col-md-6 ">
-                  <CheckBox name="usosCuentaSeleccionados" formulario={formulario} value={value}>
+                  <CheckBox
+                    name="usosCuentaSeleccionados"
+                    label={value}
+                    {...formulario.getFieldProps('usosCuentaSeleccionados')}
+                  >
                     <p className="body2 m-0">{value}</p>
                   </CheckBox>
                 </div>
@@ -87,7 +91,11 @@ const PasoCincoDocumentacionPM = ({ validate }) => {
             </div>
             <div className="row pt-3 no-gutters">
               <div className="col-md-4 px-0 align-self-center">
-                <CheckBox name="usosCuentaSeleccionados" formulario={formulario} value="Otros:">
+                <CheckBox
+                  name="usosCuentaSeleccionados"
+                  label="Otros:"
+                  {...formulario.getFieldProps('usosCuentaSeleccionados')}
+                >
                   <p className="body2 m-0">Otros, especifique</p>
                 </CheckBox>
               </div>

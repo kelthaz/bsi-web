@@ -166,7 +166,15 @@ const Ayuda = ({ accordionItems }) => {
                 />
               </div>
               <div className="col-sm-12 col-md-6 mb-5">
-                <Select name="state" label="Estado" formulario={formulario} size="small" items={items} inverted />
+                <Select
+                  name="state"
+                  label="Estado"
+                  size="small"
+                  items={items}
+                  inverted
+                  {...formulario.getFieldMeta('state')}
+                  {...formulario.getFieldHelpers('state')}
+                />
               </div>
             </div>
             <div className={`row justify-content-center mx-0 ${styles['text-area-container']}`}>

@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import Select from '../../shared/select/Select';
 import Slider from '../../shared/slider/Slider';
 import styles from './simulador.module.scss';
@@ -13,6 +14,7 @@ import SvgPrimeraTextura from '../../svgs/texturas/SvgPrimeraTextura';
 import SvgSegundaTextura from '../../svgs/texturas/SvgSegundaTextura';
 import changeSelectModel from '../../../helpers/changeSelectModel';
 import offsetTop from '../../../helpers/offsetTop';
+import { INICIAR_SESION } from '../../../constants/routes/login/login';
 
 const SelectorSimulador = ({ handleSimular, catalogo }) => {
   const dispatch = useDispatch();
@@ -127,12 +129,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-6 col-md-4 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="plazo"
-                      formulario={formulario}
-                      size="smallb"
+                      label="Seleccione..."
+                      size="small"
                       items={itemsPaymentMonths}
                       blue
+                      {...formulario.getFieldMeta('plazo')}
+                      {...formulario.getFieldHelpers('plazo')}
                     />
                   </div>
                 </div>
@@ -145,12 +148,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="periodicidad"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsPaymentTimes}
                       blue
+                      {...formulario.getFieldMeta('periodicidad')}
+                      {...formulario.getFieldHelpers('periodicidad')}
                     />
                   </div>
                 </div>
@@ -166,12 +170,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-6 col-md-5 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="aniosEmpresa"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsCompanyTime}
                       blue
+                      {...formulario.getFieldMeta('aniosEmpresa')}
+                      {...formulario.getFieldHelpers('aniosEmpresa')}
                     />
                   </div>
                 </div>
@@ -185,12 +190,13 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
                   </div>
                   <div className="col-lg-7 col-md-6 col-xs-12 col-sm-12">
                     <Select
-                      label="Seleccione..."
                       name="ventasAnio"
-                      formulario={formulario}
+                      label="Seleccione..."
                       size="small"
                       items={itemsSalesYear}
                       blue
+                      {...formulario.getFieldMeta('ventasAnio')}
+                      {...formulario.getFieldHelpers('ventasAnio')}
                     />
                   </div>
                 </div>
@@ -200,14 +206,16 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
             <div className="row">
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last my-3">
                 <div className="center-first-button">
-                  <button type="button" className="btn-medium-secondary">
-                    Retoma tu proceso
-                  </button>
+                  <Link href={INICIAR_SESION}>
+                    <button type="button" className="btn-medium-secondary">
+                      Retoma tu proceso
+                    </button>
+                  </Link>
                 </div>
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
                 <div className="center-second-button">
-                  <button type="submit" className="btn-medium" disabled={!formulario.isValid}>
+                  <button type="submit" className="btn-medium" disabled={!(formulario.isValid && formulario.dirty)}>
                     Simula tu crédito
                   </button>
                 </div>

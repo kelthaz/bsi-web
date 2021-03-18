@@ -14,9 +14,9 @@ import EstadoDocumentosFirma from '../../components/features/privado/shared/esta
 import EstadoDocumentosProspecto from '../../components/features/privado/shared/estado-documentos/prospecto/EstadoDocumentosProspecto';
 import EstadoDocumentosRepresentanteLegal from '../../components/features/privado/shared/estado-documentos/representante-legal/EstadoDocumentosRepresentanteLegal';
 import EstadoDocumentosAnalista from '../../components/features/privado/shared/estado-documentos/analista/EstadoDocumentosAnalista';
+import AsignarCasos from '../../components/features/privado/shared/asignacion-casos/AsignarCasos';
 
 const Test = () => {
-
   const [openModal, setOpenModal] = useState(false);
   const formulario = useFormik({
     initialValues: {},
@@ -28,27 +28,20 @@ const Test = () => {
         <div>
           <h4 className="color-blue-storm">Agendar visita para mi obligado solidario</h4>
         </div>
-        <div style={{maxWidth: '540px'}}>
+        <div style={{ maxWidth: '540px' }}>
           <p className="body2">
-            Alejandra, selecciona dos fechas en las que tu obligado solidario pueda recibir a
-            uno de nuestros ejecutivos para conocerlo.
+            Alejandra, selecciona dos fechas en las que tu obligado solidario pueda recibir a uno de nuestros ejecutivos
+            para conocerlo.
           </p>
-          <p className="body2">
-            Al concluir exitosamente la visita, podrás agendar tu propia visita de ejecutivo.
-          </p>
+          <p className="body2">Al concluir exitosamente la visita, podrás agendar tu propia visita de ejecutivo.</p>
           <div className="row">
             <div className="col-lg-6">
-              <DatePickerInput
-                disablePreviousDays
-                disableWeekends
-                name="fecha"
-              />
+              <DatePickerInput disablePreviousDays disableWeekends name="fecha" />
             </div>
             <div className="col-lg-6">
               <Select
                 label="Hora"
                 name="hora"
-                formulario={formulario}
                 size="smallb"
                 items={[
                   { label: '09:00', value: '09:00' },
@@ -60,9 +53,11 @@ const Test = () => {
                   { label: '15:00', value: '15:00' },
                   { label: '16:00', value: '16:00' },
                   { label: '17:00', value: '17:00' },
-                  { label: '18:00', value: '18:00' }
+                  { label: '18:00', value: '18:00' },
                 ]}
                 blue
+                {...formulario.getFieldMeta('hora')}
+                {...formulario.getFieldHelpers('hora')}
               />
             </div>
           </div>
@@ -103,7 +98,7 @@ const Test = () => {
                       new Date(2021, 1, 14),
                       new Date(2021, 1, 15),
                       new Date(2021, 1, 17),
-                      new Date(2021, 1, 19)
+                      new Date(2021, 1, 19),
                     ]}
                   />
                 </div>
@@ -111,7 +106,9 @@ const Test = () => {
             </div>
             <div className="row text-center mt-4">
               <div className="col-12">
-                <button className="btn-medium" type="button" onClick={() => setOpenModal(true)}>Preview</button>
+                <button className="btn-medium" type="button" onClick={() => setOpenModal(true)}>
+                  Preview
+                </button>
               </div>
             </div>
           </div>
@@ -147,8 +144,14 @@ const Test = () => {
                   </div>
                   <div className="mt-4">
                     <ResultSimulador
-                      dataSimulador={{ plazo: {label: '24 meses'}, periodicidad: { label: 'Bimestrales'} }}
-                      resultSimulador={{ tasaOrdinaria: '25%', comisionApertura: '5%', cat: '3%', pago: '$31,250', tasaMoratoria: '63%' }}
+                      dataSimulador={{ plazo: { label: '24 meses' }, periodicidad: { label: 'Bimestrales' } }}
+                      resultSimulador={{
+                        tasaOrdinaria: '25%',
+                        comisionApertura: '5%',
+                        cat: '3%',
+                        pago: '$31,250',
+                        tasaMoratoria: '63%',
+                      }}
                       color="night"
                     />
                   </div>
@@ -277,6 +280,20 @@ const Test = () => {
                     ]
                   }} />
                 </Accordion>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="06" linea1="Asignación de casos" />
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <AsignarCasos />
               </div>
             </div>
           </div>

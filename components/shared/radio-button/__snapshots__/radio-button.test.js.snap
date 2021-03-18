@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente RadioButton Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="container-check-text"
+>
+  <div
+    className="container-input"
+  >
+    <input
+      checked={false}
+      className=" my-check"
+      name="meEjercenControlMoralComoMoral"
+      onChange={[MockFunction]}
+      type="radio"
+      value="si"
+    />
+  </div>
+  <div
+    className="container-content"
+  >
+    <p>
+      Sí
+    </p>
+  </div>
+</div>
+`;

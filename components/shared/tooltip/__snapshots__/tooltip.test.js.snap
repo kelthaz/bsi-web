@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Tooltip Debe de mostrarse correctamente el componente 1`] = `
+<Fragment>
+  <span
+    className="tooltip"
+  >
+     
+    <SvgInformation />
+  </span>
+  <span
+    className="tooltiptext position-top"
+  >
+    Esta es tu edad
+  </span>
+</Fragment>
+`;

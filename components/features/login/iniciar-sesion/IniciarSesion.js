@@ -83,7 +83,7 @@ const IniciarSesion = () => {
           {...formulario.getFieldHelpers('contrasena')}
         />
         <div className="py-3">
-          <CheckBox name="mantenerSesion" formulario={formulario}>
+          <CheckBox name="mantenerSesion" {...formulario.getFieldProps('mantenerSesion')}>
             <p className="m-0 body3">Mantener sesión iniciada</p>
           </CheckBox>
         </div>
