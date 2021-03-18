@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import SvgAgendarCita from '../../svgs/SvgAgendarCita';
 import SvgListCheckBackOffice from '../../svgs/SvgListCheckBackOffice';
 import styles from './back-office-card.module.scss';
@@ -12,9 +13,11 @@ const BackOfficeCard = ({ iconoAgendar, title, subTitle, haveButton }) => (
     </div>
     {haveButton === true ? (
       <div className={`col-3 mt-5 px-0 ${styles.button}`}>
-        <button className="btn-link-arrow-right-inverted" type="button">
-          Ver detalle
-        </button>
+        <Link href="privado/dashboard/cliente">
+          <button className="btn-link-arrow-right-inverted" type="button">
+            Ver detalle
+          </button>
+        </Link>
       </div>
     ) : null}
   </div>
