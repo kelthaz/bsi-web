@@ -5,7 +5,7 @@ import TextFieldSB from '../../../../shared/text-field-sb/TextFieldSB';
 
 import styles from './asignar-casos.module.scss';
 
-import keywordsList from '../../../../../constants/listaEjecutivos.json';
+import keywordsList from '../../../../../constants/listaEjecutivos';
 
 
 const AsignarCasos = () => {
@@ -24,7 +24,7 @@ const AsignarCasos = () => {
     setEjecutivo(item.text);
   };
 
-  useSearchEngine(value, setData, keywordsList.keywords);
+  useSearchEngine(value, setData, keywordsList);
 
   return (
     <>

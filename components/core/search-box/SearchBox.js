@@ -6,7 +6,7 @@ import styles from './search-box.module.scss';
 import TextFieldSB from '../../shared/text-field-sb/TextFieldSB';
 import useSearchEngine from '../../../hooks/useSearchEngine';
 
-import keywordsList from '../../../constants/searchBox.json';
+import keywordsList from '../../../constants/searchBoxList';
 
 const SearchBox = ({ unmount }) => {
   const [value, setValue] = useState('');
@@ -17,7 +17,7 @@ const SearchBox = ({ unmount }) => {
     unmount();
   };
 
-  useSearchEngine(value, setData, keywordsList.keywords);
+  useSearchEngine(value, setData, keywordsList);
 
   const redirect = (item) => {
     if (item.newTab) {
