@@ -215,7 +215,7 @@ const SelectorSimulador = ({ handleSimular, catalogo }) => {
               </div>
               <div className="col-lg-6 col-md-6 col-xs-12 col-sm-12 order-lg-last order-md-last order-sm-first order-xs-first my-3">
                 <div className="center-second-button">
-                  <button type="submit" className="btn-medium" disabled={!formulario.isValid}>
+                  <button type="submit" className="btn-medium" disabled={!(formulario.isValid && formulario.dirty)}>
                     Simula tu crédito
                   </button>
                 </div>

@@ -1,4 +1,4 @@
-const CerrarSesion = (props) => (
+const SvgCerrarSesion = (props) => (
   <svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
@@ -9,4 +9,4 @@ const CerrarSesion = (props) => (
   </svg>
 );
 
-export default CerrarSesion;
+export default SvgCerrarSesion;

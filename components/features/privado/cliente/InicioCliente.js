@@ -3,7 +3,7 @@ import React from 'react';
 const InicioCliente = () => {
   const inicio = 'inicio';
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row" style={{ height: '2500px' }}>
         <div className="col-6" style={{ backgroundColor: 'red' }}>
           {inicio}
