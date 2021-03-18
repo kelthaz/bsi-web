@@ -23,7 +23,7 @@ const EstadoDocumentosFirma = ({ documentos }) => {
     <div>
       <div className="col-12">
         {documentos.map((documento) => (
-          <div className="row my-3" key={documento.nombre}>
+          <div className="row my-3" key={documento.id}>
             <div className="col-4 my-auto"><span className="body2">{documento.nombre}</span></div>
             <div className={`col-5 my-auto ${styles.overme}`}>
               <span className="link" title={documento.ruta}>{documento.ruta}</span>

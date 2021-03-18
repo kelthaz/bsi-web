@@ -169,44 +169,46 @@ const Test = () => {
               <div className="col-7">
                 <Accordion title={<span><SvgDocumentos /> Documentos Bancoppel</span>} expanded={false} color="blue" icon="arrow">
                   <EstadoDocumentosFirma documentos={[
-                    { nombre: 'Contrato', ruta: 'contrato_alejandra.pdf', estado: 0 },
-                    { nombre: 'Solicitud de servicio EmpresaNet', ruta: 'solicitud_empNet.pdf', estado: 2 },
-                    { nombre: 'Kit de apertura', ruta: 'kitapertura.pdf', estado: 1 }
+                    { id: 1, nombre: 'Contrato', ruta: 'contrato_alejandra.pdf', estado: 0 },
+                    { id: 2, nombre: 'Solicitud de servicio EmpresaNet', ruta: 'solicitud_empNet.pdf', estado: 2 },
+                    { id: 3, nombre: 'Kit de apertura', ruta: 'kitapertura.pdf', estado: 1 }
                   ]} />
                 </Accordion>
                 <Accordion title={<span><SvgDocumentos /> Mis documentos</span>} expanded={false} color="blue" icon="arrow">
                   <EstadoDocumentosProspecto documentos={[
-                    { nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                    { nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                    { nombre: 'Comprobante de domicilio', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 1 },
-                    { nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
-                    { nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
-                    { nombre: 'Reformas' },
-                    { nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
-                    { nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
+                    { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 1 },
+                    { id: 4, nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
+                    { id: 5, nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
+                    { id: 6, nombre: 'Reformas' },
+                    { id: 7, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
+                    { id: 8, nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
                   ]} />
                 </Accordion>
                 <Accordion title={<span><SvgDocumentos /> Documentos obligado solidario</span>} expanded={false} color="blue" icon="arrow">
                   <EstadoDocumentosProspecto documentos={[
-                    { nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                    { nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                    { nombre: 'Comprobante de domicilio', ruta: 'comprobante.png', estado: 1 }
+                    { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante.png', estado: 1 }
                   ]} />
                 </Accordion>
                 <Accordion title={<span><SvgDocumentos /> Representantes legales</span>} expanded={false} color="blue" icon="arrow">
                   <EstadoDocumentosRepresentanteLegal representantes={[
                     {
+                      id: 1,
                       nombre: 'Jorge Ortiz Cruz', telefono: '55 1234 5678', email: 'jorge@mail.com',
                       documentos: [
-                        { nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 1 },
-                        { nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 1 }
+                        { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 1 },
+                        { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 1 }
                       ]
                     },
                     {
+                      id: 2,
                       nombre: 'Patricia Florez Sánchez', telefono: '55 1234 5678', email: 'patricia@mail.com',
                       documentos: [
-                        { nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 2 },
-                        { nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 2 }
+                        { id: 3, nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 2 },
+                        { id: 4, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 2 }
                       ]
                     }
                   ]} />
@@ -228,22 +230,23 @@ const Test = () => {
                 <Accordion title={<span><SvgDocumentos /> Documentos del prospecto</span>} expanded={false} color="blue" icon="arrow">
                   <EstadoDocumentosAnalista prospecto={{
                     documentos: [
-                      { nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      { nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      { nombre: 'Comprobante de domicilio (Comercial)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
-                      { nombre: 'Comprobante de domicilio (Fiscal)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
-                      { nombre: 'Acta de matrimonio', ruta: 'Acta_matrimonio.pdf', estado: 0 },
-                      { nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 0 },
-                      { nombre: 'Selfie', ruta: 'selfie.png', estado: 0 },
-                      { nombre: 'Autorización de crédito', ruta: 'Autorizacion_credito.pdf', estado: 0 },
-                      { nombre: 'Reporte de buró de crédito', ruta: 'reporte_buro_credito.pdf', estado: 0 }
+                      { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                      { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                      { id: 3, nombre: 'Comprobante de domicilio (Comercial)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
+                      { id: 4, nombre: 'Comprobante de domicilio (Fiscal)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
+                      { id: 5, nombre: 'Acta de matrimonio', ruta: 'Acta_matrimonio.pdf', estado: 0 },
+                      { id: 6, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 0 },
+                      { id: 7, nombre: 'Selfie', ruta: 'selfie.png', estado: 0 },
+                      { id: 8, nombre: 'Autorización de crédito', ruta: 'Autorizacion_credito.pdf', estado: 0 },
+                      { id: 9, nombre: 'Reporte de buró de crédito', ruta: 'reporte_buro_credito.pdf', estado: 0 }
                     ],
                     relaciones: [
                       {
+                        id: 1,
                         nombre: 'Carlos Pérez Díaz', descripcion: 'Cónyuge del solicitante',
                         documentos: [
-                          { nombre: 'Identificación oficial (Frente)', ruta: 'INE_Carlos.jpg', estado: 1 },
-                          { nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Carlos.jpg', estado: 1 }
+                          { id: 10, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Carlos.jpg', estado: 1 },
+                          { id: 11, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Carlos.jpg', estado: 1 }
                         ]
                       }
                     ]
@@ -253,20 +256,22 @@ const Test = () => {
                   <EstadoDocumentosAnalista prospecto={{
                     relaciones: [
                       {
+                        id: 1,
                         nombre: 'Alberto Abad Gómez', descripcion: 'Obligado solidario',
                         documentos: [
-                          { nombre: 'Identificación oficial (Frente)', ruta: 'INE_AAG.jpg', estado: 0 },
-                          { nombre: 'Identificación oficial (Reverso)', ruta: 'INE_AAG.jpg', estado: 0 },
-                          { nombre: 'Relación patrimonial', ruta: 'relacion_patrimonial.pdf', estado: 0 },
-                          { nombre: 'Comprobante de domicilio', ruta: 'Comprobante_luz.jpg', estado: 0 },
-                          { nombre: 'Acta de matrimonio', ruta: 'acta.pdf', estado: 0 },
+                          { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'INE_AAG.jpg', estado: 0 },
+                          { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_AAG.jpg', estado: 0 },
+                          { id: 3, nombre: 'Relación patrimonial', ruta: 'relacion_patrimonial.pdf', estado: 0 },
+                          { id: 4, nombre: 'Comprobante de domicilio', ruta: 'Comprobante_luz.jpg', estado: 0 },
+                          { id: 5, nombre: 'Acta de matrimonio', ruta: 'acta.pdf', estado: 0 },
                         ]
                       },
                       {
+                        id: 2,
                         nombre: 'Diana Flores Cantú', descripcion: 'Cónyuge del obligado solidario',
                         documentos: [
-                          { nombre: 'Identificación oficial (Frente)', ruta: 'INE_Diana.jpg', estado: 1 },
-                          { nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Diana.jpg', estado: 1 }
+                          { id: 6, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Diana.jpg', estado: 1 },
+                          { id: 7, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Diana.jpg', estado: 1 }
                         ]
                       }
                     ]

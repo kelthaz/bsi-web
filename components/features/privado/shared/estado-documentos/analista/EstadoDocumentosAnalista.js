@@ -21,7 +21,7 @@ const EstadoDocumentosAnalista = ({ prospecto }) => {
     <div>
       <div className="col-12">
         {prospecto.documentos && prospecto.documentos.map((documento) => (
-          <div className="row my-3" key={documento.nombre}>
+          <div className="row my-3" key={documento.id}>
             <div className="col-5 my-auto"><span className="body2">{documento.nombre}</span></div>
             <div className={`col-4 my-auto ${styles.overme}`}>
               <span className="link" title={documento.ruta}>{documento.ruta}</span>
@@ -29,8 +29,8 @@ const EstadoDocumentosAnalista = ({ prospecto }) => {
             <div className="col-3 my-auto text-center">{iconoEstado(documento.estado)}</div>
           </div>
         ))}
-        {prospecto.relaciones && prospecto.relaciones.map((relacion, index) => (
-          <div key={index}>
+        {prospecto.relaciones && prospecto.relaciones.map((relacion) => (
+          <div key={relacion.id}>
             <div className="row my-3 card-simple-blue-light">
               <div className="col-12">
                 <span className="d-flex sub color-blue-storm">{ relacion.nombre }</span>
@@ -38,7 +38,7 @@ const EstadoDocumentosAnalista = ({ prospecto }) => {
               </div>
             </div>
             {relacion.documentos.map((documento) => (
-              <div className="row my-3">
+              <div className="row my-3" key={documento.id}>
                 <div className="col-5 my-auto"><span className="body2">{documento.nombre}</span></div>
                 <div className={`col-4 my-auto ${styles.overme}`}>
                   <span className="link" title={documento.ruta}>{documento.ruta}</span>

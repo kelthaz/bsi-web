@@ -25,7 +25,7 @@ const EstadoDocumentosRepresentanteLegal = ({ representantes }) => {
     <div>
       <div className="w-100">
         {representantes.map((representante) => (
-          <div key={representante.nombre}>
+          <div key={representante.id}>
             <div className="row my-3 card-simple-blue-light">
               <div className="col-7">
                 <span className="d-flex sub color-blue-storm">{ representante.nombre }</span>
@@ -44,7 +44,7 @@ const EstadoDocumentosRepresentanteLegal = ({ representantes }) => {
             </div>
             {!representante.documentos.some((documento) => documento.estado === 2)
               && representante.documentos.map((documento) => (
-                <div className="row my-3">
+                <div className="row my-3" key={documento.id}>
                   <div className="col-5 my-auto"><span className="body2">{documento.nombre}</span></div>
                   <div className={`col-5 my-auto ${styles.overme}`}>
                     <span className="link" title={documento.ruta}>{documento.ruta}</span>

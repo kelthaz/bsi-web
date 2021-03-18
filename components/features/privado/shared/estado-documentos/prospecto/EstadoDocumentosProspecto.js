@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
@@ -40,7 +41,7 @@ const EstadoDocumentosProspecto = ({ documentos }) => {
   return (
     <div className="w-100">
       {documentosState.map((documento, index) => (
-        <div className="row my-3" key={documento.nombre}>
+        <div className="row my-3" key={documento.id}>
           <div className="col-4 my-auto"><span className="body2">{documento.nombre}</span></div>
           <div className={`col my-auto ${styles.overme}`}>
             <span className="link" title={documento.ruta}>{documento.ruta}</span>

@@ -2,18 +2,18 @@ import React from 'react';
 import { mount } from 'enzyme';
 import EstadoDocumentosProspecto from './EstadoDocumentosProspecto';
 
-describe('Pruebas en el componente ResultSimulador', () => {
-  it('Debe mostrar el ResultSimulador', () => {
+describe('Pruebas en el componente EstadoDocumentosProspecto', () => {
+  it('Debe coincidir con la snapshot', () => {
     // arrange
     const documentos = [
-      { nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-      { nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-      { nombre: 'Comprobante de domicilio', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 1 },
-      { nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
-      { nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
-      { nombre: 'Reformas' },
-      { nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
-      { nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
+      { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+      { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+      { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 1 },
+      { id: 4, nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
+      { id: 5, nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
+      { id: 6, nombre: 'Reformas' },
+      { id: 7, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
+      { id: 8, nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
     ];
     const wrap = mount(<EstadoDocumentosProspecto documentos={documentos} />);
     const fileContents = 'file contents';
@@ -28,11 +28,6 @@ describe('Pruebas en el componente ResultSimulador', () => {
     wrap.find('input').first().simulate('change', {target: {files: [file]}});
     wrap.find('input').first().simulate('change', {target: {files: []}});
     // assert
-    // expect(window.FileReader).toHaveBeenCalled();
-    // expect(link.addEventListener).toHaveBeenCalledWith('load');
-    // expect(link.readAsText).toHaveBeenCalledWith(file);
-    // expect(component.setState).toHaveBeenCalledWith(expectedFinalState);
-    // expect(component.state).toEqual(expectedFinalState);
-
+    expect(wrap).toMatchSnapshot();
   });
 });
