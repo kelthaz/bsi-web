@@ -26,7 +26,7 @@ const Requisitos = ({ accordionItems }) => {
       company: 'Nuevo Grupo Visual SA de CV',
       subtitle: 'Atención cálida para asegurar tu futuro | BanCoppel Pymes',
       parragraph:
-        'En BanCoppel procuramos atenderte de una manera cálida y humana para que tu empresa tenga la estabilidad económica que necesita a través de un proceso ágil y personalizado asegurando así, el flujo de capital necesario para avanzar hacia el futuro. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para tí.',
+        'En BanCoppel procuramos atenderte de una manera cálida y humana para que tu empresa tenga la estabilidad económica que necesita a través de un proceso ágil y personalizado asegurando así, el flujo de capital necesario para avanzar hacia el futuro. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para ti.',
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ const Requisitos = ({ accordionItems }) => {
       company: 'PIZZETA SA de CV',
       subtitle: 'Somos el aliado que tu empresa necesita | BanCoppel Pymes',
       parragraph:
-        'Nos aseguramos de que tengas una verdadera buena experiencia con nosotros para que puedas crecer como tu empresa lo merece. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para tí.',
+        'Nos aseguramos de que tengas una verdadera buena experiencia con nosotros para que puedas crecer como tu empresa lo merece. Ingresa a www.bancoppel.com/empresas y conoce todo lo que tenemos para ti.',
     },
   ];
   const zonas = [
