@@ -2,7 +2,6 @@
 @import '../../../styles/scss/modules/mixins';
 
 .container-sidebar {
-  background-color: $blue-storm;
   bottom: 0;
   left: 0;
   overflow: auto;
@@ -10,25 +9,41 @@
   position: fixed;
   right: calc(100% - 276px);
   top: 0;
-  z-index: 1;
 }
 
 .sidebar-active {
+  animation: animation-active 0.5s ease-out;
+  transition: z-index 0.25s step-end;
   z-index: 3;
+}
+
+.sidebar-inactive {
+  animation: animation-inactive 0.5s ease-out;
+  transition: z-index 0.25s step-end;
+  z-index: 1;
 }
 
 .header-sidebar {
   align-items: center;
+  background-color: $blue-storm;
   display: flex;
   flex-direction: row;
+  height: 70px;
   justify-content: space-between;
-  margin-bottom: 60px;
   padding: 15px 20px;
+}
+
+.content-sidebar {
+  background-color: $blue-storm;
+  height: calc(100% - 70px);
+  padding-top: 60px;
+  width: 100%;
 }
 
 .button-sidebar {
   background-color: transparent;
   border: 0;
+  transition: all 0.5 ease;
 
   &:focus {
     outline: none;
@@ -40,22 +55,49 @@
   }
 }
 
-.item-sidebar {
+.content-item-sidebar {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 15px 20px;
+  min-height: 58px;
+
+  div:first-child {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 71px;
+  }
+
+  div:last-child {
+    width: calc(100% - 70px);
+  }
+}
+
+.item-sidebar {
+  background-color: transparent;
+  border: 0;
+  padding: 16px 0;
+  width: 100%;
 
   p {
     margin: 0;
-    padding-left: 26px;
+    text-align: left;
   }
 
-  // svg {
-  //   height: 24px;
-  //   width: 24px;
-  // }
+  svg {
+    height: 24px;
+    width: 24px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    @include sub;
+  }
 }
 
 .perfil-sidebar {
@@ -63,9 +105,52 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-left: 16px;
 
   p {
+    margin: 0;
     padding-left: 0;
+  }
+}
+
+.avatar-sidebar {
+  position: relative;
+
+  p {
+    margin: 0;
+    position: absolute;
+  }
+}
+
+@keyframes animation-active {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes animation-inactive {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
   }
 }

@@ -871,7 +871,7 @@ exports[`Pruebas en el componente SelectorSimulador Debe de mostrarse correctame
                 >
                   <button
                     className="btn-medium"
-                    disabled={false}
+                    disabled={true}
                     type="submit"
                   >
                     Simula tu crédito
