@@ -1,0 +1,10 @@
+@import '../../../../../styles/scss/modules/mixins';
+@import '../../../../../styles/scss/modules/var';
+
+.modal-container {
+  width: 540px;
+
+  @include media('sm') {
+    width: 270px;
+  }
+}
