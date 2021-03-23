@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 import Sidebar from '../../sidebar/Sidebar';
+import Reloj from './reloj/Reloj';
 
 const PrivadoContainer = ({ pageComponent, servicesData }) => {
   const { component: Component } = pageComponent;
 
   return (
     <div className="contedor-fixed-privado">
+      <Reloj />
       <Sidebar />
       <div className="contedor-privado">
-        <Component {...servicesData} />
+        <div className="contedor-interno-privado">
+          <Component {...servicesData} />
+        </div>
       </div>
     </div>
   );

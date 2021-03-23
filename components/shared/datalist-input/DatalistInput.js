@@ -8,7 +8,14 @@ import styles from './datalist-input.module.scss';
 const DatalistInput = ({ capitalize, onChange, value, placeholder, inverted, keywordsList }) => {
 
   const [valueState, setValue] = useState(value);
+  const [selected, setSelected] = useState();
   const [data] = useSearchEngine(valueState, keywordsList);
+
+  const onSelectionChange = (item) => {
+    setValue(item.text);
+    setSelected(item);
+    onChange(item);
+  };
 
   return (
     <>
@@ -34,7 +41,7 @@ const DatalistInput = ({ capitalize, onChange, value, placeholder, inverted, key
         <ul className={styles['select-items']}>
           {data.map((item) => (
             <li key={item.text}>
-              <button disabled={item.disabled} className={styles.item} type="button" onClick={() => onChange(item)}>
+              <button disabled={item.disabled} className={styles.item} type="button" onClick={() => onSelectionChange(item)}>
                 {item.text}
               </button>
             </li>
