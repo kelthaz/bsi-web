@@ -10,10 +10,15 @@ import keywordsList from '../../../../../constants/listaEjecutivos';
 const AsignarCasos = () => {
   const [openModal, setOpenModal] = useState(false);
   const [ejecutivo, setEjecutivo] = useState('');
+  const [preEjecutivo, setPreEjecutivo] = useState('');
 
-  const seleccionarEjecutivo = (item) => {
+  const preSeleccionarEjecutivo = (item) => {
+    setPreEjecutivo(item.text);
+  };
+
+  const seleccionarEjecutivo = () => {
+    setEjecutivo(preEjecutivo);
     setOpenModal(false);
-    setEjecutivo(item.text);
   };
 
   return (
@@ -30,11 +35,14 @@ const AsignarCasos = () => {
             Elige al ejecutivo al que quieres asignar este caso para su revisión de documentos.
           </p>
           <DatalistInput
-            onChange={seleccionarEjecutivo}
+            onChange={preSeleccionarEjecutivo}
             placeholder="Escribe el nombre de supervisor que quieres asignar"
             keywordsList={keywordsList}
             inverted
           />
+          <div className="mt-3 text-center">
+            <button type="button" className="btn-medium" onClick={seleccionarEjecutivo}>Asignar caso</button>
+          </div>
         </div>
       </Modal>
     </>
