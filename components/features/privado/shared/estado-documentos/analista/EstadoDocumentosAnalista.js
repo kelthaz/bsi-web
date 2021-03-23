@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
 
-import styles from '../estado-documentos.module.scss';
-
 // ESTADOS: 0: Pendiente, 1: Revisado
 const EstadoDocumentosAnalista = ({ prospecto }) => {
 
@@ -23,7 +21,7 @@ const EstadoDocumentosAnalista = ({ prospecto }) => {
         {prospecto.documentos && prospecto.documentos.map((documento) => (
           <div className="row my-3" key={documento.id}>
             <div className="col-5 my-auto"><span className="body2">{documento.nombre}</span></div>
-            <div className={`col-4 my-auto ${styles.overme}`}>
+            <div className="col-4 my-auto text-overflow">
               <span className="link" title={documento.ruta}>{documento.ruta}</span>
             </div>
             <div className="col-3 my-auto text-center">{iconoEstado(documento.estado)}</div>
@@ -40,7 +38,7 @@ const EstadoDocumentosAnalista = ({ prospecto }) => {
             {relacion.documentos.map((documento) => (
               <div className="row my-3" key={documento.id}>
                 <div className="col-5 my-auto"><span className="body2">{documento.nombre}</span></div>
-                <div className={`col-4 my-auto ${styles.overme}`}>
+                <div className="col-4 my-auto text-overflow">
                   <span className="link" title={documento.ruta}>{documento.ruta}</span>
                 </div>
                 <div className="col-3 my-auto text-center">{iconoEstado(documento.estado)}</div>

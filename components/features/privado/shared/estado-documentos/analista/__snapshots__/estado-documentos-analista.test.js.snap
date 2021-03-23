@@ -19,7 +19,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -48,7 +48,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -77,7 +77,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -111,7 +111,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -145,7 +145,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -179,7 +179,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -213,7 +213,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -247,7 +247,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -281,7 +281,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
         </span>
       </div>
       <div
-        className="col-4 my-auto overme"
+        className="col-4 my-auto text-overflow"
       >
         <span
           className="link"
@@ -336,7 +336,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
           </span>
         </div>
         <div
-          className="col-4 my-auto overme"
+          className="col-4 my-auto text-overflow"
         >
           <span
             className="link"
@@ -365,7 +365,7 @@ exports[`Pruebas en el componente EstadoDocumentosAnalista Debe coincidir con la
           </span>
         </div>
         <div
-          className="col-4 my-auto overme"
+          className="col-4 my-auto text-overflow"
         >
           <span
             className="link"

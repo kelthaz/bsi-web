@@ -5,8 +5,6 @@ import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
 import SvgPendiente from '../../../../../svgs/estados/SvgPendiente';
 import SvgRechazado from '../../../../../svgs/estados/SvgRechazado';
 
-import styles from '../estado-documentos.module.scss';
-
 // ESTADOS: 0: Pendiente, 1: Aprobado, 2: Rechazado
 const EstadoDocumentosProspecto = ({ documentos }) => {
 
@@ -47,7 +45,7 @@ const EstadoDocumentosProspecto = ({ documentos }) => {
       {documentosState.map((documento, index) => (
         <div className="row my-3" key={documento.id}>
           <div className="col-4 my-auto"><span className="body2">{documento.nombre}</span></div>
-          <div className={`col my-auto ${styles.overme}`}>
+          <div className="col my-auto text-overflow">
             <span className="link" title={documento.ruta}>{documento.ruta}</span>
           </div>
           {documento.estado === 2 &&

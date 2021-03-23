@@ -70,7 +70,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -120,7 +120,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -170,7 +170,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -220,7 +220,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -264,7 +264,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -273,16 +273,17 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
       <div
         className="col-3 my-auto"
       >
-        <label
+        <button
           className="btn-mini-secondary"
-          htmlFor="inputFile-Acta constitutiva"
+          onClick={[Function]}
+          type="button"
         >
           Editar
-        </label>
+        </button>
         <input
           accept="image/png, image/jpg, application/pdf"
           hidden={true}
-          id="inputFile-Acta constitutiva"
+          id="inputFile-4"
           onChange={[Function]}
           type="file"
         />
@@ -334,7 +335,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -358,7 +359,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
@@ -408,7 +409,7 @@ exports[`Pruebas en el componente EstadoDocumentosProspecto Debe coincidir con l
         </span>
       </div>
       <div
-        className="col my-auto overme"
+        className="col my-auto text-overflow"
       >
         <span
           className="link"
