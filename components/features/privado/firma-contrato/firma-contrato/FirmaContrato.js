@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './FirmaContrato.module.scss';
-import FileInput from '../../../shared/file-input/FileInput';
-import TextField from '../../../shared/text-field/TextField';
+import FileInput from '../../../../shared/file-input/FileInput';
+import TextField from '../../../../shared/text-field/TextField';
 
 const FirmaContrato = () => {
-  const inicio = 'inicio';
+  const FirmaContrato = 'FirmaContrato';
   return (
     <div className="container-fluid px-0">
       <div className="mt-4 mb-5">
@@ -15,13 +14,13 @@ const FirmaContrato = () => {
           <div className="card-simple-blue-light">
             <div className="row">
               <div className="col-12">
-                <h2 className={`mb-1 ${styles['bot-line']} color-blue-storm sub mt-2`}>Firmar contrato</h2>
+                <h2 className="mb-1 bot-line color-blue-storm sub mt-2">Firmar contrato</h2>
                 <p>
                   Para firmar el contrato digitalmente, tú y tu obligados solidarios, (en caso de haberlos) tendrán que
                   ingresar los documentos de e.firma.
                 </p>
                 <h3 className="color-gray sub">Alejandra Aguilar Ruí (Solicitante)</h3>
-                <div className={`${styles['bot-line']}`}>
+                <div className="bot-line">
                   <FileInput firmaContrato text="Sube tu certificado público" subText="El archivo .cer" />
                 </div>
                 <div>
@@ -38,7 +37,7 @@ const FirmaContrato = () => {
                   />
                 </div>
                 <h3 className="color-gray sub">Gabriel Hernande Medino (Obligado solidario)</h3>
-                <div className={`${styles['bot-line']}`}>
+                <div className="bot-line">
                   <FileInput firmaContrato text="Sube tu certificado público" subText="El archivo .cer" />
                 </div>
                 <div>

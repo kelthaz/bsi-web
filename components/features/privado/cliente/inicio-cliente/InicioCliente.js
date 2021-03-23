@@ -1,10 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CardBackOffices from '../../../shared/back-office-card/BackOfficeCard';
-import ResultSimulador from '../../../core/simulador/ResultSimulador';
-import NextStepsTable from '../../../shared/next-steps-table/NextStepsTable';
-import IndividualVideo from '../../../shared/back-office-video/BackOfficeVideo';
-import styles from './InicioCliente.module.scss';
+import CardBackOffices from '../../../../shared/back-office-card/BackOfficeCard';
+import ResultSimulador from './../../../../core/simulador/ResultSimulador';
+import NextStepsTable from '../../shared/next-steps-table/NextStepsTable';
+import IndividualVideo from '../../shared/back-office-video/BackOfficeVideo';
 
 const InicioCliente = () => {
   const inicio = 'inicio';
@@ -30,7 +29,7 @@ const InicioCliente = () => {
         <div className="col-8">
           <div className="card-simple-blue-light pb-0">
             <div className="card-simple-blue-light pt-0 pb-1 px-0">
-              <h4 className={`pb-2 color-blue-storm ${styles['line-bot']}`}>Características del crédito</h4>
+              <h4 className="pb-2 color-blue-storm  bot-line">Características del crédito</h4>
             </div>
             <ResultSimulador
               dataSimulador={{ plazo: { label: '24 meses' }, periodicidad: { label: 'Bimestrales' } }}
@@ -48,17 +47,17 @@ const InicioCliente = () => {
       </div>
       <div className="row mt-3">
         <div className="col-12 px-4">
-          <h3 className={`color-blue-storm row ${styles['line-bot']}`}>Próximos pasos</h3>
+          <h3 className="color-blue-storm row  bot-line pl-2">Próximos pasos</h3>
         </div>
-        <div className="mt-1 col-md-12 col-xs-12 px-2">
+        <div className="mt-1 col-md-12 col-xs-12 px-3">
           <NextStepsTable />
         </div>
       </div>
       <div className="row mt-3">
         <div className="col-12 px-4">
-          <h3 className={`color-blue-storm row ${styles['line-top']}`}>Haz crecer tu empresa</h3>
+          <h3 className="color-blue-storm row bot-line pl-2">Haz crecer tu empresa</h3>
         </div>
-        <div className="col-md-4 px-2 mt-2 mb-3">
+        <div className="col-md-4 px-3 mt-2 mb-3 ">
           <IndividualVideo width={330} idVideo={1} src="https://www.youtube.com/embed/PMP6zcY6Fcc" />
           <h4 className="color-blue-storm sub">Los mejores usos para un crédito</h4>
         </div>

@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from './ActivacionToken.module.scss';
 
 const ActivacionToken = () => {
-  const inicio = 'inicio';
+  const ActivacionToken = 'ActivacionToken';
   return (
     <div className="container-fluid px-0">
       <div className="mt-4 mb-5">
@@ -13,7 +12,7 @@ const ActivacionToken = () => {
           <div className="card-simple-blue-light">
             <div className="row">
               <div className="col-12">
-                <h2 className={`mb-3 ${styles['bot-line']} color-blue-storm sub mt-2`}>Cómo activar el token</h2>
+                <h2 className="mb-3 bot-line color-blue-storm sub mt-2">Cómo activar el token</h2>
                 <p>
                   Sigue las instrucciones de la guía para registrar y activar tu token digital para el servicio de
                   EmpresaNet Plus.

@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styles from './next-steps-table.module.scss';
-import Tooltip from '../tooltip/Tooltip';
-import SvgCompletada from '../../svgs/SvgCompletada';
-import SvgEnProceso from '../../svgs/SvgEnProceso';
-import SvgEspera from '../../svgs/SvgEspera';
-import Modal from './../../shared/modal/Modal';
-import DatePickerInput from '../../../components/shared/datepicker/DatePickerInput';
-import Select from '../../../components/shared/select/Select';
+import Tooltip from '../../../../shared/tooltip/Tooltip';
+import SvgCompletada from '../../../../svgs/SvgCompletada';
+import SvgEnProceso from '../../../../svgs/SvgEnProceso';
+import SvgEspera from '../../../../svgs/SvgEspera';
+import Modal from '../../../../shared/modal/Modal';
+import DatePickerInput from '../../../../shared/datepicker/DatePickerInput';
+import Select from '../../../../shared/select/Select';
 
 const NextStepsTable = ({ value }) => {
   const [openModal, setOpenModal] = useState(false);

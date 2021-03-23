@@ -13,6 +13,10 @@ a {
   box-sizing: border-box;
 }
 
+.bot-line {
+  border-bottom: 2px solid #dae0e9;
+}
+
 @include scroll-config(16px);
 
 @include media('md') {

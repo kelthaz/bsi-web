@@ -1,10 +1,10 @@
 import React from 'react';
-import ProgressBar from '../../../../shared/progressbar/ProgressBar';
+import ProgressBar from '../../shared/progressbar/ProgressBar';
 import SvgAgendarVerde from '../../../../svgs/SvgAgendarVerde';
 import Avatar from '../../../../svgs/sidebar/SvgAvatar';
 
 const DashboardCliente = () => {
-  const inicio = 'inicio';
+  const DashboardCliente = 'DashboardCliente';
   return (
     <div className="container-fluid px-0">
       <div className="mt-4 mb-5">

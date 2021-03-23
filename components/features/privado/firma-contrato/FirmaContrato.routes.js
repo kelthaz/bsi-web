@@ -1,5 +1,5 @@
 import { FIRMA_CONTRATO } from '../../../../constants/routes/privado/cliente';
-import FirmaContrato from './FirmaContrato';
+import FirmaContrato from './firma-contrato/FirmaContrato';
 
 const firmaContratoRoutes = [
   {
