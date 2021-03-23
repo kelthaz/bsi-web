@@ -14,7 +14,7 @@ a {
 }
 
 .bot-line {
-  border-bottom: 2px solid #dae0e9;
+  border-bottom: 2px solid $blue-shadow;
 }
 
 @include scroll-config(16px);
