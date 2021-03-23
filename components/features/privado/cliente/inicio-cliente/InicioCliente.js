@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CardBackOffices from '../../../../shared/back-office-card/BackOfficeCard';
+import CardBackOffices from '../../shared/back-office-card/BackOfficeCard';
 import ResultSimulador from './../../../../core/simulador/ResultSimulador';
 import NextStepsTable from '../../shared/next-steps-table/NextStepsTable';
 import IndividualVideo from '../../shared/back-office-video/BackOfficeVideo';

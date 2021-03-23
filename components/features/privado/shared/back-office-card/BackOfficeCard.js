@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import SvgAgendarCita from '../../svgs/SvgAgendarCita';
-import SvgListCheckBackOffice from '../../svgs/SvgListCheckBackOffice';
+import SvgAgendarCita from '../../../../svgs/SvgAgendarCita';
+import SvgListCheckBackOffice from '../../../../svgs/SvgListCheckBackOffice';
 import styles from './back-office-card.module.scss';
 
 const BackOfficeCard = ({ iconoAgendar, title, subTitle, haveButton }) => (

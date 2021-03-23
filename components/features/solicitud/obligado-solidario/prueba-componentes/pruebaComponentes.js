@@ -1,9 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import IndividualVideo from '../../../../shared/back-office-video/BackOfficeVideo';
-import ProgressBar from '../../../../shared/progressbar/ProgressBar';
-import NextStepsTable from '../../../../shared/next-steps-table/NextStepsTable';
-import CardBackOffices from '../../../../shared/back-office-card/BackOfficeCard';
+import IndividualVideo from '../../../privado/shared/back-office-video/BackOfficeVideo';
+import ProgressBar from '../../../privado/shared/progressbar/ProgressBar';
+import NextStepsTable from '../../../privado/shared/next-steps-table/NextStepsTable';
+import CardBackOffices from '../../../privado/shared/back-office-card/BackOfficeCard';
 
 const pruebaComponentes = () => {
   const formulario = useFormik({});
