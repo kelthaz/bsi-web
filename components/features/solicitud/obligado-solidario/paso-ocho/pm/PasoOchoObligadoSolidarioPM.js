@@ -10,7 +10,7 @@ import SvgPrivacidad from '../../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../../shared/check-text-box/CheckTextBox';
 
 import { campoRequerido, aceptarTerminos } from '../../../../../../constants/errors';
-import ModalAutorizacionCiec from '../../../../../core/modals/solicitud/modal-autorizacion-ciec/ModalAutorizacionCiec';
+import ModalAutorizacionCiec from '../../../shared/modals/modal-autorizacion-ciec/ModalAutorizacionCiec';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { CONTRATO_LEGALEX_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 

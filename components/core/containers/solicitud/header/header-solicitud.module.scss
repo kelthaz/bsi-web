@@ -1,0 +1,15 @@
+@import '../../../../../styles/scss/modules/var';
+@import '../../../../../styles/scss/modules/mixins';
+
+.container-header {
+  align-items: center;
+  border-bottom: 1px solid $blue-shadow;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px 32px;
+
+  @include media('sm') {
+    padding: 14px 16px;
+  }
+}

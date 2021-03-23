@@ -1,0 +1,207 @@
+@import '../../../../../styles/scss/modules/var';
+@import '../../../../../styles/scss/modules/mixins';
+
+@mixin ul-confing {
+  ul:first-child {
+    padding-left: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      @include body-3;
+
+      padding-bottom: 3px;
+      padding-top: 3px;
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $blue-morning;
+        }
+      }
+    }
+  }
+}
+
+%config-second-content {
+  align-items: flex-start;
+  border-bottom: 2px solid $blue;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  padding-top: 32px;
+  width: 100%;
+}
+
+%contact {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  span {
+    @include body-3;
+    color: $white;
+    padding-bottom: 14px;
+  }
+
+  div {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 14px;
+
+    a {
+      padding-right: 36px;
+    }
+  }
+}
+
+.footer {
+  background: linear-gradient(12.32deg, $blue-storm -2.61%, $blue-night 95.1%);
+  position: relative;
+  width: 100%;
+}
+
+.footer-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 32px 0;
+
+  > span {
+    @include overline;
+    align-self: center;
+    color: $white;
+    padding-bottom: 16px;
+    text-align: center;
+  }
+}
+
+.second-content {
+  @extend %config-second-content;
+  display: flex;
+
+  div {
+    h5 {
+      color: $blue-light;
+    }
+  }
+
+  > div:first-child {
+    div {
+      @include ul-confing;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  > div:last-child {
+    @extend %contact;
+  }
+}
+
+.second-content-accordeon {
+  @extend %config-second-content;
+  display: none;
+}
+
+.accordeon-ul {
+  @include ul-confing;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 18px;
+}
+
+.accordeon-contact {
+  @extend %contact;
+}
+
+.third-content {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  padding-top: 32px;
+  width: 100%;
+}
+
+.four-content {
+  align-self: center;
+  color: $white;
+  text-align: center;
+
+  a {
+    @include overline;
+    color: $white;
+    text-decoration: underline;
+
+    &:hover {
+      color: $blue-morning;
+    }
+  }
+}
+
+@include media('md') {
+  .footer-container {
+    img {
+      align-self: center;
+    }
+  }
+
+  .second-content {
+    display: none;
+  }
+
+  .second-content-accordeon {
+    display: block;
+  }
+
+  .third-content {
+    flex-wrap: wrap;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    img {
+      margin: 15px;
+    }
+  }
+}
+
+@include media('sm') {
+  .second-content-accordeon {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .third-content {
+    padding-left: 0;
+    padding-right: 0;
+
+    img {
+      margin: 10px;
+    }
+  }
+
+  .footer-container {
+    > span {
+      padding: 0 10px 10px;
+    }
+  }
+
+  .four-content {
+    padding: 0 10px;
+  }
+}

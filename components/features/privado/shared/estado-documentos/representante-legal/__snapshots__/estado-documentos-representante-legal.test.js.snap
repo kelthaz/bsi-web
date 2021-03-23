@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente EstadoDocumentosRepresentanteLegal Debe coincidir con la snapshot 1`] = `
+<EstadoDocumentosRepresentanteLegal
+  representantes={
+    Array [
+      Object {
+        "documentos": Array [
+          Object {
+            "estado": 0,
+            "id": 1,
+            "nombre": "Identificación oficial (Frente)",
+            "ruta": "INE_representante.jpg",
+          },
+          Object {
+            "estado": 1,
+            "id": 2,
+            "nombre": "Identificación oficial (Reverso)",
+            "ruta": "INE_representante.jpg",
+          },
+        ],
+        "email": "jorge@mail.com",
+        "id": 1,
+        "nombre": "Jorge Ortiz Cruz",
+        "telefono": "55 1234 5678",
+      },
+      Object {
+        "documentos": Array [
+          Object {
+            "estado": 2,
+            "id": 3,
+            "nombre": "Identificación oficial (Frente)",
+            "ruta": "INE_representante.jpg",
+          },
+          Object {
+            "estado": 3,
+            "id": 4,
+            "nombre": "Identificación oficial (Reverso)",
+            "ruta": "INE_representante.jpg",
+          },
+        ],
+        "email": "patricia@mail.com",
+        "id": 2,
+        "nombre": "Patricia Florez Sánchez",
+        "telefono": "55 1234 5678",
+      },
+    ]
+  }
+>
+  <div>
+    <div
+      className="w-100"
+    >
+      <div
+        key="1"
+      >
+        <div
+          className="row my-3 card-simple-blue-light"
+        >
+          <div
+            className="col-7"
+          >
+            <span
+              className="d-flex sub color-blue-storm"
+            >
+              Jorge Ortiz Cruz
+            </span>
+            <span
+              className="d-flex overline color-gray"
+            >
+              Representante legal
+            </span>
+          </div>
+          <div
+            className="col-5 text-center my-auto"
+          >
+            <span
+              className="d-flex overline color-gray"
+            >
+              Telefono 
+              55 1234 5678
+            </span>
+            <span
+              className="d-flex overline color-gray"
+            >
+              Correo 
+              jorge@mail.com
+            </span>
+          </div>
+        </div>
+        <div
+          className="row my-3"
+          key="1"
+        >
+          <div
+            className="col-5 my-auto"
+          >
+            <span
+              className="body2"
+            >
+              Identificación oficial (Frente)
+            </span>
+          </div>
+          <div
+            className="col-5 my-auto text-overflow"
+          >
+            <span
+              className="link"
+              title="INE_representante.jpg"
+            >
+              INE_representante.jpg
+            </span>
+          </div>
+          <div
+            className="col-2 my-auto text-center"
+          >
+            <SvgPendiente>
+              <svg
+                fill="none"
+                height="18"
+                viewBox="0 0 18 18"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="9"
+                  cy="9"
+                  fill="#AAAAAA"
+                  r="9"
+                />
+              </svg>
+            </SvgPendiente>
+          </div>
+        </div>
+        <div
+          className="row my-3"
+          key="2"
+        >
+          <div
+            className="col-5 my-auto"
+          >
+            <span
+              className="body2"
+            >
+              Identificación oficial (Reverso)
+            </span>
+          </div>
+          <div
+            className="col-5 my-auto text-overflow"
+          >
+            <span
+              className="link"
+              title="INE_representante.jpg"
+            >
+              INE_representante.jpg
+            </span>
+          </div>
+          <div
+            className="col-2 my-auto text-center"
+          >
+            <SvgAprobado>
+              <svg
+                fill="none"
+                height="18"
+                viewBox="0 0 18 18"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="9"
+                  cy="9"
+                  fill="#39C6AC"
+                  r="9"
+                />
+                <path
+                  clipRule="evenodd"
+                  d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L7.70711 13.7071C7.31658 14.0976 6.68342 14.0976 6.29289 13.7071L3.29289 10.7071C2.90237 10.3166 2.90237 9.68342 3.29289 9.29289C3.68342 8.90237 4.31658 8.90237 4.70711 9.29289L7 11.5858L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z"
+                  fill="white"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </SvgAprobado>
+          </div>
+        </div>
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          className="row my-3 card-simple-blue-light"
+        >
+          <div
+            className="col-7"
+          >
+            <span
+              className="d-flex sub color-blue-storm"
+            >
+              Patricia Florez Sánchez
+            </span>
+            <span
+              className="d-flex overline color-gray"
+            >
+              Representante legal
+            </span>
+          </div>
+          <div
+            className="col-5 text-center my-auto"
+          >
+            <button
+              className="btn-mini-secondary"
+              type="button"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</EstadoDocumentosRepresentanteLegal>
+`;

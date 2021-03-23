@@ -1,0 +1,69 @@
+@import '../../../../../styles/scss/modules/var';
+@import '../../../../../styles/scss/modules/mixins';
+
+.container-step {
+  position: fixed;
+  right: 0;
+  top: 40%;
+  z-index: 1030;
+
+  @include media('lg') {
+    right: -15px;
+  }
+
+  @include media('md') {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: static;
+
+    div {
+      margin-bottom: 16px;
+      order: -1;
+    }
+  }
+}
+
+.container-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 32px;
+
+  @include media('md') {
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 0;
+  }
+}
+
+.step {
+  background-color: $blue-sky;
+  border: 0;
+  border-radius: 50%;
+  height: 10px;
+  margin-bottom: 22px;
+  padding: 0;
+  width: 10px;
+
+  @include media('md') {
+    margin-bottom: 0;
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: $blue-shadow;
+  }
+}
+
+.step-active {
+  background: radial-gradient($yellow-summer 52%, $white 40%);
+  border: 1px solid $yellow-summer;
+  height: 24px;
+  width: 24px;
+}
