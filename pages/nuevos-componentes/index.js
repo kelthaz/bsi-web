@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 
+import Accordion from '../../components/shared/accordion/Accordion';
 import Modal from '../../components/shared/modal/Modal';
 import DatePickerInput from '../../components/shared/datepicker/DatePickerInput';
 import Select from '../../components/shared/select/Select';
@@ -8,6 +9,11 @@ import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
 import Calendar from '../../components/shared/calendar/Calendar';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
+import SvgDocumentos from '../../components/svgs/iconos/SvgDocumentos';
+import EstadoDocumentosFirma from '../../components/features/privado/shared/estado-documentos/firma/EstadoDocumentosFirma';
+import EstadoDocumentosProspecto from '../../components/features/privado/shared/estado-documentos/prospecto/EstadoDocumentosProspecto';
+import EstadoDocumentosRepresentanteLegal from '../../components/features/privado/shared/estado-documentos/representante-legal/EstadoDocumentosRepresentanteLegal';
+import EstadoDocumentosAnalista from '../../components/features/privado/shared/estado-documentos/analista/EstadoDocumentosAnalista';
 import AsignarCasos from '../../components/features/privado/shared/asignacion-casos/AsignarCasos';
 
 const Test = () => {
@@ -57,6 +63,7 @@ const Test = () => {
           </div>
         </div>
       </Modal>
+      {/* 01 DATEPICKER */}
       <article>
         <Section>
           <div className="col-lg-12 col-md-12">
@@ -107,6 +114,7 @@ const Test = () => {
           </div>
         </Section>
       </article>
+      {/* 02 (WIP) CALENDARIO */}
       <article>
         <Section>
           <div className="col-lg-12 col-md-12">
@@ -121,6 +129,7 @@ const Test = () => {
           </div>
         </Section>
       </article>
+      {/* 03 RESULTADO DEL SIMULADOR */}
       <article>
         <Section>
           <div className="col-lg-12 col-md-12">
@@ -147,6 +156,130 @@ const Test = () => {
                     />
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
+      {/* 04 ESTADO DE LOS DOCUMENTOS */}
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="04" linea1="Estado de los documentos Prospecto" />
+            </div>
+            <div className="row">
+              <div className="col-7">
+                <Accordion title={<span><SvgDocumentos /> Documentos Bancoppel</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosFirma documentos={[
+                    { id: 1, nombre: 'Contrato', ruta: 'contrato_alejandra.pdf', estado: 0 },
+                    { id: 2, nombre: 'Solicitud de servicio EmpresaNet', ruta: 'solicitud_empNet.pdf', estado: 2 },
+                    { id: 3, nombre: 'Kit de apertura', ruta: 'kitapertura.pdf', estado: 1 }
+                  ]} />
+                </Accordion>
+                <Accordion title={<span><SvgDocumentos /> Mis documentos</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosProspecto documentos={[
+                    { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 1 },
+                    { id: 4, nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
+                    { id: 5, nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
+                    { id: 6, nombre: 'Reformas' },
+                    { id: 7, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
+                    { id: 8, nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
+                  ]} />
+                </Accordion>
+                <Accordion title={<span><SvgDocumentos /> Documentos obligado solidario</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosProspecto documentos={[
+                    { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                    { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante.png', estado: 1 }
+                  ]} />
+                </Accordion>
+                <Accordion title={<span><SvgDocumentos /> Representantes legales</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosRepresentanteLegal representantes={[
+                    {
+                      id: 1,
+                      nombre: 'Jorge Ortiz Cruz', telefono: '55 1234 5678', email: 'jorge@mail.com',
+                      documentos: [
+                        { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 1 },
+                        { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 1 }
+                      ]
+                    },
+                    {
+                      id: 2,
+                      nombre: 'Patricia Florez Sánchez', telefono: '55 1234 5678', email: 'patricia@mail.com',
+                      documentos: [
+                        { id: 3, nombre: 'Identificación oficial (Frente)', ruta: 'INE_representante.jpg', estado: 2 },
+                        { id: 4, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_representante.jpg', estado: 2 }
+                      ]
+                    }
+                  ]} />
+                </Accordion>
+              </div>
+            </div>
+          </div>
+          </Section>
+      </article>
+      {/* 05 ESTADO DE LOS DOCUMENTOS */}
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="05" linea1="Estado de los documentos Analista" />
+            </div>
+            <div className="row">
+              <div className="col-7">
+                <Accordion title={<span><SvgDocumentos /> Documentos del prospecto</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosAnalista prospecto={{
+                    documentos: [
+                      { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
+                      { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
+                      { id: 3, nombre: 'Comprobante de domicilio (Comercial)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
+                      { id: 4, nombre: 'Comprobante de domicilio (Fiscal)', ruta: 'comprobante_luz_factura_hogar.pdf', estado: 0 },
+                      { id: 5, nombre: 'Acta de matrimonio', ruta: 'Acta_matrimonio.pdf', estado: 0 },
+                      { id: 6, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 0 },
+                      { id: 7, nombre: 'Selfie', ruta: 'selfie.png', estado: 0 },
+                      { id: 8, nombre: 'Autorización de crédito', ruta: 'Autorizacion_credito.pdf', estado: 0 },
+                      { id: 9, nombre: 'Reporte de buró de crédito', ruta: 'reporte_buro_credito.pdf', estado: 0 }
+                    ],
+                    relaciones: [
+                      {
+                        id: 1,
+                        nombre: 'Carlos Pérez Díaz', descripcion: 'Cónyuge del solicitante',
+                        documentos: [
+                          { id: 10, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Carlos.jpg', estado: 1 },
+                          { id: 11, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Carlos.jpg', estado: 1 }
+                        ]
+                      }
+                    ]
+                  }} />
+                </Accordion>
+                <Accordion title={<span><SvgDocumentos /> Documentos de obligado solidario</span>} expanded={false} color="blue" icon="arrow">
+                  <EstadoDocumentosAnalista prospecto={{
+                    relaciones: [
+                      {
+                        id: 1,
+                        nombre: 'Alberto Abad Gómez', descripcion: 'Obligado solidario',
+                        documentos: [
+                          { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'INE_AAG.jpg', estado: 0 },
+                          { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_AAG.jpg', estado: 0 },
+                          { id: 3, nombre: 'Relación patrimonial', ruta: 'relacion_patrimonial.pdf', estado: 0 },
+                          { id: 4, nombre: 'Comprobante de domicilio', ruta: 'Comprobante_luz.jpg', estado: 0 },
+                          { id: 5, nombre: 'Acta de matrimonio', ruta: 'acta.pdf', estado: 0 },
+                        ]
+                      },
+                      {
+                        id: 2,
+                        nombre: 'Diana Flores Cantú', descripcion: 'Cónyuge del obligado solidario',
+                        documentos: [
+                          { id: 6, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Diana.jpg', estado: 1 },
+                          { id: 7, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Diana.jpg', estado: 1 }
+                        ]
+                      }
+                    ]
+                  }} />
+                </Accordion>
               </div>
             </div>
           </div>
