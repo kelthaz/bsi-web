@@ -37,7 +37,7 @@ const BannerInicio = () => {
 
   return (
     <>
-      <Banner backgroundImage="/background-inicio.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+      <Banner backgroundImage="/Fondo_Inicio.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
     </>
   );
 };
