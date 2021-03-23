@@ -42,7 +42,9 @@ const BannerCreditoPyme = () => {
     </>
   );
 
-  return <Banner backgroundImage="/background-credito.jpg" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
+  return (
+    <Banner backgroundImage="/Fondo_Credito_Digital.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
+  );
 };
 
 export default BannerCreditoPyme;

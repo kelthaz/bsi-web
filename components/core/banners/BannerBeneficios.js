@@ -35,9 +35,7 @@ const BannerBeneficios = () => {
       </div>
     </div>
   );
-  return (
-    <Banner backgroundImage="/background-beneficios.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
-  );
+  return <Banner backgroundImage="/Fondo_Beneficios.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerBeneficios;

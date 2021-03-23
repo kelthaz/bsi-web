@@ -28,9 +28,7 @@ const BannerRequisitos = () => {
     </>
   );
 
-  return (
-    <Banner backgroundImage="/background-requisitos.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />
-  );
+  return <Banner backgroundImage="/Fondo_Requisitos.png" textBlock={bannerTextBlock} imageBlock={bannerImageBlock} />;
 };
 
 export default BannerRequisitos;
