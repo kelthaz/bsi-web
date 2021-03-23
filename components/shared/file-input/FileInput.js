@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './file-input.module.scss';
 
 const FileInput = (props) => {
-  const { text, subText, grayText } = props;
+  const { text, subText, grayText, firmaContrato } = props;
   const [getFileButton, setGetFileButton] = useState(null);
 
   const onChangeFileHandler = (event) => {
@@ -27,7 +27,7 @@ const FileInput = (props) => {
         <span className={`body3 ${styles['sub-text']}`}>{subText}</span>
       </div>
       {getFileButton && (
-        <div className={`body3 ${styles['uploaded-file']}`}>
+        <div className={`body3 ${firmaContrato ? styles['uploaded-file-firma'] : styles['uploaded-file']}`}>
           {getFileButton}
           <span tabIndex={0} className={`${styles['remove-upload']}`} role="button" onClick={removeFileHandler}>
             &nbsp; X{' '}
@@ -37,7 +37,7 @@ const FileInput = (props) => {
 
       <label
         htmlFor="inputFile"
-        className={`body3 mb-md-4 mb-xs-0 ${
+        className={`body3 mb-md-4 mb-xs-0 ${firmaContrato ? styles['label-text-button-firma'] : ''} ${
           subText ? `${styles['label-text-button']}` : `${styles['label-sub-text-button']}`
         }`}
       >
@@ -59,8 +59,9 @@ FileInput.propTypes = {
   text: PropTypes.string.isRequired,
   subText: PropTypes.string,
   grayText: PropTypes.string,
+  firmaContrato: PropTypes.bool,
 };
 
-FileInput.defaultProps = { subText: '', grayText: '' };
+FileInput.defaultProps = { subText: '', grayText: '', firmaContrato: false };
 
 export default FileInput;

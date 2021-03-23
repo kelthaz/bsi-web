@@ -4,7 +4,7 @@ import styles from './back-office-video.module.scss';
 
 const IndividualVideo = ({ idVideo, src, height, width }) => (
   <div key={idVideo}>
-    <div className="col-xs-12 col-md-4 ">
+    <div className="col-xs-12 col-md-4 px-0">
       <iframe className={styles['video-preview']} height={height} width={width} src={src} frameBorder="0" start="100" />
     </div>
   </div>

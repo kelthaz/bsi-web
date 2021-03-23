@@ -1,5 +1,5 @@
 import { INICIO_CLIENTE_ROUTE } from '../../../../constants/routes/privado/cliente';
-import InicioCliente from './InicioCliente';
+import InicioCliente from './inicio-cliente/InicioCliente';
 
 const clienteRoutes = [
   {
