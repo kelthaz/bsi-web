@@ -8,7 +8,7 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import SvgPrivacidad from '../../../../svgs/SvgPrivacidad';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import { campoRequerido, aceptarTerminos, ciecInvalida } from '../../../../../constants/errors';
-import ModalAutorizacionCiec from '../../../../core/modals/solicitud/modal-autorizacion-ciec/ModalAutorizacionCiec';
+import ModalAutorizacionCiec from '../../shared/modals/modal-autorizacion-ciec/ModalAutorizacionCiec';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
 import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';

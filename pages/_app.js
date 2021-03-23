@@ -7,7 +7,7 @@ import '../styles/styles.scss';
 import '../styles/scss/chatbot.scss';
 import Loader from '../components/shared/loader/Loader';
 import useAxiosToken from '../hooks/useAxiosToken';
-import ModalError from '../components/core/modals/shared/ModalError';
+import ModalError from '../components/core/modal-error/ModalError';
 
 const App = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState);

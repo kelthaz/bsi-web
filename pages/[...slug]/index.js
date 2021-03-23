@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import LoginContainer from '../../components/core/containers/login/LoginContainer';
-import PrivadoContainer from '../../components/core/containers/privado/PrivadoContainer';
-import PublicoContainer from '../../components/core/containers/publico/PublicoContainer';
-import SolicitudContainer from '../../components/core/containers/solicitud/SolicitudContainer';
+import PrivadoContainer from '../../components/core/containers/privado/container/PrivadoContainer';
+import PublicoContainer from '../../components/core/containers/publico/container/PublicoContainer';
+import SolicitudContainer from '../../components/core/containers/solicitud/container/SolicitudContainer';
 import featureRoute from '../../components/features/feature.routes';
 import { INICIAR_SESION } from '../../constants/routes/login/login';
 
