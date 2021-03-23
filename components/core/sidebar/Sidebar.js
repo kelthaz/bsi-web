@@ -16,7 +16,8 @@ import { CARPETA, CERRAR, LISTA, REPORTE, TABLERO, USUARIOS } from '../../../con
 
 const Sidebar = ({ role, currentItem }) => {
   const [open, setOpen] = useState(false);
-
+  const primerNombre = 'Jesus';
+  const primerApellido = 'David';
   const itemsByRole = [
     {
       name: TABLERO,
@@ -57,29 +58,46 @@ const Sidebar = ({ role, currentItem }) => {
   ];
 
   return (
-    <div className={`${styles['container-sidebar']} ${open && styles['sidebar-active']}`}>
+    <div className={`${styles['container-sidebar']} ${open ? styles['sidebar-active'] : styles['sidebar-inactive']}`}>
       <div className={styles['header-sidebar']}>
-        <button className={styles['button-sidebar']} type="button" onClick={() => setOpen(!open)}>
-          {open ? <SvgCross /> : <SvgMenu />}
-        </button>
+        {open ? (
+          <button className={styles['button-sidebar']} type="button" onClick={() => setOpen(false)}>
+            <SvgCross />
+          </button>
+        ) : (
+          <button className={styles['button-sidebar']} type="button" onClick={() => setOpen(true)}>
+            <SvgMenu />
+          </button>
+        )}
 
         <SvgLogoBanCoppelInverted />
       </div>
-      <div className={styles['item-sidebar']}>
-        <SvgAvatar />
-        <div className={styles['perfil-sidebar']}>
-          <p className="color-white sub">Salvador Orozco Hernández</p>
-          <p className="color-white overline">Ver pefil</p>
-        </div>
-      </div>
-      {itemsByRole
-        .filter(({ roles }) => roles.includes(role))
-        .map(({ icon, text, name }) => (
-          <div key={text} className={styles['item-sidebar']}>
-            {icon}
-            <p className={`${currentItem === name ? 'sub' : 'body-2'} color-white`}>{text}</p>
+      <div
+        className={`${styles['content-sidebar']} `}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >
+        <div className={styles['content-item-sidebar']}>
+          <div className={styles['avatar-sidebar']}>
+            <SvgAvatar />
+            <p className="color-white sub">{`${primerNombre.charAt(0)}${primerApellido.charAt(0)}`}</p>
           </div>
-        ))}
+          <div className={styles['perfil-sidebar']}>
+            <p className="color-white sub">{`${primerNombre} ${primerApellido}`}</p>
+            <p className="color-white overline">Ver pefil</p>
+          </div>
+        </div>
+        {itemsByRole
+          .filter(({ roles }) => roles.includes(role))
+          .map(({ icon, text, name }) => (
+            <button type="button" key={text} className={`${styles['item-sidebar']} ${styles['content-item-sidebar']}`}>
+              <div>{icon}</div>
+              <div>
+                <p className={`${currentItem === name ? 'sub' : 'body-2'} color-white`}>{text}</p>
+              </div>
+            </button>
+          ))}
+      </div>
     </div>
   );
 };
