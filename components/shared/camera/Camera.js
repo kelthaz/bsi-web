@@ -13,11 +13,19 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'user' },
 };
 
-const AIO_WIDTH = 240;
-const AIO_HEIGHT = 320;
+const analyzer = {
+  width: 240,
+  height: 320
+};
+
+const liveness = {
+  width: 640,
+  height: 480
+};
 
 const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) => {
-  const canvasRef = useRef();
+  const canvasAnalyzerRef = useRef();
+  const canvasLivenessRef = useRef();
   const videoRef = useRef();
 
   const [container, setContainer] = useState({ width: 0, height: 0 });
@@ -60,33 +68,62 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
   }
 
   function handleClear() {
-    const context = canvasRef.current.getContext('2d');
-    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    const contextAnalyzer = canvasAnalyzerRef.current.getContext('2d');
+    const contextLiveness = canvasLivenessRef.current.getContext('2d');
+    contextAnalyzer.clearRect(0, 0, canvasAnalyzerRef.current.width, canvasAnalyzerRef.current.height);
+    contextLiveness.clearRect(0, 0, canvasLivenessRef.current.width, canvasLivenessRef.current.height);
+  }
+
+  function takeAnalyzerPicture() {
+    const context = canvasAnalyzerRef.current.getContext('2d');
+    canvasAnalyzerRef.current.width = analyzer.width;
+    canvasAnalyzerRef.current.height = analyzer.height;
+
+    context.drawImage(
+      videoRef.current,
+      ((videoRef.current ? videoRef.current.videoWidth : container.width) / 2) - (analyzer.width / 2),
+      ((videoRef.current ? videoRef.current.videoHeight : container.height) / 2) - (analyzer.height / 2),
+      analyzer.width,
+      analyzer.height,
+      0,
+      0,
+      analyzer.width,
+      analyzer.height
+    );
+    const rawImgData = canvasAnalyzerRef.current.toDataURL('image/jpeg', 1);
+    return rawImgData;
+  }
+
+  function takeLivenessPicture() {
+    const context = canvasLivenessRef.current.getContext('2d');
+    canvasLivenessRef.current.width = liveness.width;
+    canvasLivenessRef.current.height = liveness.height;
+
+    context.drawImage(
+      videoRef.current,
+      ((videoRef.current ? videoRef.current.videoWidth : container.width) / 2) - (liveness.width / 2),
+      ((videoRef.current ? videoRef.current.videoHeight : container.height) / 2) - (liveness.height / 2),
+      liveness.width,
+      liveness.height,
+      0,
+      0,
+      liveness.width,
+      liveness.height
+    );
+    const rawImgData = canvasLivenessRef.current.toDataURL('image/jpeg', 1);
+    return rawImgData;
   }
 
   function handleCapture() {
     pauseCamera();
-    const context = canvasRef.current.getContext('2d');
-    canvasRef.current.width = AIO_WIDTH;
-    canvasRef.current.height = AIO_HEIGHT;
-
-    context.drawImage(
-      videoRef.current,
-      ((videoRef.current ? videoRef.current.videoWidth : container.width) / 2) - (AIO_WIDTH / 2),
-      ((videoRef.current ? videoRef.current.videoHeight : container.height) / 2) - (AIO_HEIGHT / 2),
-      AIO_WIDTH,
-      AIO_HEIGHT,
-      0,
-      0,
-      AIO_WIDTH,
-      AIO_HEIGHT
-    );
-    const rawImgData = canvasRef.current.toDataURL('image/jpeg', 1);
+    const analyzerPic = takeAnalyzerPicture();
+    const livenessPic = takeLivenessPicture();
     const timestamp = Date.now();
-      handleClear();
-      resumeCamera();
+    handleClear();
+    resumeCamera();
     return {
-      image: rawImgData,
+      analyzer: analyzerPic,
+      liveness: livenessPic,
       timestamp
     };
 
@@ -156,18 +193,24 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, facingMode }, ref) =
               className={isCaptureComplete ? styles['overlay-success'] : styles.overlay}
               hidden={!isVideoPlaying}
               style={{
-                bottom: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (AIO_HEIGHT / 2)}px`,
-                left: `${(container.width / 2) - (AIO_WIDTH / 2)}px`,
-                right: `${(container.width / 2) - (AIO_WIDTH / 2)}px`,
-                top: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (AIO_HEIGHT / 2)}px`
+                bottom: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (200 / 2)}px`,
+                left: `${(container.width / 2) - (200 / 2)}px`,
+                right: `${(container.width / 2) - (200 / 2)}px`,
+                top: `${((videoRef.current && videoRef.current.videoHeight) / 2) - (320 / 2)}px`
               }}
             />
 
             <canvas
               className={styles.canvas}
-              ref={canvasRef}
-              width={AIO_WIDTH}
-              height={AIO_HEIGHT}
+              ref={canvasAnalyzerRef}
+              width={analyzer.width}
+              height={analyzer.height}
+            />
+            <canvas
+              className={styles.canvas}
+              ref={canvasLivenessRef}
+              width={liveness.width}
+              height={liveness.height}
             />
           </div>
         </div>

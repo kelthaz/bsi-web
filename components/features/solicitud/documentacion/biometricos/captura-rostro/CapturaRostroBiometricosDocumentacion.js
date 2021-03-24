@@ -69,7 +69,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const analyzeAutoCapture = async (rawImgData) => {
     const frame = {
-      data: rawImgData.image.replace('data:image/jpeg;base64,', ''),
+      data: rawImgData.analyzer.replace('data:image/jpeg;base64,', ''),
       tags: [],
       timestamp: rawImgData.timestamp,
     };
@@ -92,7 +92,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
 
   const checkForLiveness = async (rawImgsData) => {
     const frames = rawImgsData.map((item) => ({
-      data: item.image.replace('data:image/jpeg;base64,', ''),
+      data: item.liveness.replace('data:image/jpeg;base64,', ''),
       tags: [],
       timestamp: item.timestamp,
     }));
