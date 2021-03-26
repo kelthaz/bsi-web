@@ -409,6 +409,15 @@
   width: 400px;
 }
 
+.card-simple-blue-sky-small {
+  background-color: $blue-sky;
+  border-radius: 16px;
+  color: $white;
+  height: 80px;
+  position: relative;
+  width: 200px;
+}
+
 .card-simple-blue-morning {
   background-color: $blue-morning;
   border-radius: 16px;
@@ -416,4 +425,22 @@
   height: 95px;
   position: relative;
   width: 400px;
+}
+
+.card-simple-blue-morning-small {
+  background-color: $blue-morning;
+  border-radius: 16px;
+  color: $white;
+  height: 80px;
+  position: relative;
+  width: 200px;
+}
+
+.card-simple-yellow-summer-small {
+  background-color: $yellow-summer;
+  border-radius: 16px;
+  color: $white;
+  height: 80px;
+  position: relative;
+  width: 200px;
 }
