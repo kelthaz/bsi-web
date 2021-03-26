@@ -1,16 +1,15 @@
-import { SUPERVISOR_ROUTE } from '../../../../constants/routes/privado/cliente';
-import InicioSupervisor from './inicio-supervisor/inicioSupervisor';
+import supervisorJuridicoRoutes from './juridico/supervisor-juridico.routes';
+import supervisorMediosDePagoRoutes from './medios-de-pago/supervisor-medios-de-pago.routes';
+import supervisorMesaDeControlRoutes from './mesa-de-control/supervisor-mesa-de-control.routes';
+import supervisorPLDRoutes from './pld/supervisor-pld.routes';
+import supervisorSeguimientoRoutes from './seguimiento/supervisor-seguimiento.routes';
 
-const clienteRoutes = [
-  {
-    route: SUPERVISOR_ROUTE,
-    component: InicioSupervisor,
-    services: [],
-    roles: [],
-    data: {
-      tab: 'inicio',
-    },
-  },
+const supervisorRoutes = [
+  ...supervisorJuridicoRoutes,
+  ...supervisorMediosDePagoRoutes,
+  ...supervisorMesaDeControlRoutes,
+  ...supervisorPLDRoutes,
+  ...supervisorSeguimientoRoutes,
 ];
 
-export default clienteRoutes;
+export default supervisorRoutes;

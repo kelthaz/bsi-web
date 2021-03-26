@@ -82,7 +82,7 @@ objects:
               value: '${GIT_SSL_NO_VERIFY}'
           from:
             kind: DockerImage
-            name: "ubi8/nodejs-12"
+            name: "ubi8/nodejs-14"
           type: Source
       triggers:
         - type: ConfigChange
