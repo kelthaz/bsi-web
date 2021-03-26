@@ -3,7 +3,7 @@ import Sidebar from '../sidebar/Sidebar';
 import Reloj from '../reloj/Reloj';
 
 const PrivadoContainer = ({ pageComponent, servicesData }) => {
-  const { component: Component } = pageComponent;
+  const [Component] = pageComponent.component;
 
   return (
     <div className="contedor-fixed-privado">

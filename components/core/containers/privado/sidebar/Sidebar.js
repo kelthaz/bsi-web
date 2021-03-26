@@ -12,7 +12,7 @@ import SvgReportes from '../../../../svgs/sidebar/SvgReportes';
 import SvgUsuario from '../../../../svgs/sidebar/SvgUsuario';
 import SvgCross from '../../../../svgs/SvgCross';
 import styles from './sidebar.module.scss';
-import { CARPETA, CERRAR, LISTA, REPORTE, TABLERO, USUARIOS } from '../../../../../constants/sidebar';
+import { HISTORIAL, CERRAR, ACTIVIDADES, REPORTE, TABLERO, USUARIOS } from '../../../../../constants/sidebar';
 
 const Sidebar = ({ role, currentItem, primerNombre, primerApellido }) => {
   const [open, setOpen] = useState(false);
@@ -24,10 +24,10 @@ const Sidebar = ({ role, currentItem, primerNombre, primerApellido }) => {
       text: 'Mi tablero',
     },
     {
-      name: LISTA,
+      name: ACTIVIDADES,
       roles: [ANALISTA, SUPERVISOR],
       icon: <SvgList />,
-      text: 'Mi lista',
+      text: 'Actividades',
     },
     {
       name: REPORTE,
@@ -42,7 +42,7 @@ const Sidebar = ({ role, currentItem, primerNombre, primerApellido }) => {
       text: 'Usuarios',
     },
     {
-      name: CARPETA,
+      name: HISTORIAL,
       roles: [ANALISTA, SUPERVISOR],
       icon: <SvgHistorial />,
       text: 'Historial',
