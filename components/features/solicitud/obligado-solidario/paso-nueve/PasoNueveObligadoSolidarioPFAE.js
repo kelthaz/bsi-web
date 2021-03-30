@@ -15,10 +15,10 @@ const PasoNueveObligadoSolidarioPFAE = ({ validate }) => {
 
   const formulario = useFormik({
     initialValues: {
-      bienesSeparados: obligadoSolidario.bienesSeparados,
+      estadoCivil: obligadoSolidario.estadoCivil,
     },
     validationSchema: Yup.object({
-      bienesSeparados: Yup.string().required(campoRequerido),
+      estadoCivil: Yup.string().required(campoRequerido),
     }),
     onSubmit: (values) => {
       dispatch(
@@ -47,25 +47,17 @@ const PasoNueveObligadoSolidarioPFAE = ({ validate }) => {
               </div>
               <div className="row">
                 <div className="col-12">
-                  <RadioButton
-                    name="bienesSeparados"
-                    label="siMancomunados"
-                    {...formulario.getFieldProps('bienesSeparados')}
-                  >
+                  <RadioButton name="estadoCivil" label="siMancomunados" {...formulario.getFieldProps('estadoCivil')}>
                     <span className="input color-gray">Sí, por bienes mancomunados</span>
                   </RadioButton>
                 </div>
                 <div className="col-12 mt-3">
-                  <RadioButton
-                    name="bienesSeparados"
-                    label="siSeparados"
-                    {...formulario.getFieldProps('bienesSeparados')}
-                  >
+                  <RadioButton name="estadoCivil" label="siSeparados" {...formulario.getFieldProps('estadoCivil')}>
                     <span className="input color-gray">Sí, por bienes separados</span>
                   </RadioButton>
                 </div>
                 <div className="col-12 mt-3">
-                  <RadioButton name="bienesSeparados" label="no" {...formulario.getFieldProps('bienesSeparados')}>
+                  <RadioButton name="estadoCivil" label="no" {...formulario.getFieldProps('estadoCivil')}>
                     <span className="input color-gray">No</span>
                   </RadioButton>
                 </div>

@@ -76,9 +76,9 @@ const Sidebar = ({ role, currentItem, primerNombre, primerApellido }) => {
         onMouseLeave={() => setOpen(false)}
       >
         <div className={styles['content-item-sidebar']}>
-          <div className={styles['avatar-sidebar']}>
+          <div className="svg-avatar">
             <SvgAvatar />
-            <p className="color-white sub">{`${primerNombre.charAt(0)}${primerApellido.charAt(0)}`}</p>
+            <span className="color-white sub">{`${primerNombre.charAt(0)}${primerApellido.charAt(0)}`}</span>
           </div>
           <div className={styles['perfil-sidebar']}>
             <p className="color-white sub">{`${primerNombre} ${primerApellido}`}</p>

@@ -32,7 +32,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
     },
   };
 
-  if (documentacion.bienesSeparados !== 'no') {
+  if (documentacion.estadoCivil !== 'no') {
     initialValues.inePareja = documentacion.inePareja;
     initialValues.ineReversoPareja = documentacion.ineReversoPareja;
     validationSchema.inePareja = Yup.string().url().required(campoRequerido);
@@ -109,7 +109,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
                 <div className="col-md-12 pb-md-4">
                   <FileInput text="Tu INE" grayText="(por el reverso)" />
                 </div>
-                {documentacion.bienesSeparados !== 'no' && (
+                {documentacion.estadoCivil !== 'no' && (
                   <div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput text="INE de tu pareja" grayText="(por el frente)" />

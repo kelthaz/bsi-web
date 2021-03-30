@@ -2,47 +2,39 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tab.module.scss';
 
-const Tab = ({ children, initOption, onClick }) => {
-  const tabItems = children.map(({ props: propsChild }) => ({
-    tab: propsChild.tab,
-    keyTab: propsChild.keyTab,
-    children: propsChild.children,
-    onChangeOption: propsChild.onChangeOption,
-    blocked: propsChild.blocked,
-  }));
+const Tab = ({ children, initOption }) => {
+  const [option, setOption] = useState(initOption);
 
-  const [tabOpen, setTabOpen] = useState(tabItems[initOption]);
-
-  const handleOption = (tabItem) => {
-    if (!tabItem.blocked) {
-      setTabOpen({ ...tabItem });
+  const handleOption = (selectOption) => {
+    if (!children[selectOption].props.blocked) {
+      setOption(selectOption);
     }
-    tabItem.onChangeOption();
+    children[selectOption].props.changeoption();
   };
 
   return (
     <>
       <div className={styles.tab}>
-        {tabItems.map((tabItem) => (
+        {children.map((tabItem, index) => (
           <button
             type="button"
-            key={tabItem.keyTab}
-            style={{ width: `${100 / tabItems.length}%` }}
-            className={`${styles['tab-links']} ${tabOpen.keyTab === tabItem.keyTab ? styles['tab-active'] : ''}`}
-            onClick={() => handleOption(tabItem)}
+            key={tabItem.props.keyTab}
+            style={{ width: `${100 / children.length}%` }}
+            className={`${styles['tab-links']} ${option === index ? styles['tab-active'] : ''}`}
+            onClick={() => handleOption(index)}
           >
-            {tabItem.tab}
+            {tabItem.props.tab}
           </button>
         ))}
       </div>
 
-      <div className={styles['tab-content']}>{tabOpen.children}</div>
+      <div className={styles['tab-content']}>{children[option]}</div>
     </>
   );
 };
 
 Tab.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
   initOption: PropTypes.number,
 };
 

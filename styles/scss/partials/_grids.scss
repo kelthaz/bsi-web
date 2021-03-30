@@ -42,9 +42,6 @@
   border-top-right-radius: 24px;
   bottom: 0;
   left: 70px;
-  // overflow: auto;
-  // overflow-x: hidden;
-  // padding: 32px;
   position: fixed;
   right: 48px;
   top: 70px;
@@ -57,11 +54,10 @@
   left: 102px;
   overflow: auto;
   overflow-x: hidden;
-  // padding: 32px;
+  padding-right: 16px;
   position: fixed;
   right: 80px;
   top: 102px;
-  // z-index: 2;
 }
 
 .contedor-solicitud {
@@ -92,15 +88,6 @@
     margin: 30px auto;
     min-height: calc(100% - (30px * 2));
   }
-}
-
-.contedor-login-card {
-  // margin: 60px auto;
-  // min-height: calc(100% - (60px * 2));
-  // @include media('md') {
-  //   margin: 30px auto;
-  //   min-height: calc(100% - (30px * 2));
-  // }
 }
 
 .z-indez-1 {
