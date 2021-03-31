@@ -34,7 +34,7 @@ const SupervisorMesaDeControlTablero = () => {
                   <div className="col-1">
                     <SvgAprobado />
                   </div>
-                  <div className="col-md-8">
+                  <div className="col-8">
                     <h4 className="color-blue-night">14</h4>
                     <span className="body3 color-gray">Total de líneas autorizadas hoy</span>
                   </div>
@@ -63,7 +63,7 @@ const SupervisorMesaDeControlTablero = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-6 mt-4 mb-4">
+              <div className="col-6 my-4">
                 <div className="row">
                   <div className="col-1">
                     <SvgOfertaBackOffice />
