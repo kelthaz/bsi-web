@@ -33,10 +33,15 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
       nombreEmpresa: datosPersonales.nombreEmpresa,
       sector: datosPersonales.sector,
       giro: datosPersonales.giro,
+      rfc: datosPersonales.rfc,
       descripcionEmpresa: datosPersonales.descripcionEmpresa,
     },
     validationSchema: {
       nombreEmpresa: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
+      rfc:
+        datosPersonales.tipoPersona === MORAL
+          ? Yup.string().trim().max(13, longitudMaxima).required(campoRequerido)
+          : null,
       sector: Yup.object()
         .shape({
           value: Yup.string(),
@@ -152,6 +157,25 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
                 />
               </div>
             </div>
+            {datosPersonales.tipoPersona === MORAL ? (
+              <div className="row no-gutters">
+                <div className="col-md-7 col-sm-12 col-xs-12">
+                  <p className="input color-gray">RFC representante legal</p>
+                </div>
+                <div className="col-md-5 col-sm-12 col-xs-12">
+                  <TextField
+                    name="rfc"
+                    maxlength={13}
+                    format="rfcformatter"
+                    type="text"
+                    size="big"
+                    label="AGRA9112150H1"
+                    {...formulario.getFieldMeta('rfc')}
+                    {...formulario.getFieldHelpers('rfc')}
+                  />
+                </div>
+              </div>
+            ) : null}
 
             <div className="row no-gutters">
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
