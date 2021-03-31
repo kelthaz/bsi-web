@@ -1,0 +1,18 @@
+@import '../../../styles/scss/modules/var';
+
+.footer {
+  border-top: 1.5px solid $blue-shadow;
+}
+
+.footer-paginator {
+  background-color: $white;
+  border-top: 1.5px solid $blue-shadow;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+.table-margin {
+  margin-bottom: 80px;
+}

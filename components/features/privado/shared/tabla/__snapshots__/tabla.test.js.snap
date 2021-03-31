@@ -1,0 +1,1485 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="my-3 "
+>
+  <table
+    className="w-100"
+    id="tabla-resultados"
+  >
+    <thead
+      className="table-head"
+    >
+      <tr>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="nombre"
+          key="nombre"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Nombre
+        </th>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="porRevisar"
+          key="porRevisar"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Por revisar
+        </th>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="estatus"
+          key="estatus"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Estatus
+        </th>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="persona"
+          key="persona"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Persona
+        </th>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="tiempoEspera"
+          key="tiempoEspera"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Tiempo de espera
+        </th>
+        <th
+          className="overline color-gray px-3 table-column-sortable"
+          id="region"
+          key="region"
+          onClick={[Function]}
+        >
+          <SvgDocumentos />
+          Región
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        className="table-row"
+        key="0"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="1"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="2"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="3"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="4"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="5"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="6"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="7"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="8"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="9"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="10"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="11"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="12"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="13"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="14"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="15"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="16"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="17"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="18"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="19"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="20"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="21"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="22"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="23"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="24"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="25"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Fernanda Rodriguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          10 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="26"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Daniela Fernanda
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          2
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          2 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="27"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          José Lima Rodríguez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          2 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          3 días
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="28"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Alejandro Ramírez
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          3 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          0
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          PFAE
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          20 min
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Norte
+        </td>
+      </tr>
+      <tr
+        className="table-row"
+        key="29"
+      >
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="nombre"
+          key="nombre"
+        >
+          Mariana Nayeli
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="porRevisar"
+          key="porRevisar"
+        >
+          5 documentos
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="estatus"
+          key="estatus"
+        >
+          1
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="persona"
+          key="persona"
+        >
+          Moral
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="tiempoEspera"
+          key="tiempoEspera"
+        >
+          6 hrs
+        </td>
+        <td
+          className="body2 color-gray py-2 px-3"
+          headers="region"
+          key="region"
+        >
+          Oeste
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
