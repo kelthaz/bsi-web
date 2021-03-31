@@ -4,6 +4,7 @@ import IndividualVideo from '../../../privado/shared/back-office-video/BackOffic
 import ProgressBar from '../../../privado/shared/progressbar/ProgressBar';
 import NextStepsTable from '../../../privado/shared/next-steps-table/NextStepsTable';
 import CardBackOffices from '../../../privado/shared/back-office-card/BackOfficeCard';
+import CardBackOfficesSmall from '../../../privado/shared/back-office-card-small/BackOfficeCardSmall';
 
 const pruebaComponentes = () => {
   const formulario = useFormik({});
@@ -35,6 +36,14 @@ const pruebaComponentes = () => {
               </div>
               <div className="ml-5">
                 <CardBackOffices
+                  title="$1,500,000.00"
+                  subTitle="Monto autorizado"
+                  haveButton={false}
+                  iconoAgendar={false}
+                />
+              </div>
+              <div className="ml-5">
+                <CardBackOfficesSmall
                   title="$1,500,000.00"
                   subTitle="Monto autorizado"
                   haveButton={false}
