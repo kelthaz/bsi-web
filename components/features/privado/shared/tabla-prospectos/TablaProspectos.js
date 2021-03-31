@@ -74,7 +74,7 @@ const TablaProspecto = ({ data, compact }) => {
             <Paginador
               numberOfPages={totalPages}
               currentPage={currentPage}
-              onChange={() => {}}
+              onChange={setCurrentPage}
             />
           </div>
         </div>
