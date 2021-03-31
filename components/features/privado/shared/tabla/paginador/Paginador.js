@@ -18,7 +18,7 @@ const Paginador = ({numberOfPages, onChange, currentPage}) => {
   return (
     <ul className={styles.pagination}>
       <li>
-        <span role="button" onClick={() => onPageChange(currentPage - 1)} tabIndex={0}>&#852;</span>
+        <span role="button" onClick={() => onPageChange(currentPage - 1)} tabIndex={0}>&lt;</span>
       </li>
       {[...Array(numberOfPages)].map((__, num) =>
         // eslint-disable-next-line react/no-array-index-key
@@ -27,7 +27,7 @@ const Paginador = ({numberOfPages, onChange, currentPage}) => {
         </li>
       )}
       <li>
-        <span role="button" onClick={() => onPageChange(currentPage + 1)} tabIndex={0}>&#853;</span>
+        <span role="button" onClick={() => onPageChange(currentPage + 1)} tabIndex={0}>&gt;</span>
       </li>
     </ul>
   );
