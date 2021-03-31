@@ -86,157 +86,50 @@ const initialState = {
     domicilioFiscal: 'Avenida Santa Fe 510, Interior 101 05000, Santa Fe. Cuajimalpa, CDMX',
     domicilioComercial: 'Avenida Santa Fe 510, Interior 101 05000, Santa Fe. Cuajimalpa, CDMX',
     estadoCivil: 'Casado por bienes mancomunados',
+    nombreConyuge: 'Fernanda Lira Lagos',
   },
   otraInformacion: {
     navegador: 'Safari',
     ubicacion: 'sinaloa',
     ip: '123.456.789.123',
   },
-  documentos: {},
+  documentosProspecto: {
+    ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    ineReverso: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    comprobanteDomicilioComercial: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 1 },
+    comprobanteDomicilioFiscal: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 1 },
+    actaMatrimonio: { nombreDocumento: 'Acta_matrimonio.pdf', url: '', estado: 1 },
+    pruebaDeVida: { nombreDocumento: 'prueba.mv', url: '', estado: 1 },
+    selfie: { nombreDocumento: 'selfie_prueba.jpg', url: '', estado: 1 },
+    autorizacionCredito: { nombreDocumento: 'Autorizacion_cre...', url: '', estado: 1 },
+    reporteBuroCredito: { nombreDocumento: 'reporte_buro_cre...', url: '', estado: 1 },
+    inePareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
+    ineReversoPareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
 
-  documentacion: {
-    controladosMoralesComoMoral: [],
-    tieneControladosMoralesComoMoral: '',
-    cantidadControladosMoralesComoMoral: { value: 1, label: '1' },
-    controladosMoralesComoFisico: [],
-    tieneControladosMoralesComoFisico: '',
-    cantidadControladosMoralesComoFisico: { value: 1, label: '1' },
-    controladosFisicosComoMoral: [],
-    tieneControladosFisicosComoMoral: '',
-    cantidadControladosFisicosComoMoral: { value: 1, label: '1' },
-    controladosFisicosComoFisico: [],
-    tieneControladosFisicosComoFisico: '',
-    cantidadControladosFisicosComoFisico: { value: 1, label: '1' },
+    poderesNotarial: { nombreDocumento: '', url: '', estado: 1 },
+    actaConstitutiva: { nombreDocumento: '', url: '', estado: 1 },
+    escriturasConReformas: { nombreDocumento: '', url: '', estado: 1 },
+    integracionRiesgoComun: { nombreDocumento: '', url: '', estado: 1 },
 
-    meEjercenControlMoralComoMoral: '',
-    meEjercenControlMoralComoFisico: '',
-
-    actaConstitutiva: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    poderesNotarial: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    escriturasConReformas: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    comprobanteDomicilioComercial:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    comprobanteDomicilioFiscal:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineRepresentanteLegal: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineReversoRepresentanteLegal:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    estadoCivil: '',
-
-    usosCuentaSeleccionados: [],
-    actaMatrimonio: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    inePareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineReversoPareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-
-    retirosNumeroTransacciones: '',
-    depositosNumeroTransacciones: '',
-    transaccionesNumeroTransacciones: '',
-    retirosImporteEsperado: '',
-    depositosImporteEsperado: '',
-    transaccionesImporteEsperado: '',
-
-    procedenciaPagoCreditoSeleccionados: [],
-
-    obligadoSolidario: {
-      primerNombre: '',
-      segundoNombre: '',
-      primerApellido: '',
-      segundoApellido: '',
-      tipoPersona: null,
-      correo: '',
-      celular: '',
-    },
+    verificacionSociedad: { nombreDocumento: '', url: '', estado: 0 },
+    buroLegal: { nombreDocumento: '', url: '', estado: 0 },
   },
-  obligadoSolidario: {
-    aceptar: false,
-    razonSocial: '',
-    tipoSociedad: null,
-    nombreEmpresa: '',
-    sector: null,
-    giro: null,
-    descripcionEmpresa: '',
+  documentosObligadoSolidario: {
+    ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    ineReverso: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    relacionPatrimonial: { nombreDocumento: 'relacion_patrimoni...', url: '', estado: 1 },
+    comprobanteDomicilioFiscal: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 1 },
+    comprobanteDomicilioComercial: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 1 },
 
-    domicilioFiscal: {
-      calle: '',
-      numExterior: '',
-      numInterior: '',
-      codigoPostal: '',
-      colonia: null,
-      municipioAlcaldia: '',
-      ciudad: '',
-      estado: '',
-    },
+    actaMatrimonio: { nombreDocumento: 'Acta_matrimonio.pdf', url: '', estado: 1 },
+    inePareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
+    ineReversoPareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
 
-    rfc: '',
-    curp: '',
-
-    tieneDepositosEInversiones: '',
-    sumaDepositosEInversiones: '',
-
-    empresas: [],
-    tieneAccionesEnOtrasEmpresas: '',
-    cantidadEmpresas: { value: 1, label: '1' },
-
-    inmueblesPropiosSinGravamen: [],
-    tieneInmueblesPropiosSinGravamen: '',
-    cantidadInmueblesPropiosSinGravamen: { value: 1, label: '1' },
-
-    controladosMoralesComoFisico: [],
-    tieneControladosMoralesComoFisico: null,
-    cantidadControladosMoralesComoFisico: { value: 1, label: '1' },
-
-    meEjercenControlMoralComoFisico: '',
-
-    controladosFisicosComoFisico: [],
-    tieneControladosFisicosComoFisico: null,
-    cantidadControladosFisicosComoFisico: { value: 1, label: '1' },
-
-    estadoCivil: '',
-
-    comprobanteDomicilioFiscal:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineRepresentanteLegal: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineReversoRepresentanteLegal:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-
-    actaMatrimonio: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    inePareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    ineReversoPareja: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-
-    tienePrestamoHipotecario: '',
-    tieneCreditoAutomotriz: '',
-    eresTitularTarjetaCredito: '',
-    tarjetaCreditoTerminacion: '',
-    autorizacionConsultar: false,
-
-    domicilioComercial: {
-      calle: '',
-      numExterior: '',
-      numInterior: '',
-      codigoPostal: '',
-      colonia: null,
-      municipioAlcaldia: '',
-      ciudad: '',
-      estado: '',
-      domicilioEntrega: null,
-    },
-    controladosMoralesComoMoral: [],
-    tieneControladosMoralesComoMoral: null,
-    cantidadControladosMoralesComoMoral: { value: 1, label: '1' },
-
-    controladosFisicosComoMoral: [],
-    tieneControladosFisicosComoMoral: null,
-    cantidadControladosFisicosComoMoral: { value: 1, label: '1' },
-
-    meEjercenControlMoralComoMoral: '',
-
-    actaConstitutiva: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    poderesNotarial: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    escriturasConReformas: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    comprobanteDomicilioComercial:
-      'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-
-    ciec: '',
+    poderesNotarial: { nombreDocumento: 'poderes_not.pdf', url: '', estado: 1 },
+    actaConstitutiva: { nombreDocumento: 'derecha_huella.jpg', url: '', estado: 1 },
+    escriturasConReformas: { nombreDocumento: 'reformas.pdf', url: '', estado: 1 },
+    reporteBuroCredito: { nombreDocumento: '', url: '', estado: 0 },
+    verificacionSociedad: { nombreDocumento: '', url: '', estado: 0 },
   },
 };
 

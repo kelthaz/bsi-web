@@ -9,7 +9,7 @@ const Tab = ({ children, initOption }) => {
     if (!children[selectOption].props.blocked) {
       setOption(selectOption);
     }
-    children[selectOption].props.changeoption();
+    // children[selectOption].props.changeoption();
   };
 
   return (

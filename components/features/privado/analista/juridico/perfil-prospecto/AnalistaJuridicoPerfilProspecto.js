@@ -12,6 +12,11 @@ import ProgressBar from '../../../shared/progressbar/ProgressBar';
 import { ANALISTA_JURIDICO } from '../../../../../../constants/roles';
 import SolicitudInformacion from '../../../shared/informacion/solicitud/SolicitudInformacion';
 import OtrosDatos from '../../../shared/informacion/otros-datos/OtrosDatos';
+import DocumentosProspecto from '../../../shared/documentos/prospecto/DocumentosProspecto';
+import DocumentosObligadoSolidario from '../../../shared/documentos/obligado-solidario/DocumentosObligadoSolidario';
+import DictamenJuridico from '../../../shared/documentos/dictamen-juridico/DictamenJuridico';
+import DocumentosPorRevisar from '../../../shared/documentos/por-revisar/DocumentosPorRevisar';
+import { MORAL } from '../../../../../../constants/persona';
 
 const AnalistaJuridicoPerfilProspecto = () => {
   const {
@@ -20,6 +25,8 @@ const AnalistaJuridicoPerfilProspecto = () => {
     informacionProspecto,
     informacionSolicitud,
     otraInformacion,
+    documentosProspecto,
+    documentosObligadoSolidario,
   } = useSelector((state) => state.prospecto);
 
   return (
@@ -67,9 +74,9 @@ const AnalistaJuridicoPerfilProspecto = () => {
                     <SvgDocumentosPequeño /> Datos generales de solicitud
                   </span>
                 }
-                expanded={false}
                 color="blue"
                 icon="arrow"
+                expanded
               >
                 <SolicitudInformacion
                   informacionSolicitud={informacionSolicitud}
@@ -104,7 +111,105 @@ const AnalistaJuridicoPerfilProspecto = () => {
               </Accordion>
             </TabItem>
             <TabItem tab="Documentos" keyTab="2">
-              Documentos
+              {perfilProspecto.tipoPersona === MORAL && (
+                <>
+                  <Accordion
+                    title={
+                      <span>
+                        <SvgDocumentosPequeño />
+                        &nbsp;Documentos por revisar (Solicitante)
+                      </span>
+                    }
+                    color="blue"
+                    icon="arrow"
+                    expanded
+                  >
+                    <DocumentosPorRevisar documentosPorRevisar={documentosProspecto} esObligado={false} />
+                  </Accordion>
+
+                  <Accordion
+                    title={
+                      <span>
+                        <SvgDocumentosPequeño />
+                        &nbsp;Dictamen jurídico
+                      </span>
+                    }
+                    color="blue"
+                    icon="arrow"
+                    expanded
+                  >
+                    <DictamenJuridico dictamenFuction={() => {}} />
+                  </Accordion>
+                </>
+              )}
+
+              {informacionObligadoSolidario.tipoPersona === MORAL && (
+                <>
+                  <Accordion
+                    title={
+                      <span>
+                        <SvgDocumentosPequeño />
+                        &nbsp;Documentos por revisar (Obligado solidario)
+                      </span>
+                    }
+                    color="blue"
+                    icon="arrow"
+                    expanded
+                  >
+                    <DocumentosPorRevisar documentosPorRevisar={documentosObligadoSolidario} esObligado />
+                  </Accordion>
+
+                  <Accordion
+                    title={
+                      <span>
+                        <SvgDocumentosPequeño />
+                        &nbsp;Dictamen jurídico
+                      </span>
+                    }
+                    color="blue"
+                    icon="arrow"
+                    expanded
+                  >
+                    <DictamenJuridico dictamenFuction={() => {}} />
+                  </Accordion>
+                </>
+              )}
+
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño />
+                    &nbsp;Documentos del prospecto
+                  </span>
+                }
+                color="blue"
+                icon="arrow"
+                expanded
+              >
+                <DocumentosProspecto
+                  documentosProspecto={documentosProspecto}
+                  tipoPersona={perfilProspecto.tipoPersona}
+                  nombreConyuge={informacionProspecto.nombreConyuge}
+                />
+              </Accordion>
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño />
+                    &nbsp;Documentos de obligado solidario
+                  </span>
+                }
+                color="blue"
+                icon="arrow"
+                expanded
+              >
+                <DocumentosObligadoSolidario
+                  documentosObligadoSolidario={documentosObligadoSolidario}
+                  tipoPersonaObligadoSolidario={informacionObligadoSolidario.tipoPersona}
+                  nombreObligadoSolidario={informacionObligadoSolidario.nombreCompleto}
+                  nombreConyugeObligadoSolidario={informacionObligadoSolidario.nombreConyuge}
+                />
+              </Accordion>
             </TabItem>
           </Tab>
         </div>
