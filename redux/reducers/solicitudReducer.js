@@ -100,7 +100,7 @@ const initialState = {
     ineRepresentanteLegal: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
     ineReversoRepresentanteLegal:
       'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
-    bienesSeparados: '',
+    estadoCivil: '',
 
     usosCuentaSeleccionados: [],
     actaMatrimonio: 'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',
@@ -170,7 +170,7 @@ const initialState = {
     tieneControladosFisicosComoFisico: null,
     cantidadControladosFisicosComoFisico: { value: 1, label: '1' },
 
-    bienesSeparados: '',
+    estadoCivil: '',
 
     comprobanteDomicilioFiscal:
       'https://binaries.templates.cdn.office.net/support/templates/es-es/lt02810155_quantized.png',

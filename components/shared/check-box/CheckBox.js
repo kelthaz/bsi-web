@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './check-box.module.scss';
 
-const CheckBox = ({ name, checked, onChange, children, label }) => (
+const CheckBox = ({ name, value, onChange, children, label }) => (
   <div className={`${styles['container-check-text']}`}>
     <div className={`${styles['container-input']}`}>
       <input
@@ -11,7 +11,7 @@ const CheckBox = ({ name, checked, onChange, children, label }) => (
         type="checkbox"
         value={label}
         onChange={onChange}
-        checked={checked}
+        checked={Array.isArray(value) ? value.indexOf(label) !== -1 : value}
       />
     </div>
     <div className={`${styles['container-content']}`}>{children}</div>
@@ -20,14 +20,13 @@ const CheckBox = ({ name, checked, onChange, children, label }) => (
 
 CheckBox.defaultProps = {
   label: undefined,
-  checked: undefined,
 };
 
 CheckBox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool,
+  value: PropTypes.any.isRequired,
   children: PropTypes.any.isRequired,
 };
 

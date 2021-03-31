@@ -117,7 +117,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
                 <RadioButton
                   name="meEjercenControlMoralComoFisico"
                   label="si"
-                  {...formulario.getFieldProps('meEjercenControlMoralComoMoral')}
+                  {...formulario.getFieldProps('meEjercenControlMoralComoFisico')}
                 >
                   <span className="input color-gray">Sí</span>
                 </RadioButton>
@@ -126,7 +126,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
                 <RadioButton
                   name="meEjercenControlMoralComoFisico"
                   label="no"
-                  {...formulario.getFieldProps('meEjercenControlMoralComoMoral')}
+                  {...formulario.getFieldProps('meEjercenControlMoralComoFisico')}
                 >
                   <span className="input color-gray">No</span>
                 </RadioButton>

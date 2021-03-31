@@ -65,7 +65,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
       );
     },
   });
-  console.log(formulario.errors);
+
   const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_EMPRESA_ROUTE, validate);
 
   return (

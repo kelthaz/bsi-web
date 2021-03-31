@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import Sidebar from '../sidebar/Sidebar';
-import Reloj from '../reloj/Reloj';
+
+const Reloj = dynamic(() => import('../reloj/Reloj'), { ssr: false });
 
 const PrivadoContainer = ({ pageComponent, servicesData }) => {
   const [Component] = pageComponent.component;

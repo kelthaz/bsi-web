@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './radio-button.module.scss';
 
-const RadioButton = ({ name, onChange, checked, children, label }) => (
+const RadioButton = ({ name, onChange, value, children, label }) => (
   <div className={`${styles['container-check-text']}`}>
     <div className={`${styles['container-input']}`}>
       <input
@@ -11,7 +11,7 @@ const RadioButton = ({ name, onChange, checked, children, label }) => (
         type="radio"
         value={label}
         onChange={onChange}
-        checked={checked}
+        checked={value === label}
       />
     </div>
     <div className={`${styles['container-content']}`}>{children}</div>
@@ -20,14 +20,13 @@ const RadioButton = ({ name, onChange, checked, children, label }) => (
 
 RadioButton.defaultProps = {
   children: <></>,
-  checked: undefined,
 };
 
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  checked: PropTypes.bool,
   children: PropTypes.any,
 };
 

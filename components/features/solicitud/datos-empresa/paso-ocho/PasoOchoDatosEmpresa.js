@@ -19,7 +19,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
   const { currentStep, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
-  const { initialValues, validationSchema } = {
+  const formulario = useFormik({
     initialValues: {
       ciec: datosEmpresa.ciec,
       autorizoTerminosCiec: datosEmpresa.autorizoTerminosCiec,
@@ -28,11 +28,6 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
       ciec: Yup.string().required(campoRequerido),
       autorizoTerminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
-  };
-
-  const formulario = useFormik({
-    initialValues,
-    validationSchema,
     onSubmit: (values) => {
       dispatch(
         nextStepDatosPersonales({
@@ -53,7 +48,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
 
     if (!formulario.errors.ciec) {
       valid = await CiecRepositorio.pathValidarCiec({
-        ciec: datosEmpresa.ciec,
+        ciec: formulario.values.ciec,
         rfc: datosPersonales.rfc,
       })
         .then(() => true)

@@ -30,7 +30,7 @@ const PasoDiezObligadoSolidarioPFAE = ({ validate }) => {
     },
   };
 
-  if (obligadoSolidario.bienesSeparados !== 'no') {
+  if (obligadoSolidario.estadoCivil !== 'no') {
     initialValues.actaMatrimonio = obligadoSolidario.actaMatrimonio;
     initialValues.inePareja = obligadoSolidario.inePareja;
     initialValues.ineReversoPareja = obligadoSolidario.ineReversoPareja;
@@ -89,7 +89,7 @@ const PasoDiezObligadoSolidarioPFAE = ({ validate }) => {
                 </p>
               </div>
               <div className="row px-md-3 px-xs-0">
-                {obligadoSolidario.bienesSeparados !== 'no' ? (
+                {obligadoSolidario.estadoCivil !== 'no' ? (
                   <div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput
