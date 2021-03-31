@@ -1,0 +1,21 @@
+@import '../../../../../../styles/scss/modules/var';
+
+.inline {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  min-width: 340px;
+  width: 100%;
+}
+
+.data-count {
+  font-family: $lato-regular;
+  width: 37.5%;
+}
+
+.rows-per-page {
+  border-left: 1.5px solid $gray-light;
+  font-family: $lato-regular;
+  width: 37.5%;
+}

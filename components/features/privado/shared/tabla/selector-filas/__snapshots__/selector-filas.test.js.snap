@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="inline"
+>
+  <span
+    className="color-gray-light data-count"
+  >
+    1
+     - 
+    10
+     de 
+    12
+     datos
+  </span>
+  <span
+    className="color-gray py-1 ml-2 pl-2 rows-per-page"
+  >
+    Filas por página:
+  </span>
+  <div
+    className="w-25 "
+  >
+    <Select
+      blue={false}
+      disabled={false}
+      error=""
+      inverted={false}
+      items={
+        Array [
+          Object {
+            "label": 5,
+            "value": 5,
+          },
+          Object {
+            "label": 10,
+            "value": 10,
+          },
+          Object {
+            "label": 20,
+            "value": 20,
+          },
+          Object {
+            "label": 50,
+            "value": 50,
+          },
+        ]
+      }
+      label=""
+      name="filasPorPagina"
+      setTouched={[Function]}
+      setValue={[Function]}
+      showAlwaysErrors={false}
+      size="smallb"
+      touched={true}
+      value={
+        Object {
+          "label": 10,
+          "value": 10,
+        }
+      }
+    />
+  </div>
+</div>
+`;

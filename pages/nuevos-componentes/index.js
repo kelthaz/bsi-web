@@ -15,8 +15,11 @@ import EstadoDocumentosProspecto from '../../components/features/privado/shared/
 import EstadoDocumentosRepresentanteLegal from '../../components/features/privado/shared/estado-documentos/representante-legal/EstadoDocumentosRepresentanteLegal';
 import EstadoDocumentosAnalista from '../../components/features/privado/shared/estado-documentos/analista/EstadoDocumentosAnalista';
 import AsignarCasos from '../../components/features/privado/shared/asignacion-casos/AsignarCasos';
+import TablaProspecto from '../../components/features/privado/shared/tabla-prospectos/TablaProspectos';
+import Tab from '../../components/shared/tab/Tab';
+import TabItem from '../../components/shared/tab/TabItem';
 
-const Test = () => {
+const NuevosComponentes = () => {
   const [openModal, setOpenModal] = useState(false);
   const formulario = useFormik({
     initialValues: {},
@@ -393,6 +396,7 @@ const Test = () => {
           </div>
         </Section>
       </article>
+      {/* 06 ASIGNACIÓN DE CASOS */}
       <article>
         <Section>
           <div className="col-lg-12 col-md-12">
@@ -407,7 +411,63 @@ const Test = () => {
           </div>
         </Section>
       </article>
+      {/* 07 TABLA DE RESULTADOS */}
+      <article>
+        <section>
+          <div className="container">
+            <div className="row pt-lg-5 pt-md-4 pt-sm-2 pt-xm-1 justify-content-center">
+              <div className="col-lg-12 col-md-12">
+                <div className="mb-md-4">
+                  <TitleSection orden="07" linea1="Tabla de prospectos" />
+                </div>
+              </div>
+            </div>
+            <div className="row pb-lg-5 pb-md-4 pb-sm-2 pb-xm-1 justify-content-center">
+              <div className="col-lg-12 col-md-12 justify-content-center">
+              <Tab>
+                <TabItem tab="Documentos por revisar" keyTab="1">
+                  <TablaProspecto data={[
+                      { nombre: 'Fernanda Rodriguez',  porRevisar: '3 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '10 min', region: 'Norte' },
+                      { nombre: 'Daniela Fernanda',    porRevisar: '2 documentos', estatus: 2, persona: 'Moral', tiempoEspera: '2 días', region: 'Oeste' },
+                      { nombre: 'José Lima Rodríguez', porRevisar: '2 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '3 días', region: 'Oeste' },
+                      { nombre: 'Alejandro Ramírez',   porRevisar: '3 documentos', estatus: 0, persona: 'PFAE',  tiempoEspera: '20 min', region: 'Norte' },
+                      { nombre: 'Mariana Nayeli',      porRevisar: '5 documentos', estatus: 1, persona: 'Moral', tiempoEspera: '6 hrs',  region: 'Oeste' },
+                      { nombre: 'Fernanda Rodriguez',  porRevisar: '3 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '10 min', region: 'Norte' },
+                      { nombre: 'Daniela Fernanda',    porRevisar: '2 documentos', estatus: 2, persona: 'Moral', tiempoEspera: '2 días', region: 'Oeste' },
+                      { nombre: 'José Lima Rodríguez', porRevisar: '2 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '3 días', region: 'Oeste' },
+                      { nombre: 'Alejandro Ramírez',   porRevisar: '3 documentos', estatus: 0, persona: 'PFAE',  tiempoEspera: '20 min', region: 'Norte' },
+                      { nombre: 'Mariana Nayeli',      porRevisar: '5 documentos', estatus: 1, persona: 'Moral', tiempoEspera: '6 hrs',  region: 'Oeste' }
+                    ]}
+                      compact
+                  />
+                </TabItem>
+                <TabItem tab="Generar alta de cliente" keyTab="2" />
+                <TabItem tab="Generar alta de linea" keyTab="3" />
+                <TabItem tab="Desembolso" keyTab="4" />
+              </Tab>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+      {/* 08 PRUEBA DEL PAGINADOR */}
+      <article>
+        <Section>
+          <div className="col-lg-12 col-md-12">
+            <div className="mb-md-4">
+              <TitleSection orden="08" linea1="Prueba del paginador" />
+            </div>
+            <div className="row text-center mt-4">
+              <div className="col-12">
+                <a className="link" href="/nuevos-componentes/prueba-paginador">
+                  Preview
+                </a>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </article>
     </>
   );
 };
-export default Test;
+export default NuevosComponentes;

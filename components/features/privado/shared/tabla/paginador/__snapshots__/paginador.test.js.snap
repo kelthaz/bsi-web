@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el componente 1`] = `
+<ul
+  className="pagination"
+>
+  <li>
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      ͔
+    </span>
+  </li>
+  <li
+    className="active"
+    key="0"
+  >
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      1
+    </span>
+  </li>
+  <li
+    className=""
+    key="1"
+  >
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      2
+    </span>
+  </li>
+  <li
+    className=""
+    key="2"
+  >
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      3
+    </span>
+  </li>
+  <li
+    className=""
+    key="3"
+  >
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      4
+    </span>
+  </li>
+  <li
+    className=""
+    key="4"
+  >
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      5
+    </span>
+  </li>
+  <li>
+    <span
+      onClick={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      ͕
+    </span>
+  </li>
+</ul>
+`;
