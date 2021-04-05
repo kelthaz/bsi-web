@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente cards del backOffice small Debe de mostrarse correctamente el componente 1`] = `
+<div>
+  <div
+    className="row card-simple-blue-sky-small"
+  >
+    <div
+      className="col-4 mt-3"
+    >
+      <SvgListaPequeña />
+    </div>
+    <div
+      className="col-7 pr-0 pl-1 mt-2"
+    >
+      <h4
+        className="body1 mb-0"
+      >
+        Prueba del titulo
+      </h4>
+      <div
+        className="body3 overline"
+      >
+        Prueba del subtitle
+      </div>
+    </div>
+  </div>
+</div>
+`;

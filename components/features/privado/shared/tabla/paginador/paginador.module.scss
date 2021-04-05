@@ -1,0 +1,65 @@
+@import '../../../../../../styles/scss/modules/var';
+
+.pagination {
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  > li {
+    display: inline;
+
+    > span {
+      border-radius: 2px;
+      color: $gray-light;
+      float: left; // Collapse white-space
+      padding: 5px 8px;
+      position: relative;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background-color: $blue-light;
+        color: #23527c;
+        outline: none;
+      }
+    }
+
+    &:first-child {
+      > span {
+        color: $blue-storm;
+
+        &:hover,
+        &:focus {
+          background: none;
+          outline: none;
+        }
+      }
+    }
+
+    &:last-child {
+      > span {
+        color: $blue-storm;
+
+        &:hover,
+        &:focus {
+          background: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.active > a,
+.active > span {
+  &,
+  &:hover,
+  &:focus {
+    background-color: $blue-storm !important;
+    border-radius: 2px;
+    color: $white !important;
+    cursor: default;
+    outline: none;
+  }
+}
