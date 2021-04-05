@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
+import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
 const DocumentosPorRevisar = ({ documentosPorRevisar, esObligado }) => {
   const labels = {
@@ -17,39 +17,15 @@ const DocumentosPorRevisar = ({ documentosPorRevisar, esObligado }) => {
 
   const itemsPerfil = Object.keys(labels);
 
-  const iconoEstado = (estado) => {
-    switch (estado) {
-      case 0:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Subir
-          </button>
-        );
-      case 1:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Revisar
-          </button>
-        );
-      case 2:
-        return <SvgAprobado />;
-      default:
-        return <></>;
-    }
-  };
-
   return (
     <>
       {itemsPerfil.map((item) => (
-        <div key={item} className="row pb-3">
-          <div className="col-5">
-            <span className="body2">{labels[item]}</span>
-          </div>
-          <div className="col-5 text-overflow">
-            <span className="link">{documentosPorRevisar[item].nombreDocumento}</span>
-          </div>
-          <div className="col-2 text-center">{iconoEstado(documentosPorRevisar[item].estado)}</div>
-        </div>
+        <EstadoDocumento
+          key={item}
+          label={labels[item]}
+          documento={documentosPorRevisar[item].nombreDocumento}
+          estadoDocumento={documentosPorRevisar[item].estado}
+        />
       ))}
     </>
   );

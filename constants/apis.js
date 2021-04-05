@@ -16,3 +16,5 @@ export const apiEndpointValidarCiec = '/interna/publico/v1/empresas/validar/ciec
 
 export const apiEndpointRegistro = '/interna/publico/v1/registro';
 export const apiEndpointLogin = '/login';
+
+export const apiEndpointContratoDigital = '/externas/admin/v1/contrato-digital';

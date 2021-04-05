@@ -41,15 +41,21 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
       .then((resp) => {
         const { fraudRisk, emailExists, domainExists } = resp.data;
         const score = fraudRisk.split(' ')[0];
-        return !(score > 800 || emailExists === 'No' || domainExists === 'No');
-      })
-      .catch(() => false);
-    if (!emailExist) {
-      formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
-      return false;
-    }
 
-    return true;
+        if (!(score > 800 || emailExists === 'No' || domainExists === 'No')) {
+          formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
+          return false;
+        }
+
+        return true;
+      })
+      .catch(({ response }) => {
+        const [error] = response.data.message;
+        formulario.setFieldError('correo', error);
+        return false;
+      });
+
+    return emailExist;
   };
 
   const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, validate, validateEmail);

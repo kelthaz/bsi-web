@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MORAL } from '../../../../../../constants/persona';
-import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
+import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
 const DocumentosObligadoSolidario = ({
   documentosObligadoSolidario,
@@ -43,27 +43,6 @@ const DocumentosObligadoSolidario = ({
 
   const itemsPerfil = Object.keys(labels);
 
-  const iconoEstado = (estado) => {
-    switch (estado) {
-      case 0:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Subir
-          </button>
-        );
-      case 1:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Revisar
-          </button>
-        );
-      case 2:
-        return <SvgAprobado />;
-      default:
-        return <></>;
-    }
-  };
-
   return (
     <>
       <div className="row no-gutters mb-3 card-simple-blue-light">
@@ -84,15 +63,12 @@ const DocumentosObligadoSolidario = ({
                   </div>
                 </div>
               )}
-              <div key={item} className="row pb-3">
-                <div className="col-5">
-                  <span className="body2">{labels[item]}</span>
-                </div>
-                <div className="col-5 text-overflow">
-                  <span className="link">{documentosObligadoSolidario[item].nombreDocumento}</span>
-                </div>
-                <div className="col-2 text-center">{iconoEstado(documentosObligadoSolidario[item].estado)}</div>
-              </div>
+              <EstadoDocumento
+                key={item}
+                label={labels[item]}
+                documento={documentosObligadoSolidario[item].nombreDocumento}
+                estadoDocumento={documentosObligadoSolidario[item].estado}
+              />
             </>
           )
       )}

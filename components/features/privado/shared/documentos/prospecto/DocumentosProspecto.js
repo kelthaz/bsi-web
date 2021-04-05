@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MORAL } from '../../../../../../constants/persona';
-import SvgAprobado from '../../../../../svgs/estados/SvgAprobado';
+import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
 const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge }) => {
   const labels = {
@@ -42,27 +42,6 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge }
 
   const itemsPerfil = Object.keys(labels);
 
-  const iconoEstado = (estado) => {
-    switch (estado) {
-      case 0:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Subir
-          </button>
-        );
-      case 1:
-        return (
-          <button className="btn-mini-secondary" type="button">
-            Revisar
-          </button>
-        );
-      case 2:
-        return <SvgAprobado />;
-      default:
-        return <></>;
-    }
-  };
-
   return (
     <>
       {itemsPerfil.map(
@@ -77,15 +56,12 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge }
                   </div>
                 </div>
               )}
-              <div key={item} className="row pb-3">
-                <div className="col-5">
-                  <span className="body2">{labels[item]}</span>
-                </div>
-                <div className="col-5 text-overflow">
-                  <span className="link">{documentosProspecto[item].nombreDocumento}</span>
-                </div>
-                <div className="col-2 text-center">{iconoEstado(documentosProspecto[item].estado)}</div>
-              </div>
+              <EstadoDocumento
+                key={item}
+                label={labels[item]}
+                documento={documentosProspecto[item].nombreDocumento}
+                estadoDocumento={documentosProspecto[item].estado}
+              />
             </>
           )
       )}

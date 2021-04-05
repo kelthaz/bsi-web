@@ -113,6 +113,9 @@ const initialState = {
 
     verificacionSociedad: { nombreDocumento: '', url: '', estado: 0 },
     buroLegal: { nombreDocumento: '', url: '', estado: 0 },
+
+    anexoCaratula: { nombreDocumento: '', url: '', estado: 0 },
+    portadaCuenta: { nombreDocumento: '', url: '', estado: 0 },
   },
   documentosObligadoSolidario: {
     ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
