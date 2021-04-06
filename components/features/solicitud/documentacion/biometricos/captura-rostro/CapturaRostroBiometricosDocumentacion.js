@@ -45,7 +45,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
         workflow_data: {
           workflow: 'charlie4',
           rotation: 0,
-          frames: frames,
+          frames,
         },
         meta_data: {
           client_device_brand: navigator.platform === 'iPhone' ? 'Apple' : navigator.platform,
