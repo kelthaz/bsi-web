@@ -13,7 +13,7 @@ const PerfilProspecto = ({ role, perfilData }) => {
   const itemsPerfil = (() => {
     switch (role) {
       case CLIENTE:
-        return ['idSolicitud', 'fechaAltaUsuario', 'numeroCuenta', 'fechaAltaUsuario'];
+        return ['idSolicitud', 'fechaAprobacionCredito', 'numeroCuenta', 'fechaAltaUsuario'];
 
       case ANALISTA_PLD:
         return ['tipoPersona', 'relacion', 'coincidenciaLista', 'fechaNacimiento', 'nombreCoincidencia'];
@@ -74,6 +74,20 @@ const PerfilProspecto = ({ role, perfilData }) => {
           </div>
         </div>
       ))}
+      {role === ANALISTA_PLD && (
+        <div className="row mt-3">
+          <div className="col-12 d-flex justify-content-end">
+            <div className="color-blue-storm body3">
+              <button className="btn-medium-secondary" type="button">
+                Rechazar
+              </button>
+              <button className="btn-medium-secondary ml-3" type="button">
+                Aceptar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

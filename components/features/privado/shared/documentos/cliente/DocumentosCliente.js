@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MORAL } from '../../../../../../constants/persona';
 import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
-const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, aprobador }) => {
+const DocumentosCliente = ({ documentosProspecto, tipoPersona, nombreConyuge }) => {
   const labels = {
     ine: 'Identificación oficial (Frente)',
     ineReverso: 'Identificación oficial (Frente)',
@@ -22,9 +22,6 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, 
     reporteBuroCredito: 'Reporte de buró de crédito',
     inePareja: 'Identificación oficial (Frente)',
     ineReversoPareja: 'Identificación oficial (Reverso)',
-
-    verificacionSociedad: 'Verificación de sociedad',
-    buroLegal: 'Buró legal',
   };
 
   if (tipoPersona !== MORAL) {
@@ -32,8 +29,6 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, 
     delete labels.actaConstitutiva;
     delete labels.escriturasConReformas;
     delete labels.integracionRiesgoComun;
-    delete labels.verificacionSociedad;
-    delete labels.buroLegal;
   } else {
     delete labels.actaMatrimonio;
     delete labels.inePareja;
@@ -56,18 +51,6 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, 
                       <span className="overline color-gray">Cónyuge del solicitante</span>
                     </div>
                   </div>
-                  {aprobador && (
-                    <div className="col-6 d-flex justify-content-end">
-                      <div className="color-blue-storm body3">
-                        <button className="btn-medium-secondary" type="button">
-                          Rechazar
-                        </button>
-                        <button className="btn-medium-secondary ml-3" type="button">
-                          Aceptar
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
               )}
               <EstadoDocumento
@@ -83,15 +66,10 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, 
   );
 };
 
-DocumentosProspecto.propTypes = {
+DocumentosCliente.propTypes = {
   documentosProspecto: PropTypes.object.isRequired,
   tipoPersona: PropTypes.string.isRequired,
   nombreConyuge: PropTypes.string.isRequired,
-  aprobador: PropTypes.bool,
 };
 
-DocumentosProspecto.defaultProps = {
-  aprobador: false,
-};
-
-export default DocumentosProspecto;
+export default DocumentosCliente;

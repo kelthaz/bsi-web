@@ -14,7 +14,7 @@ import SolicitudInformacion from '../../../shared/informacion/solicitud/Solicitu
 import OtrosDatos from '../../../shared/informacion/otros-datos/OtrosDatos';
 import DocumentosProspecto from '../../../shared/documentos/prospecto/DocumentosProspecto';
 import DocumentosObligadoSolidario from '../../../shared/documentos/obligado-solidario/DocumentosObligadoSolidario';
-import DocumentosPorGestionar from '../../../shared/documentos/por-gestionar/DocumentosPorGestionar';
+import Reportes from '../../../shared/documentos/reportes/Reportes';
 
 const AnalistaMesaDeControlPerfilProspecto = () => {
   const {
@@ -113,14 +113,14 @@ const AnalistaMesaDeControlPerfilProspecto = () => {
                 title={
                   <span>
                     <SvgDocumentosPequeño />
-                    &nbsp;Documentos por gestionar
+                    &nbsp;Reportes
                   </span>
                 }
                 color="blue"
                 icon="arrow"
                 expanded
               >
-                <DocumentosPorGestionar documentosPorGestionar={documentosProspecto} />
+                <Reportes reportes={documentosProspecto} />
               </Accordion>
               <Accordion
                 title={

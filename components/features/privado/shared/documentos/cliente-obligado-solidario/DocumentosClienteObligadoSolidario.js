@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { MORAL } from '../../../../../../constants/persona';
 import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
-const DocumentosObligadoSolidario = ({
+const DocumentosClienteObligadoSolidario = ({
   documentosObligadoSolidario,
   tipoPersonaObligadoSolidario,
   nombreObligadoSolidario,
   nombreConyugeObligadoSolidario,
-  aprobador,
 }) => {
   const labels = {
     ine: 'Identificación oficial (Frente)',
@@ -26,16 +25,12 @@ const DocumentosObligadoSolidario = ({
     poderesNotarial: 'Poderes notariales',
     actaConstitutiva: 'Acta constitutiva',
     escriturasConReformas: 'Reformas',
-    reporteBuroCredito: 'Reporte de buró de crédito',
-    verificacionSociedad: 'Verificación de sociedad',
   };
 
   if (tipoPersonaObligadoSolidario !== MORAL) {
     delete labels.poderesNotarial;
     delete labels.actaConstitutiva;
     delete labels.escriturasConReformas;
-    delete labels.reporteBuroCredito;
-    delete labels.verificacionSociedad;
   } else {
     delete labels.actaMatrimonio;
     delete labels.inePareja;
@@ -53,18 +48,6 @@ const DocumentosObligadoSolidario = ({
             <span className="overline color-gray">Obligado solidario</span>
           </div>
         </div>
-        {aprobador && (
-          <div className="col-6 d-flex justify-content-end">
-            <div className="color-blue-storm body3">
-              <button className="btn-medium-secondary" type="button">
-                Rechazar
-              </button>
-              <button className="btn-medium-secondary ml-3" type="button">
-                Aceptar
-              </button>
-            </div>
-          </div>
-        )}
       </div>
       {itemsPerfil.map(
         (item) =>
@@ -78,18 +61,6 @@ const DocumentosObligadoSolidario = ({
                       <span className="overline color-gray">Cónyuge del solicitante</span>
                     </div>
                   </div>
-                  {aprobador && (
-                    <div className="col-6 d-flex justify-content-end">
-                      <div className="color-blue-storm body3">
-                        <button className="btn-medium-secondary" type="button">
-                          Rechazar
-                        </button>
-                        <button className="btn-medium-secondary ml-3" type="button">
-                          Aceptar
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
               )}
               <EstadoDocumento
@@ -105,16 +76,11 @@ const DocumentosObligadoSolidario = ({
   );
 };
 
-DocumentosObligadoSolidario.propTypes = {
+DocumentosClienteObligadoSolidario.propTypes = {
   documentosObligadoSolidario: PropTypes.object.isRequired,
   tipoPersonaObligadoSolidario: PropTypes.string.isRequired,
   nombreObligadoSolidario: PropTypes.string.isRequired,
   nombreConyugeObligadoSolidario: PropTypes.string.isRequired,
-  aprobador: PropTypes.bool,
 };
 
-DocumentosObligadoSolidario.defaultProps = {
-  aprobador: false,
-};
-
-export default DocumentosObligadoSolidario;
+export default DocumentosClienteObligadoSolidario;
