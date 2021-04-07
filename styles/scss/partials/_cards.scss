@@ -15,7 +15,8 @@
   }
 
   @include media('sm') {
-    height: 724px;
+    height: 100%;
+    margin-bottom: 25px;
   }
 }
 

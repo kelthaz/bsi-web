@@ -44,7 +44,7 @@ const BienvenidoObligadoSolidario = ({ validate }) => {
           <h2 className="color-blue-storm">¡Hola, José!</h2>
           <p className="body2 color-gray-dark">
             Alejandra Aguilar Ruíz te ha designado como su Obligado Solidario como parte del proceso de solicitud de un
-            crédito digital Pymes BanCoppel.
+            crédito PyME BanCoppel.
           </p>
           <p className="body2 color-gray-dark">
             Este proceso es para conocerte mejor y se divide en los siguientes pasos:
@@ -81,29 +81,32 @@ const BienvenidoObligadoSolidario = ({ validate }) => {
                     Identificación oficial <span className="color-gray"> (vigente) </span>
                   </li>
                   <li className="position-relative">
-                    Comprobante de domicilio
-                    <span className="color-gray"> (No mayor a tres meses) </span>
+                    Comprobante de domicilio&nbsp;
+                    <span className="color-gray">(No mayor a tres meses) </span>
                   </li>
                   <li className="position-relative">
-                    Acta de matrimonio <span className="color-gray">(Si estás casado)</span>
+                    Acta de matrimonio&nbsp;
+                    <span className="color-gray">(Si estás casado)</span>
                   </li>
                   <li className="position-relative">
-                    INE de tu pareja<span className="color-gray">(Si estás casado)</span>
+                    INE de tu pareja&nbsp;
+                    <span className="color-gray">(Si estás casado)</span>
                   </li>
                 </ul>
               ) : (
                 <ul>
                   <li>Acta Constitutiva</li>
                   <li className="position-relative">
-                    Poderes Notariales
-                    <span className="color-gray"> (si no vienen en tu acta constitutiva) </span>
+                    Poderes Notariales&nbsp;
+                    <span className="color-gray">(si no vienen en tu acta constitutiva) </span>
                   </li>
                   <li className="position-relative">
-                    Comprobante de domicilio comercial y fiscal
+                    Comprobante de domicilio comercial y fiscal&nbsp;
                     <span className="color-gray">(No mayores a tres meses)</span>
                   </li>
                   <li className="position-relative">
-                    INE <span className="color-gray">(del Representante Legal)</span>
+                    INE&nbsp;
+                    <span className="color-gray">(del Representante Legal)</span>
                   </li>
                 </ul>
               )}
