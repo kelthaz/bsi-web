@@ -4,9 +4,43 @@ import SvgPerfilBackOffice from '../../../../../svgs/SvgPerfilBackOffice';
 import SvgRevisionBackOffice from '../../../../../svgs/SvgRevisionBackOffice';
 import SvgOfertaBackOffice from '../../../../../svgs/SvgOfertaBackOffice';
 import SvgSolicitudBackOffice from '../../../../../svgs/SvgSolicitudBackOffice';
+import SvgMiniElipse from '../../../../../svgs/SvgMiniElipse';
+import Tabla from '../../../shared/tabla/Tabla';
 
 const SupervisorSeguimientoTablero = () => {
-  const SupervisorSeguimientoTablero = 'SupervisorSeguimientoTablero';
+  const COLUMNS = [
+    {
+      name: 'Nombre',
+      selector: 'nombre',
+      sortable: true,
+    },
+    {
+      name: 'Estatus',
+      selector: 'estatus',
+      sortable: true,
+    },
+    {
+      name: 'ID',
+      selector: 'id',
+      sortable: true,
+    },
+    {
+      name: 'Casos asignados',
+      selector: 'casosAsignados',
+      sortable: true,
+    },
+    {
+      name: 'Lineas y cuentas por generar',
+      selector: 'lineasPorGenerar',
+      sortable: true,
+    },
+    {
+      name: 'Desembolsos',
+      selector: 'desembolsos',
+      sortable: true,
+    },
+  ];
+
   return (
     <div className="container-fluid">
       <div className="row mt-4 pl-3">
@@ -25,7 +59,7 @@ const SupervisorSeguimientoTablero = () => {
             <CardBackOfficesSmall title="11:39 m." subTitle="Tiempo promedio de analistas en tarea" yellow />
           </div>
         </div>
-        <div className="col-8 pl-4">
+        <div className="col-10 pl-4">
           <div className="card-simple-blue-light pb-0">
             <div className="card-simple-blue-light pt-0 pb-1 px-0">
               <h4 className="pb-2 color-blue-storm  bot-line">Estatus de procesos por tren de línea de crédito</h4>
@@ -102,8 +136,60 @@ const SupervisorSeguimientoTablero = () => {
           </div>
         </div>
       </div>
-      <div className="row mt-2">
-        <div className="col-3">Componente faltante</div>
+      <div>
+        <h3 className="color-blue-storm pr-3 mt-3">Actividades</h3>
+        <div className="table-margin mb-4">
+          <Tabla
+            columns={COLUMNS}
+            data={[
+              {
+                nombre: 'Fernanda Rodriguez',
+                estatus: (
+                  <>
+                    <SvgMiniElipse color="#39C6AC" /> Activo
+                  </>
+                ),
+                id: 123213,
+                casosAsignados: 12,
+                lineasPorGenerar: 2,
+                desembolsos: '01',
+              },
+              {
+                nombre: 'Alejandra Aguilar Ruiz',
+                estatus: (
+                  <>
+                    <SvgMiniElipse color="#39C6AC" /> Activo
+                  </>
+                ),
+                id: 2213123,
+                casosAsignados: 4,
+                lineasPorGenerar: 23,
+                desembolsos: '02',
+              },
+              {
+                nombre: 'Fernanda Rodriguez',
+                estatus: (
+                  <>
+                    <SvgMiniElipse color="#39C6AC" /> Activo
+                  </>
+                ),
+                id: 123213,
+                casosAsignados: 12,
+                lineasPorGenerar: 2,
+                desembolsos: '05',
+              },
+            ]}
+          />
+        </div>
+        <div className="footer-paginator">
+          <div className="footer">
+            <div className="float-right mb-4">
+              <a className="link pb-4" href="/nuevos-componentes/tabla-casos-seguimiento">
+                Ver todos los casos
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
