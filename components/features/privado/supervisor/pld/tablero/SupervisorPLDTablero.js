@@ -1,12 +1,29 @@
 import React from 'react';
 import CardBackOfficesSmall from '../../../shared/back-office-card-small/BackOfficeCardSmall';
-import SvgAprobado from '../../../../../svgs/SvgAprobado';
+import Tabla from '../../../shared/tabla/Tabla';
 import SvgPMBackOffice from '../../../../../svgs/SvgPMBackOffice';
 import SvgPFAEBackOffice from '../../../../../svgs/SvgPFAEBackOffice';
 import SvgRevisionBackOffice from '../../../../../svgs/SvgRevisionBackOffice';
 
 const SupervisorPLDTablero = () => {
-  const SupervisorPLDTablero = 'SupervisorPLDTablero';
+  const COLUMNS = [
+    {
+      name: 'Nombre',
+      selector: 'nombre',
+      sortable: true,
+    },
+    {
+      name: 'Persona',
+      selector: 'persona',
+      sortable: true,
+    },
+    {
+      name: 'Relacionados por revisar',
+      selector: 'relacionados',
+      sortable: true,
+    },
+  ];
+
   return (
     <div className="container-fluid">
       <div className="row mt-4 pl-3">
@@ -25,7 +42,7 @@ const SupervisorPLDTablero = () => {
             <CardBackOfficesSmall title="11:39 m." subTitle="Tiempo promedio de analistas en tarea" yellow />
           </div>
         </div>
-        <div className="col-8 pl-4">
+        <div className="col-10 pl-4">
           <div className="card-simple-blue-light pb-0">
             <div className="card-simple-blue-light pt-0 pb-1 px-0">
               <h4 className="pb-2 color-blue-storm  bot-line">Indicadores del proceso de PLD</h4>
@@ -91,8 +108,44 @@ const SupervisorPLDTablero = () => {
           </div>
         </div>
       </div>
-      <div className="row mt-2">
-        <div className="col-3">Componente faltante</div>
+      <div>
+        <h3 className="color-blue-storm pr-3 mt-3">Prospectos por revisar</h3>
+        <div className="table-margin mb-4">
+          <Tabla
+            columns={COLUMNS}
+            data={[
+              {
+                nombre: 'Fernanda Rodriguez',
+                persona: 'PFAE',
+                relacionados: '4',
+              },
+              {
+                nombre: 'Alberto Abad Gómez',
+                persona: 'Moral',
+                relacionados: '2',
+              },
+              {
+                nombre: 'Paletas S.A.',
+                persona: 'Moral',
+                relacionados: '4',
+              },
+              {
+                nombre: 'Diana Flores Cantú',
+                persona: 'Moral',
+                relacionados: '5',
+              },
+            ]}
+          />
+        </div>
+        <div className="footer-paginator">
+          <div className="footer">
+            <div className="float-right mb-4">
+              <a className="link pb-4" href="/nuevos-componentes/tabla-casos-pld">
+                Ver todos los casos
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
