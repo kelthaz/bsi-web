@@ -6,7 +6,6 @@ import SvgBuscar from '../../svgs/iconos/SvgBuscar';
 import styles from './datalist-input.module.scss';
 
 const DatalistInput = ({ capitalize, onChange, value, placeholder, inverted, keywordsList }) => {
-
   const [valueState, setValue] = useState(value);
   const [selected, setSelected] = useState();
   const [data] = useSearchEngine(valueState, keywordsList);
@@ -41,7 +40,12 @@ const DatalistInput = ({ capitalize, onChange, value, placeholder, inverted, key
         <ul className={styles['select-items']}>
           {data.map((item) => (
             <li key={item.text}>
-              <button disabled={item.disabled} className={styles.item} type="button" onClick={() => onSelectionChange(item)}>
+              <button
+                disabled={item.disabled}
+                className={styles.item}
+                type="button"
+                onClick={() => onSelectionChange(item)}
+              >
                 {item.text}
               </button>
             </li>
@@ -58,12 +62,12 @@ DatalistInput.propTypes = {
   value: PropTypes.any,
   placeholder: PropTypes.string,
   inverted: PropTypes.bool,
-  keywordsList: PropTypes.array.isRequired
+  keywordsList: PropTypes.array.isRequired,
 };
 
 DatalistInput.defaultProps = {
   capitalize: false,
-  onChange: () => { },
+  onChange: () => {},
   value: '',
   placeholder: '',
   inverted: false,

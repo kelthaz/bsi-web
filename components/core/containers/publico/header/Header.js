@@ -174,6 +174,10 @@ const Header = () => {
     setMenusPeople(menuOptions[0].subMenu, 'Crédito');
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   const handlePage = (target) => {
     setPageSelect(target);
     setMenuOpen(false);
@@ -210,7 +214,7 @@ const Header = () => {
             )}
             {!routerIncludes('solicitud', 'obligado-solidario') && (
               <Link href="simulador">
-                <button type="button" className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
+                <button type="button" onClick={closeMenu} className={menuOpen ? 'btn-medium-yellow' : 'btn-medium'}>
                   Solicita tu crédito
                 </button>
               </Link>
