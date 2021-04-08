@@ -30,7 +30,7 @@ const DatalistInput = ({ capitalize, onChange, value, placeholder, inverted, key
         <span className={styles.highlight} />
         <span className={styles.bar} />
         <label className={`body2 ${styles.label}`}>
-          <SvgBuscar color="#636363" />
+          <SvgBuscar color="#FFFEFE" />
         </label>
         <label className={`body2 ${styles['right-label']}`}>
           <img src="/chevron.svg" alt="Chevron" />
