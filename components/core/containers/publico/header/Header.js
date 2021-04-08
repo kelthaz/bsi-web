@@ -219,7 +219,11 @@ const Header = () => {
                 </button>
               </Link>
             )}
-            {!routerIncludes('solicitud', 'obligado-solidario') && <button type="button">{}</button>}
+            {!routerIncludes('solicitud', 'obligado-solidario') &&
+              <Link href="/login/[option]" as="/login/iniciar-sesion">
+                <button type="button">{ }</button>
+              </Link>
+            }
           </div>
         </div>
         {toggleSearchBox ? <SearchBox unmount={handletToggleSearchBox} /> : null}

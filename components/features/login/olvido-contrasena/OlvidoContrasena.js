@@ -73,7 +73,11 @@ const OlvidoContrasena = () => {
           </div>
 
           <div className="row d-flex justify-content-center py-3">
-            <button type="submit" className="btn-medium">
+            <button
+              type="submit"
+              className="btn-medium"
+              disabled={!(formulario.isValid && formulario.dirty)}
+            >
               Enviar
             </button>
           </div>

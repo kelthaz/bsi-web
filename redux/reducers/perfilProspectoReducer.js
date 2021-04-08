@@ -94,6 +94,10 @@ const initialState = {
     ip: '123.456.789.123',
   },
   documentosProspecto: {
+    contrato: { nombreDocumento: 'contrato_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalejandra.pdf', url: '', estado: 1 },
+    solicitudServicioEmpresaNet: { nombreDocumento: 'solicitud_empNet.pdf', url: '', estado: 1 },
+    kitApertura: { nombreDocumento: 'kitapertura.pdf', url: '', estado: 2 },
+
     ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
     ineReverso: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
     comprobanteDomicilioComercial: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 1 },
@@ -106,13 +110,20 @@ const initialState = {
     inePareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
     ineReversoPareja: { nombreDocumento: 'INE_Carlos.jpg', url: '', estado: 2 },
 
-    poderesNotarial: { nombreDocumento: '', url: '', estado: 1 },
-    actaConstitutiva: { nombreDocumento: '', url: '', estado: 1 },
+    poderesNotarial: { nombreDocumento: 'poderes.pdf', url: '', estado: 3 },
+    actaConstitutiva: { nombreDocumento: 'acta.pdf', url: '', estado: 4 },
     escriturasConReformas: { nombreDocumento: '', url: '', estado: 1 },
     integracionRiesgoComun: { nombreDocumento: '', url: '', estado: 1 },
 
     verificacionSociedad: { nombreDocumento: '', url: '', estado: 0 },
     buroLegal: { nombreDocumento: '', url: '', estado: 0 },
+
+    anexoCaratula: { nombreDocumento: '', url: '', estado: 0 },
+    portadaCuenta: { nombreDocumento: '', url: '', estado: 0 },
+
+    visitaOcularObligadoSolidario: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    visitaOcularSolicitante: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    contratoFisicoFirmado: { nombreDocumento: 'Comprobante_luz.jpg', url: '', estado: 2 },
   },
   documentosObligadoSolidario: {
     ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
@@ -131,6 +142,15 @@ const initialState = {
     reporteBuroCredito: { nombreDocumento: '', url: '', estado: 0 },
     verificacionSociedad: { nombreDocumento: '', url: '', estado: 0 },
   },
+  documentosRepresentantesLegales: [
+    {
+      nombreCompleto: 'Documentos obligado solidario',
+      telefono: '55-2677-9089',
+      correo: 'patri.ciaflores@mail.com',
+      ine: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+      ineReverso: { nombreDocumento: 'INE_alejandra.jpg', url: '', estado: 2 },
+    },
+  ],
 };
 
 const perfilProspectoReducer = (state = initialState, { type, payload }) => {

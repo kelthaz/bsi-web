@@ -6,6 +6,10 @@ import Tab from '../../../../shared/tab/Tab';
 import TabItem from '../../../../shared/tab/TabItem';
 import SvgDocumentosPequeño from '../../../../svgs/iconos/SvgDocumentosPequeño';
 import SvgAgendarVerde from '../../../../svgs/SvgAgendarVerde';
+import DocumentosBancoppel from '../../shared/documentos/bancoppel/DocumentosBancoppel';
+import DocumentosClienteObligadoSolidario from '../../shared/documentos/cliente-obligado-solidario/DocumentosClienteObligadoSolidario';
+import DocumentosCliente from '../../shared/documentos/cliente/DocumentosCliente';
+import RepresentantesLegales from '../../shared/documentos/representantes-legales/RepresentantesLegales';
 import DatosBasicos from '../../shared/informacion/basica/DatosBasicos';
 import DatosEmpresa from '../../shared/informacion/empresa/DatosEmpresa';
 import ObligadoSolidarioInformacion from '../../shared/informacion/obligado-solidario/ObligadoSolidarioInformacion';
@@ -14,9 +18,14 @@ import PerfilProspecto from '../../shared/perfil-prospecto/PerfilProspecto';
 import ProgressBar from '../../shared/progressbar/ProgressBar';
 
 const ClientePerfil = () => {
-  const { perfilProspecto, informacionObligadoSolidario, informacionProspecto } = useSelector(
-    (state) => state.prospecto
-  );
+  const {
+    perfilProspecto,
+    informacionObligadoSolidario,
+    informacionProspecto,
+    documentosProspecto,
+    documentosObligadoSolidario,
+    documentosRepresentantesLegales,
+  } = useSelector((state) => state.prospecto);
 
   return (
     <div className="container-fluid px-0">
@@ -110,7 +119,63 @@ const ClientePerfil = () => {
               </Accordion>
             </TabItem>
             <TabItem tab="Documentos" keyTab="2">
-              Documentos
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño /> Documentos Bancoppel
+                  </span>
+                }
+                expanded={false}
+                color="blue"
+                icon="arrow"
+              >
+                <DocumentosBancoppel documentosBancoppel={documentosProspecto} />
+              </Accordion>
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño /> Mis documentos
+                  </span>
+                }
+                expanded={false}
+                color="blue"
+                icon="arrow"
+              >
+                <DocumentosCliente
+                  documentosProspecto={documentosProspecto}
+                  tipoPersona={perfilProspecto.tipoPersona}
+                  nombreConyuge={informacionProspecto.nombreConyuge}
+                />
+              </Accordion>
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño /> Documentos obligado solidario
+                  </span>
+                }
+                expanded={false}
+                color="blue"
+                icon="arrow"
+              >
+                <DocumentosClienteObligadoSolidario
+                  documentosObligadoSolidario={documentosObligadoSolidario}
+                  tipoPersonaObligadoSolidario={informacionObligadoSolidario.tipoPersona}
+                  nombreObligadoSolidario={informacionObligadoSolidario.nombreCompleto}
+                  nombreConyugeObligadoSolidario={informacionObligadoSolidario.nombreConyuge}
+                />
+              </Accordion>
+              <Accordion
+                title={
+                  <span>
+                    <SvgDocumentosPequeño /> Representantes legales
+                  </span>
+                }
+                expanded={false}
+                color="blue"
+                icon="arrow"
+              >
+                <RepresentantesLegales documentosRepresentantesLegales={documentosRepresentantesLegales} />
+              </Accordion>
             </TabItem>
           </Tab>
         </div>

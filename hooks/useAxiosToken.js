@@ -16,6 +16,7 @@ const useAxiosToken = () => {
 
         if (token) {
           const { exp } = JSON.parse(atob(token.split('.')[1]));
+          console.log(token);
           updateCookie(token, exp * 1000);
         }
 

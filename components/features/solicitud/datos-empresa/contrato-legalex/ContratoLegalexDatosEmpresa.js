@@ -16,6 +16,9 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { aceptarTerminos } from '../../../../../constants/errors';
 import { MORAL } from '../../../../../constants/persona';
+import ContratoLegalex from '../../shared/contrato-legalex/ContratoLegalex';
+import { useEffect } from 'react';
+import LegalexRepositorio from '../../../../../services/solicitud/legalex.repositorio';
 
 const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -67,6 +70,21 @@ const ContratoLegalexDatosEmpresa = () => {
       router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/agradecimiento');
     },
   });
+
+  useEffect(async () => {
+    const validateEmail = async () => {
+      const emailExist = await LegalexRepositorio.postContratoDigital()
+        .then((resp) => {
+          console.log(resp);
+        })
+        .catch(({ response }) => {
+          // const [error] = response.data.message;
+          console.log(response.data);
+          // return false;
+        });
+    };
+    await validateEmail();
+  }, []);
 
   return (
     <>
@@ -134,246 +152,22 @@ const ContratoLegalexDatosEmpresa = () => {
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              <h4 className="color-blue-storm">Autorización para la consulta de Buró de Crédito</h4>
-              <div className="row justify-content-between">
-                <div className={` d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
-                  <div className="container-svg-card">
-                    <Image src="/Buro2.jpg" alt="" width="90" height="90" />
-                  </div>
-                  <div>
-                    <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
-                    <p className="color-gray body3">Esto para conocer un poco más sobre ti</p>
-                  </div>
-                </div>
-                <div className={`d-none d-md-block  card-white text-md-center ${styles['icon-card']}`}>
-                  <div className="container-svg-card">
-                    <SvgLegalex />
-                  </div>
-                  <div className="px-0">
-                    <h4 className="color-blue-storm sub">Firma segura con Legalex GS</h4>
-                    <p className="color-gray body3">
-                      Puedes firmar de forma segura con tu e.firma
-                      <br />
-                      <a className="link">¿Por qué te pedimos esto?</a>
-                    </p>
-                  </div>
-                </div>
-                <div className={`d-none d-md-block card-white text-md-center ${styles['icon-card']}`}>
-                  <div className="container-svg-card">
-                    <SvgNoGuardamosNada />
-                  </div>
-                  <div>
-                    <h4 className="color-blue-storm sub pb-auto">No guardamos nada</h4>
-                    <p className="color-gray body3">Después de la consulta no guardaremos tus archivos</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles['scrollable-container']}>
-                <div>
-                  <p className="d-none d-md-block sub color-blue-storm">
-                    AUTORIZACIÓN PARA SOLICITAR REPORTES DE CRÉDITO PERSONAS FISICAS / PERSONAS MORALES
-                  </p>
-                  <div className="row d-block d-sm-none">
-                    <a className="mt-1 sub link " onClick={() => setOpenModalMobile(true)}>
-                      ¿Cuál es el proceso de autorización?
-                    </a>
-                    <Tooltip message="." position="top" />
-                  </div>
-                  <p className="mt-5 d-block d-sm-none sub color-blue-storm">
-                    AUTORIZACIÓN PARA SOLICITAR REPORTES DE CRÉDITO PERSONAS FISICAS / PERSONAS MORALES
-                  </p>
-                  <div className="body2">
-                    <p className="mb-4">
-                      Por este conducto autorizo expresamente a{' '}
-                      <span className="sub">BanCoppel, S.A., Institución de Banca Múltiple</span>, para que por conducto
-                      de sus funcionarios facultados lleve a cabo investigaciones sobre mi comportamiento crediticio o
-                      el de la empresa que represento en las sociedades de información crediticia que estime
-                      conveniente.
-                    </p>
-                    <p className="mb-3">
-                      Asimismo declaro que conozco la naturaleza de las sociedades de información crediticia y de la
-                      información contenida en los reportes de crédito y reporte de crédito especial; declaro que
-                      conozco la naturaleza alcance de la información que se solicitará, del uso que{' '}
-                      <span className="sub">BanCoppel, S.A., Institución de banca Múltiple</span>, hará de tal
-                      información y de que esta podrá realizar consultas periódicas de mi historial crediticio o el de
-                      la empresa que represento, consintiendo que esta autorización se encuentre vigente por un periodo
-                      de 3 años contando a partir de la fecha de sus expedición y en todo caso durante el tiempo que
-                      mantengamos relación jurídica.
-                    </p>
-                    <p className="mb-3">
-                      En caso de que la solicitante sea una persona, declaro bajo protesta de decir verdad ser
-                      Representante Legal de la empresa mencionada en esta autorización; manifestando que a la fecha de
-                      firma de la presente autorización los poderes no me han sido revocados, limitados, ni modificados
-                      en forma alguna.
-                    </p>
-                    <div className="row">
-                      <div className="col-md-12 col-xs-12">
-                        <TextField
-                          name="nombreSolicitante"
-                          maxlength={18}
-                          type="text"
-                          size="small"
-                          label="Nombre del Solicitante (Persona Física o Razón Social de la persona Moral)"
-                          disabled
-                          {...formulario.getFieldMeta('nombreSolicitante')}
-                          {...formulario.getFieldHelpers('nombreSolicitante')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="rfc"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="RFC"
-                          disabled
-                          {...formulario.getFieldMeta('rfc')}
-                          {...formulario.getFieldHelpers('rfc')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="fechaNacimiento"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Fecha de Nacimiento/Constitución:"
-                          disabled
-                          {...formulario.getFieldMeta('fechaNacimiento')}
-                          {...formulario.getFieldHelpers('fechaNacimiento')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="domicilio"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Domicilio"
-                          disabled
-                          {...formulario.getFieldMeta('domicilio')}
-                          {...formulario.getFieldHelpers('domicilio')}
-                        />
-                      </div>
-                      <div className="col-md-3 col-xs-12">
-                        <TextField
-                          name="numeroExterior"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="No. Exterior"
-                          disabled
-                          {...formulario.getFieldMeta('numeroExterior')}
-                          {...formulario.getFieldHelpers('numeroExterior')}
-                        />
-                      </div>
-                      <div className="col-md-3 col-xs-12">
-                        <TextField
-                          name="numeroInterior"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="No. Interior"
-                          disabled
-                          {...formulario.getFieldMeta('numeroInterior')}
-                          {...formulario.getFieldHelpers('numeroInterior')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="colonia"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Colonia"
-                          disabled
-                          {...formulario.getFieldMeta('colonia')}
-                          {...formulario.getFieldHelpers('colonia')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="alcaldia"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Alcaldía/Municipio"
-                          disabled
-                          {...formulario.getFieldMeta('alcaldia')}
-                          {...formulario.getFieldHelpers('alcaldia')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="codigoPostal"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Código Postal"
-                          disabled
-                          {...formulario.getFieldMeta('codigoPostal')}
-                          {...formulario.getFieldHelpers('codigoPostal')}
-                        />
-                      </div>
-                      <div className="col-md-6 col-xs-12">
-                        <TextField
-                          name="estado"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Estado"
-                          disabled
-                          {...formulario.getFieldMeta('estado')}
-                          {...formulario.getFieldHelpers('estado')}
-                        />
-                      </div>
-                      <div className="col-md-12 col-xs-12">
-                        <TextField
-                          name="telefono"
-                          type="tel"
-                          size="small"
-                          label="Teléfono"
-                          format="phone"
-                          {...formulario.getFieldMeta('telefono')}
-                          {...formulario.getFieldHelpers('telefono')}
-                          maxlength={12}
-                          disabled
-                        />
-                      </div>
-                      <div className="col-md-12 col-xs-12">
-                        <TextField
-                          name="representanteLegal"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Representante legal (solo Persona Moral):"
-                          disabled
-                          {...formulario.getFieldMeta('representanteLegal')}
-                          {...formulario.getFieldHelpers('representanteLegal')}
-                        />
-                      </div>
-                      <div className="col-md-12 col-xs-12">
-                        <TextField
-                          name="fechaAutorizacion"
-                          maxlength={12}
-                          type="text"
-                          size="small"
-                          label="Fecha en que se autoriza la consulta:"
-                          disabled
-                          {...formulario.getFieldMeta('fechaAutorizacion')}
-                          {...formulario.getFieldHelpers('fechaAutorizacion')}
-                        />
-                      </div>
-                    </div>
-                    <p>
-                      Estoy consciente y acepto que este documento quede bajo propiedad de BanCoppel, S.A., Institución
-                      de banca Múltiple, para efectos de control y cumplimiento del artículo 28 de la Ley para Regular a
-                      las Sociedades de Información Crediticia.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <ContratoLegalex
+                formulario={formulario}
+                nameFieldNombreSolicitante="nombreSolicitante"
+                nameFieldRFC="rfc"
+                nameFieldFechaNacimiento="fechaNacimiento"
+                nameFieldDomicilio="domicilio"
+                nameFieldNumeroExterior="numeroExterior"
+                nameFieldNumeroInterior="numeroInterior"
+                nameFieldColonia="colonia"
+                nameFieldAlcaldia="alcaldia"
+                nameFieldCodigoPostal="codigoPostal"
+                nameFieldEstado="estado"
+                nameFieldTelefono="telefono"
+                nameFieldRepresentanteLegal="representanteLegal"
+                nameFieldFechaAutorizacion="fechaAutorizacion"
+              />
 
               <div className="row no-gutters mt-4">
                 <CheckTextBox name="autorizacionFirmaElectronica" formulario={formulario}>
