@@ -11,22 +11,13 @@ import useFindGiroBySector from '../../../../../../hooks/useFindGiroBySector';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import TIPO_EMPRESA from '../../../../../../constants/feature/tipoEmpresa';
 
 const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
 
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
-
-  const itemsTipoEmpresa = [
-    { value: 10, label: 'S.A.' },
-    { value: 20, label: 'S.A. DE C.V.' },
-    { value: 30, label: 'S. DE R.L.' },
-    { value: 40, label: 'S. DE R.L. DE C.V.' },
-    { value: 60, label: 'S. EN C.' },
-    { value: 70, label: 'S. EN C. POR A.' },
-    { value: 110, label: 'S.N.C.' },
-  ];
 
   const formulario = useFormik({
     initialValues: {
@@ -112,7 +103,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
                 <Select
                   name="tipoSociedad"
                   size="big"
-                  items={itemsTipoEmpresa}
+                  items={TIPO_EMPRESA}
                   label="Tipo sociedad"
                   {...formulario.getFieldMeta('tipoSociedad')}
                   {...formulario.getFieldHelpers('tipoSociedad')}

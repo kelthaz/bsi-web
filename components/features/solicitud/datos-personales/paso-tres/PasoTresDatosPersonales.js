@@ -12,21 +12,12 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import useFindGiroBySector from '../../../../../hooks/useFindGiroBySector';
 import { PASO_CUATRO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 import { MORAL } from '../../../../../constants/persona';
+import TIPO_EMPRESA from '../../../../../constants/feature/tipoEmpresa';
 
 const PasoTresDatosPersonales = ({ sectores, validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
-
-  const itemsTipoEmpresa = [
-    { value: 10, label: 'S.A.' },
-    { value: 20, label: 'S.A. DE C.V.' },
-    { value: 30, label: 'S. DE R.L.' },
-    { value: 40, label: 'S. DE R.L. DE C.V.' },
-    { value: 60, label: 'S. EN C.' },
-    { value: 70, label: 'S. EN C. POR A.' },
-    { value: 110, label: 'S.N.C.' },
-  ];
 
   const { initialValues, validationSchema } = {
     initialValues: {
@@ -131,7 +122,7 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
                   <Select
                     name="tipoSociedad"
                     size="big"
-                    items={itemsTipoEmpresa}
+                    items={TIPO_EMPRESA}
                     label="Tipo sociedad"
                     {...formulario.getFieldMeta('tipoSociedad')}
                     {...formulario.getFieldHelpers('tipoSociedad')}

@@ -14,6 +14,7 @@ import SvgPatronesSolicitud from '../../../../svgs/SvgPatronesSolicitud';
 import Error404 from '../../../error404/Error404';
 import HeaderSolicitud from '../header/HeaderSolicitud';
 import ModalActualizar from '../modal-actualizar/ModalActualizar';
+import TIPO_EMPRESA from '../../../../../constants/feature/tipoEmpresa';
 
 const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
   usePreventWindowUnload();
@@ -71,13 +72,36 @@ const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
       if (formulario === DATO_PERSONA) {
         replace(SIMULADOR_ROUTE);
       } else {
+        const {
+          family_name: familyName,
+          given_name: givenName,
+          credit_pyme: { business_name: businessName },
+          preferred_username: rfc,
+          middle_name: segundoApellido,
+        } = userData;
+
+        const tipoSociedad = businessName ? TIPO_EMPRESA.filter((tipo) => businessName.includes(tipo.label)) : null;
+        const razonSocial = businessName ? businessName.split(tipoSociedad.label)[0].trim() : '';
+
+        const [primerNombre] = givenName.split(' ');
+        const [primerApellido] = familyName.split(' ');
+        const segundoNombre = givenName
+          .split(' ')
+          .reduce((completeName, partName, index) => (index !== 0 ? `${completeName} ${partName}` : completeName), '');
+
         dispatch(
           nextStepDatosPersonales({
             sincronizado: true,
             datosPersonales: {
               ...datosPersonales,
-              tipoPersona: userData.sub.length === 12 ? 'MORAL' : 'FISICO',
-              rfc: userData.sub,
+              tipoPersona: rfc.length === 12 ? 'MORAL' : 'FISICO',
+              rfc,
+              tipoSociedad,
+              razonSocial,
+              primerNombre,
+              primerApellido,
+              segundoApellido: segundoApellido || '',
+              segundoNombre: segundoNombre || '',
             },
           })
         );

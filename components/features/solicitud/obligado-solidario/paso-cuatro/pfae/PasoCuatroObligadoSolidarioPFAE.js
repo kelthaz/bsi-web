@@ -19,20 +19,11 @@ import { regexRFCMoral } from '../../../../../../constants/regex';
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 import { PASO_CINCO_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/routes/solicitud/obligado';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
+import TIPO_EMPRESA from '../../../../../../constants/feature/tipoEmpresa';
 
 const StepFour = ({ validate }) => {
   const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
-
-  const itemsTipoEmpresa = [
-    { value: 10, label: 'S.A.' },
-    { value: 20, label: 'S.A. DE C.V.' },
-    { value: 30, label: 'S. DE R.L.' },
-    { value: 40, label: 'S. DE R.L. DE C.V.' },
-    { value: 60, label: 'S. EN C.' },
-    { value: 70, label: 'S. EN C. POR A.' },
-    { value: 110, label: 'S.N.C.' },
-  ];
 
   const subformValidationSchema = Yup.object().shape({
     razonSocial: Yup.string().trim().max(120, longitudMaxima).required(campoRequerido),
@@ -153,7 +144,7 @@ const StepFour = ({ validate }) => {
                     <Select
                       name={`empresas[${index}].tipoSociedad`}
                       size="big"
-                      items={itemsTipoEmpresa}
+                      items={TIPO_EMPRESA}
                       label="S.A"
                       {...formulario.getFieldMeta(`empresas[${index}].tipoSociedad`)}
                       {...formulario.getFieldHelpers(`empresas[${index}].tipoSociedad`)}
