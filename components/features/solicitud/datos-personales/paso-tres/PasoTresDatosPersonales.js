@@ -138,7 +138,7 @@ const PasoTresDatosPersonales = ({ sectores, validate }) => {
                   format="uppercase"
                   type="text"
                   size="big"
-                  maxlength={120}
+                  maxlength={60}
                   label="Nombre del negocio"
                   {...formulario.getFieldMeta('nombreEmpresa')}
                   {...formulario.getFieldHelpers('nombreEmpresa')}

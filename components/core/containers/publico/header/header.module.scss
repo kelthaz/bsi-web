@@ -168,7 +168,7 @@
     text-decoration: none;
 
     @include media('lg+') {
-      &:hover {
+      &:focus {
         color: $blue-sky;
       }
     }
