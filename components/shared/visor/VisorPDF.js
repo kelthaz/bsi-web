@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import PropTypes from 'prop-types';
 // import SimuladorRepositorio from '../../../services/simulador/simulador.repositorio';
+import dynamic from 'next/dynamic';
 import SvgArrow from '../../svgs/pdf-visor/SvgArrow';
 import SvgDownload from '../../svgs/pdf-visor/SvgDownload';
 import SvgExpand from '../../svgs/pdf-visor/SvgExpand';

@@ -1,7 +1,12 @@
+import dynamic from 'next/dynamic';
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import VisorPDF from '../../../../../shared/visor/VisorPDF';
+// import VisorPDF from '../../../../../shared/visor/VisorPDF';
 import Reportes from '../../../shared/documentos/reportes/Reportes';
+
+const VisorPDF = dynamic(() => import('../../../../../shared/visor/VisorPDF'), {
+  ssr: false,
+});
 
 const AnalistaMesaDeControlRevisionDocumento = () => {
   const {
