@@ -7,8 +7,8 @@ import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoCuatroDatosPersonales from './PasoCuatroDatosPersonales';
 import { PASO_CINCO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
 import EmailageRepositorio from '../../../../../services/solicitud/emailage.repositorio';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 
 jest.mock('../../../../../services/solicitud/emailage.repositorio');
 
@@ -16,10 +16,11 @@ describe('Pruebas en el componente PasoCuatroDatosPersonales', () => {
   const push = jest.fn();
   const beforePopState = jest.fn();
   useRouter.mockImplementation(() => ({ push, beforePopState }));
+
   const emailage = {
     email: 'jesus.gomezo@udea.edu.com',
     fraudRisk: '500 Moderate',
-    emailExists: 'Not Sure',
+    emailExists: 'Yes',
     domainExists: 'Yes',
   };
 
@@ -101,7 +102,11 @@ describe('Pruebas en el componente PasoCuatroDatosPersonales', () => {
       </Provider>
     );
 
-    await EmailageRepositorio.postEmailScore.mockRejectedValue({ data: emailage });
+    await EmailageRepositorio.postEmailScore.mockRejectedValue({
+      response: {
+        data: { message: ['Ocurrio un error al consultar el correo'] },
+      },
+    });
 
     const form = wrapper.find('form');
     const celular = wrapper.find('input').find({ name: 'celular' });

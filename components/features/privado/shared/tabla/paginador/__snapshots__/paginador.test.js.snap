@@ -10,7 +10,7 @@ exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el c
       role="button"
       tabIndex={0}
     >
-      ͔
+      &lt;
     </span>
   </li>
   <li
@@ -79,7 +79,7 @@ exports[`Pruebas en el componente Accordion Debe de mostrarse correctamente el c
       role="button"
       tabIndex={0}
     >
-      ͕
+      &gt;
     </span>
   </li>
 </ul>

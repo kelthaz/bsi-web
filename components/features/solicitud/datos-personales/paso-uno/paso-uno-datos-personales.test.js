@@ -7,7 +7,7 @@ import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoUnoDatosPersonales from './PasoUnoDatosPersonales';
 import { PASO_DOS_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 
 describe('Pruebas en el componente PasoUnoDatosPersonales', () => {
   const store = storeTest();

@@ -41,8 +41,7 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
       .then((resp) => {
         const { fraudRisk, emailExists, domainExists } = resp.data;
         const score = fraudRisk.split(' ')[0];
-
-        if (!(score > 800 || emailExists === 'No' || domainExists === 'No')) {
+        if (score > 800 || emailExists === 'No' || domainExists === 'No') {
           formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
           return false;
         }

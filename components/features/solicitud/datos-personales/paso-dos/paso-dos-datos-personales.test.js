@@ -7,8 +7,8 @@ import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoDosDatosPersonales from './PasoDosDatosPersonales';
 import { PASO_TRES_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
 import { FISICA, MORAL } from '../../../../../constants/persona';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 
 describe('Pruebas en el componente PasoDosDatosPersonales', () => {
   const store = storeTest();

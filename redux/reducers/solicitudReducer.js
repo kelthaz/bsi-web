@@ -25,6 +25,7 @@ const initialState = {
     contrasena: '',
     confirmarContrasena: '',
     rfc: '',
+    rfcRepresentante: '',
     aceptoTerminos: null,
   },
   datosEmpresa: {

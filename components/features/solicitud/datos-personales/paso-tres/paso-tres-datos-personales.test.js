@@ -7,9 +7,9 @@ import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoTresDatosPersonales from './PasoTresDatosPersonales';
 import { PASO_CUATRO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
 import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
-import { MORAL } from '../../../../../constants/persona';
+import { FISICA, MORAL } from '../../../../../constants/persona';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 
 jest.mock('../../../../../services/simulador/sectores.repositorio');
 
@@ -196,6 +196,7 @@ describe('Pruebas en el componente PasoTresDatosPersonales', () => {
     const razonSocial = wrapper.find('input').find({ name: 'razonSocial' });
     const tipoSociedad = wrapper.find({ name: 'tipoSociedad' }).find('.item');
     const nombreEmpresa = wrapper.find('input').find({ name: 'nombreEmpresa' });
+    const rfcRepresentante = wrapper.find('input').find({ name: 'rfcRepresentante' });
     const sector = wrapper.find({ name: 'sector' }).find('.item');
     const descripcionEmpresa = wrapper.find('textarea').find({ name: 'descripcionEmpresa' });
     // act
@@ -212,6 +213,12 @@ describe('Pruebas en el componente PasoTresDatosPersonales', () => {
     await act(async () => {
       nombreEmpresa.simulate('change', {
         target: { value: 'Paletas don chucho', selectionStart: 0, setSelectionRange: jest.fn() },
+      });
+    });
+
+    await act(async () => {
+      rfcRepresentante.simulate('change', {
+        target: { value: 'CUPU800825569', selectionStart: 0, setSelectionRange: jest.fn() },
       });
     });
 
@@ -255,12 +262,13 @@ describe('Pruebas en el componente PasoTresDatosPersonales', () => {
     wrapper.unmount();
   });
 
-  test('Debe de mantener el paso anterior en el reducer y actualizar los datos que se cambiaron y enviarlo al siguiente paso', async () => {
+  test('Debe de mantener el paso anterior en el reducer y actualizar los datos que se cambiaron y enviarlo al siguiente paso como persona fisica', async () => {
     // arrange
     const store = storeTest();
     const {
-      solicitud: { currentStep },
+      solicitud: { currentStep, datosPersonales },
     } = store.getState();
+    datosPersonales.tipoPersona = FISICA;
 
     const wrapper = mount(
       <Provider store={store}>
@@ -311,16 +319,18 @@ describe('Pruebas en el componente PasoTresDatosPersonales', () => {
     });
 
     const {
-      solicitud: { datosPersonales },
+      solicitud: { datosPersonales: datosPersonalesAfter },
     } = store.getState();
 
     // assert
-    expect(datosPersonales.nombreEmpresa).toEqual(wrapper.find('input').find({ name: 'nombreEmpresa' }).prop('value'));
-    expect(datosPersonales.descripcionEmpresa).toEqual(
+    expect(datosPersonalesAfter.nombreEmpresa).toEqual(
+      wrapper.find('input').find({ name: 'nombreEmpresa' }).prop('value')
+    );
+    expect(datosPersonalesAfter.descripcionEmpresa).toEqual(
       wrapper.find('textarea').find({ name: 'descripcionEmpresa' }).prop('value')
     );
-    expect(datosPersonales.sector.label).toEqual(wrapper.find({ name: 'sector' }).find('.select-big').text());
-    expect(datosPersonales.giro.label).toEqual(wrapper.find({ name: 'giro' }).find('.select-big').text());
+    expect(datosPersonalesAfter.sector.label).toEqual(wrapper.find({ name: 'sector' }).find('.select-big').text());
+    expect(datosPersonalesAfter.giro.label).toEqual(wrapper.find({ name: 'giro' }).find('.select-big').text());
     expect(store.getState().solicitud.currentStep.paso).toBe(currentStep.paso);
     expect(store.getState().solicitud.currentStep.valipStep).toBe(currentStep.valipStep);
     expect(push).toHaveBeenCalledTimes(1);

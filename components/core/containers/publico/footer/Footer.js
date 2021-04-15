@@ -116,7 +116,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <span>Copyright © 2020 BanCoppel S.A. Institución de Banca Múltiple - Todos los derechos reservados</span>
+        <span>Copyright © 2021 BanCoppel S.A. Institución de Banca Múltiple - Todos los derechos reservados</span>
 
         <div className={styles['four-content']}>
           <span>

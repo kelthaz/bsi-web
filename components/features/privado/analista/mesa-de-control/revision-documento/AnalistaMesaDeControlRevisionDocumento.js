@@ -17,14 +17,12 @@ const AnalistaMesaDeControlRevisionDocumento = () => {
   const container = useRef();
 
   return (
-    <div className="container-fluid px-0">
-      <div className="mt-4 mb-5">
-        <h3 className="color-blue-storm">Mi perfil</h3>
-      </div>
-
-      <div className="row">
-        <div className="col-5">notas</div>
-        <div className="col-7" ref={container}>
+    <div className="container-fluid px-0 h-100">
+      <div className="row h-100">
+        <div className="col-5">
+          <div>notas</div>
+        </div>
+        <div className="col-7 h-100" ref={container}>
           <VisorPDF container={container} />
         </div>
       </div>
