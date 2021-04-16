@@ -3,6 +3,7 @@ import CardBackOfficesSmall from '../../../shared/back-office-card-small/BackOff
 import SvgAprobado from '../../../../../svgs/SvgAprobado';
 import Tabla from '../../../shared/tabla/Tabla';
 import SvgRechazadoBackOffice from '../../../../../svgs/SvgRechazadoBackOffice';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorJuridicoTablero = () => {
   const COLUMNS = [
@@ -140,11 +141,7 @@ const SupervisorJuridicoTablero = () => {
                 region: 'Norte',
                 idSolicitud: 31232,
                 fechaSolicitud: '01/Enero/2020',
-                accion: (
-                  <button className="btn-mini-secondary" type="button">
-                    Revisar
-                  </button>
-                ),
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Daniela Fernanda',
@@ -153,6 +150,7 @@ const SupervisorJuridicoTablero = () => {
                 region: 'Oeste',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Daniela Ramírez',
@@ -161,6 +159,7 @@ const SupervisorJuridicoTablero = () => {
                 region: 'Oeste',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Alejandro Ramírez ',
@@ -169,6 +168,7 @@ const SupervisorJuridicoTablero = () => {
                 region: 'Oeste',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'José Lima Rodríguez',
@@ -177,6 +177,7 @@ const SupervisorJuridicoTablero = () => {
                 region: 'Oeste',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
+                accion: <AsignarCasos tableButton />,
               },
             ]}
           />
@@ -184,7 +185,7 @@ const SupervisorJuridicoTablero = () => {
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-prospectos-juridico">
+              <a className="link pb-4" href="/supervisor/juridico/actividades">
                 Ver todos los prospectos
               </a>
             </div>

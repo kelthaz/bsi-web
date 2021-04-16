@@ -6,6 +6,7 @@ import Tab from '../../../../../../components/shared/tab/Tab';
 import Tabla from '../../../shared/tabla/Tabla';
 import TabItem from '../../../../../../components/shared/tab/TabItem';
 import SvgRechazadoBackOffice from '../../../../../svgs/SvgRechazadoBackOffice';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorMediosDePagoTablero = () => {
   const COLUMNS = [
@@ -37,6 +38,11 @@ const SupervisorMediosDePagoTablero = () => {
     {
       name: 'Región',
       selector: 'region',
+      sortable: true,
+    },
+    {
+      name: 'Accion',
+      selector: 'accion',
       sortable: true,
     },
   ];
@@ -128,6 +134,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Norte',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Daniela Fernanda',
@@ -136,6 +143,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Paletas S.A.',
@@ -144,6 +152,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Sur',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Paletas S.A.',
@@ -152,6 +161,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Norte',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Tu maleta S.A.',
@@ -160,6 +170,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Tornillos y tuercas S.A.',
@@ -168,6 +179,7 @@ const SupervisorMediosDePagoTablero = () => {
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
                     region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                 ]}
                 compact
@@ -179,7 +191,7 @@ const SupervisorMediosDePagoTablero = () => {
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-prospectos-medios">
+              <a className="link pb-4" href="/supervisor/medios-de-pago/actividades">
                 Ver todos los prospectos
               </a>
             </div>
