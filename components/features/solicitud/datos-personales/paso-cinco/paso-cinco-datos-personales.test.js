@@ -11,13 +11,13 @@ import {
   PASO_CINCO_DATOS_PERSONA_ROUTE,
   PASO_CUATRO_DATOS_PERSONA_ROUTE,
 } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
 import LoginRepositorio from '../../../../../services/login/login.repositorio';
-import TabInformativo from '../../../../shared/tab-informativo/TabInformativo';
 import { regexHyphen } from '../../../../../constants/regex';
 import { MORAL } from '../../../../../constants/persona';
 import { AVISO_ROUTE } from '../../../../../constants/routes/publico/publico';
 import { rfcInvalido } from '../../../../../constants/errors';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
+import TabInformativo from '../../../../core/containers/solicitud/tab-informativo/TabInformativo';
 
 jest.mock('../../../../../services/login/login.repositorio');
 

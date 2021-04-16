@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import CheckBox from './CheckBox';
 
@@ -9,7 +9,7 @@ describe('Pruebas en el componente CheckBox', () => {
     // arrange
     const props = {
       name: 'meEjercenControlMoralComoMoral',
-      checked: false,
+      value: false,
       label: 'si',
       onChange,
     };
@@ -29,7 +29,7 @@ describe('Pruebas en el componente CheckBox', () => {
     const valorEsperado = { target: { checked: true } };
     const props = {
       name: 'meEjercenControlMoralComoMoral',
-      checked: false,
+      value: false,
       label: 'si',
       onChange,
     };
@@ -43,5 +43,37 @@ describe('Pruebas en el componente CheckBox', () => {
     // assert
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange).toHaveBeenCalledWith(valorEsperado);
+  });
+
+  test('Deben estar solo el primer check', () => {
+    // arrange
+    const propFirstCheck = {
+      name: 'animales',
+      value: ['Gatos'],
+      label: 'Gatos',
+      onChange,
+    };
+    const propSecondCheck = {
+      name: 'animales',
+      value: ['Gatos'],
+      label: 'Perros',
+      onChange,
+    };
+    // act
+    const wrapper = mount(
+      <div>
+        <CheckBox {...propFirstCheck}>
+          <p>Gatos</p>
+        </CheckBox>
+        <CheckBox {...propSecondCheck}>
+          <p>Perros</p>
+        </CheckBox>
+      </div>
+    );
+    const { checked: firstChecked } = wrapper.find('input').at(0).props();
+    const { checked: secondChecked } = wrapper.find('input').at(1).props();
+    // assert
+    expect(firstChecked).toBe(true);
+    expect(secondChecked).toBe(false);
   });
 });

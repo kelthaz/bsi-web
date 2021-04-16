@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente EstadoDocumento Debe de mostrarse correctamente el componente 1`] = `
+<div
+  className="row pb-3"
+>
+  <div
+    className="col-5"
+  >
+    <span
+      className="body2"
+    >
+      Acta constitutiva
+    </span>
+  </div>
+  <div
+    className="col-5 text-overflow"
+  >
+    <span
+      className="link"
+    >
+      acta.pdf
+    </span>
+  </div>
+  <div
+    className="col-2 text-center"
+  />
+</div>
+`;

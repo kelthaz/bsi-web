@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 
-import Accordion from '../../components/shared/accordion/Accordion';
 import Modal from '../../components/shared/modal/Modal';
 import DatePickerInput from '../../components/shared/datepicker/DatePickerInput';
 import Select from '../../components/shared/select/Select';
@@ -9,11 +8,6 @@ import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
 import Calendar from '../../components/shared/calendar/Calendar';
 import ResultSimulador from '../../components/core/simulador/ResultSimulador';
-import SvgDocumentosPequeño from '../../components/svgs/iconos/SvgDocumentosPequeño';
-import EstadoDocumentosFirma from '../../components/features/privado/shared/estado-documentos/firma/EstadoDocumentosFirma';
-import EstadoDocumentosProspecto from '../../components/features/privado/shared/estado-documentos/prospecto/EstadoDocumentosProspecto';
-import EstadoDocumentosRepresentanteLegal from '../../components/features/privado/shared/estado-documentos/representante-legal/EstadoDocumentosRepresentanteLegal';
-import EstadoDocumentosAnalista from '../../components/features/privado/shared/estado-documentos/analista/EstadoDocumentosAnalista';
 import AsignarCasos from '../../components/features/privado/shared/asignacion-casos/AsignarCasos';
 import TablaProspecto from '../../components/features/privado/shared/tabla-prospectos/TablaProspectos';
 import Tab from '../../components/shared/tab/Tab';
@@ -172,127 +166,7 @@ const NuevosComponentes = () => {
               <TitleSection orden="04" linea1="Estado de los documentos Prospecto" />
             </div>
             <div className="row">
-              <div className="col-7">
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Documentos Bancoppel
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosFirma
-                    documentos={[
-                      { id: 1, nombre: 'Contrato', ruta: 'contrato_alejandra.pdf', estado: 0 },
-                      { id: 2, nombre: 'Solicitud de servicio EmpresaNet', ruta: 'solicitud_empNet.pdf', estado: 2 },
-                      { id: 3, nombre: 'Kit de apertura', ruta: 'kitapertura.pdf', estado: 1 },
-                    ]}
-                  />
-                </Accordion>
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Mis documentos
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosProspecto
-                    documentos={[
-                      { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      {
-                        id: 3,
-                        nombre: 'Comprobante de domicilio',
-                        ruta: 'comprobante_luz_factura_hogar.pdf',
-                        estado: 1,
-                      },
-                      { id: 4, nombre: 'Poderes notariales', ruta: 'poderes.pdf', estado: 0 },
-                      { id: 5, nombre: 'Acta constitutiva', ruta: 'acta.pdf', estado: 2 },
-                      { id: 6, nombre: 'Reformas' },
-                      { id: 7, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 1 },
-                      { id: 8, nombre: 'Selfie', ruta: 'selfie.png', estado: 1 },
-                    ]}
-                  />
-                </Accordion>
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Documentos obligado solidario
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosProspecto
-                    documentos={[
-                      { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                      { id: 3, nombre: 'Comprobante de domicilio', ruta: 'comprobante.png', estado: 1 },
-                    ]}
-                  />
-                </Accordion>
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Representantes legales
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosRepresentanteLegal
-                    representantes={[
-                      {
-                        id: 1,
-                        nombre: 'Jorge Ortiz Cruz',
-                        telefono: '55 1234 5678',
-                        email: 'jorge@mail.com',
-                        documentos: [
-                          {
-                            id: 1,
-                            nombre: 'Identificación oficial (Frente)',
-                            ruta: 'INE_representante.jpg',
-                            estado: 1,
-                          },
-                          {
-                            id: 2,
-                            nombre: 'Identificación oficial (Reverso)',
-                            ruta: 'INE_representante.jpg',
-                            estado: 1,
-                          },
-                        ],
-                      },
-                      {
-                        id: 2,
-                        nombre: 'Patricia Florez Sánchez',
-                        telefono: '55 1234 5678',
-                        email: 'patricia@mail.com',
-                        documentos: [
-                          {
-                            id: 3,
-                            nombre: 'Identificación oficial (Frente)',
-                            ruta: 'INE_representante.jpg',
-                            estado: 2,
-                          },
-                          {
-                            id: 4,
-                            nombre: 'Identificación oficial (Reverso)',
-                            ruta: 'INE_representante.jpg',
-                            estado: 2,
-                          },
-                        ],
-                      },
-                    ]}
-                  />
-                </Accordion>
-              </div>
+              <div className="col-7">componentes eliminados</div>
             </div>
           </div>
         </Section>
@@ -305,93 +179,7 @@ const NuevosComponentes = () => {
               <TitleSection orden="05" linea1="Estado de los documentos Analista" />
             </div>
             <div className="row">
-              <div className="col-7">
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Documentos del prospecto
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosAnalista
-                    prospecto={{
-                      documentos: [
-                        { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'ALE_INE.jpg', estado: 1 },
-                        { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'ALE_INE.jpg', estado: 1 },
-                        {
-                          id: 3,
-                          nombre: 'Comprobante de domicilio (Comercial)',
-                          ruta: 'comprobante_luz_factura_hogar.pdf',
-                          estado: 0,
-                        },
-                        {
-                          id: 4,
-                          nombre: 'Comprobante de domicilio (Fiscal)',
-                          ruta: 'comprobante_luz_factura_hogar.pdf',
-                          estado: 0,
-                        },
-                        { id: 5, nombre: 'Acta de matrimonio', ruta: 'Acta_matrimonio.pdf', estado: 0 },
-                        { id: 6, nombre: 'Prueba de vida', ruta: 'prueba.mv', estado: 0 },
-                        { id: 7, nombre: 'Selfie', ruta: 'selfie.png', estado: 0 },
-                        { id: 8, nombre: 'Autorización de crédito', ruta: 'Autorizacion_credito.pdf', estado: 0 },
-                        { id: 9, nombre: 'Reporte de buró de crédito', ruta: 'reporte_buro_credito.pdf', estado: 0 },
-                      ],
-                      relaciones: [
-                        {
-                          id: 1,
-                          nombre: 'Carlos Pérez Díaz',
-                          descripcion: 'Cónyuge del solicitante',
-                          documentos: [
-                            { id: 10, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Carlos.jpg', estado: 1 },
-                            { id: 11, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Carlos.jpg', estado: 1 },
-                          ],
-                        },
-                      ],
-                    }}
-                  />
-                </Accordion>
-                <Accordion
-                  title={
-                    <span>
-                      <SvgDocumentosPequeño /> Documentos de obligado solidario
-                    </span>
-                  }
-                  expanded={false}
-                  color="blue"
-                  icon="arrow"
-                >
-                  <EstadoDocumentosAnalista
-                    prospecto={{
-                      relaciones: [
-                        {
-                          id: 1,
-                          nombre: 'Alberto Abad Gómez',
-                          descripcion: 'Obligado solidario',
-                          documentos: [
-                            { id: 1, nombre: 'Identificación oficial (Frente)', ruta: 'INE_AAG.jpg', estado: 0 },
-                            { id: 2, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_AAG.jpg', estado: 0 },
-                            { id: 3, nombre: 'Relación patrimonial', ruta: 'relacion_patrimonial.pdf', estado: 0 },
-                            { id: 4, nombre: 'Comprobante de domicilio', ruta: 'Comprobante_luz.jpg', estado: 0 },
-                            { id: 5, nombre: 'Acta de matrimonio', ruta: 'acta.pdf', estado: 0 },
-                          ],
-                        },
-                        {
-                          id: 2,
-                          nombre: 'Diana Flores Cantú',
-                          descripcion: 'Cónyuge del obligado solidario',
-                          documentos: [
-                            { id: 6, nombre: 'Identificación oficial (Frente)', ruta: 'INE_Diana.jpg', estado: 1 },
-                            { id: 7, nombre: 'Identificación oficial (Reverso)', ruta: 'INE_Diana.jpg', estado: 1 },
-                          ],
-                        },
-                      ],
-                    }}
-                  />
-                </Accordion>
-              </div>
+              <div className="col-7">componentes eliminados</div>
             </div>
           </div>
         </Section>
@@ -424,27 +212,98 @@ const NuevosComponentes = () => {
             </div>
             <div className="row pb-lg-5 pb-md-4 pb-sm-2 pb-xm-1 justify-content-center">
               <div className="col-lg-12 col-md-12 justify-content-center">
-              <Tab>
-                <TabItem tab="Documentos por revisar" keyTab="1">
-                  <TablaProspecto data={[
-                      { nombre: 'Fernanda Rodriguez',  porRevisar: '3 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '10 min', region: 'Norte' },
-                      { nombre: 'Daniela Fernanda',    porRevisar: '2 documentos', estatus: 2, persona: 'Moral', tiempoEspera: '2 días', region: 'Oeste' },
-                      { nombre: 'José Lima Rodríguez', porRevisar: '2 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '3 días', region: 'Oeste' },
-                      { nombre: 'Alejandro Ramírez',   porRevisar: '3 documentos', estatus: 0, persona: 'PFAE',  tiempoEspera: '20 min', region: 'Norte' },
-                      { nombre: 'Mariana Nayeli',      porRevisar: '5 documentos', estatus: 1, persona: 'Moral', tiempoEspera: '6 hrs',  region: 'Oeste' },
-                      { nombre: 'Fernanda Rodriguez',  porRevisar: '3 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '10 min', region: 'Norte' },
-                      { nombre: 'Daniela Fernanda',    porRevisar: '2 documentos', estatus: 2, persona: 'Moral', tiempoEspera: '2 días', region: 'Oeste' },
-                      { nombre: 'José Lima Rodríguez', porRevisar: '2 documentos', estatus: 1, persona: 'PFAE',  tiempoEspera: '3 días', region: 'Oeste' },
-                      { nombre: 'Alejandro Ramírez',   porRevisar: '3 documentos', estatus: 0, persona: 'PFAE',  tiempoEspera: '20 min', region: 'Norte' },
-                      { nombre: 'Mariana Nayeli',      porRevisar: '5 documentos', estatus: 1, persona: 'Moral', tiempoEspera: '6 hrs',  region: 'Oeste' }
-                    ]}
+                <Tab>
+                  <TabItem tab="Documentos por revisar" keyTab="1">
+                    <TablaProspecto
+                      data={[
+                        {
+                          nombre: 'Fernanda Rodriguez',
+                          porRevisar: '3 documentos',
+                          estatus: 1,
+                          persona: 'PFAE',
+                          tiempoEspera: '10 min',
+                          region: 'Norte',
+                        },
+                        {
+                          nombre: 'Daniela Fernanda',
+                          porRevisar: '2 documentos',
+                          estatus: 2,
+                          persona: 'Moral',
+                          tiempoEspera: '2 días',
+                          region: 'Oeste',
+                        },
+                        {
+                          nombre: 'José Lima Rodríguez',
+                          porRevisar: '2 documentos',
+                          estatus: 1,
+                          persona: 'PFAE',
+                          tiempoEspera: '3 días',
+                          region: 'Oeste',
+                        },
+                        {
+                          nombre: 'Alejandro Ramírez',
+                          porRevisar: '3 documentos',
+                          estatus: 0,
+                          persona: 'PFAE',
+                          tiempoEspera: '20 min',
+                          region: 'Norte',
+                        },
+                        {
+                          nombre: 'Mariana Nayeli',
+                          porRevisar: '5 documentos',
+                          estatus: 1,
+                          persona: 'Moral',
+                          tiempoEspera: '6 hrs',
+                          region: 'Oeste',
+                        },
+                        {
+                          nombre: 'Fernanda Rodriguez',
+                          porRevisar: '3 documentos',
+                          estatus: 1,
+                          persona: 'PFAE',
+                          tiempoEspera: '10 min',
+                          region: 'Norte',
+                        },
+                        {
+                          nombre: 'Daniela Fernanda',
+                          porRevisar: '2 documentos',
+                          estatus: 2,
+                          persona: 'Moral',
+                          tiempoEspera: '2 días',
+                          region: 'Oeste',
+                        },
+                        {
+                          nombre: 'José Lima Rodríguez',
+                          porRevisar: '2 documentos',
+                          estatus: 1,
+                          persona: 'PFAE',
+                          tiempoEspera: '3 días',
+                          region: 'Oeste',
+                        },
+                        {
+                          nombre: 'Alejandro Ramírez',
+                          porRevisar: '3 documentos',
+                          estatus: 0,
+                          persona: 'PFAE',
+                          tiempoEspera: '20 min',
+                          region: 'Norte',
+                        },
+                        {
+                          nombre: 'Mariana Nayeli',
+                          porRevisar: '5 documentos',
+                          estatus: 1,
+                          persona: 'Moral',
+                          tiempoEspera: '6 hrs',
+                          region: 'Oeste',
+                        },
+                      ]}
                       compact
-                  />
-                </TabItem>
-                <TabItem tab="Generar alta de cliente" keyTab="2" />
-                <TabItem tab="Generar alta de linea" keyTab="3" />
-                <TabItem tab="Desembolso" keyTab="4" />
-              </Tab>
+                    />
+                  </TabItem>
+                  <TabItem tab="Generar alta de cliente" keyTab="2" />
+                  <TabItem tab="Generar alta de linea" keyTab="3" />
+                  <TabItem tab="Desembolso" keyTab="4" />
+                </Tab>
               </div>
             </div>
           </div>

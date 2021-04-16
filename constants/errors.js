@@ -11,6 +11,7 @@ export const ingreseOpcion = () => 'Ingrese una opción';
 export const numeroInvalido = () => 'Número telefónico inválido';
 export const correoInvalido = () => 'Correo inválido';
 export const rfcInvalido = () => 'RFC inválido';
+export const rfcContrasenaInvalida = () => 'Usuario y/o contraseña incorrectos';
 export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acentos';
 export const aceptarTerminos = () => 'Debe aceptar los términos';
 export const declararTerminos = () => 'Debe declarar los términos';

@@ -59,7 +59,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   error=""
                   format="uppercase"
                   initialTouched={false}
-                  initialValue="JESUS"
+                  initialValue=""
                   inverted={false}
                   label="Nombre"
                   maxlength={60}
@@ -73,7 +73,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   size="big"
                   touched={false}
                   type="text"
-                  value="JESUS"
+                  value=""
                 >
                   <div
                     className="group"
@@ -94,7 +94,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       readOnly={false}
                       tabIndex="0"
                       type="text"
-                      value="JESUS"
+                      value=""
                     />
                     <span>
                        
@@ -168,7 +168,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   error=""
                   format="uppercase"
                   initialTouched={false}
-                  initialValue="DAVID"
+                  initialValue=""
                   inverted={false}
                   label="Apellido paterno"
                   maxlength={60}
@@ -182,7 +182,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                   size="big"
                   touched={false}
                   type="text"
-                  value="DAVID"
+                  value=""
                 >
                   <div
                     className="group"
@@ -203,7 +203,7 @@ exports[`Pruebas en el componente PasoUnoDatosPersonales Debe de mostrarse corre
                       readOnly={false}
                       tabIndex="0"
                       type="text"
-                      value="DAVID"
+                      value=""
                     />
                     <span>
                        

@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el componente VisorPDF Debe de mostrarse correctamente el componente 1`] = `
+<Fragment>
+  <div
+    className="container-visor-pdf "
+  >
+    <Document
+      file="/Hunk-160R-FI-Hero-MotoCorp.pdf"
+      onLoadSuccess={[Function]}
+    >
+      <Page
+        onLoadSuccess={[Function]}
+        pageNumber={1}
+        rotate={0}
+        scale={1}
+      />
+    </Document>
+  </div>
+  <div
+    className="container-controls-visor-pdf"
+  >
+    <div
+      className="buttons-controls-visor-pdf"
+    >
+      <button
+        type="button"
+      >
+        <SvgDownload />
+      </button>
+      <button
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgArrow />
+      </button>
+      <button
+        className="turn-arrow"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgArrow />
+      </button>
+      <button
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgTurn />
+      </button>
+      <span>
+        1
+         / 
+        4
+      </span>
+      <button
+        className="turn-right"
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgTurn />
+      </button>
+      <button
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgPlus />
+      </button>
+      <button
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgMinus />
+      </button>
+      <button
+        className=""
+        onClick={[Function]}
+        type="button"
+      >
+        <SvgExpand />
+      </button>
+    </div>
+  </div>
+</Fragment>
+`;

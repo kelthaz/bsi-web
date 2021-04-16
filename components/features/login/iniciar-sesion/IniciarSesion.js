@@ -5,7 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Tab from '../../../shared/tab/Tab';
 import TabItem from '../../../shared/tab/TabItem';
-import { campoRequerido, captcha, longitudMaxima, longitudMinima } from '../../../../constants/errors';
+import {
+  campoRequerido,
+  captcha,
+  longitudMaxima,
+  longitudMinima,
+  rfcContrasenaInvalida,
+} from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
@@ -37,7 +43,7 @@ const IniciarSesion = () => {
       if (valid) {
         push('/inicio');
       } else {
-        formulario.setFieldError('contrasena', 'RFC y/o contraseña incorrectos');
+        formulario.setFieldError('contrasena', rfcContrasenaInvalida());
       }
     },
   });
@@ -64,7 +70,7 @@ const IniciarSesion = () => {
         <TextField
           name="rfc"
           format="email"
-          maxlength={50}
+          maxlength={100}
           type="text"
           size="small"
           label="Usuario"

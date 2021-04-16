@@ -26,12 +26,16 @@ exports[`Pruebas en el componente cards del backOffice Debe de mostrarse correct
   <div
     className="col-3 mt-5 px-0 button"
   >
-    <button
-      className="btn-link-arrow-right-inverted"
-      type="button"
+    <Component
+      href="privado/dashboard/cliente"
     >
-      Ver detalle
-    </button>
+      <button
+        className="btn-link-arrow-right-inverted"
+        type="button"
+      >
+        Ver detalle
+      </button>
+    </Component>
   </div>
 </div>
 `;
