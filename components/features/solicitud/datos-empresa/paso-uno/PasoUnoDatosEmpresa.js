@@ -12,8 +12,8 @@ import Tooltip from '../../../../shared/tooltip/Tooltip';
 import SvgPersonaFisicaActividadFisica from '../../../../svgs/SvgPersonaFisicaActividadFisica';
 
 const PasoUnoDatosEmpresa = ({ validate }) => {
-  const capitalTrabajo = { value: '1', label: 'Capital de trabajo' };
-  const adquisicionActivacion = { value: '2', label: 'Adquisición de activos' };
+  const capitalTrabajo = { value: 'CAPITAL_TRABAJO', label: 'Capital de trabajo' };
+  const adquisicionActivacion = { value: 'ADQUISICION_ACTIVOS', label: 'Adquisición de activos' };
 
   const { currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();

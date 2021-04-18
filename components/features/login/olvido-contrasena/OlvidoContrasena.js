@@ -5,6 +5,7 @@ import { campoRequerido, correoInvalido } from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import SvgEnviarCorreo from '../../../svgs/login/SvgEnviarCorreo';
 import SvCorreoEnviado from '../../../svgs/login/SvCorreoEnviado';
+import LoginRepositorio from '../../../../services/login/login.repositorio';
 
 const OlvidoContrasena = () => {
   const [send, setSend] = useState(false);
@@ -16,7 +17,8 @@ const OlvidoContrasena = () => {
     validationSchema: Yup.object({
       correo: Yup.string().trim().email(correoInvalido).required(campoRequerido),
     }),
-    onSubmit: () => {
+    onSubmit: async (values) => {
+      await LoginRepositorio.pathOlvidoPassword(values.correo);
       setSend(true);
     },
   });
@@ -73,11 +75,7 @@ const OlvidoContrasena = () => {
           </div>
 
           <div className="row d-flex justify-content-center py-3">
-            <button
-              type="submit"
-              className="btn-medium"
-              disabled={!(formulario.isValid && formulario.dirty)}
-            >
+            <button type="submit" className="btn-medium" disabled={!(formulario.isValid && formulario.dirty)}>
               Enviar
             </button>
           </div>

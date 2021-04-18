@@ -10,9 +10,10 @@ import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicit
 import TextField from '../../../../../shared/text-field/TextField';
 import { campoRequerido, longitudMaxima, numeroInvalido, correoInvalido } from '../../../../../../constants/errors';
 import SvgEnviado from '../../../../../svgs/SvgEnviado';
-import EmailageRepositorio from '../../../../../../services/solicitud/emailage.repositorio';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
+import validateEmail from '../../../../../../helpers/validations/validationEmail';
+import ObligadoSolidiarioRepositorio from '../../../../../../services/solicitud/obligadoSolidiario.repositorio';
 
 const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
   const { documentacion, currentStep } = useSelector((state) => state.solicitud);
@@ -48,26 +49,27 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
     },
   });
 
-  const validateEmail = async () => {
-    if (!formulario.errors.correo) {
-      const emailScore = await EmailageRepositorio.postEmailScore(formulario.values.correo)
-        .then((resp) => resp.data.fraudRisk.split(' ')[0])
-        .catch(() => 801);
-      if (emailScore >= 800) {
-        formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
-        return false;
-      }
-      // setOpenConfirmation(true);
+  const isValid = async () => {
+    const [emailExist, error] = await validateEmail(formulario.values.correo);
+
+    if (!emailExist) {
+      formulario.setFieldError('correo', error);
+      return emailExist;
     }
-    return true;
+
+    const personData = {
+      ...formulario.values,
+      tipoPersona: documentacion.obligadoSolidario.tipoPersona,
+    };
+
+    const validPerson = await ObligadoSolidiarioRepositorio.postObligadoSolidiario(personData)
+      .then(() => true)
+      .catch(() => false);
+
+    return validPerson;
   };
 
-  const [handleSubmit] = useOnChangePage(
-    formulario,
-    AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE,
-    currentStep,
-    validateEmail
-  );
+  const [handleSubmit] = useOnChangePage(formulario, AGRADECIMIENTO_OBLIGADO_DOCUMENTACION_ROUTE, currentStep, isValid);
 
   return (
     <>

@@ -10,6 +10,7 @@ export const seleccionOpcion = () => 'Selecciona una opción';
 export const ingreseOpcion = () => 'Ingrese una opción';
 export const numeroInvalido = () => 'Número telefónico inválido';
 export const correoInvalido = () => 'Correo inválido';
+export const correoNoExiste = () => 'El correo no existente, favor de corregirlo.';
 export const rfcInvalido = () => 'RFC inválido';
 export const rfcContrasenaInvalida = () => 'Usuario y/o contraseña incorrectos';
 export const sinCaracteresEspeciales = () => 'Sin caracteres especiales o acentos';

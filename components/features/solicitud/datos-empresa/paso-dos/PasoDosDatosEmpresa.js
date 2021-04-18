@@ -35,6 +35,7 @@ const PasoDosDatosEmpresa = ({ validate }) => {
           .nullable()
           .required(seleccionOpcion),
         municipioAlcaldia: Yup.string(),
+        municipioId: Yup.string(),
         ciudad: Yup.string(),
         estado: Yup.string(),
       }),
@@ -53,6 +54,7 @@ const PasoDosDatosEmpresa = ({ validate }) => {
             .nullable()
             .required(seleccionOpcion),
           municipioAlcaldia: Yup.string(),
+          municipioId: Yup.string(),
           ciudad: Yup.string(),
           estado: Yup.string(),
         }),
@@ -101,6 +103,7 @@ const PasoDosDatosEmpresa = ({ validate }) => {
               nameFieldMunicipioAlcaldia="domicilioFiscal.municipioAlcaldia"
               nameFieldCiudad="domicilioFiscal.ciudad"
               nameFieldEstado="domicilioFiscal.estado"
+              nameFieldMunicipioId="domicilioFiscal.municipioId"
             />
             <p className="color-gray-dark body2">¿Éste es también tu domicilio comercial?</p>
             <div className="row no-gutters">

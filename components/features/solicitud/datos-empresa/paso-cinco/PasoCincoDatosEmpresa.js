@@ -15,9 +15,9 @@ const PasoCincoDatosEmpresa = ({ validate }) => {
   const dispatch = useDispatch();
 
   const items = [
-    { value: 1, label: '0 a 40' },
-    { value: 2, label: '40 a 60' },
-    { value: 3, label: 'Más de 60' },
+    { value: 'UNO_A_DIEZ', label: '0 a 40' },
+    { value: 'DIEZ_A_CIEN', label: '40 a 60' },
+    { value: 'MAS_CIEN', label: 'Más de 60' },
   ];
 
   const formulario = useFormik({

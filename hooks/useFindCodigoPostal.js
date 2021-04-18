@@ -8,7 +8,8 @@ const useFindCodigoPostal = (
   nameColonia,
   nameMunicipioAlcaldia,
   nameCiudad,
-  nameEstado
+  nameEstado,
+  nameFieldMunicipioId
 ) => {
   const [colonias, setColonias] = useState([]);
 
@@ -22,11 +23,12 @@ const useFindCodigoPostal = (
           .catch(() => {
             formulario.setFieldValue(nameColonia, null);
             return {
-              municipio: { nombre: '', estado: { nombre: '' } },
+              municipio: { id: '', nombre: '', estado: { nombre: '' } },
               ciudad: '',
               asentamientos: [],
             };
           });
+        formulario.setFieldValue(nameFieldMunicipioId, municipio.id);
         formulario.setFieldValue(nameMunicipioAlcaldia, municipio.nombre);
         formulario.setFieldValue(nameCiudad, ciudad);
         formulario.setFieldValue(nameEstado, municipio.estado.nombre);

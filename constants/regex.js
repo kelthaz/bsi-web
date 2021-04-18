@@ -1,7 +1,7 @@
 export const regexLettersSpace = /[^A-Za-zÁÉÍÓÚáéíóúñÑ ]+/g;
 export const regexTextArea = /[^A-Za-zÁÉÍÓÚáéíóúñÑ1234567890,.!¡?¿"()'-:; ]+/g;
 export const regexAlphanumeric = /[^A-Za-zÁÉÍÓÚáéíóúñÑ1234567890 ]+/g;
-export const regexEmail = /[^A-Za-z1234567890@.-_]+/g;
+export const regexEmail = /[^A-Za-z1234567890@._-]+/g;
 export const regexNumber = /[^1234567890]+/g;
 export const regexRFC = /[^A-Za-z1234567890]+/g;
 export const regexDiacritics = /([^\u0300-\u036fn]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi;
