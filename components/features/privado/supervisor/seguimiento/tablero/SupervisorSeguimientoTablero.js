@@ -51,7 +51,7 @@ const SupervisorSeguimientoTablero = () => {
     <div className="container-fluid">
       <div className="row mt-4 pl-3">
         <h3 className="color-blue-storm pr-3">Mi tablero</h3>
-        <p className="color-blue-storm body2 mt-2">Superadministrador</p>
+        <p className="color-blue-storm body2 mt-2">Seguimiento</p>
       </div>
       <div className="row mt-2">
         <div className="col-2">

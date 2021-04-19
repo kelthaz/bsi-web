@@ -32,11 +32,6 @@ const SupervisorMesaDeControlActividades = () => {
       sortable: true,
     },
     {
-      name: 'Región',
-      selector: 'region',
-      sortable: true,
-    },
-    {
       name: 'Accion',
       selector: 'accion',
       sortable: true,
@@ -59,7 +54,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$2,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Norte',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -68,7 +62,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$20,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -77,7 +70,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$6,500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Sur',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -86,7 +78,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Norte',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -95,7 +86,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -104,7 +94,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -113,7 +102,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -122,7 +110,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -131,7 +118,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -140,7 +126,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -149,7 +134,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
             {
@@ -158,7 +142,6 @@ const SupervisorMesaDeControlActividades = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
               accion: <AsignarCasos tableButton />,
             },
           ]}

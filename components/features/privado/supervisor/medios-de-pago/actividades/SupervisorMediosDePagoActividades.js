@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Tabla from '../../../shared/tabla/Tabla';
+import TabItem from '../../../../../../components/shared/tab/TabItem';
+import Tab from '../../../../../../components/shared/tab/Tab';
 import Paginador from '../../../shared/tabla/paginador/Paginador';
 import SelectorFilas from '../../../shared/tabla/selector-filas/SelectorFilas';
 import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
@@ -19,11 +21,6 @@ const SupervisorMediosDePagoActividades = () => {
     {
       name: 'Tiempo de espera',
       selector: 'tiempoEspera',
-      sortable: true,
-    },
-    {
-      name: 'Región',
-      selector: 'region',
       sortable: true,
     },
     {
@@ -50,56 +47,102 @@ const SupervisorMediosDePagoActividades = () => {
   return (
     <div className="container-fluid">
       <div className="table-margin">
-        <Tabla
-          columns={COLUMNS}
-          data={[
-            {
-              nombre: 'Fernanda Rodriguez',
-              reviso: 'Salvador Elizondo',
-              tiempoEspera: '10 min',
-              region: 'Norte',
-              idSolicitud: 31232,
-              fechaSolicitud: '01/Enero/2020',
-              accion: <AsignarCasos tableButton />,
-            },
-            {
-              nombre: 'Daniela Fernanda',
-              reviso: 'Salvador Rodriguez',
-              tiempoEspera: '3 min',
-              region: 'Oeste',
-              idSolicitud: 12345,
-              fechaSolicitud: '01/Enero/2020',
-              accion: <AsignarCasos tableButton />,
-            },
-            {
-              nombre: 'Daniela Ramírez',
-              reviso: 'Jaquelinne Meller',
-              tiempoEspera: '3 min',
-              region: 'Oeste',
-              idSolicitud: 12345,
-              fechaSolicitud: '01/Enero/2020',
-              accion: <AsignarCasos tableButton />,
-            },
-            {
-              nombre: 'Alejandro Ramírez ',
-              reviso: 'Sergio Villaleth',
-              tiempoEspera: '3 min',
-              region: 'Oeste',
-              idSolicitud: 12345,
-              fechaSolicitud: '01/Enero/2020',
-              accion: <AsignarCasos tableButton />,
-            },
-            {
-              nombre: 'José Lima Rodríguez',
-              reviso: 'Sergio Villaleth',
-              tiempoEspera: '3 días',
-              region: 'Oeste',
-              idSolicitud: 12345,
-              fechaSolicitud: '01/Enero/2020',
-              accion: <AsignarCasos tableButton />,
-            },
-          ]}
-        />
+        <Tab>
+          <TabItem tab="Realizar alta de cuenta" keyTab="1">
+            <Tabla
+              columns={COLUMNS}
+              data={[
+                {
+                  nombre: 'Fernanda Rodriguez',
+                  reviso: 'Salvador Elizondo',
+                  tiempoEspera: '10 min',
+                  idSolicitud: 31232,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Daniela Fernanda',
+                  reviso: 'Salvador Rodriguez',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Daniela Ramírez',
+                  reviso: 'Jaquelinne Meller',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Alejandro Ramírez ',
+                  reviso: 'Sergio Villaleth',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'José Lima Rodríguez',
+                  reviso: 'Sergio Villaleth',
+                  tiempoEspera: '3 días',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+              ]}
+            />
+          </TabItem>
+          <TabItem tab="Realizar alta de cuenta" keyTab="2">
+            <Tabla
+              columns={COLUMNS}
+              data={[
+                {
+                  nombre: 'Fernanda Rodriguez',
+                  reviso: 'Salvador Elizondo',
+                  tiempoEspera: '10 min',
+                  idSolicitud: 31232,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Daniela Fernanda',
+                  reviso: 'Salvador Rodriguez',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Daniela Ramírez',
+                  reviso: 'Jaquelinne Meller',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'Alejandro Ramírez ',
+                  reviso: 'Sergio Villaleth',
+                  tiempoEspera: '3 min',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+                {
+                  nombre: 'José Lima Rodríguez',
+                  reviso: 'Sergio Villaleth',
+                  tiempoEspera: '3 días',
+                  idSolicitud: 12345,
+                  fechaSolicitud: '01/Enero/2020',
+                  accion: <AsignarCasos tableButton />,
+                },
+              ]}
+            />
+          </TabItem>
+        </Tab>
       </div>
       <div className="footer-paginator">
         <div className="float-left my-4">
