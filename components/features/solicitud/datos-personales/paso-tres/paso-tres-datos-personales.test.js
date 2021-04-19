@@ -7,7 +7,7 @@ import { act } from 'react-dom/test-utils';
 import storeTest from '../../../../../redux/storeTest';
 import PasoTresDatosPersonales from './PasoTresDatosPersonales';
 import { PASO_CUATRO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
-import SectoresRepositorio from '../../../../../services/simulador/sectores.repositorio';
+import SectoresRepositorio from '../../../../../services/solicitud/sectores.repositorio';
 import { FISICA, MORAL } from '../../../../../constants/persona';
 import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 

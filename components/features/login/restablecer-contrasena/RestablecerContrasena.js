@@ -14,6 +14,7 @@ import TextField from '../../../shared/text-field/TextField';
 import { regexMinOneNumber, regexNoConsecutives, regexUpperAndLowerCase } from '../../../../constants/regex';
 import ValidatePassword from '../../../shared/validate-password/ValidatePassword';
 import SvgClaveCambiada from '../../../svgs/login/SvgClaveCambiada';
+import LoginRepositorio from '../../../../services/login/login.repositorio';
 
 const RestablecerContrasena = () => {
   const [send, setSend] = useState(false);
@@ -37,8 +38,11 @@ const RestablecerContrasena = () => {
         .oneOf([Yup.ref('contrasena'), null], 'Las contraseñas deben coincidir')
         .required(campoRequerido),
     }),
-    onSubmit: () => {
-      setSend(true);
+    onSubmit: async (values) => {
+      const seRestablecio = await LoginRepositorio.pathCambiarPassword(values.contrasena)
+        .then(() => true)
+        .catch(() => false);
+      setSend(seRestablecio);
     },
   });
 

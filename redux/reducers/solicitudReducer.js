@@ -27,6 +27,7 @@ const initialState = {
     rfc: '',
     rfcRepresentante: '',
     aceptoTerminos: null,
+    enListaNegra: false,
   },
   datosEmpresa: {
     aceptoTerminosMultas: null,
@@ -39,6 +40,7 @@ const initialState = {
       codigoPostal: '',
       colonia: null,
       municipioAlcaldia: '',
+      municipioId: '',
       ciudad: '',
       estado: '',
     },
@@ -50,6 +52,7 @@ const initialState = {
       codigoPostal: '',
       colonia: null,
       municipioAlcaldia: '',
+      municipioId: '',
       ciudad: '',
       estado: '',
     },

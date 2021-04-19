@@ -16,7 +16,8 @@ import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
 import CheckBox from '../../../shared/check-box/CheckBox';
-import { OLVIDO_CONTRASENA } from '../../../../constants/routes/login/login';
+import { OLVIDO_CONTRASENA, RESTABLECER_CONTRASENA } from '../../../../constants/routes/login/login';
+import { INICIO_ROUTE } from '../../../../constants/routes/publico/publico';
 
 const IniciarSesion = () => {
   const { push } = useRouter();
@@ -34,14 +35,14 @@ const IniciarSesion = () => {
       mantenerSesion: Yup.boolean(),
     }),
     onSubmit: async (values) => {
-      const valid = await LoginRepositorio.postLogin({
+      const route = await LoginRepositorio.postLogin({
         username: values.rfc,
         password: values.contrasena,
       })
-        .then(() => true)
-        .catch(() => false);
-      if (valid) {
-        push('/inicio');
+        .then(({ headers }) => (headers['cambio-password'] === 'true' ? RESTABLECER_CONTRASENA : INICIO_ROUTE))
+        .catch(() => '');
+      if (route) {
+        push(route);
       } else {
         formulario.setFieldError('contrasena', rfcContrasenaInvalida());
       }

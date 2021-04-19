@@ -1,28 +1,20 @@
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import SvgLegalex from '../../../../svgs/SvgLegalex';
 import styles from './StepNine.module.scss';
-import SvgNoGuardamosNada from '../../../../svgs/icons-cards/SvgNoGuardamosNada';
 import Modal from '../../../../shared/modal/Modal';
 import SvgCheckText from '../../../../svgs/SvgCheckText';
 import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
-import TextField from '../../../../shared/text-field/TextField';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
-import Tooltip from '../../../../shared/tooltip/Tooltip';
 import { aceptarTerminos } from '../../../../../constants/errors';
 import { MORAL } from '../../../../../constants/persona';
 import ContratoLegalex from '../../shared/contrato-legalex/ContratoLegalex';
-import { useEffect } from 'react';
-import LegalexRepositorio from '../../../../../services/solicitud/legalex.repositorio';
+import LegalexRepositorio from '../../../../../services/solicitud/contrato.repositorio';
 
 const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const [openModalMobile, setOpenModalMobile] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const { datosPersonales } = useSelector((state) => state.solicitud);
   const router = useRouter();
@@ -71,6 +63,18 @@ const ContratoLegalexDatosEmpresa = () => {
     },
   });
 
+  const handleBuroCredito = async () => {
+    const emailExist = await LegalexRepositorio.postBuroCredito()
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch(({ response }) => {
+        // const [error] = response.data.message;
+        console.log(response.data);
+        // return false;
+      });
+  };
+
   useEffect(async () => {
     const validateEmail = async () => {
       const emailExist = await LegalexRepositorio.postContratoDigital()
@@ -104,50 +108,13 @@ const ContratoLegalexDatosEmpresa = () => {
           </p>
 
           <div className="d-flex justify-content-center">
-            <Link href="/solicitud/[tab]/[step]" as="/solicitud/datos-empresa/agradecimiento">
-              <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>Continuar</span>
-              </button>
-            </Link>
+            <button className="btn-medium" type="submit" aria-label="Avanzar" onClick={handleBuroCredito}>
+              <span>Continuar</span>
+            </button>
           </div>
         </div>
       </Modal>
-      <Modal openModal={openModalMobile} setOpenModal={setOpenModalMobile}>
-        <div className="container px-xs-0 px-md-0">
-          <span className="sub color-blue-storm ">Proceso de autorización</span>
-          <div className="row mt-3 card-white text-md-center ">
-            <div className="col-xs-4">
-              <Image src="/Buro2.jpg" alt="" width="90" height="90" />
-            </div>
-            <div className="mt-2 col-xs-8">
-              <h4 className="color-blue-storm sub">Consultamos con Buró de crédito</h4>
-              <p className="color-gray body3">Esto para conocer un poco más sobre ti</p>
-            </div>
-          </div>
-          <div className="row mt-4 card-white text-md-center">
-            <div className="col-xs-4">
-              <SvgLegalex />
-            </div>
-            <div className="col-xs-8">
-              <h4 className="color-blue-storm sub">Firma segura con Legalex GS</h4>
-              <p className="color-gray body3">
-                Puedes firmar de forma segura con tu e.firma
-                <br />
-                <a className="link">¿Por qué te pedimos esto?</a>
-              </p>
-            </div>
-          </div>
-          <div className="row  mt-3 text-md-center ">
-            <div className=" col-xs-4">
-              <SvgNoGuardamosNada />
-            </div>
-            <div className="col-xs-8">
-              <h4 className="color-blue-storm sub pb-auto">No guardamos nada</h4>
-              <p className="color-gray body3">Después de la consulta no guardaremos tus archivos</p>
-            </div>
-          </div>
-        </div>
-      </Modal>
+
       <div className="contedor-fixed">
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">

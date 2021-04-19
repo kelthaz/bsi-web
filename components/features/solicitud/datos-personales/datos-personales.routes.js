@@ -5,8 +5,8 @@ import PasoDosDatosPersonales from './paso-dos/PasoDosDatosPersonales';
 import PasoTresDatosPersonales from './paso-tres/PasoTresDatosPersonales';
 import PasoCuatroDatosPersonales from './paso-cuatro/PasoCuatroDatosPersonales';
 import PasoCincoDatosPersonales from './paso-cinco/PasoCincoDatosPersonales';
-import Agradecimiento from './agradecimiento/AgradecimientoDatosPersonales';
-import SectoresRepositorio from '../../../../services/simulador/sectores.repositorio';
+import AgradecimientoDatosPersonales from './agradecimiento/AgradecimientoDatosPersonales';
+import SectoresRepositorio from '../../../../services/solicitud/sectores.repositorio';
 import {
   AGRADECIMIENTO_DATOS_PERSONA_ROUTE,
   BIENVENIDA_DATOS_PERSONA_ROUTE,
@@ -120,10 +120,10 @@ const datosPersonalesRoutes = [
   },
   {
     route: AGRADECIMIENTO_DATOS_PERSONA_ROUTE,
-    component: [Agradecimiento],
+    component: [AgradecimientoDatosPersonales],
     services: [],
     roles: [],
-    label: 'Solicitud: agradecimiento',
+    label: 'Solicitud: Agradecimiento',
     data: {
       formulario: DATO_PERSONA,
       paso: 7,

@@ -80,7 +80,7 @@ const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
           middle_name: segundoApellido,
         } = userData;
 
-        const tipoSociedad = businessName ? TIPO_EMPRESA.filter((tipo) => businessName.includes(tipo.label)) : null;
+        const tipoSociedad = businessName ? TIPO_EMPRESA.find((tipo) => businessName.includes(tipo.label)) : null;
         const razonSocial = businessName ? businessName.split(tipoSociedad.label)[0].trim() : '';
 
         const [primerNombre] = givenName.split(' ');

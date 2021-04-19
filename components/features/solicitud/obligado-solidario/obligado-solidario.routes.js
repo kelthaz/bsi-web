@@ -42,7 +42,7 @@ import {
 } from '../../../../constants/routes/solicitud/obligado';
 import { OBLIGADO_SOLIDARIO, OBLIGADO_SOLIDARIO_LEGALEX } from '../../../../constants/formularios';
 import { FISICA } from '../../../../constants/persona';
-import SectoresRepositorio from '../../../../services/simulador/sectores.repositorio';
+import SectoresRepositorio from '../../../../services/solicitud/sectores.repositorio';
 import { OBLIGADO } from '../../../../constants/roles';
 
 const obligadoSolidarioRoutes = [
