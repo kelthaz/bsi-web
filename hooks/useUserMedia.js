@@ -4,16 +4,14 @@ const useUserMedia = (requestedMedia) => {
   const [mediaStream, setMediaStream] = useState(null);
 
   useEffect(() => {
-    async function enableVideoStream() {
+    const enableVideoStream = async () => {
       try {
-        const stream = await window.navigator.mediaDevices.getUserMedia(
-          requestedMedia
-        );
+        const stream = await window.navigator.mediaDevices.getUserMedia(requestedMedia);
         setMediaStream(stream);
       } catch (err) {
         console.error(err);
       }
-    }
+    };
 
     if (!mediaStream) {
       enableVideoStream();
@@ -24,10 +22,11 @@ const useUserMedia = (requestedMedia) => {
         });
       };
     }
+
+    return () => {};
   }, [mediaStream, requestedMedia]);
 
   return mediaStream;
 };
-
 
 export default useUserMedia;

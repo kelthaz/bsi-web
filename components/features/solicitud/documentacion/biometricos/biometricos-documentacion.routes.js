@@ -48,7 +48,7 @@ const biometricosDocumentacionRoutes = [
     route: CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE,
     component: [CapturaRostroBiometricosDocumentacion],
     services: [],
-    roles: [CLIENTE],
+    roles: [],
     label: 'Documentacion: Ultima etapa',
     data: {
       formulario: DOCUMENTACION_BIOMETRICOS,

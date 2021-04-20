@@ -45,7 +45,7 @@ const BienvenidaBiometricosDocumentacion = () => {
           <div className="row">
             <div className="col-xs-12 col-sm-12 my-3">
               <div className="text-center">
-                <Link href="/solicitud/[tab]/[step]" as={PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
+                <Link as={PASO_UNO_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
                   <button type="submit" className="btn-medium" onClick={dispatchBiometricos}>
                     Comenzar
                   </button>
