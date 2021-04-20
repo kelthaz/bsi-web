@@ -6,6 +6,7 @@ import Tab from '../../../../../../components/shared/tab/Tab';
 import Tabla from '../../../shared/tabla/Tabla';
 import TabItem from '../../../../../../components/shared/tab/TabItem';
 import SvgRechazadoBackOffice from '../../../../../svgs/SvgRechazadoBackOffice';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorMediosDePagoTablero = () => {
   const COLUMNS = [
@@ -35,8 +36,8 @@ const SupervisorMediosDePagoTablero = () => {
       sortable: true,
     },
     {
-      name: 'Región',
-      selector: 'region',
+      name: 'Accion',
+      selector: 'accion',
       sortable: true,
     },
   ];
@@ -127,7 +128,7 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$2,000,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Norte',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Daniela Fernanda',
@@ -135,7 +136,7 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$20,000,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Paletas S.A.',
@@ -143,7 +144,7 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$6,500,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Sur',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Paletas S.A.',
@@ -151,7 +152,7 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$12,000,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Norte',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Tu maleta S.A.',
@@ -159,7 +160,7 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$2.500,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                   {
                     nombre: 'Tornillos y tuercas S.A.',
@@ -167,19 +168,74 @@ const SupervisorMediosDePagoTablero = () => {
                     creditoAprobado: '$12,000,000.00',
                     idSolicitud: 12345,
                     fechaSolicitud: '01/Enero/2020',
-                    region: 'Oeste',
+                    accion: <AsignarCasos tableButton />,
                   },
                 ]}
                 compact
               />
             </TabItem>
-            <TabItem tab="Realizar desbloqueo de cuenta" keyTab="2" />
+            <TabItem tab="Realizar desbloqueo de cuenta" keyTab="2">
+              <Tabla
+                columns={COLUMNS}
+                data={[
+                  {
+                    nombre: 'Fernanda Rodriguez',
+                    telefono: '5512345678',
+                    creditoAprobado: '$2,000,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Daniela Fernanda',
+                    telefono: '5512345678',
+                    creditoAprobado: '$20,000,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Paletas S.A.',
+                    telefono: '5512345678',
+                    creditoAprobado: '$6,500,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Paletas S.A.',
+                    telefono: '5512345678',
+                    creditoAprobado: '$12,000,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Tu maleta S.A.',
+                    telefono: '5512345678',
+                    creditoAprobado: '$2.500,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Tornillos y tuercas S.A.',
+                    telefono: '5512345678',
+                    creditoAprobado: '$12,000,000.00',
+                    idSolicitud: 12345,
+                    fechaSolicitud: '01/Enero/2020',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                ]}
+                compact
+              />
+            </TabItem>
           </Tab>
         </div>
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-prospectos-medios">
+              <a className="link pb-4" href="/supervisor/medios-de-pago/actividades">
                 Ver todos los prospectos
               </a>
             </div>

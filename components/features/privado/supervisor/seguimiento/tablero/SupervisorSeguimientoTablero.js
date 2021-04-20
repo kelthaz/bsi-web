@@ -6,6 +6,7 @@ import SvgOfertaBackOffice from '../../../../../svgs/SvgOfertaBackOffice';
 import SvgSolicitudBackOffice from '../../../../../svgs/SvgSolicitudBackOffice';
 import SvgMiniElipse from '../../../../../svgs/SvgMiniElipse';
 import Tabla from '../../../shared/tabla/Tabla';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorSeguimientoTablero = () => {
   const COLUMNS = [
@@ -39,13 +40,18 @@ const SupervisorSeguimientoTablero = () => {
       selector: 'desembolsos',
       sortable: true,
     },
+    {
+      name: 'Accion',
+      selector: 'accion',
+      sortable: true,
+    },
   ];
 
   return (
     <div className="container-fluid">
       <div className="row mt-4 pl-3">
         <h3 className="color-blue-storm pr-3">Mi tablero</h3>
-        <p className="color-blue-storm body2 mt-2">Superadministrador</p>
+        <p className="color-blue-storm body2 mt-2">Seguimiento</p>
       </div>
       <div className="row mt-2">
         <div className="col-2">
@@ -153,6 +159,7 @@ const SupervisorSeguimientoTablero = () => {
                 casosAsignados: 12,
                 lineasPorGenerar: 2,
                 desembolsos: '01',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Alejandra Aguilar Ruiz',
@@ -165,6 +172,7 @@ const SupervisorSeguimientoTablero = () => {
                 casosAsignados: 4,
                 lineasPorGenerar: 23,
                 desembolsos: '02',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Fernanda Rodriguez',
@@ -177,6 +185,7 @@ const SupervisorSeguimientoTablero = () => {
                 casosAsignados: 12,
                 lineasPorGenerar: 2,
                 desembolsos: '05',
+                accion: <AsignarCasos tableButton />,
               },
             ]}
           />
@@ -184,7 +193,7 @@ const SupervisorSeguimientoTablero = () => {
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-casos-seguimiento">
+              <a className="link pb-4" href="/supervisor/seguimiento/actividades">
                 Ver todos los casos
               </a>
             </div>
