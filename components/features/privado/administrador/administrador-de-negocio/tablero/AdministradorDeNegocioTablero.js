@@ -6,6 +6,8 @@ import SvgSolicitudBackOffice from '../../../../../svgs/SvgSolicitudBackOffice';
 import SvgAprobado from '../../../../../svgs/SvgAprobado';
 import SvgMiniElipse from '../../../../../svgs/SvgMiniElipse';
 import SvgOfertaBackOffice from '../../../../../svgs/SvgOfertaBackOffice';
+import Tab from '../../../../../shared/tab/Tab';
+import TabItem from '../../../../../shared/tab/TabItem';
 import Tabla from '../../../shared/tabla/Tabla';
 import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
@@ -17,32 +19,106 @@ const AdministradorDeNegocioTablero = () => {
       sortable: true,
     },
     {
-      name: 'Estatus',
-      selector: 'estatus',
+      name: 'Por revisar',
+      selector: 'porRevisar',
       sortable: true,
     },
     {
-      name: 'ID',
-      selector: 'id',
+      name: 'Estatus de la solicitud',
+      selector: 'estatusSolicitud',
       sortable: true,
     },
     {
-      name: 'Casos asignados',
-      selector: 'casosAsignados',
+      name: 'Persona',
+      selector: 'persona',
       sortable: true,
     },
     {
-      name: 'Lineas y cuentas por generar',
-      selector: 'lineasPorGenerar',
-      sortable: true,
-    },
-    {
-      name: 'Desembolsos',
-      selector: 'desembolsos',
+      name: 'Tiempo de espera',
+      selector: 'tiempoEspera',
       sortable: true,
     },
     {
       name: 'Accion',
+      selector: 'accion',
+      sortable: true,
+    },
+  ];
+
+  const COLUMNS2 = [
+    {
+      name: 'Nombre',
+      selector: 'nombre',
+      sortable: true,
+    },
+    {
+      name: 'Persona',
+      selector: 'persona',
+      sortable: true,
+    },
+    {
+      name: 'Tiempo de espera',
+      selector: 'tiempoEspera',
+      sortable: true,
+    },
+    {
+      name: 'Acción',
+      selector: 'accion',
+      sortable: true,
+    },
+  ];
+
+  const COLUMNS3 = [
+    {
+      name: 'Nombre',
+      selector: 'nombre',
+      sortable: true,
+    },
+    {
+      name: 'Persona',
+      selector: 'persona',
+      sortable: true,
+    },
+    {
+      name: 'Tiempo de espera',
+      selector: 'tiempoEspera',
+      sortable: true,
+    },
+    {
+      name: 'Acción',
+      selector: 'accion',
+      sortable: true,
+    },
+  ];
+
+  const COLUMNS4 = [
+    {
+      name: 'Nombre',
+      selector: 'nombre',
+      sortable: true,
+    },
+    {
+      name: 'Persona',
+      selector: 'persona',
+      sortable: true,
+    },
+    {
+      name: 'Tiempo de espera',
+      selector: 'tiempoEspera',
+      sortable: true,
+    },
+    {
+      name: 'Número de cliente',
+      selector: 'numeroCliente',
+      sortable: true,
+    },
+    {
+      name: 'Desembolsar',
+      selector: 'desembolsar',
+      sortable: true,
+    },
+    {
+      name: 'Acción',
       selector: 'accion',
       sortable: true,
     },
@@ -115,50 +191,112 @@ const AdministradorDeNegocioTablero = () => {
       <div>
         <h3 className="color-blue-storm pr-3 mt-3">Actividades</h3>
         <div className="table-margin mb-4">
-          <Tabla
-            columns={COLUMNS}
-            data={[
-              {
-                nombre: 'Fernanda Rodriguez',
-                estatus: (
-                  <>
-                    <SvgMiniElipse color="#39C6AC" /> Activo
-                  </>
-                ),
-                id: 123213,
-                casosAsignados: 12,
-                lineasPorGenerar: 2,
-                desembolsos: '01',
-                accion: <AsignarCasos tableButton />,
-              },
-              {
-                nombre: 'Alejandra Aguilar Ruiz',
-                estatus: (
-                  <>
-                    <SvgMiniElipse color="#39C6AC" /> Activo
-                  </>
-                ),
-                id: 2213123,
-                casosAsignados: 4,
-                lineasPorGenerar: 23,
-                desembolsos: '02',
-                accion: <AsignarCasos tableButton />,
-              },
-              {
-                nombre: 'Fernanda Rodriguez',
-                estatus: (
-                  <>
-                    <SvgMiniElipse color="#39C6AC" /> Activo
-                  </>
-                ),
-                id: 123213,
-                casosAsignados: 12,
-                lineasPorGenerar: 2,
-                desembolsos: '05',
-                accion: <AsignarCasos tableButton />,
-              },
-            ]}
-          />
+          <Tab>
+            <TabItem tab="Documentos por revisar" keyTab="1">
+              <Tabla
+                columns={COLUMNS}
+                data={[
+                  {
+                    nombre: 'Fernanda Rodriguez',
+                    porRevisar: '3 documentos',
+                    estatusSolicitud: (
+                      <>
+                        <SvgMiniElipse color="#39C6AC" /> Revisón
+                      </>
+                    ),
+                    persona: 'PFAE',
+                    tiempoEspera: '10 min',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Alejandro Ramírez ',
+                    porRevisar: '3 documentos',
+                    estatusSolicitud: (
+                      <>
+                        <SvgMiniElipse color="yellow" /> En espera
+                      </>
+                    ),
+                    persona: 'PFAE',
+                    tiempoEspera: '10 min',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Daniela Fernanda ',
+                    porRevisar: '3 documentos',
+                    estatusSolicitud: (
+                      <>
+                        <SvgMiniElipse color="red" /> Rechazo jurídico
+                      </>
+                    ),
+                    persona: 'Moral',
+                    tiempoEspera: '2 días',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                ]}
+              />
+            </TabItem>
+            <TabItem tab="Generar alta de cliente" keyTab="2">
+              <Tabla
+                columns={COLUMNS2}
+                data={[
+                  {
+                    nombre: 'Fernanda Rodriguez',
+                    persona: 'PFAE',
+                    tiempoEspera: '10 min',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Paletas S.A.',
+                    persona: 'Moral',
+                    tiempoEspera: '2 días',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                ]}
+              />
+            </TabItem>
+            <TabItem tab="Generar alta de línea" keyTab="3">
+              <Tabla
+                columns={COLUMNS3}
+                data={[
+                  {
+                    nombre: 'Fernanda Rodriguez',
+                    persona: 'PFAE',
+                    tiempoEspera: '10 min',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Paletas S.A.',
+                    persona: 'Moral',
+                    tiempoEspera: '2 días',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                ]}
+              />
+            </TabItem>
+            <TabItem tab="Desembolsos" keyTab="4">
+              <Tabla
+                columns={COLUMNS4}
+                data={[
+                  {
+                    nombre: 'Fernanda Rodriguez',
+                    persona: 'PFAE',
+                    tiempoEspera: '10 min',
+                    numeroCliente: '12345',
+                    desembolsar: '$2,000,000',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                  {
+                    nombre: 'Paletas S.A.',
+                    persona: 'Moral',
+                    tiempoEspera: '2 días',
+                    numeroCliente: '12345',
+                    desembolsar: '$2,000,000',
+                    accion: <AsignarCasos tableButton />,
+                  },
+                ]}
+              />
+            </TabItem>
+          </Tab>
         </div>
         <div className="footer-paginator">
           <div className="footer">
