@@ -1,7 +1,6 @@
 import React from 'react';
 import CardBackOfficesSmall from '../../../shared/back-office-card-small/BackOfficeCardSmall';
 import SvgUsuarioBackOffice from '../../../../../svgs/SvgUsuarioBackOffice';
-import SvgRevisionBackOffice from '../../../../../svgs/SvgRevisionBackOffice';
 import SvgSolicitudBackOffice from '../../../../../svgs/SvgSolicitudBackOffice';
 import SvgAprobado from '../../../../../svgs/SvgAprobado';
 import SvgMiniElipse from '../../../../../svgs/SvgMiniElipse';
@@ -9,6 +8,7 @@ import SvgOfertaBackOffice from '../../../../../svgs/SvgOfertaBackOffice';
 import Tab from '../../../../../shared/tab/Tab';
 import TabItem from '../../../../../shared/tab/TabItem';
 import Tabla from '../../../shared/tabla/Tabla';
+import Indicadores from '../../../shared/indicadores/Indicadores';
 import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const AdministradorDeNegocioTablero = () => {
@@ -131,6 +131,16 @@ const AdministradorDeNegocioTablero = () => {
         <p className="color-blue-storm body2 mt-2">Administrador de negocio</p>
       </div>
       <div className="row mt-2">
+        <div className="col-12 mb-3">
+          <div className="card-simple-blue-light pt-3 pb-2">
+            <div className="card-simple-blue-light pt-0 pb-1 px-0">
+              <h4 className="pb-2 color-blue-storm  bot-line">Activación indicador tren de crédito</h4>
+            </div>
+            <div>
+              <Indicadores />
+            </div>
+          </div>
+        </div>
         <div className="col-2">
           <div className="col-6 ml-3 pl-0 pb-2">
             <CardBackOfficesSmall title="2" subTitle="Total de casos por revisar " admin />
