@@ -30,11 +30,6 @@ const TablaCasos = () => {
       selector: 'fechaSolicitud',
       sortable: true,
     },
-    {
-      name: 'Región',
-      selector: 'region',
-      sortable: true,
-    },
   ];
   const [totalRows, setTotalRows] = useState(0);
   const [totalPages, setTotalPages] = useState(5);
@@ -53,7 +48,6 @@ const TablaCasos = () => {
               creditoAprobado: '$2,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Norte',
             },
             {
               nombre: 'Daniela Fernanda',
@@ -61,7 +55,6 @@ const TablaCasos = () => {
               creditoAprobado: '$20,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Paletas S.A.',
@@ -69,7 +62,6 @@ const TablaCasos = () => {
               creditoAprobado: '$6,500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Sur',
             },
             {
               nombre: 'Paletas S.A.',
@@ -77,7 +69,6 @@ const TablaCasos = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Norte',
             },
             {
               nombre: 'Tu maleta S.A.',
@@ -85,7 +76,6 @@ const TablaCasos = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tornillos y tuercas S.A.',
@@ -93,7 +83,6 @@ const TablaCasos = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tu maleta S.A.',
@@ -101,7 +90,6 @@ const TablaCasos = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tornillos y tuercas S.A.',
@@ -109,7 +97,6 @@ const TablaCasos = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tu maleta S.A.',
@@ -117,7 +104,6 @@ const TablaCasos = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tornillos y tuercas S.A.',
@@ -125,7 +111,6 @@ const TablaCasos = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tu maleta S.A.',
@@ -133,7 +118,6 @@ const TablaCasos = () => {
               creditoAprobado: '$2.500,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
             {
               nombre: 'Tornillos y tuercas S.A.',
@@ -141,7 +125,6 @@ const TablaCasos = () => {
               creditoAprobado: '$12,000,000.00',
               idSolicitud: 12345,
               fechaSolicitud: '01/Enero/2020',
-              region: 'Oeste',
             },
           ]}
         />

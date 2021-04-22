@@ -1,0 +1,26 @@
+@import '../../../../../styles/scss/modules/var';
+@import '../../../../../styles/scss/modules/mixins';
+
+.editor {
+  background-color: $white;
+  border-radius: 10px;
+  height: 300px;
+  position: relative;
+}
+
+.button {
+  background-color: $white;
+  border: 0;
+  bottom: 140px;
+  left: 25px;
+  position: absolute;
+  z-index: 100;
+}
+
+.top {
+  border-top: 2px solid $blue-shadow;
+  bottom: 36px;
+  left: 15px;
+  position: relative;
+  width: 92%;
+}

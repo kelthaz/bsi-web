@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardBackOfficesSmall from '../../../shared/back-office-card-small/BackOfficeCardSmall';
+import TextEditor from '../../../shared/text-editor/TextEditor';
 import Tabla from '../../../shared/tabla/Tabla';
 import SvgPMBackOffice from '../../../../../svgs/SvgPMBackOffice';
 import SvgPFAEBackOffice from '../../../../../svgs/SvgPFAEBackOffice';
 import SvgRevisionBackOffice from '../../../../../svgs/SvgRevisionBackOffice';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorPLDTablero = () => {
+  const [text, setText] = useState('');
   const COLUMNS = [
     {
       name: 'Nombre',
@@ -20,6 +23,11 @@ const SupervisorPLDTablero = () => {
     {
       name: 'Relacionados por revisar',
       selector: 'relacionados',
+      sortable: true,
+    },
+    {
+      name: 'Accion',
+      selector: 'accion',
       sortable: true,
     },
   ];
@@ -118,21 +126,25 @@ const SupervisorPLDTablero = () => {
                 nombre: 'Fernanda Rodriguez',
                 persona: 'PFAE',
                 relacionados: '4',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Alberto Abad Gómez',
                 persona: 'Moral',
                 relacionados: '2',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Paletas S.A.',
                 persona: 'Moral',
                 relacionados: '4',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Diana Flores Cantú',
                 persona: 'Moral',
                 relacionados: '5',
+                accion: <AsignarCasos tableButton />,
               },
             ]}
           />
@@ -140,13 +152,14 @@ const SupervisorPLDTablero = () => {
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-casos-pld">
+              <a className="link pb-4" href="/supervisor/pld/actividades">
                 Ver todos los casos
               </a>
             </div>
           </div>
         </div>
       </div>
+      {/* <TextEditor /> */}
     </div>
   );
 };

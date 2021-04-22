@@ -3,6 +3,7 @@ import CardBackOfficesSmall from '../../../shared/back-office-card-small/BackOff
 import Tabla from '../../../shared/tabla/Tabla';
 import SvgAprobado from '../../../../../svgs/SvgAprobado';
 import SvgOfertaBackOffice from '../../../../../svgs/SvgOfertaBackOffice';
+import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
 const SupervisorMesaDeControlTablero = () => {
   const COLUMNS = [
@@ -32,8 +33,8 @@ const SupervisorMesaDeControlTablero = () => {
       sortable: true,
     },
     {
-      name: 'Región',
-      selector: 'region',
+      name: 'Accion',
+      selector: 'accion',
       sortable: true,
     },
   ];
@@ -123,7 +124,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$2,000,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Norte',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Daniela Fernanda',
@@ -131,7 +132,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$20,000,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Oeste',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Paletas S.A.',
@@ -139,7 +140,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$6,500,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Sur',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Paletas S.A.',
@@ -147,7 +148,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$12,000,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Norte',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Tu maleta S.A.',
@@ -155,7 +156,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$2.500,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Oeste',
+                accion: <AsignarCasos tableButton />,
               },
               {
                 nombre: 'Tornillos y tuercas S.A.',
@@ -163,7 +164,7 @@ const SupervisorMesaDeControlTablero = () => {
                 creditoAprobado: '$12,000,000.00',
                 idSolicitud: 12345,
                 fechaSolicitud: '01/Enero/2020',
-                region: 'Oeste',
+                accion: <AsignarCasos tableButton />,
               },
             ]}
           />
@@ -171,7 +172,7 @@ const SupervisorMesaDeControlTablero = () => {
         <div className="footer-paginator">
           <div className="footer">
             <div className="float-right mb-4">
-              <a className="link pb-4" href="/nuevos-componentes/tabla-casos">
+              <a className="link pb-4" href="/supervisor/mesa-de-control/actividades">
                 Ver todos los casos
               </a>
             </div>
