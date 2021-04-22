@@ -7,7 +7,7 @@ import SelectorFilas from '../../../shared/tabla/selector-filas/SelectorFilas';
 import SvgMiniElipse from '../../../../../svgs/SvgMiniElipse';
 import AsignarCasos from '../../../../privado/shared/asignacion-casos/AsignarCasos';
 
-const SupervisorSeguimientoActividades = () => {
+const AministradorDeNegocioActividades = () => {
   const COLUMNS = [
     {
       name: 'Nombre',
@@ -127,7 +127,6 @@ const SupervisorSeguimientoActividades = () => {
 
   return (
     <div className="container-fluid">
-      <h3 className="color-blue-storm pr-3 mt-3">Actividades</h3>
       <div className="table-margin">
         <Tab>
           <TabItem tab="Documentos por revisar" keyTab="1">
@@ -247,4 +246,4 @@ const SupervisorSeguimientoActividades = () => {
     </div>
   );
 };
-export default SupervisorSeguimientoActividades;
+export default AministradorDeNegocioActividades;
