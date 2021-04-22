@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { nextStepDatosPersonales, resetDatosPersonales } from '../../../../../redux/actions/solicitud';
+import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import TextField from '../../../../shared/text-field/TextField';
 import ValidatePassword from '../../../../shared/validate-password/ValidatePassword';
 import {
@@ -33,6 +33,7 @@ import LoginRepositorio from '../../../../../services/login/login.repositorio';
 import { AGRADECIMIENTO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
 import { MORAL } from '../../../../../constants/persona';
 import { AVISO_ROUTE } from '../../../../../constants/routes/publico/publico';
+import validationListaNegra from '../../../../../helpers/validations/validationListaNegra';
 
 const PasoCincoDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -78,8 +79,6 @@ const PasoCincoDatosPersonales = ({ validate }) => {
             datosPersonales: { ...datosPersonales, ...values },
           })
         );
-      } else {
-        dispatch(resetDatosPersonales());
       }
     },
   });
@@ -92,29 +91,50 @@ const PasoCincoDatosPersonales = ({ validate }) => {
 
   const validateSaveInfo = async () => {
     if (!changePage) {
-      const data = {
-        ...datosPersonales,
-        celular: datosPersonales.celular.replace(regexHyphen, ''),
-        tipoSociedad: datosPersonales.tipoSociedad?.label,
-        sector: datosPersonales.sector.value,
-        giro: datosPersonales.giro.value,
+      const personData = {
+        primerNombre: datosPersonales.primerNombre,
+        segundoNombre: datosPersonales.segundoNombre,
+        primerApellido: datosPersonales.primerApellido,
+        segundoApellido: datosPersonales.segundoApellido,
         rfc: formulario.values.rfc,
-        password: formulario.values.contrasena,
-        simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
       };
-      delete data.aceptoTerminos;
-      delete data.contrasena;
-      delete data.confirmarContrasena;
 
-      if (datosPersonales.tipoPersona !== MORAL) {
-        delete data.tipoSociedad;
-        delete data.razonSocial;
+      const validPerson = await validationListaNegra(personData);
+
+      if (validPerson) {
+        const data = {
+          ...datosPersonales,
+          celular: datosPersonales.celular.replace(regexHyphen, ''),
+          tipoSociedad: datosPersonales.tipoSociedad?.value,
+          sector: datosPersonales.sector.value,
+          giro: datosPersonales.giro.value,
+          rfc: formulario.values.rfc,
+          password: formulario.values.contrasena,
+          simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
+        };
+        delete data.aceptoTerminos;
+        delete data.contrasena;
+        delete data.confirmarContrasena;
+        delete data.enListaNegra;
+
+        if (datosPersonales.tipoPersona !== MORAL) {
+          delete data.tipoSociedad;
+          delete data.razonSocial;
+          delete data.rfcRepresentante;
+        }
+
+        const saveData = await LoginRepositorio.postRegistro(data)
+          .then(() => true)
+          .catch(() => false);
+
+        return saveData;
       }
 
-      const valid = await LoginRepositorio.postRegistro(data)
-        .then(() => true)
-        .catch(() => false);
-      return valid;
+      dispatch(
+        nextStepDatosPersonales({
+          datosPersonales: { ...datosPersonales, enListaNegra: !validPerson },
+        })
+      );
     }
     return true;
   };

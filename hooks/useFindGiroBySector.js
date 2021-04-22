@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import changeSelectModel from '../helpers/changeSelectModel';
-import SectoresRepositorio from '../services/simulador/sectores.repositorio';
+import SectoresRepositorio from '../services/solicitud/sectores.repositorio';
 
 const useFindGiroBySector = (formulario, nameSector, nameGiro) => {
   const [itemsGiro, setItemsGiro] = useState([]);

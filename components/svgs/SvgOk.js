@@ -1,73 +1,57 @@
 import * as React from 'react';
 
-function SvgOk(props) {
-  return (
-    <svg width={137} height={137} viewBox="0 0 137 137" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <ellipse cx={59.553} cy={59.371} rx={59.553} ry={59.371} fill="#F4F6F9" />
-      <circle opacity={0.5} cx={79.742} cy={79.865} fill="url(#prefix__paint0_linear)" r={56.313} />
-      <path
-        d="M92.326 89.564c1.025-3.573 1.2-7.326.668-10.993l-5.333-36.57c-.683-4.682-5.298-6.36-8.994-4.177M86.53 116.131l.064-14.205 3.981-8.166a26.232 26.232 0 001.63-4.238"
-        stroke="#225AA7"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M83.389 58.319l-7.452-27.38c-2.131-6.415-8.312-8.528-12.786-4.299"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M73.623 59.054L62.06 22.983c-1.376-4.298-6.764-5.65-10.04-2.518a6.185 6.185 0 00-1.664 6.203l7.868 26.796"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M41.23 90.41a56.56 56.56 0 007.636 8.666l3.32 3.066-.074 13.915 34.438.022"
-        stroke="#225AA7"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M65.68 56.2l-9.114-3.598a12.064 12.064 0 00-11.102 1.186l-9.765 6.483c-3.183 2.113-2.598 7.04 1.028 8.175 2.21.69 4.996.694 8.322-.957 1.004-.498 2.05-.898 3.145-1.135 2.887-.627 7.86-.954 10.41 3.26 1.738 2.869 1.038 6.6-1.51 8.803-1.431 1.236-3.339 2.2-5.665 1.825-1.733-.28-3.249-1.309-4.285-2.729-1.341-1.843-4.103-5.15-7.49-6.5-3.84-1.531-7.538 2.626-5.71 6.35l2.554 5.202a56.461 56.461 0 004.788 7.995"
-        stroke="#81C1EA"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M11.438 45.47l.04 15.097M6.586 53.037l9.748-.04M100.895 9.984l-.016 23.596M93.266 21.79l15.235-.012"
-        stroke="#FFBE12"
-        strokeWidth={4}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <defs>
-        <linearGradient
-          id="prefix__paint0_linear"
-          x1={133.68}
-          y1={-17.225}
-          x2={96.55}
-          y2={140.362}
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#fff" />
-          <stop offset={1} stopColor="#B5C8E9" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-}
+const SvgOk = (props) => (
+  <svg width={144} height={144} viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <circle cx={72} cy={72} r={72} fill="#F4F6F9" />
+    <path
+      d="M97.753 94.831c1.084-3.783 1.27-7.756.707-11.64L92.817 44.47c-.722-4.957-5.607-6.733-9.52-4.422M91.617 122.961l.068-15.04 4.215-8.646a27.778 27.778 0 001.726-4.488"
+      stroke="#225AA7"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M88.292 61.75l-7.888-28.992c-2.256-6.791-8.8-9.028-13.536-4.55"
+      stroke="#81C1EA"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M77.95 62.526L65.71 24.333c-1.457-4.55-7.162-5.982-10.63-2.666a6.55 6.55 0 00-1.762 6.568l8.33 28.372"
+      stroke="#81C1EA"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M43.654 95.728a59.89 59.89 0 008.083 9.177l3.515 3.246-.079 14.734 36.462.022"
+      stroke="#225AA7"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M69.54 59.505l-9.649-3.81a12.772 12.772 0 00-11.755 1.255l-10.339 6.865c-3.37 2.237-2.75 7.455 1.088 8.656 2.341.731 5.29.734 8.812-1.014 1.062-.527 2.17-.95 3.329-1.2 3.057-.665 8.321-1.012 11.021 3.45 1.84 3.038 1.099 6.988-1.599 9.32-1.516 1.31-3.535 2.33-5.998 1.933-1.834-.295-3.44-1.385-4.536-2.888-1.42-1.952-4.344-5.454-7.929-6.884-4.067-1.62-7.981 2.781-6.046 6.725l2.703 5.507a59.764 59.764 0 005.069 8.466"
+      stroke="#81C1EA"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12.11 48.144l.044 15.984M6.971 56.156l10.322-.043M106.827 10.571l-.016 24.983M98.75 23.07l16.132-.012"
+      stroke="#FFBE12"
+      strokeWidth={4}
+      strokeMiterlimit={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export default SvgOk;

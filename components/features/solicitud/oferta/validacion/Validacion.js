@@ -13,6 +13,7 @@ import {
 import { regexClabeOCuenta, regexRFCFisica, regexRFCMoral } from '../../../../../constants/regex';
 import Modal from '../../../../shared/modal/Modal';
 import SvgSesionValidacion from '../../../../svgs/oferta/SvgSesionValidacion';
+import { MORAL } from '../../../../../constants/persona';
 
 const Validacion = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,8 @@ const Validacion = () => {
       clabe: Yup.string().matches(regexClabeOCuenta, clabeNumeroCuentaInvalido).required(campoRequerido),
       titular: Yup.string().required(campoRequerido),
       rfc: Yup.string()
-        .matches(tipoPersona === 'Persona Moral' ? regexRFCMoral : regexRFCFisica, rfcInvalido)
-        .min(tipoPersona === 'Persona Moral' ? 12 : 13, longitudMinima)
+        .matches(tipoPersona === MORAL ? regexRFCMoral : regexRFCFisica, rfcInvalido)
+        .min(tipoPersona === MORAL ? 12 : 13, longitudMinima)
         .when('$conCuenta', (other, schema) => (other === true ? schema.required(campoRequerido) : schema)),
     }),
     onSubmit: (values) => {

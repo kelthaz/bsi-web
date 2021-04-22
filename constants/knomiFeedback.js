@@ -32,7 +32,7 @@ const knomiFeedbackMessages = {
   FACIAL_SHADOWING: 'Sombras en el rostro',
   RED_EYE: 'Ojos rojos',
   UNNATURAL_LIGHTING_COLOR: 'Color de iluminación poco natural',
-  AWARE_INTERNAL_ERROR_1: 'Error interno',
+  AWARE_INTERNAL_ERROR_1: 'Error del servidor',
   MOUTH_OBSCURED: 'Boca obstruida',
 };
 

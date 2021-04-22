@@ -5,12 +5,19 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Tab from '../../../shared/tab/Tab';
 import TabItem from '../../../shared/tab/TabItem';
-import { campoRequerido, captcha, longitudMaxima, longitudMinima } from '../../../../constants/errors';
+import {
+  campoRequerido,
+  captcha,
+  longitudMaxima,
+  longitudMinima,
+  rfcContrasenaInvalida,
+} from '../../../../constants/errors';
 import TextField from '../../../shared/text-field/TextField';
 import Captcha from '../../../shared/captcha/Captcha';
 import LoginRepositorio from '../../../../services/login/login.repositorio';
 import CheckBox from '../../../shared/check-box/CheckBox';
-import { OLVIDO_CONTRASENA } from '../../../../constants/routes/login/login';
+import { OLVIDO_CONTRASENA, RESTABLECER_CONTRASENA } from '../../../../constants/routes/login/login';
+import { INICIO_ROUTE } from '../../../../constants/routes/publico/publico';
 
 const IniciarSesion = () => {
   const { push } = useRouter();
@@ -28,16 +35,16 @@ const IniciarSesion = () => {
       mantenerSesion: Yup.boolean(),
     }),
     onSubmit: async (values) => {
-      const valid = await LoginRepositorio.postLogin({
+      const route = await LoginRepositorio.postLogin({
         username: values.rfc,
         password: values.contrasena,
       })
-        .then(() => true)
-        .catch(() => false);
-      if (valid) {
-        push('/inicio');
+        .then(({ headers }) => (headers['cambio-password'] === 'true' ? RESTABLECER_CONTRASENA : INICIO_ROUTE))
+        .catch(() => '');
+      if (route) {
+        push(route);
       } else {
-        formulario.setFieldError('contrasena', 'RFC y/o contraseña incorrectos');
+        formulario.setFieldError('contrasena', rfcContrasenaInvalida());
       }
     },
   });
@@ -64,7 +71,7 @@ const IniciarSesion = () => {
         <TextField
           name="rfc"
           format="email"
-          maxlength={50}
+          maxlength={100}
           type="text"
           size="small"
           label="Usuario"

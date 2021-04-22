@@ -8,8 +8,8 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import TextField from '../../../../shared/text-field/TextField';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
-import EmailageRepositorio from '../../../../../services/solicitud/emailage.repositorio';
 import { PASO_CINCO_DATOS_PERSONA_ROUTE } from '../../../../../constants/routes/solicitud/persona';
+import validateEmail from '../../../../../helpers/validations/validationEmail';
 
 const PasoCuatroDatosPersonales = ({ validate }) => {
   const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
@@ -36,29 +36,17 @@ const PasoCuatroDatosPersonales = ({ validate }) => {
     },
   });
 
-  const validateEmail = async () => {
-    const emailExist = await EmailageRepositorio.postEmailScore(formulario.values.correo)
-      .then((resp) => {
-        const { fraudRisk, emailExists, domainExists } = resp.data;
-        const score = fraudRisk.split(' ')[0];
+  const isValid = async () => {
+    const [emailExist, error] = await validateEmail(formulario.values.correo);
 
-        if (!(score > 800 || emailExists === 'No' || domainExists === 'No')) {
-          formulario.setFieldError('correo', 'El correo no existente, favor de corregirlo.');
-          return false;
-        }
-
-        return true;
-      })
-      .catch(({ response }) => {
-        const [error] = response.data.message;
-        formulario.setFieldError('correo', error);
-        return false;
-      });
+    if (!emailExist) {
+      formulario.setFieldError('correo', error);
+    }
 
     return emailExist;
   };
 
-  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, validate, validateEmail);
+  const [handleSubmit] = useOnChangePage(formulario, PASO_CINCO_DATOS_PERSONA_ROUTE, validate, isValid);
 
   return (
     <div className="contedor-fixed-tab">

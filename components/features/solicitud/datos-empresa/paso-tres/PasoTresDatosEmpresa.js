@@ -62,7 +62,7 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                 <TextField
                   name="primerNombreRecibe"
                   format="uppercase"
-                  maxlength={12}
+                  maxlength={60}
                   type="text"
                   size="big"
                   label="Nombre"
@@ -87,7 +87,7 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                 <TextField
                   name="primerApellidoRecibe"
                   format="uppercase"
-                  maxlength={20}
+                  maxlength={60}
                   type="text"
                   size="big"
                   label="Apellido paterno"
@@ -99,7 +99,7 @@ const PasoTresDatosEmpresa = ({ validate }) => {
                 <TextField
                   name="segundoApellidoRecibe"
                   format="uppercase"
-                  maxlength={20}
+                  maxlength={60}
                   type="text"
                   size="big"
                   label="Apellido materno"

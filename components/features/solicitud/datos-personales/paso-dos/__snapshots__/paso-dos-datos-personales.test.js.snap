@@ -32,7 +32,6 @@ exports[`Pruebas en el componente PasoDosDatosPersonales Debe de mostrarse corre
               className="color-blue-storm text-overflow"
             >
               ¡Hola, 
-              JESUS
               !
             </h2>
             <p

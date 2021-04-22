@@ -5,10 +5,10 @@ import SvgPendiente from '../../../../../svgs/estados/SvgPendiente';
 import SvgRechazado from '../../../../../svgs/estados/SvgRechazado';
 
 const EstadoDocumento = ({ label, documento, estadoDocumento, onClick, labelButton }) => {
-  const fileInput = useRef();
+  const fileInput = useRef(null);
 
-  const iconoEstado = (estado) => {
-    switch (estado) {
+  const iconoEstado = (() => {
+    switch (estadoDocumento) {
       case 0:
         return (
           <button className="btn-mini-secondary" type="button" onClick={() => fileInput.current.click()}>
@@ -30,10 +30,10 @@ const EstadoDocumento = ({ label, documento, estadoDocumento, onClick, labelButt
       default:
         return <></>;
     }
-  };
+  })();
 
-  const onChangeDocument = (event) => {
-    console.log(event.target.files[0]);
+  const onChangeDocument = ({ target }) => {
+    onClick(target.files[0]);
   };
 
   return (
@@ -66,7 +66,7 @@ const EstadoDocumento = ({ label, documento, estadoDocumento, onClick, labelButt
           <span className="link">{documento}</span>
         </div>
       )}
-      <div className="col-2 text-center">{iconoEstado(estadoDocumento)}</div>
+      <div className="col-2 text-center">{iconoEstado}</div>
     </div>
   );
 };

@@ -11,15 +11,17 @@ import {
   PASO_CINCO_DATOS_PERSONA_ROUTE,
   PASO_CUATRO_DATOS_PERSONA_ROUTE,
 } from '../../../../../constants/routes/solicitud/persona';
-import ModalActualizar from '../../../../core/modals/solicitud/modal-actualizar/ModalActualizar';
 import LoginRepositorio from '../../../../../services/login/login.repositorio';
-import TabInformativo from '../../../../shared/tab-informativo/TabInformativo';
 import { regexHyphen } from '../../../../../constants/regex';
 import { MORAL } from '../../../../../constants/persona';
 import { AVISO_ROUTE } from '../../../../../constants/routes/publico/publico';
 import { rfcInvalido } from '../../../../../constants/errors';
+import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
+import TabInformativo from '../../../../core/containers/solicitud/tab-informativo/TabInformativo';
+import ListaNegraRepositorio from '../../../../../services/solicitud/listaNegra.repositorio';
 
 jest.mock('../../../../../services/login/login.repositorio');
+jest.mock('../../../../../services/solicitud/listaNegra.repositorio');
 
 describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
   const push = jest.fn();
@@ -36,6 +38,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
       label: 'S.A.',
     },
     nombreEmpresa: 'PALETITAS',
+    rfcRepresentante: 'JUPU800825561',
     sector: {
       value: 1,
       label: 'SERVICIOS PROFESIONALES Y TÉCNICO',
@@ -179,6 +182,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     );
 
     await LoginRepositorio.postRegistro.mockResolvedValue();
+    await ListaNegraRepositorio.postListaNegra.mockResolvedValue({ data: { resultadoConsulta: '0' } });
 
     const form = wrapper.find('form');
     const rfc = wrapper.find('input').find({ name: 'rfc' });
@@ -223,7 +227,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     const data = {
       ...datosPersonales,
       celular: datosPersonales.celular.replace(regexHyphen, ''),
-      tipoSociedad: datosPersonales.tipoSociedad?.label,
+      tipoSociedad: datosPersonales.tipoSociedad?.value,
       sector: datosPersonales.sector.value,
       giro: datosPersonales.giro.value,
       rfc: wrapper.find('input').find({ name: 'rfc' }).prop('value'),
@@ -233,6 +237,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     delete data.aceptoTerminos;
     delete data.contrasena;
     delete data.confirmarContrasena;
+    delete data.enListaNegra;
 
     // assert
     expect(LoginRepositorio.postRegistro).toHaveBeenCalledTimes(1);
@@ -261,6 +266,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
       </Provider>
     );
 
+    await ListaNegraRepositorio.postListaNegra.mockResolvedValue({ data: { resultadoConsulta: '0' } });
     await LoginRepositorio.postRegistro.mockResolvedValue();
 
     const form = wrapper.find('form');
@@ -318,6 +324,8 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     delete data.confirmarContrasena;
     delete data.tipoSociedad;
     delete data.razonSocial;
+    delete data.enListaNegra;
+    delete data.rfcRepresentante;
 
     // assert
     expect(LoginRepositorio.postRegistro).toHaveBeenCalledTimes(1);
@@ -346,6 +354,7 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
       </Provider>
     );
 
+    await ListaNegraRepositorio.postListaNegra.mockResolvedValue({ data: { resultadoConsulta: '0' } });
     await LoginRepositorio.postRegistro.mockRejectedValue();
 
     const form = wrapper.find('form');
@@ -403,7 +412,8 @@ describe('Pruebas en el componente PasoCincoDatosPersonales', () => {
     delete data.confirmarContrasena;
     delete data.tipoSociedad;
     delete data.razonSocial;
-
+    delete data.enListaNegra;
+    delete data.rfcRepresentante;
     // assert
     expect(LoginRepositorio.postRegistro).toHaveBeenCalledTimes(1);
     expect(LoginRepositorio.postRegistro).toHaveBeenCalledWith(data);

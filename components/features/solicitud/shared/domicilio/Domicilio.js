@@ -13,6 +13,7 @@ const Domicilio = ({
   nameFieldMunicipioAlcaldia,
   nameFieldCiudad,
   nameFieldEstado,
+  nameFieldMunicipioId,
 }) => {
   const [colonias] = useFindCodigoPostal(
     formulario,
@@ -20,7 +21,8 @@ const Domicilio = ({
     nameFieldColonia,
     nameFieldMunicipioAlcaldia,
     nameFieldCiudad,
-    nameFieldEstado
+    nameFieldEstado,
+    nameFieldMunicipioId
   );
 
   return (
@@ -139,6 +141,7 @@ Domicilio.propTypes = {
   nameFieldMunicipioAlcaldia: PropTypes.string.isRequired,
   nameFieldCiudad: PropTypes.string.isRequired,
   nameFieldEstado: PropTypes.string.isRequired,
+  nameFieldMunicipioId: PropTypes.string.isRequired,
 };
 
 export default Domicilio;

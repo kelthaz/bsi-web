@@ -10,13 +10,16 @@ import CheckTextBox from '../../../../shared/check-text-box/CheckTextBox';
 import { campoRequerido, aceptarTerminos, ciecInvalida } from '../../../../../constants/errors';
 import ModalAutorizacionCiec from '../../shared/modals/modal-autorizacion-ciec/ModalAutorizacionCiec';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
-import CiecRepositorio from '../../../../../services/solicitud/ciec.repositorio';
 import { CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 import { MORAL } from '../../../../../constants/persona';
+import validationCiec from '../../../../../helpers/validations/validationCiec';
+import ContratoRepositorio from '../../../../../services/solicitud/contrato.repositorio';
+import { regexHyphen } from '../../../../../constants/regex';
 
 const PasoOchoDatosEmpresa = ({ validate }) => {
   const [openWhyCiec, setOpenWhyCiec] = useState(false);
   const { currentStep, datosPersonales, datosEmpresa } = useSelector((state) => state.solicitud);
+  const { changePage } = useSelector((state) => state.formulario);
   const dispatch = useDispatch();
 
   const formulario = useFormik({
@@ -29,35 +32,94 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
       autorizoTerminosCiec: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
     onSubmit: (values) => {
-      dispatch(
-        nextStepDatosPersonales({
-          currentStep: validate
-            ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
-            : { ...currentStep },
-          datosEmpresa: {
-            ...datosEmpresa,
-            ...values,
-          },
-        })
-      );
+      if (changePage) {
+        dispatch(
+          nextStepDatosPersonales({
+            currentStep: { ...currentStep, lastStep: true },
+            datosPersonales: { ...datosPersonales, ...values },
+          })
+        );
+      } else {
+        dispatch(
+          nextStepDatosPersonales({
+            currentStep: {
+              ...currentStep,
+              lastStep: false,
+              paso: currentStep.paso + 1,
+              valipStep: currentStep.valipStep + 1,
+            },
+          })
+        );
+      }
     },
   });
 
   const validateCiec = async () => {
-    let valid = true;
-
-    if (!formulario.errors.ciec) {
-      valid = await CiecRepositorio.pathValidarCiec({
+    if (!changePage) {
+      const dataValidation = {
         ciec: formulario.values.ciec,
-        rfc: datosPersonales.rfc,
-      })
+        rfc: datosPersonales.rfc.toUpperCase(),
+      };
+      const valid = await validationCiec(dataValidation);
+
+      if (!valid) {
+        formulario.setFieldError('ciec', ciecInvalida());
+        return valid;
+      }
+
+      const data = {
+        persona: {
+          curp: datosEmpresa.curp,
+          domicilio: {
+            calle: datosEmpresa.domicilioFiscal.calle,
+            numeroExterior: datosEmpresa.domicilioFiscal.numExterior,
+            numeroInterior: datosEmpresa.domicilioFiscal.numInterior,
+            colina: datosEmpresa.domicilioFiscal.colonia.label,
+            municipioId: datosEmpresa.domicilioFiscal.municipioId,
+            codigoPostal: datosEmpresa.domicilioFiscal.codigoPostal,
+            isEntrega: datosEmpresa.domicilioEntrega === 'domicilioFiscal',
+          },
+          primerNombrePersonaToken: datosEmpresa.primerNombreRecibe,
+          segundoNombrePersonaToken: datosEmpresa.segundoNombreRecibe,
+          primerApellidoPersonaToken: datosEmpresa.primerApellidoRecibe,
+          segundoApellidoPersonaToken: datosEmpresa.segundoApellidoRecibe,
+          celularPersonaToken: datosEmpresa.celularRecibe.replace(regexHyphen, ''),
+        },
+        empresa: {
+          ciec: formulario.values.ciec,
+          telefonoEmpresa: datosEmpresa.telefonoEmpresa.replace(regexHyphen, ''),
+          numeroEmpleados: datosEmpresa.numeroEmpleados.value,
+        },
+        descripcionCredito: datosEmpresa.descripcionCredito,
+        usoCredito: datosEmpresa.usoCredito.value,
+        cuentaBancoppel: datosEmpresa.tieneCuentaBancoppel === 'si',
+      };
+
+      if (datosEmpresa.esDomilicioComercial === 'si') {
+        data.persona.domicilio.isEntrega = true;
+      } else {
+        data.empresa.domicilioComercial = {
+          calle: datosEmpresa.domicilioComercial.calle,
+          numeroExterior: datosEmpresa.domicilioComercial.numExterior,
+          numeroInterior: datosEmpresa.domicilioComercial.numInterior,
+          colina: datosEmpresa.domicilioComercial.colonia.label,
+          municipioId: datosEmpresa.domicilioComercial.municipioId,
+          codigoPostal: datosEmpresa.domicilioComercial.codigoPostal,
+          isEntrega: datosEmpresa.domicilioEntrega === 'domicilioComercial',
+        };
+      }
+
+      if (datosEmpresa.noTengoTelefonoEmpresa) {
+        delete data.empresa.telefonoEmpresa;
+      }
+
+      const saveData = await ContratoRepositorio.postContrato(data)
         .then(() => true)
-        .catch(() => {
-          formulario.setFieldError('ciec', ciecInvalida());
-          return false;
-        });
+        .catch(() => false);
+
+      return saveData;
     }
-    return valid;
+    return true;
   };
 
   const [handleSubmit] = useOnChangePage(formulario, CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE, validate, validateCiec);
@@ -87,7 +149,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
                   <TextField
                     name="ciec"
                     format="passwordspace"
-                    maxlength={80}
+                    maxlength={8}
                     type="password"
                     size="big"
                     label="**********"
@@ -137,7 +199,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
                   type="submit"
                   className="cicle-button-blue my-3"
                   aria-label="Avanzar"
-                  disabled={validate && !(formulario.isValid && formulario.dirty)}
+                  disabled={currentStep.lastStep ? !formulario.isValid : !(formulario.isValid && formulario.dirty)}
                 />
               </div>
             </form>

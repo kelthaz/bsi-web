@@ -16,8 +16,8 @@ const PasoDosBiometricosDocumentacion = () => (
         </div>
         <div className="col-xs-12 col-sm-12">
           <p className="body2">
-            Ahora realizaremos una toma de biométricos por fotografía. Asegúrate que la
-            cámara de tu teléfono esté limpia y haya buena iluminación para capturar:
+            Ahora realizaremos una toma de biométricos por fotografía. Asegúrate que la cámara de tu teléfono esté
+            limpia y haya buena iluminación para capturar:
           </p>
         </div>
         <div className="card-simple-blue-light">
@@ -27,7 +27,7 @@ const PasoDosBiometricosDocumentacion = () => (
         </div>
         <div className="col-xs-12 col-sm-12 my-4">
           <div className="text-center">
-            <Link href="/solicitud/[tab]/[step]" as={CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
+            <Link as={CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>
