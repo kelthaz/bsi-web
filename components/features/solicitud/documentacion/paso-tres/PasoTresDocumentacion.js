@@ -26,7 +26,7 @@ const PasoTresDocumentacion = ({ validate }) => {
     regexMultipleSpaces,
     ' '
   );
-  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad.label}`;
+  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad?.label}`;
 
   const subformValidationSchema = Yup.object().shape({
     primerNombre: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),

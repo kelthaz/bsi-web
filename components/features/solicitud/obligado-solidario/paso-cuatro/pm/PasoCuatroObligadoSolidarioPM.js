@@ -24,7 +24,7 @@ const PasoCuatroObligadoSolidarioPM = ({ validate }) => {
     regexMultipleSpaces,
     ' '
   );
-  const nombrePersonaMoral = `${obligadoSolidario.razonSocial} ${obligadoSolidario.tipoSociedad}`;
+  const nombrePersonaMoral = `${obligadoSolidario.razonSocial} ${obligadoSolidario.tipoSociedad?.label}`;
 
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
