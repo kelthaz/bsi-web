@@ -11,7 +11,7 @@ import SectoresRepositorio from '../../../../../services/solicitud/sectores.repo
 import { FISICA, MORAL } from '../../../../../constants/persona';
 import ModalActualizar from '../../../../core/containers/solicitud/modal-actualizar/ModalActualizar';
 
-jest.mock('../../../../../services/simulador/sectores.repositorio');
+jest.mock('../../../../../services/solicitud/sectores.repositorio');
 
 describe('Pruebas en el componente PasoTresDatosPersonales', () => {
   const sectores = [

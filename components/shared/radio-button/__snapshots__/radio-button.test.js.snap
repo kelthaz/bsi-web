@@ -8,7 +8,7 @@ exports[`Pruebas en el componente RadioButton Debe de mostrarse correctamente el
     className="container-input"
   >
     <input
-      checked={false}
+      checked={true}
       className=" my-check"
       name="meEjercenControlMoralComoMoral"
       onChange={[MockFunction]}

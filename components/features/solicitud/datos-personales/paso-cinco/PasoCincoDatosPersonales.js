@@ -101,40 +101,40 @@ const PasoCincoDatosPersonales = ({ validate }) => {
 
       const validPerson = await validationListaNegra(personData);
 
-      dispatch(
-        nextStepDatosPersonales({
-          datosPersonales: { ...datosPersonales, enListaNegra: !validPerson },
-        })
-      );
-
-      const data = {
-        ...datosPersonales,
-        celular: datosPersonales.celular.replace(regexHyphen, ''),
-        tipoSociedad: datosPersonales.tipoSociedad?.value,
-        sector: datosPersonales.sector.value,
-        giro: datosPersonales.giro.value,
-        rfc: formulario.values.rfc,
-        password: formulario.values.contrasena,
-        simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
-      };
-      delete data.aceptoTerminos;
-      delete data.contrasena;
-      delete data.confirmarContrasena;
-      delete data.enListaNegra;
-
-      if (datosPersonales.tipoPersona !== MORAL) {
-        delete data.tipoSociedad;
-        delete data.razonSocial;
-        delete data.rfcRepresentante;
-      }
-
       if (validPerson) {
+        const data = {
+          ...datosPersonales,
+          celular: datosPersonales.celular.replace(regexHyphen, ''),
+          tipoSociedad: datosPersonales.tipoSociedad?.value,
+          sector: datosPersonales.sector.value,
+          giro: datosPersonales.giro.value,
+          rfc: formulario.values.rfc,
+          password: formulario.values.contrasena,
+          simulador: { monto, plazo: plazo.value, periodicidad: periodicidad.value },
+        };
+        delete data.aceptoTerminos;
+        delete data.contrasena;
+        delete data.confirmarContrasena;
+        delete data.enListaNegra;
+
+        if (datosPersonales.tipoPersona !== MORAL) {
+          delete data.tipoSociedad;
+          delete data.razonSocial;
+          delete data.rfcRepresentante;
+        }
+
         const saveData = await LoginRepositorio.postRegistro(data)
           .then(() => true)
           .catch(() => false);
 
         return saveData;
       }
+
+      dispatch(
+        nextStepDatosPersonales({
+          datosPersonales: { ...datosPersonales, enListaNegra: !validPerson },
+        })
+      );
     }
     return true;
   };

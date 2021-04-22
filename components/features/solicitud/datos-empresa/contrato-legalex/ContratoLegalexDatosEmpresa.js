@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
@@ -12,12 +11,12 @@ import { aceptarTerminos } from '../../../../../constants/errors';
 import { MORAL } from '../../../../../constants/persona';
 import ContratoLegalex from '../../shared/contrato-legalex/ContratoLegalex';
 import LegalexRepositorio from '../../../../../services/solicitud/contrato.repositorio';
+import { AGRADECIMIENTO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
 
 const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const { datosPersonales } = useSelector((state) => state.solicitud);
-  const router = useRouter();
 
   const dispatch = useDispatch();
 
@@ -46,20 +45,33 @@ const ContratoLegalexDatosEmpresa = () => {
       autorizacionConsultaBancoppel: Yup.boolean().nullable().oneOf([true], aceptarTerminos),
     }),
   };
+
+  const handleLegalex = async () => {
+    const res = await LegalexRepositorio.postContratoDigital()
+      .then(({ data }) => data.listaTokens)
+      .catch(({ response }) => {
+        console.log(response.data);
+      });
+
+    return res;
+  };
+
   const formulario = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      dispatch(
-        nextStepDatosPersonales({
-          currentStep: { tab: 'datos-empresa', step: '9' },
-          datosEmpresa: {
-            ...datosEmpresa,
-            ...values,
-          },
-        })
-      );
-      router.push('/solicitud/[tab]/[step]', '/solicitud/datos-empresa/agradecimiento');
+    onSubmit: async () => {
+      // dispatch(
+      //   nextStepDatosPersonales({
+      //     currentStep: { tab: 'datos-empresa', step: '9' },
+      //     datosEmpresa: {
+      //       ...datosEmpresa,
+      //       ...values,
+      //     },
+      //   })
+      // );
+      const route = handleLegalex();
+
+      // window.open(route);
     },
   });
 
@@ -74,21 +86,6 @@ const ContratoLegalexDatosEmpresa = () => {
         // return false;
       });
   };
-
-  useEffect(async () => {
-    const validateEmail = async () => {
-      const emailExist = await LegalexRepositorio.postContratoDigital()
-        .then((resp) => {
-          console.log(resp);
-        })
-        .catch(({ response }) => {
-          // const [error] = response.data.message;
-          console.log(response.data);
-          // return false;
-        });
-    };
-    await validateEmail();
-  }, []);
 
   return (
     <>
@@ -119,7 +116,7 @@ const ContratoLegalexDatosEmpresa = () => {
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              <ContratoLegalex
+              {/* <ContratoLegalex
                 formulario={formulario}
                 nameFieldNombreSolicitante="nombreSolicitante"
                 nameFieldRFC="rfc"
@@ -134,7 +131,7 @@ const ContratoLegalexDatosEmpresa = () => {
                 nameFieldTelefono="telefono"
                 nameFieldRepresentanteLegal="representanteLegal"
                 nameFieldFechaAutorizacion="fechaAutorizacion"
-              />
+              /> */}
 
               <div className="row no-gutters mt-4">
                 <CheckTextBox name="autorizacionFirmaElectronica" formulario={formulario}>
@@ -156,10 +153,10 @@ const ContratoLegalexDatosEmpresa = () => {
               <div className="flex-column-center-config my-3 ">
                 <button
                   className="btn-medium"
-                  type="button"
+                  type="submit"
                   aria-label="Avanzar"
                   disabled={!(formulario.isValid && formulario.dirty)}
-                  onClick={() => setOpenConfirmation(true)}
+                  // onClick={() => setOpenConfirmation(true)}
                 >
                   <span>Firma tu contrato</span>
                 </button>

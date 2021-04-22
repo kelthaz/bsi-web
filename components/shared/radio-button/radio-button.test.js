@@ -9,9 +9,9 @@ describe('Pruebas en el componente RadioButton', () => {
     // arrange
     const props = {
       name: 'meEjercenControlMoralComoMoral',
-      checked: false,
       label: 'si',
       onChange,
+      value: 'si',
     };
     // act
     const wrapper = shallow(
@@ -29,9 +29,9 @@ describe('Pruebas en el componente RadioButton', () => {
     const valorEsperado = { target: { checked: true } };
     const props = {
       name: 'meEjercenControlMoralComoMoral',
-      checked: false,
       label: 'si',
       onChange,
+      value: 'no',
     };
     // act
     const wrapper = shallow(
