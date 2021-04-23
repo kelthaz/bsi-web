@@ -26,7 +26,7 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
     regexMultipleSpaces,
     ' '
   );
-  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad.label}`;
+  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad?.label}`;
 
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
@@ -115,10 +115,13 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
                 <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
               </>
             ) : (
-              <p className="sub color-dark-gray position-relative">
-                Cuéntanos, ¿Existe una persona moral sobre la que tú ejerces control?
-                <Tooltip message="..." />
-              </p>
+              <>
+                <p className="body2">Vamos a realizarte unas preguntas más.</p>
+                <p className="sub color-dark-gray position-relative">
+                  Cuéntanos, ¿Existe una persona moral sobre la que tú ejerces control?
+                  <Tooltip message="..." />
+                </p>
+              </>
             )}
 
             <EjerceControlSobreMoral

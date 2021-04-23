@@ -31,12 +31,6 @@ const CapturaRostroBiometricosDocumentacion = () => {
       timestamp: rawImgData.timestamp,
     };
 
-    const frameLiveness = {
-      data: rawImgData.liveness.replace('data:image/jpeg;base64,', ''),
-      tags: [],
-      timestamp: rawImgData.timestamp,
-    };
-
     const payload = {
       preface: {
         profile: {
@@ -65,7 +59,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
     if (captured) {
       setCameraStatus('captured');
       setAnalysisMessage('');
-      capturedFrames.push(frameLiveness);
+      capturedFrames.push(frameAnalyzer);
       feebackFrames.length = 0;
     } else {
       const [firstFeedback] = feedback;

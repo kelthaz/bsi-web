@@ -80,8 +80,9 @@ const SolicitudContainer = ({ pageComponent, servicesData, userData }) => {
           middle_name: segundoApellido,
         } = userData;
 
-        const tipoSociedad = businessName ? TIPO_EMPRESA.find((tipo) => businessName.includes(tipo.label)) : null;
-        const razonSocial = businessName ? businessName.split(tipoSociedad.label)[0].trim() : '';
+        const tipoSociedad =
+          businessName && rfc.length === 12 ? TIPO_EMPRESA.find((tipo) => businessName.includes(tipo.label)) : null;
+        const razonSocial = businessName && rfc.length === 12 ? businessName.split(tipoSociedad.label)[0].trim() : '';
 
         const [primerNombre] = givenName.split(' ');
         const [primerApellido] = familyName.split(' ');

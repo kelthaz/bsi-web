@@ -24,7 +24,7 @@ const PasoDosDocumentacionPM = ({ validate }) => {
     regexMultipleSpaces,
     ' '
   );
-  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad.label}`;
+  const nombrePersonaMoral = `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad?.label}`;
 
   const { initialValues, validationSchema } = {
     initialValues: {

@@ -94,7 +94,7 @@ const PasoCuatroDatosEmpresa = ({ validate }) => {
                 />
               </div>
             </div>
-            {datosPersonales.tipoPersona !== 'Persona Moral' && (
+            {datosPersonales.tipoPersona !== MORAL && (
               <div className="row">
                 <CheckTextBox name="noTengoTelefonoEmpresa" formulario={formulario}>
                   <p className="m-0">No tengo número de empresa, solo el personal.</p>

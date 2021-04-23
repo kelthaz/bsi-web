@@ -1,3 +1,4 @@
+import { MORAL } from '../../constants/persona';
 import * as types from '../types/types';
 
 const initialState = {
@@ -74,7 +75,7 @@ const initialState = {
   },
   oferta: {
     conCuenta: false,
-    tipoPersona: 'Persona Moral',
+    tipoPersona: MORAL,
     clabe: null,
   },
   documentacion: {

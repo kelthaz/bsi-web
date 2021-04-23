@@ -107,7 +107,7 @@ const Camera = forwardRef(({ isCaptureComplete, pauseImage, cameraStatus, camera
 
     return {
       analyzer: analyzerPic,
-      liveness: livenessPic,
+      // liveness: livenessPic,
       timestamp,
     };
   };

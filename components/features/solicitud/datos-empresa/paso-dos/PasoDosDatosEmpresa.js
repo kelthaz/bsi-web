@@ -144,6 +144,7 @@ const PasoDosDatosEmpresa = ({ validate }) => {
                   nameFieldMunicipioAlcaldia="domicilioComercial.municipioAlcaldia"
                   nameFieldCiudad="domicilioComercial.ciudad"
                   nameFieldEstado="domicilioComercial.estado"
+                  nameFieldMunicipioId="domicilioComercial.municipioId"
                 />
 
                 <div className="row no-gutters card-simple-blue-light">
