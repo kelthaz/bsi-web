@@ -53,7 +53,7 @@ const PasoTresObligadoSolidarioPM = ({ validate }) => {
                 <TextField
                   name="rfc"
                   format="rfcformatter"
-                  maxlength={12}
+                  maxlength={13}
                   type="text"
                   size="big"
                   label="TLF280693HVZJ"

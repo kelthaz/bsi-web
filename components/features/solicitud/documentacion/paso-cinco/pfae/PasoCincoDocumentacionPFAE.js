@@ -59,7 +59,7 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className="container px-xs-0 px-md-0 modal-container-video">
+        <div className="modal-container-video">
           <div>
             <h4 className="color-blue-storm">Recomendaciones para tus documentos</h4>
             <p className="dark-gray body2">
@@ -101,23 +101,23 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
                   <FileInput text="Comprobante de domicilio fiscal" />
                 </div>
                 <div className="col-md-12 pb-md-4">
-                  <FileInput text="Acta de matrimonio" />
-                </div>
-                <div className="col-md-12 pb-md-4">
                   <FileInput text="Tu INE" grayText="(por el frente)" />
                 </div>
                 <div className="col-md-12 pb-md-4">
                   <FileInput text="Tu INE" grayText="(por el reverso)" />
                 </div>
                 {documentacion.estadoCivil !== 'no' && (
-                  <div>
+                  <>
+                    <div className="col-md-12 pb-md-4">
+                      <FileInput text="Acta de matrimonio" />
+                    </div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput text="INE de tu pareja" grayText="(por el frente)" />
                     </div>
                     <div className="col-md-12 pb-md-4">
                       <FileInput text="INE de tu pareja" grayText="(por el reverso)" />
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
               <div className="row ">

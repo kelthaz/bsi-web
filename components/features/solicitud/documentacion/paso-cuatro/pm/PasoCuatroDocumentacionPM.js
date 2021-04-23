@@ -64,11 +64,6 @@ const PasoCuatroDocumentacionPM = ({ validate }) => {
               2. Descarga la app “Microsoft Office Lens” en tu smartphone (iOS y Android) y escanea tus documentos.
             </p>
           </div>
-          <div className="flex-column-center-config mt-2">
-            <button type="submit" className="btn-big">
-              Continuar
-            </button>
-          </div>
         </div>
       </Modal>
       <div className="contedor-fixed-tab">
@@ -108,6 +103,7 @@ const PasoCuatroDocumentacionPM = ({ validate }) => {
 
               <div className="row ">
                 <p className="color-dark-gray sub">
+                  Haz{' '}
                   <button type="button" className="btn-link" onClick={() => setOpenConfirmation(true)}>
                     clic aquí
                   </button>{' '}

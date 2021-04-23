@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SvgContratoConSigno from '../../../../svgs/agradecimiento/SvgContratoConSigno';
 import SvgOk from '../../../../svgs/SvgOk';
 
-const Agradecimiento = ({ children, title, iconOk }) => (
+const Agradecimiento = ({ children, title, iconOk, button, handleClick }) => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud ">
       <div className="container">
@@ -16,6 +16,13 @@ const Agradecimiento = ({ children, title, iconOk }) => (
             {children}
           </div>
         </div>
+        {button && (
+          <div className="row">
+            <button type="submit" className="btn-medium offset-md-4 offset-xs-3" onClick={handleClick}>
+              {button}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -25,10 +32,14 @@ Agradecimiento.propTypes = {
   children: PropTypes.any.isRequired,
   title: PropTypes.string.isRequired,
   iconOk: PropTypes.bool,
+  button: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 Agradecimiento.defaultProps = {
   iconOk: true,
+  button: '',
+  handleClick: () => {},
 };
 
 export default Agradecimiento;

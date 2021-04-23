@@ -101,7 +101,7 @@ const CapturaRostroBiometricosDocumentacion = () => {
       setCaptureComplete(true);
       setOpenModal(true);
     } else {
-      openModalError(true);
+      setOpenModalError(true);
       setPauseImage(false);
       capturedFrames.length = 0;
     }

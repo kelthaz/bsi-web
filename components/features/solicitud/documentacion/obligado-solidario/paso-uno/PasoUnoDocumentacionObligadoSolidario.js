@@ -50,7 +50,7 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
   return (
     <>
       <Modal openModal={openConfirmation} setOpenModal={setOpenConfirmation}>
-        <div className="container px-xs-0 px-md-0 modal-container-video">
+        <div className="modal-container-video">
           <div>
             <h4 className="color-blue-storm">¿Quién es un Obligado Solidario y por qué solicitamos uno?</h4>
             <p className="dark-gray body2">
@@ -76,9 +76,9 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
             <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub position-relative">
                 Vamos a platicar un poco sobre la persona que te gustaría designar como tu Obligado Solidario.{' '}
-                <span onClick={() => setOpenConfirmation(true)} className="link" role="button" tabIndex={0}>
+                <button type="button" onClick={() => setOpenConfirmation(true)} className="btn-link">
                   ¿Porqué te pedimos esto?
-                </span>
+                </button>
               </p>
               <p className="color-dark-gray sub position-relative">Antes que nada, ¿Qué tipo de persona es?</p>
 
@@ -91,13 +91,14 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
                     }`}
                     onClick={() => handletipoPersona(FISICA)}
                   >
-                    <div className="row">
-                      <div className="col-12">
-                        <SvgPersonaFisicaActividadFisica />
-                      </div>
-                      <div className="col-8 offset-2">
-                        <p className="mb-1">Persona Física</p>
-                        <span className="color-gray">Sugerimos que sea un familiar con relación con la empresa</span>
+                    <div>
+                      <SvgPersonaFisicaActividadFisica />
+                    </div>
+
+                    <div className="w-100">
+                      <p className="px-md-5 px-lg-5">Persona Física</p>
+                      <div className="text-md-center text-xs-left color-gray w-100">
+                        Sugerimos que sea un familiar con relación con la empresa
                       </div>
                     </div>
                   </button>
@@ -110,17 +111,24 @@ const PasoUnoDocumentacionObligadoSolidario = ({ validate }) => {
                     }`}
                     onClick={() => handletipoPersona(MORAL)}
                   >
-                    <div className="row">
-                      <div className="col-12 ml-2">
-                        <SvgPersonaMoralBlue />
-                      </div>
-                      <div className="col-9 offset-2">
-                        <p>Persona Moral</p>
-                        <span className="color-gray">Deberá ser una empresa que responderá con su patrimonio</span>
+                    <div>
+                      <SvgPersonaMoralBlue />
+                    </div>
+
+                    <div className="w-100">
+                      <p className="px-md-5 px-lg-5">Persona Moral</p>
+                      <div className="text-md-center text-xs-left color-gray w-100">
+                        Deberá ser una empresa que responderá con su patrimonio
                       </div>
                     </div>
                   </button>
                 </div>
+              </div>
+              <div className="row no-gutters card-simple-blue-light text-md-center">
+                <p className="m-0">
+                  En caso de que tu obligado solidario sea una persona Moral, deberá ser representante legal y
+                  accionista mayoritario de la empresa.
+                </p>
               </div>
               <div className="flex-column-center-config">
                 <button

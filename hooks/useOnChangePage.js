@@ -11,6 +11,9 @@ const useOnChangePage = (formulario, route, validacion, validation = () => true)
   const changeRoute = async (newRoute, reset) => {
     if (formulario.dirty) {
       const resultValidation = await validation();
+      if (!formulario.isValid) {
+        await formulario.submitForm();
+      }
       dispatch(onShowModal(true, resultValidation && formulario.isValid, newRoute));
     } else {
       push(newRoute);

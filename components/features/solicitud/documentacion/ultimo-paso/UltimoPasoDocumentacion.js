@@ -1,34 +1,50 @@
-import Link from 'next/link';
-import { REVISAR_CORREO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
+import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
-const UltimoPasoDocumentacion = () => (
-  <div className="contedor-fixed-tab">
-    <div className="contedor-solicitud">
-      <div className="container">
-        <div className="row ">
-          <h2 className="color-blue-storm">Para el último paso</h2>
-          <p>Te explicaremos como realizar la toma de tus biométricos, ¡es muy sencillo! </p>
-          <p className="mt-2">
-            Las instrucciones se enviarán a tu correo electrónico. Es muy importante que accedas al proceso desde tu
-            télefono celular.
-          </p>
-          <p className="mt-2">Deberás tener a la mano:</p>
-          <div className="mt-3 card-simple-blue-light list-onboarding">
-            <ul>
-              <li>Identificación oficial</li>{' '}
-            </ul>
+const UltimoPasoDocumentacion = ({ validate }) => {
+  const { currentStep, datosPersonales } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+
+  const formulario = {
+    submitForm: () => {
+      // dispatch(
+      //   nextStepDatosPersonales({
+      //     currentStep: validate
+      //       ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
+      //       : { ...currentStep },
+      //   })
+      // );
+    },
+    dirty: false,
+  };
+
+  const [handleSubmit] = useOnChangePage(formulario, BIENVENIDO_BIOMETRICO_DOCUMENTACION_ROUTE, validate);
+
+  return (
+    <div className="contedor-fixed-tab">
+      <div className="contedor-solicitud">
+        <div className="container">
+          <div className="row ">
+            <h2 className="color-blue-storm">Para el último paso</h2>
+            <p className="mt-2">
+              Es muy importante que accedas al proceso desde tu télefono celular o computador con camara.
+            </p>
           </div>
-        </div>
-        <div className="flex-column-center-config mt-2">
-          <Link href={REVISAR_CORREO_DOCUMENTACION_ROUTE}>
-            <button type="submit" className="btn-big">
-              Enviar instrucciones
+          <div className="flex-column-center-config mt-2">
+            <button type="button" className="btn-big" onClick={handleSubmit}>
+              Continuar
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+UltimoPasoDocumentacion.propTypes = {
+  validate: PropTypes.bool.isRequired,
+};
 
 export default UltimoPasoDocumentacion;

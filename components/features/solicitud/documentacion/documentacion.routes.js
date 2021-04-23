@@ -8,7 +8,6 @@ import PasoCincoPfaeDocumentacion from './paso-cinco/pfae/PasoCincoDocumentacion
 import PasoCincoPmDocumentacion from './paso-cinco/pm/PasoCincoDocumentacionPM';
 import PasoSeisPmDocumentacion from './paso-seis/PasoSeisDocumentacionPM';
 import PasoSieteDocumentacionPM from './paso-siete/PasoSieteDocumentacionPM';
-import RevisarCorreoDocumentacion from './revisar-correo/RevisarCorreoDocumentacion';
 import {
   ULTIMA_ETAPA_DOCUMENTACION_ROUTE,
   PASO_UNO_DOCUMENTACION_ROUTE,
@@ -20,10 +19,9 @@ import {
   PASO_SIETE_DOCUMENTACION_ROUTE,
   PASO_OCHO_DOCUMENTACION_ROUTE,
   GRACIAS_DOCUMENTACION_ROUTE,
-  REVISAR_CORREO_DOCUMENTACION_ROUTE,
 } from '../../../../constants/routes/solicitud/documentacion';
 
-import GraciasIncompletaDocumentacion from './gracias/GraciasIncompletaDocumentacion';
+import AgradecimientoIncompletoDocumentacion from './agradecimiento-incompleto/AgradecimientoIncompletoDocumentacion';
 import { DOCUMENTACION, DOCUMENTACION_INCOMPLETO } from '../../../../constants/formularios';
 import UltimoPasoDocumentacion from './ultimo-paso/UltimoPasoDocumentacion';
 import obligadoSolidarioDocumentacionRoutes from './obligado-solidario/obligado-solidario-documentacion.routes';
@@ -162,7 +160,7 @@ const documentacionRoutes = [
   },
   {
     route: GRACIAS_DOCUMENTACION_ROUTE,
-    component: [GraciasIncompletaDocumentacion],
+    component: [AgradecimientoIncompletoDocumentacion],
     services: [],
     roles: [CLIENTE],
     label: 'Documentacion: Agradecimiento',
@@ -174,21 +172,6 @@ const documentacionRoutes = [
       tab: [''],
     },
   },
-
-  // {
-  //   route: REVISAR_CORREO_DOCUMENTACION_ROUTE,
-  //   component: [RevisarCorreoDocumentacion],
-  //   services: [],
-  //   roles: [CLIENTE],
-  //   label: 'Documentacion: Revisar correo',
-  //   data: {
-  //     formulario: DOCUMENTACION_BIOMETRICOS,
-  //     paso: 0,
-  //     tipoPersona: '',
-  //     step: null,
-  //     tab: ['documentacion'],
-  //   },
-  // },
 ];
 
 export default documentacionRoutes;
