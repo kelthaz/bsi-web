@@ -124,7 +124,7 @@ const EjerceControlSobreFisico = ({
               <TextField
                 name={`${nameControlados}[${index}].rfc`}
                 format="rfcformatter"
-                maxlength={60}
+                maxlength={13}
                 type="text"
                 size="big"
                 label="Ej. TLF280693H17"

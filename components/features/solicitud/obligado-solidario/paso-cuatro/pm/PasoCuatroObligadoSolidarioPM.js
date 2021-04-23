@@ -79,7 +79,10 @@ const PasoCuatroObligadoSolidarioPM = ({ validate }) => {
 
             <p className="sub color-dark-gray position-relative">
               ¿Existe una persona moral sobre la que tú ejerces control?
-              <Tooltip message="..." />
+              <Tooltip
+                message="Aquellas personas morales que tienen participación de manera directa en tu negocio"
+                position="top"
+              />
             </p>
 
             <EjerceControlSobreMoral
@@ -99,7 +102,10 @@ const PasoCuatroObligadoSolidarioPM = ({ validate }) => {
 
             <p className="sub color-dark-gray position-relative">
               Cuéntanos, ¿Existe una persona moral sobre la que tú ejerces control?
-              <Tooltip message="..." />
+              <Tooltip
+                message="Aquellas personas morales en las que tiene participación ya sea de manera directa aportando capital social o de manera indirecta mediante la participación en el capital social de una tercera empresa a través de la participación en el capital social de manera directa en una segunda."
+                position="top"
+              />
             </p>
 
             <EjerceControlSobreMoral
