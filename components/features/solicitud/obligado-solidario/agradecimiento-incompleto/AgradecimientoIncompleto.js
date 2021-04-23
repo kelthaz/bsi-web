@@ -6,7 +6,7 @@ import { resetDatosPersonales } from '../../../../../redux/actions/solicitud';
 import Agradecimiento from '../../shared/agradecimiento/Agradecimiento';
 
 const AgradecimientoIncompleto = () => {
-  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const { obligadoSolidario } = useSelector((state) => state.solicitud);
   const { replace } = useRouter();
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const AgradecimientoIncompleto = () => {
 
   return (
     <Agradecimiento
-      title={`¡Gracias por tu tiempo ${datosPersonales.primerNombre}!`}
+      title={`¡Gracias por tu tiempo ${obligadoSolidario.obligadoSolidario.primerNombre}!`}
       button="Terminar"
       handleClick={replace(SIMULADOR_ROUTE)}
     >

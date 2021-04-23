@@ -14,7 +14,7 @@ import { PASO_DOS_OBLIGADO_SOLIDARIO_ROUTE } from '../../../../../../constants/r
 import { nextStepDatosPersonales } from '../../../../../../redux/actions/solicitud';
 
 const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
-  const { currentStep, obligadoSolidario } = useSelector((state) => state.solicitud);
+  const { currentStep, obligadoSolidario, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
   const formulario = useFormik({
@@ -60,8 +60,8 @@ const PasoUnoObligadoSolidarioPFAE = ({ validate }) => {
           <div className="container p-0">
             <form onSubmit={handleSubmit} noValidate>
               <p className="color-dark-gray sub">
-                Alejandra ya nos ha platicado un poco sobre ti, por lo que te pediremos información adicional para
-                completar tu expediente y habremos terminado.
+                {datosEmpresa.primerNombre} ya nos ha platicado un poco sobre ti, por lo que te pediremos información
+                adicional para completar tu expediente y habremos terminado.
               </p>
               <p className="color-dark-gray sub">Para comenzar, por favor compártenos tu domicilio.</p>
               <Domicilio

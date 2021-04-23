@@ -14,7 +14,7 @@ import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import TIPO_EMPRESA from '../../../../../../constants/feature/tipoEmpresa';
 
 const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
-  const { obligadoSolidario, currentStep } = useSelector((state) => state.solicitud);
+  const { obligadoSolidario, currentStep, datosEmpresa } = useSelector((state) => state.solicitud);
 
   const dispatch = useDispatch();
   const itemsSector = changeSelectModel('id', 'nombre', sectores);
@@ -75,8 +75,8 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
         <div className="container p-0">
           <form onSubmit={handleSubmit} noValidate>
             <p className="color-dark-gray sub">
-              Alejandra ya nos ha platicado un poco sobre tu empresa, por lo que te pediremos un poco más de información
-              para completar tu expediente y habremos terminado.
+              {datosEmpresa.primerNombre} ya nos ha platicado un poco sobre tu empresa, por lo que te pediremos un poco
+              más de información para completar tu expediente y habremos terminado.
             </p>
             <p className="color-dark-gray sub">
               Para comenzar, ¿Cuál es la razón social, nombre comercial, sector y giro de tu negocio?
@@ -121,7 +121,7 @@ const PasoUnoObligadoSolidarioPM = ({ sectores, validate }) => {
                   format="uppercase"
                   type="text"
                   size="big"
-                  maxlength={120}
+                  maxlength={60}
                   label="Nombre del negocio"
                   {...formulario.getFieldMeta('nombreEmpresa')}
                   {...formulario.getFieldHelpers('nombreEmpresa')}

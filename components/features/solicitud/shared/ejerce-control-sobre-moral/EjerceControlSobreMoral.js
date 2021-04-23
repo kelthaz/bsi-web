@@ -78,7 +78,7 @@ const EjerceControlSobreMoral = ({
           </div>
           <div className="row no-gutters">
             <div className="col-lg-2 col-md-4 col-sm-12 col-xs-12 ">
-              <p className="input color-gray">RFC</p>
+              <p className="input color-gray">Su RFC es</p>
             </div>
             <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12 pr-lg-2 pr-md-2">
               <TextField

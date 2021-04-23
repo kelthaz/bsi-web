@@ -15,7 +15,7 @@ import { MORAL } from '../../../../../constants/persona';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 
 const BienvenidoObligadoSolidario = ({ validate }) => {
-  const { currentStep, datosPersonales, obligadoSolidario } = useSelector((state) => state.solicitud);
+  const { currentStep, datosPersonales, obligadoSolidario, datosEmpresa } = useSelector((state) => state.solicitud);
   const dispatch = useDispatch();
 
   const formulario = useFormik({
@@ -41,10 +41,10 @@ const BienvenidoObligadoSolidario = ({ validate }) => {
     <div className="contedor-fixed">
       <div className="contedor-solicitud">
         <div className="container px-xs-0 ">
-          <h2 className="color-blue-storm">¡Hola, José!</h2>
+          <h2 className="color-blue-storm">¡Hola, {datosPersonales.primerNombre}</h2>
           <p className="body2 color-gray-dark">
-            Alejandra Aguilar Ruíz te ha designado como su Obligado Solidario como parte del proceso de solicitud de un
-            crédito PyME BanCoppel.
+            {datosEmpresa.primerNombre} te ha designado como su Obligado Solidario como parte del proceso de solicitud
+            de un crédito PyME BanCoppel.
           </p>
           <p className="body2 color-gray-dark">
             Este proceso es para conocerte mejor y se divide en los siguientes pasos:

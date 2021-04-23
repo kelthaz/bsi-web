@@ -51,7 +51,10 @@ const PasoSieteObligadoSolidario = ({ validate }) => {
           <form onSubmit={handleSubmit} noValidate>
             <p className="sub color-dark-gray position-relative">
               ¿Existe una persona moral que ejerce control sobre ti?
-              <Tooltip message="..." />
+              <Tooltip
+                message="Aquellas personas morales que tienen participación de manera directa en tu negocio"
+                position="top"
+              />
             </p>
 
             <div className="row">
