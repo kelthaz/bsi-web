@@ -95,6 +95,7 @@ const PasoSieteDocumentacionPM = ({ validate }) => {
                     type="text"
                     size="small"
                     label="Recurso de pago"
+                    format="alphanumeric"
                     maxlength={50}
                     {...formulario.getFieldMeta('recursoPago')}
                     {...formulario.getFieldHelpers('recursoPago')}

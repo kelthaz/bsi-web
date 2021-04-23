@@ -107,13 +107,13 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
 
               <div className="row no-gutters">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                  <p className="input color-gray">Mi nombre es</p>
+                  <p className="input color-gray">Su nombre es</p>
                 </div>
                 <div className="col-lg-4 col-md-4  col-xs-12 pr-lg-2 pr-md-2 ">
                   <TextField
                     name="primerNombre"
                     format="uppercase"
-                    maxlength={12}
+                    maxlength={60}
                     type="text"
                     size="big"
                     label="Nombre"
@@ -138,7 +138,7 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                   <TextField
                     name="primerApellido"
                     format="uppercase"
-                    maxlength={20}
+                    maxlength={60}
                     type="text"
                     size="big"
                     label="Apellido paterno"
@@ -150,7 +150,7 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                   <TextField
                     name="segundoApellido"
                     format="uppercase"
-                    maxlength={20}
+                    maxlength={60}
                     type="text"
                     size="big"
                     label="Apellido materno"
@@ -166,7 +166,7 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                     name="correo"
                     size="big"
                     label="correo@mail.com"
-                    maxlength={60}
+                    maxlength={100}
                     type="email"
                     format="email"
                     {...formulario.getFieldMeta('correo')}
@@ -188,6 +188,11 @@ const PasoDosDocumentacionObligadoSolidario = ({ validate }) => {
                     {...formulario.getFieldHelpers('celular')}
                   />
                 </div>
+              </div>
+              <div className="row no-gutters card-simple-blue-light text-md-center ">
+                <p className="m-0">
+                  Favor de llenar los campos con los nombres y apellidos presentados de su Identificación oficial INE
+                </p>
               </div>
               <div className="flex-column-center-config">
                 <button

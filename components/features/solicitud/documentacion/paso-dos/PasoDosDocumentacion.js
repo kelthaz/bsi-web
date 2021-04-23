@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import Tooltip from '../../../../shared/tooltip/Tooltip';
 import RadioButton from '../../../../shared/radio-button/RadioButton';
 import { campoRequerido } from '../../../../../constants/errors';
-import SvgPM from '../../../../svgs/carga-documentos/SvgPM';
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { regexMultipleSpaces } from '../../../../../constants/regex';
 import {
@@ -15,6 +14,8 @@ import {
 } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { MORAL } from '../../../../../constants/persona';
+import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
+import SvgPersona from '../../../../svgs/SvgPersona';
 
 const PasoDosDocumentacionPM = ({ validate }) => {
   const dispatch = useDispatch();
@@ -73,12 +74,17 @@ const PasoDosDocumentacionPM = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === MORAL && (
+            {datosPersonales.tipoPersona === MORAL ? (
               <>
-                <p className="sub color-blue-storm">
-                  <SvgPM />
-                  Respondiendo como: {nombrePersonaMoral} (Persona Moral)
-                </p>
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersonaMoral />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">Respondiendo como: {nombrePersonaMoral} (Persona Moral)</p>
+                  </div>
+                </div>
+
                 <p className="sub color-dark-gray position-relative">
                   ¿Existe una persona moral que ejerce control sobre ti?
                   <Tooltip message="..." />
@@ -104,13 +110,25 @@ const PasoDosDocumentacionPM = ({ validate }) => {
                   </div>
                 </div>
 
-                <p className="sub color-blue-storm">
-                  <SvgPM />
-                  Respondiendo como: {nombrePersonaFisica} (Persona Física)
-                </p>
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersona />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">
+                      Respondiendo como: {nombrePersonaFisica} (Representante legal)
+                    </p>
+                  </div>
+                </div>
+
+                <p className="sub color-dark-gray">¿Existe una persona moral que ejerce control sobre ti?</p>
               </>
+            ) : (
+              <p className="sub color-dark-gray position-relative">
+                ¿Existe una persona moral que ejerce control sobre ti?
+                <Tooltip message="..." />
+              </p>
             )}
-            <p className="sub color-dark-gray">¿Existe una persona moral que ejerce control sobre ti?</p>
 
             <div className="row">
               <div className="col-lg-2 col-md-6 col-sm-6 col-xs-6">

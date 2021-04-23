@@ -7,7 +7,7 @@ const RevisarCorreoDocumentacionObligadoSolidario = () => {
   const { datosPersonales, documentacion } = useSelector((state) => state.solicitud);
 
   return (
-    <div className="contedor-fixed-tab">
+    <div className="contedor-fixed">
       <div className="contedor-solicitud">
         <div className="container px-xs-0 px-md-3">
           <h2 className="color-blue-storm">¡Gracias, {datosPersonales.primerNombre}!</h2>

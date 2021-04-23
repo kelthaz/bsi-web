@@ -8,6 +8,7 @@ import { onChangePage } from '../../../../../redux/actions/formulario';
 const TabInformativo = ({ tabs, currentTab, currentStep, valipStep, steps }) => {
   const dispatch = useDispatch();
   const [previus, next] = steps.filter(({ paso }) => paso === currentStep - 1 || paso === currentStep + 1);
+
   const handleButton = (route) => {
     dispatch(onChangePage(true, route));
   };

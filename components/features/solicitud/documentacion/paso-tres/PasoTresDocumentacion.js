@@ -17,6 +17,7 @@ import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_CUATRO_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud';
 import { MORAL } from '../../../../../constants/persona';
+import SvgPersona from '../../../../svgs/SvgPersona';
 
 const PasoTresDocumentacion = ({ validate }) => {
   const { currentStep, documentacion, datosPersonales } = useSelector((state) => state.solicitud);
@@ -90,13 +91,18 @@ const PasoTresDocumentacion = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container ">
           <form onSubmit={handleSubmit} noValidate>
-            {datosPersonales.tipoPersona === MORAL && (
+            {datosPersonales.tipoPersona === MORAL ? (
               <>
-                <p className="sub color-blue-storm">
-                  <SvgPersonaMoral />
-                  Respondiendo como: {nombrePersonaMoral} (Persona Moral)
-                </p>
-                <p className="sub color-dark-gray">
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersonaMoral />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">Respondiendo como: {nombrePersonaMoral} (Persona Moral)</p>
+                  </div>
+                </div>
+
+                <p className="sub color-dark-gray position-relative">
                   ¿Existe una persona física relacionada? <Tooltip message="..." />
                 </p>
                 <EjerceControlSobreFisico
@@ -104,23 +110,34 @@ const PasoTresDocumentacion = ({ validate }) => {
                   nameControlados="controladosFisicosComoMoral"
                   nameTieneControlados="tieneControladosFisicosComoMoral"
                   nameCantidadControlados="cantidadControladosFisicosComoMoral"
-                  numeroMaximo={5}
+                  numeroMaximo={10}
                 />
-                <p className="sub color-blue-storm">
-                  <img src="/requisitos/PM.svg" alt="Persona moral" />
-                  Respondiendo como: {nombrePersonaFisica} (Persona Física)
-                </p>
-              </>
-            )}
 
-            <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersona />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">
+                      Respondiendo como: {nombrePersonaFisica} (Representante legal)
+                    </p>
+                  </div>
+                </div>
+
+                <p className="sub color-dark-gray">¿Existe una persona física relacionada?</p>
+              </>
+            ) : (
+              <p className="sub color-dark-gray position-relative">
+                ¿Existe una persona física relacionada? <Tooltip message="..." />
+              </p>
+            )}
 
             <EjerceControlSobreFisico
               formulario={formulario}
               nameControlados="controladosFisicosComoFisico"
               nameTieneControlados="tieneControladosFisicosComoFisico"
               nameCantidadControlados="cantidadControladosFisicosComoFisico"
-              numeroMaximo={5}
+              numeroMaximo={10}
             />
 
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">

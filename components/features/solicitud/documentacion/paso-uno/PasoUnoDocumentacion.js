@@ -18,6 +18,8 @@ import EjerceControlSobreMoral from '../../shared/ejerce-control-sobre-moral/Eje
 import useOnChangePage from '../../../../../hooks/useOnChangePage';
 import { PASO_DOS_DOCUMENTACION_ROUTE } from '../../../../../constants/routes/solicitud/documentacion';
 import { MORAL } from '../../../../../constants/persona';
+import SvgPersona from '../../../../svgs/SvgPersona';
+import SvgPersonaMoral from '../../../../svgs/SvgPersonaMoral';
 
 const PasoUnoDocumentacionPM = ({ validate }) => {
   const { currentStep, datosPersonales, documentacion } = useSelector((state) => state.solicitud);
@@ -31,8 +33,8 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
   const subformValidationSchema = Yup.object().shape({
     nombreNegocio: Yup.string().trim().max(60, longitudMaxima).required(campoRequerido),
     rfc: Yup.string().trim().matches(regexRFCMoral, rfcInvalido).min(12, longitudMinima).required(campoRequerido),
-    porcentajeDirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
-    porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(0, numeroMinimo).required(campoRequerido),
+    porcentajeDirecto: Yup.number().max(100, numeroMaximo).min(1, numeroMinimo).required(campoRequerido),
+    porcentajeIndirecto: Yup.number().max(100, numeroMaximo).min(1, numeroMinimo).required(campoRequerido),
   });
 
   const { initialValues, validationSchema } = {
@@ -89,10 +91,14 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
                   {nombrePersonaMoral}) y como Persona Física ({nombrePersonaFisica})
                 </p>
 
-                <p className="sub color-blue-storm">
-                  <img src="/requisitos/PM.svg" alt="Persona moral" />
-                  Respondiendo como: {nombrePersonaMoral} (Persona Moral)
-                </p>
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersonaMoral />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">Respondiendo como: {nombrePersonaMoral} (Persona Moral)</p>
+                  </div>
+                </div>
 
                 <p className="sub color-dark-gray position-relative">
                   ¿Existe una persona moral sobre la que tú ejerces control?
@@ -104,13 +110,19 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
                   nameControlados="controladosMoralesComoMoral"
                   nameTieneControlados="tieneControladosMoralesComoMoral"
                   nameCantidadControlados="cantidadControladosMoralesComoMoral"
-                  numeroMaximo={5}
+                  numeroMaximo={10}
                 />
 
-                <p className="sub color-blue-storm">
-                  <img src="/requisitos/PM.svg" alt="Persona moral" />
-                  Respondiendo como: {nombrePersonaFisica} (Persona Física)
-                </p>
+                <div className="row d-flex flex-row align-items-center pb-2">
+                  <div className="col-xs-2 col-md-1">
+                    <SvgPersona />
+                  </div>
+                  <div className="col-xs-10 col-md-11">
+                    <p className="sub color-blue-storm m-0">
+                      Respondiendo como: {nombrePersonaFisica} (Representante legal)
+                    </p>
+                  </div>
+                </div>
 
                 <p className="sub color-dark-gray">¿Existe una persona moral sobre la que tú ejerces control?</p>
               </>
@@ -129,7 +141,7 @@ const PasoUnoDocumentacionPM = ({ validate }) => {
               nameControlados="controladosMoralesComoFisico"
               nameTieneControlados="tieneControladosMoralesComoFisico"
               nameCantidadControlados="cantidadControladosMoralesComoFisico"
-              numeroMaximo={5}
+              numeroMaximo={10}
             />
 
             <div className="flex-column-center-config pt-sm-5 pt-xs-5 pt-md-0 pt-lg-0">

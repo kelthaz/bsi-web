@@ -32,10 +32,12 @@ const EjerceControlSobreFisico = ({
   return (
     <>
       <div className="row">
-        <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
+        <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8 pb-2">
           <RadioButton name={nameTieneControlados} {...formulario.getFieldProps(nameTieneControlados)} label="si">
-            <div className="row ">
-              <div className="input color-gray col-5">Sí, son</div>
+            <div className="row no-gutters">
+              <div className="input color-gray col-xs-6 col-md-4 col-lg-5 d-flex flex-column justify-content-center">
+                Sí, son
+              </div>
               <div className="col-6 ">
                 <Select
                   name={nameCantidadControlados}
@@ -84,7 +86,7 @@ const EjerceControlSobreFisico = ({
                 name={`${nameControlados}[${index}].segundoNombre`}
                 type="text"
                 size="big"
-                label="2º Nombre"
+                label="Nombre"
                 {...formulario.getFieldMeta(`${nameControlados}[${index}].segundoNombre`)}
                 {...formulario.getFieldHelpers(`${nameControlados}[${index}].segundoNombre`)}
               />
@@ -124,7 +126,7 @@ const EjerceControlSobreFisico = ({
               <TextField
                 name={`${nameControlados}[${index}].rfc`}
                 format="rfcformatter"
-                maxlength={60}
+                maxlength={13}
                 type="text"
                 size="big"
                 label="Ej. TLF280693H17"
@@ -134,8 +136,8 @@ const EjerceControlSobreFisico = ({
             </div>
           </div>
           <div className="row no-gutters">
-            <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
-              <p className="input color-gray">Parentesco</p>
+            <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 d-flex flex-column justify-content-center">
+              <p className="input color-gray m-0">Parentesco</p>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-lg-2 pr-md-2">
               <Select
@@ -154,6 +156,7 @@ const EjerceControlSobreFisico = ({
                   { label: 'Cuñados', value: 'Cuñados' },
                 ]}
                 label="Parentesco"
+                showAlwaysErrors={false}
                 {...formulario.getFieldMeta(`${nameControlados}[${index}].parentesco`)}
                 {...formulario.getFieldHelpers(`${nameControlados}[${index}].parentesco`)}
               />

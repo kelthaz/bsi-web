@@ -49,7 +49,7 @@ const obligadoSolidarioDocumentacionRoutes = [
       paso: 3,
       tipoPersona: '',
       step: null,
-      tab: ['documentacion'],
+      tab: [''],
     },
   },
 ];
