@@ -14,6 +14,8 @@ exports[`Pruebas en el componente AgradecimientoDatosPersonales Debe de mostrars
 >
   <AgradecimientoDatosPersonales>
     <Agradecimiento
+      button=""
+      handleClick={[Function]}
       iconOk={true}
       title="¡Gracias, !"
     >
