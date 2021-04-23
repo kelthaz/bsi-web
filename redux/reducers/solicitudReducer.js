@@ -192,6 +192,15 @@ const initialState = {
     eresTitularTarjetaCredito: '',
     tarjetaCreditoTerminacion: '',
     autorizacionConsultar: false,
+    obligadoSolidario: {
+      primerNombre: '',
+      segundoNombre: '',
+      primerApellido: '',
+      segundoApellido: '',
+      tipoPersona: null,
+      correo: '',
+      celular: '',
+    },
 
     domicilioComercial: {
       calle: '',
