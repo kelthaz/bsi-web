@@ -116,7 +116,11 @@ const PasoCincoObligadoSolidarioPFAE = ({ validate }) => {
         <div className="container px-xs-0 px-md-3">
           <form onSubmit={handleSubmit} noValidate>
             <p className="sub color-dark-gray">
-              ¿Cuentas con inmuebles propios libres de gravamen? <Tooltip message="..." />
+              ¿Cuentas con inmuebles propios libres de gravamen?{' '}
+              <Tooltip
+                message="Son aquellos inmuebles que no se han registrado o considerado como garantía de otro crédito o préstamo con alguna entidad financiera"
+                position="top"
+              />
             </p>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">

@@ -83,9 +83,7 @@ const StepFour = ({ validate }) => {
       <div className="contedor-solicitud">
         <div className="container px-xs-0 px-md-3">
           <form onSubmit={handleSubmit} noValidate>
-            <p className="sub color-dark-gray">
-              ¿Tienes acciones en otras empresas? <Tooltip message="..." />
-            </p>
+            <p className="sub color-dark-gray">¿Tienes acciones en otras empresas?</p>
             <div className="row no-gutters">
               <div className="col-lg-6 col-md-8 col-sm-8 col-xs-8">
                 <RadioButton
@@ -123,7 +121,7 @@ const StepFour = ({ validate }) => {
 
             {formulario.values.empresas.map((value, index) => (
               <div key={value}>
-                <p className="sub color-gray">¿Cómo se llama la empresa y de cuánto es tu inversión?</p>
+                <p className="sub color-gray mt-2">¿Cómo se llama la empresa y de cuánto es tu inversión?</p>
                 <div className="row ">
                   <div className="col-md-5 col-xs-12 pr-md-0">
                     <p className="input color-gray">La razón social es</p>
@@ -157,7 +155,7 @@ const StepFour = ({ validate }) => {
                     <TextField
                       name={`empresas[${index}].rfc`}
                       format="rfcformatter"
-                      maxlength={13}
+                      maxlength={12}
                       type="text"
                       size="big"
                       label="Ej. TLF280693HVZJNR03"

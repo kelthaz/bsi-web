@@ -81,7 +81,11 @@ const PasoSeisObligadoSolidarioPM = ({ validate }) => {
               Respondiendo como: {nombrePersonaMoral} (Persona Moral)
             </p>
             <p className="sub color-dark-gray">
-              ¿Existe una persona física relacionada? <Tooltip message="..." />
+              ¿Existe una persona física relacionada?{' '}
+              <Tooltip
+                message="Son aquellas personas con las que tienes parentesco por consanguinidad o afinidad hasta el segundo grado: Cónyuges, concubinos, hijos, padres, suegros, hijos del cónyuge, hermanos, abuelos, nietos y cuñados.  "
+                position="top"
+              />
             </p>
             <EjerceControlSobreFisico
               formulario={formulario}
