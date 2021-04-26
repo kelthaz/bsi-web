@@ -182,13 +182,16 @@ button {
   @include button-background();
 }
 
-@mixin config-link($color, $color-hover) {
+@mixin config-link($color, $color-hover, $underline: true) {
   color: $color;
   cursor: pointer;
   font-family: $futura-heavy;
   font-size: 14px;
   text-align: left;
-  text-decoration: underline;
+
+  @if $underline {
+    text-decoration: underline;
+  }
 
   &:hover {
     color: $color-hover;
@@ -208,6 +211,33 @@ button {
   background-color: transparent;
   border: 0;
   padding: 0;
+}
+
+.btn-link-arrow-left {
+  @include config-link($blue-storm, $blue-night, false);
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0;
+
+  svg {
+    transform: rotate(270deg);
+
+    path {
+      stroke: $blue-storm;
+    }
+  }
+
+  span {
+    padding-left: 10px;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn-link-arrow-right {

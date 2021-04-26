@@ -28,10 +28,6 @@ const AnalistaSeguimientoPerfilProspecto = () => {
 
   return (
     <div className="container-fluid px-0">
-      <div className="mt-4 mb-5">
-        <h3 className="color-blue-storm">Mi perfil</h3>
-      </div>
-
       <div className="row">
         <div className="col-5">
           <div className="card-simple-blue-light">

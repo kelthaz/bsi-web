@@ -2,11 +2,13 @@ import {
   ACTIVIDADES_ANALISTA_SEGUIMIENTO_ROUTE,
   HISTORIAL_ANALISTA_SEGUIMIENTO_ROUTE,
   PERFIL_PROSPECTO_ANALISTA_SEGUIMIENTO_ROUTE,
+  REVISION_DOCUMENTO_ANALISTA_SEGUIMIENTOL_ROUTE,
   TABLERO_ANALISTA_SEGUIMIENTO_ROUTE,
 } from '../../../../../constants/routes/privado/analista/seguimiento';
 import AnalistaSeguimientoActividades from './actividades/AnalistaSeguimientoActividades';
 import AnalistaSeguimientoHistorial from './historial/AnalistaSeguimientoHistorial';
 import AnalistaSeguimientoPerfilProspecto from './perfil-prospecto/AnalistaSeguimientoPerfilProspecto';
+import AnalistaSeguimientoRevisionDocumento from './revision-documento/AnalistaSeguimientoRevisionDocumento';
 import TableroCliente from './tablero/AnalistaSeguimientoTablero';
 
 const analistaSeguimientoRoutes = [
@@ -15,7 +17,7 @@ const analistaSeguimientoRoutes = [
     component: [TableroCliente],
     services: [],
     roles: [],
-    label: 'Analista mesa de Control - Tablero',
+    label: 'Analista seguimiento - Tablero',
     data: {},
   },
   {
@@ -23,7 +25,7 @@ const analistaSeguimientoRoutes = [
     component: [AnalistaSeguimientoActividades],
     services: [],
     roles: [],
-    label: 'Analista mesa de Control - Actividades',
+    label: 'Analista seguimiento - Actividades',
     data: {},
   },
   {
@@ -31,7 +33,7 @@ const analistaSeguimientoRoutes = [
     component: [AnalistaSeguimientoHistorial],
     services: [],
     roles: [],
-    label: 'Analista mesa de Control - Historial',
+    label: 'Analista seguimiento - Historial',
     data: {},
   },
   {
@@ -39,7 +41,15 @@ const analistaSeguimientoRoutes = [
     component: [AnalistaSeguimientoPerfilProspecto],
     services: [],
     roles: [],
-    label: 'Analista mesa de Control - Perfil prospecto',
+    label: 'Analista seguimiento - Perfil prospecto',
+    data: {},
+  },
+  {
+    route: REVISION_DOCUMENTO_ANALISTA_SEGUIMIENTOL_ROUTE,
+    component: [AnalistaSeguimientoRevisionDocumento],
+    services: [],
+    roles: [],
+    label: 'Analista seguimiento - Revisión documento',
     data: {},
   },
 ];

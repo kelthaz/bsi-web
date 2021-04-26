@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Sidebar from '../sidebar/Sidebar';
+import HeaderPrivado from '../header/HeaderPrivado';
 
 const Reloj = dynamic(() => import('../reloj/Reloj'), { ssr: false });
 
@@ -13,6 +14,7 @@ const PrivadoContainer = ({ pageComponent, servicesData }) => {
       <Sidebar />
       <div className="contedor-privado">
         <div className="contedor-interno-privado">
+          <HeaderPrivado />
           <Component {...servicesData} />
         </div>
       </div>
