@@ -305,12 +305,17 @@ const PasoUnoDictamenJuridico = () => {
             />
             <Select
               name="resultadoDictamen"
-              label="Resultado del dictamen."
+              label="Resultado del dictamen"
               size="small"
               items={itemsResultado}
               {...formulario.getFieldMeta('resultadoDictamen')}
               {...formulario.getFieldHelpers('resultadoDictamen')}
             />
+            <div className="row justify-content-end mb-3 mr-3">
+              <button disabled type="submit" className="btn-medium">
+                Siguiente
+              </button>
+            </div>
           </form>
         </div>
       </div>
