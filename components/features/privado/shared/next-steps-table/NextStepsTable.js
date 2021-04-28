@@ -7,7 +7,7 @@ import SvgCompletada from '../../../../svgs/SvgCompletada';
 import SvgEnProceso from '../../../../svgs/SvgEnProceso';
 import SvgEspera from '../../../../svgs/SvgEspera';
 import Modal from '../../../../shared/modal/Modal';
-import DatePickerInput from '../../../../shared/datepicker/DatePickerInput';
+import DatePickerInput from '../../../../shared/datepicker/normal-datepicker-input/DatePickerInput';
 import Select from '../../../../shared/select/Select';
 
 const NextStepsTable = ({ value }) => {

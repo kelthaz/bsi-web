@@ -16,7 +16,11 @@ const clienteRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: PERFIL_CLIENTE_ROUTE,
@@ -24,7 +28,11 @@ const clienteRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Perfil prospecto',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi Pefil', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: FIRMA_CONTRATO_ROUTE,
@@ -32,7 +40,14 @@ const clienteRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Firmar contrato de Crédito Dital Pyme', subText: '' },
+      previus: {
+        label: 'Mi tablero',
+        route: TABLERO_CLIENTE_ROUTE,
+      },
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVACION_TOKEN_ROUTE,
@@ -40,7 +55,14 @@ const clienteRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Activación de token', subText: '' },
+      previus: {
+        label: 'Mi tablero',
+        route: TABLERO_CLIENTE_ROUTE,
+      },
+      rightComponent: null,
+    },
   },
 ];
 

@@ -27,7 +27,7 @@ const PasoDosBiometricosDocumentacion = () => (
         </div>
         <div className="col-xs-12 col-sm-12 my-4">
           <div className="text-center">
-            <Link as={CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE} replace>
+            <Link href={CAPTURA_BIOMETRICO_DOCUMENTACION_ROUTE}>
               <button type="submit" className="btn-medium">
                 Continuar
               </button>

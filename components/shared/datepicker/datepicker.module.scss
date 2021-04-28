@@ -1,41 +1,34 @@
 @import '../../../styles/scss/modules/var';
 @import '../../../styles/scss/modules/mixins';
 
-@mixin config-datepicker-config($color, $size) {
+.previous-month {
   background-color: transparent;
-  color: $blue-storm;
-  cursor: pointer;
-  font-family: $futura-book;
-  font-size: $size;
-  height: 50px;
-  overflow: hidden;
-  text-align: left;
-  text-overflow: ellipsis;
-  user-select: none;
-  white-space: nowrap;
-  width: 100%;
-
-  @if $size == 32px {
-    padding: 0 24px 0 12px;
-  } @else {
-    padding: 8px 24px 8px 12px;
-  }
+  border: 0;
+  float: left;
+  margin: 16px;
+  padding: 0;
+  position: relative;
+  transform: rotate(180deg);
+  z-index: 10;
 
   &:focus {
     outline: 0;
   }
-
-  &:disabled {
-    background-color: $blue-light;
-    border-bottom: 1.5px solid $gray-light;
-    cursor: not-allowed;
-  }
 }
 
-.datepicker-select {
-  @include scroll-config(6px);
+.next-month {
+  background-color: transparent;
+  border: 0;
+  float: right;
+  margin: 16px;
+  padding: 0;
   position: relative;
-  width: 100%;
+  transform: translateY(-3px);
+  z-index: 10;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 .arrow {
@@ -44,7 +37,7 @@
 
   svg {
     path {
-      stroke: $gray;
+      stroke: $blue-storm;
     }
   }
 
@@ -62,10 +55,55 @@
   transition: transform 0.3s linear;
 }
 
-.select-small-blue {
-  @include config-datepicker-config($blue-storm, 24px);
+@mixin select-config {
+  background-color: transparent;
+  cursor: pointer;
+  height: 50px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    background-color: $blue-light;
+    cursor: not-allowed;
+  }
+}
+
+.normal-date {
+  @include select-config;
+  color: $blue-storm;
+  font-family: $futura-book;
+  font-size: 24px;
+  padding: 8px 34px 8px 12px;
+
   @include media('md') {
     font-size: 16px;
+  }
+}
+
+.range-date {
+  @include select-config;
+  border: 2px solid $blue-storm;
+  border-radius: 10px;
+  color: $gray;
+  font-family: $futura-book;
+  font-size: 14px;
+  padding: 8px 34px 8px 12px;
+  text-decoration: underline;
+
+  span {
+    padding-left: 10px;
+  }
+
+  &:hover:enabled {
+    box-shadow: 0 4px 6px $black-20;
   }
 }
 
@@ -82,12 +120,14 @@
   @include indicador-config($blue-sky);
 }
 
-.indicador-error {
-  @include indicador-config($red);
-}
-
 .placeholder-color {
   color: $gray-light !important;
+}
+
+.datepicker-select {
+  @include scroll-config(6px);
+  position: relative;
+  width: 100%;
 }
 
 .dropdowm-calendar {
@@ -95,23 +135,21 @@
   background-color: $white;
   border: 1px solid $blue-shadow;
   border-radius: 0 0 16px 16px;
-  border-top: 0;
-  left: 0;
-  list-style-type: none;
-  margin: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
   max-height: 300px;
-  overflow: auto;
+  overflow: hidden;
   padding: 0;
   position: absolute;
   right: 0;
   transition: max-height 0.3s ease-in;
   visibility: visible;
-  // width: 700px;
-  @include media('lg') {
-    width: 100%;
-  }
-  width: 200%;
+  width: 500px;
   z-index: 99;
+}
+
+.orientation-right {
+  left: 0;
 }
 
 .dropdowm-calendar-hide {

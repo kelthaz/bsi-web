@@ -182,6 +182,11 @@ button {
   @include button-background();
 }
 
+.btn-mini-secondary-h100 {
+  @include button-config(80px, 100%, 8px);
+  @include button-background();
+}
+
 @mixin config-link($color, $color-hover, $underline: true) {
   color: $color;
   cursor: pointer;
@@ -345,6 +350,31 @@ button {
   @include config-svg-button-input;
   right: 6px;
   top: 12px;
+}
+
+.svg-button-search {
+  svg {
+    path {
+      fill: $blue-storm;
+    }
+
+    circle {
+      stroke: $blue-storm;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    svg {
+      path {
+        fill: $white;
+      }
+
+      circle {
+        stroke: $white;
+      }
+    }
+  }
 }
 
 .center-first-button {

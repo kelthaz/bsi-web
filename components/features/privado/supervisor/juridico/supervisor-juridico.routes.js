@@ -16,7 +16,11 @@ const SupervisorJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: 'Supervisor jurídico' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_SUPERVISOR_JURIDICO_ROUTE,
@@ -24,7 +28,11 @@ const SupervisorJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: 'Supervisor jurídico' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: HISTORIAL_SUPERVISOR_JURIDICO_ROUTE,
@@ -32,7 +40,11 @@ const SupervisorJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: 'Supervisor jurídico' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: USUARIOS_SUPERVISOR_JURIDICO_ROUTE,
@@ -40,7 +52,11 @@ const SupervisorJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Usuarios',
-    data: {},
+    data: {
+      currentPage: { text: 'Usuarios', subText: 'Supervisor jurídico' },
+      previus: null,
+      rightComponent: null,
+    },
   },
 ];
 

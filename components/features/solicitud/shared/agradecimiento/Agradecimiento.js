@@ -6,7 +6,7 @@ import SvgOk from '../../../../svgs/SvgOk';
 const Agradecimiento = ({ children, title, iconOk, button, handleClick }) => (
   <div className="contedor-fixed">
     <div className="contedor-solicitud ">
-      <div className="container">
+      <div className="container p-0">
         <div className="row">
           <div className="col-md-3 col-xs-12 order-md-last d-flex justify-content-center flex-md-column">
             {iconOk ? <SvgOk /> : <SvgContratoConSigno />}

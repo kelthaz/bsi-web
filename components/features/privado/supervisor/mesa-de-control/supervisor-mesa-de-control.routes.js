@@ -16,7 +16,11 @@ const SupervisorMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Tablero', subText: 'Mesa de control' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_SUPERVISOR_MESA_DE_CONTROL_ROUTE,
@@ -24,7 +28,11 @@ const SupervisorMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: 'Mesa de control' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: HISTORIAL_SUPERVISOR_MESA_DE_CONTROL_ROUTE,
@@ -32,7 +40,11 @@ const SupervisorMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: 'Mesa de control' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: USUARIOS_SUPERVISOR_MESA_DE_CONTROL_ROUTE,
@@ -40,7 +52,11 @@ const SupervisorMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Supervisor juridíco - Usuarios',
-    data: {},
+    data: {
+      currentPage: { text: 'Usuarios', subText: 'Mesa de control' },
+      previus: null,
+      rightComponent: null,
+    },
   },
 ];
 
