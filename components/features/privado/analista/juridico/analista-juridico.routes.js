@@ -3,12 +3,14 @@ import {
   HISTORIAL_ANALISTA_JURIDICO_ROUTE,
   PASO_UNO_DICTAMEN_JURIDICO_ROUTE,
   PASO_DOS_DICTAMEN_JURIDICO_ROUTE,
+  PASO_TRES_DICTAMEN_JURIDICO_ROUTE,
   PERFIL_PROSPECTO_ANALISTA_JURIDICO_ROUTE,
   TABLERO_ANALISTA_JURIDICO_ROUTE,
 } from '../../../../../constants/routes/privado/analista/juridico';
 import AnalistaJuridicoActividades from './actividades/AnalistaJuridicoActividades';
 import PasoUnoDictamenJuridico from './dictamen/paso-uno/PasoUnoDictamenJuridico';
 import PasoDosDictamenJuridico from './dictamen/paso-dos/PasoDosDictamenJuridico';
+import PasoTresDictamenJuridico from './dictamen/paso-tres/PasoTresDictamenJuridico';
 import AnalistaJuridicoHistorial from './historial/AnalistaJuridicoHistorial';
 import AnalistaJuridicoPerfilProspecto from './perfil-prospecto/AnalistaJuridicoPerfilProspecto';
 import AnalistaJuridicoTablero from './tablero/AnalistaJuridicoTablero';
@@ -60,6 +62,14 @@ const analistaJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Analista juridíco - Dictamen juridico paso 2',
+    data: {},
+  },
+  {
+    route: PASO_TRES_DICTAMEN_JURIDICO_ROUTE,
+    component: [PasoTresDictamenJuridico],
+    services: [],
+    roles: [],
+    label: 'Analista juridíco - Dictamen juridico paso 3',
     data: {},
   },
 ];

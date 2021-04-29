@@ -3,8 +3,9 @@ import * as Yup from 'yup';
 import React from 'react';
 import TextField from '../../../../../../shared/text-field/TextField';
 import TextArea from '../../../../../../shared/text-area/TextArea';
+import ProgressBar from '../../../../shared/progressbar/ProgressBar';
 import Select from '../../../../../../shared/select/Select';
-import SvgInfoBackOffice from '../../../../../../svgs/SvgInfoBackOffice';
+import SvgDocumentosPequeño from '../../../../../../svgs/iconos/SvgDocumentosPequeño';
 import { campoRequerido, longitudMinima, longitudMaxima, seleccionOpcion } from '../../../../../../../constants/errors';
 
 const PasoUnoDictamenJuridico = () => {
@@ -79,6 +80,9 @@ const PasoUnoDictamenJuridico = () => {
 
   return (
     <div className="container-fluid px-0">
+      <div className="col-12 mb-3">
+        <ProgressBar value="20" />
+      </div>
       <div className="row">
         <div className="col-5">
           <div className="card-simple-blue-light">
@@ -93,7 +97,7 @@ const PasoUnoDictamenJuridico = () => {
         <div className="col-7">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="color-blue-storm sub">
-              <SvgInfoBackOffice />
+              <SvgDocumentosPequeño />
               Datos del cliente
             </p>
             <TextField
@@ -312,7 +316,7 @@ const PasoUnoDictamenJuridico = () => {
               {...formulario.getFieldHelpers('resultadoDictamen')}
             />
             <div className="row justify-content-end mb-3 mr-3">
-              <button disabled type="submit" className="btn-medium">
+              <button type="submit" className="btn-medium">
                 Siguiente
               </button>
             </div>
