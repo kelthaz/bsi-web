@@ -96,7 +96,11 @@ const analistaJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Analista juridíco - Dictamen juridico paso 2',
-    data: {},
+    data: {
+      currentPage: null,
+      previus: { label: 'Perfil de prospecto', route: PERFIL_PROSPECTO_ANALISTA_JURIDICO_ROUTE },
+      rightComponent: null,
+    },
   },
   {
     route: PASO_TRES_DICTAMEN_JURIDICO_ROUTE,
@@ -104,7 +108,11 @@ const analistaJuridicoRoutes = [
     services: [],
     roles: [],
     label: 'Analista juridíco - Dictamen juridico paso 3',
-    data: {},
+    data: {
+      currentPage: null,
+      previus: { label: 'Perfil de prospecto', route: PERFIL_PROSPECTO_ANALISTA_JURIDICO_ROUTE },
+      rightComponent: null,
+    },
   },
 ];
 

@@ -14,7 +14,7 @@ const PrivadoContainer = ({ pageComponent, servicesData }) => {
       <Sidebar />
       <div className="contedor-privado">
         <div className="contedor-interno-privado">
-          <HeaderPrivado />
+          <HeaderPrivado {...pageComponent.data} />
           <Component {...servicesData} />
         </div>
       </div>

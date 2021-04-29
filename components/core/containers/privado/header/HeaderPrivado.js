@@ -6,11 +6,7 @@ import AltaLineaClienteDesembolso from './alta-linea-cliente-desembolso/AltaLine
 import MediosHeader from './medios/MediosHeader';
 import MesaHeader from './mesa/MesaHeader';
 
-const HeaderPrivado = ({
-  currentPage = { text: 'Perfil', subText: 'fdgdfg' },
-  previus = { label: 'Todos', route: '/' },
-  rightComponent: rightComponentIndex,
-}) => {
+const HeaderPrivado = ({ currentPage, previus, rightComponent: rightComponentIndex }) => {
   const { push } = useRouter();
   const FILTER_SEARCH = 0;
   const FILTER_SEARCH_RANGE = 1;
@@ -53,7 +49,7 @@ const HeaderPrivado = ({
           )}
         </div>
         <div className="col-6 d-flex align-items-end flex-column justify-content-center">
-          {rightComponent && <MesaHeader />}
+          {rightComponent && rightComponent}
         </div>
       </div>
     </div>
