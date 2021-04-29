@@ -9,6 +9,10 @@
 .modal-container-video {
   padding: 10px;
   width: 565px;
+
+  @include media('sm') {
+    width: 270px;
+  }
 }
 
 .modal-video {
@@ -17,6 +21,15 @@
   @include media('sm') {
     height: 315px;
     width: 325px;
+  }
+}
+
+.modal-portal-privado {
+  padding: 10px;
+  width: 600px;
+
+  @include media('sm') {
+    width: 270px;
   }
 }
 

@@ -9,6 +9,8 @@ const DocumentosObligadoSolidario = ({
   nombreObligadoSolidario,
   nombreConyugeObligadoSolidario,
   aprobador,
+  rechazar,
+  aprobar,
 }) => {
   const labels = {
     ine: 'Identificación oficial (Frente)',
@@ -56,10 +58,10 @@ const DocumentosObligadoSolidario = ({
         {aprobador && (
           <div className="col-6 d-flex justify-content-end">
             <div className="color-blue-storm body3">
-              <button className="btn-medium-secondary" type="button">
+              <button className="btn-medium-secondary" type="button" onClick={rechazar}>
                 Rechazar
               </button>
-              <button className="btn-medium-secondary ml-3" type="button">
+              <button className="btn-medium-secondary ml-3" type="button" onClick={aprobar}>
                 Aceptar
               </button>
             </div>
@@ -81,10 +83,10 @@ const DocumentosObligadoSolidario = ({
                   {aprobador && (
                     <div className="col-6 d-flex justify-content-end">
                       <div className="color-blue-storm body3">
-                        <button className="btn-medium-secondary" type="button">
+                        <button className="btn-medium-secondary" type="button" onClick={rechazar}>
                           Rechazar
                         </button>
-                        <button className="btn-medium-secondary ml-3" type="button">
+                        <button className="btn-medium-secondary ml-3" type="button" onClick={aprobar}>
                           Aceptar
                         </button>
                       </div>
@@ -111,10 +113,14 @@ DocumentosObligadoSolidario.propTypes = {
   nombreObligadoSolidario: PropTypes.string.isRequired,
   nombreConyugeObligadoSolidario: PropTypes.string.isRequired,
   aprobador: PropTypes.bool,
+  rechazar: PropTypes.func,
+  aprobar: PropTypes.func,
 };
 
 DocumentosObligadoSolidario.defaultProps = {
   aprobador: false,
+  rechazar: () => {},
+  aprobar: () => {},
 };
 
 export default DocumentosObligadoSolidario;

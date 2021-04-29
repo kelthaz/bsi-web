@@ -5,9 +5,9 @@ const initialState = {
   sincronizado: false,
 
   perfilProspecto: {
-    primerNombre: 'ALESSANDRA',
+    primerNombre: 'JUAN',
     segundoNombre: '',
-    primerApellido: 'BOLIVAR',
+    primerApellido: 'GOMEZ',
     segundoApellido: '',
 
     tipoPersona: MORAL,
@@ -15,14 +15,14 @@ const initialState = {
     tiempoEnEspera: '10 minutos',
     idSolicitud: '12345',
     numeroCliente: '-',
-    numeroLinea: '',
+    numeroLinea: '-',
     numeroCuenta: '-',
-    totalDesembolsado: '',
+    totalDesembolsado: '-',
 
-    relacion: '',
-    coincidenciaLista: '',
-    fechaNacimiento: '',
-    nombreCoincidencia: '',
+    relacion: '-',
+    coincidenciaLista: '-',
+    fechaNacimiento: '-',
+    nombreCoincidencia: '-',
 
     fechaAprobacionCredito: '04/05/2020',
     fechaAltaUsuario: '-',

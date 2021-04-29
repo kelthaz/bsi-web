@@ -18,7 +18,11 @@ const analistaSeguimientoRoutes = [
     services: [],
     roles: [],
     label: 'Analista seguimiento - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: 'Seguimiento' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_ANALISTA_SEGUIMIENTO_ROUTE,
@@ -26,7 +30,11 @@ const analistaSeguimientoRoutes = [
     services: [],
     roles: [],
     label: 'Analista seguimiento - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: '' },
+      previus: null,
+      rightComponent: 1,
+    },
   },
   {
     route: HISTORIAL_ANALISTA_SEGUIMIENTO_ROUTE,
@@ -34,7 +42,11 @@ const analistaSeguimientoRoutes = [
     services: [],
     roles: [],
     label: 'Analista seguimiento - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: PERFIL_PROSPECTO_ANALISTA_SEGUIMIENTO_ROUTE,
@@ -42,7 +54,11 @@ const analistaSeguimientoRoutes = [
     services: [],
     roles: [],
     label: 'Analista seguimiento - Perfil prospecto',
-    data: {},
+    data: {
+      currentPage: { text: 'Perfil de prospecto', subText: '' },
+      previus: { label: 'Todos los prospectos', route: ACTIVIDADES_ANALISTA_SEGUIMIENTO_ROUTE },
+      rightComponent: 2,
+    },
   },
   {
     route: REVISION_DOCUMENTO_ANALISTA_SEGUIMIENTOL_ROUTE,
@@ -50,7 +66,11 @@ const analistaSeguimientoRoutes = [
     services: [],
     roles: [],
     label: 'Analista seguimiento - Revisión documento',
-    data: {},
+    data: {
+      currentPage: { text: 'Gestión de documento', subText: '' },
+      previus: { label: 'Perfil de prospecto', route: PERFIL_PROSPECTO_ANALISTA_SEGUIMIENTO_ROUTE },
+      rightComponent: null,
+    },
   },
 ];
 

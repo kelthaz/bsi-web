@@ -16,7 +16,11 @@ const analistaMediosDePagoRoutes = [
     services: [],
     roles: [],
     label: 'Analista medios de pago - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: 'Medios' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_ANALISTA_MEDIOS_DE_PAGO_ROUTE,
@@ -24,7 +28,11 @@ const analistaMediosDePagoRoutes = [
     services: [],
     roles: [],
     label: 'Analista medios de pago - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: HISTORIAL_ANALISTA_MEDIOS_DE_PAGO_ROUTE,
@@ -32,7 +40,11 @@ const analistaMediosDePagoRoutes = [
     services: [],
     roles: [],
     label: 'Analista medios de pago - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: PERFIL_PROSPECTO_ANALISTA_MEDIOS_DE_PAGO_ROUTE,
@@ -40,7 +52,11 @@ const analistaMediosDePagoRoutes = [
     services: [],
     roles: [],
     label: 'Analista medios de pago - Perfil prospecto',
-    data: {},
+    data: {
+      currentPage: { text: 'Perfil de prospecto', subText: '' },
+      previus: { label: 'Todos los prospectos', route: ACTIVIDADES_ANALISTA_MEDIOS_DE_PAGO_ROUTE },
+      rightComponent: 3,
+    },
   },
 ];
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MORAL } from '../../../../../../constants/persona';
 import EstadoDocumento from '../estado-documento/EstadoDocumento';
 
-const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, aprobador }) => {
+const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, aprobador, aprobar, rechazar }) => {
   const labels = {
     ine: 'Identificación oficial (Frente)',
     ineReverso: 'Identificación oficial (Frente)',
@@ -59,10 +59,10 @@ const DocumentosProspecto = ({ documentosProspecto, tipoPersona, nombreConyuge, 
                   {aprobador && (
                     <div className="col-6 d-flex justify-content-end">
                       <div className="color-blue-storm body3">
-                        <button className="btn-medium-secondary" type="button">
+                        <button className="btn-medium-secondary" type="button" onClick={rechazar}>
                           Rechazar
                         </button>
-                        <button className="btn-medium-secondary ml-3" type="button">
+                        <button className="btn-medium-secondary ml-3" type="button" onClick={aprobar}>
                           Aceptar
                         </button>
                       </div>
@@ -88,10 +88,14 @@ DocumentosProspecto.propTypes = {
   tipoPersona: PropTypes.string.isRequired,
   nombreConyuge: PropTypes.string.isRequired,
   aprobador: PropTypes.bool,
+  rechazar: PropTypes.func,
+  aprobar: PropTypes.func,
 };
 
 DocumentosProspecto.defaultProps = {
   aprobador: false,
+  rechazar: () => {},
+  aprobar: () => {},
 };
 
 export default DocumentosProspecto;

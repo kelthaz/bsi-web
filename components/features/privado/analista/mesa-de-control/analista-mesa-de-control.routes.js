@@ -18,7 +18,11 @@ const analistaMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: 'Mesa de control' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_ANALISTA_MESA_DE_CONTROL_ROUTE,
@@ -26,7 +30,11 @@ const analistaMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: HISTORIAL_ANALISTA_MESA_DE_CONTROL_ROUTE,
@@ -34,7 +42,11 @@ const analistaMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: PERFIL_PROSPECTO_ANALISTA_MESA_DE_CONTROL_ROUTE,
@@ -42,7 +54,11 @@ const analistaMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Perfil prospecto',
-    data: {},
+    data: {
+      currentPage: { text: 'Perfil de prospecto', subText: '' },
+      previus: { label: 'Todos los prospectos', route: ACTIVIDADES_ANALISTA_MESA_DE_CONTROL_ROUTE },
+      rightComponent: 4,
+    },
   },
   {
     route: REVISION_DOCUMENTO_ANALISTA_MESA_DE_CONTROL_ROUTE,
@@ -50,7 +66,11 @@ const analistaMesaDeControlRoutes = [
     services: [],
     roles: [],
     label: 'Analista mesa de Control - Revisión documento',
-    data: {},
+    data: {
+      currentPage: { text: 'Gestión de documento', subText: '' },
+      previus: { label: 'Perfil de prospecto', route: PERFIL_PROSPECTO_ANALISTA_MESA_DE_CONTROL_ROUTE },
+      rightComponent: null,
+    },
   },
 ];
 

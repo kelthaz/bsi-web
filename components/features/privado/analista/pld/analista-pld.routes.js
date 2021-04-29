@@ -16,7 +16,11 @@ const analistaPLDRoutes = [
     services: [],
     roles: [],
     label: 'Analista pld - Tablero',
-    data: {},
+    data: {
+      currentPage: { text: 'Mi tablero', subText: 'PLD' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: ACTIVIDADES_ANALISTA_PLD_ROUTE,
@@ -24,7 +28,11 @@ const analistaPLDRoutes = [
     services: [],
     roles: [],
     label: 'Analista pld - Actividades',
-    data: {},
+    data: {
+      currentPage: { text: 'Actividades', subText: '' },
+      previus: null,
+      rightComponent: 1,
+    },
   },
   {
     route: HISTORIAL_ANALISTA_PLD_ROUTE,
@@ -32,7 +40,11 @@ const analistaPLDRoutes = [
     services: [],
     roles: [],
     label: 'Analista pld - Historial',
-    data: {},
+    data: {
+      currentPage: { text: 'Historial', subText: '' },
+      previus: null,
+      rightComponent: null,
+    },
   },
   {
     route: PERFIL_PROSPECTO_ANALISTA_PLD_ROUTE,

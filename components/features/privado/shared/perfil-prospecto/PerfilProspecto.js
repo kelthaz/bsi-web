@@ -4,7 +4,7 @@ import { CLIENTE, ANALISTA_PLD } from '../../../../../constants/roles';
 import SvgAvatarBig from '../../../../svgs/sidebar/SvgAvatarBig';
 import { regexMultipleSpaces } from '../../../../../constants/regex';
 
-const PerfilProspecto = ({ role, perfilData }) => {
+const PerfilProspecto = ({ role, perfilData, aprobar, rechazar }) => {
   const nombreCompleto = `${perfilData.primerNombre} ${perfilData.segundoNombre} ${perfilData.primerApellido} ${perfilData.segundoApellido}`.replace(
     regexMultipleSpaces,
     ' '
@@ -53,7 +53,7 @@ const PerfilProspecto = ({ role, perfilData }) => {
 
   return (
     <div className="card-simple-blue-light mt-3">
-      <div className="d-flex flex-row justify-content-center align-items-center">
+      <div className="d-flex flex-row justify-content-start align-items-center">
         <div className="svg-avatar">
           <SvgAvatarBig />
           <span className="color-white input2">
@@ -67,7 +67,7 @@ const PerfilProspecto = ({ role, perfilData }) => {
       {itemsPerfil.map((item) => (
         <div key={item} className="row mt-3">
           <div className="col-6">
-            <div className="text-right body3">{labels[item]}</div>
+            <div className="body3">{labels[item]}</div>
           </div>
           <div className="col-6">
             <div className="color-blue-storm body3">{perfilData[item]}</div>
@@ -78,10 +78,10 @@ const PerfilProspecto = ({ role, perfilData }) => {
         <div className="row mt-3">
           <div className="col-12 d-flex justify-content-end">
             <div className="color-blue-storm body3">
-              <button className="btn-medium-secondary" type="button">
+              <button className="btn-medium-secondary" type="button" onClick={rechazar}>
                 Rechazar
               </button>
-              <button className="btn-medium-secondary ml-3" type="button">
+              <button className="btn-medium-secondary ml-3" type="button" onClick={aprobar}>
                 Aceptar
               </button>
             </div>
@@ -92,9 +92,16 @@ const PerfilProspecto = ({ role, perfilData }) => {
   );
 };
 
+PerfilProspecto.defaultProps = {
+  rechazar: () => {},
+  aprobar: () => {},
+};
+
 PerfilProspecto.propTypes = {
   perfilData: PropTypes.object.isRequired,
   role: PropTypes.string.isRequired,
+  rechazar: PropTypes.func,
+  aprobar: PropTypes.func,
 };
 
 export default PerfilProspecto;
