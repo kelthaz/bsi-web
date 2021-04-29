@@ -5,3 +5,4 @@ export const PERFIL_PROSPECTO_ANALISTA_JURIDICO_ROUTE = '/analista/juridico/perf
 
 export const PASO_UNO_DICTAMEN_JURIDICO_ROUTE = '/analista/juridico/dictamen-juridico/1';
 export const PASO_DOS_DICTAMEN_JURIDICO_ROUTE = '/analista/juridico/dictamen-juridico/2';
+export const PASO_TRES_DICTAMEN_JURIDICO_ROUTE = '/analista/juridico/dictamen-juridico/3';

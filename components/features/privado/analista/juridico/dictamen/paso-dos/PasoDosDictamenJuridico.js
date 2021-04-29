@@ -2,10 +2,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import React from 'react';
 import TextField from '../../../../../../shared/text-field/TextField';
-import TextArea from '../../../../../../shared/text-area/TextArea';
+import ProgressBar from '../../../../shared/progressbar/ProgressBar';
 import RadioButton from '../../../../../../shared/radio-button/RadioButton';
 import Select from '../../../../../../shared/select/Select';
-import SvgInfoBackOffice from '../../../../../../svgs/SvgInfoBackOffice';
+import SvgDocumentosPequeño from '../../../../../../svgs/iconos/SvgDocumentosPequeño';
 import { campoRequerido, longitudMinima, longitudMaxima, seleccionOpcion } from '../../../../../../../constants/errors';
 
 const PasoDosDictamenJuridico = () => {
@@ -13,8 +13,6 @@ const PasoDosDictamenJuridico = () => {
     initialValues: {
       cuantosAccionistas: null,
       nombre: '',
-      apellidoPaterno: '',
-      apellidoMaterno: '',
       denominacionSocial: '',
       rfc: '',
       accionesCapitalFijo: '',
@@ -30,16 +28,14 @@ const PasoDosDictamenJuridico = () => {
         })
         .nullable()
         .required(seleccionOpcion),
+      nombre: Yup.string().min(1, longitudMinima).max(60, longitudMaxima).required(campoRequerido),
+      denominacionSocial: Yup.string().min(2, longitudMinima).max(120, longitudMaxima).required(campoRequerido),
+      rfc: Yup.string().min(12, longitudMinima).max(13, longitudMaxima).required(campoRequerido),
+      accionesCapitalFijo: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
+      valor: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
+      accionesCapitalVariable: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
+      porcentaje: Yup.string().min(0, longitudMinima).max(13, longitudMaxima).required(campoRequerido),
     }),
-    nombre: Yup.string().min(1, longitudMinima).max(60, longitudMaxima).required(campoRequerido),
-    apellidoPaterno: Yup.string().min(1, longitudMinima).max(60, longitudMaxima).required(campoRequerido),
-    apellidoMaterno: Yup.string().min(1, longitudMinima).max(60, longitudMaxima).required(campoRequerido),
-    denominacionSocial: Yup.string().min(2, longitudMinima).max(120, longitudMaxima).required(campoRequerido),
-    rfc: Yup.string().min(12, longitudMinima).max(13, longitudMaxima).required(campoRequerido),
-    accionesCapitalFijo: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
-    valor: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
-    accionesCapitalVariable: Yup.string().min(0, longitudMinima).max(18, longitudMaxima).required(campoRequerido),
-    porcentaje: Yup.string().min(0, longitudMinima).max(13, longitudMaxima).required(campoRequerido),
     onSubmit: () => {},
   });
 
@@ -53,6 +49,9 @@ const PasoDosDictamenJuridico = () => {
   return (
     <div className="container-fluid px-0">
       <div className="row">
+        <div className="col-12 mb-3">
+          <ProgressBar value="40" />
+        </div>
         <div className="col-5">
           <div className="card-simple-blue-light">
             <div className="color-blue-storm sub">Resumen del dictamen</div>
@@ -79,7 +78,7 @@ const PasoDosDictamenJuridico = () => {
         <div className="col-7">
           <form onSubmit={formulario.handleSubmit} noValidate>
             <p className="color-blue-storm sub">
-              <SvgInfoBackOffice />
+              <SvgDocumentosPequeño />
               Accionistas / Socios / Asociados
             </p>
             <p className="body2">La información accionaria presentada la fecha del dictamen es la siguiente:</p>
