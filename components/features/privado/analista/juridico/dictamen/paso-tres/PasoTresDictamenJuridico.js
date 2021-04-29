@@ -1,15 +1,19 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import React from 'react';
+import Link from 'next/link';
+import React, { useState } from 'react';
 import TextField from '../../../../../../shared/text-field/TextField';
 import ProgressBar from '../../../../shared/progressbar/ProgressBar';
 import RadioButton from '../../../../../../shared/radio-button/RadioButton';
 import TextArea from '../../../../../../shared/text-area/TextArea';
+import Modal from '../../../../../../shared/modal/Modal';
 import Select from '../../../../../../shared/select/Select';
 import SvgDocumentosPequeño from '../../../../../../svgs/iconos/SvgDocumentosPequeño';
 import { campoRequerido, longitudMinima, longitudMaxima, seleccionOpcion } from '../../../../../../../constants/errors';
 
 const PasoTresDictamenJuridico = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalBack, setOpenModalBack] = useState(false);
   const columnaImporteEsperado = ['Mancomunados', 'individual'];
   const itemsResultado = [
     { value: 1, label: 'Resultado 1' },
@@ -117,8 +121,55 @@ const PasoTresDictamenJuridico = () => {
     { value: 4, label: '4' },
   ];
 
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
+  const closeModalBack = () => {
+    setOpenModalBack(false);
+  };
+
+  const save = () => {
+    setOpenModal(true);
+  };
+
+  const openModalBackFunction = () => {
+    setOpenModalBack(true);
+  };
+
   return (
     <div className="container-fluid px-0">
+      <Modal openModal={openModal} setOpenModal={setOpenModal}>
+        <div className="modal-alerta-container">
+          <div className="color-blue-storm sub mb-3">Guardar dictamen</div>
+          <p className="body2">
+            Te notificaremos cuando puedas revisar los docuementos solicitados en la documentación del prospecto.
+          </p>
+          <div className="row justify-content-center">
+            <button type="button" className="btn-medium ml-2" onClick={closeModal}>
+              Guardar
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <Modal openModal={openModalBack} setOpenModal={setOpenModalBack}>
+        <div className="modal-alerta-container">
+          <div className="color-blue-storm sub mb-3">Regresar a perfil de prospecto</div>
+          <p className="body2">
+            Estás regresando al perfil del prospecto, si te sales en este punto se perderá el avance y los datos
+            capturados.
+          </p>
+          <p className="body2"> ¿Estás seguro de querer Salir?</p>
+          <div className="row justify-content-center">
+            <button type="button" className="btn-medium-secondary ml-2" onClick={closeModalBack}>
+              Sí, salir
+            </button>
+            <button type="button" className="btn-medium ml-2" onClick={closeModalBack}>
+              No, quedarse
+            </button>
+          </div>
+        </div>
+      </Modal>
       <div className="row">
         <div className="col-12 mb-3">
           <ProgressBar value="60" />
@@ -577,10 +628,10 @@ const PasoTresDictamenJuridico = () => {
               {...formulario.getFieldHelpers('resultadoDictamen')}
             />
             <div className="row justify-content-end mb-3">
-              <button type="submit" className="btn-medium-secondary mr-3">
+              <button type="submit" className="btn-medium-secondary mr-3" onClick={openModalBackFunction}>
                 Anterior
               </button>
-              <button disabled type="submit" className="btn-medium mr-3">
+              <button type="submit" className="btn-medium mr-3" onClick={save}>
                 Siguiente
               </button>
             </div>
