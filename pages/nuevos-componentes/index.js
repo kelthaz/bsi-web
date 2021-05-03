@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 
 import Modal from '../../components/shared/modal/Modal';
+
 import Select from '../../components/shared/select/Select';
 import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
@@ -11,6 +12,7 @@ import AsignarCasos from '../../components/features/privado/shared/asignacion-ca
 import TablaProspecto from '../../components/features/privado/shared/tabla-prospectos/TablaProspectos';
 import Tab from '../../components/shared/tab/Tab';
 import TabItem from '../../components/shared/tab/TabItem';
+import DatePickerInput from '../../components/shared/datepicker/normal-datepicker-input/DatePickerInput';
 
 const NuevosComponentes = () => {
   const [openModal, setOpenModal] = useState(false);
