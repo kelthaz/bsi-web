@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 
 import Modal from '../../components/shared/modal/Modal';
-import DatePickerInput from '../../components/shared/datepicker/DatePickerInput';
 import Select from '../../components/shared/select/Select';
 import Section from '../../components/shared/section/Section';
 import TitleSection from '../../components/shared/titles/title-section/TitleSection';
