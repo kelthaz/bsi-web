@@ -97,6 +97,7 @@ const PasoOchoDatosEmpresa = ({ validate }) => {
 
       if (datosEmpresa.esDomilicioComercial === 'si') {
         data.persona.domicilio.isEntrega = true;
+        data.empresa.domicilioComercial = { ...data.persona.domicilio };
       } else {
         data.empresa.domicilioComercial = {
           calle: datosEmpresa.domicilioComercial.calle,

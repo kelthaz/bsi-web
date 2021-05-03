@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
@@ -9,6 +9,7 @@ import Modal from '../../../../../shared/modal/Modal';
 import useOnChangePage from '../../../../../../hooks/useOnChangePage';
 import { PASO_SEIS_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 import { campoRequerido } from '../../../../../../constants/errors';
+import ContratoRepositorio from '../../../../../../services/solicitud/contrato.repositorio';
 
 const PasoCincoDocumentacionPFAE = ({ validate }) => {
   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
@@ -55,6 +56,16 @@ const PasoCincoDocumentacionPFAE = ({ validate }) => {
   });
 
   const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DOCUMENTACION_ROUTE, validate);
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const contratoData = await ContratoRepositorio.getContrato()
+        .then(({ data }) => data)
+        .catch(() => false);
+
+      console.log(contratoData);
+    }, 500);
+  }, []);
 
   return (
     <>

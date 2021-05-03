@@ -10,7 +10,7 @@
 // import { PASO_SEIS_DOCUMENTACION_ROUTE } from '../../../../../../constants/routes/solicitud/documentacion';
 // import { campoRequerido } from '../../../../../../constants/errors';
 
-// const CargaDocumentosPFAE = ({ validate }) => {
+// const CargaDocumentos = ({ validate }) => {
 //   const labels = {
 //     actaConstitutiva: 'Nombre',
 //     poderesNotarial: 'Razón social',
@@ -25,50 +25,7 @@
 //     estadoCivil: 'Es casado',
 //   };
 
-//   const { currentStep, documentacion } = useSelector((state) => state.solicitud);
 //   const [openConfirmation, setOpenConfirmation] = useState(false);
-//   const dispatch = useDispatch();
-
-//   const { initialValues, validationSchema } = {
-//     initialValues: {
-//       comprobanteDomicilioComercial: documentacion.comprobanteDomicilioComercial,
-//       comprobanteDomicilioFiscal: documentacion.comprobanteDomicilioFiscal,
-//       actaMatrimonio: documentacion.actaMatrimonio,
-//       ineRepresentanteLegal: documentacion.ineRepresentanteLegal,
-//       ineReversoRepresentanteLegal: documentacion.ineReversoRepresentanteLegal,
-//     },
-//     validationSchema: {
-//       comprobanteDomicilioComercial: Yup.string().url().required(campoRequerido),
-//       comprobanteDomicilioFiscal: Yup.string().url().required(campoRequerido),
-//       actaMatrimonio: Yup.string().url().required(campoRequerido),
-//       ineRepresentanteLegal: Yup.string().url().required(campoRequerido),
-//       ineReversoRepresentanteLegal: Yup.string().url().required(campoRequerido),
-//     },
-//   };
-
-//   if (documentacion.estadoCivil !== 'no') {
-//     initialValues.inePareja = documentacion.inePareja;
-//     initialValues.ineReversoPareja = documentacion.ineReversoPareja;
-//     validationSchema.inePareja = Yup.string().url().required(campoRequerido);
-//     validationSchema.ineReversoPareja = Yup.string().url().required(campoRequerido);
-//   }
-
-//   const formulario = useFormik({
-//     initialValues: { ...initialValues },
-//     validationSchema: Yup.object().shape({ ...validationSchema }),
-//     onSubmit: (values) => {
-//       dispatch(
-//         nextStepDatosPersonales({
-//           currentStep: validate
-//             ? { ...currentStep, paso: currentStep.paso + 1, valipStep: currentStep.valipStep + 1 }
-//             : { ...currentStep },
-//           documentacion: { ...documentacion, ...values },
-//         })
-//       );
-//     },
-//   });
-
-//   const [handleSubmit] = useOnChangePage(formulario, PASO_SEIS_DOCUMENTACION_ROUTE, validate);
 
 //   return (
 //     <>
@@ -160,8 +117,8 @@
 //   );
 // };
 
-// CargaDocumentosPFAE.propTypes = {
+// CargaDocumentos.propTypes = {
 //   validate: PropTypes.bool.isRequired,
 // };
 
-// export default CargaDocumentosPFAE;
+// export default CargaDocumentos;

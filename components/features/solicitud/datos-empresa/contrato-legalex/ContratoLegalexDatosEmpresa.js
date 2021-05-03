@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 import styles from './StepNine.module.scss';
 import Modal from '../../../../shared/modal/Modal';
 import SvgCheckText from '../../../../svgs/SvgCheckText';
@@ -10,13 +11,21 @@ import { nextStepDatosPersonales } from '../../../../../redux/actions/solicitud'
 import { aceptarTerminos } from '../../../../../constants/errors';
 import { MORAL } from '../../../../../constants/persona';
 import ContratoLegalex from '../../shared/contrato-legalex/ContratoLegalex';
-import LegalexRepositorio from '../../../../../services/solicitud/contrato.repositorio';
-import { AGRADECIMIENTO_DATOS_EMPRESA_ROUTE } from '../../../../../constants/routes/solicitud/empresa';
+import ContratoRepositorio from '../../../../../services/solicitud/contrato.repositorio';
+import {
+  AGRADECIMIENTO_DATOS_EMPRESA_ROUTE,
+  CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE,
+} from '../../../../../constants/routes/solicitud/empresa';
+import getDateBirth from '../../../../../helpers/getDateBirth';
+import { regexMultipleSpaces } from '../../../../../constants/regex';
+import { PENDIENTE_LEGALEX, PENDIENTE_BURO } from '../../../../../constants/contrato';
 
 const ContratoLegalexDatosEmpresa = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { datosEmpresa } = useSelector((state) => state.solicitud);
   const { datosPersonales } = useSelector((state) => state.solicitud);
+  const [legalexRoute, setLegalexRoute] = useState('');
+  const { push } = useRouter();
 
   const dispatch = useDispatch();
 
@@ -25,9 +34,13 @@ const ContratoLegalexDatosEmpresa = () => {
       nombreSolicitante: `${
         datosPersonales.tipoPersona === MORAL
           ? `${datosPersonales.razonSocial} ${datosPersonales.tipoSociedad}`
-          : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`
+          : `${datosPersonales.primerNombre} ${datosPersonales.segundoNombre} ${datosPersonales.primerApellido} ${datosPersonales.segundoApellido}`.replace(
+              regexMultipleSpaces,
+              ' '
+            )
       }`,
       rfc: datosPersonales.rfc,
+      fechaNacimiento: getDateBirth(datosPersonales.rfc) || '',
       colonia: datosEmpresa.domicilioFiscal.colonia,
       telefono: datosEmpresa.celularRecibe,
       numeroExtension: datosEmpresa.domicilioFiscal.numExterior,
@@ -46,46 +59,68 @@ const ContratoLegalexDatosEmpresa = () => {
     }),
   };
 
-  const handleLegalex = async () => {
-    const res = await LegalexRepositorio.postContratoDigital()
-      .then(({ data }) => data.listaTokens)
-      .catch(({ response }) => {
-        console.log(response.data);
-      });
-
-    return res;
-  };
-
   const formulario = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async () => {
-      // dispatch(
-      //   nextStepDatosPersonales({
-      //     currentStep: { tab: 'datos-empresa', step: '9' },
-      //     datosEmpresa: {
-      //       ...datosEmpresa,
-      //       ...values,
-      //     },
-      //   })
-      // );
-      const route = handleLegalex();
-
-      // window.open(route);
+    onSubmit: () => {
+      window.open(legalexRoute, '_self');
     },
   });
 
-  const handleBuroCredito = async () => {
-    const emailExist = await LegalexRepositorio.postBuroCredito()
-      .then((resp) => {
-        console.log(resp);
+  const handleNextStep = async () => {
+    dispatch(
+      nextStepDatosPersonales({
+        currentStep: { tab: 'datos-empresa', step: '11' },
       })
-      .catch(({ response }) => {
-        // const [error] = response.data.message;
-        console.log(response.data);
-        // return false;
-      });
+    );
+    await push(AGRADECIMIENTO_DATOS_EMPRESA_ROUTE);
   };
+
+  const handleLegalex = async () => {
+    const contratoData = await ContratoRepositorio.getContrato()
+      .then(({ data }) => data)
+      .catch(() => false);
+
+    if (!contratoData) {
+      return;
+    }
+
+    const { estado, firmaCovenant } = contratoData;
+
+    switch (estado) {
+      case PENDIENTE_LEGALEX:
+        if (
+          await ContratoRepositorio.postContratoDigital()
+            .then(() => true)
+            .catch(() => false)
+        ) {
+          handleLegalex();
+        }
+        break;
+
+      case PENDIENTE_BURO:
+        if (
+          await ContratoRepositorio.postBuroCredito()
+            .then(() => true)
+            .catch(() => false)
+        ) {
+          setOpenConfirmation(true);
+        }
+        break;
+
+      default:
+        setLegalexRoute(
+          `https://www.legalexgs.com/covenant_firma/acceso_firma.jsp?t=${firmaCovenant.listaTokens[0].token}&u=${window.location.origin}${CONTRATO_LEGALEX_DATOS_EMPRESA_ROUTE}`
+        );
+        break;
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleLegalex();
+    }, 500);
+  }, []);
 
   return (
     <>
@@ -105,7 +140,7 @@ const ContratoLegalexDatosEmpresa = () => {
           </p>
 
           <div className="d-flex justify-content-center">
-            <button className="btn-medium" type="submit" aria-label="Avanzar" onClick={handleBuroCredito}>
+            <button className="btn-medium" type="submit" aria-label="Avanzar" onClick={handleNextStep}>
               <span>Continuar</span>
             </button>
           </div>
@@ -116,7 +151,7 @@ const ContratoLegalexDatosEmpresa = () => {
         <div className="contedor-solicitud">
           <div className="container p-0 mt-4">
             <form onSubmit={formulario.handleSubmit} noValidate>
-              {/* <ContratoLegalex
+              <ContratoLegalex
                 formulario={formulario}
                 nameFieldNombreSolicitante="nombreSolicitante"
                 nameFieldRFC="rfc"
@@ -131,7 +166,7 @@ const ContratoLegalexDatosEmpresa = () => {
                 nameFieldTelefono="telefono"
                 nameFieldRepresentanteLegal="representanteLegal"
                 nameFieldFechaAutorizacion="fechaAutorizacion"
-              /> */}
+              />
 
               <div className="row no-gutters mt-4">
                 <CheckTextBox name="autorizacionFirmaElectronica" formulario={formulario}>
@@ -156,7 +191,6 @@ const ContratoLegalexDatosEmpresa = () => {
                   type="submit"
                   aria-label="Avanzar"
                   disabled={!(formulario.isValid && formulario.dirty)}
-                  // onClick={() => setOpenConfirmation(true)}
                 >
                   <span>Firma tu contrato</span>
                 </button>

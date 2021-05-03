@@ -1,3 +1,6 @@
+export const PENDIENTE_LEGALEX = 'PENDIENTE_LEGALEX';
+export const PENDIENTE_BURO = 'PENDIENTE_BURO';
+
 export const ALTA_DE_LINEA = 'ALTA_DE_LINEA';
 export const ALTA_DE_CLIENTE = 'ALTA_DE_CLIENTE';
 export const DESEMBOLSO = 'DESEMBOLSO';

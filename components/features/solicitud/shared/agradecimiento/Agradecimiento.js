@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SvgContratoConSigno from '../../../../svgs/agradecimiento/SvgContratoConSigno';
 import SvgOk from '../../../../svgs/SvgOk';
+import SvgOffer from '../../../../svgs/SvgOffer';
 
 const Agradecimiento = ({ children, title, iconOk, button, handleClick }) => (
   <div className="contedor-fixed">
@@ -9,7 +9,7 @@ const Agradecimiento = ({ children, title, iconOk, button, handleClick }) => (
       <div className="container p-0">
         <div className="row">
           <div className="col-md-3 col-xs-12 order-md-last d-flex justify-content-center flex-md-column">
-            {iconOk ? <SvgOk /> : <SvgContratoConSigno />}
+            {iconOk ? <SvgOk /> : <SvgOffer />}
           </div>
           <div className="col-md-9 col-xs-12">
             <h2 className="text-xs-center text-md-left color-blue-storm mt-2">{title}</h2>

@@ -1,39 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import SvgOffer from '../../../../svgs/SvgOffer';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetDatosPersonales } from '../../../../../redux/actions/solicitud';
+import Agradecimiento from '../../shared/agradecimiento/Agradecimiento';
 
 const AgradecimientoDatosEmpresa = () => {
-  const { datosPersona } = useSelector((state) => state.solicitud);
+  const { datosPersonales } = useSelector((state) => state.solicitud);
+  const dispatch = useDispatch();
+
+  useEffect(
+    () => () => {
+      dispatch(resetDatosPersonales());
+    },
+    []
+  );
 
   return (
-    <div className="contedor-fixed">
-      <div className="contedor-solicitud ">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-10">
-              <div className="d-block d-md-none col-md-2 col-xs-12 text-xs-center mt-4">
-                <SvgOffer />
-              </div>
-              <h2 className="text-xs-center text-md-left color-blue-storm mt-5">
-                ¡Gracias, {datosPersona.primerNombre}!
-              </h2>
-              <p className="body2 text-xs-center text-md-left color-dark-gray sub">
-                ¡Estamos analizando tu solicitud y en breve nos comunicaremos contigo por correo electrónico para que
-                puedas regresar y conocer tu oferta!
-              </p>
-            </div>
-            <div className="d-none d-md-block  col-md-2 col-xs-12 text-xs-center mt-4">
-              <SvgOffer />
-            </div>
-            <div className="text-center offset-md-4 offset-xs-3 my-3 ">
-              <button className="btn-medium" type="submit" aria-label="Avanzar">
-                <span>Guardar y salir</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Agradecimiento title={`¡Gracias, ${datosPersonales.primerNombre}!`} iconOk={false}>
+      <p className="body2 text-xs-center text-md-left color-dark-gray sub">
+        ¡Estamos analizando tu solicitud y en breve nos comunicaremos contigo por correo electrónico para que puedas
+        regresar y conocer tu oferta!
+      </p>
+    </Agradecimiento>
   );
 };
 export default AgradecimientoDatosEmpresa;
